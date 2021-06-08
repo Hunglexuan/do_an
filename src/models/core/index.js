@@ -1,6 +1,7 @@
 
 export { default as Customer } from './Customer';
 export { default as Users } from './Users';
+export { default as Role } from './Role';
 
 
 
