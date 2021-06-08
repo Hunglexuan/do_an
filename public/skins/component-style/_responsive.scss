@@ -1,0 +1,285 @@
+
+// ========================================responsive site
+// =====-----------------mobile1
+/*Smart phone nhỏ*/
+@media screen and (min-width: 240px){
+    
+}
+/*Iphone(480 x 640)*/
+@media screen and (min-width: 320px){
+    
+}
+/*Tablet nhỏ(480 x 640)*/
+@media screen and (min-width: 480px){
+    
+}
+/*Ipad dọc(768 x 1024)*/
+@media screen and (min-width: 768px){
+    
+}
+/*Ipad ngang(1024 x 768)*/
+@media screen and (min-width: 1024px){
+    #slider-home .slide_banner .img_slider--main img {
+        height: 24.5rem;
+    }
+    .banner_page {
+        height: 24.5rem;
+    }
+}
+
+
+@media (min-width: 1680px) and (max-width: 1919px) {
+    html {
+        font-size: 16px;
+    }
+}
+@media (min-width: 1440) and (max-width: 1679px) {
+    html {
+        font-size: 15px;
+    }
+}
+@media (min-width: 1366px) and (max-width: 1439px) {
+    html {
+        font-size: 14px;
+    }
+}
+@media (min-width: 1200) and (max-width: 1365px) {
+    html {
+        font-size: 13px;
+    }
+}
+@media (min-width: 1025px) and (max-width: 1199px) {
+    html {
+        font-size: 12px;
+    }
+    .title_section .title_section--style {
+        font-size: 3.5rem;
+    }
+}
+@media (min-width: 992px) and (max-width: 1024px) {
+    html {
+        font-size: 11px;
+    }
+    .title_section .title_section--style {
+        font-size: 3rem;
+    }
+    .banner .img_banner {
+        height: auto;
+    }
+    .banner .title_banner .h2_titlebanner {
+        font-size: 2rem;
+    }
+}
+@media (max-width: 991px) {
+    #main-site {
+        section {
+            overflow: hidden;
+        }
+    }
+    .banner .img_banner {
+        height: auto;
+    }
+    .title_section .title_section--style {
+        font-size: 3.5rem;
+    }
+    .banner .title_banner .h2_titlebanner {
+        font-size: 2rem;
+    }
+    .about .right_about {
+        margin-top: 5rem;
+    }
+    .linh-vuc-hd .item_lvhd {
+        min-height: 13rem;
+        .item_lvhd--img {
+            margin-top: 10%;
+        }
+    }
+    .duan-nb .wp-slide-duan .wp-padding .duan_left {
+        text-align: center;
+        &>img {
+            margin-left: auto;
+            margin-right: auto;
+        }
+    }
+    .info2 .right_info2 {
+        padding-top: 2rem;
+        text-align: center;
+    }
+    .dichvu-f1 .row .col-xl-4 {
+        margin-bottom: 3rem;
+    }
+    .about {
+        padding-top: 5rem;
+    }
+    .sec_info .title_section .title_section--style:after {
+        bottom: 2rem;
+    }
+}
+@media (min-width: 768px) and (max-width: 991px) {
+    html {
+        font-size: 10px;
+    }
+    .linh-vuc-hd .item_lvhd {
+        min-height: 14rem;
+    }
+    .banner {
+        padding-top: 7rem;
+    }
+}
+@media (max-width: 767px) {
+    .title_section .title_section--style {
+        font-size: 3rem;
+    }
+    .dichvu-f1 .content_section .row {
+        justify-content: center;
+    }
+    .hop-tac .wp-hop-tac {
+        flex-wrap: wrap;
+        .hop_tac {
+            margin-bottom: 1rem;
+            margin-right: 0;
+            width: 100%;
+            max-width: 250px;
+            margin-left: auto;
+            margin-right: auto;
+            &:last-child {
+                margin-right: auto;
+            }
+        }
+    }
+    .dich_vu .content_section .wp-hop-tac {
+        flex-wrap: wrap;
+        .hop_tac {
+            margin-bottom: 1rem;
+            margin-right: 0;
+            width: 100%;
+            max-width: 250px;
+            margin-left: auto;
+            margin-right: auto;
+            &:last-child {
+                margin-right: auto !important;
+            }
+        }
+    }
+    .about .title_section {
+        margin-top: 2rem;
+    }
+    .banner {
+        padding-top: 52px;
+    }
+    .section4_page--dich_vu--cad .content_section .content {
+        flex-wrap: wrap;
+        justify-content: center;
+        .item {
+            width: calc((100% - 2.25rem)/3);
+            margin-bottom: 3rem;
+        }
+    }
+    // css page tuyen dung
+    .content_tuyendung .list_main--content .item_tuyendung {
+        flex-wrap: wrap;
+        &>div {
+            width: 100%;
+            margin: 0;
+        }
+        .left {
+            margin-right: 0 !important;
+            margin-bottom: 2rem;
+            order: 1 !important;
+        }
+        .right {
+            order: 2 !important;
+        }
+    }
+    .content_tuyendung .box_info3 .left .list_info--t {
+        flex-wrap: wrap;
+        li {
+            margin-bottom: 0.5rem;
+        }
+    }
+    .content_tuyendung .box_info2 {
+        margin-bottom: 2rem;
+    }
+    .content_tuyendung .box_info {
+        flex-wrap: wrap;
+    }
+    .content_tuyendung .box_info2 {
+        flex-wrap: wrap;
+        &>div {
+            width: 100%;
+            margin-bottom: 2rem;
+            padding: 0 !important;
+        }
+    }
+    .content_tuyendung .box_info .box:nth-child(1), .content_tuyendung .box_info .box:nth-child(2) {
+        width: 50%;
+    }
+    .content_tuyendung .box_info .box:nth-child(3) {
+        margin-top: 2rem !important;
+        margin-left: auto;
+        margin-right: auto;
+        width: 50%;
+        .box_sub1 {
+            position: initial;
+        }
+        .img {
+            right: -2rem;
+        }
+    }
+}
+@media (min-width: 600px) and (max-width: 767px) {
+    html {
+        font-size: 9px;
+    }
+}
+@media (min-width: 415px) and (max-width: 599px) {
+    html {
+        font-size: 8px;
+    }
+}
+@media (min-width: 320px) and (max-width: 414px) {
+    html {
+        font-size: 7px;
+    }
+}
+
+
+// css input iphone
+/* disable auto-zoom on iphone input field focus */
+
+/*** Styles added to fix the issue with zoom in on iphone ***/
+/*input:focus, textarea:focus {
+    font-size: 16px !important;
+}*/
+/* iPhone < 5: */
+@media screen and (device-aspect-ratio: 2/3) {
+    .react-select-containers, select, textarea, input[type="text"], input[type="password"],
+    input[type="datetime"], input[type="datetime-local"],
+    input[type="date"], input[type="month"], input[type="time"],
+    input[type="week"], input[type="number"], input[type="email"],
+    input[type="url"]{ font-size: 16px !important; }
+}
+/* iPhone 5, 5C, 5S, iPod Touch 5g */
+@media screen and (device-aspect-ratio: 40/71) {
+    .react-select-containers, select, textarea, input[type="text"], input[type="password"],
+    input[type="datetime"], input[type="datetime-local"],
+    input[type="date"], input[type="month"], input[type="time"],
+    input[type="week"], input[type="number"], input[type="email"],
+    input[type="url"]{ font-size: 16px !important; }
+}
+/* iPhone 6, iPhone 6s, iPhone 7 portrait/landscape */
+@media screen and (device-aspect-ratio: 375/667) {
+    .react-select-containers, select, textarea, input[type="text"], input[type="password"],
+    input[type="datetime"], input[type="datetime-local"],
+    input[type="date"], input[type="month"], input[type="time"],
+    input[type="week"], input[type="number"], input[type="email"],
+    input[type="url"]{ font-size: 16px !important; }
+}
+/* iPhone 6 Plus, iPhone 6s Plus, iPhone 7 Plus portrait/landscape */
+@media screen and (device-aspect-ratio: 9/16) {
+    .react-select-containers, select, textarea, input[type="text"], input[type="password"],
+    input[type="datetime"], input[type="datetime-local"],
+    input[type="date"], input[type="month"], input[type="time"],
+    input[type="week"], input[type="number"], input[type="email"],
+    input[type="url"]{ font-size: 16px !important; }
+}

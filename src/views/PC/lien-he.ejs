@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>TCOM Japan</title>
+    <link rel="shortcut icon" href="images/img-index/favicon.png">
+    <!-- font web -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <!-- css he thong -->
+    <link rel="stylesheet" type="text/css" href="skins/style-b/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="skins/style-animate/animate.css">
+    <!-- font icon -->
+    <link rel="stylesheet" type="text/css" href="skins/style-icon/all.min.css">
+    <link rel="stylesheet" type="text/css" href="skins/style-slide/owl.carousel.css">
+    <link rel="stylesheet" type="text/css" href="skins/style-animate/aos.css">
+    <link rel="stylesheet" type="text/css" href="skins/style.css">
+    <!-- css dev backend -->
+    <link rel="stylesheet" type="text/css" href="skins/custom.css">
+
+</head>
+
+<body>
+    <header id="header-site">
+        <div id="sticky-wrapper" class="sticky-wrapper">
+            <div class="main-menu-bar sticky-header-enable">
+                <div id="top_header" class="top_header">
+                    <div class="container">
+                        <div class="box_top--header">
+                            <div class="contact_mb">
+                                <a href="tel:080-3217-7518">
+                                    <div class="phone_mb"><img src="images/img-index/icon-phone-mb.png" alt=""></div>
+                                </a>
+                                <a href="/contact">
+                                    <div class="mail_mb"><img src="images/img-index/icon-mail-mb.png" alt=""></div>
+                                </a>
+                            </div>
+                            <div class="logo"><a class="navbar-brand" href="/"><img
+                                        src="images/img-index/logo-tcomjp.png" alt=""></a></div>
+                            <div class="right_pc">
+                                <div class="phone-pc">
+                                    <div class="icon">
+                                        <img src="images/img-index/icon-phone2.png" alt="">
+                                    </div>
+                                    <div class="text">
+
+                                        <div class="b"> <a href="tel:080-3217-7518">080-3217-7518 </a></div>
+
+                                        <div class="c">[平日 10：00～18：00]</div>
+                                    </div>
+                                </div>
+                                <div class="mail-pc">
+
+                                    <div class="icon">
+                                        <a href="/contact"> <img src="images/img-index/ant-design_mail-outlined.png"
+                                                alt=""> </a>
+                                    </div>
+                                    <div class="text">
+                                        <a href="/contact">
+                                            <div class="b">問い合わせフォーム</div>
+                                        </a>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="wp-icon-menu-bar">
+                                <div id="trigger-mobile">
+                                    <img src="images/img-index/fluent_navigation-24-regular.png" alt="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="main_menu">
+                    <div class="container">
+                        <nav class="navbar navbar-expand-lg navbar-light">
+                            <div class="navbar-collapse collapse" id="navbarSupportedContent">
+                                <ul class="navbar-nav">
+                                    <li class="nav-item">
+                                        <a class="nav-link " href="/">ホーム</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="/profile">会社概要</a>
+                                    </li>
+                                    <li class="nav-item dropdown">
+                                        <a class="nav-link" href="/service">サービス</a>
+                                        <div class="dropdown-menu">
+                                            <a class="dropdown-item" href="/cad"><span><i
+                                                        class="fas fa-caret-right"></i> &nbsp;CAD
+                                                    サービス</span></a>
+                                            <a class="dropdown-item" href="/serviceIT"><span><i
+                                                        class="fas fa-caret-right"></i> &nbsp;IT
+                                                    サービス</span></a>
+                                            <a class="dropdown-item" href="/development"><span><i
+                                                        class="fas fa-caret-right"></i> &nbsp;オフショア開発
+                                                    サービス</span></a>
+                                        </div>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="/development">オフショア開発</a>
+                                    </li>
+                                    <li class="nav-item ">
+                                        <a class="nav-link" href="/hire">採用情報</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- end header -->
+    <main id="main-site">
+        <section class="banner banner_page contact">
+            <h1 class="h1_title--page">お問い合わせ</h1>
+        </section>
+
+
+        <!-- end banner -->
+        <section class="contact overflow-hidden">
+
+            <form id="contact-form" name="myForm" action="/sendmail" method="POST" onsubmit="check(event)" required>
+                <div class="container" id="lienHe">
+
+                    <div class="content_section box box1">
+                        <div class="title_box">
+                            お問い合わせはメール・お電話にてお受けしております。​ <br>お送りいただいた内容を確認のうえ、ご返答させていただきます​
+                        </div>
+                        <div class="content_box">
+                            <div class="form">
+                                <form>
+                                    <div id="email" class="form_style">
+                                        <div class="input">
+                                            <div class="left">
+                                                <div class="label_b">お名前<span class="color_do">(必須)</span>​</div>
+                                            </div>
+                                            <div class="right">
+                                                <input type="text" class="form-control name" placeholder="例) 山田"
+                                                    name="name">
+                                            </div>
+                                        </div>
+                                        <div class="input">
+                                            <div class="left">
+                                                <div class="label_b">貴社名<span class="color_do">(必須)</span>​</div>
+                                            </div>
+                                            <div class="right">
+                                                <input type="text" class="form-control" placeholder="例) TCOM JAPAN株式会社​"
+                                                    name="company_name">
+                                            </div>
+                                        </div>
+                                        <div class="input">
+                                            <div class="left">
+                                                <div class="label_b">Eメールアドレス<span class="color_do">(必須)</span>​
+                                                </div>
+                                            </div>
+                                            <div class="right">
+                                                <input type="text" class="form-control"
+                                                    placeholder="例) sales@tcom-japan.jp" name="email">
+                                            </div>
+                                        </div>
+                                        <div class="input">
+                                            <div class="left">
+                                                <div class="label_b">電話番号</div>
+                                            </div>
+                                            <div class="right">
+                                                <input type="text" class="form-control" placeholder="例) 080 3217 7518"
+                                                    name="phone">
+                                            </div>
+                                        </div>
+                                        <div class="input">
+                                            <div class="left">
+                                                <div class="label_b">お問合せ内容<span class="color_do">(必須)</span>​</div>
+                                            </div>
+                                            <div class="right">
+                                                <textarea class="form-control" name="description"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="box2">
+                        <div class="fix_box2">
+                            <h2 class="h2_title">プライバシーポリシー（PRIVACY POLICY）</h2>
+                            <div class="des_box">
+                                <p>当社サイトは、お客様より取得した個人情報について、第三者に開示、提供を一切いたしせん。​お客様から個人情報をご提供していただき、お客様へのサービスにご利用させていただく場合がありますが、その目的以外には利用いたしません。​
+                                </p>
+                                <p>
+                                    ・サービス提供のため<br>
+                                    ・支払い、請求手続きのため​<br>
+                                    ・採用目的のため<br>
+                                    ・その他の正当な目的のため
+
+                                </p>
+                                <p>お客様より取得した個人情報につきましては管理責任者を置き、適切な管理を行っております。​​</p>
+                                <div class="checkbox_b">
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="customCheck1"
+                                            name="checkbox">
+                                        <label class="custom-control-label"
+                                            for="customCheck1">お問い合わせに関する個人情報の取扱いに関して同意します</label>
+                                    </div>
+                                </div>
+                                <div class="btn_submit">
+                                    <input id="myWish" type="submit" value="submit" class="btn btn_submit" value="送信">
+                                </div>
+                                <div class="alert alert-primary alert-dismissible" id="fail">
+
+                                    <strong><i class="fas fa-exclamation-triangle"></i>
+                                        すべての必須項目に入力して、「プライバシーポリシー」に同意してください。</strong>
+                                </div>
+                                <div class="alert alert-success alert-dismissible" id="success">
+
+                                    <strong><i class="fas fa-heart"></i> TCOM JAPANをお選びいただき、誠にありがとうございます。</strong>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </form>
+
+
+        </section>
+        <!-- end section 1 page info -->
+    </main>
+    <!-- end main -->
+    <footer id="footer-site">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
+                    <div class="wp_ft ft1">
+                        <img src="images/img-index/logo-tcomjpFT.png" alt="">
+                    </div>
+                </div>
+                <!-- end item ft -->
+                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
+                    <div class="wp_ft ft2">
+                        <div class="item">
+                            <h2 class="h2-title">コネクション</h2>
+                            <ul class="ul-b">
+                                <li><a href="/">ホーム</a></li>
+                                <li><a href="profile">企業情報</a></li>
+                            </ul>
+                        </div>
+                        <div class="item">
+                            <h2 class="h2-title">サービス</h2>
+                            <ul class="ul-b">
+                                <li><a href="cad">CADサービス</a></li>
+                                <li><a href="serviceIT">ITサービス</a></li>
+                                <li><a href="development">オフショア開発</a></li>
+                                <li><a href="/#QA">よくあるご質問</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- end item -->
+                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
+                    <div class="wp_ft ft3">
+                        <h2 class="h2-title">お問い合わせ</h2>
+                        <div class="list_info">
+                            <div class="item">
+                                <div class="icon"><img src="images/img-index/jp.png" alt=""></div>
+                                <div class="text">
+                                    <h3 class="h3_title">日本法人</h3>
+                                    <div class="des">東京都立川市で予定</div>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="icon"><img src="images/img-index/vn.png" alt=""></div>
+                                <div class="text">
+                                    <h3 class="h3_title">本社 (ベトナム)</h3>
+                                    <div class="des">  本店所在地: <br>No. 26B/92, Group 11, Hoang Van Thu Ward, Hoang Mai District, Ha Noi, Viet Nam <br>
+                                        営業オフィス: <br>9th floor, 389A-391 Truong Chinh Street, Thanh Xuan District, Ha Noi, Viet Nam
+                                        <br>
+                                        <a href="https://tcom.vn/">https://tcom.vn/</a>​</div>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="icon"><img src="images/img-index/phone.png" alt=""></div>
+                                <div class="text">
+                                    <h3 class="h3_title">電話番号</h3>
+                                    <a href="tel:080-3217-7518">
+                                        <div class="des">080 3217 7518</div>
+                                    </a>
+
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="icon"><img src="images/img-index/mail.png" alt=""></div>
+                                <div class="text">
+                                    <h3 class="h3_title">メール</h3>
+
+                                    <a href="mailto:sales@tcom-japan.com">
+                                        <div class="des">sales@tcom-japan.com</div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            <div class="container">
+                <div class="d-flex">
+                    <div class="left">Copyright © 2021 by TCOM JAPAN</div>
+
+                    <div class="right">
+                        <ul class="ul-b list-social">
+                            <li><a href="https://www.facebook.com/TCOM.Corporation/"><img src="images/img-index/fb.png"
+                                        alt=""></a></li>
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- end footer -->
+    <!-- back to top -->
+    <div class="back-tt">
+        <a href="#sectop" id="back-to-top" title="Back to top" class="show"><i class="fas fa-arrow-circle-up"></i>
+        </a>
+    </div>
+    <!-- menu mobile -->
+    <div class="backdrop__body-backdrop___1rvky"></div>
+    <div class="mobile-main-menu">
+        <div id="close-nav" class="">
+            <img src="images/img-index/clarity_close-line.png" alt="">
+        </div>
+        <div class="la-scroll-fix-infor-user menu-mobile">
+            <div class="la-nav-menu-items">
+                <ul class="la-nav-list-items ul-b">
+                    <li class="ng-scope active"><a href="/">ホーム</a></li>
+                    <li class="ng-scope"> <a href="/profile">会社概要</a></li>
+                    <li class="ng-scope ng-has-child1"> <a href="/service">サービス<i class="fa fa-plus fa1"
+                                aria-hidden="true"></i></a>
+                        <ul class="ul-has-child1 ul-b">
+                            <li class="ng-scope ng-has-child2"> <a href="/cad">CAD サービス</a>
+                            </li>
+                            <li class="ng-scope ng-has-child2"> <a href="/serviceIT">IT サービス</a>
+                            </li>
+                            <li class="ng-scope ng-has-child2"> <a href="/development">オフショア開発 サービス</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="ng-scope"> <a href="/development">オフショア開発</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- js site -->
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/popper.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/owl.carousel.js"></script>
+    <script type="text/javascript" src="js/aos.js"></script>
+    <script type="text/javascript" src="js/jquery.nicescroll.js"></script>
+    <!-- js custom -->
+    <script type="text/javascript" src="js/library.js"></script>
+
+    <script type="text/javascript">
+        AOS.init();
+    </script>
+
+    <script>
+        var form = document.getElementById("contact-form");
+
+        form.addEventListener("submit", (event) => {
+            event.preventDefault();
+
+            //2.
+            let mail = new FormData(form);
+
+            //3.
+            sendMail(mail);
+        })
+
+        function sendMail(mail) {
+            //1.
+            fetch("http://localhost:3999/send", {
+                method: "post", //2.
+                body: mail, //3.
+
+            }).then((response) => {
+                return response.json();
+            })
+        }
+    </script>
+
+
+
+</body>
+
+</html>
