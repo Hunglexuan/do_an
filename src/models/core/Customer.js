@@ -65,11 +65,7 @@ const attributes = {
         default: 0
     },
 
-    seen: {  // 0: Not seen , 1: Seen
-        type: DataTypes.TINYINT(1),
-        allowNull: true,
-        default: 0
-    },
+
     del: {  // 0: Not delete , 1: delete
         type: DataTypes.TINYINT(1),
         allowNull: true,
