@@ -3,19 +3,18 @@ import BaseModel from './BaseModel';
 import { sequelize } from '../../connections';
 import Sequelize from 'sequelize';
 import { v4 as uuidv4 } from 'uuid';
-import { Role } from './';
 /**
- * Define Users Model
+ * Define Role Model
  * 
  * @export
- * @class Users
+ * @class Role
  * @extends {BaseModel}
  */
-export default class Users extends BaseModel {
+export default class Role extends BaseModel {
 
     static association() {
-        Users.belongsTo(Role, { as: 'roles', foreignKey: 'role_id' })
-    };
+      
+    }
 }
 
 /**
@@ -34,25 +33,6 @@ const attributes = {
         allowNull: true,
         defaultValue: null
     },
-    password: {
-        type: DataTypes.STRING(255),
-        allowNull: true,
-        defaultValue: null
-    },
-    email: {
-        type: DataTypes.STRING(255),
-        allowNull: true,
-        defaultValue: null
-    },
-    phone: {
-        type: DataTypes.STRING(255),
-        allowNull: true,
-        defaultValue: null
-    },
-    role_id: {
-        type: DataTypes.UUID,
-        allowNull: true
-    },
     del: {
         type: DataTypes.TINYINT(1),
         allowNull: true,
@@ -69,7 +49,7 @@ const attributes = {
 };
 
 function beforeCreate() {
-    Users.beforeCreate((obj, _) => {
+    Role.beforeCreate((obj, _) => {
         return obj.id = uuidv4();
     });
 }
@@ -78,11 +58,11 @@ function beforeCreate() {
  * Options model
  */
 const options = {
-    tableName: 'users',
+    tableName: 'role',
     beforeCreate: beforeCreate
 };
 
 /**
  * Init Model
  */
-Users.init(attributes, { ...options, sequelize });
+Role.init(attributes, { ...options, sequelize });
