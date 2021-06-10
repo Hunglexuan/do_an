@@ -37,7 +37,7 @@ app.use('/api', routes);
 
 app.get('/', function (req, res) {
 
-        return res.render('PC/index');
+        return res.render('index');
 
 
 });
