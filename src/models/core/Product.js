@@ -3,26 +3,23 @@ import BaseModel from './BaseModel';
 import { sequelize } from '../../connections';
 import Sequelize from 'sequelize';
 import { v4 as uuidv4 } from 'uuid';
-import { Role } from './';
 /**
- * Define Users Model
+ * Define Role Model
  * 
  * @export
- * @class Users
+ * @class Product
  * @extends {BaseModel}
  */
-export default class Users extends BaseModel {
+export default class Product extends BaseModel {
 
     static association() {
-        Users.belongsTo(Role, { as: 'roles', foreignKey: 'role_id' })
-    };
+      
+    }
 }
 
 /**
  * Attributes model
- */
-
-
+*/
 const attributes = {
     id: {
         primaryKey: true,
@@ -34,59 +31,45 @@ const attributes = {
         allowNull: true,
         defaultValue: null
     },
-    password: {
-        type: DataTypes.STRING(255),
-        allowNull: true,
-        defaultValue: null
-    },
-    email: {
-        type: DataTypes.STRING(255),
-        allowNull: true,
-        defaultValue: null
-    },
-    phone: {
-        type: DataTypes.STRING(255),
-        allowNull: true,
-        defaultValue: null
-    },
-    role_id: {
+    category_id: {
         type: DataTypes.UUID,
         allowNull: true
     },
-
-    adress: {
-        type: DataTypes.STRING(255),
+    quantity: {
+        type: DataTypes.INTEGER(10),
         allowNull: true,
         defaultValue: null
-
     },
-    bill_id: {
+    unit_price: {
+        type: DataTypes.INTEGER(10),
+        allowNull: true,
+        defaultValue: null
+    },
+    description: {
+        type: DataTypes.STRING(255),
+        allowNull: true,
+        defaultValue:null
+    },
+    user_id: {
         type: DataTypes.UUID,
-        allowNull: true
-
+        allowNull:true
     },
-    avatar: {
-        type: DataTypes.STRING(255),
-        allowNull: true,
-        defaultValue: null
+    sale: {
+        type: DataTypes.INTEGER(10),
+        allowNull:true,
+        defaultValue:null
     },
-    dob: {
+    sale_from: {
         type: DataTypes.DATE,
         allowNull: true,
         defaultValue: null
-
     },
-    shop_name: {
-
-        type: DataTypes.STRING(255),
+    sale_to: {
+        type: DataTypes.DATE,
         allowNull: true,
         defaultValue: null
     },
-    product_id: {
-        type: DataTypes.UUID,
-        allowNull: true
-
-    }, del: {
+    del: {
         type: DataTypes.TINYINT(1),
         allowNull: true,
         default: 0
@@ -101,9 +84,8 @@ const attributes = {
     },
 
 };
-
 function beforeCreate() {
-    Users.beforeCreate((obj, _) => {
+    Product.beforeCreate((obj, _) => {
         return obj.id = uuidv4();
     });
 }
@@ -112,11 +94,11 @@ function beforeCreate() {
  * Options model
  */
 const options = {
-    tableName: 'users',
+    tableName: 'product',
     beforeCreate: beforeCreate
 };
 
 /**
  * Init Model
  */
-Users.init(attributes, { ...options, sequelize });
+Product.init(attributes, { ...options, sequelize });
