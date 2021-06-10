@@ -3,6 +3,7 @@ import BaseModel from './BaseModel';
 import { sequelize } from '../../connections';
 import Sequelize from 'sequelize';
 import { v4 as uuidv4 } from 'uuid';
+import Product from './Product';
 /**
  * Define Role Model
  * 
@@ -13,7 +14,7 @@ import { v4 as uuidv4 } from 'uuid';
  export default class BillProduct extends BaseModel {
 
     static association() {
-      
+        BillProduct.belongsTo(Product, { as: 'products', foreignKey: 'product_id' })
     }
 }
 

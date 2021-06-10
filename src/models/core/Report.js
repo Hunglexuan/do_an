@@ -3,6 +3,7 @@ import BaseModel from './BaseModel';
 import { sequelize } from '../../connections';
 import Sequelize from 'sequelize';
 import { v4 as uuidv4 } from 'uuid';
+import Users from './Users';
 /**
  * Define Report Model
  * 
@@ -13,7 +14,8 @@ import { v4 as uuidv4 } from 'uuid';
 export default class Report extends BaseModel {
 
     static association() {
-      
+        Report.belongsTo(Users, { as: 'users', foreignKey: 'user_id' })
+        
     }
 }
 

@@ -3,6 +3,7 @@ import BaseModel from './BaseModel';
 import { sequelize } from '../../connections';
 import Sequelize from 'sequelize';
 import { v4 as uuidv4 } from 'uuid';
+import Users from './Users';
 /**
  * Define Role Model
  * 
@@ -13,7 +14,7 @@ import { v4 as uuidv4 } from 'uuid';
 export default class Product extends BaseModel {
 
     static association() {
-      
+        Product.belongsTo(Users, { as: 'users', foreignKey: 'user_id' })
     }
 }
 
@@ -31,10 +32,7 @@ const attributes = {
         allowNull: true,
         defaultValue: null
     },
-    category_id: {
-        type: DataTypes.UUID,
-        allowNull: true
-    },
+
     quantity: {
         type: DataTypes.INTEGER(10),
         allowNull: true,

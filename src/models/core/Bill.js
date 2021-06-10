@@ -3,6 +3,9 @@ import BaseModel from './BaseModel';
 import { sequelize } from '../../connections';
 import Sequelize from 'sequelize';
 import { v4 as uuidv4 } from 'uuid';
+import { Voucher } from './';
+import BillProduct from './BillProduct';
+
 
 /**
  * Define Bill Model
@@ -14,7 +17,8 @@ import { v4 as uuidv4 } from 'uuid';
  export default class Bill extends BaseModel {
 
     static association() {
-      
+        Bill.belongsTo(Voucher, { as: 'voucher', foreignKey: 'voucher_id' })
+        Bill.belongsTo(BillProduct, { as: 'billproduct', foreignKey: 'bill_product_id' })
     }
 }
 /**
