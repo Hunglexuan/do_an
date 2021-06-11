@@ -6333,7 +6333,7 @@ background: -webkit-linear-gradient(45deg,  rgba(52,91,255,1) 0%,rgba(40,80,255,
 background: linear-gradient(45deg,  rgba(52,91,255,1) 0%,rgba(40,80,255,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#345bff', endColorstr='#2850ff',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
 box-shadow: 0 0.5rem 1rem rgb(0 0 0 / 6%);
-background-image: url(../img/nenfpt1.jpg);
+background-image: url(../../image/nenfpt1.jpg);
 background-repeat: no-repeat;
 background-size: cover;
 

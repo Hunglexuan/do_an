@@ -42,6 +42,12 @@ app.get('/', function (req, res) {
 
 });
 
+app.get('/LoginSeller', function (req, res) {
+
+        return res.render('LoginForSeller');
+
+
+});
 
 
 
