@@ -4,43 +4,43 @@ Author: Askbootstrap
 Author URI: https://themeforest.net/user/askbootstrap
 Version: 1.0
 */
-(function($) {
+(function ($) {
   "use strict"; // Start of use strict
 
-// ===========Select2============
-$('select').select2();
+  // ===========Select2============
+  $('select').select2();
 
-// ===========My Account Tabs============
-$(window).on('hashchange', function() {
+  // ===========My Account Tabs============
+  $(window).on('hashchange', function () {
     var url = document.location.toString();
     if (url.match('#')) {
+      //$('.nav-tabs a[href=#'+url.split('#')[1]+']').tab('show') ;
+      $('a[href="' + window.location.hash + '"]').trigger('click');
+    }
+    $('.nav-tabs a').on('shown', function (e) {
+      window.location.hash = e.target.hash;
+    })
+  });
+  var url = document.location.toString();
+  if (url.match('#')) {
     //$('.nav-tabs a[href=#'+url.split('#')[1]+']').tab('show') ;
     $('a[href="' + window.location.hash + '"]').trigger('click');
-    } 
-   $('.nav-tabs a').on('shown', function (e) {
+  }
+  // Change hash for page-reload
+  $('.nav-tabs a').on('shown', function (e) {
     window.location.hash = e.target.hash;
-   })
-});
-var url = document.location.toString();
-if (url.match('#')) {
-    //$('.nav-tabs a[href=#'+url.split('#')[1]+']').tab('show') ;
-    $('a[href="' + window.location.hash + '"]').trigger('click');
-} 
-// Change hash for page-reload
-$('.nav-tabs a').on('shown', function (e) {
-    window.location.hash = e.target.hash;
-})
+  })
 
-// Category Owl Carousel
+  // Category Owl Carousel
   const objowlcarousel = $('.owl-carousel-category');
   if (objowlcarousel.length > 0) {
     objowlcarousel.owlCarousel({
       responsive: {
-        0:{
-            items:3,
+        0: {
+          items: 3,
         },
-        600:{
-            items:4,
+        600: {
+          items: 4,
         },
         1000: {
           items: 6,
@@ -57,20 +57,20 @@ $('.nav-tabs a').on('shown', function (e) {
       autoplayTimeout: 2000,
       autoplayHoverPause: true,
       nav: true,
-      navText:["<i class='fa fa-chevron-left'></i>", "<i class='fa fa-chevron-right'></i>"],
+      navText: ["<i class='fa fa-chevron-left'></i>", "<i class='fa fa-chevron-right'></i>"],
     });
   }
-  
-// Homepage Owl Carousel  
-var fiveobjowlcarousel = $(".owl-carousel-four");
+
+  // Homepage Owl Carousel  
+  var fiveobjowlcarousel = $(".owl-carousel-four");
   if (fiveobjowlcarousel.length > 0) {
-     fiveobjowlcarousel.owlCarousel({
-        responsive: {
-        0:{
-            items:1,
+    fiveobjowlcarousel.owlCarousel({
+      responsive: {
+        0: {
+          items: 1,
         },
-        600:{
-            items:2,
+        600: {
+          items: 2,
         },
         1000: {
           items: 4,
@@ -80,27 +80,27 @@ var fiveobjowlcarousel = $(".owl-carousel-four");
         },
       },
 
-        lazyLoad: true,
-        pagination: false,
-        loop: true,
-        dots: false,
-        autoPlay: 2000,
-        nav: true,
-        stopOnHover: true,
-        navText: ["<i class='icofont-thin-left'></i>", "<i class='icofont-thin-right'></i>"]
+      lazyLoad: true,
+      pagination: false,
+      loop: true,
+      dots: false,
+      autoPlay: 2000,
+      nav: true,
+      stopOnHover: true,
+      navText: ["<i class='icofont-thin-left'></i>", "<i class='icofont-thin-right'></i>"]
     });
-}
+  }
 
-// Owl Carousel Five
-var fiveobjowlcarousel = $(".owl-carousel-five");
+  // Owl Carousel Five
+  var fiveobjowlcarousel = $(".owl-carousel-five");
   if (fiveobjowlcarousel.length > 0) {
-     fiveobjowlcarousel.owlCarousel({
+    fiveobjowlcarousel.owlCarousel({
       responsive: {
-        0:{
-            items:2,
+        0: {
+          items: 2,
         },
-        600:{
-            items:3,
+        600: {
+          items: 3,
         },
         1000: {
           items: 4,
@@ -109,27 +109,27 @@ var fiveobjowlcarousel = $(".owl-carousel-five");
           items: 5,
         },
       },
-        lazyLoad: true,
-        pagination: false,
-        loop: true,
-        dots: false,
-        autoPlay: 2000,
-        nav: true,
-        stopOnHover: true,
-        navText: ["<i class='icofont-thin-left'></i>", "<i class='icofont-thin-right'></i>"]
+      lazyLoad: true,
+      pagination: false,
+      loop: true,
+      dots: false,
+      autoPlay: 2000,
+      nav: true,
+      stopOnHover: true,
+      navText: ["<i class='icofont-thin-left'></i>", "<i class='icofont-thin-right'></i>"]
     });
-}
+  }
 
-// Homepage Ad Owl Carousel
+  // Homepage Ad Owl Carousel
   const mainslider = $('.homepage-ad');
   if (mainslider.length > 0) {
     mainslider.owlCarousel({
       responsive: {
-        0:{
-            items:2,
+        0: {
+          items: 2,
         },
-        764:{
-            items:2,
+        764: {
+          items: 2,
         },
         765: {
           items: 1,
@@ -145,12 +145,66 @@ var fiveobjowlcarousel = $(".owl-carousel-five");
       dots: false,
       autoplayTimeout: 2000,
       nav: true,
-      navText:["<i class='fa fa-chevron-left'></i>", "<i class='fa fa-chevron-right'></i>"],
+      navText: ["<i class='fa fa-chevron-left'></i>", "<i class='fa fa-chevron-right'></i>"],
       autoplayHoverPause: true,
     });
-}
-	
-// Tooltip
-$('[data-toggle="tooltip"]').tooltip();
+  }
+  function check(event) {
+    event.preventDefault();
+
+
+    var email = document.forms["myForm"]["email"].value;
+    var email = document.forms["myForm"]["password"].value;
+
+    if (email == "" || email == null || !validateEmail(email)
+      || password == "" || password == null) {
+      event.preventDefault();
+      $("#fail").fadeTo(5000, 500).slideUp(500, function () {
+        $("#fail").slideUp(500);
+
+      });
+
+    }
+    else {
+      // event.preventDefault();
+
+      $("#success").fadeTo(5000, 500).slideUp(500, function () {
+        $("#success").slideUp(500);
+
+      })
+
+      if (screen.width < 1024) {
+        formData = {
+          'email': email,
+          'password': password
+        }
+      }
+      else {
+        formData = {
+          'email': email,
+          'password': password
+        }
+      }
+      loadForm(formData);
+
+
+    }
+  }
+  function loadForm(formData) {
+    $.ajax({
+      type: "POST",
+      url: "/api/auth/login",
+      data: formData,
+      success: function () {
+        setTimeout(() => {
+          window.location.href = '/';
+        }, 2500)
+      }
+    });
+  }
+
+
+  // Tooltip
+  $('[data-toggle="tooltip"]').tooltip();
 
 })(jQuery); // End of use strict
