@@ -8,9 +8,9 @@ function check(event) {
 
 
     var email = document.forms["myForm"]["email"].value;
-    var email = document.forms["myForm"]["password"].value;
+    var password = document.forms["myForm"]["password"].value;
 
-    if (email == "" || email == null || !validateEmail(email)
+    if (email == "" || email == null 
         || password == "" || password == null) {
        console.log('1111111111111');
     }
