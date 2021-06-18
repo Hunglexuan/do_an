@@ -186,7 +186,7 @@ img{
 /* Homepage Search Block */
 .homepage-search-block {
     background-color: #eef0ef;
-    background-image:url("/template/img/header.jpg");
+    background-image:url("../../image/header.jpg");
     background-repeat: no-repeat;
     background-attachment: fixed;  
     background-size: 100% 100% ;
