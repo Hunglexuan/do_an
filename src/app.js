@@ -12,10 +12,10 @@ app.set('views', path.join(__dirname, '../src/views'));
 app.set('view engine', 'ejs');
 app.disable('x-powered-by');
 app.use(cors({
-        credentials: true,
-        origin: function (origin, callback) {
-                callback(null, true);
-        }
+    credentials: true,
+    origin: function(origin, callback) {
+        callback(null, true);
+    }
 }));
 
 
@@ -23,8 +23,8 @@ app.use(cors({
 app.use(express.static(path.join(__dirname, '/../client/public')));
 app.use(useragent.express());
 app.use(bodyParser.urlencoded({
-        limit: '500mb',
-        extended: true
+    limit: '500mb',
+    extended: true
 }));
 app.use(bodyParser.json({ limit: '500mb' }));
 
@@ -35,77 +35,115 @@ app.use(express.static(path.join(__dirname, '../media')))
 // Setup other routes
 app.use('/api', routes);
 
-app.get('/', function (req, res) {
+app.get('/index', function(req, res) {
 
-        return res.render('index');
+    return res.render('index');
 
 
+});
+
+app.get('/resetPass', function (req, res) {
+
+        return res.render('password');
+
+
+});
+
+app.get('/LoginSeller', function (req, res) {
+
+        return res.render('LoginForSeller');
+
+
+});
+
+app.get('/LoginAdmin', function (req, res) {
+
+        return res.render('LoginForAdmin');
+
+
+});
+
+app.get('/RegisterSeller', function (req, res) {
+
+        return res.render('register');
+
+
+});
+
+app.get('/RegisterUser', function(req, res) {
+    return res.render('RegisterUser');
+});
+
+app.get('/LoginUser', function(req, res) {
+    return res.render('LoginUser');
+});
+
+app.get('/ForgotPasswordUser', function(req, res) {
+    return res.render('ForgotPasswordUser');
+});
+
+
+app.get('/MyProfileUser', function(req, res) {
+    return res.render('MyProfileUser');
 });
 
 
 
 
-app.get('/profile', function (req, res) {
-        return res.render('PC/ho-so-cty');
+app.get('/hire', function(req, res) {
+    return res.render('PC/tuyen-dung');
 });
 
+app.get('/contact', function(req, res) {
 
-
-
-app.get('/hire', function (req, res) {
-        return res.render('PC/tuyen-dung');
-});
-
-app.get('/contact', function (req, res) {
-
-        return res.render('PC/lien-he');
+    return res.render('PC/lien-he');
 
 });
 
 
 
-app.get('/development', function (req, res) {
+app.get('/development', function(req, res) {
 
-        return res.render('PC/phat-trien');
-
-});
-
-app.get('/service', function (req, res) {
-
-        return res.render('PC/dich-vu');
+    return res.render('PC/phat-trien');
 
 });
 
-app.get('/cad', function (req, res) {
+app.get('/service', function(req, res) {
 
-        return res.render('PC/dich-vu-cad');
+    return res.render('PC/dich-vu');
+
+});
+
+app.get('/cad', function(req, res) {
+
+    return res.render('PC/dich-vu-cad');
 
 
 });
 
-app.get('/serviceIT', function (req, res) {
+app.get('/serviceIT', function(req, res) {
 
-        return res.render('PC/dich-vu-it');
+    return res.render('PC/dich-vu-it');
 
 });
 
 
-app.get('/admin', function (req, res) {
-        app.use(express.static(path.join(__dirname, '../build')))
-        res.sendFile(path.join(__dirname, '../build', 'index.html'));
+app.get('/admin', function(req, res) {
+    app.use(express.static(path.join(__dirname, '../build')))
+    res.sendFile(path.join(__dirname, '../build', 'index.html'));
 });
 
-app.get('/admin/customer/list', function (req, res) {
-        res.redirect('/admin')
+app.get('/admin/customer/list', function(req, res) {
+    res.redirect('/admin')
 });
-app.get('/admin/user/add', function (req, res) {
-        res.redirect('/admin')
+app.get('/admin/user/add', function(req, res) {
+    res.redirect('/admin')
 });
-app.get('/admin/user/list', function (req, res) {
-        res.redirect('/admin')
+app.get('/admin/user/list', function(req, res) {
+    res.redirect('/admin')
 });
-app.get('/admin/dashboard', function (req, res) {
-        res.redirect('/admin')
+app.get('/admin/dashboard', function(req, res) {
+    res.redirect('/admin')
 });
 
 
