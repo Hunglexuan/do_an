@@ -241,11 +241,7 @@ h6 {
 
 .homepage-search-block {
     background-color: #eef0ef;
-<<<<<<< HEAD
     background-image:url("../../image/header.jpg");
-=======
-    background-image: url("/template/img/header.jpg");
->>>>>>> master
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: 100% 100%;
