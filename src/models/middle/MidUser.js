@@ -31,8 +31,8 @@ class MidUser {
         )
     }
 
-
     async createUser(data) {
+
         if (!data.name) {
             throw new Error(ERROR_MESSAGE.ADD_USER_DISTRIBUTOR.ERR_NAME);
         }
@@ -45,12 +45,6 @@ class MidUser {
         if (!data.phone) {
             throw new Error(ERROR_MESSAGE.ADD_USER_DISTRIBUTOR.ERR_PHONE);
         }
-        if (!data.address) {
-            throw new Error(ERROR_MESSAGE.ADD_USER_DISTRIBUTOR.ERR_PHONE);
-        }
-        if (!data.dob) {
-            throw new Error(ERROR_MESSAGE.ADD_USER_DISTRIBUTOR.ERR_PHONE);
-        }
         let checkExizt = this.getUserByEmail(data.email);
         if (!checkExizt) {
             throw new Error(ERROR_MESSAGE.ADD_USER_DISTRIBUTOR.ERR_EXISTT);
@@ -59,9 +53,6 @@ class MidUser {
             name: data.name,
             email: data.email,
             phone: data.phone,
-            role_id: '',
-            address: data.address,
-            dob: data.avatar,
             password: hashPassword(data.password),
             del: 0
         }
@@ -93,15 +84,11 @@ class MidUser {
     }
 
     async loginUser(credentials) {
-
+        console.log('1111111',credentials);
         const { email, password } = credentials;
-<<<<<<< HEAD
         console.log('2222222',email);
         console.log('33333333',password); 
         
-=======
-
->>>>>>> 440fd399a32fb29c88b50305a7d5f6d2e5c4afce
         if (!email) {
             throw new Error(ERROR_MESSAGE.LOGIN.ERR_REQUIRE_EMAIL);
         }
@@ -174,7 +161,9 @@ class MidUser {
                 stringConfirm: strConfirm
             }
         })
+
         if (!result) return 0;
+
         let now = new Date();
         let reqCreated = new Date(result.createAt);
         reqCreated.setDate(reqCreated.getDate() + 1);
@@ -183,15 +172,20 @@ class MidUser {
             await result.destroy();
             return 2;
         }
+
         let userUpdate = await UserDistributor.findOne({
             where: {
                 email,
                 del: 0
             }
         })
+
         if (!userUpdate) return 3;
+
         await userUpdate.update({ password: hashPassword(newPassword) })
+
         await result.destroy();
+
         return 1;
     }
 
@@ -319,16 +313,7 @@ class MidUser {
         if (!data.email) {
             throw new Error(ERROR_MESSAGE.ADD_USER_DISTRIBUTOR.ERR_EMAIL);
         }
-        if (!data.password) {
-            throw new Error(ERROR_MESSAGE.ADD_USER_DISTRIBUTOR.ERR_PASS);
-        }
         if (!data.phone) {
-            throw new Error(ERROR_MESSAGE.ADD_USER_DISTRIBUTOR.ERR_PHONE);
-        }
-        if (!data.address) {
-            throw new Error(ERROR_MESSAGE.ADD_USER_DISTRIBUTOR.ERR_PHONE);
-        }
-        if (!data.dob) {
             throw new Error(ERROR_MESSAGE.ADD_USER_DISTRIBUTOR.ERR_PHONE);
         }
         let objUpdate = await Users.findOne({
@@ -340,12 +325,10 @@ class MidUser {
 
         let dataUpdate = {
             name: data.name,
-            password: data.password,
-            address: data.address,
-            phone: data.phone,
             email: data.email,
             phone: data.phone,
         }
+
         return await objUpdate.update(dataUpdate)
 
     }
