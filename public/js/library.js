@@ -5,8 +5,6 @@ function validateEmail(email) {
 }
 function check(event) {
     event.preventDefault();
-
-
     var email = document.forms["myForm"]["email"].value;
     var password = document.forms["myForm"]["password"].value;
 
@@ -30,10 +28,10 @@ function check(event) {
             }
         }
         loadForm(formData);
-
-
     }
 }
+
+
 function loadForm(formData) {
     $.ajax({
         type: "POST",
