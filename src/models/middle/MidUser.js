@@ -8,6 +8,7 @@ import { ERROR_MESSAGE } from '../../config/error';
 import { sendMailActiveOrder, sendMailForgotPassword } from '../../libs/sendmail';
 import { v4 as uuidv4 } from 'uuid';
 import { password } from '../../config/database';
+import { name } from 'ejs';
 
 class MidUser {
 
@@ -19,6 +20,15 @@ class MidUser {
                 del: 0
             }
         })
+    }
+    async getAllUser(){
+        return await Users.findAll({
+            where:{
+                del:0
+            }
+        }
+
+        )
     }
 
 
@@ -78,7 +88,7 @@ class MidUser {
         console.log('1111111',credentials);
         const { email, password } = credentials;
         console.log('2222222',email);
-        console.log('33333333',password);
+        console.log('33333333',password); 
         
         if (!email) {
             throw new Error(ERROR_MESSAGE.LOGIN.ERR_REQUIRE_EMAIL);
@@ -201,6 +211,8 @@ class MidUser {
                 id: data.id,
             }
         })
+
+
         const isCorrectPass = await checkPassword(data.oldPassword, user.password);
         if (!isCorrectPass) {
             throw await new Error(ERROR_MESSAGE.UPDATE_PASSWORD.ERR_OLD_PASS);
@@ -280,13 +292,13 @@ class MidUser {
                 where: condition
             })
         ])
-        if (data.typeOrder === 'email') {
-            if (data.stateOrder == 'up') {
-                listUsers.sort(this.compareASC);
-            } else {
-                listUsers.sort(this.compareDESC);
-            }
-        }
+        // if (data.typeOrder === 'email') {
+        //     if (data.stateOrder == 'up') {
+        //         listUsers.sort(this.compareASC);
+        //     } else {
+        //         listUsers.sort(this.compareDESC);
+        //     }
+        // }
 
         return {
             listUsers,
