@@ -48,7 +48,7 @@
                                         <label class="custom-control-label" for="customCheck1">Remember password</label>
                                         <a href="/ForgotPasswordUser" class="forgotpassword"> Forgot password? </a>
                                     </div>
-                                    <a href="/index" class="btn btn-lg btn-outline-primary btn-block btn-login text-uppercase font-weight-bold mb-2">Sign in</a>
+                                    <a href="/index" class="btn btn-lg btn-outline-primary btn-block btn-login text-uppercase font-weight-bold mb-2" id="btn">Sign in</a>
                                     <div class="text-center pt-3">
                                         Don’t have an account? <a class="font-weight-bold" href="/RegisterUser">Sign Up</a>
                                     </div>
@@ -82,5 +82,35 @@
     <!-- Custom scripts for all pages-->
     <script src="js/custom.js"></script>
 </body>
+<script>
+    function checkBlankLogin() {
+        if($("#inputEmail").val() == ""){
+            alert("Email is Blank please Input")
+        }else if($("#inputPassword").val() == ""){
+            alert("Password is black please input")
+        }
+    }
+
+    $("#btn").click(function () {
+        checkBlankLogin();
+        $.ajax({
+            url:"/api/auth/login",
+            type:"POST",
+            data:{
+                email : $("#inputEmail").val(),
+                password : $("#inputPassword").val()
+            }
+        }).then(function(data){
+            if(data.err == false){
+                console.log("1111");
+                alert("Login Successfull");
+            }else{
+                console.log("2222");
+                alert("Logiun Fail")
+            }
+        })
+    })
+
+</script>
 
 </html>
