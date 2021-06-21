@@ -33,32 +33,38 @@
                             <div class="col-md-9 col-lg-8 mx-auto pl-5 pr-5">
                                 <h3 class="login-heading mb-4">New Account!!!</h3>
                                 <form>
-                                    <div class="form-label-group mb-4">
-                                        <input type="text" id="ptext" class="form-control" placeholder="User Name">
-                                        <label for="ptext">User Name</label>
+                                    <div class="form-label-group mb-4 ">
+                                        <input type="text" id="userName" class="form-control" placeholder="User Name">
+                                        <label for="userName">User Name</label>
+                                        <span class="form-message text-danger" id="messageName"></span>
                                     </div>
                                     <div class="form-label-group mb-4">
                                         <input type="password" id="inputPassword" class="form-control" placeholder="Password">
                                         <label for="inputPassword">Password</label>
+                                        <span class="form-message text-danger" id="messagePass"></span>
                                     </div>
                                     <div class="form-label-group mb-4">
                                         <input type="email" id="inputEmail" class="form-control" placeholder="Email address">
                                         <label for="inputEmail">Email</label>
+                                        <span class="form-message text-danger" id="messageEmail"></span>
                                     </div>
                                     <div class="form-label-group mb-4">
                                         <input type="text" id="inputAddress" class="form-control" placeholder="Address">
                                         <label for="inputAddress">Address</label>
+                                        <span class="form-message text-danger" id="messageAddress"></span>
                                     </div>
                                     <div class="form-label-group mb-4">
-                                        <input type="date" class="form-control">
+                                        <input type="date" id="date" class="form-control">
+                                        <span class="form-message text-danger" id="messageDate"></span>
                                     </div>
                                     <div class="form-label-group mb-4">
                                         <input type="text" id="inputPhone" class="form-control" placeholder="Phone">
                                         <label for="inputPhone"> Phone Number</label>
+                                        <span class="form-message text-danger" id="messagePhone"></span>
                                     </div>
-                                    <a href="/index" class="btn btn-lg btn-outline-primary btn-block btn-login text-uppercase font-weight-bold mb-2">Sign Up</a>
+                                    <input type="submit" value="Sign Up" id="signUp" class="btn btn-lg btn-outline-primary btn-block btn-login text-uppercase font-weight-bold mb-2" onclick="register();return false">
                                     <div class="text-center pt-3">
-                                        Already have an Account? <a class="font-weight-bold" href="/LoginUser">Sign In</a>
+                                        Already have an Account? <a href="/LoginUser" class="font-weight-bold">Sign In</a>
                                     </div>
                                 </form>
                             </div>
@@ -76,6 +82,8 @@
     <script src="js/select2.min.js"></script>
     <!-- Custom scripts for all pages-->
     <script src="js/custom.js"></script>
+    <!--Script Input-->
+    <script src="js/registerUser.js"></script>
 </body>
 
 </html>
