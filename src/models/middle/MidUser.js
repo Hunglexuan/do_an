@@ -99,6 +99,7 @@ class MidUser {
         if (!userData) {
             throw new Error(ERROR_MESSAGE.LOGIN.ERR_ACC);
         }
+        
 
         const isCorrectPass = await checkPassword(password, userData.password);
         if (!isCorrectPass) {

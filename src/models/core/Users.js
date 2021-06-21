@@ -54,7 +54,7 @@ const attributes = {
         allowNull: true
     },
 
-    adress: {
+    address: {
         type: DataTypes.STRING(255),
         allowNull: true,
         defaultValue: null
