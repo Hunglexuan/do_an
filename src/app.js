@@ -32,6 +32,7 @@ app.use(express.static(path.join(__dirname, '../public')))
 app.use(express.static(path.join(__dirname, '../media')))
 
 
+
 // Setup other routes
 app.use('/api', routes);
 
