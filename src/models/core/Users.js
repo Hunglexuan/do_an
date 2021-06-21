@@ -50,8 +50,9 @@ const attributes = {
         defaultValue: null
     },
     role_id: {
-        type: DataTypes.UUID,
-        allowNull: true
+        type: DataTypes.UUID,F
+        allowNull: true,
+ defaultValue: null
     },
 
     address: {
@@ -62,7 +63,8 @@ const attributes = {
     },
     bill_id: {
         type: DataTypes.UUID,
-        allowNull: true
+        allowNull: true,
+ defaultValue: null
 
     },
     avatar: {
@@ -84,9 +86,11 @@ const attributes = {
     },
     product_id: {
         type: DataTypes.UUID,
-        allowNull: true
+        allowNull: true,
+ defaultValue: null
 
-    }, del: {
+    }, 
+del: {
         type: DataTypes.TINYINT(1),
         allowNull: true,
         default: 0
