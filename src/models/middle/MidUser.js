@@ -49,7 +49,6 @@ class MidUser {
             name: data.name,
             email: data.email,
             phone: data.phone,
-            role_id: '',
             address: data.address,
             dob: data.avatar,
             password: hashPassword(data.password),
