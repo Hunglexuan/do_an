@@ -33,7 +33,7 @@
                                     <h3 class="text-center font-weight-light my-4">Login</h3>
                                 </div>
                                 <div class="card-body">
-                                    <form name="myForm" onsubmit="check(event)">
+                                    <form name="myForm" onsubmit="checkLogin()">
                                         <div class="form-group">
                                             <label class="small mb-1" for="inputEmailAddress">Email</label>
                                             <input class="form-control py-4" id="inputEmailAddress" type="text"
@@ -55,16 +55,16 @@
                                         </div>
                                         <div
                                             class="form-group d-flex align-items-center justify-content-center mt-4 mb-0">
-                                            <!-- <a class="btn btn-primary btn-block " href="DashboardSeller.html">Login</a> -->
+                                            <a class="btn btn-primary btn-block " href="" id="btn">Login</a>
 
 
-                                            <input type="submit" value="submit" class="btn btn_submit" value="LOGIN">
+                                            <!-- <input type="submit" value="submit" class="btn btn_submit" value="LOGIN"> -->
                                         </div>
                                     </form>
                                 </div>
                                 <div class="card-footer text-center">
-                                    <a class="small" href="password.html">Forgot Password?</a>
-                                    <div class="small">Need an account? <a href="register.html">Sign up!</a></div>
+                                    <a class="small" href="resetPass">Forgot Password?</a>
+                                    <div class="small">Need an account? <a href="RegisterSeller">Sign up!</a></div>
 
 
                                 </div>
@@ -111,6 +111,43 @@
     <!-- Dropzone-->
     <script src="vendor/dropzone/dist/min/dropzone.min.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </body>
+<script>
+    function checkBlank() {
+        if ($("#inputEmailAddress").val() == "") {
+            alert("Please Enter Email")
+            return false
+        } else if ($("#inputPassword").val() == "") {
+            alert("Please Enter Password")
+            return false
+        }
+        return true
+    }
+
+    $("#btn").click(function checkLogin(e) {
+        if (checkBlank()) {
+            $.ajax({
+                type: "POST",
+                url: "/api/auth/login",
+                data: {
+                    email: $("#inputEmailAddress").val(),
+                    password: $("#inputPassword").val()
+                }
+            }).then(function (data) {
+                console.log(data.email)
+                console.log(data.password)
+                if (!data.error) {
+                    console.log("1111")
+                    window.location.href = "/index"
+                    alert("Login Success!")
+                } else {
+                    console.log("2222")
+                    alert("Login Fail!")
+                }
+            })
+        }
+    })
+</script>
 
 </html>

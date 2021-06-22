@@ -8,9 +8,10 @@ function check(event) {
     var email = document.forms["myForm"]["email"].value;
     var password = document.forms["myForm"]["password"].value;
 
-    if (email == "" || email == null 
+    if (email == "" || email == null
         || password == "" || password == null) {
-       console.log('1111111111111');
+        console.log('1111111111111');
+
     }
     else {
         // event.preventDefault();
@@ -44,3 +45,32 @@ function loadForm(formData) {
         }
     });
 }
+
+// function checkBlank() {
+//     if ($("#inputEmailAddress").val() == null) {
+//         alert("Please Enter Email")
+//     } else if ($("#inputPassword").val() == null) {
+//         alert("Please Enter Password")
+//     }
+// }
+
+// $("#btn").click(function Login(e) {
+//     checkBlank();
+//     e.preventDefault();
+//     $.ajax({
+//         type: "POST",
+//         url: "/api/auth/login",
+//         data: {
+//             email: $("#inputEmailAddress").val(),
+//             password: $("#inputPassword").val()
+//         },
+//     }).then(function (data) {
+//         if (!data.error) {
+//             window.location.href = "/index"
+//             alert("Login Success!")
+//         } else {
+//             alert("Login Fail!")
+//         }
+//     })
+// });
+
