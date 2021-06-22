@@ -7,6 +7,13 @@ import useragent from 'express-useragent';
 
 
 const app = express();
+
+
+
+
+
+
+
 app.use(express.urlencoded({ extended: true }))
 app.set('views', path.join(__dirname, '../src/views'));
 app.set('view engine', 'ejs');
@@ -42,37 +49,42 @@ app.get('/index', function(req, res) {
 
 });
 
-app.get('/resetPass', function (req, res) {
+app.get('/resetPass', function(req, res) {
 
-        return res.render('password');
-
-
-});
-
-app.get('/LoginSeller', function (req, res) {
-
-        return res.render('LoginForSeller');
+    return res.render('password');
 
 
 });
 
-app.get('/LoginAdmin', function (req, res) {
+app.get('/LoginSeller', function(req, res) {
 
-        return res.render('LoginForAdmin');
+    return res.render('LoginForSeller');
+
+
+});
+
+app.get('/LoginAdmin', function(req, res) {
+
+    return res.render('LoginForAdmin');
 
 
 });
 
-app.get('/RegisterSeller', function (req, res) {
-
-        return res.render('register');
-
-
+app.get('/RegisterSeller', function(req, res) {
+    return res.render('register');
 });
+
+
 
 app.get('/RegisterUser', function(req, res) {
     return res.render('RegisterUser');
 });
+
+app.get('/RegisterUser', function(req, res) {
+
+});
+
+
 
 app.get('/LoginUser', function(req, res) {
     return res.render('LoginUser');

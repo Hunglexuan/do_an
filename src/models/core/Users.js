@@ -6,7 +6,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { Role } from './';
 /**
  * Define Users Model
- * 
+ *
  * @export
  * @class Users
  * @extends {BaseModel}
@@ -50,9 +50,9 @@ const attributes = {
         defaultValue: null
     },
     role_id: {
-        type: DataTypes.UUID,F
+        type: DataTypes.UUID,
         allowNull: true,
- defaultValue: null
+        defaultValue: null
     },
 
     address: {
@@ -64,7 +64,7 @@ const attributes = {
     bill_id: {
         type: DataTypes.UUID,
         allowNull: true,
- defaultValue: null
+        defaultValue: null
 
     },
     avatar: {
@@ -87,10 +87,10 @@ const attributes = {
     product_id: {
         type: DataTypes.UUID,
         allowNull: true,
- defaultValue: null
+        defaultValue: null
 
-    }, 
-del: {
+    },
+    del: {
         type: DataTypes.TINYINT(1),
         allowNull: true,
         default: 0
@@ -123,4 +123,4 @@ const options = {
 /**
  * Init Model
  */
-Users.init(attributes, { ...options, sequelize });
+Users.init(attributes, {...options, sequelize });

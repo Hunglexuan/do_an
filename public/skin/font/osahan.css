@@ -145,7 +145,7 @@ h6 {
 }
 
 .bg-image {
-    background-image: url('../img/login-bg.png');
+    background-image: url('/image/CocFPT.jpg');
     background-size: cover;
     background-position: center;
 }
