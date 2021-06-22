@@ -34,7 +34,7 @@
                         <div class="row">
                             <div class="col-md-9 col-lg-8 mx-auto pl-5 pr-5">
                                 <h3 class="login-heading mb-4">Welcome FUMK!</h3>
-                                <form name="myForm" onsubmit="checkBlankLogin">
+                                <form name="myForm" >
                                     <div class="form-label-group">
                                         <input type="email" id="inputEmail" class="form-control" placeholder="Email address">
                                         <label for="inputEmail">Email address</label>
@@ -74,13 +74,15 @@
         </div>
     </div>
     <!-- jQuery -->
-    <script src="js/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="crossorigin="anonymous"></script>
     <!-- Bootstrap core JavaScript-->
     <script src="js/bootstrap.bundle.min.js"></script>
     <!-- Select2 JavaScript-->
     <script src="js/select2.min.js"></script>
     <!-- Custom scripts for all pages-->
     <script src="js/custom.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js" ></script>
+
 </body>
 <script>
     function checkBlankLogin() {
@@ -92,6 +94,7 @@
     }
 
     $("#btn").click(function () {
+       
         checkBlankLogin();
         $.ajax({
             url:"/api/auth/login",
@@ -100,13 +103,13 @@
                 email : $("#inputEmail").val(),
                 password : $("#inputPassword").val()
             }
-        }).then(function(data){
-            if(data.err == false){
-                console.log("1111");
+        }).then(function(data){ 
+            if(data.message == "SUCCESS"){
+                window.location.href="/index"
                 alert("Login Successfull");
             }else{
-                console.log("2222");
-                alert("Logiun Fail")
+                
+                alert("Login Fail")
             }
         })
     })

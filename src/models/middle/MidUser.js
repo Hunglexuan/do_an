@@ -84,7 +84,7 @@ class MidUser {
     async loginUser(credentials) {
 
         const { email, password } = credentials;
-        console.log("11111");
+        
 
         if (!email) {
             throw new Error(ERROR_MESSAGE.LOGIN.ERR_REQUIRE_EMAIL);

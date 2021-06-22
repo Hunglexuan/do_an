@@ -50,9 +50,9 @@ const attributes = {
         defaultValue: null
     },
     role_id: {
-        type: DataTypes.UUID,F
+        type: DataTypes.UUID,
         allowNull: true,
- defaultValue: null
+        defaultValue: null
     },
 
     address: {
