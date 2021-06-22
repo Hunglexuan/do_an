@@ -55,10 +55,10 @@
                                         </div>
                                         <div
                                             class="form-group d-flex align-items-center justify-content-center mt-4 mb-0">
-                                            <a class="btn btn-primary btn-block " href="" id="btnLogin">Login</a>
+                                            <!-- <a class="btn btn-primary btn-block " href="" id="btnLogin">Login</a> -->
 
 
-                                            <!-- <input type="submit" value="submit" class="btn btn_submit" value="LOGIN"> -->
+                                            <input id="btnLogin" type="submit" value="submit" class="btn btn_submit" value="LOGIN">
                                         </div>
                                     </form>
                                 </div>
@@ -90,26 +90,24 @@
         </div>
     </div>
     <!-- Jquery -->
-    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="js/jquery.min.js"></script>
     <!-- Fontawesome -->
-    <script src="vendor/fontawesome/js/all.min.js"></script>
+    <script src="js/all.min.js"></script>
     <!-- Bootstrap -->
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
     <!-- Custom Js -->
-    <script src="js/scripts.js"></script>
+    
     <script src="js/library.js"></script>
     <!-- Ajax Chart Js -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script> -->
     <!-- Chart Js -->
-    <script src="assets/demo/chart-area-demo.js"></script>
-    <script src="assets/demo/chart-bar-demo.js"></script>
-    <script src="assets/demo/chart-pie-demo.js"></script>
+    
     <!-- Datatable Js -->
-    <script src="vendor/dataTables/dataTables/js/jquery.dataTables.min.js"></script>
-    <script src="vendor/dataTables/dataTables/js/dataTables.bootstrap.min.js"></script>
-    <script src="assets/demo/datatables-demo.js"></script>
+    <script src="js/jquery.dataTables.min.js"></script>
+    <script src="js/dataTables.bootstrap.min.js"></script>
+    
     <!-- Dropzone-->
-    <script src="vendor/dropzone/dist/min/dropzone.min.js"></script>
+    <script src="js/dropzone.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </body>
 <script>
@@ -121,7 +119,11 @@
     }
 
     $("#btnLogin").click(function() {
+        
         checkBlank();
+        console.log("123123")
+        console.log($("#inputEmailAddress").val())
+        console.log($("#inputPassword").val())
         $.ajax({
             type: "POST",
             url: "/api/auth/login",
@@ -130,11 +132,10 @@
                 password: $("#inputPassword").val()
             },
         }).then(function (data) {
-            console.log("1111",data)
             if (data.message == "SUCCESS") {
-                // window.location.href = "/index"
-                alert("Login Success!")
                 window.location.href = "/index"
+                alert("Login Success!")
+               
             } else {
                 alert("Login Fail!")
             }
