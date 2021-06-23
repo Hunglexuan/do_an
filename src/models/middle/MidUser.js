@@ -1,5 +1,5 @@
 import {
-    Users
+    Users,Role
 } from '../core';
 import { Op } from 'sequelize';
 import { checkPassword, hashPassword } from '../../libs/encrypt';
@@ -9,6 +9,7 @@ import { sendMailActiveOrder, sendMailForgotPassword } from '../../libs/sendmail
 import { v4 as uuidv4 } from 'uuid';
 import { password } from '../../config/database';
 import { name } from 'ejs';
+import { find } from 'lodash';
 
 class MidUser {
 
@@ -21,22 +22,21 @@ class MidUser {
             }
         })
     }
-    async getAllUser(){
-        return await Users.findAll({
-            where:{
-                del:0
-            }
-        }
 
-        )
-    }
 
     async createUser(data) {
 
         if (!data.name) {
             throw new Error(ERROR_MESSAGE.ADD_USER_DISTRIBUTOR.ERR_NAME);
         }
+        if (!data.dob) {
+            throw new Error(ERROR_MESSAGE.ADD_USER_DISTRIBUTOR.ERR_DOB);
+        }
+        if (!data.address) {
+            throw new Error(ERROR_MESSAGE.ADD_USER_DISTRIBUTOR.ERR_ADDRESS);
+        }
         if (!data.email) {
+            
             throw new Error(ERROR_MESSAGE.ADD_USER_DISTRIBUTOR.ERR_EMAIL);
         }
         if (!data.password) {
@@ -45,11 +45,13 @@ class MidUser {
         if (!data.phone) {
             throw new Error(ERROR_MESSAGE.ADD_USER_DISTRIBUTOR.ERR_PHONE);
         }
-        let checkExizt = this.getUserByEmail(data.email);
-        if (!checkExizt) {
+        let checkExist = this.getUserByEmail(data.email);
+        if (checkExist) {
             throw new Error(ERROR_MESSAGE.ADD_USER_DISTRIBUTOR.ERR_EXISTT);
         }
         let dataCreate = {
+            dob: data.dob,
+            address: data.address,
             name: data.name,
             email: data.email,
             phone: data.phone,
@@ -62,7 +64,8 @@ class MidUser {
     async getUserById(userid) {
         return Users.findOne({
             where: {
-                id: userid
+                id: userid,
+                del: 0
             },
 
         })
@@ -70,7 +73,8 @@ class MidUser {
     async getUserByIdNoPass(userid) {
         let user = await Users.findOne({
             where: {
-                id: userid
+                id: userid,
+                del:0
             },
 
         })
@@ -81,6 +85,31 @@ class MidUser {
             phone: user.phone,
         }
         return obj;
+    }
+    async checkRole(data){
+        if(!data.id){
+            throw new Error(ERROR_MESSAGE.LOGIN.ERR_REQUIRE_ID);
+        }else{
+            let user = await Users.findOne({
+                where: {
+                    id: data.id
+                }
+            })
+            if(!user){
+                throw new Error(ERROR_MESSAGE.LOGIN.ERR_ACC);
+            }else{
+                let role = await Role.findOne({
+                    where: {
+                        id: user.role_id
+                    }
+                })
+                if(role){
+                    return role.name
+                }
+            } 
+        }
+        
+
     }
 
     async loginUser(credentials) {
@@ -98,6 +127,10 @@ class MidUser {
         }
 
         const userData = await this.getUserByEmail(email);
+        let check = this.checkRole(userData)
+        if(check == 'admin'){
+
+        } 
         if (!userData) {
             throw new Error(ERROR_MESSAGE.LOGIN.ERR_ACC);
         }
@@ -113,7 +146,71 @@ class MidUser {
             token
         }
     }
+    async loginAdmin(credentials) {
+        const { email, password } = credentials;
+ 
+        if (!email) {
+            throw new Error(ERROR_MESSAGE.LOGIN.ERR_REQUIRE_EMAIL);
+        }
 
+        if (!password) {
+            throw new Error(ERROR_MESSAGE.LOGIN.ERR_REQUIRE_PASSWORD);
+        }
+
+        const userData = await this.getUserByEmail(email);
+        if (!userData) {
+            throw new Error(ERROR_MESSAGE.LOGIN.ERR_ACC);
+        }
+
+        let check = this.checkRole(userData);
+        if(!check == 'admin')
+        {
+            throw new Error('Khong phai admin');
+        }
+        const isCorrectPass = await checkPassword(password, userData.password);
+        if (!isCorrectPass) {
+            throw new Error(ERROR_MESSAGE.LOGIN.ERR_PASS);
+        }
+
+        // check account status is Active
+        const token = await generateToken({ userid: userData.id, email: email });
+        return {
+            token
+        }
+    }
+
+    async loginSeller(credentials) {
+        const { email, password } = credentials;
+ 
+        if (!email) {
+            throw new Error(ERROR_MESSAGE.LOGIN.ERR_REQUIRE_EMAIL);
+        }
+
+        if (!password) {
+            throw new Error(ERROR_MESSAGE.LOGIN.ERR_REQUIRE_PASSWORD);
+        }
+
+        const userData = await this.getUserByEmail(email);
+        if (!userData) {
+            throw new Error(ERROR_MESSAGE.LOGIN.ERR_ACC);
+        }
+
+        let check = this.checkRole(userData);
+        if(!check == 'seller')
+        {
+            throw new Error('Khong phai seller');
+        }
+        const isCorrectPass = await checkPassword(password, userData.password);
+        if (!isCorrectPass) {
+            throw new Error(ERROR_MESSAGE.LOGIN.ERR_PASS);
+        }
+
+        // check account status is Active
+        const token = await generateToken({ userid: userData.id, email: email });
+        return {
+            token
+        }
+    }
     async forgotPassword(data) {
         let { email, hostFront } = data;
 
@@ -316,6 +413,12 @@ class MidUser {
         if (!data.phone) {
             throw new Error(ERROR_MESSAGE.ADD_USER_DISTRIBUTOR.ERR_PHONE);
         }
+        if(!data.address){
+            throw new Error(ERROR_MESSAGE.ADD_USER_DISTRIBUTOR.address)
+        }
+        if(!data.dob){
+            throw new Error(ERROR_MESSAGE.ADD_USER_DISTRIBUTOR.dob)
+        }
         let objUpdate = await Users.findOne({
             where: {
                 id: data.id,
@@ -327,6 +430,8 @@ class MidUser {
             name: data.name,
             email: data.email,
             phone: data.phone,
+            address: data.address,
+            dob: data.dob,
         }
 
         return await objUpdate.update(dataUpdate)

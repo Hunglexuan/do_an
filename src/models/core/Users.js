@@ -51,10 +51,11 @@ const attributes = {
     },
     role_id: {
         type: DataTypes.UUID,
-        allowNull: true
+        allowNull: true,
+        defaultValue: null
     },
 
-    adress: {
+    address: {
         type: DataTypes.STRING(255),
         allowNull: true,
         defaultValue: null
@@ -62,7 +63,8 @@ const attributes = {
     },
     bill_id: {
         type: DataTypes.UUID,
-        allowNull: true
+        allowNull: true,
+        defaultValue: null
 
     },
     avatar: {
@@ -74,6 +76,7 @@ const attributes = {
         type: DataTypes.DATE,
         allowNull: true,
         defaultValue: null
+
 
     },
     shop_name: {
