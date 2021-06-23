@@ -1081,7 +1081,8 @@ small {
 }
 
 .osahan-user-media img {
-    width: 90px;
+    width: 200px;
+    height: 200px;
 }
 
 .card offer-card h5.card-title {
