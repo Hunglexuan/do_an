@@ -39,6 +39,7 @@ app.use(express.static(path.join(__dirname, '../public')))
 app.use(express.static(path.join(__dirname, '../media')))
 
 
+
 // Setup other routes
 app.use('/api', routes);
 
@@ -70,19 +71,17 @@ app.get('/LoginAdmin', function(req, res) {
 
 });
 
+
 app.get('/RegisterSeller', function(req, res) {
     return res.render('register');
 });
 
-
-
 app.get('/RegisterUser', function(req, res) {
     return res.render('RegisterUser');
-});
-
-app.get('/RegisterUser', function(req, res) {
 
 });
+
+
 
 
 
@@ -100,7 +99,9 @@ app.get('/MyProfileUser', function(req, res) {
 });
 
 
-
+app.get('/DashboardSeller', function(req, res) {
+    return res.render('DashboardForSeller');
+});
 
 app.get('/hire', function(req, res) {
     return res.render('PC/tuyen-dung');

@@ -53,6 +53,7 @@ const attributes = {
         type: DataTypes.UUID,
         allowNull: true,
         defaultValue: null
+
     },
 
     address: {
@@ -66,6 +67,7 @@ const attributes = {
         allowNull: true,
         defaultValue: null
 
+
     },
     avatar: {
         type: DataTypes.STRING(255),
@@ -76,6 +78,7 @@ const attributes = {
         type: DataTypes.DATE,
         allowNull: true,
         defaultValue: null
+
 
     },
     shop_name: {

@@ -1,94 +1,108 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content="Askbootstrap" />
-        <meta name="author" content="Askbootstrap" />
-        <title>FU Market - Online Food Ordering</title>
-         <!-- Favicon Icon -->
-        <link rel="icon" type="image/png" href="img/favicon.png">
-        <!-- Feather Icon-->
-        <link href="skin/icons/feather.css" rel="stylesheet" type="text/css">
-        <!-- Fontawesome Icon-->
-        <link href="skin/font/fontawesome.min.css" rel="stylesheet" type="text/css">
-        <!-- Bootstrap Css -->
-        <link href="skin/bootstrap/bootstrap.min.css" rel="stylesheet"><!-- Custom Css -->
-        <link href="skin/css/styles.css" rel="stylesheet" />
-        <!-- Datatables css -->
-        <link href="skin/bootstrap/dataTables.bootstrap4.min.css" rel="stylesheet">
-    </head>
-    <body class="bg-primary">
-        <div id="layoutAuthentication">
-            <div id="layoutAuthentication_content">
-                <main>
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Askbootstrap">
+    <meta name="author" content="Askbootstrap">
+    <title>FUMK - Online Food Ordering</title>
+    <!-- Favicon Icon -->
+    <link rel="icon" type="image/png" href="image/favicon.png">
+    <!-- Bootstrap core CSS-->
+    <link href="skin/bootstrap/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Font Awesome-->
+    <link href="skin/font/all.min.css" rel="stylesheet">
+    <!-- Font Awesome-->
+    <link href="skin/font/icofont.min.css" rel="stylesheet">
+    <!-- Select2 CSS-->
+    <link href="skin/font/select2.min.css" rel="stylesheet">
+    <!-- Custom styles for this template-->
+    <link href="skin/font/osahan.css" rel="stylesheet">
+</head>
+
+<body class="bg-white">
+    <div class="container-fluid">
+        <div class="row no-gutter">
+            <div class="d-none d-md-flex col-md-4 col-lg-6 bg-image"></div>
+            <div class="col-md-8 col-lg-6">
+                <div class="login d-flex align-items-center py-5">
                     <div class="container">
-                        <div class="row justify-content-center">
-                            <div class="col-lg-5">
-                                <div class="card shadow-lg border-0 rounded-lg mt-5">
-                                    <div class="card-header"><h3 class="text-center font-weight-light my-4">Login</h3></div>
-                                    <div class="card-body">
-                                        <form>
-                                            <div class="form-group">
-                                                <label class="small mb-1" for="inputEmailAddress">Email</label>
-                                                <input class="form-control py-4" id="inputEmailAddress" type="email" placeholder="Enter email address" />
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="small mb-1" for="inputPassword">Password</label>
-                                                <input class="form-control py-4" id="inputPassword" type="password" placeholder="Enter password" />
-                                            </div>
-                                            <div class="form-group">
-                                                <div class="custom-control custom-checkbox">
-                                                    <input class="custom-control-input" id="rememberPasswordCheck" type="checkbox" />
-                                                    <label class="custom-control-label" for="rememberPasswordCheck">Remember password</label>
-                                                </div>
-                                            </div>
-                                            <div class="form-group d-flex align-items-center justify-content-center mt-4 mb-0">
-                                                <a class="btn btn-primary btn-block" href="index.html">Login</a>
-                                            </div>
-                                        </form>
+                        <div class="row">
+                            <div class="col-md-9 col-lg-8 mx-auto pl-5 pr-5">
+                                <h3 class="login-heading mb-4">Welcome Admin FUMK</h3>
+                                <form name="myForm">
+                                    <div class="form-label-group">
+                                        <input type="email" id="inputEmail" class="form-control"
+                                            placeholder="Email address">
+                                        <label for="inputEmail">Email address</label>
                                     </div>
-                                </div>
+                                    <div class="form-label-group">
+                                        <input type="password" id="inputPassword" class="form-control"
+                                            placeholder="Password">
+                                        <label for="inputPassword">Password</label>
+                                    </div>
+                                    <div class="custom-control custom-checkbox mb-3">
+                                        <input type="checkbox" class="custom-control-input" id="customCheck1">
+                                        <label class="custom-control-label" for="customCheck1">Remember password</label>
+                                       
+                                    </div>
+                                    <a class="btn btn-lg btn-outline-primary btn-block btn-login text-uppercase font-weight-bold mb-2"
+                                        id="btn">Sign in</a>
+                                    
+                                </form>
+                                
                             </div>
                         </div>
                     </div>
-                </main>
-            </div>
-            <div id="layoutAuthentication_footer">
-                <footer class="py-4 bg-light mt-auto">
-                    <div class="container-fluid">
-                        <div class="d-flex align-items-center justify-content-between small">
-                            <div class="text-muted">Copyright &copy; Your Website 2020</div>
-                            <div>
-                                <a href="#">Privacy Policy</a>
-                                &middot;
-                                <a href="#">Terms &amp; Conditions</a>
-                            </div>
-                        </div>
-                    </div>
-                </footer>
+                </div>
             </div>
         </div>
-       <!-- Jquery -->
-        <script src="vendor/jquery/jquery.min.js"></script>
-        <!-- Fontawesome -->
-        <script src="vendor/fontawesome/js/all.min.js"></script>
-        <!-- Bootstrap -->
-        <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-        <!-- Custom Js -->
-        <script src="js/scripts.js"></script>
-        <!-- Ajax Chart Js -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
-        <!-- Chart Js -->
-        <script src="assets/demo/chart-area-demo.js"></script>
-        <script src="assets/demo/chart-bar-demo.js"></script>
-        <script src="assets/demo/chart-pie-demo.js"></script>
-        <!-- Datatable Js -->
-        <script src="vendor/dataTables/dataTables/js/jquery.dataTables.min.js"></script>
-        <script src="vendor/dataTables/dataTables/js/dataTables.bootstrap.min.js"></script>
-        <script src="assets/demo/datatables-demo.js"></script>
-        <!-- Dropzone-->
-        <script src="vendor/dropzone/dist/min/dropzone.min.js"></script>
-    </body>
+    </div>
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <!-- Bootstrap core JavaScript-->
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <!-- Select2 JavaScript-->
+    <script src="js/select2.min.js"></script>
+    <!-- Custom scripts for all pages-->
+    <script src="js/custom.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    
+</body>
+
+    <script>
+        function checkBlankLogin() {
+            if ($("#inputEmail").val() == "") {
+                alert("Email is Blank please Input")
+            } else if ($("#inputPassword").val() == "") {
+                alert("Password is black please input")
+            }
+        }
+    
+        $("#btn").click(function () {
+            checkBlankLogin();
+            $.ajax({
+                url: "/api/auth/login",
+                type: "POST",
+                data: {
+                    email: $("#inputEmail").val(),
+                    password: $("#inputPassword").val()
+                }
+            }).then(function (data) {
+                if (data.message == "SUCCESS") {
+                    window.location.href = "/index"
+                    alert("Login Successfull");
+                } else {
+    
+                    alert("Login Fail")
+                }
+            })
+        })
+    
+    </script>
 </html>

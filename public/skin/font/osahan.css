@@ -150,6 +150,12 @@ h6 {
     background-position: center;
 }
 
+.bg-image1 {
+    background-image: url('/image/hoafpt.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
 .login-heading {
     font-weight: 300;
 }
@@ -241,7 +247,7 @@ h6 {
 
 .homepage-search-block {
     background-color: #eef0ef;
-    background-image: url("/template/img/header.jpg");
+    background-image: url("../../image/header.jpg");
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: 100% 100%;
