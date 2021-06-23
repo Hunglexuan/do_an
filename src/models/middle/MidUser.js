@@ -55,11 +55,6 @@ class MidUser {
             name: data.name,
             email: data.email,
             phone: data.phone,
-<<<<<<< HEAD
-            address: data.address,
-            dob: data.avatar,
-=======
->>>>>>> hunglxse05917
             password: hashPassword(data.password),
             del: 0
         }
@@ -118,10 +113,9 @@ class MidUser {
     }
 
     async loginUser(credentials) {
-        console.log('1111111',credentials);
+     
         const { email, password } = credentials;
-        console.log('2222222',email);
-        console.log('33333333',password); 
+      
         
         if (!email) {
             throw new Error(ERROR_MESSAGE.LOGIN.ERR_REQUIRE_EMAIL);
@@ -177,7 +171,7 @@ class MidUser {
             throw new Error(ERROR_MESSAGE.LOGIN.ERR_PASS);
         }
 
-        // check account status is Active
+     
         const token = await generateToken({ userid: userData.id, email: email });
         return {
             token
@@ -335,26 +329,7 @@ class MidUser {
     }
 
 
-    compareASC(a, b) {
-        if (a.email < b.email) {
-            return -1;
-        }
-        if (a.email > b.email) {
-            return 1;
-        }
-        return 0;
-    }
-
-    compareDESC(a, b) {
-        if (a.email > b.email) {
-            return -1;
-        }
-        if (a.email < b.email) {
-            return 1;
-        }
-        return 0;
-    }
-
+  
 
     async searchUser(data) {
         let condition = {
@@ -393,13 +368,7 @@ class MidUser {
                 where: condition
             })
         ])
-        // if (data.typeOrder === 'email') {
-        //     if (data.stateOrder == 'up') {
-        //         listUsers.sort(this.compareASC);
-        //     } else {
-        //         listUsers.sort(this.compareDESC);
-        //     }
-        // }
+       
 
         return {
             listUsers,
