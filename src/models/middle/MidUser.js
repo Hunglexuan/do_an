@@ -1,5 +1,5 @@
 import {
-    Users
+    Users,Role
 } from '../core';
 import { Op } from 'sequelize';
 import { checkPassword, hashPassword } from '../../libs/encrypt';
@@ -8,6 +8,8 @@ import { ERROR_MESSAGE } from '../../config/error';
 import { sendMailActiveOrder, sendMailForgotPassword } from '../../libs/sendmail';
 import { v4 as uuidv4 } from 'uuid';
 import { password } from '../../config/database';
+import { name } from 'ejs';
+import { find } from 'lodash';
 
 class MidUser {
 
@@ -23,10 +25,18 @@ class MidUser {
 
 
     async createUser(data) {
+
         if (!data.name) {
             throw new Error(ERROR_MESSAGE.ADD_USER_DISTRIBUTOR.ERR_NAME);
         }
+        if (!data.dob) {
+            throw new Error(ERROR_MESSAGE.ADD_USER_DISTRIBUTOR.ERR_DOB);
+        }
+        if (!data.address) {
+            throw new Error(ERROR_MESSAGE.ADD_USER_DISTRIBUTOR.ERR_ADDRESS);
+        }
         if (!data.email) {
+            
             throw new Error(ERROR_MESSAGE.ADD_USER_DISTRIBUTOR.ERR_EMAIL);
         }
         if (!data.password) {
@@ -35,22 +45,21 @@ class MidUser {
         if (!data.phone) {
             throw new Error(ERROR_MESSAGE.ADD_USER_DISTRIBUTOR.ERR_PHONE);
         }
-        if (!data.address) {
-            throw new Error(ERROR_MESSAGE.ADD_USER_DISTRIBUTOR.ERR_PHONE);
-        }
-        if (!data.dob) {
-            throw new Error(ERROR_MESSAGE.ADD_USER_DISTRIBUTOR.ERR_PHONE);
-        }
-        let checkExizt = this.getUserByEmail(data.email);
-        if (!checkExizt) {
+        let checkExist = this.getUserByEmail(data.email);
+        if (checkExist) {
             throw new Error(ERROR_MESSAGE.ADD_USER_DISTRIBUTOR.ERR_EXISTT);
         }
         let dataCreate = {
+            dob: data.dob,
+            address: data.address,
             name: data.name,
             email: data.email,
             phone: data.phone,
+<<<<<<< HEAD
             address: data.address,
             dob: data.avatar,
+=======
+>>>>>>> hunglxse05917
             password: hashPassword(data.password),
             del: 0
         }
@@ -60,7 +69,8 @@ class MidUser {
     async getUserById(userid) {
         return Users.findOne({
             where: {
-                id: userid
+                id: userid,
+                del: 0
             },
 
         })
@@ -68,7 +78,8 @@ class MidUser {
     async getUserByIdNoPass(userid) {
         let user = await Users.findOne({
             where: {
-                id: userid
+                id: userid,
+                del:0
             },
 
         })
@@ -80,11 +91,38 @@ class MidUser {
         }
         return obj;
     }
+    async checkRole(data){
+        if(!data.id){
+            throw new Error(ERROR_MESSAGE.LOGIN.ERR_REQUIRE_ID);
+        }else{
+            let user = await Users.findOne({
+                where: {
+                    id: data.id
+                }
+            })
+            if(!user){
+                throw new Error(ERROR_MESSAGE.LOGIN.ERR_ACC);
+            }else{
+                let role = await Role.findOne({
+                    where: {
+                        id: user.role_id
+                    }
+                })
+                if(role){
+                    return role.name
+                }
+            } 
+        }
+        
+
+    }
 
     async loginUser(credentials) {
-
+        console.log('1111111',credentials);
         const { email, password } = credentials;
-
+        console.log('2222222',email);
+        console.log('33333333',password); 
+        
         if (!email) {
             throw new Error(ERROR_MESSAGE.LOGIN.ERR_REQUIRE_EMAIL);
         }
@@ -94,6 +132,10 @@ class MidUser {
         }
 
         const userData = await this.getUserByEmail(email);
+        let check = this.checkRole(userData)
+        if(check == 'admin'){
+
+        } 
         if (!userData) {
             throw new Error(ERROR_MESSAGE.LOGIN.ERR_ACC);
         }
@@ -109,7 +151,71 @@ class MidUser {
             token
         }
     }
+    async loginAdmin(credentials) {
+        const { email, password } = credentials;
+ 
+        if (!email) {
+            throw new Error(ERROR_MESSAGE.LOGIN.ERR_REQUIRE_EMAIL);
+        }
 
+        if (!password) {
+            throw new Error(ERROR_MESSAGE.LOGIN.ERR_REQUIRE_PASSWORD);
+        }
+
+        const userData = await this.getUserByEmail(email);
+        if (!userData) {
+            throw new Error(ERROR_MESSAGE.LOGIN.ERR_ACC);
+        }
+
+        let check = this.checkRole(userData);
+        if(!check == 'admin')
+        {
+            throw new Error('Khong phai admin');
+        }
+        const isCorrectPass = await checkPassword(password, userData.password);
+        if (!isCorrectPass) {
+            throw new Error(ERROR_MESSAGE.LOGIN.ERR_PASS);
+        }
+
+        // check account status is Active
+        const token = await generateToken({ userid: userData.id, email: email });
+        return {
+            token
+        }
+    }
+
+    async loginSeller(credentials) {
+        const { email, password } = credentials;
+ 
+        if (!email) {
+            throw new Error(ERROR_MESSAGE.LOGIN.ERR_REQUIRE_EMAIL);
+        }
+
+        if (!password) {
+            throw new Error(ERROR_MESSAGE.LOGIN.ERR_REQUIRE_PASSWORD);
+        }
+
+        const userData = await this.getUserByEmail(email);
+        if (!userData) {
+            throw new Error(ERROR_MESSAGE.LOGIN.ERR_ACC);
+        }
+
+        let check = this.checkRole(userData);
+        if(!check == 'seller')
+        {
+            throw new Error('Khong phai seller');
+        }
+        const isCorrectPass = await checkPassword(password, userData.password);
+        if (!isCorrectPass) {
+            throw new Error(ERROR_MESSAGE.LOGIN.ERR_PASS);
+        }
+
+        // check account status is Active
+        const token = await generateToken({ userid: userData.id, email: email });
+        return {
+            token
+        }
+    }
     async forgotPassword(data) {
         let { email, hostFront } = data;
 
@@ -157,7 +263,9 @@ class MidUser {
                 stringConfirm: strConfirm
             }
         })
+
         if (!result) return 0;
+
         let now = new Date();
         let reqCreated = new Date(result.createAt);
         reqCreated.setDate(reqCreated.getDate() + 1);
@@ -166,15 +274,20 @@ class MidUser {
             await result.destroy();
             return 2;
         }
+
         let userUpdate = await UserDistributor.findOne({
             where: {
                 email,
                 del: 0
             }
         })
+
         if (!userUpdate) return 3;
+
         await userUpdate.update({ password: hashPassword(newPassword) })
+
         await result.destroy();
+
         return 1;
     }
 
@@ -199,6 +312,8 @@ class MidUser {
                 id: data.id,
             }
         })
+
+
         const isCorrectPass = await checkPassword(data.oldPassword, user.password);
         if (!isCorrectPass) {
             throw await new Error(ERROR_MESSAGE.UPDATE_PASSWORD.ERR_OLD_PASS);
@@ -278,13 +393,13 @@ class MidUser {
                 where: condition
             })
         ])
-        if (data.typeOrder === 'email') {
-            if (data.stateOrder == 'up') {
-                listUsers.sort(this.compareASC);
-            } else {
-                listUsers.sort(this.compareDESC);
-            }
-        }
+        // if (data.typeOrder === 'email') {
+        //     if (data.stateOrder == 'up') {
+        //         listUsers.sort(this.compareASC);
+        //     } else {
+        //         listUsers.sort(this.compareDESC);
+        //     }
+        // }
 
         return {
             listUsers,
@@ -300,17 +415,14 @@ class MidUser {
         if (!data.email) {
             throw new Error(ERROR_MESSAGE.ADD_USER_DISTRIBUTOR.ERR_EMAIL);
         }
-        if (!data.password) {
-            throw new Error(ERROR_MESSAGE.ADD_USER_DISTRIBUTOR.ERR_PASS);
-        }
         if (!data.phone) {
             throw new Error(ERROR_MESSAGE.ADD_USER_DISTRIBUTOR.ERR_PHONE);
         }
-        if (!data.address) {
-            throw new Error(ERROR_MESSAGE.ADD_USER_DISTRIBUTOR.ERR_PHONE);
+        if(!data.address){
+            throw new Error(ERROR_MESSAGE.ADD_USER_DISTRIBUTOR.address)
         }
-        if (!data.dob) {
-            throw new Error(ERROR_MESSAGE.ADD_USER_DISTRIBUTOR.ERR_PHONE);
+        if(!data.dob){
+            throw new Error(ERROR_MESSAGE.ADD_USER_DISTRIBUTOR.dob)
         }
         let objUpdate = await Users.findOne({
             where: {
@@ -321,12 +433,12 @@ class MidUser {
 
         let dataUpdate = {
             name: data.name,
-            password: data.password,
-            address: data.address,
-            phone: data.phone,
             email: data.email,
             phone: data.phone,
+            address: data.address,
+            dob: data.dob,
         }
+
         return await objUpdate.update(dataUpdate)
 
     }
