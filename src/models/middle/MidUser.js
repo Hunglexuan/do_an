@@ -115,8 +115,13 @@ class MidUser {
     async loginUser(credentials) {
      
         const { email, password } = credentials;
+<<<<<<< HEAD
       
         
+=======
+        
+
+>>>>>>> manhcb
         if (!email) {
             throw new Error(ERROR_MESSAGE.LOGIN.ERR_REQUIRE_EMAIL);
         }
@@ -133,6 +138,7 @@ class MidUser {
         if (!userData) {
             throw new Error(ERROR_MESSAGE.LOGIN.ERR_ACC);
         }
+        
 
         const isCorrectPass = await checkPassword(password, userData.password);
         if (!isCorrectPass) {
