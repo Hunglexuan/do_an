@@ -12,6 +12,8 @@
     <link rel="icon" type="image/png" href="image/favicon.png">
     <!-- Bootstrap core CSS-->
     <link href="skin/bootstrap/bootstrap.min.css" rel="stylesheet">
+
+
     <!-- Font Awesome-->
     <link href="skin/font/all.min.css" rel="stylesheet">
     <!-- Font Awesome-->
@@ -22,6 +24,10 @@
     <link href="skin/font/osahan.css" rel="stylesheet">
     <!-- Dropzone-->
     <link href="skin/font/dropzone.css" rel="stylesheet">
+    <!-- HungCSS -->
+    <link href="skin/font/HungCSS.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 <body>
@@ -189,12 +195,20 @@
                                                         <div class="osahan-user text-center">
                                                             <div class="osahan-user-media">
                                                                 <!--                               <img class="mb-3 rounded-pill shadow-sm mt-2" src="img/user/4.png" alt="gurdeep singh osahan"> -->
-                                                                <div class="form-group">
+                                                                <!-- <div class="form-group">
                                                                     <label>Your photo</label>
                                                                     <form action="/file-upload" class="dropzone dz-clickable">
                                                                         <div class="dz-default dz-message"><span>Drop files here to upload</span></div>
                                                                     </form>
+                                                                </div> -->
+                                                                <div class="picture-container">
+                                                                    <div class="picture">
+                                                                        <img class="picture-src" id="wizardPicturePreview">
+                                                                        <input type="file" id="wizard-picture" class="">
+                                                                    </div>
+                                                                    <h6 class="text">Choose Picture</h6>
                                                                 </div>
+
                                                                 <div class="osahan-user-media-body">
                                                                     <!-- <h6 class="mb-2">Gurdeep Singh</h6>
                                  <p class="mb-1">+91 85680-79956</p>
@@ -210,19 +224,21 @@
                                                             <div class="col-md-4">
                                                                 <div class="form-group">
                                                                     <label>Name</label>
-                                                                    <input type="text" class="form-control" placeholder="Your name">
+                                                                    <input type="text" class="form-control" id="name" placeholder="Your name">
+                                                                    <span class="form-message text-danger" id="messageName"></span>
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-4">
                                                                 <div class="form-group">
-                                                                    <label>Last name</label>
-                                                                    <input type="text" class="form-control" placeholder="Your last name">
+                                                                    <label>Password</label>
+                                                                    <input type="text" class="form-control" id="password" placeholder="password" value="123456">
+                                                                    <span class="form-message text-danger" id="messagePass"></span>
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-4">
                                                                 <div class="form-group">
-                                                                    <label>Gender</label>
-                                                                    <div class="dropdown">
+                                                                    <label>Date of Birthday</label>
+                                                                    <!-- <div class="dropdown">
                                                                         <button class="btn btn-outline-secondary dropdown-toggle " type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                               Choose
                                             </button>
@@ -230,7 +246,9 @@
                                                                             <a class="dropdown-item" href="#">Male</a>
                                                                             <a class="dropdown-item" href="#">Fermale</a>
                                                                         </div>
-                                                                    </div>
+                                                                    </div> -->
+                                                                    <input type="date" id="date" class="form-control">
+                                                                    <span class="form-message text-danger" id="messageDate"></span>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -239,13 +257,15 @@
                                                             <div class="col-md-6">
                                                                 <div class="form-group">
                                                                     <label>Telephone</label>
-                                                                    <input type="text" class="form-control" placeholder="Your telephone number">
+                                                                    <input type="text" class="form-control" id="phone" placeholder="Your telephone number" value="12345678987">
+                                                                    <span class="form-message text-danger" id="messagePhone"></span>
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-6">
                                                                 <div class="form-group">
                                                                     <label>Email</label>
-                                                                    <input type="email" class="form-control" placeholder="Your email">
+                                                                    <input type="email" class="form-control" id="email" placeholder="Your email">
+                                                                    <span class="form-message text-danger" id="messageEmail"></span>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -253,8 +273,9 @@
                                                         <div class="row">
                                                             <div class="col-md-12">
                                                                 <div class="form-group">
-                                                                    <label>Personal info</label>
-                                                                    <textarea style="height:100px;" class="form-control" placeholder="Personal info"></textarea>
+                                                                    <label> Address </label>
+                                                                    <textarea style="height:70px;" class="form-control" id="address" placeholder="Address "></textarea>
+                                                                    <span class="form-message text-danger" id="messageAddress"></span>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -274,15 +295,18 @@
                                                             <div class="p-3">
                                                                 <div class="form-group">
                                                                     <label>Old password</label>
-                                                                    <input class="form-control" type="password">
+                                                                    <input class="form-control" id="Old_password" type="password">
+                                                                    <span class="form-message text-danger" id="oldpassword"></span>
                                                                 </div>
                                                                 <div class="form-group">
                                                                     <label>New password</label>
-                                                                    <input class="form-control" type="password">
+                                                                    <input class="form-control" id="New_password" type="password">
+                                                                    <span class="form-message text-danger" id="newpassword"></span>
                                                                 </div>
                                                                 <div class="form-group">
                                                                     <label>Confirm new password</label>
-                                                                    <input class="form-control" type="password">
+                                                                    <input class="form-control" id="Confirm_new_password" type="password">
+                                                                    <span class="form-message text-danger" id="confirmpassword"></span>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -294,30 +318,34 @@
                                                     <div class="gold-members">
                                                         <div class="box_general padding_bottom">
                                                             <div class="header_box version_2 border-bottom p-3">
-                                                                <h6 class="m-0"><i class="fa fa-envelope text-muted mr-2"></i>Change email</h6>
+                                                                <h6 class="m-0"><i class="fa fa-envelope text-muted mr-2"></i>Change phone number</h6>
                                                             </div>
                                                             <div class="p-3">
                                                                 <div class="form-group">
-                                                                    <label>Old email</label>
-                                                                    <input class="form-control" name="old_email" id="old_email" type="email">
+                                                                    <label>Old phone number</label>
+                                                                    <input class="form-control" name="old_phoneNumber" id="old_phoneNumber">
+                                                                    <span class="form-message text-danger" id="oldPhoneNumber"></span>
                                                                 </div>
                                                                 <div class="form-group">
-                                                                    <label>New email</label>
-                                                                    <input class="form-control" name="new_email" id="new_email" type="email">
+                                                                    <label>New phone number</label>
+                                                                    <input class="form-control" name="new_phoneNumber" id="new_phoneNumber">
+                                                                    <span class="form-message text-danger" id="newPhoneNumber"></span>
                                                                 </div>
-                                                                <div class="form-group">
+                                                                <!-- <div class="form-group">
                                                                     <label>Confirm new email</label>
-                                                                    <input class="form-control" name="confirm_new_email" id="confirm_new_email" type="email">
-                                                                </div>
+                                                                    <input class="form-control" name="confirm_new_phoneNumber" id="confirm_new_phoneNumber">
+                                                                </div> -->
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
+                                                <div class="save mb-1">
+                                                    <input type="button" value="Save" id="SaveUpdate" class="btn btn-success"></input>
+                                                </div>
                                             </div>
+
                                         </div>
-                                        <div class="save mb-2">
-                                            <a href="#" class="btn btn-success">Save</a>
-                                        </div>
+
                                     </div>
                                 </div>
                         </main>
@@ -444,6 +472,233 @@
     <script src="js/custom.js"></script>
     <!-- Dropzone-->
     <script src="js/dropzone.min.js"></script>
+    <!-- Ajax -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            // Prepare the preview for profile picture
+            $("#wizard-picture").change(function() {
+                readURL(this);
+            });
+        });
+
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function(e) {
+                    $('#wizardPicturePreview').attr('src', e.target.result).fadeIn('slow');
+                }
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        function CheckUpdate() {
+            var userName = document.getElementById('name').value.trim();
+            var password = document.getElementById('password').value.trim();
+            var email = document.getElementById('email').value.trim();
+            var address = document.getElementById('address').value.trim();
+            var date = document.getElementById('date').value.trim();
+            var phone = document.getElementById('phone').value.trim();
+            var Old_password = document.getElementById('Old_password').value.trim();
+            var New_password = document.getElementById('New_password').value.trim();
+            var Confirm_new_password = document.getElementById('Confirm_new_password').value.trim();
+            var old_phone = document.getElementById('old_phoneNumber').value.trim();
+            var new_phone = document.getElementById('new_phoneNumber').value.trim();
+
+
+            var regEmail = /^\w+@[a-zA-Z]{1,}/i;
+            var regPhone = /^\d{11}/i;
+
+
+            // if (userName == "") {
+            //     document.getElementById('name').setAttribute('class', 'form-control border-danger');
+            //     document.getElementById('messageName').innerHTML = 'User Name is empty';
+            // } else {
+            //     document.getElementById('name').setAttribute('class', 'form-control');
+            //     document.getElementById('messageName').innerHTML = '';
+            // }
+
+            // if (password == "") {
+            //     document.getElementById('password').setAttribute('class', 'form-control border-danger');
+            //     document.getElementById('messagePass').innerHTML = 'Password is empty';
+            // } else {
+            //     document.getElementById('password').setAttribute('class', 'form-control');
+            //     document.getElementById('messagePass').innerHTML = '';
+            // }
+
+            // if (regEmail.test(email) == false) {
+            //     document.getElementById('email').setAttribute('class', 'form-control border-danger');
+            //     document.getElementById('messageEmail').innerHTML = 'invalid Email';
+            // } else {
+            //     document.getElementById('email').setAttribute('class', 'form-control');
+            //     document.getElementById('messageEmail').innerHTML = '';
+            // }
+
+            // if (address == "") {
+            //     document.getElementById('address').setAttribute('class', 'form-control border-danger');
+            //     document.getElementById('messageAddress').innerHTML = 'Address is empty';
+            // } else {
+            //     document.getElementById('address').setAttribute('class', 'form-control');
+            //     document.getElementById('messageAddress').innerHTML = '';
+            // }
+
+            // if (date == "") {
+            //     document.getElementById('date').setAttribute('class', 'form-control border-danger');
+            //     document.getElementById('messageDate').innerHTML = 'You have not selected date';
+            // } else {
+            //     document.getElementById('date').setAttribute('class', 'form-control');
+            //     document.getElementById('messageDate').innerHTML = '';
+            // }
+
+
+
+            if (Old_password == "") {
+                document.getElementById('Old_password').setAttribute('class', 'form-control');
+                document.getElementById('oldpassword').innerHTML = '';
+            } else if (Old_password != password) {
+                document.getElementById('Old_password').setAttribute('class', 'form-control border-danger');
+                document.getElementById('oldpassword').innerHTML = 'This password must match the current password';
+            } else {
+                document.getElementById('Old_password').setAttribute('class', 'form-control');
+                document.getElementById('oldpassword').innerHTML = '';
+            }
+            if (New_password == "") {
+                document.getElementById('New_password').setAttribute('class', 'form-control');
+                document.getElementById('newpassword').innerHTML = '';
+            } else if (New_password == Old_password) {
+                document.getElementById('New_password').setAttribute('class', 'form-control border-danger');
+                document.getElementById('newpassword').innerHTML = 'The new password must be different from the old password';
+            } else {
+                document.getElementById('New_password').setAttribute('class', 'form-control');
+                document.getElementById('newpassword').innerHTML = '';
+            }
+            if (Confirm_new_password != New_password) {
+                document.getElementById('Confirm_new_password').setAttribute('class', 'form-control border-danger');
+                document.getElementById('confirmpassword').innerHTML = 'confirm new password not must match';
+            } else {
+                document.getElementById('Confirm_new_password').setAttribute('class', 'form-control');
+                document.getElementById('confirmpassword').innerHTML = '';
+            }
+
+
+            if (old_phone == "") {
+                document.getElementById('old_phoneNumber').setAttribute('class', 'form-control');
+                document.getElementById('oldPhoneNumber').innerHTML = '';
+            } else if (old_phone != phone) {
+                document.getElementById('old_phoneNumber').setAttribute('class', 'form-control border-danger');
+                document.getElementById('oldPhoneNumber').innerHTML = 'This password must match the current password';
+            } else {
+                document.getElementById('old_phoneNumber').setAttribute('class', 'form-control');
+                document.getElementById('oldPhoneNumber').innerHTML = '';
+            }
+
+
+
+            if (new_phone == "") {
+                document.getElementById('new_phoneNumber').setAttribute('class', 'form-control');
+                document.getElementById('newPhoneNumber').innerHTML = '';
+            } else if (new_phone == old_phone) {
+                document.getElementById('new_phoneNumber').setAttribute('class', 'form-control border-danger');
+                document.getElementById('newPhoneNumber').innerHTML = 'The new password must be different from the old password';
+            } else if (regPhone.test(new_phone) == false) {
+                document.getElementById('new_phoneNumber').setAttribute('class', 'form-control border-danger');
+                document.getElementById('newPhoneNumber').innerHTML = 'invalid Phone';
+            } else {
+                document.getElementById('new_phoneNumber').setAttribute('class', 'form-control');
+                document.getElementById('newPhoneNumber').innerHTML = '';
+            }
+
+
+
+        }
+
+
+        // $("#name").click(function() {
+        //     CheckUpdate();
+        // });
+
+        // $("#password").click(function() {
+        //     CheckUpdate();
+        // });
+
+        // $("#email").click(function() {
+        //     CheckUpdate();
+        // });
+
+        // $("#address").click(function() {
+        //     CheckUpdate();
+        // });
+
+        // $("#date").click(function() {
+        //     CheckUpdate();
+        // });
+
+        // $("#phone").click(function() {
+        //     CheckUpdate();
+        // });
+
+        // $("#Old_password").click(function() {
+        //     CheckUpdate();
+        // })
+
+        // $("#New_password").click(function() {
+        //     CheckUpdate();
+        // })
+
+        // $("#Confirm_new_password").click(function() {
+        //     CheckUpdate();
+        // })
+
+        // $("#old_phoneNumber").click(function() {
+        //     CheckUpdate();
+        // })
+
+        // $("#new_phoneNumber").click(function() {
+        //     CheckUpdate();
+        // })
+
+        $('#SaveUpdate').click(function() {
+            var pass, phoned;
+            CheckUpdate();
+            if ($('#New_password').val() == "") {
+                pass = $('#password').val()
+            } else {
+                pass = $('#New_password').val()
+            }
+            if ($('#new_phoneNumber').val() == "") {
+                phoned = $('#phone').val()
+            } else {
+                phoned = $('#new_phoneNumber').val()
+            }
+            console.log($('#name').val());
+            console.log(pass);
+            console.log($('#email').val());
+            console.log($('#address').val());
+            console.log($('#date').val());
+            console.log(phoned);
+
+            $.ajax({
+                url: '/api/user/update',
+                method: 'POST',
+                data: {
+                    name: $('#name').val(),
+                    password: pass,
+                    email: $('#email').val(),
+                    address: $('#address').val(),
+                    dob: $('#date').val(),
+                    phone: phoned,
+                },
+            }).then(function(data) {
+                if (data.message == 'SUCCESS') {
+                    alert("update success");
+                } else {
+                    alert("Update fail");
+                }
+            })
+        })
+    </script>
 </body>
 
 </html>

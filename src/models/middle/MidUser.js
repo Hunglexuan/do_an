@@ -11,6 +11,18 @@ import { password } from '../../config/database';
 import { name } from 'ejs';
 import { find } from 'lodash';
 
+var mysql = require('mysql');
+var connection = mysql.createConnection({
+    host: 'localhost',
+    user: 'hung',
+    password: '1234',
+    database: 'doan'
+});
+
+
+
+
+
 class MidUser {
 
     async getUserByEmail(email) {
@@ -292,8 +304,7 @@ class MidUser {
         const isCorrectPass = await checkPassword(data.oldPassword, user.password);
         if (!isCorrectPass) {
             return false;
-        }
-        else {
+        } else {
             return true;
         }
     }
@@ -307,8 +318,7 @@ class MidUser {
         const isCorrectPass = await checkPassword(data.oldPassword, user.password);
         if (!isCorrectPass) {
             throw await new Error(ERROR_MESSAGE.UPDATE_PASSWORD.ERR_OLD_PASS);
-        }
-        else {
+        } else {
             const encryptedPassword = await hashPassword(data.password);
             return user.update({
                 password: encryptedPassword
@@ -350,10 +360,12 @@ class MidUser {
         const [listUsers, total] = await Promise.all([
             Users.findAll({
                 where: condition,
-                order: [[
-                    data.typeOrder === 'name' ? 'name' : 'createdAt',
-                    data.stateOrder === 'up' ? 'ASC' : 'DESC'
-                ]],
+                order: [
+                    [
+                        data.typeOrder === 'name' ? 'name' : 'createdAt',
+                        data.stateOrder === 'up' ? 'ASC' : 'DESC'
+                    ]
+                ],
                 limit,
                 offset: (page - 1) * limit
             }),

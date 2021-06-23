@@ -25,14 +25,14 @@
 <body class="bg-white">
     <div class="container-fluid">
         <div class="row no-gutter">
-            <div class="d-none d-md-flex col-md-4 col-lg-6 bg-image" style="padding-left: 0px; padding-right: 0px;"> <img src="image/CocFPT.jpg" style="width: 1050px; height: 972px;"> </div>
+            <div class="d-none d-md-flex col-md-4 col-lg-6 bg-image"></div>
             <div class="col-md-8 col-lg-6">
                 <div class="login d-flex align-items-center py-5">
                     <div class="container">
                         <div class="row">
                             <div class="col-md-9 col-lg-8 mx-auto pl-5 pr-5">
                                 <h3 class="login-heading mb-4">New Account!!!</h3>
-                                <form>
+                                <form method="POST" action="#" id="register">
                                     <div class="form-label-group mb-4 ">
                                         <input type="text" id="userName" class="form-control" placeholder="User Name">
                                         <label for="userName">User Name</label>
@@ -62,7 +62,7 @@
                                         <label for="inputPhone"> Phone Number</label>
                                         <span class="form-message text-danger" id="messagePhone"></span>
                                     </div>
-                                    <input type="submit" value="Sign Up" id="signUp" class="btn btn-lg btn-outline-primary btn-block btn-login text-uppercase font-weight-bold mb-2" onclick="register();return false">
+                                    <input type="button" value="Sign Up" id="signUp" class="btn btn-lg btn-outline-primary btn-block btn-login text-uppercase font-weight-bold mb-2">
                                     <div class="text-center pt-3">
                                         Already have an Account? <a href="/LoginUser" class="font-weight-bold">Sign In</a>
                                     </div>
@@ -83,7 +83,171 @@
     <!-- Custom scripts for all pages-->
     <script src="js/custom.js"></script>
     <!--Script Input-->
-    <script src="js/registerUser.js"></script>
+    <!-- <script src="js/registerUser.js"></script> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript" lang="javascript">
+        // function register() {
+        //     var regEmail = /^\w+@[a-zA-Z]{1,}/i;
+        //     var regPhone = /^\d{11}/i;
+
+
+        //     if ($('userName').val().trim() == "") {
+        //         $('username').setAttribute('class', 'form-control border-danger');
+        //         $('messageName').innerHTML = 'User Name is empty';
+        //     } else {
+        //         $('username').setAttribute('class', 'form-control border-danger');
+        //         $('messageName').innerHTML = '';
+        //     }
+
+        //     if ($('inputPassword').val().trim() == "") {
+        //         $('inputPassword').setAttribute('class', 'form-control border-danger');
+        //         $('messagePass').innerHTML = 'Password is empty';
+        //     } else {
+        //         $('inputPassword').setAttribute('class', 'form-control border-danger');
+        //         $('messagePass').innerHTML = '';
+        //     }
+
+        //     if ($('inputEmail').val().trim().test(email) == false) {
+        //         $('inputEmail').setAttribute('class', 'form-control border-danger');
+        //         $('messagePass').innerHTML = 'Email invalid';
+        //     } else {
+        //         $('inputEmail').setAttribute('class', 'form-control border-danger');
+        //         $('messagePass').innerHTML = '';
+        //     }
+
+        //     if ($('inputAddress').val().trim() == "") {
+        //         $('inputAddress').setAttribute('class', 'form-control border-danger');
+        //         $('messageAddress').innerHTML = 'Address is empty';
+        //     } else {
+        //         $('inputAddress').setAttribute('class', 'form-control border-danger');
+        //         $('messageAddress').innerHTML = '';
+        //     }
+
+        //     if ($('date').val() == "") {
+        //         $('date').setAttribute('class', 'form-control border-danger');
+        //         $('messageDate').innerHTML = 'You have not selected date';
+        //     } else {
+        //         $('date').setAttribute('class', 'form-control border-danger');
+        //         $('messageDate').innerHTML = '';
+        //     }
+
+        //     if ($('inputPhone').val().trim().test(phone) == false) {
+        //         $('inputPhone').setAttribute('class', 'form-control border-danger');
+        //         $('messagePhone').innerHTML = 'invalid Phone';
+        //     } else {
+        //         $('inputPhone').setAttribute('class', 'form-control');
+        //         $('messagePhone').innerHTML = '';
+        //     }
+        // }
+        function register() {
+            var userName = document.getElementById('userName').value.trim();
+            var password = document.getElementById('inputPassword').value.trim();
+            var email = document.getElementById('inputEmail').value.trim();
+            var address = document.getElementById('inputAddress').value.trim();
+            var date = document.getElementById('date').value.trim();
+            var phone = document.getElementById('inputPhone').value.trim();
+
+            var regEmail = /^\w+@[a-zA-Z]{1,}/i;
+            var regPhone = /^\d{11}/i;
+
+
+            if (userName == "") {
+                document.getElementById('userName').setAttribute('class', 'form-control border-danger');
+                document.getElementById('messageName').innerHTML = 'User Name is empty';
+            } else {
+                document.getElementById('userName').setAttribute('class', 'form-control');
+                document.getElementById('messageName').innerHTML = '';
+            }
+
+            if (password == "") {
+                document.getElementById('inputPassword').setAttribute('class', 'form-control border-danger');
+                document.getElementById('messagePass').innerHTML = 'Password is empty';
+            } else {
+                document.getElementById('inputPassword').setAttribute('class', 'form-control');
+                document.getElementById('messagePass').innerHTML = '';
+            }
+
+            if (regEmail.test(email) == false) {
+                document.getElementById('inputEmail').setAttribute('class', 'form-control border-danger');
+                document.getElementById('messageEmail').innerHTML = 'invalid Email';
+            } else {
+                document.getElementById('inputEmail').setAttribute('class', 'form-control');
+                document.getElementById('messageEmail').innerHTML = '';
+            }
+
+            if (address == "") {
+                document.getElementById('inputAddress').setAttribute('class', 'form-control border-danger');
+                document.getElementById('messageAddress').innerHTML = 'Address is empty';
+            } else {
+                document.getElementById('inputAddress').setAttribute('class', 'form-control');
+                document.getElementById('messageAddress').innerHTML = '';
+            }
+
+            if (date == "") {
+                document.getElementById('date').setAttribute('class', 'form-control border-danger');
+                document.getElementById('messageDate').innerHTML = 'You have not selected date';
+            } else {
+                document.getElementById('date').setAttribute('class', 'form-control');
+                document.getElementById('messageDate').innerHTML = '';
+            }
+
+            if (regPhone.test(phone) == false) {
+                document.getElementById('inputPhone').setAttribute('class', 'form-control border-danger');
+                document.getElementById('messagePhone').innerHTML = 'invalid Phone';
+            } else {
+                document.getElementById('inputPhone').setAttribute('class', 'form-control');
+                document.getElementById('messagePhone').innerHTML = '';
+            }
+
+
+        }
+        $("#userName").click(function() {
+            register();
+        });
+
+        $("#inputPassword").click(function() {
+            register();
+        });
+
+        $("#inputEmail").click(function() {
+            register();
+        });
+
+        $("#inputAddress").click(function() {
+            register();
+        });
+
+        $("#date").click(function() {
+            register();
+        });
+
+        $("#inputPhone").click(function() {
+            register();
+        });
+
+        $('#signUp').click(function() {
+            register();
+            $.ajax({
+                url: '/api/user/create',
+                method: 'POST',
+                data: {
+                    name: $('#userName').val(),
+                    password: $('#inputPassword').val(),
+                    email: $('#inputEmail').val(),
+                    address: $('#inputAddress').val(),
+                    dob: $('#date').val(),
+                    phone: $('#inputPhone').val(),
+                },
+            }).then(function(data) {
+                if (data.message == 'SUCCESS') {
+                    window.location.href = '/index',
+                        alert("update success");
+                } else {
+                    alert("Update fail");
+                }
+            })
+        })
+    </script>
 </body>
 
 </html>
