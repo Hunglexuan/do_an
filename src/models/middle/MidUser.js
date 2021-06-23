@@ -13,7 +13,6 @@ import { find } from 'lodash';
 
 class MidUser {
 
-
     async getUserByEmail(email) {
         return await Users.findOne({
             where: {
@@ -22,7 +21,6 @@ class MidUser {
             }
         })
     }
-
 
     async createUser(data) {
 
@@ -115,13 +113,8 @@ class MidUser {
     async loginUser(credentials) {
      
         const { email, password } = credentials;
-<<<<<<< HEAD
       
         
-=======
-        
-
->>>>>>> manhcb
         if (!email) {
             throw new Error(ERROR_MESSAGE.LOGIN.ERR_REQUIRE_EMAIL);
         }
@@ -138,7 +131,6 @@ class MidUser {
         if (!userData) {
             throw new Error(ERROR_MESSAGE.LOGIN.ERR_ACC);
         }
-        
 
         const isCorrectPass = await checkPassword(password, userData.password);
         if (!isCorrectPass) {
@@ -190,7 +182,7 @@ class MidUser {
         if (!email) {
             throw new Error(ERROR_MESSAGE.LOGIN.ERR_REQUIRE_EMAIL);
         }
-    
+
         if (!password) {
             throw new Error(ERROR_MESSAGE.LOGIN.ERR_REQUIRE_PASSWORD);
         }
@@ -205,11 +197,11 @@ class MidUser {
         {
             throw new Error('Khong phai seller');
         }
+
         const isCorrectPass = await checkPassword(password, userData.password);
         if (!isCorrectPass) {
             throw new Error(ERROR_MESSAGE.LOGIN.ERR_PASS);
         }
-
         // check account status is Active
         const token = await generateToken({ userid: userData.id, email: email });
         return {
@@ -312,8 +304,6 @@ class MidUser {
                 id: data.id,
             }
         })
-
-
         const isCorrectPass = await checkPassword(data.oldPassword, user.password);
         if (!isCorrectPass) {
             throw await new Error(ERROR_MESSAGE.UPDATE_PASSWORD.ERR_OLD_PASS);
@@ -330,12 +320,9 @@ class MidUser {
         if (avatar) {
             data.avatar = avatar
         }
-
         return userData.update(data);
     }
 
-
-  
 
     async searchUser(data) {
         let condition = {
@@ -374,8 +361,6 @@ class MidUser {
                 where: condition
             })
         ])
-       
-
         return {
             listUsers,
             total: total || 0
@@ -405,7 +390,6 @@ class MidUser {
                 del: 0
             }
         })
-
         let dataUpdate = {
             name: data.name,
             email: data.email,
@@ -415,7 +399,6 @@ class MidUser {
         }
 
         return await objUpdate.update(dataUpdate)
-
     }
     async deleteUser(data) {
         let objDelete = await Users.findOne({
@@ -424,11 +407,9 @@ class MidUser {
                 del: 0
             }
         })
-
         let dataDelete = {
             del: 1,
         }
-
         objDelete.update(dataDelete)
     }
 }
