@@ -10,7 +10,7 @@ routerApp.get('/getbyIdNoPass', isAuth, Response(UserController.getUserIdNoPass)
 routerApp.get('/search', Response(UserController.searchUser));
 routerApp.get('/delete', isAuth, Response(UserController.deleteUser));
 routerApp.post('/create', Response(UserController.createUser));
-routerApp.post('/update', Response(UserController.updateUser));
+routerApp.post('/update', isAuth, Response(UserController.updateUser));
 routerApp.post('/changePass', Response(UserController.changePassword));
 
 
