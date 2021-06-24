@@ -1,5 +1,6 @@
 import {
-    Users,Role
+    Users,
+    Role
 } from '../core';
 import { Op } from 'sequelize';
 import { checkPassword, hashPassword } from '../../libs/encrypt';
@@ -21,9 +22,18 @@ class MidUser {
             }
         })
     }
+    async getUserById(userid) {
+        return Users.findOne({
+            where: {
+                id: userid,
+                del: 0
+            },
 
+        })
+    }
+
+    //done 
     async createUser(data) {
-
         if (!data.name) {
             throw new Error(ERROR_MESSAGE.ADD_USER_DISTRIBUTOR.ERR_NAME);
         }
@@ -34,7 +44,6 @@ class MidUser {
             throw new Error(ERROR_MESSAGE.ADD_USER_DISTRIBUTOR.ERR_ADDRESS);
         }
         if (!data.email) {
-            
             throw new Error(ERROR_MESSAGE.ADD_USER_DISTRIBUTOR.ERR_EMAIL);
         }
         if (!data.password) {
@@ -59,62 +68,37 @@ class MidUser {
         return await Users.create(dataCreate);
     }
 
-    async getUserById(userid) {
-        return Users.findOne({
-            where: {
-                id: userid,
-                del: 0
-            },
-
-        })
-    }
-    async getUserByIdNoPass(userid) {
-        let user = await Users.findOne({
-            where: {
-                id: userid,
-                del:0
-            },
-
-        })
-        let obj = {
-            id: user.id,
-            name: user.name,
-            email: user.email,
-            phone: user.phone,
-        }
-        return obj;
-    }
-    async checkRole(data){
-        if(!data.id){
+    async checkRole(data) {
+        if (!data.id) {
             throw new Error(ERROR_MESSAGE.LOGIN.ERR_REQUIRE_ID);
-        }else{
+        } else {
             let user = await Users.findOne({
                 where: {
                     id: data.id
                 }
             })
-            if(!user){
+            if (!user) {
                 throw new Error(ERROR_MESSAGE.LOGIN.ERR_ACC);
-            }else{
+            } else {
                 let role = await Role.findOne({
                     where: {
                         id: user.role_id
                     }
                 })
-                if(role){
+                if (role) {
                     return role.name
                 }
-            } 
+            }
         }
-        
+
 
     }
 
     async loginUser(credentials) {
-     
+
         const { email, password } = credentials;
-      
-        
+
+
         if (!email) {
             throw new Error(ERROR_MESSAGE.LOGIN.ERR_REQUIRE_EMAIL);
         }
@@ -125,9 +109,9 @@ class MidUser {
 
         const userData = await this.getUserByEmail(email);
         let check = this.checkRole(userData)
-        if(check == 'admin'){
+        if (check == 'admin') {
 
-        } 
+        }
         if (!userData) {
             throw new Error(ERROR_MESSAGE.LOGIN.ERR_ACC);
         }
@@ -145,7 +129,7 @@ class MidUser {
     }
     async loginAdmin(credentials) {
         const { email, password } = credentials;
- 
+
         if (!email) {
             throw new Error(ERROR_MESSAGE.LOGIN.ERR_REQUIRE_EMAIL);
         }
@@ -160,8 +144,7 @@ class MidUser {
         }
 
         let check = this.checkRole(userData);
-        if(!check == 'admin')
-        {
+        if (!check == 'admin') {
             throw new Error('Khong phai admin');
         }
         const isCorrectPass = await checkPassword(password, userData.password);
@@ -169,7 +152,7 @@ class MidUser {
             throw new Error(ERROR_MESSAGE.LOGIN.ERR_PASS);
         }
 
-     
+
         const token = await generateToken({ userid: userData.id, email: email });
         return {
             token
@@ -178,7 +161,7 @@ class MidUser {
 
     async loginSeller(credentials) {
         const { email, password } = credentials;
- 
+
         if (!email) {
             throw new Error(ERROR_MESSAGE.LOGIN.ERR_REQUIRE_EMAIL);
         }
@@ -193,8 +176,7 @@ class MidUser {
         }
 
         let check = this.checkRole(userData);
-        if(!check == 'seller')
-        {
+        if (!check == 'seller') {
             throw new Error('Khong phai seller');
         }
 
@@ -208,95 +190,6 @@ class MidUser {
             token
         }
     }
-    async forgotPassword(data) {
-        let { email, hostFront } = data;
-
-        let oldForgot = await ConfirmForgot.findOne({
-            where: {
-                email
-            }
-        })
-
-        if (oldForgot) {
-            await oldForgot.destroy();
-        }
-
-        let objForgot = await this.getUserByEmail(email);
-
-        if (!objForgot) {
-            throw new Error(ERROR_MESSAGE.FORGOT_PASSWORD.EMAIL_NOT_EXIST);
-        }
-
-        let stringConfirm = uuidv4();
-
-        let objConfirm = {
-            email,
-            stringConfirm,
-            countRequest: 0
-        }
-
-        await ConfirmForgot.create(objConfirm);
-
-        let hostVerify = hostFront + `/auth/confirmForgot/${email}/${stringConfirm}`;
-
-        await sendMailForgotPassword({
-            name: objForgot.name,
-            email: email,
-            name: objForgot.name,
-            hostVerify,
-            hostWeb: hostFront
-        })
-    }
-
-    async VerifyForgotPassword(email, strConfirm, newPassword) {
-        let result = await ConfirmForgot.findOne({
-            where: {
-                email,
-                stringConfirm: strConfirm
-            }
-        })
-
-        if (!result) return 0;
-
-        let now = new Date();
-        let reqCreated = new Date(result.createAt);
-        reqCreated.setDate(reqCreated.getDate() + 1);
-
-        if (reqCreated > now) {
-            await result.destroy();
-            return 2;
-        }
-
-        let userUpdate = await UserDistributor.findOne({
-            where: {
-                email,
-                del: 0
-            }
-        })
-
-        if (!userUpdate) return 3;
-
-        await userUpdate.update({ password: hashPassword(newPassword) })
-
-        await result.destroy();
-
-        return 1;
-    }
-
-    async checkPass(data) {
-        let user = await Users.findOne({
-            where: {
-                id: data.id,
-            }
-        })
-        const isCorrectPass = await checkPassword(data.oldPassword, user.password);
-        if (!isCorrectPass) {
-            return false;
-        }
-        else {
-            return true;
-        }
-    }
 
     async updatePassword(data) {
         let user = await Users.findOne({
@@ -307,8 +200,7 @@ class MidUser {
         const isCorrectPass = await checkPassword(data.oldPassword, user.password);
         if (!isCorrectPass) {
             throw await new Error(ERROR_MESSAGE.UPDATE_PASSWORD.ERR_OLD_PASS);
-        }
-        else {
+        } else {
             const encryptedPassword = await hashPassword(data.password);
             return user.update({
                 password: encryptedPassword
@@ -316,14 +208,8 @@ class MidUser {
         }
     }
 
-    async updateProfile(data, userData, avatar) {
-        if (avatar) {
-            data.avatar = avatar
-        }
-        return userData.update(data);
-    }
 
-
+    //done
     async searchUser(data) {
         let condition = {
             del: 0
@@ -350,10 +236,9 @@ class MidUser {
         const [listUsers, total] = await Promise.all([
             Users.findAll({
                 where: condition,
-                order: [[
-                    data.typeOrder === 'name' ? 'name' : 'createdAt',
-                    data.stateOrder === 'up' ? 'ASC' : 'DESC'
-                ]],
+                order: [
+                    ["createdAt", "DESC"],
+                ],
                 limit,
                 offset: (page - 1) * limit
             }),
@@ -368,6 +253,50 @@ class MidUser {
 
     }
 
+
+    //done
+    async searchSeller(data) {
+        let role = await Role.findOne({
+            where: {
+                name: 'seller',
+                del: 0
+            }
+        })
+        let condition = {
+            del: 0,
+            role_id: role.id
+        }
+        if (data.name) {
+            condition.name = {
+                [Op.like]: `%${data.name}%`
+            }
+        }
+        let { page, limit } = data;
+        page = page ? parseInt(page) : 1;
+        limit = limit ? parseInt(limit) : 10;
+
+        const [listUsers, total] = await Promise.all([
+            Users.findAll({
+                where: condition,
+                order: [
+                    ["createdAt", "DESC"],
+                ],
+                limit,
+                offset: (page - 1) * limit
+            }),
+            Users.count({
+                where: condition
+            })
+        ])
+        return {
+            listUsers,
+            total: total || 0
+        }
+
+    }
+
+
+    //done
     async updateUser(data) {
         if (!data.name) {
             throw new Error(ERROR_MESSAGE.ADD_USER_DISTRIBUTOR.ERR_NAME);
@@ -378,10 +307,10 @@ class MidUser {
         if (!data.phone) {
             throw new Error(ERROR_MESSAGE.ADD_USER_DISTRIBUTOR.ERR_PHONE);
         }
-        if(!data.address){
+        if (!data.address) {
             throw new Error(ERROR_MESSAGE.ADD_USER_DISTRIBUTOR.address)
         }
-        if(!data.dob){
+        if (!data.dob) {
             throw new Error(ERROR_MESSAGE.ADD_USER_DISTRIBUTOR.dob)
         }
         let objUpdate = await Users.findOne({
@@ -400,6 +329,84 @@ class MidUser {
 
         return await objUpdate.update(dataUpdate)
     }
+
+
+    //done
+    async updateSeller(data) {
+        if (!data.name) {
+            throw new Error(ERROR_MESSAGE.ADD_USER_DISTRIBUTOR.ERR_NAME);
+        }
+        if (!data.shop_name) {
+            throw new Error('Shop name is blank!');
+        }
+        if (!data.email) {
+            throw new Error(ERROR_MESSAGE.ADD_USER_DISTRIBUTOR.ERR_EMAIL);
+        }
+        if (!data.phone) {
+            throw new Error(ERROR_MESSAGE.ADD_USER_DISTRIBUTOR.ERR_PHONE);
+        }
+        if (!data.address) {
+            throw new Error(ERROR_MESSAGE.ADD_USER_DISTRIBUTOR.address)
+        }
+        if (!data.dob) {
+            throw new Error(ERROR_MESSAGE.ADD_USER_DISTRIBUTOR.dob)
+        }
+        let objUpdate = await Users.findOne({
+            where: {
+                id: data.id,
+                del: 0
+            }
+        })
+        let dataUpdate = {
+            name: data.name,
+            email: data.email,
+            phone: data.phone,
+            address: data.address,
+            dob: data.dob,
+            shop_name: data.shop_name,
+        }
+
+        return await objUpdate.update(dataUpdate)
+    }
+
+
+
+
+    //done
+    async upgradeRole(data) {
+        let user = await Users.findOne({
+            where: {
+                id: data.id,
+                del: 0
+            }
+        })
+        let role = await Role.findOne({
+            where: {
+                name: 'seller',
+                del: 0
+            }
+        })
+        let upgrade = {
+            role_id: role.id,
+        }
+        user.update(upgrade)
+    }
+
+    //done
+    async downgradeRole(data) {
+        let user = await Users.findOne({
+            where: {
+                id: data.id,
+                del: 0
+            }
+        })
+        let downgrade = {
+            role_id: null,
+        }
+        user.update(downgrade)
+    }
+
+    //done
     async deleteUser(data) {
         let objDelete = await Users.findOne({
             where: {
