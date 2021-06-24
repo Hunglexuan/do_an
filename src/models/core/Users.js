@@ -53,6 +53,8 @@ const attributes = {
         type: DataTypes.UUID,
         allowNull: true,
         defaultValue: null
+
+
     },
 
     address: {
@@ -64,7 +66,10 @@ const attributes = {
     bill_id: {
         type: DataTypes.UUID,
         allowNull: true,
- defaultValue: null
+
+        defaultValue: null
+
+
 
     },
     avatar: {
@@ -77,6 +82,7 @@ const attributes = {
         allowNull: true,
         defaultValue: null
 
+
     },
     shop_name: {
 
@@ -87,10 +93,10 @@ const attributes = {
     product_id: {
         type: DataTypes.UUID,
         allowNull: true,
- defaultValue: null
+        defaultValue: null
 
-    }, 
-del: {
+    },
+    del: {
         type: DataTypes.TINYINT(1),
         allowNull: true,
         default: 0
