@@ -25,7 +25,7 @@ async createVoucher(data){
     }
     return await Voucher.create(dataCreate);
 }
-async deleteRole(data) {
+async deleteVoucher(data) {
     let objDelete = await Voucher.findOne({
         where: {
             id: data.id,
@@ -38,9 +38,9 @@ async deleteRole(data) {
 
     objDelete.update(dataDelete)
 }
-async updateRole(data) {
+async updateVoucher(data) {
     if (!data.id) {
-        throw new Error(ERROR_MESSAGE.VOUCHER.VOUCHER_NOT_EXIST);
+        throw new Error(ERROR_MESSAGE.ROLE.ROLE_EXIST);
     }
     let objUpdate = await Voucher.findOne({
         where: {
@@ -58,6 +58,5 @@ async updateRole(data) {
 }
 
 }
-
 
 export default new MidVoucher()
