@@ -11,7 +11,7 @@ import { password } from '../../config/database';
 import { name } from 'ejs';
 
 class MidBillProduct {
-async creatBillProduct(data){
+async createBillProduct(data){
     if (!data.quantity) {
         throw new Error(ERROR_MESSAGE.BILL_PRODUCT.BILL_PRODUCT_QUANTITY);
     }

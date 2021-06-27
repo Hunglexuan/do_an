@@ -3,25 +3,25 @@ import { uploadMultiMedia } from '../libs/upload';
 import {MidReport,MidReportForm} from '../models/middle';
 
 class ReportController {
-async getReportByUserId(red,res){
-    let(id) = req.query;
+async getReportByUserId(req,res){
+    let id = req.query;
     return await MidReport.getReportByUserId(id);
 }
 async getAllReportByUserId(req,res){
-    let(id)= req.query;
+    let id = req.query;
     return await MidReport.getAllReportByUserId(id);
 } 
 async getReportId(req,res){
     let{id} = req.query;
     return await MidReport.getReportId(id);
 }
-async searchReport(red,res){
+async searchReport(req,res){
     let dataQuery = req.query;
     return MidReport.searchReport(dataQuery);
 }
-async creatReport(req,res){
+async createReport(req,res){
     let data = req.body;
-    return MidReport.creatReport(data);
+    return MidReport.createReport(data);
 }
 async deleteReport(req, res) {
     let dataQuery = req.query;

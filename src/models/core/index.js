@@ -1,34 +1,35 @@
 export { default as Customer }
-from './Customer';
+    from './Customer';
 export { default as Users }
-from './Users';
+    from './Users';
 export { default as Role }
-from './Role';
+    from './Role';
 export { default as Bill }
-from './Bill';
+    from './Bill';
 export { default as BillProduct }
-from './BillProduct';
+    from './BillProduct';
 export { default as Category }
-from './Category';
+    from './Category';
 export { default as Comment }
-from './Comment';
+    from './Comment';
 export { default as Feedback }
-from './Feedback';
+    from './Feedback';
 export { default as Image }
-from './Image';
+    from './Image';
 export { default as Product }
-from './Product';
+    from './Product';
 export { default as Report }
-from './Report';
+    from './Report';
 export { default as Voucher }
-from './Voucher';
-
+    from './Voucher';
+export { default as BillTemp }
+    from './BillTemp';
 
 import { sequelize } from '../../connections';
 
-for (let m in sequelize.models) {
-    sequelize.models[m].sync();
-}
+// for (let m in sequelize.models) {
+//     sequelize.models[m].sync();
+// }
 
 // Init association
 for (let m in sequelize.models) {

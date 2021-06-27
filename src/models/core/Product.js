@@ -50,7 +50,9 @@ const attributes = {
     },
     user_id: {
         type: DataTypes.UUID,
-        allowNull:true
+        allowNull:true,
+        defaultValue: null
+
     },
     sale: {
         type: DataTypes.INTEGER(10),

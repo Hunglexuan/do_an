@@ -1,12 +1,12 @@
-import { MidRole, MidUser, MidUserForm } from '../models/middle';
+
 import { uploadMultiMedia } from '../libs/upload';
-import {MidRole,MidRoleForm} from '../models/middle';
+import {MidRole,MidRoleForm} from '../models/middle'
 
 class RoleController {
 
-async creatRole(req,res){
+async createRole(req,res){
     let data = req.body;
-    return MidRole.creatRole(data);
+    return MidRole.createRole(data);
 }
 async deleteRole(req, res) {
     let dataQuery = req.query;

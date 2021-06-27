@@ -11,7 +11,7 @@ import { password } from '../../config/database';
 import { name } from 'ejs';
 
 class MidComment {
-async creatComment(data){
+async createComment(data){
     if (!data.user_id) {
         throw new Error(ERROR_MESSAGE.COMMENT.COMMENT_USER_ID);
     }

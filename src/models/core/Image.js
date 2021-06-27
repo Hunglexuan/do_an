@@ -29,7 +29,9 @@ const attributes = {
     },
     product_id: {
       type: DataTypes.UUID,
-      allowNull: true
+      allowNull: true,
+      defaultValue: null
+
     },
     link :{
         type: DataTypes.STRING(500),

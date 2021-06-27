@@ -1,5 +1,5 @@
 import {
-    Role,Users,Voucher
+    Role,Users,BillTemp
 } from '../core';
 import { Op } from 'sequelize';
 import { checkPassword, hashPassword } from '../../libs/encrypt';
@@ -10,23 +10,24 @@ import { v4 as uuidv4 } from 'uuid';
 import { password } from '../../config/database';
 import { name } from 'ejs';
 
-class MidVoucher {
-async createVoucher(data){
-    if (!data.code) {
-        throw new Error(ERROR_MESSAGE.VOUCHER.VOUCHER_CODE);
+class MidBillTemp {
+async createBillTemp(data){
+
+    if (!data.bill_id) {
+        throw new Error(ERROR_MESSAGE.BillTemp.BILL_TEMP_BILL_ID);
     }
-    if (!data.discount_number) {
-        throw new Error(ERROR_MESSAGE.VOUCHER.VOUCHER_DISCOUNT_NUMBER);
+    if (!data.bill_product_id) {
+        throw new Error(ERROR_MESSAGE.BillTemp.BILL_TEMP_BILL_PRODUCT_ID);
     }
     let dataCreate = {
-        code: data.code,
-        discount_number: data.discount_number,
+        bill_id: data.bill_id,
+        bill_product_id: data.bill_product_id,
         del: 0
     }
-    return await Voucher.create(dataCreate);
+    return await BillTemp.create(dataCreate);
 }
-async deleteVoucher(data) {
-    let objDelete = await Voucher.findOne({
+async deleteBillTemp(data) {
+    let objDelete = await BillTemp.findOne({
         where: {
             id: data.id,
             del: 0
@@ -38,11 +39,11 @@ async deleteVoucher(data) {
 
     objDelete.update(dataDelete)
 }
-async updateVoucher(data) {
+async updateBillTemp(data) {
     if (!data.id) {
-        throw new Error(ERROR_MESSAGE.ROLE.ROLE_EXIST);
+        throw new Error(ERROR_MESSAGE.VOUCHER.BILL_TEMP_NOT_EXIST);
     }
-    let objUpdate = await Voucher.findOne({
+    let objUpdate = await BillTemp.findOne({
         where: {
             id: data.id,
             del: 0
@@ -50,8 +51,8 @@ async updateVoucher(data) {
     })
 
     let dataUpdate = {
-        code: data.code,
-        discount_number: data.discount_number,
+        bill_id: data.bill_id,
+        bill_product_id: data.bill_product_id,
     }
     return await objUpdate.update(dataUpdate)
 
@@ -59,4 +60,5 @@ async updateVoucher(data) {
 
 }
 
-export default new MidVoucher()
+
+export default new MidBillTemp()

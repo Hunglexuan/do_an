@@ -29,11 +29,15 @@ const attributes = {
     },
     user_id: {
         type: DataTypes.UUID,
-        allowNull:true
+        allowNull:true,
+        defaultValue: null
+
     },
     shop_id: {
         type: DataTypes.UUID,
-        allowNull:true
+        allowNull:true,
+        defaultValue: null
+
     },
     content: {
         type: DataTypes.STRING(255),

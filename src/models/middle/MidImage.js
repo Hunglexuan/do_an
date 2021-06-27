@@ -11,7 +11,7 @@ import { password } from '../../config/database';
 import { name } from 'ejs';
 
 class MidImage {
-async creatImage(data){
+async createImage(data){
     if (!data.prodcut_id) {
         throw new Error(ERROR_MESSAGE.IMAGE.IMAGE_PRODUCT_ID);
     }

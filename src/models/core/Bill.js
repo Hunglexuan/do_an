@@ -18,7 +18,6 @@ import BillProduct from './BillProduct';
 
     static association() {
         Bill.belongsTo(Voucher, { as: 'voucher', foreignKey: 'voucher_id' })
-        Bill.belongsTo(BillProduct, { as: 'billproduct', foreignKey: 'bill_product_id' })
     }
 }
 /**
@@ -46,8 +45,13 @@ const attributes = {
         allowNull:true,
         defaultValue:null
     },
-    bill_product_id: {
-        type: DataTypes.UUID,
+    status: {
+        type: DataTypes.STRING(255),
+        allowNull:true,
+        defaultValue:null
+    },
+    address: {
+        type: DataTypes.STRING(255),
         allowNull:true,
         defaultValue:null
     },

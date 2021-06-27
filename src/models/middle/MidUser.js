@@ -17,7 +17,7 @@ class MidUser {
     async getUserByEmail(email) {
         return await Users.findOne({
             where: {
-                email,
+                email:email,
                 del: 0
             }
         })
@@ -45,7 +45,7 @@ class MidUser {
         if (!data.phone) {
             throw new Error(ERROR_MESSAGE.ADD_USER_DISTRIBUTOR.ERR_PHONE);
         }
-        let checkExist = this.getUserByEmail(data.email);
+        let checkExist = await this.getUserByEmail(data.email);
         if (checkExist) {
             throw new Error(ERROR_MESSAGE.ADD_USER_DISTRIBUTOR.ERR_EXISTT);
         }

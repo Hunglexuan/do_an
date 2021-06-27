@@ -4,6 +4,8 @@ import { sequelize } from '../../connections';
 import Sequelize from 'sequelize';
 import { v4 as uuidv4 } from 'uuid';
 import Users from './Users';
+import Product from './Product';
+
 /**
  * Define Comment Model
  * 
@@ -14,7 +16,8 @@ import Users from './Users';
 export default class Comment extends BaseModel {
 
     static association() {
-        // Comment.belongsTo(Users, { as: 'users', foreignKey: 'user' })
+         Comment.belongsTo(Users, { as: 'users', foreignKey: 'user_id' })
+         Comment.belongsTo(Product, { as: 'product', foreignKey: 'product_id' })
     }
 }
 
@@ -29,13 +32,22 @@ const attributes = {
     },
     user_id: {
         type: DataTypes.UUID,
-        allowNull:true
+        allowNull:true,
+        defaultValue: null
+
     },
-    shop_id: {
+    product_id: {
         type: DataTypes.UUID,
-        allowNull:true
+        allowNull:true,
+        defaultValue: null
+
     },
     content: {
+        type: DataTypes.STRING(255),
+        allowNull:true,
+        defaultValue:null
+    },
+    cmt_id: {
         type: DataTypes.STRING(255),
         allowNull:true,
         defaultValue:null

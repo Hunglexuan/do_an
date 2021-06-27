@@ -58,6 +58,7 @@ export const ERROR_MESSAGE = {
         BILL_TOTAL_PRICE: 'Total price khong ton tai',
         BILL_VOUCHER_ID: 'Bill voucher khong ton tai',
         BILL_PRODUCT_ID: 'Bill product id khong ton tai',
+        BILL_STATUS: 'Bill status khong ton tai',
         
     },
     BILL_PRODUCT: {
@@ -100,6 +101,14 @@ export const ERROR_MESSAGE = {
         VOUCHER_NOT_EXIST: 'Voucher khong ton tai',
         VOUCHER_CODE: 'Voucher code khong ton tai',
         VOUCHER_DISCOUNT_NUMBER: 'Voucher discount number khong ton tai',
+    },
+    Bill_TEMP: {
+        BILL_TEMP_NOT_EXIST: 'Bill temp khong ton tai',
+        BILL_TEMP_BILL_ID : 'Bill temp bill id khong ton tai',
+        BILL_TEMP_BILL_PRODUCT_ID: 'Bill temp  bill product id khong ton tai',
+    },
+    COMMENT: {
+
     }
 
 }
