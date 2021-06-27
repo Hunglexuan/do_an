@@ -2,7 +2,7 @@ import { Router } from 'express';
 import auth from './auth';
 
 import user from './user';
-import customer from './customer';
+
 import Role from './Role';
 import Bill from './Bill';
 import Report from './Report';
@@ -22,7 +22,7 @@ let routerApp = new Router();
 routerApp.use('/auth', auth);
 
 routerApp.use('/user', user);
-routerApp.use('/customer', customer);
+
 routerApp.use('/role', Role);
 routerApp.use('/report', Report);
 routerApp.use('/bill', Bill);
