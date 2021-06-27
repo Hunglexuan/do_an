@@ -1,5 +1,5 @@
 import {
-    Role,Users
+    Role, Users
 } from '../core';
 import { Op } from 'sequelize';
 import { checkPassword, hashPassword } from '../../libs/encrypt';
@@ -11,46 +11,46 @@ import { password } from '../../config/database';
 import { name } from 'ejs';
 
 class MidRole {
-async creatRole(data){
-    if (!data.name) {
-        throw new Error(ERROR_MESSAGE.ROLE.ROLE_NOT_EXIST);
-    }
-    let dataCreate = {
-        name: data.name,
-        del: 0
-    }
-    return await Role.create(dataCreate);
-}
-async deleteRole(data) {
-    let objDelete = await Role.findOne({
-        where: {
-            id: data.id,
+    async createRole(data) {
+        if (!data.name) {
+            throw new Error(ERROR_MESSAGE.ROLE.ROLE_NOT_EXIST);
+        }
+        let dataCreate = {
+            name: data.name,
             del: 0
         }
-    })
-    let dataDelete = {
-        del: 1,
+        return await Role.create(dataCreate);
     }
-
-    objDelete.update(dataDelete)
-}
-async updateRole(data) {
-    if (!data.id) {
-        throw new Error(ERROR_MESSAGE.ROLE.ROLE_EXIST);
-    }
-    let objUpdate = await Role.findOne({
-        where: {
-            id: data.id,
-            del: 0
+    async deleteRole(data) {
+        let objDelete = await Role.findOne({
+            where: {
+                id: data.id,
+                del: 0
+            }
+        })
+        let dataDelete = {
+            del: 1,
         }
-    })
 
-    let dataUpdate = {
-        name: data.name,
+        objDelete.update(dataDelete)
     }
-    return await objUpdate.update(dataUpdate)
+    async updateRole(data) {
+        if (!data.id) {
+            throw new Error(ERROR_MESSAGE.ROLE.ROLE_EXIST);
+        }
+        let objUpdate = await Role.findOne({
+            where: {
+                id: data.id,
+                del: 0
+            }
+        })
 
-}
+        let dataUpdate = {
+            name: data.name,
+        }
+        return await objUpdate.update(dataUpdate)
+
+    }
 
 }
 

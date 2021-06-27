@@ -46,7 +46,7 @@ const attributes = {
     product_id: {
         type: DataTypes.UUID,
         allowNull: true,
-
+        defaultValue: null
     },
     
     del: {  // 0: Not delete , 1: delete

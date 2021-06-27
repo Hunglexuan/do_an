@@ -11,7 +11,7 @@ import { password } from '../../config/database';
 import { name } from 'ejs';
 
 class MidBill {
-async creatBill(data){
+async createBill(data){
     if (!data.quantity) {
         throw new Error(ERROR_MESSAGE.BILL.BILL_QUANTITY);
     }
@@ -21,14 +21,14 @@ async creatBill(data){
     if (!data.voucher_id) {
         throw new Error(ERROR_MESSAGE.BILL.BILL_VOUCHER_ID);
     }
-    if (!data.bill_product_id) {
-        throw new Error(ERROR_MESSAGE.BILL.BILL_PRODUCT_ID);
+    if (!data.status) {
+        throw new Error(ERROR_MESSAGE.BILL.BILL_STATUS);
     }
     let dataCreate = {
         quantity: data.quantity,
         total_price: data.total_price,
         voucher_id: data.voucher_id,
-        bill_product_id: data.bill_product_id,
+        bill_status : data.bill_status,
         del: 0
     }
     return await Bill.create(dataCreate);

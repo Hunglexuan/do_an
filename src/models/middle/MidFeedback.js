@@ -11,7 +11,7 @@ import { password } from '../../config/database';
 import { name } from 'ejs';
 
 class MidFeedback {
-async creatFeedback(data){
+async createFeedback(data){
     if (!data.user_id) {
         throw new Error(ERROR_MESSAGE.FEEDBACK.FEEDBACK_USER_ID);
     }

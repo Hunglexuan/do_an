@@ -1,5 +1,5 @@
 import {
-    Role,Users,Comment
+    Role,Users,BillTemp
 } from '../core';
 import { Op } from 'sequelize';
 import { checkPassword, hashPassword } from '../../libs/encrypt';
@@ -10,27 +10,24 @@ import { v4 as uuidv4 } from 'uuid';
 import { password } from '../../config/database';
 import { name } from 'ejs';
 
-class MidComment {
-async createComment(data){
-    if (!data.user_id) {
-        throw new Error(ERROR_MESSAGE.COMMENT.COMMENT_USER_ID);
+class MidBillTemp {
+async createBillTemp(data){
+
+    if (!data.bill_id) {
+        throw new Error(ERROR_MESSAGE.BillTemp.BILL_TEMP_BILL_ID);
     }
-    if (!data.shop_id) {
-        throw new Error(ERROR_MESSAGE.COMMENT.COMMNET_SHOP_ID);
-    }
-    if (!data.content) {
-        throw new Error(ERROR_MESSAGE.COMMENT.COMMENT_CONTENT);
+    if (!data.bill_product_id) {
+        throw new Error(ERROR_MESSAGE.BillTemp.BILL_TEMP_BILL_PRODUCT_ID);
     }
     let dataCreate = {
-        user_id: data.user_id,
-        shop_id: data.shop_id,
-        content: data.content,
+        bill_id: data.bill_id,
+        bill_product_id: data.bill_product_id,
         del: 0
     }
-    return await Comment.create(dataCreate);
+    return await BillTemp.create(dataCreate);
 }
-async deleteComment(data) {
-    let objDelete = await Comment.findOne({
+async deleteBillTemp(data) {
+    let objDelete = await BillTemp.findOne({
         where: {
             id: data.id,
             del: 0
@@ -42,11 +39,11 @@ async deleteComment(data) {
 
     objDelete.update(dataDelete)
 }
-async updateComment(data) {
+async updateBillTemp(data) {
     if (!data.id) {
-        throw new Error(ERROR_MESSAGE.COMMENT.COMMENT_NOT_EXIST);
+        throw new Error(ERROR_MESSAGE.VOUCHER.BILL_TEMP_NOT_EXIST);
     }
-    let objUpdate = await Comment.findOne({
+    let objUpdate = await BillTemp.findOne({
         where: {
             id: data.id,
             del: 0
@@ -54,9 +51,8 @@ async updateComment(data) {
     })
 
     let dataUpdate = {
-        user_id: data.user_id,
-        shop_id: data.shop_id,
-        content: data.content,
+        bill_id: data.bill_id,
+        bill_product_id: data.bill_product_id,
     }
     return await objUpdate.update(dataUpdate)
 
@@ -65,4 +61,4 @@ async updateComment(data) {
 }
 
 
-export default new MidComment()
+export default new MidBillTemp()

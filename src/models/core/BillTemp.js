@@ -3,22 +3,22 @@ import BaseModel from './BaseModel';
 import { sequelize } from '../../connections';
 import Sequelize from 'sequelize';
 import { v4 as uuidv4 } from 'uuid';
-import Users from './Users';
+import Bill from './Bill';
+import BillProduct from './BillProduct';
 /**
- * Define Report Model
+ * Define BillTemp Model
  * 
  * @export
- * @class Report
+ * @class BillTemp
  * @extends {BaseModel}
  */
-export default class Report extends BaseModel {
+ export default class BillTemp extends BaseModel {
 
     static association() {
-        Report.belongsTo(Users, { as: 'users', foreignKey: 'user_id' })
-        
+        BillTemp.belongsTo(Bill, { as: 'bill', foreignKey: 'bill_id' }),
+        BillTemp.belongsTo(BillProduct, { as: 'bill_product', foreignKey: 'bill_product_id' })
     }
 }
-
 /**
  * Attributes model
  */
@@ -28,27 +28,15 @@ const attributes = {
         type: DataTypes.UUID,
         defaultValue: Sequelize.UUIDV4
     },
-    user_id: {
+    bill_id: {
         type: DataTypes.UUID,
-        allowNull:true,
+        allowNull: true,
         defaultValue: null
-
     },
-    shop_id: {
+    bill_product_id: {
         type: DataTypes.UUID,
-        allowNull:true,
+        allowNull: true,
         defaultValue: null
-
-    },
-    type_report: {
-        type: DataTypes.STRING(255),
-        allowNull:true,
-        defaultValue:null
-    },
-    content: {
-        type: DataTypes.STRING(255),
-        allowNull:true,
-        defaultValue:null
     },
     del: {
         type: DataTypes.TINYINT(1),
@@ -64,10 +52,10 @@ const attributes = {
         allowNull: true
     },
 
-};
 
- function beforeCreate() {
-    Report.beforeCreate((obj, _) => {
+};
+function beforeCreate() {
+    BillTemp.beforeCreate((obj, _) => {
         return obj.id = uuidv4();
     });
 }
@@ -76,11 +64,11 @@ const attributes = {
  * Options model
  */
 const options = {
-    tableName: 'report',
+    tableName: 'billtemp',
     beforeCreate: beforeCreate
 };
 
 /**
  * Init Model
  */
-Report.init(attributes, { ...options, sequelize });
+BillTemp.init(attributes, { ...options, sequelize });
