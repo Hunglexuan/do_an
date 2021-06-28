@@ -2,6 +2,7 @@ export function Response(handel) {
     return async (req, res, next) => {
         try {
             let data = await handel(req, res, next);
+           
             if (data && data.header) {
                 for (let i = 0; i < data.header.length; i++) {
                     res.setHeader(data.header[i].name, data.header[i].content);

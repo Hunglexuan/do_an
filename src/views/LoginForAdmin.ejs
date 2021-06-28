@@ -87,7 +87,7 @@
         $("#btn").click(function () {
             checkBlankLogin();
             $.ajax({
-                url: "/api/auth/login",
+                url: "/api/auth/loginAdmin",
                 type: "POST",
                 data: {
                     email: $("#inputEmail").val(),
@@ -95,7 +95,7 @@
                 }
             }).then(function (data) {
                 if (data.message == "SUCCESS") {
-                    window.location.href = "/index"
+                    window.location.href = "/admin/build/ListSeller" //khong chac toi hoi 
                     alert("Login Successfull");
                 } else {
     
