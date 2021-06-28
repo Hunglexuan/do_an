@@ -86,11 +86,18 @@
 
 </body>
 <script>
-    $("#btn").click(function() {
+    function checkBlankLogin() {
+        if ($("#inputEmail").val() == "") {
+            alert("Email is Blank please Input")
+        } else if ($("#inputPassword").val() == "") {
+            alert("Password is black please input")
+        }
+    }
 
+    $("#btn").click(function() {
         checkBlankLogin();
         $.ajax({
-            url: "/api/auth/login",
+            url: "/api/auth/loginSeller",
             type: "POST",
             data: {
                 email: $("#inputEmail").val(),
@@ -100,12 +107,19 @@
             if (data.message == "SUCCESS") {
                 window.location.href = "/MyProfileUser"
                 alert("Login Successfull");
+                setCookie("token", data.data.token, 1)
             } else {
-
                 alert("Login Fail")
             }
         })
     })
+
+    function setCookie(cname, cvalue, exdays) {
+        const d = new Date();
+        d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+        let expires = "expires=" + d.toUTCString();
+        document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+    }
 </script>
 
 </html>
