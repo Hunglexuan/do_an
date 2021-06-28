@@ -7,6 +7,13 @@ import useragent from 'express-useragent';
 
 
 const app = express();
+
+
+
+
+
+
+
 app.use(express.urlencoded({ extended: true }))
 app.set('views', path.join(__dirname, '../src/views'));
 app.set('view engine', 'ejs');
@@ -70,7 +77,12 @@ app.get('/RegisterSeller', function(req, res) {
 
 app.get('/RegisterUser', function(req, res) {
     return res.render('RegisterUser');
+
 });
+
+
+
+
 
 app.get('/LoginUser', function(req, res) {
     return res.render('LoginUser');
