@@ -95,36 +95,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 </body>
-<script>
-    function checkBlankLogin() {
-        if ($("#inputEmail").val() == "") {
-            alert("Email is Blank please Input")
-        } else if ($("#inputPassword").val() == "") {
-            alert("Password is black please input")
-        }
-    }
 
-    $("#btn").click(function () {
-
-        checkBlankLogin();
-        $.ajax({
-            url: "/api/auth/login",
-            type: "POST",
-            data: {
-                email: $("#inputEmail").val(),
-                password: $("#inputPassword").val()
-            }
-        }).then(function (data) {
-            if (data.message == "SUCCESS") {
-                window.location.href = "/index"
-                alert("Login Successfull");
-            } else {
-
-                alert("Login Fail")
-            }
-        })
-    })
-
-</script>
 
 </html>

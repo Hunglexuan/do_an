@@ -90,6 +90,10 @@ app.get('/DashboardSeller', function(req, res) {
     return res.render('DashboardForSeller');
 });
 
+app.get('/ListSeller', function(req, res) {
+    return res.render('ListSeller');
+});
+
 
 
 app.get('/admin', function(req, res) {
