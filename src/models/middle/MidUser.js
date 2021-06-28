@@ -1,16 +1,16 @@
+import { Users, Role } from "../core";
+import { Op } from "sequelize";
+import { checkPassword, hashPassword } from "../../libs/encrypt";
+import { generateToken } from "../../libs/token";
+import { ERROR_MESSAGE } from "../../config/error";
 import {
-    Users,
-    Role
-} from '../core';
-import { Op } from 'sequelize';
-import { checkPassword, hashPassword } from '../../libs/encrypt';
-import { generateToken } from '../../libs/token';
-import { ERROR_MESSAGE } from '../../config/error';
-import { sendMailActiveOrder, sendMailForgotPassword } from '../../libs/sendmail';
-import { v4 as uuidv4 } from 'uuid';
-import { password } from '../../config/database';
-import { name } from 'ejs';
-import { find } from 'lodash';
+    sendMailActiveOrder,
+    sendMailForgotPassword,
+} from "../../libs/sendmail";
+import { v4 as uuidv4 } from "uuid";
+import { password } from "../../config/database";
+import { name } from "ejs";
+import { find } from "lodash";
 
 var mysql = require('mysql');
 var connection = mysql.createConnection({
@@ -25,26 +25,24 @@ var connection = mysql.createConnection({
 
 
 class MidUser {
-
     async getUserByEmail(email) {
         return await Users.findOne({
             where: {
                 email,
-                del: 0
-            }
-        })
+                del: 0,
+            },
+        });
     }
     async getUserById(userid) {
         return Users.findOne({
             where: {
                 id: userid,
-                del: 0
+                del: 0,
             },
-
-        })
+        });
     }
 
-    //done 
+    //done
     async createUser(data) {
         if (!data.name) {
             throw new Error(ERROR_MESSAGE.ADD_USER_DISTRIBUTOR.ERR_NAME);
@@ -64,7 +62,7 @@ class MidUser {
         if (!data.phone) {
             throw new Error(ERROR_MESSAGE.ADD_USER_DISTRIBUTOR.ERR_PHONE);
         }
-        let checkExist = this.getUserByEmail(data.email);
+        let checkExist = await this.getUserByEmail(data.email);
         if (checkExist) {
             throw new Error(ERROR_MESSAGE.ADD_USER_DISTRIBUTOR.ERR_EXISTT);
         }
@@ -75,8 +73,8 @@ class MidUser {
             email: data.email,
             phone: data.phone,
             password: hashPassword(data.password),
-            del: 0
-        }
+            del: 0,
+        };
         return await Users.create(dataCreate);
     }
 
@@ -86,30 +84,26 @@ class MidUser {
         } else {
             let user = await Users.findOne({
                 where: {
-                    id: data.id
-                }
-            })
+                    id: data.id,
+                },
+            });
             if (!user) {
                 throw new Error(ERROR_MESSAGE.LOGIN.ERR_ACC);
             } else {
                 let role = await Role.findOne({
                     where: {
-                        id: user.role_id
-                    }
-                })
+                        id: user.role_id,
+                    },
+                });
                 if (role) {
-                    return role.name
+                    return role.name;
                 }
             }
         }
-
-
     }
 
     async loginUser(credentials) {
-
         const { email, password } = credentials;
-
 
         if (!email) {
             throw new Error(ERROR_MESSAGE.LOGIN.ERR_REQUIRE_EMAIL);
@@ -120,10 +114,8 @@ class MidUser {
         }
 
         const userData = await this.getUserByEmail(email);
-        let check = this.checkRole(userData)
-        if (check == 'admin') {
-
-        }
+        let check = this.checkRole(userData);
+        if (check == "admin") {}
         if (!userData) {
             throw new Error(ERROR_MESSAGE.LOGIN.ERR_ACC);
         }
@@ -136,8 +128,8 @@ class MidUser {
         // check account status is Active
         const token = await generateToken({ userid: userData.id, email: email });
         return {
-            token
-        }
+            token,
+        };
     }
     async loginAdmin(credentials) {
         const { email, password } = credentials;
@@ -156,19 +148,18 @@ class MidUser {
         }
 
         let check = this.checkRole(userData);
-        if (!check == 'admin') {
-            throw new Error('Khong phai admin');
+        if (!check == "admin") {
+            throw new Error("Khong phai admin");
         }
         const isCorrectPass = await checkPassword(password, userData.password);
         if (!isCorrectPass) {
             throw new Error(ERROR_MESSAGE.LOGIN.ERR_PASS);
         }
 
-
         const token = await generateToken({ userid: userData.id, email: email });
         return {
-            token
-        }
+            token,
+        };
     }
 
     async loginSeller(credentials) {
@@ -188,8 +179,8 @@ class MidUser {
         }
 
         let check = this.checkRole(userData);
-        if (!check == 'seller') {
-            throw new Error('Khong phai seller');
+        if (!check == "seller") {
+            throw new Error("Khong phai seller");
         }
 
         const isCorrectPass = await checkPassword(password, userData.password);
@@ -199,89 +190,86 @@ class MidUser {
         // check account status is Active
         const token = await generateToken({ userid: userData.id, email: email });
         return {
-            token
-        }
+            token,
+        };
     }
 
     async updatePassword(data) {
         let user = await Users.findOne({
             where: {
                 id: data.id,
-            }
-        })
+            },
+        });
         const isCorrectPass = await checkPassword(data.oldPassword, user.password);
         if (!isCorrectPass) {
             throw await new Error(ERROR_MESSAGE.UPDATE_PASSWORD.ERR_OLD_PASS);
         } else {
             const encryptedPassword = await hashPassword(data.password);
             return user.update({
-                password: encryptedPassword
+                password: encryptedPassword,
             });
         }
     }
 
-
     //done
     async searchUser(data) {
         let condition = {
-            del: 0
-        }
+            del: 0,
+        };
         if (data.name) {
             condition.name = {
-                [Op.like]: `%${data.name}%`
-            }
+                [Op.like]: `%${data.name}%`,
+            };
         }
         if (data.email) {
             condition.email = {
-                [Op.like]: `%${data.email}%`
-            }
+                [Op.like]: `%${data.email}%`,
+            };
         }
         if (data.phone) {
             condition.phone = {
-                [Op.like]: `%${data.phone}%`
-            }
+                [Op.like]: `%${data.phone}%`,
+            };
         }
-        let { page, limit } = data;
-        page = page ? parseInt(page) : 1;
-        limit = limit ? parseInt(limit) : 10;
+        // let { page, limit } = data;
+        // page = page ? parseInt(page) : 1;
+        // limit = limit ? parseInt(limit) : 10;
 
         const [listUsers, total] = await Promise.all([
             Users.findAll({
                 where: condition,
                 order: [
-                    ["createdAt", "DESC"],
+                    ["createdAt", "DESC"]
                 ],
-                limit,
-                offset: (page - 1) * limit
+                // limit,
+                // offset: (page - 1) * limit
             }),
             Users.count({
-                where: condition
-            })
-        ])
+                where: condition,
+            }),
+        ]);
         return {
             listUsers,
-            total: total || 0
-        }
-
+            total: total || 0,
+        };
     }
-
 
     //done
     async searchSeller(data) {
         let role = await Role.findOne({
             where: {
-                name: 'seller',
-                del: 0
-            }
-        })
+                name: "seller",
+                del: 0,
+            },
+        });
         let condition = {
             del: 0,
-            role_id: role.id
-        }
+            role_id: role.id,
+        };
         if (data.name) {
             condition.name = {
-                [Op.like]: `%${data.name}%`
-            }
+                [Op.like]: `%${data.name}%`,
+            };
         }
         let { page, limit } = data;
         page = page ? parseInt(page) : 1;
@@ -291,22 +279,20 @@ class MidUser {
             Users.findAll({
                 where: condition,
                 order: [
-                    ["createdAt", "DESC"],
+                    ["createdAt", "DESC"]
                 ],
                 limit,
-                offset: (page - 1) * limit
+                offset: (page - 1) * limit,
             }),
             Users.count({
-                where: condition
-            })
-        ])
+                where: condition,
+            }),
+        ]);
         return {
             listUsers,
-            total: total || 0
-        }
-
+            total: total || 0,
+        };
     }
-
 
     //done
     async updateUser(data) {
@@ -320,28 +306,27 @@ class MidUser {
             throw new Error(ERROR_MESSAGE.ADD_USER_DISTRIBUTOR.ERR_PHONE);
         }
         if (!data.address) {
-            throw new Error(ERROR_MESSAGE.ADD_USER_DISTRIBUTOR.address)
+            throw new Error(ERROR_MESSAGE.ADD_USER_DISTRIBUTOR.address);
         }
         if (!data.dob) {
-            throw new Error(ERROR_MESSAGE.ADD_USER_DISTRIBUTOR.dob)
+            throw new Error(ERROR_MESSAGE.ADD_USER_DISTRIBUTOR.dob);
         }
         let objUpdate = await Users.findOne({
             where: {
                 id: data.id,
-                del: 0
-            }
-        })
+                del: 0,
+            },
+        });
         let dataUpdate = {
             name: data.name,
             email: data.email,
             phone: data.phone,
             address: data.address,
             dob: data.dob,
-        }
+        };
 
-        return await objUpdate.update(dataUpdate)
+        return await objUpdate.update(dataUpdate);
     }
-
 
     //done
     async updateSeller(data) {
@@ -349,7 +334,7 @@ class MidUser {
             throw new Error(ERROR_MESSAGE.ADD_USER_DISTRIBUTOR.ERR_NAME);
         }
         if (!data.shop_name) {
-            throw new Error('Shop name is blank!');
+            throw new Error("Shop name is blank!");
         }
         if (!data.email) {
             throw new Error(ERROR_MESSAGE.ADD_USER_DISTRIBUTOR.ERR_EMAIL);
@@ -358,17 +343,17 @@ class MidUser {
             throw new Error(ERROR_MESSAGE.ADD_USER_DISTRIBUTOR.ERR_PHONE);
         }
         if (!data.address) {
-            throw new Error(ERROR_MESSAGE.ADD_USER_DISTRIBUTOR.address)
+            throw new Error(ERROR_MESSAGE.ADD_USER_DISTRIBUTOR.address);
         }
         if (!data.dob) {
-            throw new Error(ERROR_MESSAGE.ADD_USER_DISTRIBUTOR.dob)
+            throw new Error(ERROR_MESSAGE.ADD_USER_DISTRIBUTOR.dob);
         }
         let objUpdate = await Users.findOne({
             where: {
                 id: data.id,
-                del: 0
-            }
-        })
+                del: 0,
+            },
+        });
         let dataUpdate = {
             name: data.name,
             email: data.email,
@@ -376,32 +361,29 @@ class MidUser {
             address: data.address,
             dob: data.dob,
             shop_name: data.shop_name,
-        }
+        };
 
-        return await objUpdate.update(dataUpdate)
+        return await objUpdate.update(dataUpdate);
     }
-
-
-
 
     //done
     async upgradeRole(data) {
         let user = await Users.findOne({
             where: {
                 id: data.id,
-                del: 0
-            }
-        })
+                del: 0,
+            },
+        });
         let role = await Role.findOne({
             where: {
-                name: 'seller',
-                del: 0
-            }
-        })
+                name: "seller",
+                del: 0,
+            },
+        });
         let upgrade = {
             role_id: role.id,
-        }
-        user.update(upgrade)
+        };
+        user.update(upgrade);
     }
 
     //done
@@ -409,13 +391,13 @@ class MidUser {
         let user = await Users.findOne({
             where: {
                 id: data.id,
-                del: 0
-            }
-        })
+                del: 0,
+            },
+        });
         let downgrade = {
             role_id: null,
-        }
-        user.update(downgrade)
+        };
+        user.update(downgrade);
     }
 
     //done
@@ -423,14 +405,14 @@ class MidUser {
         let objDelete = await Users.findOne({
             where: {
                 id: data.id,
-                del: 0
-            }
-        })
+                del: 0,
+            },
+        });
         let dataDelete = {
             del: 1,
-        }
-        objDelete.update(dataDelete)
+        };
+        objDelete.update(dataDelete);
     }
 }
 
-export default new MidUser()
+export default new MidUser();

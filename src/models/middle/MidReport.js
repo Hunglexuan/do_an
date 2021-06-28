@@ -27,7 +27,7 @@ class MidReport {
             }
         })
     }
-    async creatReport(data){
+    async createReport(data){
         if (!data.type_report) {
             throw new Error(ERROR_MESSAGE.REPORT.REPORT_TYPE_NOT_EXIST);
         }

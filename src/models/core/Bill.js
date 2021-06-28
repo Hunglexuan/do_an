@@ -4,7 +4,6 @@ import { sequelize } from '../../connections';
 import Sequelize from 'sequelize';
 import { v4 as uuidv4 } from 'uuid';
 import { Voucher } from './';
-import BillProduct from './BillProduct';
 
 
 /**
@@ -18,7 +17,6 @@ import BillProduct from './BillProduct';
 
     static association() {
         Bill.belongsTo(Voucher, { as: 'voucher', foreignKey: 'voucher_id' })
-        Bill.belongsTo(BillProduct, { as: 'billproduct', foreignKey: 'bill_product_id' })
     }
 }
 /**
@@ -46,8 +44,13 @@ const attributes = {
         allowNull:true,
         defaultValue:null
     },
-    bill_product_id: {
-        type: DataTypes.UUID,
+    status: {
+        type: DataTypes.STRING(255),
+        allowNull:true,
+        defaultValue:null
+    },
+    address: {
+        type: DataTypes.STRING(255),
         allowNull:true,
         defaultValue:null
     },

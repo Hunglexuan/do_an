@@ -11,7 +11,7 @@ import { password } from '../../config/database';
 import { name } from 'ejs';
 
 class MidCategory {
-async creatCategory(data){
+async createCategory(data){
     if (!data.name) {
         throw new Error(ERROR_MESSAGE.ROLE.ROLE_NOT_EXIST);
     }

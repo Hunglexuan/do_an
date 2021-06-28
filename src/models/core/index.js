@@ -1,5 +1,3 @@
-export { default as Customer }
-from './Customer';
 export { default as Users }
 from './Users';
 export { default as Role }
@@ -22,7 +20,8 @@ export { default as Report }
 from './Report';
 export { default as Voucher }
 from './Voucher';
-
+export { default as BillTemp }
+from './BillTemp';
 
 import { sequelize } from '../../connections';
 
