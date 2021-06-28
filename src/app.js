@@ -81,9 +81,15 @@ app.get('/RegisterUser', function(req, res) {
 
 });
 
+app.get('/CheckOut', function(req, res) {
+    return res.render('CheckOut');
 
+});
 
+app.get('/ShopDetail', function(req, res) {
+    return res.render('ShopDetail');
 
+});
 
 app.get('/LoginUser', function(req, res) {
     return res.render('LoginUser');
