@@ -83,7 +83,7 @@
     $("#btn").click(function() {
         checkBlankLogin();
         $.ajax({
-            url: "/api/auth/login",
+            url: "/api/auth/loginAdmin",
             type: "POST",
             data: {
                 email: $("#inputEmail").val(),
