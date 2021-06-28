@@ -7,6 +7,13 @@ import useragent from 'express-useragent';
 
 
 const app = express();
+
+
+
+
+
+
+
 app.use(express.urlencoded({ extended: true }))
 app.set('views', path.join(__dirname, '../src/views'));
 app.set('view engine', 'ejs');
@@ -43,34 +50,39 @@ app.get('/index', function(req, res) {
 
 });
 
-app.get('/resetPass', function (req, res) {
+app.get('/resetPass', function(req, res) {
 
-        return res.render('password');
-
-
-});
-
-app.get('/LoginSeller', function (req, res) {
-
-        return res.render('LoginForSeller');
+    return res.render('password');
 
 
 });
 
-app.get('/LoginAdmin', function (req, res) {
+app.get('/LoginSeller', function(req, res) {
 
-        return res.render('LoginForAdmin');
+    return res.render('LoginForSeller');
 
 
 });
 
-app.get('/RegisterSeller', function (req, res) {
-        return res.render('register');
+app.get('/LoginAdmin', function(req, res) {
+
+    return res.render('LoginForAdmin');
+
+
+});
+
+app.get('/RegisterSeller', function(req, res) {
+    return res.render('register');
 });
 
 app.get('/RegisterUser', function(req, res) {
     return res.render('RegisterUser');
+
 });
+
+
+
+
 
 app.get('/LoginUser', function(req, res) {
     return res.render('LoginUser');
@@ -90,60 +102,11 @@ app.get('/DashboardSeller', function(req, res) {
     return res.render('DashboardForSeller');
 });
 
-app.get('/hire', function(req, res) {
-    return res.render('PC/tuyen-dung');
-});
-
-app.get('/contact', function(req, res) {
-
-    return res.render('PC/lien-he');
-
-});
-
-
-
-app.get('/development', function(req, res) {
-
-    return res.render('PC/phat-trien');
-
-});
-
-app.get('/service', function(req, res) {
-
-    return res.render('PC/dich-vu');
-
-});
-
-app.get('/cad', function(req, res) {
-
-    return res.render('PC/dich-vu-cad');
-
-
-});
-
-app.get('/serviceIT', function(req, res) {
-
-    return res.render('PC/dich-vu-it');
-
-});
 
 
 app.get('/admin', function(req, res) {
     app.use(express.static(path.join(__dirname, '../build')))
     res.sendFile(path.join(__dirname, '../build', 'index.html'));
-});
-
-app.get('/admin/customer/list', function(req, res) {
-    res.redirect('/admin')
-});
-app.get('/admin/user/add', function(req, res) {
-    res.redirect('/admin')
-});
-app.get('/admin/user/list', function(req, res) {
-    res.redirect('/admin')
-});
-app.get('/admin/dashboard', function(req, res) {
-    res.redirect('/admin')
 });
 
 

@@ -13,7 +13,8 @@ export function Response(handel) {
                     signal: 1,
                     message: 'SUCCESS',
                     code: 200,
-                    data: data
+                    data: data,
+                    
                 });
             }
             
@@ -22,7 +23,8 @@ export function Response(handel) {
             return res.send({
                 signal: 0,
                 code: 400,
-                message
+                message,
+                
             });
         }
     };
