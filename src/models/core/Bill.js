@@ -54,6 +54,7 @@ const attributes = {
         allowNull:true,
         defaultValue:null
     },
+
     del: {
         type: DataTypes.TINYINT(1),
         allowNull: true,

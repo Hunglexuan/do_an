@@ -15,7 +15,7 @@ async createComment(data){
     if (!data.user_id) {
         throw new Error(ERROR_MESSAGE.COMMENT.COMMENT_USER_ID);
     }
-    if (!data.shop_id) {
+    if (!data.product_id) {
         throw new Error(ERROR_MESSAGE.COMMENT.COMMNET_SHOP_ID);
     }
     if (!data.content) {
@@ -23,8 +23,9 @@ async createComment(data){
     }
     let dataCreate = {
         user_id: data.user_id,
-        shop_id: data.shop_id,
+        product_id: data.product_id,
         content: data.content,
+        cmt_id: data.cmt_id,
         del: 0
     }
     return await Comment.create(dataCreate);
@@ -55,8 +56,9 @@ async updateComment(data) {
 
     let dataUpdate = {
         user_id: data.user_id,
-        shop_id: data.shop_id,
+        product_id: data.product_id,
         content: data.content,
+        cmt_id: data.cmt_id,
     }
     return await objUpdate.update(dataUpdate)
 

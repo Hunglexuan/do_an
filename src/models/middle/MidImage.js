@@ -12,14 +12,14 @@ import { name } from 'ejs';
 
 class MidImage {
 async createImage(data){
-    if (!data.prodcut_id) {
+    if (!data.product_id) {
         throw new Error(ERROR_MESSAGE.IMAGE.IMAGE_PRODUCT_ID);
     }
     if (!data.link) {
         throw new Error(ERROR_MESSAGE.IMAGE.IMAGE_LINK);
     }
     let dataCreate = {
-        prodcut_id: data.prodcut_id,
+        product_id: data.product_id,
         link:data.link,
         del: 0
     }
@@ -50,7 +50,7 @@ async updateImage(data) {
     })
 
     let dataUpdate = {
-        prodcut_id: data.prodcut_id,
+        product_id: data.product_id,
         link:data.link,
     }
     return await objUpdate.update(dataUpdate)
