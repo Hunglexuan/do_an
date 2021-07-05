@@ -108,8 +108,8 @@ app.get('/DashboardSeller', function(req, res) {
     return res.render('DashboardForSeller');
 });
 
-app.get('/ListSeller', function(req, res) {
-    return res.render('ListSeller');
+app.get('/ListUsers', function(req, res) {
+    return res.render('ListUsers');
 });
 
 
