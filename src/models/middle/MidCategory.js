@@ -11,6 +11,39 @@ import { password } from '../../config/database';
 import { name } from 'ejs';
 
 class MidCategory {
+    async searchCategory(data) {
+        let condition = {
+            del: 0
+        }
+        if (data.name) {
+            condition.name = {
+                [Op.like]: `%${data.name}%`
+            }
+        }
+
+        let { page, limit } = data;
+        page = page ? parseInt(page) : 1;
+        limit = limit ? parseInt(limit) : 10;
+
+        const [listCategory, total] = await Promise.all([
+            Category.findAll({
+                where: condition,
+                order: [[
+                    "createdAt", "DESC"
+                ]],
+                limit,
+                offset: (page - 1) * limit
+            }),
+            Category.count({
+                where: condition
+            })
+        ])
+        return {
+            listCategory,
+            total: total || 0
+        }
+
+    }
 async createCategory(data){
     if (!data.name) {
         throw new Error(ERROR_MESSAGE.ROLE.ROLE_NOT_EXIST);

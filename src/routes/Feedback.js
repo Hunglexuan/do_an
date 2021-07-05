@@ -7,6 +7,6 @@ let routerApp = new Router();
 
 
 routerApp.post('/create', Response(FeedbackController.createFeedback));
-
+routerApp.post('/searchfeedback', Response(FeedbackController.searchFeedback));
 
 export default routerApp;

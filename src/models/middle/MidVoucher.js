@@ -11,6 +11,39 @@ import { password } from '../../config/database';
 import { name } from 'ejs';
 
 class MidVoucher {
+    async searchVoucher(data) {
+        let condition = {
+            del: 0
+        }
+        if (data.name) {
+            condition.name = {
+                [Op.like]: `%${data.name}%`
+            }
+        }
+
+        let { page, limit } = data;
+        page = page ? parseInt(page) : 1;
+        limit = limit ? parseInt(limit) : 10;
+
+        const [listVoucher, total] = await Promise.all([
+            Voucher.findAll({
+                where: condition,
+                order: [[
+                    "createdAt", "DESC"
+                ]],
+                limit,
+                offset: (page - 1) * limit
+            }),
+            Voucher.count({
+                where: condition
+            })
+        ])
+        return {
+            listVoucher,
+            total: total || 0
+        }
+
+    }
 async createVoucher(data){
     if (!data.code) {
         throw new Error(ERROR_MESSAGE.VOUCHER.VOUCHER_CODE);

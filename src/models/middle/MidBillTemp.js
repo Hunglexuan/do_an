@@ -11,6 +11,40 @@ import { password } from '../../config/database';
 import { name } from 'ejs';
 
 class MidBillTemp {
+    async searchBillTemp(data) {
+        let condition = {
+            del: 0
+        }
+        if (data.name) {
+            condition.name = {
+                [Op.like]: `%${data.name}%`
+            }
+        }
+
+        let { page, limit } = data;
+        page = page ? parseInt(page) : 1;
+        limit = limit ? parseInt(limit) : 10;
+
+        const [listBillTemp, total] = await Promise.all([
+            BillTemp.findAll({
+                where: condition,
+                order: [[
+                    "createdAt", "DESC"
+                ]],
+                limit,
+                offset: (page - 1) * limit
+            }),
+            BillTemp.count({
+                where: condition
+            })
+        ])
+       
+        return {
+            listBillTemp,
+            total: total || 0
+        }
+
+    }
 async createBillTemp(data){
 
     if (!data.bill_id) {

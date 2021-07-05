@@ -11,6 +11,41 @@ import { password } from '../../config/database';
 import { name } from 'ejs';
 
 class MidReport {
+    async searchReport(data) {
+        let condition = {
+            del: 0
+        }
+        if (data.name) {
+            condition.name = {
+                [Op.like]: `%${data.name}%`
+            }
+        }
+
+        let { page, limit } = data;
+        page = page ? parseInt(page) : 1;
+        limit = limit ? parseInt(limit) : 10;
+
+        const [listReport, total] = await Promise.all([
+            Report.findAll({
+                where: condition,
+                order: [[
+                    "createdAt", "DESC"
+                ]],
+                limit,
+                offset: (page - 1) * limit
+            }),
+            Report.count({
+                where: condition
+            })
+        ])
+       
+
+        return {
+            listReport,
+            total: total || 0
+        }
+
+    }
     async getReportByUserId(userid) {
         return await Users.findOne({
             where: {
@@ -63,19 +98,7 @@ class MidReport {
 
         return await Report.create(dataCreate);
     }
-    async deleteRole(data) {
-        let objDelete = await Report.findOne({
-            where: {
-                id: data.id,
-                del: 0
-            }
-        })
-        let dataDelete = {
-            del: 1,
-        }
-    
-        objDelete.update(dataDelete)
-    }
+
     async updateReport(data) {
         if (!data.id) {
             throw new Error(ERROR_MESSAGE.REPORT.REPORT_EXIST);

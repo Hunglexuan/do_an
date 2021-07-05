@@ -8,7 +8,10 @@ async createBillTemp(req,res){
     let data = req.body;
     return MidBillTemp.createBillTemp(data);
 }
-
+async searchBillTemp(req, res) {
+    let dataQuery = req.query;
+    return MidBillTemp.searchBillTemp(dataQuery);
+}
 }
 
 export default new BillTempController();

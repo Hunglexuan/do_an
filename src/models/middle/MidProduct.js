@@ -11,6 +11,40 @@ import { password } from '../../config/database';
 import { name } from 'ejs';
 
 class MidProduct {
+    async searchProduct(data) {
+        let condition = {
+            del: 0
+        }
+        if (data.name) {
+            condition.name = {
+                [Op.like]: `%${data.name}%`
+            }
+        }
+
+        let { page, limit } = data;
+        page = page ? parseInt(page) : 1;
+        limit = limit ? parseInt(limit) : 10;
+
+        const [listProduct, total] = await Promise.all([
+            Product.findAll({
+                where: condition,
+                order: [[
+                    "createdAt", "DESC"
+                ]],
+                limit,
+                offset: (page - 1) * limit
+            }),
+            Product.count({
+                where: condition
+            })
+        ])
+       
+        return {
+            listProduct,
+            total: total || 0
+        }
+
+    }
 async createProduct(data){
     if (!data.name) {
         throw new Error(ERROR_MESSAGE.PRODUCT.PRODUCT_NAME);
@@ -27,24 +61,14 @@ async createProduct(data){
     if (!data.user_id) {
         throw new Error(ERROR_MESSAGE.PRODUCT.PRODUCT_USER_ID);
     }
-    if (!data.sale) {
-        throw new Error(ERROR_MESSAGE.PRODUCT.PRODUCT_SALE);
-    }
-    if (!data.sale_from) {
-        throw new Error(ERROR_MESSAGE.PRODUCT.PRODUCT_SALE_FROM);
-    }
-    if (!data.sale_to) {
-        throw new Error(ERROR_MESSAGE.PRODUCT.PRODUCT_SALE_TO);
-    }
+
     let dataCreate = {
         name: data.name,
         quantity: data.quantity,
         unit_price: data.unit_price,
         description: data.description,
         user_id: data.user_id,
-        sale: data.sale,
-        sale_from: data.sale_from,
-        sale_to: data.sale_to,
+
         del: 0
     }
     return await Product.create(dataCreate);
@@ -79,9 +103,7 @@ async updateProduct(data) {
         unit_price: data.unit_price,
         description: data.description,
         user_id: data.user_id,
-        sale: data.sale,
-        sale_from: data.sale_from,
-        sale_to: data.sale_to,
+
     }
     return await objUpdate.update(dataUpdate)
 

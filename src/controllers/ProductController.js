@@ -8,7 +8,10 @@ async createProduct(req,res){
     let data = req.body;
     return MidProduct.createProduct(data);
 }
-
+async searchProduct(req, res) {
+    let dataQuery = req.query;
+    return MidProduct.searchProduct(dataQuery);
+}
 }
 
 export default new ProductController();
