@@ -7,6 +7,6 @@ let routerApp = new Router();
 
 
 routerApp.post('/create', Response(VoucherController.createVoucher));
-
+routerApp.post('/createvoucher', Response(VoucherController.createVoucher));
 
 export default routerApp;

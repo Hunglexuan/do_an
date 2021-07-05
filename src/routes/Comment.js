@@ -7,6 +7,6 @@ let routerApp = new Router();
 
 
 routerApp.post('/create', Response(CommentController.createComment));
-
+routerApp.post('/createcomment', Response(CommentController.createComment));
 
 export default routerApp;

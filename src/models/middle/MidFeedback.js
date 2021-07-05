@@ -11,6 +11,42 @@ import { password } from '../../config/database';
 import { name } from 'ejs';
 
 class MidFeedback {
+    async searchFeedback(data) {
+        let condition = {
+            del: 0
+        }
+        if (data.name) {
+            condition.name = {
+                [Op.like]: `%${data.name}%`
+            }
+        }
+
+        let { page, limit } = data;
+        page = page ? parseInt(page) : 1;
+        limit = limit ? parseInt(limit) : 10;
+
+        const [listFeedback, total] = await Promise.all([
+            Feedback.findAll({
+                where: condition,
+                order: [[
+                    data.typeOrder === 'name' ? 'name' : 'createdAt',
+                    data.stateOrder === 'up' ? 'ASC' : 'DESC'
+                ]],
+                limit,
+                offset: (page - 1) * limit
+            }),
+            Feedback.count({
+                where: condition
+            })
+        ])
+       
+
+        return {
+            listFeedback,
+            total: total || 0
+        }
+
+    }
 async createFeedback(data){
     if (!data.user_id) {
         throw new Error(ERROR_MESSAGE.FEEDBACK.FEEDBACK_USER_ID);

@@ -8,7 +8,10 @@ async createVoucher(req,res){
     let data = req.body;
     return MidVoucher.createVoucher(data);
 }
-
+async searchVoucher(req, res) {
+    let dataQuery = req.query;
+    return MidVoucher.searchVoucher(dataQuery);
+}
 }
 
 export default new VoucherController();

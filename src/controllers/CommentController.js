@@ -8,7 +8,10 @@ async createComment(req,res){
     let data = req.body;
     return MidComment.createComment(data);
 }
-
+async searchComment(req, res) {
+    let dataQuery = req.query;
+    return MidComment.searchComment(dataQuery);
+}
 }
 
 export default new BillController();

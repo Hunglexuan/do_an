@@ -8,7 +8,10 @@ async createImage(req,res){
     let data = req.body;
     return MidImage.createImage(data);
 }
-
+async searchImage(req, res) {
+    let dataQuery = req.query;
+    return MidImage.searchImage(dataQuery);
+}
 }
 
 export default new BillController();

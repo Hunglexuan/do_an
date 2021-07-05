@@ -8,7 +8,10 @@ async createFeedback(req,res){
     let data = req.body;
     return MidFeedback.createFeedback(data);
 }
-
+async searchFeedback(req, res) {
+    let dataQuery = req.query;
+    return MidFeedback.searchFeedback(dataQuery);
+}
 }
 
 export default new FeedbackController();

@@ -8,7 +8,10 @@ async createCategory(req,res){
     let data = req.body;
     return MidCategory.createCategory(data);
 }
-
+async searchCategory(req, res) {
+    let dataQuery = req.query;
+    return MidCategory.searchCategory(dataQuery);
+}
 }
 
 export default new CategoryController();

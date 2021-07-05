@@ -29,7 +29,7 @@ class CustomerController {
     async createMobile(req, res) {
         let data = req.body;
         return await MidCustomer.createCustomerMobile(data);
-
+ 
     }
 
 }

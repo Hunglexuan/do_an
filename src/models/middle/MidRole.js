@@ -1,5 +1,5 @@
 import {
-    Role, Users
+    Role, Users, Voucher
 } from '../core';
 import { Op } from 'sequelize';
 import { checkPassword, hashPassword } from '../../libs/encrypt';
@@ -11,6 +11,42 @@ import { password } from '../../config/database';
 import { name } from 'ejs';
 
 class MidRole {
+    async searchRole(data) {
+        let condition = {
+            del: 0
+        }
+        if (data.name) {
+            condition.name = {
+                [Op.like]: `%${data.name}%`
+            }
+        }
+
+        let { page, limit } = data;
+        page = page ? parseInt(page) : 1;
+        limit = limit ? parseInt(limit) : 10;
+
+        const [listRole, total] = await Promise.all([
+            Role.findAll({
+                where: condition,
+                order: [[
+                    data.typeOrder === 'name' ? 'name' : 'createdAt',
+                    data.stateOrder === 'up' ? 'ASC' : 'DESC'
+                ]],
+                limit,
+                offset: (page - 1) * limit
+            }),
+            Role.count({
+                where: condition
+            })
+        ])
+       
+
+        return {
+            listRole,
+            total: total || 0
+        }
+
+    }
     async createRole(data) {
         if (!data.name) {
             throw new Error(ERROR_MESSAGE.ROLE.ROLE_NOT_EXIST);

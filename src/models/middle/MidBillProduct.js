@@ -11,6 +11,40 @@ import { password } from '../../config/database';
 import { name } from 'ejs';
 
 class MidBillProduct {
+    async searchBillProduct(data) {
+        let condition = {
+            del: 0
+        }
+        if (data.name) {
+            condition.name = {
+                [Op.like]: `%${data.name}%`
+            }
+        }
+
+        let { page, limit } = data;
+        page = page ? parseInt(page) : 1;
+        limit = limit ? parseInt(limit) : 10;
+
+        const [listBillProduct, total] = await Promise.all([
+            BillProduct.findAll({
+                where: condition,
+                order: [[
+                    data.typeOrder === 'name' ? 'name' : 'createdAt',
+                    data.stateOrder === 'up' ? 'ASC' : 'DESC'
+                ]],
+                limit,
+                offset: (page - 1) * limit
+            }),
+            BillProduct.count({
+                where: condition
+            })
+        ])
+        return {
+            listBillProduct,
+            total: total || 0
+        }
+
+    }
 async createBillProduct(data){
     if (!data.quantity) {
         throw new Error(ERROR_MESSAGE.BILL_PRODUCT.BILL_PRODUCT_QUANTITY);

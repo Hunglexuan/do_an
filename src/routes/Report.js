@@ -7,6 +7,6 @@ let routerApp = new Router();
 
 
 routerApp.post('/create', Response(ReportController.createReport));
-
+routerApp.post('/createreport', Response(ReportController.createReport));
 
 export default routerApp;
