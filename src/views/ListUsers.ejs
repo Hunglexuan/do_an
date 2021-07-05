@@ -17,7 +17,7 @@
    <!-- Bootstrap Css -->
    <link href="/skin/bootstrap/bootstrap.min.css" rel="stylesheet">
    <!-- Custom Css -->
-   <link href="/skin/css/listSeller.css" rel="stylesheet" />
+   <link href="/skin/css/listUser.css" rel="stylesheet" />
    <link href="/skin/bootstrap/dataTables.bootstrap4.min.css" rel="stylesheet"/>
 
 </head>
@@ -75,7 +75,7 @@
                </h6>
                <a class="dropdown-item d-flex align-items-center" href="#">
                   <div class="dropdown-list-image mr-3">
-                     <img class="rounded-circle" src="img/user/2.png" alt="">
+                     <img class="rounded-circle" src="/image/user/2.png" alt="">
                      <div class="status-indicator bg-success"></div>
                   </div>
                   <div class="font-weight-bold overflow-hidden">
@@ -86,7 +86,7 @@
                </a>
                <a class="dropdown-item d-flex align-items-center" href="#">
                   <div class="dropdown-list-image mr-3">
-                     <img class="rounded-circle" src="img/user/3.png" alt="">
+                     <img class="rounded-circle" src="/image/user/3.png" alt="">
                      <div class="status-indicator"></div>
                   </div>
                   <div class="overflow-hidden">
@@ -97,7 +97,7 @@
                </a>
                <a class="dropdown-item d-flex align-items-center" href="#">
                   <div class="dropdown-list-image mr-3">
-                     <img class="rounded-circle" src="img/user/4.png" alt="">
+                     <img class="rounded-circle" src="/image/user/4.png" alt="">
                      <div class="status-indicator bg-warning"></div>
                   </div>
                   <div class="overflow-hidden">
@@ -108,7 +108,7 @@
                </a>
                <a class="dropdown-item d-flex align-items-center" href="#">
                   <div class="dropdown-list-image mr-3">
-                     <img class="rounded-circle" src="img/user/5.png" alt="">
+                     <img class="rounded-circle" src="/image/user/5.png" alt="">
                      <div class="status-indicator bg-success"></div>
                   </div>
                   <div class="overflow-hidden">
@@ -172,13 +172,13 @@
          <li class="nav-item dropdown no-arrow ml-1 osahan-profile-dropdown">
             <a class="nav-link dropdown-toggle pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
                aria-expanded="false">
-               <img class="img-profile rounded-circle" src="img/user/1.png">
+               <img class="img-profile rounded-circle" src="/image/user/1.png">
             </a>
             <!-- Dropdown - User Information -->
             <div class="dropdown-menu dropdown-menu-right shadow-sm">
                <div class="p-3 d-flex align-items-center">
                   <div class="dropdown-list-image mr-3">
-                     <img class="rounded-circle" src="img/user/1.png" alt="">
+                     <img class="rounded-circle" src="/image/user/1.png" alt="">
                      <div class="status-indicator bg-success"></div>
                   </div>
                   <div class="font-weight-bold">
@@ -190,7 +190,8 @@
                <a class="dropdown-item" href="my-profile.html"><i class="feather-edit"></i> My Account</a>
                <a class="dropdown-item" href="my-profile.html"><i class="feather-settings"></i> Account Settings</a>
                <div class="dropdown-divider"></div>
-               <a class="dropdown-item" href="sign-in.html"><i class="feather-log-out"></i> Logout</a>
+               <a class="dropdown-item" ><i class="feather-log-out"></i> <button id="btn-logout">Log out</button> </a>
+                  
             </div>
          </li>
       </ul>
@@ -201,7 +202,7 @@
             <div class="sb-sidenav-menu">
                <div class="nav">
                   <div class="sb-sidenav-menu-heading">Core</div>
-                  <a class="nav-link" href="ListUser.html">
+                  <a class="nav-link" href="ListUsers.ejs">
                      <div class="sb-nav-link-icon"><i class="feather-list"></i></div>
                      List Of User
 
@@ -272,10 +273,7 @@
 
 
             </div>
-            <!-- <div class="form-group" style="margin-left : 35px">
-               <input type="search" style="width: 250px;" class="form-control form-control-dark" placeholder="Search..."
-                  aria-label="Search">
-            </div> -->
+            
 
 
             <div class="card-body">
@@ -301,14 +299,7 @@
                       
                      </tbody>
                   </table>
-                  <!-- <div class="d-flex">
-                     <div class="text-nowrap">Showing 1 to 10 of 10 entries</div>
-                     <div class="d-flex flex-row-reverse w-100">
-                        <button  class="btn btn-primary btn-sm mr-1">Previous </button>
-                        <button class="btn btn-primary btn-sm mr-1">PageIndex</button>
-                        <button class="btn btn-primary btn-sm mr-1">Next</button>
-                     </div>
-                  </div> -->
+                  
 
                </div>
             </div>
@@ -340,9 +331,9 @@
    <!-- Ajax Chart Js -->
    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
    <!-- Chart Js -->
-   <script src="/js/chart-area-demo.js"></script>
+   <!-- <script src="/js/chart-area-demo.js"></script>
    <script src="/js/chart-bar-demo.js"></script>
-   <script src="/js/chart-pie-demo.js"></script>
+   <script src="/js/chart-pie-demo.js"></script> -->
    <script src="/js/jquery.dataTables.min.js"></script>
    <script src="/js/dataTables.bootstrap.min.js"></script>
    <!-- <script src="/js/datatables-demo.js"></script> -->
@@ -368,13 +359,25 @@ function getCookie(cname) {
    }
    return "";
 }
+function setCookie(cname, cvalue, exdays) {
+    const d = new Date();
+    d.setTime(d.getTime() + (exdays*24*60*60*1000));
+    let expires = "expires="+ d.toUTCString();
+    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+    }
 
  var token = getCookie("token");
- 
+ $("#btn-logout").click(function(res){
+
+setCookie("token","",0);
+console.log(token);
+window.location = "/LoginAdmin"
+})
+
  $(document).ready(function() {
-    console.log(token);
+    
    $('#dataTable').DataTable( {
-      ajax: function (data, callback, settings) {
+      'ajax': function (data, callback, settings) {
       $.ajax({
         url: "http://localhost:3999/api/user/searchUser?token="+token,
       })
@@ -388,7 +391,7 @@ function getCookie(cname) {
       });
     },
     
-    columns:[
+    'columns':[
        {data : 'no'},
        {data : 'name'},
        {data : 'role_id'},
@@ -396,17 +399,61 @@ function getCookie(cname) {
        {data : 'phone'},
        {data : 'email'},
        {data : 'dob'},
-       {data : "<button>Click!</button>"}
+       {data : ""}
 
     ],
+    'columnDefs': [
+				{
+					targets: -1,
+					render: function (data, type, row, meta) {
+						return '<input type="button" class="show-user-id btn-primary mr-3" id=user-id-"' + meta.row + '" value="Show User Info"/>' +
+							'<input type="button" class="show-post-id btn-success mr-3 " id=post-"' + meta.row + '" value="Up Row"/>' +
+							'<input type="button" class="show-post-title btn-danger mr-3" id=post-"' + meta.row + '" value="Delete"/>';
+					}
+
+				}
+			]
    
    } );
 
-   $('#dataTable tbody').on( 'click', 'button', function () {
-        var data = table.row( $(this).parents('tr') ).data();
-        alert( data[0] +"'s salary is: "+ data[ 5 ] );
-    } );
+
+
+   $('#dataTable tbody').on('click', '.show-user-id', function () {
+			let id = $(this).attr('id').match(/\d+/)[0];
+			console.log('id: ', id);
+			let data = $('#dataTable').DataTable().row(id).data();
+			alert('User ID: ' + data.userId);
+		});
+
+
+		$('#dataTable tbody').on('click', '.show-post-id', function () {
+			let id = $(this).attr('id').match(/\d+/)[0];
+			let data = $('#dataTable').DataTable().row(id).data();
+         let id_User = data.id;
+         console.log("id = "+id_User);
+			alert('Post ID: ' + data.id);
+         console.log(data);
+         $.ajax({
+            url:'/api/user/upRole?token='+token+'&id='+id_User,
+            method:'GET',
+            
+         }).then(function(){
+            
+            window.location.reload();
+         })
+		});
+
+		$('#dataTable tbody').on('click', '.show-post-title', function () {
+			let id = $(this).attr('id').match(/\d+/)[0];
+			let data = $('#dataTable').DataTable().row(id).data();
+			alert('Post Title: ' + data.title);
+		});
+
+     
+
 } );
+
+     
    
 
  

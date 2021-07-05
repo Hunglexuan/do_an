@@ -12,13 +12,7 @@ import { password } from "../../config/database";
 import { name } from "ejs";
 import { find } from "lodash";
 
-var mysql = require('mysql');
-var connection = mysql.createConnection({
-    host: 'localhost',
-    user: 'hung',
-    password: '1234',
-    database: 'doan'
-});
+
 
 
 
