@@ -6,7 +6,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { Role } from './';
 /**
  * Define Users Model
- * 
+ *
  * @export
  * @class Users
  * @extends {BaseModel}
@@ -50,7 +50,6 @@ const attributes = {
         defaultValue: null
     },
     role_id: {
-
         type: DataTypes.UUID,
         allowNull: true,
         defaultValue: null
@@ -66,9 +65,7 @@ const attributes = {
     bill_id: {
         type: DataTypes.UUID,
         allowNull: true,
-
         defaultValue: null
-
 
 
     },
@@ -129,4 +126,4 @@ const options = {
 /**
  * Init Model
  */
-Users.init(attributes, { ...options, sequelize });
+Users.init(attributes, {...options, sequelize });

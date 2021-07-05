@@ -145,7 +145,7 @@ h6 {
 }
 
 .bg-image {
-    background-image: url('/image/daihocfpt.jpg');
+    background-image: url('/image/CocFPT.jpg');
     background-size: cover;
     background-position: center;
 }
@@ -247,7 +247,7 @@ h6 {
 
 .homepage-search-block {
     background-color: #eef0ef;
-    background-image: url("/template/img/header.jpg");
+    background-image: url("../../image/header.jpg");
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: 100% 100%;
@@ -1087,7 +1087,8 @@ small {
 }
 
 .osahan-user-media img {
-    width: 90px;
+    width: 200px;
+    height: 200px;
 }
 
 .card offer-card h5.card-title {
