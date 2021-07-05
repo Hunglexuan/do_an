@@ -7,6 +7,6 @@ let routerApp = new Router();
 
 
 routerApp.post('/create', Response(CategoryController.createCategory));
-routerApp.post('/createcategory', Response(CategoryController.createCategory));
+routerApp.post('/searchcategory', Response(CategoryController.searchCategory));
 
 export default routerApp;

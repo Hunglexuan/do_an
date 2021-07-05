@@ -29,8 +29,7 @@ class MidBill {
             Bill.findAll({
                 where: condition,
                 order: [[
-                    data.typeOrder === 'name' ? 'name' : 'createdAt',
-                    data.stateOrder === 'up' ? 'ASC' : 'DESC'
+                    "createdAt", "DESC"
                 ]],
                 limit,
                 offset: (page - 1) * limit

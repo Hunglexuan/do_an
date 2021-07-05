@@ -29,8 +29,7 @@ class MidReport {
             Report.findAll({
                 where: condition,
                 order: [[
-                    data.typeOrder === 'name' ? 'name' : 'createdAt',
-                    data.stateOrder === 'up' ? 'ASC' : 'DESC'
+                    "createdAt", "DESC"
                 ]],
                 limit,
                 offset: (page - 1) * limit
@@ -99,19 +98,7 @@ class MidReport {
 
         return await Report.create(dataCreate);
     }
-    async deleteRole(data) {
-        let objDelete = await Report.findOne({
-            where: {
-                id: data.id,
-                del: 0
-            }
-        })
-        let dataDelete = {
-            del: 1,
-        }
-    
-        objDelete.update(dataDelete)
-    }
+
     async updateReport(data) {
         if (!data.id) {
             throw new Error(ERROR_MESSAGE.REPORT.REPORT_EXIST);
