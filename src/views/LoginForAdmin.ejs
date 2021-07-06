@@ -1,27 +1,27 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
     <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="Askbootstrap">
-    <meta name="author" content="Askbootstrap">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="Askbootstrap" />
+    <meta name="author" content="Askbootstrap" />
     <title>FUMK - Online Food Ordering</title>
     <!-- Favicon Icon -->
-    <link rel="icon" type="image/png" href="image/favicon.png">
+    <link rel="icon" type="image/png" href="image/favicon.png" />
     <!-- Bootstrap core CSS-->
-    <link href="skin/bootstrap/bootstrap.min.css" rel="stylesheet">
+    <link href="skin/bootstrap/bootstrap.min.css" rel="stylesheet" />
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
     <!-- Font Awesome-->
-    <link href="skin/font/all.min.css" rel="stylesheet">
+    <link href="skin/font/all.min.css" rel="stylesheet" />
     <!-- Font Awesome-->
-    <link href="skin/font/icofont.min.css" rel="stylesheet">
+    <link href="skin/font/icofont.min.css" rel="stylesheet" />
     <!-- Select2 CSS-->
-    <link href="skin/font/select2.min.css" rel="stylesheet">
+    <link href="skin/font/select2.min.css" rel="stylesheet" />
     <!-- Custom styles for this template-->
-    <link href="skin/font/osahan.css" rel="stylesheet">
+    <link href="skin/font/osahan.css" rel="stylesheet" />
 </head>
 
 <body class="bg-white">
@@ -36,31 +36,42 @@
                                 <h3 class="login-heading mb-4">Welcome Admin FUMK</h3>
                                 <form name="myForm">
                                     <div class="form-label-group">
-                                        <input type="email" id="inputEmail" class="form-control" placeholder="Email address">
+                                        <input type="email" id="inputEmail" class="form-control" placeholder="Email address" />
                                         <label for="inputEmail">Email address</label>
                                     </div>
                                     <div class="form-label-group">
-                                        <input type="password" id="inputPassword" class="form-control" placeholder="Password">
+                                        <input type="password" id="inputPassword" class="form-control" placeholder="Password" />
                                         <label for="inputPassword">Password</label>
                                     </div>
                                     <div class="custom-control custom-checkbox mb-3">
-                                        <input type="checkbox" class="custom-control-input" id="customCheck1">
-                                        <label class="custom-control-label" for="customCheck1">Remember password</label>
-
-                                    </div>
-                                    <a class="btn btn-lg btn-outline-primary btn-block btn-login text-uppercase font-weight-bold mb-2" id="btn">Sign in</a>
-
-                                </form>
-
-                            </div>
-                        </div>
+                                        <input type="checkbox" class="custom-control-input" id="customCheck1" />
+                                        <label class="custom-control-label" for="customCheck1">Remember password</label
+                      >
                     </div>
+                    <a
+                      class="
+                        btn btn-lg btn-outline-primary btn-block btn-login
+                        text-uppercase
+                        font-weight-bold
+                        mb-2
+                      "
+                      id="btn"
+                      >Sign in</a
+                    >
+                  </form>
                 </div>
+              </div>
             </div>
+          </div>
         </div>
+      </div>
     </div>
     <!-- jQuery -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+      crossorigin="anonymous"
+    ></script>
     <!-- Bootstrap core JavaScript-->
     <script src="js/bootstrap.bundle.min.js"></script>
     <!-- Select2 JavaScript-->
@@ -68,16 +79,15 @@
     <!-- Custom scripts for all pages-->
     <script src="js/custom.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  </body>
 
-</body>
-
-<script>
+  <script>
     function checkBlankLogin() {
-        if ($("#inputEmail").val() == "") {
-            alert("Email is Blank please Input")
-        } else if ($("#inputPassword").val() == "") {
-            alert("Password is black please input")
-        }
+      if ($("#inputEmail").val() == "") {
+        alert("Email is Blank please Input");
+      } else if ($("#inputPassword").val() == "") {
+        alert("Password is black please input");
+      }
     }
 
     $("#btn").click(function() {
@@ -101,11 +111,30 @@
     })
 
     function setCookie(cname, cvalue, exdays) {
-        const d = new Date();
-        d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
-        let expires = "expires=" + d.toUTCString();
-        document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+      const d = new Date();
+      d.setTime(d.getTime() + exdays * 24 * 60 * 60 * 1000);
+      let expires = "expires=" + d.toUTCString();
+      document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
     }
-</script>
 
+    $("#btn").click(function () {
+      checkBlankLogin();
+      $.ajax({
+        url: "/api/auth/loginAdmin",
+        type: "POST",
+        data: {
+          email: $("#inputEmail").val(),
+          password: $("#inputPassword").val(),
+        },
+      }).then(function (data) {
+        if (data.message == "SUCCESS") {
+        setCookie("token",data.data.token,30)
+          window.location.href = "/ListUsers";
+
+        } else {
+          alert("Login Fail");
+        }
+      });
+    });
+  </script>
 </html>
