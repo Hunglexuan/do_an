@@ -46,6 +46,7 @@ class MidReport {
         }
 
     }
+
     async getReportByUserId(userid) {
         return await Users.findOne({
             where: {

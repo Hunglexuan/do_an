@@ -7,6 +7,7 @@ let routerApp = new Router();
 
 
 routerApp.post('/create', Response(ProductController.createProduct));
-routerApp.post('/searchproduct', Response(ProductController.searchProduct));
+routerApp.get('/searchproduct',isAuth, Response(ProductController.searchProduct));
+routerApp.get('/searchproductforseller',isAuth, Response(ProductController.searchProductforSeller));
 
 export default routerApp;

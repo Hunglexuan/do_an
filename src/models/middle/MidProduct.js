@@ -3,16 +3,65 @@ import {
 } from '../core';
 import { Op } from 'sequelize';
 import { checkPassword, hashPassword } from '../../libs/encrypt';
-import { generateToken } from '../../libs/token';
+import { generateToken,checkToken } from '../../libs/token';
 import { ERROR_MESSAGE } from '../../config/error';
 import { sendMailActiveOrder, sendMailForgotPassword } from '../../libs/sendmail';
 import { v4 as uuidv4 } from 'uuid';
 import { password } from '../../config/database';
 import { name } from 'ejs';
 
+
 class MidProduct {
     async searchProduct(data) {
         let condition = {
+            del: 0
+        }
+        if (data.name) {
+            condition.name = {
+                [Op.like]: `%${data.name}%`
+            }
+        }
+
+        let { page, limit } = data;
+        page = page ? parseInt(page) : 1;
+        limit = limit ? parseInt(limit) : 10;
+
+        const [listProduct, total] = await Promise.all([
+            Product.findAll({
+                where: condition,
+                order: [[
+                    "createdAt", "DESC"
+                ]],
+                limit,
+                offset: (page - 1) * limit
+            }),
+            Product.count({
+                where: condition
+            })
+        ])
+       
+        return {
+            listProduct,
+            total: total || 0
+        }
+
+    }
+    async searchProductforSeller(data,tokenUser) {
+
+        let token = await checkToken(tokenUser)
+        console.log("111111111111111",token.userid)
+        let user = await Users.findOne({
+            where: {
+                
+                id : token.userid,
+                del: 0,
+            },
+        });
+        if(!user.role_id){
+            throw new Error("invalid role");
+        }
+        let condition = {
+            user_id: user.id,
             del: 0
         }
         if (data.name) {

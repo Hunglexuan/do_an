@@ -62,13 +62,7 @@ const attributes = {
         defaultValue: null
 
     },
-    bill_id: {
-        type: DataTypes.UUID,
-        allowNull: true,
-        defaultValue: null
 
-
-    },
     avatar: {
         type: DataTypes.STRING(255),
         allowNull: true,
