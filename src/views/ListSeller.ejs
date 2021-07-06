@@ -379,7 +379,7 @@ window.location = "/LoginAdmin"
    $('#dataTable').DataTable( {
       'ajax': function (data, callback, settings) {
       $.ajax({
-        url: "http://localhost:3999/api/user/searchUser?token="+token,
+        url: "http://localhost:3999/api/user/searchSeller?token="+token,
       })
       .then ( function( response, textStatus, jqXHR ) {
          
@@ -434,7 +434,7 @@ window.location = "/LoginAdmin"
 			alert('Post ID: ' + data.id);
          console.log(data);
          $.ajax({
-            url:'/api/user/upRole?token='+token+'&id='+id_User,
+            url:'/api/user/downRole?token='+token+'&id='+id_User,
             method:'GET',
             
          }).then(function(){

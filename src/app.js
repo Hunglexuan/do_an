@@ -112,6 +112,10 @@ app.get('/ListUsers', function(req, res) {
     return res.render('ListUsers');
 });
 
+app.get('/ListSeller', function(req, res) {
+    return res.render('ListSeller');
+});
+
 
 
 app.get('/admin', function(req, res) {
