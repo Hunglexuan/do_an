@@ -125,6 +125,7 @@ class MidUser {
             token,
         };
     }
+
     async loginAdmin(credentials) {
         const { email, password } = credentials;
 

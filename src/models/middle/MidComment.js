@@ -11,11 +11,46 @@ import { password } from '../../config/database';
 import { name } from 'ejs';
 
 class MidComment {
+    async searchComment(data) {
+        let condition = {
+            del: 0
+        }
+        if (data.name) {
+            condition.name = {
+                [Op.like]: `%${data.name}%`
+            }
+        }
+
+        let { page, limit } = data;
+        page = page ? parseInt(page) : 1;
+        limit = limit ? parseInt(limit) : 10;
+
+        const [listComment, total] = await Promise.all([
+            Comment.findAll({
+                where: condition,
+                order: [[
+                    "createdAt", "DESC"
+                ]],
+                limit,
+                offset: (page - 1) * limit
+            }),
+            Comment.count({
+                where: condition
+            })
+        ])
+       
+
+        return {
+            listComment,
+            total: total || 0
+        }
+
+    }
 async createComment(data){
     if (!data.user_id) {
         throw new Error(ERROR_MESSAGE.COMMENT.COMMENT_USER_ID);
     }
-    if (!data.shop_id) {
+    if (!data.product_id) {
         throw new Error(ERROR_MESSAGE.COMMENT.COMMNET_SHOP_ID);
     }
     if (!data.content) {
@@ -23,8 +58,9 @@ async createComment(data){
     }
     let dataCreate = {
         user_id: data.user_id,
-        shop_id: data.shop_id,
+        product_id: data.product_id,
         content: data.content,
+        cmt_id: data.cmt_id,
         del: 0
     }
     return await Comment.create(dataCreate);
@@ -55,8 +91,9 @@ async updateComment(data) {
 
     let dataUpdate = {
         user_id: data.user_id,
-        shop_id: data.shop_id,
+        product_id: data.product_id,
         content: data.content,
+        cmt_id: data.cmt_id,
     }
     return await objUpdate.update(dataUpdate)
 

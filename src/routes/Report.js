@@ -7,6 +7,7 @@ let routerApp = new Router();
 
 
 routerApp.post('/create', Response(ReportController.createReport));
-
+routerApp.get('/search', Response(ReportController.searchReport));
+routerApp.get('/getById', Response(ReportController.getReportById));
 
 export default routerApp;

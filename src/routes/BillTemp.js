@@ -7,6 +7,6 @@ let routerApp = new Router();
 
 
 routerApp.post('/create', Response(BillTemptController.createBillTemp));
-
+routerApp.post('/searchbilltemp', Response(BillTemptController.searchBillTemp));
 
 export default routerApp;
