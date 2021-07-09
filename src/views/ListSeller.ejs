@@ -29,13 +29,13 @@
             class="fas fa-bars"></i></button>
       <!-- Navbar Search-->
       <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
-         <div class="input-group">
+         <!-- <div class="input-group">
             <input class="form-control" type="text" placeholder="Search for..." aria-label="Search"
                aria-describedby="basic-addon2" />
             <div class="input-group-append">
                <button class="btn btn-primary btn-sm" type="button"><i class="feather-search"></i></button>
             </div>
-         </div>
+         </div> -->
       </form>
       <!-- Navbar-->
       <ul class="navbar-nav ml-auto ml-md-0">
@@ -44,82 +44,9 @@
                aria-haspopup="true" aria-expanded="false">
                <i class="feather-search mr-2"></i>
             </a>
-            <!-- Dropdown - Messages -->
-            <div class="dropdown-menu dropdown-menu-right p-3 shadow-sm animated--grow-in"
-               aria-labelledby="searchDropdown">
-               <form class="form-inline mr-auto w-100 navbar-search">
-                  <div class="input-group">
-                     <input type="text" class="form-control border-0 shadow-none"
-                        placeholder="Search people, jobs and more..." aria-label="Search"
-                        aria-describedby="basic-addon2">
-                     <div class="input-group-append">
-                        <button class="btn" type="button">
-                           <i class="feather-search"></i>
-                        </button>
-                     </div>
-                  </div>
-               </form>
-            </div>
+         
          </li>
-         <li class="nav-item dropdown no-arrow mx-1 osahan-list-dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
-               aria-expanded="false">
-               <i class="feather-message-square"></i>
-               <!-- Counter - Alerts -->
-               <span class="badge badge-danger badge-counter">8</span>
-            </a>
-            <!-- Dropdown - Alerts -->
-            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow-sm">
-               <h6 class="dropdown-header">
-                  Message Center
-               </h6>
-               <a class="dropdown-item d-flex align-items-center" href="#">
-                  <div class="dropdown-list-image mr-3">
-                     <img class="rounded-circle" src="/image/user/2.png" alt="">
-                     <div class="status-indicator bg-success"></div>
-                  </div>
-                  <div class="font-weight-bold overflow-hidden">
-                     <div class="text-truncate">Hi there! I am wondering if you can help me with a problem I've been
-                        having.</div>
-                     <div class="small text-gray-500">Emily Fowler · 58m</div>
-                  </div>
-               </a>
-               <a class="dropdown-item d-flex align-items-center" href="#">
-                  <div class="dropdown-list-image mr-3">
-                     <img class="rounded-circle" src="/image/user/3.png" alt="">
-                     <div class="status-indicator"></div>
-                  </div>
-                  <div class="overflow-hidden">
-                     <div class="text-truncate">I have the photos that you ordered last month, how would you like them
-                        sent to you?</div>
-                     <div class="small text-gray-500">Jae Chun · 1d</div>
-                  </div>
-               </a>
-               <a class="dropdown-item d-flex align-items-center" href="#">
-                  <div class="dropdown-list-image mr-3">
-                     <img class="rounded-circle" src="/image/user/4.png" alt="">
-                     <div class="status-indicator bg-warning"></div>
-                  </div>
-                  <div class="overflow-hidden">
-                     <div class="text-truncate">Last month's report looks great, I am very happy with the progress so
-                        far, keep up the good work!</div>
-                     <div class="small text-gray-500">Morgan Alvarez · 2d</div>
-                  </div>
-               </a>
-               <a class="dropdown-item d-flex align-items-center" href="#">
-                  <div class="dropdown-list-image mr-3">
-                     <img class="rounded-circle" src="/image/user/5.png" alt="">
-                     <div class="status-indicator bg-success"></div>
-                  </div>
-                  <div class="overflow-hidden">
-                     <div class="text-truncate">Am I a good boy? The reason I ask is because someone told me that people
-                        say this to all dogs, even if they aren't good...</div>
-                     <div class="small text-gray-500">Chicken the Dog · 2w</div>
-                  </div>
-               </a>
-               <a class="dropdown-item text-center small text-gray-500" href="#">Read More Messages</a>
-            </div>
-         </li>
+         
          <li class="nav-item dropdown no-arrow mx-1 osahan-list-dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
                aria-expanded="false">
@@ -202,21 +129,28 @@
             <div class="sb-sidenav-menu">
                <div class="nav">
                   <div class="sb-sidenav-menu-heading">Core</div>
-                  <a class="nav-link" href="ListUsers.ejs">
+                  <a class="nav-link" onclick="listUserPage()">
                      <div class="sb-nav-link-icon"><i class="feather-list"></i></div>
                      List Of User
-
-                  </a>
-                  <a class="nav-link" href="ListSeller.html">
+                   </a>
+                   <a class="nav-link" onclick="listSellerPage()">
                      <div class="sb-nav-link-icon"><i class="feather-list"></i></div>
                      List Of Seller
-
-                  </a>
-                  <a class="nav-link" href="ListVoucher.html">
+                   </a>
+     
+                   <a class="nav-link" onclick="listVoucherPage()">
                      <div class="sb-nav-link-icon"><i class="feather-list"></i></div>
                      List Of Voucher
-
-                  </a>
+                   </a>
+     
+                   <a class="nav-link"onclick="AddRolePage()">
+                     <div class="sb-nav-link-icon"><i class="feather-list"></i></div>
+                     Add Role
+                   </a>
+                   <a class="nav-link" onclick="listReportPage()">
+                     <div class="sb-nav-link-icon"><i class="feather-list"></i></div>
+                     Report List
+                   </a>
 
                   <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne"
                      data-parent="#sidenavAccordion">
@@ -261,9 +195,9 @@
                </div>
             </div>
             <div class="sb-sidenav-footer">
-               <div class="small">Logged in as:</div>
+               <!-- <div class="small">Logged in as:</div>
                Ask Bootstrap
-            </div>
+            </div> -->
          </nav>
       </div>
       <div id="layoutSidenav_content">
@@ -374,6 +308,24 @@ console.log(token);
 window.location = "/LoginAdmin"
 })
 
+function listUserPage(){
+   window.location.href='/ListUsers'
+} 
+function listSellerPage(){
+   window.location.href='/ListSeller'
+} 
+function listVoucherPage(){
+   window.location.href='/ListVoucher'
+} 
+
+function AddRolePage(){
+   window.location.href='/AddRole'
+} 
+
+function listReportPage(){
+   window.location.href='/ListReport'
+} 
+
  $(document).ready(function() {
     
    $('#dataTable').DataTable( {
@@ -407,8 +359,8 @@ window.location = "/LoginAdmin"
 					targets: -1,
 					render: function (data, type, row, meta) {
 						return '<input type="button" class="show-user-id btn-primary mr-3" id=user-id-"' + meta.row + '" value="Show User Info"/>' +
-							'<input type="button" class="show-post-id btn-success mr-3 " id=post-"' + meta.row + '" value="Up Row"/>' +
-							'<input type="button" class="show-post-title btn-danger mr-3" id=post-"' + meta.row + '" value="Delete"/>';
+							'<input type="button" class="show-post-id btn-success mr-3 " id=post-"' + meta.row + '" value="Down Role"/>' ;
+							
 					}
 
 				}
@@ -430,9 +382,8 @@ window.location = "/LoginAdmin"
 			let id = $(this).attr('id').match(/\d+/)[0];
 			let data = $('#dataTable').DataTable().row(id).data();
          let id_User = data.id;
-         console.log("id = "+id_User);
-			alert('Post ID: ' + data.id);
-         console.log(data);
+        
+         
          $.ajax({
             url:'/api/user/downRole?token='+token+'&id='+id_User,
             method:'GET',
@@ -444,9 +395,7 @@ window.location = "/LoginAdmin"
 		});
 
 		$('#dataTable tbody').on('click', '.show-post-title', function () {
-			let id = $(this).attr('id').match(/\d+/)[0];
-			let data = $('#dataTable').DataTable().row(id).data();
-			alert('Post Title: ' + data.title);
+		
 		});
 
      

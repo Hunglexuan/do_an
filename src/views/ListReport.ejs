@@ -198,7 +198,7 @@
       <div id="layoutSidenav_content">
          <main>
             <div class="container-fluid">
-               <h1 class="mt-4">User Managerment</h1>
+               <h1 class="mt-4">Report List</h1>
 
 
             </div>
@@ -329,26 +329,27 @@ function logOutClick(){
    $('#dataTable').DataTable( {
       'ajax': function (data, callback, settings) {
       $.ajax({
-        url: "http://localhost:3999/api/user/searchUser?token="+token,
+        url: "http://localhost:3999/api/report/search?token="+token,
       })
       .then ( function( response, textStatus, jqXHR ) {
-         
-         let data = response.data.listUsers
+        
+         let data = response.data.listReport
 		   data.forEach((val, idx) => {
              val.no = idx + 1
          });
          callback({"data": data});
+         
       });
     },
     
     'columns':[
        {data : 'no'},
-       {data : 'name'},
-       {data : 'role_id'},
-       {data : 'address'},
-       {data : 'phone'},
-       {data : 'email'},
-       {data : 'dob'},
+       {data : 'user_id'},
+       {data : 'shop_id'},
+       {data : 'type_report'},
+       {data : 'content'},
+       {data : 'createdAt'},
+       {data : 'updatedAt'},
        {data : ""}
 
     ],
@@ -356,9 +357,8 @@ function logOutClick(){
 				{
 					targets: -1,
 					render: function (data, type, row, meta) {
-						return '<input type="button" class="show-user-id btn-primary mr-3" id=user-id-"' + meta.row + '" value="Show User Info"/>' +
-							'<input type="button" class="show-post-id btn-success mr-3 " id=post-"' + meta.row + '" value="Up Row"/>' +
-							'<input type="button"  class="show-post-title btn-danger mr-3" id=post-"' + meta.row + '" value="Delete"/>';
+						return '<input type="button" class="show-report-detail btn-primary mr-3" id=user-id-"' + meta.row + '" value="Show Repot Detail"/>' 
+							;
 					}
 
 				}
@@ -368,45 +368,25 @@ function logOutClick(){
 
 
 
-   $('#dataTable tbody').on('click', '.show-user-id', function () {
-			let id = $(this).attr('id').match(/\d+/)[0];
-			console.log('id: ', id);
-			let data = $('#dataTable').DataTable().row(id).data();
-			alert('User ID: ' + data.userId);
-		});
+   
 
 
-		$('#dataTable tbody').on('click', '.show-post-id', function () {
+		$('#dataTable tbody').on('click', '.show-report-detail', function () {
 			let id = $(this).attr('id').match(/\d+/)[0];
 			let data = $('#dataTable').DataTable().row(id).data();
-         let id_User = data.id;
-         console.log("id = "+id_User);
-			alert('Post ID: ' + data.id);
-         console.log(data);
+            let id_report = data.id;
+        
          $.ajax({
-            url:'/api/user/downRole?token='+token+'&id='+id_User,
+            url:'/api/report/getById?token='+token+'&id='+id_report,
             method:'GET',
             
-         }).then(function(){
+         }).then(function(data){
             
-            window.location.reload();
+           console.log(data.data);
+           alert(data.data);
          })
 		});
 
-		$('#dataTable tbody').on('click', '.show-post-title', function () {
-         let id = $(this).attr('id').match(/\d+/)[0];
-			let data = $('#dataTable').DataTable().row(id).data();
-         let id_User = data.id;
-         
-         $.ajax({
-            url:'/api/user/delete?token='+token+'&id='+id_User,
-            method:'GET',
-            
-         }).then(function(){
-            
-            window.location.reload();
-         })
-		});
 
      
 

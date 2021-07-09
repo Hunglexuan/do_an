@@ -69,6 +69,9 @@ h6 {
     background: #fff none repeat scroll 0 0 !important;
     padding: 0;
     z-index: 9;
+    position: fixed;
+    top: 0;
+    width: 100%;
 }
 
 .osahan-nav .nav-link {
@@ -706,6 +709,7 @@ small {
 
 .restaurant-detailed-banner {
     position: relative;
+    margin-top: 70px;
 }
 
 .restaurant-detailed-banner .img-fluid.cover {

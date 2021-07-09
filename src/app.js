@@ -116,6 +116,18 @@ app.get('/ListSeller', function(req, res) {
     return res.render('ListSeller');
 });
 
+app.get('/AddRole', function(req, res) {
+    return res.render('AddRole');
+});
+
+app.get('/ListReport', function(req, res) {
+    return res.render('ListReport');
+});
+
+app.get('/ListVoucher', function(req, res) {
+    return res.render('ListVoucher');
+});
+
 
 
 app.get('/admin', function(req, res) {
