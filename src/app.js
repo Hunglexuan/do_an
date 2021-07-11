@@ -43,11 +43,17 @@ app.use(express.static(path.join(__dirname, '../media')))
 // Setup other routes
 app.use('/api', routes);
 
+app.get('/home', function(req, res) {
+    return res.render('home');
+});
+
 app.get('/index', function(req, res) {
-
     return res.render('index');
+});
 
 
+app.get('/AllProduct', function(req, res) {
+    return res.render('AllProduct');
 });
 
 app.get('/resetPass', function(req, res) {
