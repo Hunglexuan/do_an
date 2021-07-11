@@ -231,16 +231,15 @@
                                             </div>
                                             <div class="p-3 position-relative">
                                                 <div class="list-card-body">
-                                                    <h6 class="mb-1"><a href="#" class="text-black">Bite Me Sandwiches</a></h6>
+                                                    <h6 class="mb-1"><a href="#" class="text-black" id="nameProduct">Bite Me Sandwiches</a></h6>
                                                     <p class="text-gray mb-2">North Indian • Indian</p>
                                                     <p class="text-gray time mb-0"><a class="btn btn-link btn-sm pl-0 text-black pr-0" href="#">$550 </a> <span class="badge badge-success">NEW</span> <span class="float-right">
                                                         <span class="count-number">
-                                             <button class="btn btn-outline-secondary  btn-sm left dec"> <i class="icofont-minus"></i> </button>
-                                             <input class="count-number-input" type="text" value="1" readonly="">
-                                             <button class="btn btn-outline-secondary btn-sm right inc"> <i class="icofont-plus"></i> </button>
-                                             <input type="button" value="ADD" id="add" class="btn btn-outline-secondary btn-sm"></input>
-                                             </span>
-
+                                                            <button class="btn btn-outline-secondary  btn-sm left dec" id="minus" onclick="minus()"> <i class="icofont-minus"></i> </button>
+                                                            <input class="count-number-input" type="text" value="1" readonly="" id="quantity1">
+                                                            <button class="btn btn-outline-secondary btn-sm right inc" id="plus" onclick="plus()"> <i class="icofont-plus"></i> </button>
+                                                            <button value="ADD" id="1" class="btn btn-outline-secondary btn-sm" onclick="addProduct(nameItem)" > ADD </button>
+                                                        </span>
                                                         </span>
                                                     </p>
                                                 </div>
@@ -264,7 +263,7 @@
                                              <button class="btn btn-outline-secondary  btn-sm left dec"> <i class="icofont-minus"></i> </button>
                                              <input class="count-number-input" type="text" value="1" readonly="">
                                              <button class="btn btn-outline-secondary btn-sm right inc"> <i class="icofont-plus"></i> </button>
-                                             <a class="btn btn-outline-secondary btn-sm" href="#">ADD</a>
+                                             <button value="ADD" id="2" class="btn btn-outline-secondary btn-sm" onclick="addProduct()" > ADD </button>
                                              </span>
 
                                                         </span>
@@ -290,7 +289,7 @@
                                              <button class="btn btn-outline-secondary  btn-sm left dec"> <i class="icofont-minus"></i> </button>
                                              <input class="count-number-input" type="text" value="1" readonly="">
                                              <button class="btn btn-outline-secondary btn-sm right inc"> <i class="icofont-plus"></i> </button>
-                                             <a class="btn btn-outline-secondary btn-sm" href="#">ADD</a>
+                                             <button value="ADD" id="3" class="btn btn-outline-secondary btn-sm" onclick="addProduct()" > ADD </button>
                                              </span>
                                                         </span>
                                                     </p>
@@ -646,9 +645,70 @@
             if (token == "") {
                 window.location.href = '/LoginUser';
             } else {
-                alert('Add to checkOut');
+
             }
         })
+
+        var nameItem = document.getElementById('nameProduct').textContent;
+        var quantityItem = document.getElementById('quantity1').value;
+
+        var clicks = 1;
+
+        function plus() {
+            clicks += 1;
+            document.getElementById("quantity1").setAttribute('value', clicks);
+        };
+
+        function minus() {
+            clicks -= 1;
+            document.getElementById("quantity1").setAttribute('value', clicks);
+        }
+
+        function addProduct(nameItem) {
+            var listItemCard = getListCard();
+            var checkItemCard = false;
+
+            for (var i = 0; i < listItemCard.length; i++) {
+                if (listItemCard[i].name == nameItem) {
+                    listItemCard[i].quantity += clicks;
+                    checkItemCard = true;
+                }
+            }
+            if (checkItemCard == false) {
+                var itemCard = createItemCard(nameItem, 1);
+                listItemCard.push(itemCard);
+
+            }
+
+            saveLocalStorage(listItemCard);
+
+        }
+
+
+
+        var keylocalstoragecard = 'listItemCard';
+
+        function createItemCard(nameItem, quantityItem) {
+            var itemCard = new Object()
+            itemCard.name = nameItem;
+            itemCard.quantity = quantityItem;
+            return itemCard;
+        }
+
+        function getListCard() {
+            var listItemCard = new Array()
+
+            var jsonListItemCard = localStorage.getItem(keylocalstoragecard);
+            if (jsonListItemCard != null) {
+                listItemCard = JSON.parse(jsonListItemCard);
+            }
+            return listItemCard;
+        }
+
+        function saveLocalStorage(listItemCard) {
+            var jsonListCard = JSON.stringify(listItemCard);
+            localStorage.setItem(keylocalstoragecard, jsonListCard);
+        }
     </script>
 
 </body>
