@@ -418,7 +418,223 @@ function logOutClick(){
  
 
 
+<<<<<<< HEAD
 
+=======
+    var token = getCookie("token");
+    $("#btn-logout").click(function(res) {
+        setCookie("token", "", 0);
+        console.log(token);
+        window.location = "/LoginAdmin"
+    })
+
+    $(document).ready(function() {
+
+        $('#dataTable').DataTable({
+            'ajax': function(data, callback, settings) {
+                $.ajax({
+                        url: "http://localhost:3999/api/user/searchUser?token=" + token,
+                    })
+                    .then(function(response, textStatus, jqXHR) {
+
+                        let data = response.data.listUsers
+                        data.forEach((val, idx) => {
+                            val.no = idx + 1
+                        });
+                        callback({
+                            "data": data
+                        });
+                    });
+            },
+
+            'columns': [{
+                    data: 'no'
+                }, {
+                    data: 'name'
+                }, {
+                    data: 'role_id'
+                }, {
+                    data: 'address'
+                }, {
+                    data: 'phone'
+                }, {
+                    data: 'email'
+                }, {
+                    data: 'dob'
+                }, {
+                    data: ""
+                }
+
+            ],
+            'columnDefs': [{
+                targets: -1,
+                render: function(data, type, row, meta) {
+                    return '<input type="button" class="show-user-id btn-primary mr-3" id=user-id-"' + meta.row + '" value="Show User Info"/>' +
+                        '<input type="button" class="show-post-id btn-success mr-3 " id=post-"' + meta.row + '" value="Up Row"/>' +
+                        '<input type="button" class="show-post-title btn-danger mr-3" id=post-"' + meta.row + '" value="Delete"/>';
+                }
+
+            }]
+
+        });
+
+
+
+        $('#dataTable tbody').on('click', '.show-user-id', function() {
+            let id = $(this).attr('id').match(/\d+/)[0];
+            console.log('id: ', id);
+            let data = $('#dataTable').DataTable().row(id).data();
+            alert('User ID: ' + data.userId);
+        });
+
+
+        $('#dataTable tbody').on('click', '.show-post-id', function() {
+            let id = $(this).attr('id').match(/\d+/)[0];
+            let data = $('#dataTable').DataTable().row(id).data();
+            let id_User = data.id;
+            console.log("id = " + id_User);
+            alert('Post ID: ' + data.id);
+            console.log(data);
+            $.ajax({
+                url: '/api/user/upRole?token=' + token + '&id=' + id_User,
+                method: 'GET',
+
+            }).then(function() {
+
+                window.location.reload();
+            })
+        });
+
+        $('#dataTable tbody').on('click', '.show-post-title', function() {
+            let id = $(this).attr('id').match(/\d+/)[0];
+            let data = $('#dataTable').DataTable().row(id).data();
+            alert('Post Title: ' + data.title);
+        });
+
+
+
+    });
+
+
+
+
+
+
+    // $.ajax ({
+    //    url:'/api/user/searchUser?token='+token,
+    //    method : 'GET'
+    // }).then(function(data){
+    //    console.log(token);
+    //    console.log(data);
+    //    console.log("111111");
+    //    if(data.message == 'SUCCESS'){
+    //       console.log(data.data);
+    //       for(var i = 0 ; i < data.data.listUsers.length;i++){
+    //          var user = data.data.listUsers[i];
+    //          console.log(user);
+    //          var template = `
+    //          <tr>
+    //                         <td>${i}</td>
+    //                         <td> ${user.name}	</td>
+    //                         <td>${user.role_id}</td>
+    //                         <td>${user.address}</td>
+    //                         <td>${user.phone}</td>
+    //                         <td>${user.email}</td>
+    //                         <td>${new Date(user.dob).toLocaleDateString() }</td>
+
+    //                         <td style="display: flex;">
+    //                            <div class="modal fade" id="exampleModal1" tabindex="-1"
+    //                               aria-labelledby="exampleModalLabel" aria-hidden="true">
+    //                               <div class="modal-dialog">
+    //                                  <div class="modal-content">
+    //                                     <div class="modal-header">
+    //                                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+    //                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+    //                                           <span aria-hidden="true">&times;</span>
+    //                                        </button>
+    //                                     </div>
+    //                                     <div class="modal-body">
+    //                                        Manh An Cut
+    //                                     </div>
+    //                                     <div class="modal-footer">
+
+    //                                        <button type="button" class="btn btn-primary">Ok</button>
+    //                                     </div>
+    //                                  </div>
+    //                               </div>
+    //                            </div>
+    //                            <button type="button" class="btn btn-primary btn-sm mr-3" data-toggle="modal"
+    //                               data-target="#exampleModal1">
+    //                               View
+    //                            </button>
+    //                            <div class="modal fade" id="exampleModal2" tabindex="-1"
+    //                               aria-labelledby="exampleModalLabel" aria-hidden="true">
+    //                               <div class="modal-dialog">
+    //                                  <div class="modal-content">
+    //                                     <div class="modal-header">
+    //                                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+    //                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+    //                                           <span aria-hidden="true">&times;</span>
+    //                                        </button>
+    //                                     </div>
+    //                                     <div class="modal-body">
+    //                                        May Chac Chua ?
+    //                                     </div>
+    //                                     <div class="modal-footer">
+    //                                        <button type="button" class="btn btn-secondary"
+    //                                           data-dismiss="modal">No</button>
+    //                                        <button type="button" class="btn btn-primary">Yes</button>
+    //                                     </div>
+    //                                  </div>
+    //                               </div>
+    //                            </div>
+    //                            <button type="button" class="btn btn-danger btn-sm mr-3" data-toggle="modal"
+    //                               data-target="#exampleModal2">
+    //                               Delete
+    //                            </button>
+    //                            <div class="modal fade" id="exampleModal3" tabindex="-1"
+    //                               aria-labelledby="exampleModalLabel" aria-hidden="true">
+    //                               <div class="modal-dialog">
+    //                                  <div class="modal-content">
+    //                                     <div class="modal-header">
+    //                                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+    //                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+    //                                           <span aria-hidden="true">&times;</span>
+    //                                        </button>
+    //                                     </div>
+    //                                     <div class="modal-body">
+    //                                        May Chac Chua
+    //                                     </div>
+    //                                     <div class="modal-footer">
+    //                                        <button type="button" class="btn btn-secondary"
+    //                                           data-dismiss="modal">No</button>
+    //                                        <button type="button" class="btn btn-primary">Yes</button>
+    //                                     </div>
+    //                                  </div>
+    //                               </div>
+    //                            </div>
+    //                            <button type="button" class="btn btn-success btn-sm mr-3" data-toggle="modal"
+    //                               data-target="#exampleModal3">
+    //                               ChangeToUser
+    //                            </button>
+
+    //                         </td>
+    //                      </tr>
+    //          `
+    //         $("tbody").append(template)
+    //       }
+    //    }
+    // })
+
+
+    //                         </td>
+    //                      </tr>
+    //          `
+    //         $("tbody").append(template)
+    //       }
+    //    }
+    // })
+>>>>>>> 8ae662a4e0fe96e6cb3a387808ea8cdd5eea0ffa
 </script>
 
 </html>
