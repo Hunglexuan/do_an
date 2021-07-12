@@ -645,7 +645,6 @@
 
         var token = getCookie("token");
 
-<<<<<<< HEAD
         // $('#add').click(function() {
         //     if (token == "") {
         //         window.location.href = '/LoginUser';
@@ -655,26 +654,25 @@
         // })
         var array = [];
 
-        function addProduct(product){
+        function addProduct(product) {
             product = {
-                name:'aaaaa',
-                id :'1',
-                unit:'2',
-                price:'3000'
+                name: 'aaaaa',
+                id: '1',
+                unit: '2',
+                price: '3000'
             }
             array.push(product);
             //array sẽ lưu ở localStorage
             // b1: lấy array ở localStorage,
             $(this).attr("thuộc tính lưu trữ số lượng sản phẩm")
-            //check số lượng = 0 => remove bỏ thanhwgf spham khổi array
-            //sô lượng > 0 => push vào arry
+                //check số lượng = 0 => remove bỏ thanhwgf spham khổi array
+                //sô lượng > 0 => push vào arry
             console.log(product, "produ")
             $(".dropdown-cart-top-body").append(`<p class="mb-2"><i class="icofont-ui-press text-danger food-item"></i> ${product.name} x ${product.unit}    <span class="float-right text-secondary">${product.price}</span></p>`)
-            //push array lại vào localstorage
-            //
+                //push array lại vào localstorage
+                //
         }
 
-=======
         $('#add').click(function() {
             if (token == "") {
                 window.location.href = '/LoginUser';
@@ -743,14 +741,9 @@
             var jsonListCard = JSON.stringify(listItemCard);
             localStorage.setItem(keylocalstoragecard, jsonListCard);
         }
->>>>>>> VuHung
     </script>
 
 </body>
 
-<<<<<<< HEAD
 
 </html>
-=======
-</html>
->>>>>>> VuHung
