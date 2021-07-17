@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="Askbootstrap">
     <meta name="author" content="Askbootstrap">
+    <base href="/">
     <title>FUMK - Online Food Ordering</title>
     <!-- Favicon Icon -->
     <link rel="icon" type="image/png" href="image/favicon.png">
@@ -24,92 +25,76 @@
     <link href="skin/font/HungCSS.css" rel="stylesheet">
 
     <!-- Owl Carousel -->
-    <link rel="stylesheet" href="vendor/owl-carousel/owl.carousel.css">
-    <link rel="stylesheet" href="vendor/owl-carousel/owl.theme.css">
+    <link rel="stylesheet" href="skin/owl/owl.carousel.css">
+    <link rel="stylesheet" href="skin/owl/owl.theme.css">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 <body>
     <header>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light osahan-nav shadow-sm">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light osahan-nav shadow-sm ">
             <div class="container">
-                <a class="navbar-brand" href="index.html"><img alt="logo" src=""></a>
+                <a class="navbar-brand" href="/home"><img alt="logo" style="max-width: 120px;" src="image/logoShop.png"></a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
-            </button>
+         </button>
                 <div class="collapse navbar-collapse" id="navbarNavDropdown">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item active">
-                            <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+                            <span class="sizeIcon" data-toggle="modal" data-target="#modalSearch">
+                            <i class="icofont-search-map nav-link" style="padding-top: 20px !important;"></i>
+                        </span>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="offers.html"><i class="icofont-sale-discount"></i> Offers <span class="badge badge-danger">New</span></a>
+
+                        <li class="nav-item active">
+                            <a class="nav-link" href="/home">Home <span class="sr-only">(current)</span></a>
                         </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                     Restaurants
-                     </a>
-                            <div class="dropdown-menu dropdown-menu-right shadow-sm border-0">
-                                <a class="dropdown-item" href="listing.html">Listing</a>
-                                <a class="dropdown-item" href="detail.html">Detail + Cart</a>
-                                <a class="dropdown-item" href="checkout.html">Checkout</a>
-                            </div>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                     Pages
-                     </a>
-                            <div class="dropdown-menu dropdown-menu-right shadow-sm border-0">
-                                <a class="dropdown-item" href="track-order.html">Track Order</a>
-                                <a class="dropdown-item" href="invoice.html">Invoice</a>
-                                <a class="dropdown-item" href="login.html">Login</a>
-                                <a class="dropdown-item" href="register.html">Register</a>
-                                <a class="dropdown-item" href="404.html">404</a>
-                                <a class="dropdown-item" href="extra.html">Extra :)</a>
-                            </div>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <img alt="Generic placeholder image" src="img/user/4.png" class="nav-osahan-pic rounded-pill"> My Account
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-right shadow-sm border-0">
-                                <a class="dropdown-item" href="orders.html#orders"><i class="icofont-food-cart"></i> Orders</a>
-                                <a class="dropdown-item" href="orders.html#offers"><i class="icofont-sale-discount"></i> Offers</a>
-                                <a class="dropdown-item" href="orders.html#favourites"><i class="icofont-heart"></i> Favourites</a>
-                                <a class="dropdown-item" href="orders.html#payments"><i class="icofont-credit-card"></i> Payments</a>
-                                <a class="dropdown-item" href="orders.html#addresses"><i class="icofont-location-pin"></i> Addresses</a>
-                            </div>
-                        </li>
+
+                        <li id="checkLogin"></li>
+                        <!-- <li class="nav-link" style="padding-top: 20px !important;">
+                        <button class="btn btn-primary"> Login </button>
+                    </li>
+
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <img alt="Generic placeholder image" src="image/user/4.png" class="nav-osahan-pic rounded-pill"> My Account
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right shadow-sm border-0">
+                            <a class="dropdown-item" href="orders.html#orders"><i class="icofont-ui-user"></i> My Profile </a>
+                            <a class="dropdown-item" href="orders.html#offers"><i class="icofont-logout"></i> Logout </a>
+                        </div>
+                    </li> -->
                         <li class="nav-item dropdown dropdown-cart">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-shopping-basket"></i> Cart
+                                <i class="icofont-basket"></i> Cart
                                 <span class="badge badge-success">5</span>
                             </a>
                             <div class="dropdown-menu dropdown-cart-top p-0 dropdown-menu-right shadow-sm border-0">
-                                <div class="dropdown-cart-top-header p-4">
-                                    <img class="img-fluid mr-3" alt="osahan" src="img/cart.jpg">
-                                    <h6 class="mb-0">Gus's World Famous Chicken</h6>
-                                    <p class="text-secondary mb-0">310 S Front St, Memphis, USA</p>
-                                    <small><a class="text-primary font-weight-bold" href="#">View Full Menu</a></small>
-                                </div>
+
                                 <div class="dropdown-cart-top-body border-top p-4">
                                     <p class="mb-2"><i class="icofont-ui-press text-danger food-item"></i> Chicken Tikka Sub 12" (30 cm) x 1 <span class="float-right text-secondary">$314</span></p>
-                                    <p class="mb-2"><i class="icofont-ui-press text-success food-item"></i> Corn & Peas Salad x 1 <span class="float-right text-secondary">$209</span></p>
+                                    <p class="mb-2"><i class="icofont-ui-press text-success food-item"></i> Corn & Peas Salad x 1
+                                        <span class="float-right text-secondary">$209</span>
+                                    </p>
                                     <p class="mb-2"><i class="icofont-ui-press text-success food-item"></i> Veg Seekh Sub 6" (15 cm) x 1 <span class="float-right text-secondary">$133</span></p>
                                     <p class="mb-2"><i class="icofont-ui-press text-danger food-item"></i> Chicken Tikka Sub 12" (30 cm) x 1 <span class="float-right text-secondary">$314</span></p>
-                                    <p class="mb-2"><i class="icofont-ui-press text-danger food-item"></i> Corn & Peas Salad x 1 <span class="float-right text-secondary">$209</span></p>
+                                    <p class="mb-2"><i class="icofont-ui-press text-danger food-item"></i> Corn & Peas Salad x 1
+                                        <span class="float-right text-secondary">$209</span>
+                                    </p>
                                 </div>
                                 <div class="dropdown-cart-top-footer border-top p-4">
                                     <p class="mb-0 font-weight-bold text-secondary">Sub Total <span class="float-right text-dark">$499</span></p>
                                     <small class="text-info">Extra charges may apply</small>
                                 </div>
                                 <div class="dropdown-cart-top-footer border-top p-2">
-                                    <a class="btn btn-success btn-block btn-lg" href="checkout.html"> Checkout</a>
+                                    <a class="btn btn-success btn-block btn-lg" href="/CheckOut"> Checkout</a>
                                 </div>
                             </div>
                         </li>
                     </ul>
+
                 </div>
             </div>
         </nav>
@@ -123,10 +108,12 @@
                 <div class="row d-flex align-items-end">
                     <div class="col-md-12">
                         <div class="restaurant-detailed-header-left">
-                            <img class="img-fluid mr-3 float-left" alt="osahan" src="image/1.jpg">
-                            <h2 class="text-white">Spice Hut Indian Restaurant</h2>
-                            <p class="text-white mb-1"><i class="icofont-location-pin"></i> 2036 2ND AVE, NEW YORK, NY 10029 <span class="badge badge-success">OPEN</span>
-                            </p>
+                            <div id="inforShop">
+                                <!-- <img class="img-fluid mr-3 float-left" alt="osahan" src="image/1.jpg">
+                                <h2 class="text-white">Spice Hut Indian Restaurant</h2>
+                                <p class="text-white mb-1"><i class="icofont-location-pin"></i> 2036 2ND AVE, NEW YORK, NY 10029 <span class="badge badge-success">OPEN</span></p> -->
+                            </div>
+
                             <p class="text-white mb-0"><i class="icofont-food-cart"></i> North Indian, Chinese, Fast Food, South Indian
                                 <button type="button" id="SaveUpdate" data-toggle="modal" data-target="#basicModal" class="btn btn-outline-danger ml-3 fa fa-flag" style="float: right;"> </button>
                             </p>
@@ -289,11 +276,7 @@
                                              <button class="btn btn-outline-secondary  btn-sm left dec"> <i class="icofont-minus"></i> </button>
                                              <input class="count-number-input" type="text" value="1" readonly="">
                                              <button class="btn btn-outline-secondary btn-sm right inc"> <i class="icofont-plus"></i> </button>
-<<<<<<< HEAD
                                              <a class="btn btn-outline-secondary btn-sm" onclick="addProduct.call(this,'product')" href="#">ADD sản phảm</a>
-=======
-                                             <button value="ADD" id="3" class="btn btn-outline-secondary btn-sm" onclick="addProduct()" > ADD </button>
->>>>>>> VuHung
                                              </span>
                                                         </span>
                                                     </p>
@@ -625,6 +608,7 @@
     <script src="js/owl.carousel.js"></script>
     <!-- Custom scripts for all pages-->
     <script src="js/custom.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
     <script>
         function getCookie(cname) {
@@ -643,7 +627,37 @@
             return "";
         }
 
+        function setCookie(cname, cvalue, exdays) {
+            const d = new Date();
+            d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+            let expires = "expires=" + d.toUTCString();
+            document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+        }
+
         var token = getCookie("token");
+
+        function logOutClick() {
+            setCookie("token", "", 0);
+            window.location = "/LoginUser"
+        }
+
+        var checkLogin = document.getElementById('checkLogin');
+
+        if (token == "") {
+            checkLogin.innerHTML += `<li class="nav-link" style="padding-top: 20px !important;">
+                        <a href="/LoginUser" class="btn btn-primary"> Login </a>
+                    </li>`
+        } else {
+            checkLogin.innerHTML += `<li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <img alt="Generic placeholder image" src="image/user/4.png" class="nav-osahan-pic rounded-pill"> My Account
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right shadow-sm border-0">
+                            <a class="dropdown-item" href="/MyProfileUser"><i class="icofont-ui-user"></i> My Profile </a>
+                            <a class="dropdown-item" onclick="logOutClick()"><i class="icofont-logout"></i> Logout </a>
+                        </div>
+                    </li>`
+        }
 
         // $('#add').click(function() {
         //     if (token == "") {
@@ -652,94 +666,117 @@
         //         alert('Add to checkOut');
         //     }
         // })
-        var array = [];
+        // var array = [];
 
-        function addProduct(product) {
-            product = {
-                name: 'aaaaa',
-                id: '1',
-                unit: '2',
-                price: '3000'
-            }
-            array.push(product);
-            //array sẽ lưu ở localStorage
-            // b1: lấy array ở localStorage,
-            $(this).attr("thuộc tính lưu trữ số lượng sản phẩm")
-                //check số lượng = 0 => remove bỏ thanhwgf spham khổi array
-                //sô lượng > 0 => push vào arry
-            console.log(product, "produ")
-            $(".dropdown-cart-top-body").append(`<p class="mb-2"><i class="icofont-ui-press text-danger food-item"></i> ${product.name} x ${product.unit}    <span class="float-right text-secondary">${product.price}</span></p>`)
-                //push array lại vào localstorage
-                //
-        }
+        // function addProduct(product) {
+        //     product = {
+        //         name: 'aaaaa',
+        //         id: '1',
+        //         unit: '2',
+        //         price: '3000'
+        //     }
+        //     array.push(product);
+        //     //array sẽ lưu ở localStorage
+        //     // b1: lấy array ở localStorage,
+        //     $(this).attr("thuộc tính lưu trữ số lượng sản phẩm")
+        //         //check số lượng = 0 => remove bỏ thanhwgf spham khổi array
+        //         //sô lượng > 0 => push vào arry
+        //     console.log(product, "produ")
+        //     $(".dropdown-cart-top-body").append(`<p class="mb-2"><i class="icofont-ui-press text-danger food-item"></i> ${product.name} x ${product.unit}    <span class="float-right text-secondary">${product.price}</span></p>`)
+        //         //push array lại vào localstorage
+        //         //
+        // }
 
-        $('#add').click(function() {
-            if (token == "") {
-                window.location.href = '/LoginUser';
-            } else {
+        // $('#add').click(function() {
+        //     if (token == "") {
+        //         window.location.href = '/LoginUser';
+        //     } else {
 
-            }
-        })
+        //     }
+        // })
 
-        var nameItem = document.getElementById('nameProduct').textContent;
-        var quantityItem = document.getElementById('quantity1').value;
+        // var nameItem = document.getElementById('nameProduct').textContent;
+        // var quantityItem = document.getElementById('quantity1').value;
 
-        var clicks = 1;
+        // var clicks = 1;
 
-        function plus() {
-            clicks += 1;
-            document.getElementById("quantity1").setAttribute('value', clicks);
-        };
+        // function plus() {
+        //     clicks += 1;
+        //     document.getElementById("quantity1").setAttribute('value', clicks);
+        // };
 
-        function minus() {
-            clicks -= 1;
-            document.getElementById("quantity1").setAttribute('value', clicks);
-        }
+        // function minus() {
+        //     clicks -= 1;
+        //     document.getElementById("quantity1").setAttribute('value', clicks);
+        // }
 
-        function addProduct(nameItem) {
-            var listItemCard = getListCard();
-            var checkItemCard = false;
+        // function addProduct(nameItem) {
+        //     var listItemCard = getListCard();
+        //     var checkItemCard = false;
 
-            for (var i = 0; i < listItemCard.length; i++) {
-                if (listItemCard[i].name == nameItem) {
-                    listItemCard[i].quantity += clicks;
-                    checkItemCard = true;
+        //     for (var i = 0; i < listItemCard.length; i++) {
+        //         if (listItemCard[i].name == nameItem) {
+        //             listItemCard[i].quantity += clicks;
+        //             checkItemCard = true;
+        //         }
+        //     }
+        //     if (checkItemCard == false) {
+        //         var itemCard = createItemCard(nameItem, 1);
+        //         listItemCard.push(itemCard);
+
+        //     }
+
+        //     saveLocalStorage(listItemCard);
+
+        // }
+
+
+
+        // var keylocalstoragecard = 'listItemCard';
+
+        // function createItemCard(nameItem, quantityItem) {
+        //     var itemCard = new Object()
+        //     itemCard.name = nameItem;
+        //     itemCard.quantity = quantityItem;
+        //     return itemCard;
+        // }
+
+        // function getListCard() {
+        //     var listItemCard = new Array()
+
+        //     var jsonListItemCard = localStorage.getItem(keylocalstoragecard);
+        //     if (jsonListItemCard != null) {
+        //         listItemCard = JSON.parse(jsonListItemCard);
+        //     }
+        //     return listItemCard;
+        // }
+
+        // function saveLocalStorage(listItemCard) {
+        //     var jsonListCard = JSON.stringify(listItemCard);
+        //     localStorage.setItem(keylocalstoragecard, jsonListCard);
+        // }
+
+        $(document).ready(function() {
+            loaddata()
+        });
+
+        function loaddata() {
+
+            var params = (new URL(document.location)).searchParams;
+            var idURL = params.get('id');
+
+            console.log(idURL);
+            $.ajax({
+                type: "GET",
+                dataType: "json",
+                data: {
+                    id: idURL
+                },
+                url: "/api/user/getbyId",
+                success: function(data) {
+                    document.getElementById('inforShop').innerHTML = '<img class="img-fluid mr-3 float-left" alt="osahan" src="image/1.jpg"> <h2 class="text-white">' + data.data.name + '</h2> <p class="text-white mb-1"><i class="icofont-location-pin"></i>' + data.data.address + '<span class="badge badge-success">OPEN</span></p>';
                 }
-            }
-            if (checkItemCard == false) {
-                var itemCard = createItemCard(nameItem, 1);
-                listItemCard.push(itemCard);
-
-            }
-
-            saveLocalStorage(listItemCard);
-
-        }
-
-
-
-        var keylocalstoragecard = 'listItemCard';
-
-        function createItemCard(nameItem, quantityItem) {
-            var itemCard = new Object()
-            itemCard.name = nameItem;
-            itemCard.quantity = quantityItem;
-            return itemCard;
-        }
-
-        function getListCard() {
-            var listItemCard = new Array()
-
-            var jsonListItemCard = localStorage.getItem(keylocalstoragecard);
-            if (jsonListItemCard != null) {
-                listItemCard = JSON.parse(jsonListItemCard);
-            }
-            return listItemCard;
-        }
-
-        function saveLocalStorage(listItemCard) {
-            var jsonListCard = JSON.stringify(listItemCard);
-            localStorage.setItem(keylocalstoragecard, jsonListCard);
+            });
         }
     </script>
 

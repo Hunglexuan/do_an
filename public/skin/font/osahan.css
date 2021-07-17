@@ -1722,3 +1722,7 @@ footer {
     float: right;
     padding-top: 5px;
 }
+
+#hide1 {
+    display: none;
+}
