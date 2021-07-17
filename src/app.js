@@ -86,10 +86,10 @@ app.get('/RegisterUser', function(req, res) {
 
 });
 
-app.get('/CheckOut', function(req, res) {
-    return res.render('CheckOut');
+// app.get('/CheckOut', function(req, res) {
+//     return res.render('CheckOut');
 
-});
+// });
 
 app.get('/ShopDetail', function(req, res) {
     return res.render('ShopDetail');
