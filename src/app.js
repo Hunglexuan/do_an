@@ -56,11 +56,12 @@ app.get('/AllProduct', function(req, res) {
     return res.render('AllProduct');
 });
 
+app.get('/AllSeller', function(req, res) {
+    return res.render('AllSeller');
+});
+
 app.get('/resetPass', function(req, res) {
-
     return res.render('password');
-
-
 });
 
 app.get('/LoginSeller', function(req, res) {
@@ -93,7 +94,6 @@ app.get('/RegisterUser', function(req, res) {
 
 app.get('/ShopDetail', function(req, res) {
     return res.render('ShopDetail');
-
 });
 
 app.get('/LoginUser', function(req, res) {

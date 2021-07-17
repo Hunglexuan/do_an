@@ -1,0 +1,255 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Askbootstrap">
+    <meta name="author" content="Askbootstrap">
+    <title>FUMK - Online Food Ordering</title>
+    <!-- Favicon Icon -->
+    <link rel="icon" type="image/png" href="image/favicon.png">
+    <!-- Bootstrap core CSS-->
+    <link href="skin/bootstrap/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome-->
+    <link href="skin/font/all.min.css" rel="stylesheet">
+    <!-- Font Awesome-->
+    <link href="skin/font/icofont.min.css" rel="stylesheet">
+    <!-- Select2 CSS-->
+    <link href="skin/font/select2.min.css" rel="stylesheet">
+    <!-- Custom styles for this template-->
+    <link href="skin/font/osahan.css" rel="stylesheet">
+    <!-- Dropzone-->
+    <link href="skin/font/dropzone.css" rel="stylesheet">
+    <!-- HungCSS -->
+    <link href="skin/font/HungCSS.css" rel="stylesheet">
+    <!-- Owl Carousel -->
+    <link rel="stylesheet" href="skin/owl/owl.carousel.css">
+    <link rel="stylesheet" href="skin/owl/owl.theme.css">
+
+    <link href="skin/font/DoanCSS.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light osahan-nav shadow-sm ">
+        <div class="container">
+            <a class="navbar-brand" href="/home"><img alt="logo" style="max-width: 120px;" src="image/logoShop.png"></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+         </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active">
+                        <span class="sizeIcon" data-toggle="modal" data-target="#modalSearch">
+                            <i class="icofont-search-map nav-link" style="padding-top: 20px !important;"></i>
+                        </span>
+                    </li>
+
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/home">Home <span class="sr-only">(current)</span></a>
+                    </li>
+
+                    <li id="checkLogin"></li>
+                    <!-- <li class="nav-link" style="padding-top: 20px !important;">
+                        <button class="btn btn-primary"> Login </button>
+                    </li>
+
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <img alt="Generic placeholder image" src="image/user/4.png" class="nav-osahan-pic rounded-pill"> My Account
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right shadow-sm border-0">
+                            <a class="dropdown-item" href="orders.html#orders"><i class="icofont-ui-user"></i> My Profile </a>
+                            <a class="dropdown-item" href="orders.html#offers"><i class="icofont-logout"></i> Logout </a>
+                        </div>
+                    </li> -->
+                    <li class="nav-item dropdown dropdown-cart">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="icofont-basket"></i> Cart
+                            <span class="badge badge-success">5</span>
+                        </a>
+                        <div class="dropdown-menu dropdown-cart-top p-0 dropdown-menu-right shadow-sm border-0">
+
+                            <div class="dropdown-cart-top-body border-top p-4">
+                                <p class="mb-2"><i class="icofont-ui-press text-danger food-item"></i> Chicken Tikka Sub 12" (30 cm) x 1 <span class="float-right text-secondary">$314</span></p>
+                                <p class="mb-2"><i class="icofont-ui-press text-success food-item"></i> Corn & Peas Salad x 1
+                                    <span class="float-right text-secondary">$209</span>
+                                </p>
+                                <p class="mb-2"><i class="icofont-ui-press text-success food-item"></i> Veg Seekh Sub 6" (15 cm) x 1 <span class="float-right text-secondary">$133</span></p>
+                                <p class="mb-2"><i class="icofont-ui-press text-danger food-item"></i> Chicken Tikka Sub 12" (30 cm) x 1 <span class="float-right text-secondary">$314</span></p>
+                                <p class="mb-2"><i class="icofont-ui-press text-danger food-item"></i> Corn & Peas Salad x 1
+                                    <span class="float-right text-secondary">$209</span>
+                                </p>
+                            </div>
+                            <div class="dropdown-cart-top-footer border-top p-4">
+                                <p class="mb-0 font-weight-bold text-secondary">Sub Total <span class="float-right text-dark">$499</span></p>
+                                <small class="text-info">Extra charges may apply</small>
+                            </div>
+                            <div class="dropdown-cart-top-footer border-top p-2">
+                                <a class="btn btn-success btn-block btn-lg" href="/CheckOut"> Checkout</a>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+    </nav>
+
+    <section class="section pb-5 products-listing">
+        <div class="container" style="padding-top: 90px;">
+            <div class="row d-none-m">
+                <!-- <div class="col-md-12">
+
+                    <h4 class="font-weight-bold mt-0 mb-3">OFFERS <small class="h6 mb-0 ml-2">299 restaurants
+                  </small>
+                    </h4>
+                </div> -->
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="row" id="allseller">
+                        <!-- <div class="col-md-12 text-center load-more">
+                            <button class="btn btn-primary" type="button" disabled>
+                        <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
+                        Loading...
+                     </button>
+                        </div> -->
+                    </div>
+                    <div id="findShop"></div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </section>
+
+
+    <!-- jQuery -->
+    <script src="js/jquery-3.3.1.slim.min.js"></script>
+    <!-- Bootstrap core JavaScript-->
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <!-- Select2 JavaScript-->
+    <script src="js/select2.min.js"></script>
+    <!-- Owl Carousel -->
+    <script src="js/owl.carousel.js"></script>
+    <!-- Custom scripts for all pages-->
+    <script src="js/custom.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+
+    <script>
+        function getCookie(cname) {
+            let name = cname + "=";
+            let decodedCookie = decodeURIComponent(document.cookie);
+            let ca = decodedCookie.split(';');
+            for (let i = 0; i < ca.length; i++) {
+                let c = ca[i];
+                while (c.charAt(0) == ' ') {
+                    c = c.substring(1);
+                }
+                if (c.indexOf(name) == 0) {
+                    return c.substring(name.length, c.length);
+                }
+            }
+            return "";
+        }
+
+        function setCookie(cname, cvalue, exdays) {
+            const d = new Date();
+            d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+            let expires = "expires=" + d.toUTCString();
+            document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+        }
+
+        var token = getCookie("token");
+
+        function logOutClick() {
+            setCookie("token", "", 0);
+            window.location = "/LoginUser"
+        }
+
+        var checkLogin = document.getElementById('checkLogin');
+
+        if (token == "") {
+            checkLogin.innerHTML += `<li class="nav-link" style="padding-top: 20px !important;">
+                        <a href="/LoginUser" class="btn btn-primary"> Login </a>
+                    </li>`
+        } else {
+            checkLogin.innerHTML += `<li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <img alt="Generic placeholder image" src="image/user/4.png" class="nav-osahan-pic rounded-pill"> My Account
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right shadow-sm border-0">
+                            <a class="dropdown-item" href="/MyProfileUser"><i class="icofont-ui-user"></i> My Profile </a>
+                            <a class="dropdown-item" onclick="logOutClick()"><i class="icofont-logout"></i> Logout </a>
+                        </div>
+                    </li>`
+        }
+
+        $(document).ready(function() {
+            loaddata()
+        });
+
+
+        // function getShopDetail() {
+        //     console.log('1111111');
+        //     window.location.href = '/ShopDetail'
+
+        //     var localId = id;
+
+        //     localStorage.setItem('localId', JSON.stringify(localId));
+        // }
+
+        function loaddata() {
+            var text = localStorage.getItem('searchListSeller').replaceAll('"', '');
+            $.ajax({
+                type: "GET",
+                dataType: "json",
+                data: {
+                    name: text
+                },
+                url: "/api/user/searchSeller",
+                success: function(data) {
+                    var listdata = data.data.listUsers;
+                    if (listdata != '') {
+                        for (var i = 0; i < listdata.length; i++) {
+
+                            document.getElementById('allseller').innerHTML += '<div class="col-md-3 col-sm-6 mb-4 pb-2" onclick="goTo(' + "'" + listdata[i].id + "'" + ')">' +
+                                '<div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">' +
+                                '<div class="list-card-image">' +
+                                '<div class="favourite-heart text-danger position-absolute"><a><i class="icofont-heart"></i></a></div>' +
+                                '<div class="member-plan position-absolute"></div>' +
+                                '<a> <img src="image/list/1.png" class="img-fluid item-img"> </a>' +
+                                '</div>' +
+                                '<div class="p-3 position-relative">' +
+                                '<div class="list-card-body">' +
+                                '<h6 class="mb-1"><a class="text-black">' + listdata[i].name + '</a></h6>' +
+                                '<p class="text-gray mb-3">' + listdata[i].address + '</p>' +
+                                '</div></div> </div> </div>';
+
+
+                        }
+                        console.log(shopIdClick);
+                    } else {
+                        document.getElementById('findShop').innerHTML = '<section class="section pt-5 pb-5 osahan-not-found-page"> <div class="container"> <div class="row"> <div class="col-md-12 text-center pt-5 pb-5"> <img class="img-fluid" src="image/notFind.png" alt="find"> <h1 class="mt-2 mb-2">Shop not found</h1> <p>Uh-oh! Looks like the page you are trying to access<br>exist. Please start afresh.</p> <a class="btn btn-primary btn-lg" href="/home">GO HOME</a> </div> </div> </div> </section>'
+                    }
+
+                }
+            });
+        }
+
+        function goTo(shopIdClick) {
+            console.log(shopIdClick);
+            let id = "?id=" + shopIdClick;
+            window.location.href = '/ShopDetail' + id;
+        }
+    </script>
+
+</body>
+
+</html>

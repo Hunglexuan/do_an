@@ -103,3 +103,67 @@
     text-transform: capitalize;
     color: #fff;
 }
+
+.modal-dialog {
+    width: 70%;
+    max-width: 1140px;
+}
+
+.modal-search .modal-content {
+    /* width: 70%;
+    max-width: 1140px; */
+    background-color: transparent;
+    border: 0;
+}
+
+.modal-search-form {
+    text-align: center;
+    background-image: url('/image/FPT.png');
+    background-position: top;
+    background-repeat: no-repeat;
+    padding-top: 140px;
+    margin-top: 35px;
+}
+
+.sub-title {
+    color: #fff;
+    font-size: 16px;
+    text-align: center;
+}
+
+.search-input {
+    color: #fff;
+    text-align: center;
+    width: 100%;
+    margin-top: 10px;
+    border: 0;
+    border-bottom: 2px solid #6d6f71;
+    background-color: transparent;
+}
+
+.main-header .modal .modal-search .show :after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #000;
+    opacity: .8;
+    z-index: -1;
+    height: 100%;
+}
+
+.modal-backdrop {
+    opacity: .8 !important;
+    z-index: 1 !important;
+}
+
+.modal-dialog {
+    margin-top: 85px;
+}
+
+
+/* #search_form {
+    z-index: 200 !important;
+} */

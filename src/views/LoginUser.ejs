@@ -33,7 +33,9 @@
                     <div class="container">
                         <div class="row">
                             <div class="col-md-9 col-lg-8 mx-auto pl-5 pr-5">
-                                <h3 class="login-heading mb-4">Welcome FUMK!</h3>
+                                <a href="/home">
+                                    <h3 class="login-heading mb-4">Welcome FUMK!</h3>
+                                </a>
                                 <form name="myForm">
                                     <div class="form-label-group">
                                         <input type="email" id="inputEmail" class="form-control" placeholder="Email address">
@@ -41,7 +43,11 @@
                                     </div>
                                     <div class="form-label-group">
                                         <input type="password" id="inputPassword" class="form-control" placeholder="Password">
-                                        <label for="inputPassword">Password</label>
+                                        <label for="inputPassword">Password  <span onclick="hidePassword()" style="float: right;">
+                                            <i class="icofont-eye-blocked" id="hide1" style="font-size: x-large;"></i>
+                                            <i class="icofont-eye-alt" id="hide2" style="font-size: x-large;"></i>
+                                        </span> </label>
+
                                     </div>
                                     <div class="custom-control custom-checkbox mb-3">
                                         <input type="checkbox" class="custom-control-input" id="customCheck1">
@@ -85,6 +91,23 @@
 
 </body>
 <script>
+    function hidePassword() {
+        var inputPassword = document.getElementById('inputPassword');
+        var hide = document.getElementById('hide1');
+        var show = document.getElementById('hide2');
+
+        if (inputPassword.type === 'password') {
+            inputPassword.type = 'text';
+            hide.style.display = 'block';
+            show.style.display = 'none';
+        } else {
+            inputPassword.type = 'password';
+            hide.style.display = 'none';
+            show.style.display = 'block';
+        }
+
+    }
+
     function checkBlankLogin() {
         if ($("#inputEmail").val() == "") {
             alert("Email is Blank please Input")
@@ -130,7 +153,7 @@
         }).then(function(data) {
             if (data.message == "SUCCESS") {
                 setCookie("token", data.data.token, 30)
-                window.location.href = "/index"
+                window.location.href = "/home"
                 alert("Login Successfull");
             } else {
 
