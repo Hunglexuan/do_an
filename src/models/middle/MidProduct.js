@@ -21,7 +21,15 @@ class MidProduct {
             }
         })
         if (user) {
-
+            let role = await Role.findOne({
+                where: {
+                    id: user.role_id,
+                    del: 0
+                }
+            })
+            if (role.name != 'seller') {
+                throw new Error('K co seller');
+            }
         }
         let condition = {
             del: 0,
