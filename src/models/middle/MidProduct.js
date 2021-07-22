@@ -51,8 +51,7 @@ class MidProduct {
                         "createdAt", "DESC"
                     ]
                 ],
-                limit,
-                offset: (page - 1) * limit
+
             }),
             Product.count({
                 where: condition
@@ -86,8 +85,7 @@ class MidProduct {
                         "createdAt", "DESC"
                     ]
                 ],
-                limit,
-                offset: (page - 1) * limit
+
             }),
             Product.count({
                 where: condition
