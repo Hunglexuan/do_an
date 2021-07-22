@@ -14,18 +14,34 @@ import { name } from 'ejs';
 
 class MidProduct {
     async searchProduct(data) {
-        let condition = {
-            del: 0
+        let user = await Users.findOne({
+            where: {
+                id: data.id,
+                del: 0
+            }
+        })
+        if (user) {
+            let role = await Role.findOne({
+                where: {
+                    id: user.role_id,
+                    del: 0
+                }
+            })
+            if (role.name != 'seller') {
+                throw new Error('K co seller');
+            }
         }
+        let condition = {
+            del: 0,
+            user_id: user.id
+        }
+
         if (data.name) {
             condition.name = {
                 [Op.like]: `%${data.name}%`
             }
         }
 
-        let { page, limit } = data;
-        page = page ? parseInt(page) : 1;
-        limit = limit ? parseInt(limit) : 10;
 
         const [listProduct, total] = await Promise.all([
             Product.findAll({
