@@ -1,5 +1,7 @@
 import {
-    Role,Users,Product
+    Role,
+    Users,
+    Product
 } from '../core';
 import { Op } from 'sequelize';
 import { checkPassword, hashPassword } from '../../libs/encrypt';
@@ -28,9 +30,11 @@ class MidProduct {
         const [listProduct, total] = await Promise.all([
             Product.findAll({
                 where: condition,
-                order: [[
-                    "createdAt", "DESC"
-                ]],
+                order: [
+                    [
+                        "createdAt", "DESC"
+                    ]
+                ],
                 limit,
                 offset: (page - 1) * limit
             }),
@@ -38,76 +42,76 @@ class MidProduct {
                 where: condition
             })
         ])
-       
+
         return {
             listProduct,
             total: total || 0
         }
 
     }
-async createProduct(data){
-    if (!data.name) {
-        throw new Error(ERROR_MESSAGE.PRODUCT.PRODUCT_NAME);
-    }
-    if (!data.quantity) {
-        throw new Error(ERROR_MESSAGE.PRODUCT.PRODUCT_QUANTITY);
-    }
-    if (!data.unit_price) {
-        throw new Error(ERROR_MESSAGE.PRODUCT.PRODUCT_UNIT_PRICE);
-    }
-    if (!data.description) {
-        throw new Error(ERROR_MESSAGE.PRODUCT.PRODUCT_DESCRIPTION);
-    }
-    if (!data.user_id) {
-        throw new Error(ERROR_MESSAGE.PRODUCT.PRODUCT_USER_ID);
-    }
+    async createProduct(data) {
+        if (!data.name) {
+            throw new Error(ERROR_MESSAGE.PRODUCT.PRODUCT_NAME);
+        }
+        if (!data.quantity) {
+            throw new Error(ERROR_MESSAGE.PRODUCT.PRODUCT_QUANTITY);
+        }
+        if (!data.unit_price) {
+            throw new Error(ERROR_MESSAGE.PRODUCT.PRODUCT_UNIT_PRICE);
+        }
+        if (!data.description) {
+            throw new Error(ERROR_MESSAGE.PRODUCT.PRODUCT_DESCRIPTION);
+        }
+        if (!data.user_id) {
+            throw new Error(ERROR_MESSAGE.PRODUCT.PRODUCT_USER_ID);
+        }
 
-    let dataCreate = {
-        name: data.name,
-        quantity: data.quantity,
-        unit_price: data.unit_price,
-        description: data.description,
-        user_id: data.user_id,
+        let dataCreate = {
+            name: data.name,
+            quantity: data.quantity,
+            unit_price: data.unit_price,
+            description: data.description,
+            user_id: data.user_id,
 
-        del: 0
-    }
-    return await Product.create(dataCreate);
-}
-async deleteProduct(data) {
-    let objDelete = await Product.findOne({
-        where: {
-            id: data.id,
             del: 0
         }
-    })
-    let dataDelete = {
-        del: 1,
+        return await Product.create(dataCreate);
     }
-
-    objDelete.update(dataDelete)
-}
-async updateProduct(data) {
-    if (!data.id) {
-        throw new Error(ERROR_MESSAGE.PRODUCT.PRODUCT_NOT_EXIST);
-    }
-    let objUpdate = await Product.findOne({
-        where: {
-            id: data.id,
-            del: 0
+    async deleteProduct(data) {
+        let objDelete = await Product.findOne({
+            where: {
+                id: data.id,
+                del: 0
+            }
+        })
+        let dataDelete = {
+            del: 1,
         }
-    })
 
-    let dataUpdate = {
-        name: data.name,
-        quantity: data.quantity,
-        unit_price: data.unit_price,
-        description: data.description,
-        user_id: data.user_id,
+        objDelete.update(dataDelete)
+    }
+    async updateProduct(data) {
+        if (!data.id) {
+            throw new Error(ERROR_MESSAGE.PRODUCT.PRODUCT_NOT_EXIST);
+        }
+        let objUpdate = await Product.findOne({
+            where: {
+                id: data.id,
+                del: 0
+            }
+        })
+
+        let dataUpdate = {
+            name: data.name,
+            quantity: data.quantity,
+            unit_price: data.unit_price,
+            description: data.description,
+            user_id: data.user_id,
+
+        }
+        return await objUpdate.update(dataUpdate)
 
     }
-    return await objUpdate.update(dataUpdate)
-
-}
 
 }
 

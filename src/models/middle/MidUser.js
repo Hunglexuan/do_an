@@ -279,8 +279,6 @@ class MidUser {
                 where: condition,
             }),
         ]);
-        console.log(listUsers);
-        console.log(total);
         return {
             listUsers,
             total: total || 0,

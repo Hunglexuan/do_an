@@ -694,36 +694,10 @@
         }
 
         $(document).ready(function() {
-
             loaddata();
-
-
         });
-        var list = []
-        var list1 = [
-            "ActionScript",
-            "AppleScript",
-            "Asp",
-            "BASIC",
-            "C",
-            "C++",
-            "Clojure",
-            "COBOL",
-            "ColdFusion",
-            "Erlang",
-            "Fortran",
-            "Groovy",
-            "Haskell",
-            "Java",
-            "JavaScript",
-            "Lisp",
-            "Perl",
-            "PHP",
-            "Python",
-            "Ruby",
-            "Scala",
-            "Scheme"
-        ];
+
+
         $('#search-input').keypress(function(event) {
 
             if (event.keyCode === 13) {
@@ -736,33 +710,6 @@
                     source: list
                 });
             }
-            // else {
-            //     var text = document.getElementById('search-input').value;
-            //     console.log(text);
-
-            //     $.ajax({
-            //         type: "GET",
-            //         dataType: "json",
-            //         data: {
-            //             name: text
-            //         },
-            //         url: "/api/user/searchSeller",
-
-            //         success: function(data) {
-            //             var listdata = data.data.listUsers;
-            //             if (text == '') {
-            //                 return document.getElementById('suggest').innerHTML = '';
-            //             } else {
-            //                 for (var i = 0; i < listdata.length; i++) {
-            //                     document.getElementById('suggest').innerHTML =
-            //                         ' <div>  <p>' + listdata[i].name + '</p> <p>' + listdata[i].address + '</p>     </div>'
-            //                 }
-            //             }
-
-            //         }
-            //     });
-            // }
-
         });
 
 
