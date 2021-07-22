@@ -8,5 +8,6 @@ let routerApp = new Router();
 
 routerApp.post('/create', Response(ProductController.createProduct));
 routerApp.post('/searchproduct', Response(ProductController.searchProduct));
+routerApp.post('/searchAllProduct', Response(ProductController.searchAllProduct));
 
 export default routerApp;

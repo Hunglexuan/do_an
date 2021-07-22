@@ -65,6 +65,41 @@ class MidProduct {
         }
 
     }
+    async searchAllProduct(data) {
+
+        let condition = {
+            del: 0,
+        }
+
+        if (data.name) {
+            condition.name = {
+                [Op.like]: `%${data.name}%`
+            }
+        }
+
+
+        const [listProduct, total] = await Promise.all([
+            Product.findAll({
+                where: condition,
+                order: [
+                    [
+                        "createdAt", "DESC"
+                    ]
+                ],
+                limit,
+                offset: (page - 1) * limit
+            }),
+            Product.count({
+                where: condition
+            })
+        ])
+
+        return {
+            listProduct,
+            total: total || 0
+        }
+
+    }
     async createProduct(data) {
         if (!data.name) {
             throw new Error(ERROR_MESSAGE.PRODUCT.PRODUCT_NAME);
