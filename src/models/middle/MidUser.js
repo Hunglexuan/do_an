@@ -125,6 +125,7 @@ class MidUser {
             token,
         };
     }
+
     async loginAdmin(credentials) {
         const { email, password } = credentials;
 
@@ -273,9 +274,7 @@ class MidUser {
                 [Op.like]: `%${data.name}%`,
             };
         }
-        let { page, limit } = data;
-        page = page ? parseInt(page) : 1;
-        limit = limit ? parseInt(limit) : 10;
+
 
         const [listUsers, total] = await Promise.all([
             Users.findAll({
@@ -283,8 +282,6 @@ class MidUser {
                 order: [
                     ["createdAt", "DESC"]
                 ],
-                limit,
-                offset: (page - 1) * limit,
             }),
             Users.count({
                 where: condition,

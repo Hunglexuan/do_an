@@ -12,8 +12,6 @@
     <link rel="icon" type="image/png" href="image/favicon.png">
     <!-- Bootstrap core CSS-->
     <link href="skin/bootstrap/bootstrap.min.css" rel="stylesheet">
-
-
     <!-- Font Awesome-->
     <link href="skin/font/all.min.css" rel="stylesheet">
     <!-- Font Awesome-->
@@ -26,6 +24,11 @@
     <link href="skin/font/dropzone.css" rel="stylesheet">
     <!-- HungCSS -->
     <link href="skin/font/HungCSS.css" rel="stylesheet">
+    <!-- Owl Carousel -->
+    <link rel="stylesheet" href="skin/owl/owl.carousel.css">
+    <link rel="stylesheet" href="skin/owl/owl.theme.css">
+
+    <link href="skin/font/DoanCSS.css" rel="stylesheet">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
@@ -33,100 +36,83 @@
 <body>
     <!-- Modal -->
     <!-- Modal -->
-    <div class="modal fade" id="add-address-modal" tabindex="-1" role="dialog" aria-labelledby="add-address" aria-hidden="true">
+    <!-- <div class="modal fade" id="add-address-modal" tabindex="-1" role="dialog" aria-labelledby="add-address" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
             </div>
         </div>
-    </div>
+    </div> -->
     <!-- Modal -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light osahan-nav shadow-sm">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light osahan-nav shadow-sm ">
         <div class="container">
-            <a class="navbar-brand" href="index.html"><img alt="logo" src="img/logo.png"></a>
+            <a class="navbar-brand" href="/home"><img alt="logo" style="max-width: 120px;" src="image/logoShop.png"></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
-            </button>
-            <!-- <div class="collapse navbar-collapse" id="navbarNavDropdown">
+         </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+                        <span class="sizeIcon" data-toggle="modal" data-target="#modalSearch">
+                            <i class="icofont-search-map nav-link" style="padding-top: 20px !important;"></i>
+                        </span>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="offers.html"><i class="icofont-sale-discount"></i> Offers <span class="badge badge-danger">New</span></a>
+
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/home">Home <span class="sr-only">(current)</span></a>
                     </li>
+
+                    <li id="checkLogin"></li>
+                    <!-- <li class="nav-link" style="padding-top: 20px !important;">
+                        <button class="btn btn-primary"> Login </button>
+                    </li>
+
+
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                     Restaurants
-                     </a>
-                        <div class="dropdown-menu dropdown-menu-right shadow-sm border-0">
-                            <a class="dropdown-item" href="listing.html">Listing</a>
-                            <a class="dropdown-item" href="detail.html">Detail + Cart</a>
-                            <a class="dropdown-item" href="checkout.html">Checkout</a>
-                        </div>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                     Pages
-                     </a>
-                        <div class="dropdown-menu dropdown-menu-right shadow-sm border-0">
-                            <a class="dropdown-item" href="track-order.html">Track Order</a>
-                            <a class="dropdown-item" href="invoice.html">Invoice</a>
-                            <a class="dropdown-item" href="login.html">Login</a>
-                            <a class="dropdown-item" href="register.html">Register</a>
-                            <a class="dropdown-item" href="404.html">404</a>
-                            <a class="dropdown-item" href="extra.html">Extra :)</a>
-                        </div>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <img alt="Generic placeholder image" src="img/user/4.png" class="nav-osahan-pic rounded-pill"> My Account
+                            <img alt="Generic placeholder image" src="image/user/4.png" class="nav-osahan-pic rounded-pill"> My Account
                         </a>
                         <div class="dropdown-menu dropdown-menu-right shadow-sm border-0">
-                            <a class="dropdown-item" href="orders.html#orders"><i class="icofont-food-cart"></i> Orders</a>
-                            <a class="dropdown-item" href="orders.html#offers"><i class="icofont-sale-discount"></i> Offers</a>
-                            <a class="dropdown-item" href="orders.html#favourites"><i class="icofont-heart"></i> Favourites</a>
-                            <a class="dropdown-item" href="orders.html#payments"><i class="icofont-credit-card"></i> Payments</a>
-                            <a class="dropdown-item" href="orders.html#addresses"><i class="icofont-location-pin"></i> Addresses</a>
+                            <a class="dropdown-item" href="orders.html#orders"><i class="icofont-ui-user"></i> My Profile </a>
+                            <a class="dropdown-item" href="orders.html#offers"><i class="icofont-logout"></i> Logout </a>
                         </div>
-                    </li>
+                    </li> -->
                     <li class="nav-item dropdown dropdown-cart">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <i class="fas fa-shopping-basket"></i> Cart
+                            <i class="icofont-basket"></i> Cart
                             <span class="badge badge-success">5</span>
                         </a>
                         <div class="dropdown-menu dropdown-cart-top p-0 dropdown-menu-right shadow-sm border-0">
-                            <div class="dropdown-cart-top-header p-4">
-                                <img class="img-fluid mr-3" alt="osahan" src="img/cart.jpg">
-                                <h6 class="mb-0">Gus's World Famous Chicken</h6>
-                                <p class="text-secondary mb-0">310 S Front St, Memphis, USA</p>
-                                <small><a class="text-primary font-weight-bold" href="#">View Full Menu</a></small>
-                            </div>
+
                             <div class="dropdown-cart-top-body border-top p-4">
                                 <p class="mb-2"><i class="icofont-ui-press text-danger food-item"></i> Chicken Tikka Sub 12" (30 cm) x 1 <span class="float-right text-secondary">$314</span></p>
-                                <p class="mb-2"><i class="icofont-ui-press text-success food-item"></i> Corn & Peas Salad x 1 <span class="float-right text-secondary">$209</span></p>
+                                <p class="mb-2"><i class="icofont-ui-press text-success food-item"></i> Corn & Peas Salad x 1
+                                    <span class="float-right text-secondary">$209</span>
+                                </p>
                                 <p class="mb-2"><i class="icofont-ui-press text-success food-item"></i> Veg Seekh Sub 6" (15 cm) x 1 <span class="float-right text-secondary">$133</span></p>
                                 <p class="mb-2"><i class="icofont-ui-press text-danger food-item"></i> Chicken Tikka Sub 12" (30 cm) x 1 <span class="float-right text-secondary">$314</span></p>
-                                <p class="mb-2"><i class="icofont-ui-press text-danger food-item"></i> Corn & Peas Salad x 1 <span class="float-right text-secondary">$209</span></p>
+                                <p class="mb-2"><i class="icofont-ui-press text-danger food-item"></i> Corn & Peas Salad x 1
+                                    <span class="float-right text-secondary">$209</span>
+                                </p>
                             </div>
                             <div class="dropdown-cart-top-footer border-top p-4">
                                 <p class="mb-0 font-weight-bold text-secondary">Sub Total <span class="float-right text-dark">$499</span></p>
                                 <small class="text-info">Extra charges may apply</small>
                             </div>
                             <div class="dropdown-cart-top-footer border-top p-2">
-                                <a class="btn btn-success btn-block btn-lg" href="checkout.html"> Checkout</a>
+                                <a class="btn btn-success btn-block btn-lg" href="/CheckOut"> Checkout</a>
                             </div>
                         </div>
                     </li>
                 </ul>
+
             </div>
-        </div> -->
+        </div>
     </nav>
     <section class="section pt-4 pb-4 osahan-account-page" style="padding-left: 150px;">
-        <div>
-            <div class="row">
-                <div class="col-md-2">
-                    <div class="osahan-account-page-left shadow-sm bg-white h-100">
-                        <!-- <div class="border-bottom p-4">
+        <div class="row" style="padding-top: 70px;">
+            <div class="col-md-2">
+                <div class="osahan-account-page-left shadow-sm bg-white h-100">
+                    <!-- <div class="border-bottom p-4">
                         <div class="osahan-user text-center">
                            <label>Your photo</label>
                            <div class="osahan-user-media">
@@ -140,10 +126,10 @@
                            </div>
                         </div>
                      </div> -->
-                    </div>
                 </div>
-                <div class="col-md-9">
-                    <!-- <div class="osahan-account-page-right shadow-sm bg-white p-4 h-100">
+            </div>
+            <div class="col-md-9">
+                <!-- <div class="osahan-account-page-right shadow-sm bg-white p-4 h-100">
                      <div class="tab-content" id="myTabContent">
                         <div class="tab-pane fade show active" id="orders" role="tabpanel" aria-labelledby="orders-tab">
                         </div>
@@ -170,74 +156,74 @@
                   </div> -->
 
 
-                    <div id="layoutSidenav_content">
-                        <main>
-                            <div class="container-fluid">
-                                <h1>My Profile</h1>
-                                <ol class="breadcrumb mb-4">
-                                    <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
-                                    <li class="breadcrumb-item active">My Profile</li>
-                                </ol>
-                                <div class="row">
-                                    <div class="col-xl-12">
-                                        <div class="card mb-4 order-list">
-                                            <div class="gold-members p-4">
-                                                <a href="#"></a>
-                                                <div class="row">
-                                                    <div class="col-md-4">
-                                                        <!-- <div class="form-group">
+                <div id="layoutSidenav_content">
+                    <main>
+                        <div class="container-fluid">
+                            <h1>My Profile</h1>
+                            <ol class="breadcrumb mb-4">
+                                <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+                                <li class="breadcrumb-item active">My Profile</li>
+                            </ol>
+                            <div class="row">
+                                <div class="col-xl-12">
+                                    <div class="card mb-4 order-list">
+                                        <div class="gold-members p-4">
+                                            <a href="#"></a>
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <!-- <div class="form-group">
                                     <label>Your photo</label>
                                     <form action="/file-upload" class="dropzone dz-clickable">
                                        <div class="dz-default dz-message"><span>Drop files here to upload</span></div>
                                     </form>
                                  </div> -->
-                                                        <div class="osahan-user text-center">
-                                                            <div class="osahan-user-media">
-                                                                <!--                               <img class="mb-3 rounded-pill shadow-sm mt-2" src="img/user/4.png" alt="gurdeep singh osahan"> -->
-                                                                <!-- <div class="form-group">
+                                                    <div class="osahan-user text-center">
+                                                        <div class="osahan-user-media">
+                                                            <!--                               <img class="mb-3 rounded-pill shadow-sm mt-2" src="img/user/4.png" alt="gurdeep singh osahan"> -->
+                                                            <!-- <div class="form-group">
                                                                     <label>Your photo</label>
                                                                     <form action="/file-upload" class="dropzone dz-clickable">
                                                                         <div class="dz-default dz-message"><span>Drop files here to upload</span></div>
                                                                     </form>
                                                                 </div> -->
-                                                                <div class="picture-container">
-                                                                    <div class="picture">
-                                                                        <img class="picture-src" id="wizardPicturePreview">
-                                                                        <input type="file" id="wizard-picture" class="">
-                                                                    </div>
-                                                                    <h6 class="text">Choose Picture</h6>
+                                                            <div class="picture-container">
+                                                                <div class="picture">
+                                                                    <img class="picture-src" id="wizardPicturePreview">
+                                                                    <input type="file" id="wizard-picture" class="">
                                                                 </div>
+                                                                <h6 class="text">Choose Picture</h6>
+                                                            </div>
 
-                                                                <div class="osahan-user-media-body">
-                                                                    <!-- <h6 class="mb-2">Gurdeep Singh</h6>
+                                                            <div class="osahan-user-media-body">
+                                                                <!-- <h6 class="mb-2">Gurdeep Singh</h6>
                                  <p class="mb-1">+91 85680-79956</p>
                                  <p>iamosahan@gmail.com</p> -->
-                                                                    <!-- <p class="mb-0 text-black font-weight-bold"><a class="text-primary mr-3" data-toggle="modal" data-target="#edit-profile-modal" href="#"><i class="icofont-ui-edit"></i> Update</a></p> -->
-                                                                </div>
+                                                                <!-- <p class="mb-0 text-black font-weight-bold"><a class="text-primary mr-3" data-toggle="modal" data-target="#edit-profile-modal" href="#"><i class="icofont-ui-edit"></i> Update</a></p> -->
                                                             </div>
                                                         </div>
                                                     </div>
+                                                </div>
 
-                                                    <div class="col-md-8 add_top_30">
-                                                        <div class="row">
-                                                            <div class="col-md-4">
-                                                                <div class="form-group">
-                                                                    <label>Name</label>
-                                                                    <input type="text" class="form-control" id="name" placeholder="Your name">
-                                                                    <span class="form-message text-danger" id="messageName"></span>
-                                                                </div>
+                                                <div class="col-md-8 add_top_30">
+                                                    <div class="row">
+                                                        <div class="col-md-4">
+                                                            <div class="form-group">
+                                                                <label>Name</label>
+                                                                <input type="text" class="form-control" id="name" placeholder="Your name">
+                                                                <span class="form-message text-danger" id="messageName"></span>
                                                             </div>
-                                                            <div class="col-md-4">
-                                                                <div class="form-group">
-                                                                    <label>Password</label>
-                                                                    <input type="text" class="form-control" id="password" placeholder="password" value="123456">
-                                                                    <span class="form-message text-danger" id="messagePass"></span>
-                                                                </div>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <div class="form-group">
+                                                                <label>Password</label>
+                                                                <input type="text" class="form-control" id="password" placeholder="password" disabled>
+                                                                <span class="form-message text-danger" id="messagePass"></span>
                                                             </div>
-                                                            <div class="col-md-4">
-                                                                <div class="form-group">
-                                                                    <label>Date of Birthday</label>
-                                                                    <!-- <div class="dropdown">
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <div class="form-group">
+                                                                <label>Date of Birthday</label>
+                                                                <!-- <div class="dropdown">
                                                                         <button class="btn btn-outline-secondary dropdown-toggle " type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                               Choose
                                             </button>
@@ -246,88 +232,86 @@
                                                                             <a class="dropdown-item" href="#">Fermale</a>
                                                                         </div>
                                                                     </div> -->
-                                                                    <input type="date" id="date" class="form-control">
-                                                                    <span class="form-message text-danger" id="messageDate"></span>
-                                                                </div>
+                                                                <input type="date" id="date" class="form-control">
+                                                                <span class="form-message text-danger" id="messageDate"></span>
                                                             </div>
                                                         </div>
-                                                        <!-- /row-->
-                                                        <div class="row">
-                                                            <div class="col-md-6">
-                                                                <div class="form-group">
-                                                                    <label>Telephone</label>
-                                                                    <input type="text" class="form-control" id="phone" placeholder="Your telephone number" value="12345678987">
-                                                                    <span class="form-message text-danger" id="messagePhone"></span>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-md-6">
-                                                                <div class="form-group">
-                                                                    <label>Email</label>
-                                                                    <input type="email" class="form-control" id="email" placeholder="Your email">
-                                                                    <span class="form-message text-danger" id="messageEmail"></span>
-                                                                </div>
+                                                    </div>
+                                                    <!-- /row-->
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                <label>Telephone</label>
+                                                                <input type="text" class="form-control" id="phone" placeholder="Your telephone number">
+                                                                <span class="form-message text-danger" id="messagePhone"></span>
                                                             </div>
                                                         </div>
-                                                        <!-- /row-->
-                                                        <div class="row">
-                                                            <div class="col-md-12">
-                                                                <div class="form-group">
-                                                                    <label> Address </label>
-                                                                    <textarea style="height:70px;" class="form-control" id="address" placeholder="Address "></textarea>
-                                                                    <span class="form-message text-danger" id="messageAddress"></span>
-                                                                </div>
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                <label>Email</label>
+                                                                <input type="email" class="form-control" id="email" placeholder="Your email" disabled>
+                                                                <span class="form-message text-danger" id="messageEmail"></span>
                                                             </div>
                                                         </div>
-                                                        <div class="row">
-                                                            <div class="save col-md-12">
-                                                                <input type="button" value="Save" id="SaveUpdate" class="btn btn-success"></input>
-                                                                <input type="button" value="Change password" id="SaveUpdate" data-toggle="modal" data-target="#basicModal" class="btn btn-secondary ml-3">
-                                                                </input>
+                                                    </div>
+                                                    <!-- /row-->
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <div class="form-group">
+                                                                <label> Address </label>
+                                                                <textarea style="height:70px;" class="form-control" id="address" placeholder="Address "></textarea>
+                                                                <span class="form-message text-danger" id="messageAddress"></span>
                                                             </div>
-                                                            <div class="modal fade" id="basicModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
-                                                                <div class="modal-dialog">
-                                                                    <div class="modal-content">
-                                                                        <div class="modal-header">
-                                                                            <h6 class="m-0"><i class="fa fa-lock text-muted mr-2"></i>Change password</h6>
-                                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="save col-md-12">
+                                                            <input type="button" value="Save" id="SaveUpdate" class="btn btn-success"></input>
+                                                            <input type="button" value="Change password" id="SaveUpdate" data-toggle="modal" data-target="#basicModal" class="btn btn-secondary ml-3">
+                                                            </input>
+                                                        </div>
+                                                        <div class="modal fade" id="basicModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+                                                            <div class="modal-dialog">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header">
+                                                                        <h6 class="m-0"><i class="fa fa-lock text-muted mr-2"></i>Change password</h6>
+                                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                                                 <span aria-hidden="true">×</span>
                                                                             </button>
+                                                                    </div>
+                                                                    <div class="modal-body">
+                                                                        <div class="form-group">
+                                                                            <label>Old password</label>
+                                                                            <input class="form-control" id="Old_password" type="password">
+                                                                            <span class="form-message text-danger" id="oldpassword"></span>
                                                                         </div>
-                                                                        <div class="modal-body">
-                                                                            <div class="form-group">
-                                                                                <label>Old password</label>
-                                                                                <input class="form-control" id="Old_password" type="password">
-                                                                                <span class="form-message text-danger" id="oldpassword"></span>
-                                                                            </div>
-                                                                            <div class="form-group">
-                                                                                <label>New password</label>
-                                                                                <input class="form-control" id="New_password" type="password">
-                                                                                <span class="form-message text-danger" id="newpassword"></span>
-                                                                            </div>
-                                                                            <div class="form-group">
-                                                                                <label>Confirm new password</label>
-                                                                                <input class="form-control" id="Confirm_new_password" type="password">
-                                                                                <span class="form-message text-danger" id="confirmpassword"></span>
-                                                                            </div>
+                                                                        <div class="form-group">
+                                                                            <label>New password</label>
+                                                                            <input class="form-control" id="New_password" type="password">
+                                                                            <span class="form-message text-danger" id="newpassword"></span>
                                                                         </div>
-                                                                        <div class="modal-footer">
-                                                                            <!-- <input type="button" class="btn btn-light" data-dismiss="modal">Close</input> -->
-                                                                            <!-- <input type="button" class="btn btn-success" id="change">Save changes</input> -->
-                                                                            <input type="button" value="Close" class="btn btn-light" data-dismiss="modal"> </input>
-                                                                            <input type="button" value="Save changes" id="change" class="btn btn-success"></input>
+                                                                        <div class="form-group">
+                                                                            <label>Confirm new password</label>
+                                                                            <input class="form-control" id="Confirm_new_password" type="password">
+                                                                            <span class="form-message text-danger" id="confirmpassword"></span>
                                                                         </div>
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                        <input type="button" value="Close" class="btn btn-light" data-dismiss="modal"> </input>
+                                                                        <input type="button" value="Save changes" id="change" class="btn btn-success"></input>
                                                                     </div>
                                                                 </div>
                                                             </div>
-
                                                         </div>
 
-                                                        <!-- /row-->
                                                     </div>
+
+                                                    <!-- /row-->
                                                 </div>
                                             </div>
                                         </div>
-                                        <!-- <div class="row">
+                                    </div>
+                                    <!-- <div class="row">
                                             <div class="col-md-6">
                                                 <div class="card mb-4 order-list">
                                                     <div class="gold-members">
@@ -389,61 +373,60 @@
 
                                         </div> -->
 
-                                    </div>
                                 </div>
-                                <ol class="breadcrumb mb-4">
-                                    <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
-                                    <li class="breadcrumb-item active">Purchase History</li>
-                                </ol>
-                                <div class="row">
-                                    <div class="col-xl-12">
-                                        <div class="card mb-4 order-list">
-                                            <!-- <div class="gold-members p-4">
+                            </div>
+                            <ol class="breadcrumb mb-4">
+                                <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+                                <li class="breadcrumb-item active">Purchase History</li>
+                            </ol>
+                            <div class="row">
+                                <div class="col-xl-12">
+                                    <div class="card mb-4 order-list">
+                                        <!-- <div class="gold-members p-4">
                                                 <div class="row">
                                                     <div class="col-md-4">
 
                                                     </div>
                                                 </div>
                                             </div> -->
-                                            <div class="card-body">
-                                                <div class="table-responsive">
-                                                    <table class="table" id="dataTable" width="100%" cellspacing="0">
-                                                        <thead>
-                                                            <tr class="text-uppercase">
-                                                                <th>User</th>
-                                                                <th>Name</th>
-                                                                <th>Product</th>
-                                                                <th>Restaurant</th>
-                                                                <th>Quantity</th>
-                                                                <th>Ordered on</th>
-                                                                <th>Total</th>
-                                                                <th>Status</th>
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody>
+                                        <div class="card-body">
+                                            <div class="table-responsive">
+                                                <table class="table" id="dataTable" width="100%" cellspacing="0">
+                                                    <thead>
+                                                        <tr class="text-uppercase">
+                                                            <th>User</th>
+                                                            <th>Name</th>
+                                                            <th>Product</th>
+                                                            <th>Restaurant</th>
+                                                            <th>Quantity</th>
+                                                            <th>Ordered on</th>
+                                                            <th>Total</th>
+                                                            <th>Status</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
 
-                                                        </tbody>
-                                                    </table>
-                                                </div>
+                                                    </tbody>
+                                                </table>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+                            </div>
 
 
-                        </main>
-                        <footer class="py-4 bg-light mt-auto">
-                            <div class="container-fluid">
-                                <div class="d-flex align-items-center justify-content-between small">
-                                    <div class="text-muted">Copyright &copy; Your Website 2020</div>
-                                    <div>
-                                        <a href="#">Privacy Policy</a> &middot;
-                                        <a href="#">Terms &amp; Conditions</a>
-                                    </div>
+                    </main>
+                    <footer class="py-4 bg-light mt-auto">
+                        <div class="container-fluid">
+                            <div class="d-flex align-items-center justify-content-between small">
+                                <div class="text-muted">Copyright &copy; Your Website 2020</div>
+                                <div>
+                                    <a href="#">Privacy Policy</a> &middot;
+                                    <a href="#">Terms &amp; Conditions</a>
                                 </div>
                             </div>
-                        </footer>
                         </div>
+                    </footer>
                     </div>
                 </div>
             </div>
@@ -458,93 +441,58 @@
             </div>
         </div>
     </section>
-    <section class="footer pt-5 pb-5">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4 col-12 col-sm-12">
-                    <h6 class="mb-3">Subscribe to our Newsletter</h6>
-                    <form class="newsletter-form mb-1">
-                        <div class="input-group">
-                            <input type="text" placeholder="Please enter your email" class="form-control">
-                            <div class="input-group-append">
-                                <button type="button" class="btn btn-primary">
-                           Subscribe
-                           </button>
-                            </div>
-                        </div>
-                    </form>
-                    <p><a class="text-info" href="register.html">Register now</a> to get updates on <a href="offers.html">Offers and Coupons</a></p>
-                    <div class="app">
-                        <p class="mb-2">DOWNLOAD APP</p>
-                        <a href="#">
-                            <img class="img-fluid" src="img/google.png">
-                        </a>
-                        <a href="#">
-                            <img class="img-fluid" src="img/apple.png">
-                        </a>
-                    </div>
-                </div>
-                <div class="col-md-1 col-sm-6 mobile-none">
-                </div>
-                <div class="col-md-2 col-4 col-sm-4">
-                    <h6 class="mb-3">About OE</h6>
-                    <ul>
-                        <li><a href="#">About Us</a></li>
-                        <li><a href="#">Culture</a></li>
-                        <li><a href="#">Blog</a></li>
-                        <li><a href="#">Careers</a></li>
-                        <li><a href="#">Contact</a></li>
-                    </ul>
-                </div>
-                <div class="col-md-2 col-4 col-sm-4">
-                    <h6 class="mb-3">For Foodies</h6>
-                    <ul>
-                        <li><a href="#">Community</a></li>
-                        <li><a href="#">Developers</a></li>
-                        <li><a href="#">Blogger Help</a></li>
-                        <li><a href="#">Verified Users</a></li>
-                        <li><a href="#">Code of Conduct</a></li>
-                    </ul>
-                </div>
-                <div class="col-md-2 col-4 col-sm-4">
-                    <h6 class="mb-3">For Restaurants</h6>
-                    <ul>
-                        <li><a href="#">Advertise</a></li>
-                        <li><a href="#">Add a Restaurant</a></li>
-                        <li><a href="#">Claim your Listing</a></li>
-                        <li><a href="#">For Businesses</a></li>
-                        <li><a href="#">Owner Guidelines</a></li>
-                    </ul>
-                </div>
+
+    <footer>
+        <div class="containers">
+            <!--Bắt Đầu Nội Dung Giới Thiệu-->
+            <div class="noi-dung about">
+                <h2>Về Chúng Tôi</h2>
+                <p> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Praesentium dolores alias ipsa vel hic tempore exercitationem ipsam explicabo repudiandae ut consectetur qui, earum at nostrum perspiciatis asperiores necessitatibus facilis esse.
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia id possimus quibusdam nihil earum in provident enim animi commodi quisquam! Molestiae cupiditate mollitia pariatur error ea, debitis eaque quo dolorum.</p>
             </div>
-        </div>
-    </section>
-    <section class="footer-bottom-search pt-5 pb-5 bg-white">
-        <div class="container">
-            <div class="row">
-                <div class="col-xl-12">
-                    <p class="text-black">POPULAR COUNTRIES</p>
-                    <div class="search-links">
-                        <a href="#">Australia</a> | <a href="#">Brasil</a> | <a href="#">Canada</a> | <a href="#">Chile</a> | <a href="#">Czech Republic</a> | <a href="#">India</a> | <a href="#">Indonesia</a> | <a href="#">Ireland</a> | <a href="#">New Zealand</a>                        | <a href="#">United Kingdom</a> | <a href="#">Turkey</a> | <a href="#">Philippines</a> | <a href="#">Sri Lanka</a> | <a href="#">Australia</a> | <a href="#">Brasil</a> | <a href="#">Canada</a> | <a href="#">Chile</a> | <a href="#">Czech Republic</a>                        | <a href="#">India</a> | <a href="#">Indonesia</a> | <a href="#">Ireland</a> | <a href="#">New Zealand</a> | <a href="#">United Kingdom</a> | <a href="#">Turkey</a> | <a href="#">Philippines</a> | <a href="#">Sri Lanka</a><a href="#">Australia</a>                        | <a href="#">Brasil</a> | <a href="#">Canada</a> | <a href="#">Chile</a> | <a href="#">Czech Republic</a> | <a href="#">India</a> | <a href="#">Indonesia</a> | <a href="#">Ireland</a> | <a href="#">New Zealand</a> | <a href="#">United Kingdom</a>                        | <a href="#">Turkey</a> | <a href="#">Philippines</a> | <a href="#">Sri Lanka</a> | <a href="#">Australia</a> | <a href="#">Brasil</a> | <a href="#">Canada</a> | <a href="#">Chile</a> | <a href="#">Czech Republic</a> | <a href="#">India</a>                        | <a href="#">Indonesia</a> | <a href="#">Ireland</a> | <a href="#">New Zealand</a> | <a href="#">United Kingdom</a> | <a href="#">Turkey</a> | <a href="#">Philippines</a> | <a href="#">Sri Lanka</a>
-                    </div>
-                    <p class="mt-4 text-black">POPULAR FOOD</p>
-                    <div class="search-links">
-                        <a href="#">Fast Food</a> | <a href="#">Chinese</a> | <a href="#">Street Food</a> | <a href="#">Continental</a> | <a href="#">Mithai</a> | <a href="#">Cafe</a> | <a href="#">South Indian</a> | <a href="#">Punjabi Food</a> |
-                        <a href="#">Fast Food</a> | <a href="#">Chinese</a> | <a href="#">Street Food</a> | <a href="#">Continental</a> | <a href="#">Mithai</a> | <a href="#">Cafe</a> | <a href="#">South Indian</a> | <a href="#">Punjabi Food</a><a href="#">Fast Food</a>                        | <a href="#">Chinese</a> | <a href="#">Street Food</a> | <a href="#">Continental</a> | <a href="#">Mithai</a> | <a href="#">Cafe</a> | <a href="#">South Indian</a> | <a href="#">Punjabi Food</a> | <a href="#">Fast Food</a> |
-                        <a href="#">Chinese</a> | <a href="#">Street Food</a> | <a href="#">Continental</a> | <a href="#">Mithai</a> | <a href="#">Cafe</a> | <a href="#">South Indian</a> | <a href="#">Punjabi Food</a>
-                    </div>
-                </div>
+            <!--Kết Thúc Nội Dung Giới Thiệu-->
+            <!--Bắt Đầu Nội Dung Đường Dẫn-->
+            <div class="noi-dung links">
+                <h2>Đường Dẫn</h2>
+                <ul style="padding-left: 0px;">
+                    <li><a href="#">Trang Chủ</a></li>
+                    <li><a href="#">Về Chúng Tôi</a></li>
+                    <li><a href="#">Thông Tin Liên Lạc</a></li>
+                    <li><a href="#">Dịch Vụ</a></li>
+                    <li><a href="#">Điều Kiện Chính Sách</a></li>
+                </ul>
             </div>
-        </div>
-    </section>
-    <footer class="pt-4 pb-4 text-center">
-        <div class="container">
-            <p class="mt-0 mb-0">© Copyright 2020 Osahan Eat. All Rights Reserved</p>
-            <small class="mt-0 mb-0"> Made with <i class="fas fa-heart heart-icon text-danger"></i> by
-            <a class="text-danger" target="_blank" href="https://www.instagram.com/iamgurdeeposahan/">Gurdeep Osahan</a> - <a class="text-primary" target="_blank" href="https://askbootstrap.com/">Ask Bootstrap</a>
-            </small>
+            <!--Kết Thúc Nội Dung Đường Dẫn-->
+            <!--Bắt Đâu Nội Dung Liên Hệ-->
+            <div class="noi-dung contact">
+                <h2>Thông Tin Liên Hệ</h2>
+                <ul class="info" style="padding-left: 0px;">
+                    <li>
+                        <span><i class="fa fa-map-marker"></i></span>
+                        <span>Đường Số 1<br />
+                         Đường 1, Thủ Đô Hà Nội<br />
+                         Việt Nam</span>
+                    </li>
+                    <li>
+                        <span><i class="fa fa-phone"></i></span>
+                        <p><a href="#">+84 123 456 789</a>
+                            <br />
+                            <a href="#">+84 987 654 321</a></p>
+                    </li>
+                    <li>
+                        <span><i class="fa fa-envelope"></i></span>
+                        <p><a href="#">FUMK@gmail.com</a>
+                            <br/>
+                            <a href="#">FUMK@fpt.edu.vn</a>
+                        </p>
+                    </li>
+                </ul>
+            </div>
+            <!--Kết Thúc Nội Dung Liên Hệ-->
         </div>
     </footer>
+
+
     <!-- jQuery -->
     <script src="js/jquery-3.3.1.slim.min.js"></script>
     <!-- Bootstrap core JavaScript-->
@@ -596,13 +544,13 @@
             var regPass = /^(?=.*\d)(?=.*[a-z])(?=.*[a-zA-Z]).{8,}$/i;
 
 
-            // if (userName == "") {
-            //     document.getElementById('name').setAttribute('class', 'form-control border-danger');
-            //     document.getElementById('messageName').innerHTML = 'User Name is empty';
-            // } else {
-            //     document.getElementById('name').setAttribute('class', 'form-control');
-            //     document.getElementById('messageName').innerHTML = '';
-            // }
+            if (userName == "") {
+                document.getElementById('name').setAttribute('class', 'form-control border-danger');
+                document.getElementById('messageName').innerHTML = 'User Name is empty';
+            } else {
+                document.getElementById('name').setAttribute('class', 'form-control');
+                document.getElementById('messageName').innerHTML = '';
+            }
 
             // if (password == "") {
             //     document.getElementById('password').setAttribute('class', 'form-control border-danger');
@@ -628,13 +576,13 @@
             //     document.getElementById('messageAddress').innerHTML = '';
             // }
 
-            // if (date == "") {
-            //     document.getElementById('date').setAttribute('class', 'form-control border-danger');
-            //     document.getElementById('messageDate').innerHTML = 'You have not selected date';
-            // } else {
-            //     document.getElementById('date').setAttribute('class', 'form-control');
-            //     document.getElementById('messageDate').innerHTML = '';
-            // }
+            if (date == "") {
+                document.getElementById('date').setAttribute('class', 'form-control border-danger');
+                document.getElementById('messageDate').innerHTML = 'You have not selected date';
+            } else {
+                document.getElementById('date').setAttribute('class', 'form-control');
+                document.getElementById('messageDate').innerHTML = '';
+            }
 
 
             // if (old_phone == "") {
@@ -649,19 +597,16 @@
             // }
 
 
-            // if (new_phone == "") {
-            //     document.getElementById('new_phoneNumber').setAttribute('class', 'form-control');
-            //     document.getElementById('newPhoneNumber').innerHTML = '';
-            // } else if (new_phone == old_phone) {
-            //     document.getElementById('new_phoneNumber').setAttribute('class', 'form-control border-danger');
-            //     document.getElementById('newPhoneNumber').innerHTML = 'The new password must be different from the old password';
-            // } else if (regPhone.test(new_phone) == false) {
-            //     document.getElementById('new_phoneNumber').setAttribute('class', 'form-control border-danger');
-            //     document.getElementById('newPhoneNumber').innerHTML = 'invalid Phone';
-            // } else {
-            //     document.getElementById('new_phoneNumber').setAttribute('class', 'form-control');
-            //     document.getElementById('newPhoneNumber').innerHTML = '';
-            // }
+            if (phone == "") {
+                document.getElementById('phone').setAttribute('class', 'form-control border-danger');
+                document.getElementById('messagePhone').innerHTML = 'Phone empty';
+            } else if (regPhone.test(phone) == false) {
+                document.getElementById('phone').setAttribute('class', 'form-control border-danger');
+                document.getElementById('messagePhone').innerHTML = 'invalid Phone';
+            } else {
+                document.getElementById('phone').setAttribute('class', 'form-control');
+                document.getElementById('messagePhone').innerHTML = '';
+            }
 
             if (Old_password != password) {
                 document.getElementById('Old_password').setAttribute('class', 'form-control border-danger');
@@ -691,32 +636,36 @@
             }
         }
 
+
+
+
+        $("#name").click(function() {
+            CheckUpdate();
+        });
+
+        $("#password").click(function() {
+            CheckUpdate();
+        });
+
+        $("#email").click(function() {
+            CheckUpdate();
+        });
+
+        $("#address").click(function() {
+            CheckUpdate();
+        });
+
+        $("#phone").click(function() {
+            CheckUpdate();
+        });
+
+        $("#date").click(function() {
+            CheckUpdate();
+        });
+
         $('#change').click(function() {
-                CheckUpdate();
-            })
-            // $("#name").click(function() {
-            //     CheckUpdate();
-            // });
-
-        // $("#password").click(function() {
-        //     CheckUpdate();
-        // });
-
-        // $("#email").click(function() {
-        //     CheckUpdate();
-        // });
-
-        // $("#address").click(function() {
-        //     CheckUpdate();
-        // });
-
-        // $("#date").click(function() {
-        //     CheckUpdate();
-        // });
-
-        // $("#phone").click(function() {
-        //     CheckUpdate();
-        // });
+            CheckUpdate();
+        })
 
         // $("#Old_password").click(function() {
         //     CheckUpdate();
@@ -778,6 +727,54 @@
         //         }
         //     })
         // })
+
+        function getCookie(cname) {
+            let name = cname + "=";
+            let decodedCookie = decodeURIComponent(document.cookie);
+            let ca = decodedCookie.split(';');
+            for (let i = 0; i < ca.length; i++) {
+                let c = ca[i];
+                while (c.charAt(0) == ' ') {
+                    c = c.substring(1);
+                }
+                if (c.indexOf(name) == 0) {
+                    return c.substring(name.length, c.length);
+                }
+            }
+            return "";
+        }
+
+        function setCookie(cname, cvalue, exdays) {
+            const d = new Date();
+            d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+            let expires = "expires=" + d.toUTCString();
+            document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+        }
+
+        var token = getCookie("token");
+
+        function logOutClick() {
+            setCookie("token", "", 0);
+            window.location = "/LoginUser"
+        }
+
+        var checkLogin = document.getElementById('checkLogin');
+
+        if (token == "") {
+            checkLogin.innerHTML += `<li class="nav-link" style="padding-top: 20px !important;">
+                        <a href="/LoginUser" class="btn btn-primary"> Login </a>
+                    </li>`
+        } else {
+            checkLogin.innerHTML += `<li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <img alt="Generic placeholder image" src="image/user/4.png" class="nav-osahan-pic rounded-pill"> My Account
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right shadow-sm border-0">
+                            <a class="dropdown-item" href="/MyProfileUser"><i class="icofont-ui-user"></i> My Profile </a>
+                            <a class="dropdown-item" onclick="logOutClick()"><i class="icofont-logout"></i> Logout </a>
+                        </div>
+                    </li>`
+        }
     </script>
 </body>
 

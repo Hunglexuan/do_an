@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta name="description" content="Askbootstrap" />
+    <meta name="author" content="Askbootstrap" />
+
+    <!-- Favicon Icon -->
+    <link rel="icon" type="image/png" href="img/favicon.png" />
+    <!-- Feather Icon-->
+    <link href="/skin/css/feather.css" rel="stylesheet" type="text/css" />
+    <!-- Fontawesome Icon-->
+    <link
+      href="/skin/bootstrap/fontawesome.min.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <!-- Bootstrap Css -->
+    <link href="/skin/bootstrap/bootstrap.min.css" rel="stylesheet" />
+    <!-- Custom Css -->
+    <link href="/skin/css/listUser.css" rel="stylesheet" />
+  </head>
+  <body class="sb-nav-fixed">
+    <nav class="sb-topnav navbar navbar-expand navbar-light bg-white shadow-sm">
+      <a class="navbar-brand" href="index.html"
+        ><img alt="logo" src="img/logo.png"
+      /></a>
+      <button
+        class="btn btn-link btn-sm order-1 order-lg-0"
+        id="sidebarToggle"
+        href="#"
+      >
+        <i class="fas fa-bars"></i>
+      </button>
+      <!-- Navbar Search-->
+      <form
+        class="
+          d-none d-md-inline-block
+          form-inline
+          ml-auto
+          mr-0 mr-md-3
+          my-2 my-md-0
+        "
+      ></form>
+      <!-- Navbar-->
+      <ul class="navbar-nav ml-auto ml-md-0">
+        <li class="nav-item dropdown no-arrow mx-1 osahan-list-dropdown">
+          <!-- Dropdown - Alerts -->
+        </li>
+        <li class="nav-item dropdown no-arrow mx-1 osahan-list-dropdown">
+          <a
+            class="nav-link dropdown-toggle"
+            href="#"
+            role="button"
+            data-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >
+            <i class="feather-bell"></i>
+            <!-- Counter - Alerts -->
+            <span class="badge badge-info badge-counter">6</span>
+          </a>
+          <!-- Dropdown - Alerts -->
+          <div
+            class="dropdown-list dropdown-menu dropdown-menu-right shadow-sm"
+          >
+            <h6 class="dropdown-header">Alerts Center</h6>
+            <a class="dropdown-item d-flex align-items-center" href="#">
+              <div class="mr-3">
+                <div class="icon-circle bg-primary">
+                  <i class="fas fa-download text-white"></i>
+                </div>
+              </div>
+              <div>
+                <div class="small text-gray-500">December 12, 2020</div>
+                <span class="font-weight-bold"
+                  >A new monthly report is ready to download!</span
+                >
+              </div>
+            </a>
+            <a class="dropdown-item d-flex align-items-center" href="#">
+              <div class="mr-3">
+                <div class="icon-circle bg-success">
+                  <i class="fas fa-edit text-white"></i>
+                </div>
+              </div>
+              <div>
+                <div class="small text-gray-500">December 7, 2020</div>
+                $290.29 has been deposited into your account!
+              </div>
+            </a>
+            <a class="dropdown-item d-flex align-items-center" href="#">
+              <div class="mr-3">
+                <div class="icon-circle bg-warning">
+                  <i class="fas fa-folder text-white"></i>
+                </div>
+              </div>
+              <div>
+                <div class="small text-gray-500">December 2, 2020</div>
+                Spending Alert: We've noticed unusually high spending for your
+                account.
+              </div>
+            </a>
+            <a class="dropdown-item text-center small text-gray-500" href="#"
+              >Show All Alerts</a
+            >
+          </div>
+        </li>
+        <!-- Nav Item - User Information -->
+        <li class="nav-item dropdown no-arrow ml-1 osahan-profile-dropdown">
+          <a
+            class="nav-link dropdown-toggle pr-0"
+            href="#"
+            role="button"
+            data-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >
+            <img class="img-profile rounded-circle" src="img/user/1.png" />
+          </a>
+          <!-- Dropdown - User Information -->
+          <div class="dropdown-menu dropdown-menu-right shadow-sm">
+            <div class="p-3 d-flex align-items-center">
+              <div class="dropdown-list-image mr-3">
+                <img class="rounded-circle" src="img/user/1.png" alt="" />
+                <div class="status-indicator bg-success"></div>
+              </div>
+              <div class="font-weight-bold">
+                <div class="text-truncate">Gurdeep Osahan</div>
+                <div class="small text-gray-500">Restaurants Owner</div>
+              </div>
+            </div>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="my-profile.html"
+              ><i class="feather-edit"></i> My Account</a
+            >
+            <a class="dropdown-item" href="my-profile.html"
+              ><i class="feather-settings"></i> Account Settings</a
+            >
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="sign-in.html"
+              ><i class="feather-log-out"></i> Logout</a
+            >
+          </div>
+        </li>
+      </ul>
+    </nav>
+    <div id="layoutSidenav">
+      <div id="layoutSidenav_nav">
+        <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+          <div class="sb-sidenav-menu">
+            <div class="nav">
+              <div class="sb-sidenav-menu-heading">Core</div>
+              <a class="nav-link" onclick="listUserPage()">
+                <div class="sb-nav-link-icon"><i class="feather-list"></i></div>
+                List Of User
+              </a>
+              <a class="nav-link" onclick="listSellerPage()">
+                <div class="sb-nav-link-icon"><i class="feather-list"></i></div>
+                List Of Seller
+              </a>
+
+              <a class="nav-link" onclick="listVoucherPage()">
+                <div class="sb-nav-link-icon"><i class="feather-list"></i></div>
+                List Of Voucher
+              </a>
+
+              <a class="nav-link"onclick="AddRolePage()">
+                <div class="sb-nav-link-icon"><i class="feather-list"></i></div>
+                Add Role
+              </a>
+              <a class="nav-link" onclick="listReportPage()">
+                <div class="sb-nav-link-icon"><i class="feather-list"></i></div>
+                Report List
+              </a>
+            </div>
+          </div>
+        </nav>
+      </div>
+      <div id="layoutSidenav_content">
+        <main>
+          <div class="container-fluid">
+            <h1 class="mt-4">Add Role</h1>
+
+            <div class="row">
+              <div class="col-xl-12">
+                <div class="card mb-4">
+                  <div class="card-header">Basic info</div>
+                </div>
+              </div>
+
+              <div class="col-xl-12">
+                <div class="card mb-4">
+                  <div class="card-header">Role</div>
+                  <div class="card-body">
+                    <div class="row">
+                      <div class="col-md-12">
+                        <h6>Name</h6>
+                        <table id="pricing-list-container" style="width: 100%">
+                          <tr class="pricing-list-item">
+                            <td>
+                              <div class="row">
+                                <div class="col-md-4">
+                                  <div class="form-group">
+                                    <input
+                                      type="text"
+                                      class="form-control"
+                                      id="roleName"
+                                      placeholder="Role-Name"
+                                    />
+                                  </div>
+                                </div>
+                              </div>
+                            </td>
+                          </tr>
+                        </table>
+                        <a class="btn btn-primary" id="add-btn"
+                          ><i class="fa fa-fw fa-plus-circle"></i>Add</a
+                        >
+                      </div>
+                    </div>
+                    <!-- /row-->
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </main>
+        <footer class="py-4 bg-light mt-auto">
+          <div class="container-fluid">
+            <div
+              class="d-flex align-items-center justify-content-between small"
+            >
+              <div class="text-muted">Copyright &copy; Your Website 2020</div>
+              <div>
+                <a href="#">Privacy Policy</a>
+                &middot;
+                <a href="#">Terms &amp; Conditions</a>
+              </div>
+            </div>
+          </div>
+        </footer>
+      </div>
+    </div>
+
+    <!-- Jquery -->
+    <script src="/js/jquery.min.js"></script>
+    <!-- Fontawesome -->
+    <script src="/js/all.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom Js -->
+    <script src="/js/scriptsListSeller.js"></script>
+    <!-- Ajax Chart Js -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"
+      crossorigin="anonymous"
+    ></script>
+    <!-- Chart Js -->
+    <!-- <script src="/js/chart-area-demo.js"></script>
+   <script src="/js/chart-bar-demo.js"></script>
+   <script src="/js/chart-pie-demo.js"></script> -->
+    <script src="/js/jquery.dataTables.min.js"></script>
+    <script src="/js/dataTables.bootstrap.min.js"></script>
+    <!-- <script src="/js/datatables-demo.js"></script> -->
+
+    <script>
+       function listUserPage(){
+         window.location.href='/ListUsers'
+       } 
+       function listSellerPage(){
+         window.location.href='/ListSeller'
+       } 
+       function listVoucherPage(){
+         window.location.href='/ListVoucher'
+       } 
+
+       function AddRolePage(){
+         window.location.href='/AddRole'
+       } 
+
+       function listReportPage(){
+         window.location.href='/ListReport'
+       } 
+
+      
+
+      function checkBlankLogin() {
+        if ($("#roleName").val() == "") {
+          alert("Role Name is Blank please Input");
+        }
+      }
+      $("#add-btn").click(function () {
+        $.ajax({
+          url: "/api/role/create",
+          method: "POST",
+          data: {
+            name: $("#roleName").val(),
+          }
+        }).then(function(data){
+            if (data.message == "SUCCESS") {
+                window.location.reload();
+                alert("Add Role Successful");
+                
+            } else {
+                alert("Add Role Fail")
+            }
+        })
+      });
+    </script>
+  </body>
+</html>

@@ -43,18 +43,25 @@ app.use(express.static(path.join(__dirname, '../media')))
 // Setup other routes
 app.use('/api', routes);
 
+app.get('/home', function(req, res) {
+    return res.render('home');
+});
+
 app.get('/index', function(req, res) {
-
     return res.render('index');
+});
 
 
+app.get('/AllProduct', function(req, res) {
+    return res.render('AllProduct');
+});
+
+app.get('/AllSeller', function(req, res) {
+    return res.render('AllSeller');
 });
 
 app.get('/resetPass', function(req, res) {
-
     return res.render('password');
-
-
 });
 
 app.get('/LoginSeller', function(req, res) {
@@ -87,7 +94,6 @@ app.get('/CheckOut', function(req, res) {
 
 app.get('/ShopDetail', function(req, res) {
     return res.render('ShopDetail');
-
 });
 
 app.get('/LoginUser', function(req, res) {
@@ -108,8 +114,24 @@ app.get('/DashboardSeller', function(req, res) {
     return res.render('DashboardForSeller');
 });
 
+app.get('/ListUsers', function(req, res) {
+    return res.render('ListUsers');
+});
+
 app.get('/ListSeller', function(req, res) {
     return res.render('ListSeller');
+});
+
+app.get('/AddRole', function(req, res) {
+    return res.render('AddRole');
+});
+
+app.get('/ListReport', function(req, res) {
+    return res.render('ListReport');
+});
+
+app.get('/ListVoucher', function(req, res) {
+    return res.render('ListVoucher');
 });
 
 
