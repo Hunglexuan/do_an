@@ -63,8 +63,8 @@
                             <div class="dropdown-menu dropdown-cart-top p-0 dropdown-menu-right shadow-sm border-0">
 
                                 <div class="dropdown-cart-top-body border-top p-4">
-                                   <table class="show-cart table">
-                                        sssss
+                                   <table class=" table" id="show-cart">
+                                        
                                    </table>
                                 </div>
                                 <div class="dropdown-cart-top-footer border-top p-4">
@@ -92,16 +92,14 @@
                     <div class="col-md-12">
                         <div class="restaurant-detailed-header-left">
                             <div id="inforShop">
-                                <!-- <img class="img-fluid mr-3 float-left" alt="osahan" src="image/1.jpg">
-                                <h2 class="text-white">Spice Hut Indian Restaurant</h2>
-                                <p class="text-white mb-1"><i class="icofont-location-pin"></i> 2036 2ND AVE, NEW YORK, NY 10029 <span class="badge badge-success">OPEN</span></p> -->
+                                
                             </div>
 
                             <p class="text-white mb-0"><i class="icofont-food-cart"></i> North Indian, Chinese, Fast Food, South Indian
                                 <button type="button" id="SaveUpdate" data-toggle="modal" data-target="#basicModal" class="btn btn-outline-danger ml-3 fa fa-flag" style="float: right;"> </button>
                             </p>
 
-                            <!-- <input type="button" data-toggle="modal" data-target="#basicModal" class="btn btn-secondary"> <i class="fa fa-flag"></i> </input> -->
+                          
 
 
 
@@ -189,84 +187,11 @@
                                         </div>
                                     </form>
                                 </div>
-                                <div class="row">
+                                <div class="row allProduct">
                                     <h5 class="mb-4 mt-3 col-md-12">All product</h5>
-                                    <div class="col-md-4 col-sm-6 mb-4">
-                                        <div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
-                                            <div class="list-card-image">
-                                                <div class="star position-absolute"><span class="badge badge-success"><i class="icofont-star"></i> 3.1 (300+)</span></div>
-                                                <a href="#">
-                                                    <img src="image/list/7.png" class="img-fluid item-img">
-                                                </a>
-                                            </div>
-                                            <div class="p-3 position-relative">
-                                                <div class="list-card-body">
-                                                    <h6 class="mb-1"><a href="#" class="item-name text-black">Bite Me Sandwiches</a></h6>
-                                                    <p class="text-gray mb-2">North Indian • Indian</p>
-                                                    <p class="text-gray time mb-0"><a class="item-price btn btn-link btn-sm pl-0 text-black pr-0" >550 </a> <span class="badge badge-success">NEW</span> <span class="float-right">
-                                                        <span class="count-number">
-                                                            <!-- <button class="btn btn-outline-secondary  btn-sm left dec" id="minus" > <i class="icofont-minus"></i> </button>
-                                                            <input class="count-number-input" type="text" value="1" readonly="" id="quantity1">
-                                                            <button class="btn btn-outline-secondary btn-sm right inc" id="plus" > <i class="icofont-plus"></i> </button> -->
-                                                            <button value="ADD" data-name="Bite Me Sandwiches" data-price="550" id="1" class="add-to-cart btn btn-outline-secondary btn-sm" > ADD </button>
-                                                        </span>
-                                                        </span>
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4 col-sm-6 mb-4">
-                                        <div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
-                                            <div class="list-card-image">
-                                                <div class="star position-absolute"><span class="badge badge-success"><i class="icofont-star"></i> 3.1 (300+)</span></div>
-                                                <a href="#">
-                                                    <img src="image/list/8.png" class="img-fluid item-img">
-                                                </a>
-                                            </div>
-                                            <div class="p-3 position-relative">
-                                                <div class="list-card-body">
-                                                    <h6 class="mb-1"><a href="#" class="item-name text-black">Famous Dave's Bar-B  </a> </h6>
-                                                    <p class="text-gray mb-2">North Indian • Indian</p>
-                                                    <p class="text-gray time mb-0"><a class="item-price btn btn-link btn-sm pl-0 text-black pr-0" href="#">250 </a> <span class="badge badge-primary">NEW</span> <span class="float-right">
-                                             <span class="count-number">
-                                             <!-- <button class="btn btn-outline-secondary  btn-sm left dec"> <i class="icofont-minus"></i> </button>
-                                             <input class="count-number-input" type="text" value="1" readonly="">
-                                             <button class="btn btn-outline-secondary btn-sm right inc"> <i class="icofont-plus"></i> </button> -->
-                                             <button value="ADD" data-name="Famous Dave's Bar-B" data-price="250" id="2" class="add-to-cart btn btn-outline-secondary btn-sm"  > ADD </button> 
-                                             </span>
-
-                                                        </span>
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4 col-sm-6 mb-4">
-                                        <div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
-                                            <div class="list-card-image">
-                                                <div class="star position-absolute"><span class="badge badge-success"><i class="icofont-star"></i> 3.1 (300+)</span></div>
-                                                <a href="#">
-                                                    <img src="image/list/9.png" class="img-fluid item-img">
-                                                </a>
-                                            </div>
-                                            <div class="p-3 position-relative">
-                                                <div class="list-card-body">
-                                                    <h6 class="mb-1"><a href="#" class="item-name text-black">nougat cookie</a></h6>
-                                                    <p class="text-gray mb-2">North Indian • Indian</p>
-                                                    <p class="text-gray time mb-0"><a class="item-price btn btn-link btn-sm pl-0 text-black pr-0" href="#">250 </a> <span class="badge badge-info">NEW</span> <span class="float-right">
-                                             <span class="count-number">
-                                             <!-- <button class="btn btn-outline-secondary  btn-sm left dec"> <i class="icofont-minus"></i> </button>
-                                             <input class="count-number-input" type="text" value="1" readonly="">
-                                             <button class="btn btn-outline-secondary btn-sm right inc"> <i class="icofont-plus"></i> </button> -->
-                                             <a data-name="nougat cookie" data-price="250" class="add-to-cart btn btn-outline-secondary btn-sm"  href="#">ADD </a>
-                                             </span>
-                                                        </span>
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    
+                                    
+                                    
                                 </div>
                             </div>
                             <div class="tab-pane fade" id="pills-gallery" role="tabpanel" aria-labelledby="pills-gallery-tab">
@@ -651,8 +576,6 @@
 
             var params = (new URL(document.location)).searchParams;
             var idURL = params.get('id');
-
-            console.log(idURL);
             $.ajax({
                 type: "GET",
                 dataType: "json",
@@ -664,7 +587,54 @@
                     document.getElementById('inforShop').innerHTML = '<img class="img-fluid mr-3 float-left" alt="osahan" src="image/1.jpg"> <h2 class="text-white">' + data.data.name + '</h2> <p class="text-white mb-1"><i class="icofont-location-pin"></i>' + data.data.address + '<span class="badge badge-success">OPEN</span></p>';
                 }
             });
+
+            $.ajax({
+                url:"http://localhost:3999/api/product/searchproduct?id="+idURL,
+                type:"GET",
+
+            }).then(function(data){
+                if(data.message == "SUCCESS"){
+                    for(var i = 0 ; i < data.data.listProduct.length ; i++){
+                        var product = data.data.listProduct[i];  
+                        // <div class="star position-absolute"><span class="badge badge-success"><i class="icofont-star"></i> 3.1 (300+)</span></div>
+                        var template =`
+                        <div class="col-md-4 col-sm-6 mb-4">
+                        <div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm " >
+                                            <div class="list-card-image">
+                                                
+                                                <a href="#">
+                                                    <img src="image/list/7.png" class="img-fluid item-img">
+                                                </a>
+                                            </div>
+                                            <div class="p-3 position-relative">
+                                                <div class="list-card-body">
+                                                    <h6 class="mb-1"><a href="#" class="item-name text-black">${product.name}</a></h6>
+                                                    <p class="text-gray mb-2">North Indian • Indian</p>
+                                                    <p class="text-gray time mb-0"><a class="item-price btn btn-link btn-sm pl-0 text-black pr-0" >${product.unit_price} </a> <span class="badge badge-success">NEW</span> <span class="float-right">
+                                                        <span class="count-number">                                                      
+                                                            <button value="ADD" data-name="${product.name}" data-price="${product.unit_price}" data-id="${product.id}"  class="add-to-cart btn btn-outline-secondary btn-sm" onclick="addToCartFunc.call(this)" > ADD </button>
+                                                        </span>
+                                                        </span>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>`
+
+                         $(".allProduct").append(template)               
+                    }
+                }
+            })
+
+
+
+
+           
         }
+
+       
+
+
     </script>
 
 </body>
