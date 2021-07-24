@@ -1,5 +1,7 @@
 import {
-    Role,Users,Category
+    Role,
+    Users,
+    Category
 } from '../core';
 import { Op } from 'sequelize';
 import { checkPassword, hashPassword } from '../../libs/encrypt';
@@ -21,18 +23,20 @@ class MidCategory {
             }
         }
 
-        let { page, limit } = data;
-        page = page ? parseInt(page) : 1;
-        limit = limit ? parseInt(limit) : 10;
+        // let { page, limit } = data;
+        // page = page ? parseInt(page) : 1;
+        // limit = limit ? parseInt(limit) : 10;
 
         const [listCategory, total] = await Promise.all([
             Category.findAll({
                 where: condition,
-                order: [[
-                    "createdAt", "DESC"
-                ]],
-                limit,
-                offset: (page - 1) * limit
+                order: [
+                    [
+                        "createdAt", "DESC"
+                    ]
+                ],
+                // limit,
+                // offset: (page - 1) * limit
             }),
             Category.count({
                 where: condition
@@ -44,46 +48,46 @@ class MidCategory {
         }
 
     }
-async createCategory(data){
-    if (!data.name) {
-        throw new Error(ERROR_MESSAGE.ROLE.ROLE_NOT_EXIST);
-    }
-    let dataCreate = {
-        name: data.name,
-        del: 0
-    }
-    return await Category.create(dataCreate);
-}
-async deleteCategory(data) {
-    let objDelete = await Category.findOne({
-        where: {
-            id: data.id,
+    async createCategory(data) {
+        if (!data.name) {
+            throw new Error(ERROR_MESSAGE.ROLE.ROLE_NOT_EXIST);
+        }
+        let dataCreate = {
+            name: data.name,
             del: 0
         }
-    })
-    let dataDelete = {
-        del: 1,
+        return await Category.create(dataCreate);
     }
-
-    objDelete.update(dataDelete)
-}
-async updateCategory(data) {
-    if (!data.id) {
-        throw new Error(ERROR_MESSAGE.ROLE.ROLE_EXIST);
-    }
-    let objUpdate = await Category.findOne({
-        where: {
-            id: data.id,
-            del: 0
+    async deleteCategory(data) {
+        let objDelete = await Category.findOne({
+            where: {
+                id: data.id,
+                del: 0
+            }
+        })
+        let dataDelete = {
+            del: 1,
         }
-    })
 
-    let dataUpdate = {
-        name: data.name,
+        objDelete.update(dataDelete)
     }
-    return await objUpdate.update(dataUpdate)
+    async updateCategory(data) {
+        if (!data.id) {
+            throw new Error(ERROR_MESSAGE.ROLE.ROLE_EXIST);
+        }
+        let objUpdate = await Category.findOne({
+            where: {
+                id: data.id,
+                del: 0
+            }
+        })
 
-}
+        let dataUpdate = {
+            name: data.name,
+        }
+        return await objUpdate.update(dataUpdate)
+
+    }
 
 }
 

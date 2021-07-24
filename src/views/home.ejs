@@ -128,31 +128,16 @@
                         <form class="form-noborder">
                             <div class="form-row">
                                 <div class="col-lg-5 col-md-5 col-sm-12 form-group">
-                                    <input type="text" placeholder="Tìm địa điểm, món ăn,..." class="form-control form-control-lg text-search">
+                                    <input type="text" placeholder="Tìm địa điểm, món ăn,..." class="form-control form-control-lg text-search" id="findfood">
                                 </div>
                                 <div class="col-lg-2 col-md-2 col-sm-12 form-group">
-                                    <a href="/AllProduct" class="btn btn-primary btn-block btn-lg btn-gradient form-search" style="width: 90px;">Search</a>
+                                    <a href="/AllProduct" class="btn btn-primary btn-block btn-lg btn-gradient form-search" style="width: 90px;" onclick="searchPro()">Search</a>
                                 </div>
                             </div>
                         </form>
                     </div>
 
-                    <div class="pt-3">
-                        <a href="/AllProduct" class="btn btn-link link item-category"><B>All</B></a>
-                        <a href="/AllProduct" class="btn btn-link link item-category"><B>Đồ ăn</B></a>
-                        <a href="/AllProduct" class="btn btn-link link item-category"><B>Đồ uống</B></a>
-                        <a href="/AllProduct" class="btn btn-link link item-category"><B>Món ăn chính</B></a>
-                    </div>
-                    <div class="pt-3">
-                        <a href="/AllProduct" class="btn btn-link link item-category"><B>Tráng miệng</B></a>
-                        <a href="/AllProduct" class="btn btn-link link item-category"><B>Phở</B></a>
-                        <a href="/AllProduct" class="btn btn-link link item-category"><B> Sinh tố </B></a>
-                        <a href="/AllProduct" class="btn btn-link link item-category"><B> Sushi </B></a>
-                    </div>
-                    <div class="pt-3">
-                        <a href="/AllProduct" class="btn btn-link link item-category"><B> Cơm hộp</B></a>
-                        <a href="/AllProduct" class="btn btn-link link item-category"><B> Đồ chay </B></a>
-                        <a href="/AllProduct" class="btn btn-link link item-category"><B> Vỉa hè</B></a>
+                    <div class="pt-3" id="searchCategory">
 
                     </div>
                 </div>
@@ -688,13 +673,18 @@
 
         function checkSearchSeller() {
             var datasearch = document.getElementById('search-input').value;
-
             localStorage.setItem('searchListSeller', JSON.stringify(datasearch));
+        }
 
+
+        function searchPro() {
+            var food = document.getElementById('findfood').value;
+            localStorage.setItem('listProduct', JSON.stringify(food));
         }
 
         $(document).ready(function() {
             loaddata();
+            loadCategory();
         });
 
 
@@ -718,7 +708,6 @@
 
         function loaddata() {
             var text = document.getElementById('search-input').value;
-            console.log(text);
             $.ajax({
                 type: "GET",
                 dataType: "json",
@@ -732,6 +721,26 @@
                     console.log('list', list);
                 }
             });
+        }
+
+        function loadCategory() {
+            $.ajax({
+                type: "GET",
+                dataType: "json",
+                url: "/api/category/searchcategory",
+                success: function(data) {
+                    var listdata = data.data.listCategory;
+                    for (var i = 0; i < listdata.length; i++) {
+                        document.getElementById('searchCategory').innerHTML +=
+                            '<button class="btn btn-link link item-category" onclick="searchCate(' + "'" + listdata[i].name + "'" + ')"><B> ' + listdata[i].name + ' </B></button>';
+                    }
+                }
+            });
+        }
+
+        function searchCate(cateName) {
+            localStorage.setItem('listProduct', JSON.stringify(cateName));
+            window.location = '/AllProduct';
         }
     </script>
 
