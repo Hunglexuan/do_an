@@ -17,6 +17,10 @@ class ReportController {
         let { id } = req.query;
         return await MidReport.getReportById(id);
     }
+    async deleteReportById(req, res) {
+        let { id } = req.query;
+        return await MidReport.deleteReportById(id);
+    }
 }
 
 export default new ReportController();

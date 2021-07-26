@@ -20,11 +20,10 @@ export { default as Feedback }
     from './Feedback';
 export { default as Image }
     from './Image';
-
-export { default as BillTemp }
-    from './BillTemp';
 export { default as UserBill }
     from './UserBill';
+export { default as Favorite }
+    from './Favorite';
 
 import { sequelize } from '../../connections';
 

@@ -62,7 +62,6 @@ const attributes = {
         defaultValue: null
 
     },
-
     avatar: {
         type: DataTypes.STRING(255),
         allowNull: true,

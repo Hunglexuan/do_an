@@ -23,5 +23,3 @@ export { default as ProductController }
 from './ProductController';
 export { default as ImageController }
 from './ImageController';
-export { default as BillTemptController }
-from './BillTemptController';
