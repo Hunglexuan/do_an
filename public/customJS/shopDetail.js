@@ -154,12 +154,10 @@ function addToCartFunc(){
     displayCart();
   }else{
 
-    console.log("id doi lan 1",idURL);
-    cart=[];
-    shopID = {
-      shopID : idURL
-    }
-    cart.push(shopID);
+    // console.log("id doi lan 1",idURL);
+    // cart=[];
+    // shoppingCart.shopID
+    // cart.push(shopID);
     var id = $(this).data('id');
     var name = $(this).data('name');
   
