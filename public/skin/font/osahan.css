@@ -34,8 +34,12 @@ body {
 button,
 a {
     outline: none !important;
-    color: #ff3008;
+    color: #000;
     text-decoration: none !important;
+}
+
+a:hover {
+    color: #ff3008;
 }
 
 p {

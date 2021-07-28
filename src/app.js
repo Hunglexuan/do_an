@@ -8,12 +8,6 @@ import useragent from 'express-useragent';
 
 const app = express();
 
-
-
-
-
-
-
 app.use(express.urlencoded({ extended: true }))
 app.set('views', path.join(__dirname, '../src/views'));
 app.set('view engine', 'ejs');
@@ -43,7 +37,7 @@ app.use(express.static(path.join(__dirname, '../media')))
 // Setup other routes
 app.use('/api', routes);
 
-app.get('/home', function(req, res) {
+app.get('/', function(req, res) {
     return res.render('home');
 });
 
@@ -89,7 +83,6 @@ app.get('/RegisterUser', function(req, res) {
 
 app.get('/CheckOut', function(req, res) {
     return res.render('CheckOut');
-
 });
 
 app.get('/ShopDetail', function(req, res) {

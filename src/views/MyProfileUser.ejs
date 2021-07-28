@@ -43,26 +43,42 @@
         </div>
     </div> -->
     <!-- Modal -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light osahan-nav shadow-sm ">
-        <div class="container">
-            <a class="navbar-brand" href="/home"><img alt="logo" style="max-width: 120px;" src="image/logoShop.png"></a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <header class="main-header">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light osahan-nav shadow-sm ">
+            <div class="container">
+                <a class="navbar-brand" href="/"><img alt="logo" style="max-width: 120px;" src="image/logoShop.png"></a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
          </button>
-            <div class="collapse navbar-collapse" id="navbarNavDropdown">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item active">
-                        <span class="sizeIcon" data-toggle="modal" data-target="#modalSearch">
-                            <i class="icofont-search-map nav-link" style="padding-top: 20px !important;"></i>
+                <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                    <ul class="navbar-nav ml-auto">
+                        <div class="modal fade modal-search show modalsearch" id="modal-search" tabindex="-1" role="dialog">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <span class="close" data-dismiss="modal">
+                                        <div class="close-icon">X</div>
+                                    </span>
+                                    <div class="modal-search-form" id="search_form">
+                                        <span class="sub-title">Tìm kiếm các quán ăn.......</span>
+                                        <form>
+                                            <input type="text" class="search-input" id="search-input">
+                                        </form>
+                                    </div>
+                                    <div id="suggest"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <li class="nav-item active">
+                            <span class="sizeIcon" data-toggle="modal" data-target="#modal-search">
+                            <i class="icofont-search-property nav-link" style="padding-top: 20px !important;"></i>
                         </span>
-                    </li>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+                        </li>
 
-                    <li class="nav-item active">
-                        <a class="nav-link" href="/home">Home <span class="sr-only">(current)</span></a>
-                    </li>
-
-                    <li id="checkLogin"></li>
-                    <!-- <li class="nav-link" style="padding-top: 20px !important;">
+                        <li id="checkLogin"></li>
+                        <!-- <li class="nav-link" style="padding-top: 20px !important;">
                         <button class="btn btn-primary"> Login </button>
                     </li>
 
@@ -76,38 +92,39 @@
                             <a class="dropdown-item" href="orders.html#offers"><i class="icofont-logout"></i> Logout </a>
                         </div>
                     </li> -->
-                    <li class="nav-item dropdown dropdown-cart">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <i class="icofont-basket"></i> Cart
-                            <span class="badge badge-success">5</span>
-                        </a>
-                        <div class="dropdown-menu dropdown-cart-top p-0 dropdown-menu-right shadow-sm border-0">
+                        <li class="nav-item dropdown dropdown-cart">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="icofont-basket"></i> Cart
+                                <span class="badge badge-success">5</span>
+                            </a>
+                            <div class="dropdown-menu dropdown-cart-top p-0 dropdown-menu-right shadow-sm border-0">
 
-                            <div class="dropdown-cart-top-body border-top p-4">
-                                <p class="mb-2"><i class="icofont-ui-press text-danger food-item"></i> Chicken Tikka Sub 12" (30 cm) x 1 <span class="float-right text-secondary">$314</span></p>
-                                <p class="mb-2"><i class="icofont-ui-press text-success food-item"></i> Corn & Peas Salad x 1
-                                    <span class="float-right text-secondary">$209</span>
-                                </p>
-                                <p class="mb-2"><i class="icofont-ui-press text-success food-item"></i> Veg Seekh Sub 6" (15 cm) x 1 <span class="float-right text-secondary">$133</span></p>
-                                <p class="mb-2"><i class="icofont-ui-press text-danger food-item"></i> Chicken Tikka Sub 12" (30 cm) x 1 <span class="float-right text-secondary">$314</span></p>
-                                <p class="mb-2"><i class="icofont-ui-press text-danger food-item"></i> Corn & Peas Salad x 1
-                                    <span class="float-right text-secondary">$209</span>
-                                </p>
+                                <div class="dropdown-cart-top-body border-top p-4">
+                                    <p class="mb-2"><i class="icofont-ui-press text-danger food-item"></i> Chicken Tikka Sub 12" (30 cm) x 1 <span class="float-right text-secondary">$314</span></p>
+                                    <p class="mb-2"><i class="icofont-ui-press text-success food-item"></i> Corn & Peas Salad x 1
+                                        <span class="float-right text-secondary">$209</span>
+                                    </p>
+                                    <p class="mb-2"><i class="icofont-ui-press text-success food-item"></i> Veg Seekh Sub 6" (15 cm) x 1 <span class="float-right text-secondary">$133</span></p>
+                                    <p class="mb-2"><i class="icofont-ui-press text-danger food-item"></i> Chicken Tikka Sub 12" (30 cm) x 1 <span class="float-right text-secondary">$314</span></p>
+                                    <p class="mb-2"><i class="icofont-ui-press text-danger food-item"></i> Corn & Peas Salad x 1
+                                        <span class="float-right text-secondary">$209</span>
+                                    </p>
+                                </div>
+                                <div class="dropdown-cart-top-footer border-top p-4">
+                                    <p class="mb-0 font-weight-bold text-secondary">Sub Total <span class="float-right text-dark">$499</span></p>
+                                    <small class="text-info">Extra charges may apply</small>
+                                </div>
+                                <div class="dropdown-cart-top-footer border-top p-2">
+                                    <a class="btn btn-success btn-block btn-lg" href="/CheckOut"> Checkout</a>
+                                </div>
                             </div>
-                            <div class="dropdown-cart-top-footer border-top p-4">
-                                <p class="mb-0 font-weight-bold text-secondary">Sub Total <span class="float-right text-dark">$499</span></p>
-                                <small class="text-info">Extra charges may apply</small>
-                            </div>
-                            <div class="dropdown-cart-top-footer border-top p-2">
-                                <a class="btn btn-success btn-block btn-lg" href="/CheckOut"> Checkout</a>
-                            </div>
-                        </div>
-                    </li>
-                </ul>
+                        </li>
+                    </ul>
 
+                </div>
             </div>
-        </div>
-    </nav>
+        </nav>
+    </header>
     <section class="section pt-4 pb-4 osahan-account-page" style="padding-left: 150px;">
         <div class="row" style="padding-top: 70px;">
             <div class="col-md-2">
@@ -126,104 +143,53 @@
                            </div>
                         </div>
                      </div> -->
+                    <ul class="nav nav-tabs flex-column border-0 pt-4 pl-4 pb-4" id="myTab" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" id="offers-tab" data-toggle="tab" href="#myPro" role="tab" aria-controls="offers" aria-selected="false"><i class="icofont-ui-user"></i> My Profile</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="orders-tab" data-toggle="tab" href="#orders" role="tab" aria-controls="orders" aria-selected="true"><i class="icofont-food-cart"></i> Orders</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="favourites-tab" data-toggle="tab" href="#favourites" role="tab" aria-controls="favourites" aria-selected="false"><i class="icofont-heart"></i> Favourites</a>
+                        </li>
+                    </ul>
                 </div>
             </div>
             <div class="col-md-9">
-                <!-- <div class="osahan-account-page-right shadow-sm bg-white p-4 h-100">
-                     <div class="tab-content" id="myTabContent">
-                        <div class="tab-pane fade show active" id="orders" role="tabpanel" aria-labelledby="orders-tab">
-                        </div>
-                        <div class="tab-pane fade" id="offers" role="tabpanel" aria-labelledby="offers-tab">
-
-                        </div>
-                        <div class="tab-pane fade" id="favourites" role="tabpanel" aria-labelledby="favourites-tab">
-
-                           <div class="row">
-
-                           </div>
-                        </div>
-                        <div class="tab-pane fade" id="payments" role="tabpanel" aria-labelledby="payments-tab">
-
-
-                        </div>
-                        <div class="tab-pane fade" id="addresses" role="tabpanel" aria-labelledby="addresses-tab">
-                           <div class="row">
-
-
-                           </div>
-                        </div>
-                     </div>
-                  </div> -->
-
-
-                <div id="layoutSidenav_content">
-                    <main>
-                        <div class="container-fluid">
-                            <h1>My Profile</h1>
-                            <ol class="breadcrumb mb-4">
-                                <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
-                                <li class="breadcrumb-item active">My Profile</li>
-                            </ol>
+                <div class="osahan-account-page-right shadow-sm bg-white p-4 h-100">
+                    <div class="tab-content" id="myTabContent">
+                        <div class="tab-pane fade show active" id="myPro" role="tabpanel" aria-labelledby="profile-tab">
+                            <h4 class="font-weight-bold mt-0 mb-4">My Profile</h4>
                             <div class="row">
-                                <div class="col-xl-12">
-                                    <div class="card mb-4 order-list">
-                                        <div class="gold-members p-4">
-                                            <a href="#"></a>
-                                            <div class="row">
-                                                <div class="col-md-4">
-                                                    <!-- <div class="form-group">
-                                    <label>Your photo</label>
-                                    <form action="/file-upload" class="dropzone dz-clickable">
-                                       <div class="dz-default dz-message"><span>Drop files here to upload</span></div>
-                                    </form>
-                                 </div> -->
-                                                    <div class="osahan-user text-center">
-                                                        <div class="osahan-user-media">
-                                                            <!--                               <img class="mb-3 rounded-pill shadow-sm mt-2" src="img/user/4.png" alt="gurdeep singh osahan"> -->
-                                                            <!-- <div class="form-group">
-                                                                    <label>Your photo</label>
-                                                                    <form action="/file-upload" class="dropzone dz-clickable">
-                                                                        <div class="dz-default dz-message"><span>Drop files here to upload</span></div>
-                                                                    </form>
-                                                                </div> -->
-                                                            <div class="picture-container">
-                                                                <div class="picture">
-                                                                    <img class="picture-src" id="wizardPicturePreview">
-                                                                    <input type="file" id="wizard-picture" class="">
-                                                                </div>
-                                                                <h6 class="text">Choose Picture</h6>
-                                                            </div>
-
-                                                            <div class="osahan-user-media-body">
-                                                                <!-- <h6 class="mb-2">Gurdeep Singh</h6>
-                                 <p class="mb-1">+91 85680-79956</p>
-                                 <p>iamosahan@gmail.com</p> -->
-                                                                <!-- <p class="mb-0 text-black font-weight-bold"><a class="text-primary mr-3" data-toggle="modal" data-target="#edit-profile-modal" href="#"><i class="icofont-ui-edit"></i> Update</a></p> -->
-                                                            </div>
-                                                        </div>
-                                                    </div>
+                                <div class="col-md-4">
+                                    <div class="osahan-user text-center">
+                                        <div class="osahan-user-media">
+                                            <div class="picture-container">
+                                                <div class="picture">
+                                                    <img class="picture-src" id="wizardPicturePreview">
+                                                    <input type="file" id="wizard-picture" class="">
                                                 </div>
+                                                <h6 class="text">Choose Picture</h6>
+                                            </div>
+                                            <div class="osahan-user-media-body"> </div>
+                                        </div>
+                                    </div>
+                                </div>
 
-                                                <div class="col-md-8 add_top_30">
-                                                    <div class="row">
-                                                        <div class="col-md-4">
-                                                            <div class="form-group">
-                                                                <label>Name</label>
-                                                                <input type="text" class="form-control" id="name" placeholder="Your name">
-                                                                <span class="form-message text-danger" id="messageName"></span>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-4">
-                                                            <div class="form-group">
-                                                                <label>Password</label>
-                                                                <input type="text" class="form-control" id="password" placeholder="password" disabled>
-                                                                <span class="form-message text-danger" id="messagePass"></span>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-4">
-                                                            <div class="form-group">
-                                                                <label>Date of Birthday</label>
-                                                                <!-- <div class="dropdown">
+                                <div class="col-md-8 add_top_30">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Name</label>
+                                                <input type="text" class="form-control" id="name" placeholder="Your name">
+                                                <span class="form-message text-danger" id="messageName"></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Date of Birthday</label>
+                                                <!-- <div class="dropdown">
                                                                         <button class="btn btn-outline-secondary dropdown-toggle " type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                               Choose
                                             </button>
@@ -232,156 +198,89 @@
                                                                             <a class="dropdown-item" href="#">Fermale</a>
                                                                         </div>
                                                                     </div> -->
-                                                                <input type="date" id="date" class="form-control">
-                                                                <span class="form-message text-danger" id="messageDate"></span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <!-- /row-->
-                                                    <div class="row">
-                                                        <div class="col-md-6">
-                                                            <div class="form-group">
-                                                                <label>Telephone</label>
-                                                                <input type="text" class="form-control" id="phone" placeholder="Your telephone number">
-                                                                <span class="form-message text-danger" id="messagePhone"></span>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-6">
-                                                            <div class="form-group">
-                                                                <label>Email</label>
-                                                                <input type="email" class="form-control" id="email" placeholder="Your email" disabled>
-                                                                <span class="form-message text-danger" id="messageEmail"></span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <!-- /row-->
-                                                    <div class="row">
-                                                        <div class="col-md-12">
-                                                            <div class="form-group">
-                                                                <label> Address </label>
-                                                                <textarea style="height:70px;" class="form-control" id="address" placeholder="Address "></textarea>
-                                                                <span class="form-message text-danger" id="messageAddress"></span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="row">
-                                                        <div class="save col-md-12">
-                                                            <input type="button" value="Save" id="SaveUpdate" class="btn btn-success"></input>
-                                                            <input type="button" value="Change password" id="SaveUpdate" data-toggle="modal" data-target="#basicModal" class="btn btn-secondary ml-3">
-                                                            </input>
-                                                        </div>
-                                                        <div class="modal fade" id="basicModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
-                                                            <div class="modal-dialog">
-                                                                <div class="modal-content">
-                                                                    <div class="modal-header">
-                                                                        <h6 class="m-0"><i class="fa fa-lock text-muted mr-2"></i>Change password</h6>
-                                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                                                <span aria-hidden="true">×</span>
-                                                                            </button>
-                                                                    </div>
-                                                                    <div class="modal-body">
-                                                                        <div class="form-group">
-                                                                            <label>Old password</label>
-                                                                            <input class="form-control" id="Old_password" type="password">
-                                                                            <span class="form-message text-danger" id="oldpassword"></span>
-                                                                        </div>
-                                                                        <div class="form-group">
-                                                                            <label>New password</label>
-                                                                            <input class="form-control" id="New_password" type="password">
-                                                                            <span class="form-message text-danger" id="newpassword"></span>
-                                                                        </div>
-                                                                        <div class="form-group">
-                                                                            <label>Confirm new password</label>
-                                                                            <input class="form-control" id="Confirm_new_password" type="password">
-                                                                            <span class="form-message text-danger" id="confirmpassword"></span>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="modal-footer">
-                                                                        <input type="button" value="Close" class="btn btn-light" data-dismiss="modal"> </input>
-                                                                        <input type="button" value="Save changes" id="change" class="btn btn-success"></input>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-
-                                                    </div>
-
-                                                    <!-- /row-->
-                                                </div>
+                                                <input type="date" id="date" class="form-control">
+                                                <span class="form-message text-danger" id="messageDate"></span>
                                             </div>
                                         </div>
                                     </div>
-                                    <!-- <div class="row">
-                                            <div class="col-md-6">
-                                                <div class="card mb-4 order-list">
-                                                    <div class="gold-members">
-                                                        <div class="box_general padding_bottom">
-                                                            <div class="header_box version_2 border-bottom p-3">
-                                                                <h6 class="m-0"><i class="fa fa-lock text-muted mr-2"></i>Change password</h6>
-                                                            </div>
-                                                            <div class="p-3">
-                                                                <div class="form-group">
-                                                                    <label>Old password</label>
-                                                                    <input class="form-control" id="Old_password" type="password">
-                                                                    <span class="form-message text-danger" id="oldpassword"></span>
-                                                                </div>
-                                                                <div class="form-group">
-                                                                    <label>New password</label>
-                                                                    <input class="form-control" id="New_password" type="password">
-                                                                    <span class="form-message text-danger" id="newpassword"></span>
-                                                                </div>
-                                                                <div class="form-group">
-                                                                    <label>Confirm new password</label>
-                                                                    <input class="form-control" id="Confirm_new_password" type="password">
-                                                                    <span class="form-message text-danger" id="confirmpassword"></span>
-                                                                </div>
-                                                            </div>
+                                    <!-- /row-->
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Telephone</label>
+                                                <input type="text" class="form-control" id="phone" placeholder="Your telephone number">
+                                                <span class="form-message text-danger" id="messagePhone"></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Email</label>
+                                                <input type="email" class="form-control" id="email" placeholder="Your email" disabled>
+                                                <span class="form-message text-danger" id="messageEmail"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- /row-->
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label> Address </label>
+                                                <textarea style="height:70px;" class="form-control" id="address" placeholder="Address "></textarea>
+                                                <span class="form-message text-danger" id="messageAddress"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="save col-md-12">
+                                            <input type="button" value="Save" id="SaveUpdate" class="btn btn-success"></input>
+                                            <input type="button" value="Change password" id="SaveUpdate" data-toggle="modal" data-target="#basicModal" class="btn btn-secondary ml-3">
+                                            </input>
+                                        </div>
+                                        <div class="modal fade" id="basicModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h6 class="m-0"><i class="fa fa-lock text-muted mr-2"></i>Change password</h6>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                                <span aria-hidden="true">×</span>
+                                                                            </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <div class="form-group">
+                                                            <label>Old password</label>
+                                                            <input class="form-control" id="Old_password" type="password">
+                                                            <span class="form-message text-danger" id="oldpassword"></span>
                                                         </div>
+                                                        <div class="form-group">
+                                                            <label>New password</label>
+                                                            <input class="form-control" id="New_password" type="password">
+                                                            <span class="form-message text-danger" id="newpassword"></span>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label>Confirm new password</label>
+                                                            <input class="form-control" id="Confirm_new_password" type="password">
+                                                            <span class="form-message text-danger" id="confirmpassword"></span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <input type="button" value="Close" class="btn btn-light" data-dismiss="modal"> </input>
+                                                        <input type="button" value="Save changes" id="change" class="btn btn-success"></input>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-md-6">
-                                                <div class="card mb-4 order-list">
-                                                    <div class="gold-members">
-                                                        <div class="box_general padding_bottom">
-                                                            <div class="header_box version_2 border-bottom p-3">
-                                                                <h6 class="m-0"><i class="fa fa-envelope text-muted mr-2"></i>Change phone number</h6>
-                                                            </div>
-                                                            <div class="p-3">
-                                                                <div class="form-group">
-                                                                    <label>Old phone number</label>
-                                                                    <input class="form-control" name="old_phoneNumber" id="old_phoneNumber">
-                                                                    <span class="form-message text-danger" id="oldPhoneNumber"></span>
-                                                                </div>
-                                                                <div class="form-group">
-                                                                    <label>New phone number</label>
-                                                                    <input class="form-control" name="new_phoneNumber" id="new_phoneNumber">
-                                                                    <span class="form-message text-danger" id="newPhoneNumber"></span>
-                                                                </div>
-                                                                <div class="form-group">
-                                                                    <label>Confirm new email</label>
-                                                                    <input class="form-control" name="confirm_new_phoneNumber" id="confirm_new_phoneNumber">
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="save mb-1">
-                                                    <input type="button" value="Save" id="SaveUpdate" class="btn btn-success"></input>
-                                                </div>
-                                            </div>
+                                        </div>
 
-                                        </div> -->
+                                    </div>
 
+                                    <!-- /row-->
                                 </div>
                             </div>
-                            <ol class="breadcrumb mb-4">
-                                <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
-                                <li class="breadcrumb-item active">Purchase History</li>
-                            </ol>
+                        </div>
+                        <div class="tab-pane fade" id="orders" role="tabpanel" aria-labelledby="orders-tab">
+                            <h4 class="font-weight-bold mt-0 mb-4">My orders</h4>
                             <div class="row">
                                 <div class="col-xl-12">
-                                    <div class="card mb-4 order-list">
+                                    <div>
                                         <!-- <div class="gold-members p-4">
                                                 <div class="row">
                                                     <div class="col-md-4">
@@ -413,10 +312,126 @@
                                     </div>
                                 </div>
                             </div>
-
-
-                    </main>
-                    <footer class="py-4 bg-light mt-auto">
+                        </div>
+                        <div class="tab-pane fade" id="favourites" role="tabpanel" aria-labelledby="favourites-tab">
+                            <h4 class="font-weight-bold mt-0 mb-4">Favourites</h4>
+                            <div class="row">
+                                <div class="col-md-4 col-sm-6 mb-4 pb-2">
+                                    <div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
+                                        <div class="list-card-image">
+                                            <div class="favourite-heart text-danger position-absolute"><a href="detail.html"><i class="icofont-heart"></i></a></div>
+                                            <a href="detail.html">
+                                                <img src="image/list/4.png" class="img-fluid item-img">
+                                            </a>
+                                        </div>
+                                        <div class="p-3 position-relative">
+                                            <div class="list-card-body">
+                                                <h6 class="mb-1"><a href="detail.html" class="text-black">Famous Dave's Bar-B-Que
+                                             </a>
+                                                </h6>
+                                                <p class="text-gray mb-3">Vegetarian • Indian • Pure veg</p>
+                                                <p class="text-gray mb-3 time"><span class="bg-light text-dark rounded-sm pl-2 pb-1 pt-1 pr-2"><i class="icofont-wall-clock"></i> 15–30 min</span> <span class="float-right text-black-50"> $350 FOR TWO</span></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 col-sm-6 mb-4 pb-2">
+                                    <div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
+                                        <div class="list-card-image">
+                                            <div class="favourite-heart text-danger position-absolute"><a href="detail.html"><i class="icofont-heart"></i></a></div>
+                                            <a href="detail.html">
+                                                <img src="image/list/5.png" class="img-fluid item-img">
+                                            </a>
+                                        </div>
+                                        <div class="p-3 position-relative">
+                                            <div class="list-card-body">
+                                                <h6 class="mb-1"><a href="detail.html" class="text-black">Thai Famous Cuisine</a></h6>
+                                                <p class="text-gray mb-3">North Indian • Indian • Pure veg</p>
+                                                <p class="text-gray mb-3 time"><span class="bg-light text-dark rounded-sm pl-2 pb-1 pt-1 pr-2"><i class="icofont-wall-clock"></i> 30–35 min</span> <span class="float-right text-black-50"> $250 FOR TWO</span></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 col-sm-6 mb-4 pb-2">
+                                    <div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
+                                        <div class="list-card-image">
+                                            <div class="favourite-heart text-danger position-absolute"><a href="detail.html"><i class="icofont-heart"></i></a></div>
+                                            <a href="detail.html">
+                                                <img src="image/list/6.png" class="img-fluid item-img">
+                                            </a>
+                                        </div>
+                                        <div class="p-3 position-relative">
+                                            <div class="list-card-body">
+                                                <h6 class="mb-1"><a href="detail.html" class="text-black">The osahan Restaurant
+                                             </a>
+                                                </h6>
+                                                <p class="text-gray mb-3">North • Hamburgers • Pure veg</p>
+                                                <p class="text-gray mb-3 time"><span class="bg-light text-dark rounded-sm pl-2 pb-1 pt-1 pr-2"><i class="icofont-wall-clock"></i> 15–25 min</span> <span class="float-right text-black-50"> $500 FOR TWO</span></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 col-sm-6 mb-4 pb-2">
+                                    <div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
+                                        <div class="list-card-image">
+                                            <div class="favourite-heart text-danger position-absolute"><a href="detail.html"><i class="icofont-heart"></i></a></div>
+                                            <a href="detail.html">
+                                                <img src="image/list/7.png" class="img-fluid item-img">
+                                            </a>
+                                        </div>
+                                        <div class="p-3 position-relative">
+                                            <div class="list-card-body">
+                                                <h6 class="mb-1"><a href="detail.html" class="text-black">Stan's Restaurant
+                                             </a>
+                                                </h6>
+                                                <p class="text-gray mb-3">North Indian • Indian • Pure veg</p>
+                                                <p class="text-gray mb-3 time"><span class="bg-light text-dark rounded-sm pl-2 pb-1 pt-1 pr-2"><i class="icofont-wall-clock"></i> 15–25 min</span> <span class="float-right text-black-50"> $250 FOR TWO</span></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 col-sm-6 mb-4 pb-2">
+                                    <div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
+                                        <div class="list-card-image">
+                                            <div class="favourite-heart text-danger position-absolute"><a href="detail.html"><i class="icofont-heart"></i></a></div>
+                                            <a href="detail.html">
+                                                <img src="image/list/8.png" class="img-fluid item-img">
+                                            </a>
+                                        </div>
+                                        <div class="p-3 position-relative">
+                                            <div class="list-card-body">
+                                                <h6 class="mb-1"><a href="detail.html" class="text-black">Polo Lounge
+                                             </a>
+                                                </h6>
+                                                <p class="text-gray mb-3">North Indian • Indian • Pure veg</p>
+                                                <p class="text-gray mb-3 time"><span class="bg-light text-dark rounded-sm pl-2 pb-1 pt-1 pr-2"><i class="icofont-wall-clock"></i> 15–25 min</span> <span class="float-right text-black-50"> $250 FOR TWO</span></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 col-sm-6 mb-4 pb-2">
+                                    <div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
+                                        <div class="list-card-image">
+                                            <div class="favourite-heart text-danger position-absolute"><a href="detail.html"><i class="icofont-heart"></i></a></div>
+                                            <a href="detail.html">
+                                                <img src="image/list/9.png" class="img-fluid item-img">
+                                            </a>
+                                        </div>
+                                        <div class="p-3 position-relative">
+                                            <div class="list-card-body">
+                                                <h6 class="mb-1"><a href="detail.html" class="text-black">Jack Fry's
+                                             </a>
+                                                </h6>
+                                                <p class="text-gray mb-3">North Indian • Indian • Pure veg</p>
+                                                <p class="text-gray mb-3 time"><span class="bg-light text-dark rounded-sm pl-2 pb-1 pt-1 pr-2"><i class="icofont-wall-clock"></i> 15–25 min</span> <span class="float-right text-black-50"> $250 FOR TWO</span></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- <footer class="py-4 bg-light mt-auto">
                         <div class="container-fluid">
                             <div class="d-flex align-items-center justify-content-between small">
                                 <div class="text-muted">Copyright &copy; Your Website 2020</div>
@@ -426,10 +441,12 @@
                                 </div>
                             </div>
                         </div>
-                    </footer>
-                    </div>
+                    </footer> -->
                 </div>
             </div>
+
+
+
         </div>
     </section>
     <section class="section pt-5 pb-5 text-center bg-white">
@@ -501,6 +518,7 @@
     <script src="js/select2.min.js"></script>
     <!-- Custom scripts for all pages-->
     <script src="js/custom.js"></script>
+    <script src="js/header.js"></script>
     <!-- Dropzone-->
     <script src="js/dropzone.min.js"></script>
     <!-- Ajax -->
@@ -728,52 +746,50 @@
         //     })
         // })
 
-        function getCookie(cname) {
-            let name = cname + "=";
-            let decodedCookie = decodeURIComponent(document.cookie);
-            let ca = decodedCookie.split(';');
-            for (let i = 0; i < ca.length; i++) {
-                let c = ca[i];
-                while (c.charAt(0) == ' ') {
-                    c = c.substring(1);
+        $(document).ready(function() {
+            loadDataProfile();
+        });
+
+        function loadDataProfile() {
+
+            var text = localStorage.getItem('userId').replaceAll('"', '');
+            console.log(text);
+            $.ajax({
+                type: "GET",
+                dataType: "json",
+                data: {
+                    id: text
+                },
+                url: "/api/user/getbyId",
+                success: function(data) {
+                    var list = data.data;
+                    console.log(list);
+                    document.getElementById('name').value = list.name;
+                    document.getElementById('phone').value = list.phone;
+                    document.getElementById('email').value = list.email;
+                    document.getElementById('address').value = list.address;
+
+                    var d = new Date(list.dob);
+                    var n;
+                    if (d.getUTCDate() < 10) {
+                        n = '0' + d.getUTCDate();
+                    } else {
+                        n = d.getUTCDate();
+                    }
+
+                    var m;
+                    if (d.getUTCMonth() < 10) {
+                        m = '0' + d.getUTCMonth();
+                    } else {
+                        m = d.getUTCMonth();
+                    }
+
+                    var y = d.getUTCFullYear();
+
+                    var dob = y + '-' + m + '-' + n;
+                    document.getElementById('date').value = dob;
                 }
-                if (c.indexOf(name) == 0) {
-                    return c.substring(name.length, c.length);
-                }
-            }
-            return "";
-        }
-
-        function setCookie(cname, cvalue, exdays) {
-            const d = new Date();
-            d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
-            let expires = "expires=" + d.toUTCString();
-            document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
-        }
-
-        var token = getCookie("token");
-
-        function logOutClick() {
-            setCookie("token", "", 0);
-            window.location = "/LoginUser"
-        }
-
-        var checkLogin = document.getElementById('checkLogin');
-
-        if (token == "") {
-            checkLogin.innerHTML += `<li class="nav-link" style="padding-top: 20px !important;">
-                        <a href="/LoginUser" class="btn btn-primary"> Login </a>
-                    </li>`
-        } else {
-            checkLogin.innerHTML += `<li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <img alt="Generic placeholder image" src="image/user/4.png" class="nav-osahan-pic rounded-pill"> My Account
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-right shadow-sm border-0">
-                            <a class="dropdown-item" href="/MyProfileUser"><i class="icofont-ui-user"></i> My Profile </a>
-                            <a class="dropdown-item" onclick="logOutClick()"><i class="icofont-logout"></i> Logout </a>
-                        </div>
-                    </li>`
+            });
         }
     </script>
 </body>
