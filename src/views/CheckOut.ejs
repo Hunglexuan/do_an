@@ -138,10 +138,10 @@
                                     <a class="dropdown-item" href="orders.html#addresses"><i class="icofont-location-pin"></i> Addresses</a>
                                 </div>
                             </li>
-                            <li class="nav-item dropdown dropdown-cart">
+                            <!-- <li class="nav-item dropdown dropdown-cart">
                                 <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <i class="fas fa-shopping-basket"></i> Cart
-                                    <span class="badge badge-success">5</span>
+                                    <span class="total-count badge badge-success"></span>
                                 </a>
                                 <div class="dropdown-menu dropdown-cart-top p-0 dropdown-menu-right shadow-sm border-0">
                                     <div class="dropdown-cart-top-header p-4">
@@ -151,21 +151,19 @@
                                         <small><a class="text-primary font-weight-bold" href="#">View Full Menu</a></small>
                                     </div>
                                     <div class="dropdown-cart-top-body border-top p-4">
-                                        <p class="mb-2"><i class="icofont-ui-press text-danger food-item"></i> Chicken Tikka Sub 12" (30 cm) x 1 <span class="float-right text-secondary">$314</span></p>
-                                        <p class="mb-2"><i class="icofont-ui-press text-success food-item"></i> Corn & Peas Salad x 1 <span class="float-right text-secondary">$209</span></p>
-                                        <p class="mb-2"><i class="icofont-ui-press text-success food-item"></i> Veg Seekh Sub 6" (15 cm) x 1 <span class="float-right text-secondary">$133</span></p>
-                                        <p class="mb-2"><i class="icofont-ui-press text-danger food-item"></i> Chicken Tikka Sub 12" (30 cm) x 1 <span class="float-right text-secondary">$314</span></p>
-                                        <p class="mb-2"><i class="icofont-ui-press text-danger food-item"></i> Corn & Peas Salad x 1 <span class="float-right text-secondary">$209</span></p>
+                                        <table class="table" id='show-cart'>
+
+                                        </table>
                                     </div>
                                     <div class="dropdown-cart-top-footer border-top p-4">
-                                        <p class="mb-0 font-weight-bold text-secondary">Sub Total <span class="float-right text-dark">$499</span></p>
+                                        <p class="mb-0 font-weight-bold text-secondary">Sub Total <span class="total-cart float-right text-dark"></span></p>
                                         <small class="text-info">Extra charges may apply</small>
                                     </div>
                                     <div class="dropdown-cart-top-footer border-top p-2">
                                         <a class="btn btn-success btn-block btn-lg" href="checkout.html"> Checkout</a>
                                     </div>
                                 </div>
-                            </li>
+                            </li> -->
                         </ul>
                     </div>
                 </div>
@@ -174,7 +172,7 @@
         <section class="offer-dedicated-body mt-4 mb-4 pt-2 pb-2">
             <div class="container">
                 <div class="row" style="padding-top: 50px;">
-                    <div class="col-md-8">
+                    <div class="col-md-6">
                         <div class="offer-dedicated-body-left">
                             <div class="pt-2"></div>
                             <div class="bg-white rounded shadow-sm p-4 mb-4">
@@ -219,7 +217,7 @@
 
                         </div>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-6 ">
                         <div class="generator-bg rounded shadow-sm mb-4 p-4 osahan-cart-item">
                             <div class="d-flex mb-4 osahan-cart-item-profile">
                                 <img class="img-fluid mr-3 rounded-pill" alt="osahan" src="image/2.jpg">
@@ -231,19 +229,13 @@
                             </div>
                             <div class="bg-white rounded shadow-sm mb-2">
 
-                                <div class="gold-members p-2 border-bottom">
-                                    <p class="text-gray mb-0 float-right ml-2" id="price"></p>
-                                    <span class="count-number float-right">
-                           <button class="btn btn-outline-secondary  btn-sm left dec minus" > <i class="icofont-minus"></i> </button>
-                           <input class="count-number-input" type="text" value="1" readonly="" id="quantityItem">
-                           <button class="btn btn-outline-secondary btn-sm right inc plus" > <i class="icofont-plus"></i> </button>
-                           </span>
-                                    <div class="media">
-                                        <div class="mr-2"><i class="icofont-ui-press text-danger food-item"></i></div>
-                                        <div class="media-body">
-                                            <p class="mt-1 mb-0 text-black" id="nameItem"></p>
-                                        </div>
+                                <div class="gold-members p-2 border-bottom" >
+                                    <div class="table " id="show-cart" >
+                                        
                                     </div>
+                           
+                           </span>
+                                    
                                 </div>
                             </div>
                             <div class="mb-2 bg-white rounded p-2 clearfix">
@@ -256,10 +248,10 @@
 
                             </div>
                             <div class="mb-2 bg-white rounded p-2 clearfix">
-                                <p class="mb-1">Item Total <span class="float-right text-dark">$3140</span></p>
+                                <p class="mb-1">Item Total <span class="total-cart float-right text-dark"></span></p>
                                 </p>
                                 <p class="mb-1 text-success"> Discount
-                                    <span class="float-right text-success">$1884</span>
+                                    <span class="float-right text-success" id ="sub-total-cart">$1884</span>
                                 </p>
                                 <hr />
                                 <h6 class="font-weight-bold mb-0">TO PAY <span class="float-right">$1329</span></h6>
@@ -345,98 +337,10 @@
         <!-- Ajax -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
+        <script src="../../customJS/shopDetail.js"></script>
+
         <script>
-            // $('.minus').click(function() {
-            //     var $this = $(this);
-            //     var $input = $this.closest('div').find('input');
-            //     var value = parseInt($input.val());
 
-            //     if (value > 1) {
-            //         value = value - 1;
-            //     } else {
-            //         value = 0;
-            //     }
-            //     $input.val(value);
-            // });
-
-            // $('.plus').click(function() {
-            //     var $this = $(this);
-            //     var $input = $this.closest('div').find('input');
-            //     var value = parseInt($input.val());
-
-            //     if (value > 0 && value < 100) {
-            //         value = value + 1;
-            //     } else {
-            //         value = 100;
-            //     }
-            //     $input.val(value);
-
-            // });
-
-
-            var clicks = 1;
-
-            function plus() {
-                clicks += 1;
-                document.getElementById("quantity").innerHTML = clicks;
-                total();
-            };
-
-            function minus() {
-                clicks -= 1;
-                document.getElementById("quantity").innerHTML = clicks;
-                total();
-            }
-
-
-            function total() {
-                var number = clicks * 123;
-                document.getElementById('price').innerHTML = number;
-            }
-
-            var product = document.getElementById('nameItem').textContent;
-
-            var keylocalstoragecard = 'listItemCard';
-            var cart = [];
-
-            function addCard() {
-                var storage = localStorage.getItem(keylocalstoragecard);
-                if (storage != null) {
-                    cart = JSON.parse(storage);
-                }
-
-                // var item = cart.find(c => c.product == name)
-                // if (item) {
-                //     item.quantity++;
-                // } else {
-                //     cart.push(product.name, 1);
-                // }
-
-                var checkItemCard = false;
-                for (var i = 0; i < cart.length; i++) {
-                    if (card[i].name == product) {
-                        card[i].quantity++;
-                        checkItemCard = true;
-                    }
-                }
-                if (checkItemCard == false) {
-                    cart.push(product.name, 1);
-
-                }
-
-                localStorage.setItem(keylocalstoragecard, JSON.stringify(cart));
-            }
-
-
-            const showCard = () => {
-                var nameItem = document.getElementById('nameItem');
-                nameItem.innerHTML += `<p class="mt-1 mb-0 text-black"> ${product.name} </p>`
-                var quantityItem = document.getElementById('quantityItem');
-                quantityItem.value += `<input class="count-number-input" type="text" value=" ${product.quantity} " readonly="">`
-
-            }
-
-            console.log(cart);
         </script>
 
 </body>

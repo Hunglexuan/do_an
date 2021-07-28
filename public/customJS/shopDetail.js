@@ -112,7 +112,7 @@ var shoppingCart = (function() {
   // Total cart
   obj.totalCart = function() {
     var totalCart = 0;
-    for(var item in cart) {
+    for(var item = 1 ; item < cart.length ;item++) {
       totalCart += cart[item].price * cart[item].count;
     }
     return Number(totalCart.toFixed(2));
@@ -142,14 +142,33 @@ var shoppingCart = (function() {
  
 // Add item
 function addToCartFunc(){
- console.log("may co ra ko "+cart[0]);
-  var id = $(this).data('id');
-  var name = $(this).data('name');
+  var cartArray1 = shoppingCart.listCart();
+  if(cartArray1[0].shopID == idURL){
+    console.log("id dung",cartArray1[0].shopID);
+    var id = $(this).data('id');
+    var name = $(this).data('name');
   
-  var price = Number($(this).data('price'));
+    var price = Number($(this).data('price'));
   
-  shoppingCart.addItemToCart(id,name, price, 1);
-  displayCart();
+    shoppingCart.addItemToCart(id,name, price, 1);
+    displayCart();
+  }else{
+
+    console.log("id doi lan 1",idURL);
+    cart=[];
+    shopID = {
+      shopID : idURL
+    }
+    cart.push(shopID);
+    var id = $(this).data('id');
+    var name = $(this).data('name');
+  
+    var price = Number($(this).data('price'));
+  
+    shoppingCart.addItemToCart(id,name, price, 1);
+    displayCart();
+  }
+  
   
 }
 
@@ -166,7 +185,8 @@ function displayCart() {
   var output = "";
   
   for(var i=1 ; i < cartArray.length ; i++) {
-    output += "<tr>" +
+    output += 
+    "<tr>" +
     "<td>" +cartArray[i].name +"</td>" +
     "<td>(" +cartArray[i].price +")</td>" +
     "<td><div class='input-group-1' style='display:flex'><button class='minus-item input-group-addon btn btn-primary' data-id=" +cartArray[i].id +">-</button>" +
@@ -176,6 +196,7 @@ function displayCart() {
     "<td>" +cartArray[i].total +"</td>" +
     "</tr>";
   }
+  
   $('#show-cart').html(output);
   $('.total-cart').html(shoppingCart.totalCart());
   $('.total-count').html(shoppingCart.totalCount());
@@ -213,3 +234,4 @@ $('#show-cart').on("change", ".item-count", function(event) {
 });
 
 displayCart();
+
