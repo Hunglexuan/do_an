@@ -3,20 +3,21 @@ import BaseModel from './BaseModel';
 import { sequelize } from '../../connections';
 import Sequelize from 'sequelize';
 import { v4 as uuidv4 } from 'uuid';
-import { Voucher } from './';
-
-
+import Bill from './Bill';
+import BillProduct from './BillProduct';
+import Users from './Users';
 /**
- * Define Bill Model
+ * Define BillTemp Model
  * 
  * @export
- * @class Bill
+ * @class BillTemp
  * @extends {BaseModel}
  */
- export default class Bill extends BaseModel {
+ export default class UserBill extends BaseModel {
 
     static association() {
-        Bill.belongsTo(Voucher, { as: 'voucher', foreignKey: 'voucher_id' })
+        UserBill.belongsTo(Bill, { as: 'bill', foreignKey: 'bill_id' }),
+        UserBill.belongsTo(Users, { as: 'users', foreignKey: 'user_id' })
     }
 }
 /**
@@ -28,27 +29,17 @@ const attributes = {
         type: DataTypes.UUID,
         defaultValue: Sequelize.UUIDV4
     },
-    total_price: {
-        type: DataTypes.INTEGER(10),
-        allowNull: true,
-        defaultValue:null
-    },
-    voucher_id: {
+    bill_id: {
         type: DataTypes.UUID,
-        allowNull:true,
-        defaultValue:null
-    },
-    status: {
-        type: DataTypes.TINYINT(1),
-        allowNull:true,
-        defaultValue:null
-    },
-    address: {
-        type: DataTypes.STRING(255),
-        allowNull:true,
-        defaultValue:null
+        allowNull: true,
+        defaultValue: null
     },
 
+    user_id: {
+        type: DataTypes.UUID,
+        allowNull: true,
+        defaultValue: null
+    },
     del: {
         type: DataTypes.TINYINT(1),
         allowNull: true,
@@ -62,11 +53,11 @@ const attributes = {
         type: DataTypes.DATE,
         allowNull: true
     },
-    
+
 
 };
 function beforeCreate() {
-    Bill.beforeCreate((obj, _) => {
+    UserBill.beforeCreate((obj, _) => {
         return obj.id = uuidv4();
     });
 }
@@ -75,11 +66,11 @@ function beforeCreate() {
  * Options model
  */
 const options = {
-    tableName: 'bill',
+    tableName: 'UserBill',
     beforeCreate: beforeCreate
 };
 
 /**
  * Init Model
  */
-Bill.init(attributes, { ...options, sequelize });
+ UserBill.init(attributes, { ...options, sequelize });

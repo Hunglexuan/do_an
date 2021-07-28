@@ -197,9 +197,17 @@ class MidUser {
 
     //done
     async searchUser(data) {
+        let role = await Role.findOne({
+            where: {
+                name: "",
+                del: 0,
+            },
+        });
         let condition = {
             del: 0,
-        };
+            role_id: role.id,
+        }; 
+
         if (data.name) {
             condition.name = {
                 [Op.like]: `%${data.name}%`,

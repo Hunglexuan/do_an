@@ -12,6 +12,11 @@ async searchCategory(req, res) {
     let dataQuery = req.query;
     return MidCategory.searchCategory(dataQuery);
 }
+async deleteCategory(req, res) {
+    let dataQuery = req.query;
+    return MidCategory.deleteCategory(dataQuery);
+}
+
 }
 
 export default new CategoryController();
