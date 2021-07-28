@@ -7,7 +7,7 @@ let routerApp = new Router();
 
 
 
-routerApp.get('/getbyId', Response(UserController.getUserId));
+routerApp.get('/getbyId', Response(UserController.getUserId)); 
 routerApp.get('/searchUser', isAuth, Response(UserController.searchUser));
 routerApp.get('/searchSeller', Response(UserController.searchSeller));
 routerApp.get('/delete', isAuth, Response(UserController.deleteUser));

@@ -2,12 +2,13 @@ export { default as Users }
     from './Users';
 export { default as Role }
     from './Role';
+export { default as Voucher }
+    from './Voucher';
 export { default as Bill }
     from './Bill';
 export { default as Report }
     from './Report';
-export { default as Voucher }
-    from './Voucher';
+
 export { default as Product }
     from './Product';
 export { default as BillProduct }
@@ -27,9 +28,10 @@ export { default as Favorite }
 
 import { sequelize } from '../../connections';
 
-for (let m in sequelize.models) {
-    sequelize.models[m].sync();
-}
+
+// for (let m in sequelize.models) {
+//     sequelize.models[m].sync();
+// }
 
 // Init association
 for (let m in sequelize.models) {

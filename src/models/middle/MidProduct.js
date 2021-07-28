@@ -5,7 +5,7 @@ import {
 } from '../core';
 import { Op } from 'sequelize';
 import { checkPassword, hashPassword } from '../../libs/encrypt';
-import { generateToken,checkToken } from '../../libs/token';
+import { generateToken, checkToken } from '../../libs/token';
 import { ERROR_MESSAGE } from '../../config/error';
 import { sendMailActiveOrder, sendMailForgotPassword } from '../../libs/sendmail';
 import { v4 as uuidv4 } from 'uuid';
@@ -14,7 +14,30 @@ import { name } from 'ejs';
 
 
 class MidProduct {
-    async searchProduct(data) {
+
+
+    async getProductById(id) {
+        let product = await Product.findOne({
+            where: {
+                id: id,
+                del: 0
+            }
+        })
+        let user 
+        if (product) {
+            user = await Users.findOne({
+                where: {
+                    id: product.user_id,
+                    del: 0
+                }
+            })
+           
+        }
+        return {product,user};
+    }
+  
+
+    async searchSellerProduct(data) {
         let user = await Users.findOne({
             where: {
                 id: data.id,
@@ -65,8 +88,10 @@ class MidProduct {
         }
 
     }
-    async searchAllProduct(data) {
 
+
+
+    async searchAllProduct(data) {
         let condition = {
             del: 0,
         }
@@ -92,13 +117,15 @@ class MidProduct {
                 where: condition
             })
         ])
-
         return {
             listProduct,
             total: total || 0
         }
 
     }
+
+
+    //done
     async createProduct(data) {
         if (!data.name) {
             throw new Error(ERROR_MESSAGE.PRODUCT.PRODUCT_NAME);
@@ -122,7 +149,6 @@ class MidProduct {
             unit_price: data.unit_price,
             description: data.description,
             user_id: data.user_id,
-
             del: 0
         }
         return await Product.create(dataCreate);

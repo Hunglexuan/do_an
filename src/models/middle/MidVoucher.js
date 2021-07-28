@@ -20,19 +20,12 @@ class MidVoucher {
                 [Op.like]: `%${data.name}%`
             }
         }
-
-        let { page, limit } = data;
-        page = page ? parseInt(page) : 1;
-        limit = limit ? parseInt(limit) : 10;
-
         const [listVoucher, total] = await Promise.all([
             Voucher.findAll({
                 where: condition,
                 order: [[
                     "createdAt", "DESC"
                 ]],
-                limit,
-                offset: (page - 1) * limit
             }),
             Voucher.count({
                 where: condition

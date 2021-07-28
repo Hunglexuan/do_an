@@ -75,17 +75,16 @@ const attributes = {
 
     },
     shop_name: {
-
         type: DataTypes.STRING(255),
         allowNull: true,
         defaultValue: null
     },
-    product_id: {
-        type: DataTypes.UUID,
+    shop_status: {
+        type: DataTypes.BOOLEAN,
         allowNull: true,
-        defaultValue: null
-
+        defaultValue: true
     },
+
     del: {
         type: DataTypes.TINYINT(1),
         allowNull: true,
