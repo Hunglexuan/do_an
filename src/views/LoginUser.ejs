@@ -33,7 +33,7 @@
                     <div class="container">
                         <div class="row">
                             <div class="col-md-9 col-lg-8 mx-auto pl-5 pr-5">
-                                <a href="/home">
+                                <a href="/">
                                     <h3 class="login-heading mb-4">Welcome FUMK!</h3>
                                 </a>
                                 <form name="myForm">
@@ -151,16 +151,22 @@
                 password: $("#inputPassword").val()
             }
         }).then(function(data) {
+            var userId = data.data.userid;
             if (data.message == "SUCCESS") {
                 setCookie("token", data.data.token, 30)
-                window.location.href = "/home"
-                alert("Login Successfull");
+                localStorage.setItem('userId', JSON.stringify(userId));
+                window.location.href = "/"
             } else {
-
                 alert("Login Fail")
             }
         })
     })
+
+    // function goTo(shopIdClick) {
+    //     console.log(shopIdClick);
+    //     let id = "?id=" + shopIdClick;
+    //     window.location.href = '/ShopDetail' + id;
+    // }
 </script>
 
 </html>

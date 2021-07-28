@@ -123,6 +123,7 @@ class MidUser {
         const token = await generateToken({ userid: userData.id, email: email });
         return {
             token,
+            userid: userData.id,
         };
     }
 

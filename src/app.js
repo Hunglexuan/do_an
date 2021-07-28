@@ -43,7 +43,7 @@ app.use(express.static(path.join(__dirname, '../media')))
 // Setup other routes
 app.use('/api', routes);
 
-app.get('/home', function(req, res) {
+app.get('/', function(req, res) {
     return res.render('home');
 });
 
@@ -87,10 +87,9 @@ app.get('/RegisterUser', function(req, res) {
 
 });
 
-// app.get('/CheckOut', function(req, res) {
-//     return res.render('CheckOut');
-
-// });
+app.get('/CheckOut', function(req, res) {
+    return res.render('CheckOut');
+});
 
 app.get('/ShopDetail', function(req, res) {
     return res.render('ShopDetail');

@@ -35,26 +35,42 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light osahan-nav shadow-sm ">
-        <div class="container">
-            <a class="navbar-brand" href="/home"><img alt="logo" style="max-width: 120px;" src="image/logoShop.png"></a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <header class="main-header">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light osahan-nav shadow-sm ">
+            <div class="container">
+                <a class="navbar-brand" href="/"><img alt="logo" style="max-width: 120px;" src="image/logoShop.png"></a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
          </button>
-            <div class="collapse navbar-collapse" id="navbarNavDropdown">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item active">
-                        <span class="sizeIcon" data-toggle="modal" data-target="#modalSearch">
-                            <i class="icofont-search-map nav-link" style="padding-top: 20px !important;"></i>
+                <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                    <ul class="navbar-nav ml-auto">
+                        <div class="modal fade modal-search show modalsearch" id="modal-search" tabindex="-1" role="dialog">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <span class="close" data-dismiss="modal">
+                                        <div class="close-icon">X</div>
+                                    </span>
+                                    <div class="modal-search-form" id="search_form">
+                                        <span class="sub-title">Tìm kiếm các quán ăn.......</span>
+                                        <form>
+                                            <input type="text" class="search-input" id="search-input">
+                                        </form>
+                                    </div>
+                                    <div id="suggest"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <li class="nav-item active">
+                            <span class="sizeIcon" data-toggle="modal" data-target="#modal-search">
+                            <i class="icofont-search-property nav-link" style="padding-top: 20px !important;"></i>
                         </span>
-                    </li>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+                        </li>
 
-                    <li class="nav-item active">
-                        <a class="nav-link" href="/home">Home <span class="sr-only">(current)</span></a>
-                    </li>
-
-                    <li id="checkLogin"></li>
-                    <!-- <li class="nav-link" style="padding-top: 20px !important;">
+                        <li id="checkLogin"></li>
+                        <!-- <li class="nav-link" style="padding-top: 20px !important;">
                         <button class="btn btn-primary"> Login </button>
                     </li>
 
@@ -68,38 +84,39 @@
                             <a class="dropdown-item" href="orders.html#offers"><i class="icofont-logout"></i> Logout </a>
                         </div>
                     </li> -->
-                    <li class="nav-item dropdown dropdown-cart">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <i class="icofont-basket"></i> Cart
-                            <span class="badge badge-success">5</span>
-                        </a>
-                        <div class="dropdown-menu dropdown-cart-top p-0 dropdown-menu-right shadow-sm border-0">
+                        <li class="nav-item dropdown dropdown-cart">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="icofont-basket"></i> Cart
+                                <span class="badge badge-success">5</span>
+                            </a>
+                            <div class="dropdown-menu dropdown-cart-top p-0 dropdown-menu-right shadow-sm border-0">
 
-                            <div class="dropdown-cart-top-body border-top p-4">
-                                <p class="mb-2"><i class="icofont-ui-press text-danger food-item"></i> Chicken Tikka Sub 12" (30 cm) x 1 <span class="float-right text-secondary">$314</span></p>
-                                <p class="mb-2"><i class="icofont-ui-press text-success food-item"></i> Corn & Peas Salad x 1
-                                    <span class="float-right text-secondary">$209</span>
-                                </p>
-                                <p class="mb-2"><i class="icofont-ui-press text-success food-item"></i> Veg Seekh Sub 6" (15 cm) x 1 <span class="float-right text-secondary">$133</span></p>
-                                <p class="mb-2"><i class="icofont-ui-press text-danger food-item"></i> Chicken Tikka Sub 12" (30 cm) x 1 <span class="float-right text-secondary">$314</span></p>
-                                <p class="mb-2"><i class="icofont-ui-press text-danger food-item"></i> Corn & Peas Salad x 1
-                                    <span class="float-right text-secondary">$209</span>
-                                </p>
+                                <div class="dropdown-cart-top-body border-top p-4">
+                                    <p class="mb-2"><i class="icofont-ui-press text-danger food-item"></i> Chicken Tikka Sub 12" (30 cm) x 1 <span class="float-right text-secondary">$314</span></p>
+                                    <p class="mb-2"><i class="icofont-ui-press text-success food-item"></i> Corn & Peas Salad x 1
+                                        <span class="float-right text-secondary">$209</span>
+                                    </p>
+                                    <p class="mb-2"><i class="icofont-ui-press text-success food-item"></i> Veg Seekh Sub 6" (15 cm) x 1 <span class="float-right text-secondary">$133</span></p>
+                                    <p class="mb-2"><i class="icofont-ui-press text-danger food-item"></i> Chicken Tikka Sub 12" (30 cm) x 1 <span class="float-right text-secondary">$314</span></p>
+                                    <p class="mb-2"><i class="icofont-ui-press text-danger food-item"></i> Corn & Peas Salad x 1
+                                        <span class="float-right text-secondary">$209</span>
+                                    </p>
+                                </div>
+                                <div class="dropdown-cart-top-footer border-top p-4">
+                                    <p class="mb-0 font-weight-bold text-secondary">Sub Total <span class="float-right text-dark">$499</span></p>
+                                    <small class="text-info">Extra charges may apply</small>
+                                </div>
+                                <div class="dropdown-cart-top-footer border-top p-2">
+                                    <a class="btn btn-success btn-block btn-lg" href="/CheckOut"> Checkout</a>
+                                </div>
                             </div>
-                            <div class="dropdown-cart-top-footer border-top p-4">
-                                <p class="mb-0 font-weight-bold text-secondary">Sub Total <span class="float-right text-dark">$499</span></p>
-                                <small class="text-info">Extra charges may apply</small>
-                            </div>
-                            <div class="dropdown-cart-top-footer border-top p-2">
-                                <a class="btn btn-success btn-block btn-lg" href="/CheckOut"> Checkout</a>
-                            </div>
-                        </div>
-                    </li>
-                </ul>
+                        </li>
+                    </ul>
 
+                </div>
             </div>
-        </div>
-    </nav>
+        </nav>
+    </header>
 
     <section class="section pb-5 products-listing">
         <div class="container" style="padding-top: 90px;">
@@ -113,6 +130,11 @@
             </div>
             <div class="row">
                 <div class="col-md-12">
+                    <div>
+                        <form class="filters-search mb-3">
+                            <div class="form-group"> <i class="icofont-search"></i> <input type="text" class="form-control" placeholder="Start typing to search..." id="productSearch"> </div>
+                        </form>
+                    </div>
                     <div class="row" id="allseller">
                         <!-- <div class="col-md-12 text-center load-more">
                             <button class="btn btn-primary" type="button" disabled>
@@ -139,71 +161,20 @@
     <script src="js/owl.carousel.js"></script>
     <!-- Custom scripts for all pages-->
     <script src="js/custom.js"></script>
+    <script src="js/header.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 
     <script>
-        function getCookie(cname) {
-            let name = cname + "=";
-            let decodedCookie = decodeURIComponent(document.cookie);
-            let ca = decodedCookie.split(';');
-            for (let i = 0; i < ca.length; i++) {
-                let c = ca[i];
-                while (c.charAt(0) == ' ') {
-                    c = c.substring(1);
-                }
-                if (c.indexOf(name) == 0) {
-                    return c.substring(name.length, c.length);
-                }
-            }
-            return "";
-        }
-
-        function setCookie(cname, cvalue, exdays) {
-            const d = new Date();
-            d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
-            let expires = "expires=" + d.toUTCString();
-            document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
-        }
-
-        var token = getCookie("token");
-
-        function logOutClick() {
-            setCookie("token", "", 0);
-            window.location = "/LoginUser"
-        }
-
-        var checkLogin = document.getElementById('checkLogin');
-
-        if (token == "") {
-            checkLogin.innerHTML += `<li class="nav-link" style="padding-top: 20px !important;">
-                        <a href="/LoginUser" class="btn btn-primary"> Login </a>
-                    </li>`
-        } else {
-            checkLogin.innerHTML += `<li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <img alt="Generic placeholder image" src="image/user/4.png" class="nav-osahan-pic rounded-pill"> My Account
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-right shadow-sm border-0">
-                            <a class="dropdown-item" href="/MyProfileUser"><i class="icofont-ui-user"></i> My Profile </a>
-                            <a class="dropdown-item" onclick="logOutClick()"><i class="icofont-logout"></i> Logout </a>
-                        </div>
-                    </li>`
-        }
-
         $(document).ready(function() {
             loaddata()
         });
 
-
-        // function getShopDetail() {
-        //     console.log('1111111');
-        //     window.location.href = '/ShopDetail'
-
-        //     var localId = id;
-
-        //     localStorage.setItem('localId', JSON.stringify(localId));
-        // }
+        $('#productSearch').keyup(function(event) {
+            event.preventDefault();
+            localStorage.setItem('searchListSeller', JSON.stringify(document.getElementById('productSearch').value));
+            loaddata();
+        });
 
         function loaddata() {
             var text = localStorage.getItem('searchListSeller').replaceAll('"', '');
@@ -216,11 +187,15 @@
                 url: "/api/user/searchSeller",
                 success: function(data) {
                     var listdata = data.data.listUsers;
-                    if (listdata != '') {
-                        for (var i = 0; i < listdata.length; i++) {
 
+                    document.getElementById('productSearch').value = text;
+
+                    if (listdata != '') {
+                        document.getElementById('findShop').innerHTML = '';
+                        document.getElementById('allseller').innerHTML = '';
+                        for (var i = 0; i < listdata.length; i++) {
                             document.getElementById('allseller').innerHTML += '<div class="col-md-3 col-sm-6 mb-4 pb-2" onclick="goTo(' + "'" + listdata[i].id + "'" + ')">' +
-                                '<div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">' +
+                                '<div class="list-card bg-white overflow-hidden h-100 position-relative item-content" style="border: 1px solid #d7d7d7; border-radius: 6px;">' +
                                 '<div class="list-card-image">' +
                                 '<div class="favourite-heart text-danger position-absolute"><a><i class="icofont-heart"></i></a></div>' +
                                 '<div class="member-plan position-absolute"></div>' +
@@ -231,12 +206,10 @@
                                 '<h6 class="mb-1"><a class="text-black">' + listdata[i].name + '</a></h6>' +
                                 '<p class="text-gray mb-3">' + listdata[i].address + '</p>' +
                                 '</div></div> </div> </div>';
-
-
                         }
-                        console.log(shopIdClick);
                     } else {
-                        document.getElementById('findShop').innerHTML = '<section class="section pt-5 pb-5 osahan-not-found-page"> <div class="container"> <div class="row"> <div class="col-md-12 text-center pt-5 pb-5"> <img class="img-fluid" src="image/notFind.png" alt="find"> <h1 class="mt-2 mb-2">Shop not found</h1> <p>Uh-oh! Looks like the page you are trying to access<br>exist. Please start afresh.</p> <a class="btn btn-primary btn-lg" href="/home">GO HOME</a> </div> </div> </div> </section>'
+                        document.getElementById('allseller').innerHTML = '';
+                        document.getElementById('findShop').innerHTML = '<section class="section pt-5 pb-5 osahan-not-found-page"> <div class="container"> <div class="row"> <div class="col-md-12 text-center pt-5 pb-5"> <img class="img-fluid" src="image/notFind.png" alt="find"> <h1 class="mt-2 mb-2">Shop not found</h1> <p>Uh-oh! Looks like the page you are trying to access<br>exist. Please start afresh.</p> <a class="btn btn-primary btn-lg" href="/">GO HOME</a> </div> </div> </div> </section>'
                     }
 
                 }

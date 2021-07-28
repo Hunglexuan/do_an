@@ -34,25 +34,29 @@
 </head>
 
 <body class="portal">
+    <div class="fallingLeaves">
+        <span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span>
+    </div>
     <header class="main-header">
         <nav class="navbar navbar-expand-lg navbar-light bg-light osahan-nav shadow-sm ">
             <div class="container">
-                <a class="navbar-brand" href="/home"><img alt="logo" style="max-width: 120px;" src="image/logoShop.png"></a>
+                <a class="navbar-brand" href="/"><img alt="logo" style="max-width: 120px;" src="image/logoShop.png"></a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
          </button>
                 <div class="collapse navbar-collapse" id="navbarNavDropdown">
                     <ul class="navbar-nav ml-auto">
-                        <div class="modal fade modal-search show" id="modal-search" tabindex="-1" role="dialog">
+                        <div class="modal fade modal-search show modalsearch" id="modal-search" tabindex="-1" role="dialog">
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
-                                    <!-- <span class="close" data-dismiss="modal"> X </span> -->
+                                    <span class="close" data-dismiss="modal">
+                                        <div class="close-icon">X</div>
+                                    </span>
                                     <div class="modal-search-form" id="search_form">
                                         <span class="sub-title">Tìm kiếm các quán ăn.......</span>
                                         <form>
-                                            <label for="search-input">Tags: </label>
-
-                                            <input class="search-input" id="search-input">
+                                            <input type="text" class="search-input" id="search-input">
                                         </form>
                                     </div>
                                     <div id="suggest"></div>
@@ -61,11 +65,11 @@
                         </div>
                         <li class="nav-item active">
                             <span class="sizeIcon" data-toggle="modal" data-target="#modal-search">
-                            <i class="icofont-search-map nav-link" style="padding-top: 20px !important;"></i>
+                            <i class="icofont-search-property nav-link" style="padding-top: 20px !important;"></i>
                         </span>
                         </li>
                         <li class="nav-item active">
-                            <a class="nav-link" href="/home">Home <span class="sr-only">(current)</span></a>
+                            <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
                         </li>
 
                         <li id="checkLogin"></li>
@@ -116,10 +120,11 @@
             </div>
         </nav>
     </header>
-    <div class="container" style="max-width: 1340px;">
-        <section class="col-md-5 category-list">
+
+    <div class="container" style="max-width: 1430px;">
+        <section class="col-md-3 category-list">
             <!-- <div class="banner-overlay"></div> -->
-            <div class="col-md-12">
+            <div class="col-md-15">
 
                 <div class="search-item">
                     <h1 class="title"> FU Market !!!</h1>
@@ -127,7 +132,7 @@
                     <div class="homepage-search-form">
                         <form class="form-noborder">
                             <div class="form-row">
-                                <div class="col-lg-5 col-md-5 col-sm-12 form-group">
+                                <div class="col-lg-8 col-md-5 col-sm-12 form-group">
                                     <input type="text" placeholder="Tìm địa điểm, món ăn,..." class="form-control form-control-lg text-search" id="findfood">
                                 </div>
                                 <div class="col-lg-2 col-md-2 col-sm-12 form-group">
@@ -137,9 +142,7 @@
                         </form>
                     </div>
 
-                    <div class="pt-3" id="searchCategory">
-
-                    </div>
+                    <div id="searchCategory"> </div>
                 </div>
             </div>
         </section>
@@ -618,93 +621,21 @@
     <script src="js/owl.carousel.js"></script>
     <!-- Custom scripts for all pages-->
     <script src="js/custom.js"></script>
+    <script src="js/header.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
     <script>
-        function getCookie(cname) {
-            let name = cname + "=";
-            let decodedCookie = decodeURIComponent(document.cookie);
-            let ca = decodedCookie.split(';');
-            for (let i = 0; i < ca.length; i++) {
-                let c = ca[i];
-                while (c.charAt(0) == ' ') {
-                    c = c.substring(1);
-                }
-                if (c.indexOf(name) == 0) {
-                    return c.substring(name.length, c.length);
-                }
-            }
-            return "";
-        }
-
-        function setCookie(cname, cvalue, exdays) {
-            const d = new Date();
-            d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
-            let expires = "expires=" + d.toUTCString();
-            document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
-        }
-
-        var token = getCookie("token");
-
-        function logOutClick() {
-            setCookie("token", "", 0);
-            window.location = "/home"
-        }
-
-        var checkLogin = document.getElementById('checkLogin');
-
-        if (token == "") {
-            checkLogin.innerHTML += `<li class="nav-link" style="padding-top: 20px !important;">
-                        <a href="/LoginUser" class="btn btn-outline-danger" style="border-radius: 6px;"> Login </a>
-                    </li>`
-        } else {
-            checkLogin.innerHTML += `<li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <img alt="Generic placeholder image" src="image/user/4.png" class="nav-osahan-pic rounded-pill"> My Account
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-right shadow-sm border-0">
-                            <a class="dropdown-item" href="/MyProfileUser"><i class="icofont-ui-user"></i> My Profile </a>
-                            <a class="dropdown-item" href="/home" onclick="logOutClick()"><i class="icofont-logout"></i> Logout </a>
-                        </div>
-                    </li>`
-        }
-
-        function checkSearchSeller() {
-            var datasearch = document.getElementById('search-input').value;
-            localStorage.setItem('searchListSeller', JSON.stringify(datasearch));
-        }
-
-
-        function searchPro() {
-            var food = document.getElementById('findfood').value;
-            localStorage.setItem('listProduct', JSON.stringify(food));
-        }
-
         $(document).ready(function() {
             loaddata();
             loadCategory();
         });
 
-
-        $('#search-input').keypress(function(event) {
-
-            if (event.keyCode === 13) {
-                event.preventDefault();
-                checkSearchSeller();
-                window.location = "/AllSeller"
-
-            } else {
-                $("#search-input").autocomplete({
-                    source: list
-                });
-            }
-        });
-
-
-
-
+        function searchPro() {
+            var food = document.getElementById('findfood').value;
+            localStorage.setItem('listProduct', JSON.stringify(food));
+        }
 
         function loaddata() {
             var text = document.getElementById('search-input').value;
@@ -718,7 +649,6 @@
                 success: function(data) {
                     var listdata = data.data.listUsers;
                     list = listdata;
-                    console.log('list', list);
                 }
             });
         }
