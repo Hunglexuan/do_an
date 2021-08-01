@@ -126,14 +126,14 @@
                     <div class="col-md-12">
                         <div class="restaurant-detailed-header-left">
                             <div id="inforShop">
-                                
+
                             </div>
 
                             <p class="text-white mb-0"><i class="icofont-food-cart"></i> North Indian, Chinese, Fast Food, South Indian
                                 <button type="button" id="SaveUpdate" data-toggle="modal" data-target="#basicModal" class="btn btn-outline-danger ml-3 fa fa-flag" style="float: right;"> </button>
                             </p>
 
-                          
+
 
 
 
@@ -649,19 +649,19 @@
             });
 
             $.ajax({
-                url:"http://localhost:3999/api/product/searchproduct?id="+idURL,
-                type:"GET",
+                url: "http://localhost:3999/api/product/searchproduct?id=" + idURL,
+                type: "GET",
 
-            }).then(function(data){
-                if(data.message == "SUCCESS"){
-                    for(var i = 0 ; i < data.data.listProduct.length ; i++){
-                        var product = data.data.listProduct[i];  
+            }).then(function(data) {
+                if (data.message == "SUCCESS") {
+                    for (var i = 0; i < data.data.listProduct.length; i++) {
+                        var product = data.data.listProduct[i];
                         // <div class="star position-absolute"><span class="badge badge-success"><i class="icofont-star"></i> 3.1 (300+)</span></div>
-                        var template =`
+                        var template = `
                         <div class="col-md-4 col-sm-6 mb-4">
                         <div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm " >
                                             <div class="list-card-image">
-                                                
+
                                                 <a href="#">
                                                     <img src="image/list/7.png" class="img-fluid item-img">
                                                 </a>
@@ -671,7 +671,7 @@
                                                     <h6 class="mb-1"><a href="#" class="item-name text-black">${product.name}</a></h6>
                                                     <p class="text-gray mb-2">North Indian • Indian</p>
                                                     <p class="text-gray time mb-0"><a class="item-price btn btn-link btn-sm pl-0 text-black pr-0" >${product.unit_price} </a> <span class="badge badge-success">NEW</span> <span class="float-right">
-                                                        <span class="count-number">                                                      
+                                                        <span class="count-number">
                                                             <button value="ADD" data-name="${product.name}" data-price="${product.unit_price}" data-id="${product.id}"  class="add-to-cart btn btn-outline-secondary btn-sm" onclick="addToCartFunc.call(this)" > ADD </button>
                                                         </span>
                                                         </span>
@@ -681,20 +681,11 @@
                                         </div>
                                     </div>`
 
-                         $(".allProduct").append(template)               
+                        $(".allProduct").append(template)
                     }
                 }
             })
-
-
-
-
-           
         }
-
-       
-
-
     </script>
 
 </body>
