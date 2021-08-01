@@ -6,6 +6,7 @@ import { isAuth } from '../middlewares/auth';
 let routerApp = new Router();
 
 
+routerApp.post('/avatar', Response(UserController.avatarUpdate));
 
 routerApp.get('/getbyId', Response(UserController.getUserId)); 
 routerApp.get('/searchUser', isAuth, Response(UserController.searchUser));

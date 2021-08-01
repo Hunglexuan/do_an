@@ -139,7 +139,6 @@ class MidFeedback {
             }
         }
 
-
         return {
             listFeedback,
             total: total || 0,
@@ -174,39 +173,7 @@ class MidFeedback {
         }
         return await Feedback.create(dataCreate);
     }
-    async deleteFeedback(data) {
-        let objDelete = await Feedback.findOne({
-            where: {
-                id: data.id,
-                del: 0
-            }
-        })
-        let dataDelete = {
-            del: 1,
-        }
-
-        objDelete.update(dataDelete)
-    }
-    async updateFeedback(data) {
-        if (!data.id) {
-            throw new Error(ERROR_MESSAGE.FEEDBACK.FEEDBACK_NOT_EXIST);
-        }
-        let objUpdate = await Feedback.findOne({
-            where: {
-                user_id: data.user_id,
-                shop_id: data.shop_id,
-                content: data.content,
-                rate: data.rate,
-                del: 0
-            }
-        })
-
-        let dataUpdate = {
-            name: data.name,
-        }
-        return await objUpdate.update(dataUpdate)
-
-    }
+   
 
 }
 
