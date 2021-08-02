@@ -50,8 +50,10 @@ class UserController {
     }
     async avatarUpdate(req, res) {
         
-
+        console.log('2222222');
         const dataUpload = await uploadMultiMedia(req, res);
+        console.log('3333333',dataUpload);
+
         let logo = dataUpload[0] ? dataUpload[0].filename : '';
         let data = req.body;
         return await MidUser.updateAvatar(data, logo);
