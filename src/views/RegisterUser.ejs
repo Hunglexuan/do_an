@@ -54,12 +54,12 @@
                                         <span class="form-message text-danger" id="messageAddress"></span>
                                     </div>
                                     <div class="form-label-group mb-4">
-                                        
+
                                         <input type="date" id="date" class="form-control">
                                         <span class="form-message text-danger" id="messageDate"></span>
                                     </div>
                                     <div class="form-label-group mb-4">
-                                        
+
                                         <input type="text" id="inputPhone" class="form-control" placeholder="Phone">
                                         <label for="inputPhone"> Phone Number</label>
                                         <span class="form-message text-danger" id="messagePhone"></span>
@@ -150,7 +150,7 @@
             var phone = document.getElementById('inputPhone').value.trim();
 
             var regEmail = /^\w+@[a-zA-Z]{1,}/i;
-            var regPhone = /^\d{11}/i;
+            var regPhone = /^\d{10}/i;
 
 
             if (userName == "") {
@@ -242,8 +242,9 @@
                 },
             }).then(function(data) {
                 if (data.message == 'SUCCESS') {
-                    window.location.href = '/index',
-                        alert("update success");
+                    setCookie("token", data.data.token, 30)
+                    localStorage.setItem('userId', JSON.stringify(userId));
+                    window.location.href = "/"
                 } else {
                     alert("Update fail");
                 }

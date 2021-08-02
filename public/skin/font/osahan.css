@@ -34,8 +34,12 @@ body {
 button,
 a {
     outline: none !important;
-    color: #ff3008;
+    color: #000;
     text-decoration: none !important;
+}
+
+a:hover {
+    color: #ff3008;
 }
 
 p {
@@ -69,6 +73,9 @@ h6 {
     background: #fff none repeat scroll 0 0 !important;
     padding: 0;
     z-index: 9;
+    position: fixed;
+    top: 0;
+    width: 100%;
 }
 
 .osahan-nav .nav-link {
@@ -706,6 +713,7 @@ small {
 
 .restaurant-detailed-banner {
     position: relative;
+    margin-top: 70px;
 }
 
 .restaurant-detailed-banner .img-fluid.cover {
@@ -1717,4 +1725,8 @@ footer {
     color: blue;
     float: right;
     padding-top: 5px;
+}
+
+#hide1 {
+    display: none;
 }

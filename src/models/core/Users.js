@@ -62,13 +62,6 @@ const attributes = {
         defaultValue: null
 
     },
-    bill_id: {
-        type: DataTypes.UUID,
-        allowNull: true,
-        defaultValue: null
-
-
-    },
     avatar: {
         type: DataTypes.STRING(255),
         allowNull: true,
@@ -82,17 +75,16 @@ const attributes = {
 
     },
     shop_name: {
-
         type: DataTypes.STRING(255),
         allowNull: true,
         defaultValue: null
     },
-    product_id: {
-        type: DataTypes.UUID,
+    shop_status: {
+        type: DataTypes.BOOLEAN,
         allowNull: true,
-        defaultValue: null
-
+        defaultValue: true
     },
+
     del: {
         type: DataTypes.TINYINT(1),
         allowNull: true,

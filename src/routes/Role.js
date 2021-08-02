@@ -7,6 +7,6 @@ let routerApp = new Router();
 
 
 routerApp.post('/create', Response(RoleController.createRole));
-
+routerApp.post('/search', Response(RoleController.searchRole));
 
 export default routerApp;

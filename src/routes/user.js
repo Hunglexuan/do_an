@@ -6,10 +6,11 @@ import { isAuth } from '../middlewares/auth';
 let routerApp = new Router();
 
 
+routerApp.post('/avatar', Response(UserController.avatarUpdate));
 
-routerApp.get('/getbyId', isAuth, Response(UserController.getUserId));
+routerApp.get('/getbyId', Response(UserController.getUserId)); 
 routerApp.get('/searchUser', isAuth, Response(UserController.searchUser));
-routerApp.get('/searchSeller', isAuth, Response(UserController.searchSeller));
+routerApp.get('/searchSeller', Response(UserController.searchSeller));
 routerApp.get('/delete', isAuth, Response(UserController.deleteUser));
 routerApp.get('/upRole', isAuth, Response(UserController.upgradeRole));
 routerApp.get('/downRole', isAuth, Response(UserController.downgradeRole));

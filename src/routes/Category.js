@@ -7,6 +7,8 @@ let routerApp = new Router();
 
 
 routerApp.post('/create', Response(CategoryController.createCategory));
+routerApp.get('/searchcategory', Response(CategoryController.searchCategory));
+routerApp.get('/deleteCategory', Response(CategoryController.deleteCategory));
 
 
 export default routerApp;

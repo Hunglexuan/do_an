@@ -12,8 +12,7 @@ import Feedback from './Feedback';
 import Voucher from './Voucher';
 import BillProduct from './BillProduct';
 import Product from './Product';
-import BillTemp from './BillTemp';
-
+import Image from './Image';
 
 
 
@@ -32,7 +31,7 @@ routerApp.use('/feedback', Feedback);
 routerApp.use('/voucher', Voucher);
 routerApp.use('/billproduct', BillProduct);
 routerApp.use('/product', Product);
-routerApp.use('/BillTemp', BillTemp);
+routerApp.use('/image', Image);
 
 
 

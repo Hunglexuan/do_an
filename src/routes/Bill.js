@@ -7,6 +7,7 @@ let routerApp = new Router();
 
 
 routerApp.post('/create', Response(BillController.createBill));
+routerApp.get('/searchbill', Response(BillController.searchBill));
 
 
 export default routerApp;

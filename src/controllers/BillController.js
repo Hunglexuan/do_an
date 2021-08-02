@@ -8,6 +8,10 @@ async createBill(req,res){
     let data = req.body;
     return MidBill.createBill(data);
 }
+async searchBill(req, res) {
+    let dataQuery = req.query;
+    return MidBill.searchBill(dataQuery);
+}
 
 }
 

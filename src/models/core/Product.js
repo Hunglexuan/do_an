@@ -48,6 +48,16 @@ const attributes = {
         allowNull: true,
         defaultValue:null
     },
+    time_from:{
+        type: DataTypes.INTEGER(10),
+        allowNull:true,
+        defaultValue:null
+    },
+    time_to:{
+        type: DataTypes.INTEGER(10),
+        allowNull:true,
+        defaultValue:null
+    },
     user_id: {
         type: DataTypes.UUID,
         allowNull:true,

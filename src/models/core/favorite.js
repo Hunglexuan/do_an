@@ -5,18 +5,20 @@ import Sequelize from 'sequelize';
 import { v4 as uuidv4 } from 'uuid';
 import Bill from './Bill';
 import BillProduct from './BillProduct';
+import Users from './Users';
+import Product from './Product';
 /**
- * Define BillTemp Model
+ * Define Favorite Model
  * 
  * @export
- * @class BillTemp
+ * @class Favorite
  * @extends {BaseModel}
  */
- export default class BillTemp extends BaseModel {
+ export default class Favorite extends BaseModel {
 
     static association() {
-        BillTemp.belongsTo(Bill, { as: 'bill', foreignKey: 'bill_id' }),
-        BillTemp.belongsTo(BillProduct, { as: 'bill_product', foreignKey: 'bill_product_id' })
+        Favorite.belongsTo(Product, { as: 'product', foreignKey: 'product_id' }),
+        Favorite.belongsTo(Users, { as: 'users', foreignKey: 'user_id' })
     }
 }
 /**
@@ -28,12 +30,13 @@ const attributes = {
         type: DataTypes.UUID,
         defaultValue: Sequelize.UUIDV4
     },
-    bill_id: {
+    product_id: {
         type: DataTypes.UUID,
         allowNull: true,
         defaultValue: null
     },
-    bill_product_id: {
+
+    user_id: {
         type: DataTypes.UUID,
         allowNull: true,
         defaultValue: null
@@ -55,7 +58,7 @@ const attributes = {
 
 };
 function beforeCreate() {
-    BillTemp.beforeCreate((obj, _) => {
+    Favorite.beforeCreate((obj, _) => {
         return obj.id = uuidv4();
     });
 }
@@ -64,11 +67,11 @@ function beforeCreate() {
  * Options model
  */
 const options = {
-    tableName: 'billtemp',
+    tableName: 'Favorite',
     beforeCreate: beforeCreate
 };
 
 /**
  * Init Model
  */
-BillTemp.init(attributes, { ...options, sequelize });
+ Favorite.init(attributes, { ...options, sequelize });

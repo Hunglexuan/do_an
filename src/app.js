@@ -8,12 +8,6 @@ import useragent from 'express-useragent';
 
 const app = express();
 
-
-
-
-
-
-
 app.use(express.urlencoded({ extended: true }))
 app.set('views', path.join(__dirname, '../src/views'));
 app.set('view engine', 'ejs');
@@ -43,18 +37,25 @@ app.use(express.static(path.join(__dirname, '../media')))
 // Setup other routes
 app.use('/api', routes);
 
+app.get('/', function(req, res) {
+    return res.render('home');
+});
+
 app.get('/index', function(req, res) {
-
     return res.render('index');
+});
 
 
+app.get('/AllProduct', function(req, res) {
+    return res.render('AllProduct');
+});
+
+app.get('/AllSeller', function(req, res) {
+    return res.render('AllSeller');
 });
 
 app.get('/resetPass', function(req, res) {
-
     return res.render('password');
-
-
 });
 
 app.get('/LoginSeller', function(req, res) {
@@ -80,6 +81,7 @@ app.get('/RegisterUser', function(req, res) {
 
 });
 
+<<<<<<< HEAD
 app.get('/listProductSeller', function(req, res) {
     return res.render('ListProductSeller');
 
@@ -93,6 +95,14 @@ app.get('/listOrderSeller', function(req, res) {
 app.get('/listfeedbackSeller', function(req, res) {
     return res.render('ListFeedbackSeller');
 
+=======
+app.get('/CheckOut', function(req, res) {
+    return res.render('CheckOut');
+});
+
+app.get('/ShopDetail', function(req, res) {
+    return res.render('ShopDetail');
+>>>>>>> master
 });
 
 app.get('/LoginUser', function(req, res) {
@@ -113,8 +123,24 @@ app.get('/DashboardSeller', function(req, res) {
     return res.render('DashboardForSeller');
 });
 
+app.get('/ListUsers', function(req, res) {
+    return res.render('ListUsers');
+});
+
 app.get('/ListSeller', function(req, res) {
     return res.render('ListSeller');
+});
+
+app.get('/AddRole', function(req, res) {
+    return res.render('AddRole');
+});
+
+app.get('/ListReport', function(req, res) {
+    return res.render('ListReport');
+});
+
+app.get('/ListVoucher', function(req, res) {
+    return res.render('ListVoucher');
 });
 
 

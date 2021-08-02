@@ -71,7 +71,7 @@ export const ERROR_MESSAGE = {
     COMMENT :{
         COMMENT_NOT_EXIST: 'Comment khong ton tai',
         COMMENT_USER_ID:'Comment user id khong ton tai',
-        COMMNET_SHOP_ID:'Comment shop id khong ton tai',
+        COMMNET_PRODUCT_ID:'Comment product id khong ton tai',
         COMMENT_CONTENT:'Comment content khong ton tai',
     },
     FEEDBACK : {

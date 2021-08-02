@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="utf-8" />
+   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+   <meta name="description" content="Askbootstrap" />
+   <meta name="author" content="Askbootstrap" />
+   <title>Osahan Eat - Online Food Ordering Website HTML Template</title>
+   <!-- Favicon Icon -->
+   <link rel="icon" type="image/png" href="img/favicon.png">
+   <!-- Feather Icon-->
+   <link href="/skin/css/feather.css" rel="stylesheet" type="text/css">
+   <!-- Fontawesome Icon-->
+   <link href="/skin/bootstrap/fontawesome.min.css" rel="stylesheet" type="text/css">
+   <!-- Bootstrap Css -->
+   <link href="/skin/bootstrap/bootstrap.min.css" rel="stylesheet">
+   <!-- Custom Css -->
+   <link href="/skin/css/listUser.css" rel="stylesheet" />
+   <link href="/skin/bootstrap/dataTables.bootstrap4.min.css" rel="stylesheet"/>
+
+</head>
+
+<body class="sb-nav-fixed">
+   <nav class="sb-topnav navbar navbar-expand navbar-light bg-white shadow-sm">
+      <a class="navbar-brand" href="index.html"><img alt="logo" src="img/logo.png"></a>
+      <button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#"><i
+            class="fas fa-bars"></i></button>
+      <!-- Navbar Search-->
+      <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
+         
+      </form>
+      <!-- Navbar-->
+      <ul class="navbar-nav ml-auto ml-md-0">
+         <li class="nav-item dropdown no-arrow d-sm-none">
+            <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown"
+               aria-haspopup="true" aria-expanded="false">
+               <i class="feather-search mr-2"></i>
+            </a>
+            <!-- Dropdown - Messages -->
+            
+         </li>
+        
+         <li class="nav-item dropdown no-arrow mx-1 osahan-list-dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
+               aria-expanded="false">
+               <i class="feather-bell"></i>
+               <!-- Counter - Alerts -->
+               <span class="badge badge-info badge-counter">6</span>
+            </a>
+            <!-- Dropdown - Alerts -->
+            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow-sm">
+               <h6 class="dropdown-header">
+                  Alerts Center
+               </h6>
+               <a class="dropdown-item d-flex align-items-center" href="#">
+                  <div class="mr-3">
+                     <div class="icon-circle bg-primary">
+                        <i class="fas fa-download text-white"></i>
+                     </div>
+                  </div>
+                  <div>
+                     <div class="small text-gray-500">December 12, 2020</div>
+                     <span class="font-weight-bold">A new monthly report is ready to download!</span>
+                  </div>
+               </a>
+               <a class="dropdown-item d-flex align-items-center" href="#">
+                  <div class="mr-3">
+                     <div class="icon-circle bg-success">
+                        <i class="fas fa-edit text-white"></i>
+                     </div>
+                  </div>
+                  <div>
+                     <div class="small text-gray-500">December 7, 2020</div>
+                     $290.29 has been deposited into your account!
+                  </div>
+               </a>
+               <a class="dropdown-item d-flex align-items-center" href="#">
+                  <div class="mr-3">
+                     <div class="icon-circle bg-warning">
+                        <i class="fas fa-folder text-white"></i>
+                     </div>
+                  </div>
+                  <div>
+                     <div class="small text-gray-500">December 2, 2020</div>
+                     Spending Alert: We've noticed unusually high spending for your account.
+                  </div>
+               </a>
+               <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
+            </div>
+         </li>
+         <!-- Nav Item - User Information -->
+         <li class="nav-item dropdown no-arrow ml-1 osahan-profile-dropdown">
+            <a class="nav-link dropdown-toggle pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
+               aria-expanded="false">
+               <img class="img-profile rounded-circle" src="/image/user/1.png">
+            </a>
+            <!-- Dropdown - User Information -->
+            <div class="dropdown-menu dropdown-menu-right shadow-sm">
+               <div class="p-3 d-flex align-items-center">
+                  <div class="dropdown-list-image mr-3">
+                     <img class="rounded-circle" src="/image/user/1.png" alt="">
+                     <div class="status-indicator bg-success"></div>
+                  </div>
+                  <div class="font-weight-bold">
+                     <div class="text-truncate">Gurdeep Osahan</div>
+                     <div class="small text-gray-500">Restaurants Owner</div>
+                  </div>
+               </div>
+               <div class="dropdown-divider"></div>
+               <a class="dropdown-item" href="my-profile.html"><i class="feather-edit"></i> My Account</a>
+               <a class="dropdown-item" href="my-profile.html"><i class="feather-settings"></i> Account Settings</a>
+               <div class="dropdown-divider"></div>
+               <a class="dropdown-item" onclick="logOutClick()" ><i class="feather-log-out"></i> Log out</a>
+                  
+            </div>
+         </li>
+      </ul>
+   </nav>
+   <div id="layoutSidenav">
+      <div id="layoutSidenav_nav">
+         <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+            <div class="sb-sidenav-menu">
+               <div class="nav">
+                  <div class="sb-sidenav-menu-heading">Core</div>
+                  <a class="nav-link" onclick="listUserPage()">
+                    <div class="sb-nav-link-icon"><i class="feather-list"></i></div>
+                    List Of User
+                  </a>
+                  <a class="nav-link" onclick="listSellerPage()">
+                    <div class="sb-nav-link-icon"><i class="feather-list"></i></div>
+                    List Of Seller
+                  </a>
+    
+                  <a class="nav-link" onclick="listVoucherPage()">
+                    <div class="sb-nav-link-icon"><i class="feather-list"></i></div>
+                    List Of Voucher
+                  </a>
+    
+                  <a class="nav-link"onclick="AddRolePage()">
+                    <div class="sb-nav-link-icon"><i class="feather-list"></i></div>
+                    Add Role
+                  </a>
+                  <a class="nav-link" onclick="listReportPage()">
+                    <div class="sb-nav-link-icon"><i class="feather-list"></i></div>
+                    Report List
+                  </a>
+                  <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne"
+                     data-parent="#sidenavAccordion">
+                     <nav class="sb-sidenav-menu-nested nav">
+                        <a class="nav-link" href="layout-static.html">Static Navigation</a>
+                        <a class="nav-link" href="layout-sidenav-light.html">Light Sidenav</a>
+                     </nav>
+                  </div>
+
+                  <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-parent="#sidenavAccordion">
+                     <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
+                        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#pagesCollapseAuth"
+                           aria-expanded="false" aria-controls="pagesCollapseAuth">
+                           Authentication
+                           <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                        </a>
+                        <div class="collapse" id="pagesCollapseAuth" aria-labelledby="headingOne"
+                           data-parent="#sidenavAccordionPages">
+                           <nav class="sb-sidenav-menu-nested nav">
+                              <a class="nav-link" href="login.html">Login</a>
+                              <a class="nav-link" href="register.html">Register</a>
+                              <a class="nav-link" href="password.html">Forgot Password</a>
+                           </nav>
+                        </div>
+                        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#pagesCollapseError"
+                           aria-expanded="false" aria-controls="pagesCollapseError">
+                           Error
+                           <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                        </a>
+                        <div class="collapse" id="pagesCollapseError" aria-labelledby="headingOne"
+                           data-parent="#sidenavAccordionPages">
+                           <nav class="sb-sidenav-menu-nested nav">
+                              <a class="nav-link" href="401.html">401 Page</a>
+                              <a class="nav-link" href="404.html">404 Page</a>
+                              <a class="nav-link" href="500.html">500 Page</a>
+                           </nav>
+                        </div>
+                     </nav>
+                  </div>
+
+
+               </div>
+            </div>
+            <!-- <div class="sb-sidenav-footer">
+               <div class="small">Logged in as:</div>
+               Ask Bootstrap
+            </div> -->
+         </nav>
+      </div>
+      <div id="layoutSidenav_content">
+         <main>
+            <div class="container-fluid">
+               <h1 class="mt-4">Voucher Managerment</h1>
+
+
+            </div>
+            
+
+
+            <div class="card-body">
+               <div class="table-responsive">
+                  
+
+                  <table class="table" id="dataTable" width="100%" cellspacing="0">
+                     <thead>
+                        <tr class="text-uppercase">
+                           <th>ID</th>
+                           <th>Name</th>
+                           <th>ShopName</th>
+                           <th>Address</th>
+                           <th>Phone</th>
+                           <th>Email</th>
+                           <th>DOB</th>
+                           <th>Action</th>
+                        </tr>
+                     </thead>
+                     <tbody>
+                        <!----><!---->
+                        <!-- ajax xu ly ben duoi -->
+                      
+                     </tbody>
+                  </table>
+                  
+
+               </div>
+            </div>
+      </div>
+   </div>
+   </main>
+   <footer class="py-4 bg-light mt-auto">
+      <div class="container-fluid">
+         <div class="d-flex align-items-center justify-content-between small">
+            <div class="text-muted">Copyright &copy; Your Website 2020</div>
+            <div>
+               <a href="#">Privacy Policy</a>
+               &middot;
+               <a href="#">Terms &amp; Conditions</a>
+            </div>
+
+         </div>
+      </div>
+   </footer>
+ 
+   <!-- Jquery -->
+   <script src="/js/jquery.min.js"></script>
+   <!-- Fontawesome -->
+   <script src="/js/all.min.js"></script>
+   <!-- Bootstrap -->
+   <script src="/js/bootstrap.bundle.min.js"></script>
+   <!-- Custom Js -->
+   <script src="/js/scriptsListSeller.js"></script>
+   <!-- Ajax Chart Js -->
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
+   <!-- Chart Js -->
+   <!-- <script src="/js/chart-area-demo.js"></script>
+   <script src="/js/chart-bar-demo.js"></script>
+   <script src="/js/chart-pie-demo.js"></script> -->
+   <script src="/js/jquery.dataTables.min.js"></script>
+   <script src="/js/dataTables.bootstrap.min.js"></script>
+   <!-- <script src="/js/datatables-demo.js"></script> -->
+
+</body>
+
+
+
+<script>
+
+function getCookie(cname) {
+   let name = cname + "=";
+   let decodedCookie = decodeURIComponent(document.cookie);
+   let ca = decodedCookie.split(';');
+   for(let i = 0; i <ca.length; i++) {
+     let c = ca[i];
+     while (c.charAt(0) == ' ') {
+       c = c.substring(1);
+     }
+     if (c.indexOf(name) == 0) {
+       return c.substring(name.length, c.length);
+     }
+   }
+   return "";
+}
+function setCookie(cname, cvalue, exdays) {
+    const d = new Date();
+    d.setTime(d.getTime() + (exdays*24*60*60*1000));
+    let expires = "expires="+ d.toUTCString();
+    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+    }
+
+ var token = getCookie("token");
+
+//function chuyen trang
+function listUserPage(){
+         window.location.href='/ListUsers'
+       } 
+       function listSellerPage(){
+         window.location.href='/ListSeller'
+       } 
+       function listVoucherPage(){
+         window.location.href='/ListVoucher'
+       } 
+
+       function AddRolePage(){
+         window.location.href='/AddRole'
+       } 
+
+       function listReportPage(){
+         window.location.href='/ListReport'
+       } 
+ //btn-logout function
+function logOutClick(){
+   setCookie("token","",0);
+   window.location = "/LoginAdmin"
+}
+
+ //btn-logout function
+
+//datatable function
+ $(document).ready(function() {
+    
+   $('#dataTable').DataTable( {
+      'ajax': function (data, callback, settings) {
+      $.ajax({
+        url: "http://localhost:3999/api/user/searchUser?token="+token,
+      })
+      .then ( function( response, textStatus, jqXHR ) {
+         
+         let data = response.data.listUsers
+		   data.forEach((val, idx) => {
+             val.no = idx + 1
+         });
+         callback({"data": data});
+      });
+    },
+    
+    'columns':[
+       {data : 'no'},
+       {data : 'name'},
+       {data : 'role_id'},
+       {data : 'address'},
+       {data : 'phone'},
+       {data : 'email'},
+       {data : 'dob'},
+       {data : ""}
+
+    ],
+    'columnDefs': [
+				{
+					targets: -1,
+					render: function (data, type, row, meta) {
+						return '<input type="button" class="show-user-id btn-primary mr-3" id=user-id-"' + meta.row + '" value="Show User Info"/>' +
+							'<input type="button" class="show-post-id btn-success mr-3 " id=post-"' + meta.row + '" value="Up Row"/>' +
+							'<input type="button"  class="show-post-title btn-danger mr-3" id=post-"' + meta.row + '" value="Delete"/>';
+					}
+
+				}
+			]
+   
+   } );
+
+
+
+   $('#dataTable tbody').on('click', '.show-user-id', function () {
+			let id = $(this).attr('id').match(/\d+/)[0];
+			console.log('id: ', id);
+			let data = $('#dataTable').DataTable().row(id).data();
+			alert('User ID: ' + data.userId);
+		});
+
+
+		$('#dataTable tbody').on('click', '.show-post-id', function () {
+			let id = $(this).attr('id').match(/\d+/)[0];
+			let data = $('#dataTable').DataTable().row(id).data();
+         let id_User = data.id;
+         console.log("id = "+id_User);
+			alert('Post ID: ' + data.id);
+         console.log(data);
+         $.ajax({
+            url:'/api/user/downRole?token='+token+'&id='+id_User,
+            method:'GET',
+            
+         }).then(function(){
+            
+            window.location.reload();
+         })
+		});
+
+		$('#dataTable tbody').on('click', '.show-post-title', function () {
+         let id = $(this).attr('id').match(/\d+/)[0];
+			let data = $('#dataTable').DataTable().row(id).data();
+         let id_User = data.id;
+         
+         $.ajax({
+            url:'/api/user/delete?token='+token+'&id='+id_User,
+            method:'GET',
+            
+         }).then(function(){
+            
+            window.location.reload();
+         })
+		});
+
+     
+
+} );
+
+     
+   
+
+ 
+
+
+
+</script>
+
+</html>
