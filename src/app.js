@@ -81,7 +81,6 @@ app.get('/RegisterUser', function(req, res) {
 
 });
 
-<<<<<<< HEAD
 app.get('/listProductSeller', function(req, res) {
     return res.render('ListProductSeller');
 
@@ -94,15 +93,13 @@ app.get('/listOrderSeller', function(req, res) {
 
 app.get('/listfeedbackSeller', function(req, res) {
     return res.render('ListFeedbackSeller');
-
-=======
+});
 app.get('/CheckOut', function(req, res) {
     return res.render('CheckOut');
 });
 
 app.get('/ShopDetail', function(req, res) {
     return res.render('ShopDetail');
->>>>>>> master
 });
 
 app.get('/LoginUser', function(req, res) {
