@@ -7,6 +7,23 @@ import { ERROR_MESSAGE } from "../../config/error";
 
 
 class MidUser {
+
+
+    async updateAvatar(data,logo) {
+        if (!logo) {
+            throw new Error('Vui lòng chọn ảnh');
+        }
+        let objUpdate = await Users.findOne({
+            where: {
+                id: data.id,
+                del: 0,
+            },
+        });
+        let dataUpdate = {
+            avatar: logo,
+        };
+        objUpdate.update(dataUpdate);
+    }
     async getUserByEmail(email) {
         return await Users.findOne({
             where: {
@@ -97,7 +114,7 @@ class MidUser {
 
         const userData = await this.getUserByEmail(email);
         let check = this.checkRole(userData);
-        if (check == "admin") {}
+        if (check == "admin") { }
         if (!userData) {
             throw new Error(ERROR_MESSAGE.LOGIN.ERR_ACC);
         }
@@ -206,7 +223,7 @@ class MidUser {
         let condition = {
             del: 0,
             role_id: role.id,
-        }; 
+        };
 
         if (data.name) {
             condition.name = {
