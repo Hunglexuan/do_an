@@ -155,9 +155,8 @@ function addToCartFunc(){
   }else{
 
     // console.log("id doi lan 1",idURL);
-    // cart=[];
-    // shoppingCart.shopID
-    // cart.push(shopID);
+    // cartArray1[0].shopID = idURL;
+    
     var id = $(this).data('id');
     var name = $(this).data('name');
   
