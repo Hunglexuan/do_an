@@ -621,20 +621,15 @@
 
         $('#changeImage').click(function (e) {
             var text = localStorage.getItem('userId').replaceAll('"', '');
-            // const reader = new FileReader()
-            // let files = document.getElementById('wizard-picture').files
-            // reader.onload = async (event) => {
-            //     document.getElementById('wizardPicturePreview').setAttribute('src', event.target.result)
-            // }
-            // reader.readAsDataURL(files[0])
-            var data = JSON.parse(document.getElementById("wizard-picture").files);
+            var img = $('#wizard-picture').files;
+            console.log(img)
             $.ajax({
                 url: '/api/user/avatar',
                 method: 'POST',
                 dataType : 'json',
                 data: {
                     id: text,
-                    file: data,
+                    file: img,
                 },
             }).then(function (data) {
                 if (data.message == 'SUCCESS') {

@@ -192,6 +192,7 @@ class MidUser {
         const token = await generateToken({ userid: userData.id, email: email });
         return {
             token,
+            sellerid: userData.id,
         };
     }
 
