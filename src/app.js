@@ -81,6 +81,19 @@ app.get('/RegisterUser', function(req, res) {
 
 });
 
+app.get('/listProductSeller', function(req, res) {
+    return res.render('ListProductSeller');
+
+});
+
+app.get('/listOrderSeller', function(req, res) {
+    return res.render('ListOrderSeller');
+
+});
+
+app.get('/listfeedbackSeller', function(req, res) {
+    return res.render('ListFeedbackSeller');
+});
 app.get('/CheckOut', function(req, res) {
     return res.render('CheckOut');
 });

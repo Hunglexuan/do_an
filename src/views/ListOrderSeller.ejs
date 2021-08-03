@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="utf-8" />
+   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+   <meta name="description" content="Askbootstrap" />
+   <meta name="author" content="Askbootstrap" />
+   <title>Osahan Eat - Online Food Ordering Website HTML Template</title>
+   <!-- Favicon Icon -->
+   <link rel="icon" type="image/png" href="image/favicon.png">
+   <!-- Feather Icon-->
+   <link href="skin/css/feather.css" rel="stylesheet" type="text/css">
+   <!-- Fontawesome Icon-->
+   <link href="skin/font/fontawesome.min.css" rel="stylesheet" type="text/css">
+   <!-- Bootstrap Css -->
+   <link href="skin/bootstrap/bootstrap.min.css" rel="stylesheet">
+   <!-- Custom Css -->
+   <link href="skin/css/styles.css" rel="stylesheet" />
+   <!-- Datatables css -->
+   <link href="skin/bootstrap/dataTables.bootstrap4.min.css" rel="stylesheet">
+</head>
+
+<body class="sb-nav-fixed">
+   <nav class="sb-topnav navbar navbar-expand navbar-light bg-white shadow-sm">
+      <a class="navbar-brand" href="DashboardSeller"><img alt="logo" src="image/image0.jpg" width="100px"></a>
+      <!-- Navbar Search-->
+      <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
+         <div class="input-group">
+            <input class="form-control" type="text" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2" />
+            <div class="input-group-append">
+               <button class="btn btn-primary btn-sm" type="button"><i class="fas fa-search"></i></button>
+            </div>
+         </div>
+      </form>
+      <!-- Navbar-->
+      <ul class="navbar-nav ml-auto ml-md-0">
+         <li class="nav-item dropdown no-arrow d-sm-none">
+            <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="fas fa-search"></i>
+            </a>
+            <!-- Dropdown - Messages -->
+            <div class="dropdown-menu dropdown-menu-right p-3 shadow-sm animated--grow-in" aria-labelledby="searchDropdown">
+               <form class="form-inline mr-auto w-100 navbar-search">
+                  <div class="input-group">
+                     <input type="text" class="form-control border-0 shadow-none" placeholder="Search people, jobs and more..." aria-label="Search" aria-describedby="basic-addon2">
+                     <div class="input-group-append">
+                        <button class="btn" type="button">
+                        <i class="fas fa-search"></i>
+                        </button>
+                     </div>
+                  </div>
+               </form>
+            </div>
+         </li>
+         <li class="nav-item dropdown no-arrow mx-1 osahan-list-dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+               <i class="far fa-comments"></i>
+               <!-- Counter - Alerts -->
+               <span class="badge badge-danger badge-counter">8</span>
+            </a>
+            <!-- Dropdown - Alerts -->
+            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow-sm">
+               <h6 class="dropdown-header">
+                  Message Center
+               </h6>
+               <a class="dropdown-item d-flex align-items-center" href="#">
+                  <div class="dropdown-list-image mr-3">
+                     <img class="rounded-circle" src="image/user/2.png" alt="">
+                     <div class="status-indicator bg-success"></div>
+                  </div>
+                  <div class="font-weight-bold overflow-hidden">
+                     <div class="text-truncate">Hi there! I am wondering if you can help me with a problem I've been having.</div>
+                     <div class="small text-gray-500">Emily Fowler · 58m</div>
+                  </div>
+               </a>
+               <a class="dropdown-item d-flex align-items-center" href="#">
+                  <div class="dropdown-list-image mr-3">
+                     <img class="rounded-circle" src="image/user/3.png" alt="">
+                     <div class="status-indicator"></div>
+                  </div>
+                  <div class="overflow-hidden">
+                     <div class="text-truncate">I have the photos that you ordered last month, how would you like them sent to you?</div>
+                     <div class="small text-gray-500">Jae Chun · 1d</div>
+                  </div>
+               </a>
+               <a class="dropdown-item d-flex align-items-center" href="#">
+                  <div class="dropdown-list-image mr-3">
+                     <img class="rounded-circle" src="image/user/4.png" alt="">
+                     <div class="status-indicator bg-warning"></div>
+                  </div>
+                  <div class="overflow-hidden">
+                     <div class="text-truncate">Last month's report looks great, I am very happy with the progress so far, keep up the good work!</div>
+                     <div class="small text-gray-500">Morgan Alvarez · 2d</div>
+                  </div>
+               </a>
+               <a class="dropdown-item d-flex align-items-center" href="#">
+                  <div class="dropdown-list-image mr-3">
+                     <img class="rounded-circle" src="image/user/5.png" alt="">
+                     <div class="status-indicator bg-success"></div>
+                  </div>
+                  <div class="overflow-hidden">
+                     <div class="text-truncate">Am I a good boy? The reason I ask is because someone told me that people say this to all dogs, even if they aren't good...</div>
+                     <div class="small text-gray-500">Chicken the Dog · 2w</div>
+                  </div>
+               </a>
+               <a class="dropdown-item text-center small text-gray-500" href="#">Read More Messages</a>
+            </div>
+         </li>
+         <li class="nav-item dropdown no-arrow mx-1 osahan-list-dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+               <i class="far fa-bell"></i>
+               <!-- Counter - Alerts -->
+               <span class="badge badge-info badge-counter">6</span>
+            </a>
+            <!-- Dropdown - Alerts -->
+            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow-sm">
+               <h6 class="dropdown-header">
+                  Alerts Center
+               </h6>
+               <a class="dropdown-item d-flex align-items-center" href="#">
+                  <div class="mr-3">
+                     <div class="icon-circle bg-primary">
+                        <i class="fas fa-download text-white"></i>
+                     </div>
+                  </div>
+                  <div>
+                     <div class="small text-gray-500">December 12, 2020</div>
+                     <span class="font-weight-bold">A new monthly report is ready to download!</span>
+                  </div>
+               </a>
+               <a class="dropdown-item d-flex align-items-center" href="#">
+                  <div class="mr-3">
+                     <div class="icon-circle bg-success">
+                        <i class="fas fa-edit text-white"></i>
+                     </div>
+                  </div>
+                  <div>
+                     <div class="small text-gray-500">December 7, 2020</div>
+                     $290.29 has been deposited into your account!
+                  </div>
+               </a>
+               <a class="dropdown-item d-flex align-items-center" href="#">
+                  <div class="mr-3">
+                     <div class="icon-circle bg-warning">
+                        <i class="fas fa-folder text-white"></i>
+                     </div>
+                  </div>
+                  <div>
+                     <div class="small text-gray-500">December 2, 2020</div>
+                     Spending Alert: We've noticed unusually high spending for your account.
+                  </div>
+               </a>
+               <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
+            </div>
+         </li>
+         <!-- Nav Item - User Information -->
+         <li class="nav-item dropdown no-arrow ml-1 osahan-profile-dropdown">
+            <a class="nav-link dropdown-toggle pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <img class="img-profile rounded-circle" src="image/user/1.png">
+            </a>
+            <!-- Dropdown - User Information -->
+            <div class="dropdown-menu dropdown-menu-right shadow-sm">
+               <div class="p-3 d-flex align-items-center">
+                  <div class="dropdown-list-image mr-3">
+                     <img class="rounded-circle" src="image/user/1.png" alt="">
+                     <div class="status-indicator bg-success"></div>
+                  </div>
+                  <div class="font-weight-bold">
+                     <div class="text-truncate">Gurdeep Osahan</div>
+                     <div class="small text-gray-500">Restaurants Owner</div>
+                  </div>
+               </div>
+               <div class="dropdown-divider"></div>
+               <a class="dropdown-item" href=""><i class="fas fa-user-circle"></i> My Account</a>
+               <a class="dropdown-item" href=""><i class="fas fa-cog"></i> Account Settings</a>
+               <div class="dropdown-divider"></div>
+               <a class="dropdown-item" href=""><i class="fas fa-sign-out-alt"></i> Logout</a>
+            </div>
+         </li>
+      </ul>
+   </nav>
+   <div id="layoutSidenav">
+      <div id="layoutSidenav_nav">
+         <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+            <div class="sb-sidenav-menu">
+               <div class="nav">
+                  <div class="sb-sidenav-menu-heading">Core</div>
+                  <a class="nav-link" href="DashboardSeller">
+                     Dashboard
+                  </a>
+                  <a class="nav-link" href="">
+                     <div class="sb-nav-link-icon"><i class="fas fa-comment-dots"></i></div>
+                     Messages
+                  </a>
+                  <a class="nav-link" href="listOrderSeller">
+                     <div class="sb-nav-link-icon"><i class="far fa-calendar-alt"></i></div>
+                     Bookings <span class="badge badge-pill ml-2 badge-primary">6 New</span>
+                  </a>
+                  <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLayoutss" aria-expanded="false" aria-controls="collapseLayoutss">
+                     <div class="sb-nav-link-icon"><i class="fas fa-list"></i></div>
+                     My listings
+                     <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                  </a>
+                  <div class="collapse" id="collapseLayoutss" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
+                     <nav class="sb-sidenav-menu-nested nav">
+                        <a class="nav-link" href="">Pending <span class="badge badge-pill ml-2 badge-primary">6</span></a>
+                        <a class="nav-link" href="">Active <span class="badge badge-pill ml-2 badge-success">5</span></a>
+                        <a class="nav-link" href="">Expired <span class="badge badge-pill ml-2 badge-danger">4</span></a>                                
+                     </nav>
+                  </div>
+                  <a class="nav-link" href="listfeedbackSeller">
+                     <div class="sb-nav-link-icon"><i class="far fa-star"></i></div>
+                     Reviews
+                  </a>
+                  <a class="nav-link" href="">
+                     <div class="sb-nav-link-icon"><i class="fas fa-chart-line"></i></div>
+                     Income Statement
+                  </a>
+                  <a class="nav-link" href="listProductSeller">
+                     <div class="sb-nav-link-icon"><i class="fas fa-boxes"></i></div>
+                     Product Manager
+                  </a>
+                  <a class="nav-link" href="">
+                     <div class="sb-nav-link-icon"><i class="fas fa-user-edit"></i></div>
+                     User Manager
+                  </a>
+                  <a class="nav-link" href="">
+                     <div class="sb-nav-link-icon"><i class="fas fa-shopping-cart"></i></div>
+                     Orders Page
+                  </a>
+                  <a class="nav-link" href="">
+                     <div class="sb-nav-link-icon"><i class="fas fa-cog"></i></div>
+                     Edit Order
+                  </a>
+                  <a class="nav-link" href="">
+                     <div class="sb-nav-link-icon"><i class="fas fa-user-cog"></i></div>
+                     My Profile
+                  </a>
+                  <a class="nav-link" href="">
+                     <div class="sb-nav-link-icon"><i class="fas fa-store"></i></div>
+                     Shop Profiles
+                  </a>
+                  <a class="nav-link" href="">
+                     <div class="sb-nav-link-icon"><i class="fas fa-file-signature"></i></div>
+                     Manager Report
+                  </a>
+               </div>
+            </div>
+         </nav>
+      </div>
+      <div id="layoutSidenav_content">
+         <main>
+            <div class="container-fluid">
+               <h1 class="mt-4">List Order</h1>
+               <ol class="breadcrumb mb-4">
+                  <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+                  <li class="breadcrumb-item active">Order</li>
+               </ol>
+               <ol>
+                  <a class="btn btn-info" href="#" style="position: relative; left:1280px;"><i class="fas fa-sync-alt"></i>
+                     Refresh</a>
+               </ol>
+               <div class="row">
+                  <div class="col-xl-12">
+                     <div class="card mb-4 order-list">
+                        <div class="gold-members p-4">
+                           <a href="#">
+                           </a>
+                           <div class="media">
+                              <a href="#">
+                                 <img class="mr-4" src="image/3.jpg" alt="Generic placeholder image">
+                              </a>
+                              <div class="media-body">
+                                 <a href="#">
+                                    <span class="float-right text-success">Delivered on Mon, Nov 12, 7:18 PM <i
+                                          class="feather-check-circle text-success"></i></span>
+                                 </a>
+                                 <h6 class="mb-3"><a href="#">
+                                    </a><a href="detail.html" class="text-dark">Product name
+                                    </a>
+                                 </h6>
+                                 <p class="text-black-50 mb-1"><i class="far fa-user"></i> User
+                                 </p>
+                                 <p class="text-black-50 mb-1"><i class="feather-map-pin"></i> Location and description
+                                 </p>
+                                 <p class="text-black-50 mb-3"><i class="feather-list"></i> ORDER Phone <i
+                                       class="feather-clock ml-2"></i> Time order</p>
+                                 <p class="text-dark">Product Name x 1, Product Name x 1, Product Name x 1
+                                 </p>
+                                 <hr>
+                                 <div class="float-right">
+                                    <a class="btn btn-info" href="#"><i class="far fa-eye"></i>View</a>
+                                    <a href="#0" class="btn btn-sm btn-success"><i class="feather-check-circle"></i>
+                                       Approve</a>
+                                    <a href="#0" class="btn btn-sm btn-info" data-toggle="modal"
+                                       data-target="#edit_booking"><i class="feather-edit"></i> Edit</a>
+                                    <a href="#0" class="btn btn-sm btn-danger"><i class="feather-trash"></i> Cancel</a>
+                                 </div>
+                                 <p class="mb-0 text-dark text-dark pt-2"><span class="text-dark font-weight-bold">
+                                       Total Paid:</span> $300
+                                 </p>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+
+                     <div class="card mb-4 order-list">
+                        <div class="gold-members p-4">
+                           <a href="#">
+                           </a>
+                           <div class="media">
+                              <a href="#">
+                                 <img class="mr-4" src="image/3.jpg" alt="Generic placeholder image">
+                              </a>
+                              <div class="media-body">
+                                 <a href="#">
+                                    <span class="float-right text-success">Delivered on Mon, Nov 12, 7:18 PM <i
+                                          class="feather-check-circle text-success"></i></span>
+                                 </a>
+                                 <h6 class="mb-3"><a href="#">
+                                    </a><a href="detail.html" class="text-dark">Product name
+                                    </a>
+                                 </h6>
+                                 <p class="text-black-50 mb-1"><i class="far fa-user"></i> User
+                                 </p>
+                                 <p class="text-black-50 mb-1"><i class="feather-map-pin"></i> Location and description
+                                 </p>
+                                 <p class="text-black-50 mb-3"><i class="feather-list"></i> ORDER Phone <i
+                                       class="feather-clock ml-2"></i> Time order</p>
+                                 <p class="text-dark">Product Name x 1, Product Name x 1, Product Name x 1
+                                 </p>
+                                 <hr>
+                                 <div class="float-right">
+                                    <a class="btn btn-info" href="#"><i class="far fa-eye"></i>View</a>
+                                    <a href="#0" class="btn btn-sm btn-success"><i class="feather-check-circle"></i>
+                                       Approve</a>
+                                    <a href="#0" class="btn btn-sm btn-info" data-toggle="modal"
+                                       data-target="#edit_booking"><i class="feather-edit"></i> Edit</a>
+                                    <a href="#0" class="btn btn-sm btn-danger"><i class="feather-trash"></i> Cancel</a>
+                                 </div>
+                                 <p class="mb-0 text-dark text-dark pt-2"><span class="text-dark font-weight-bold">
+                                       Total Paid:</span> $300
+                                 </p>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+
+                     <div class="card mb-4 order-list">
+                        <div class="gold-members p-4">
+                           <a href="#">
+                           </a>
+                           <div class="media">
+                              <a href="#">
+                                 <img class="mr-4" src="image/3.jpg" alt="Generic placeholder image">
+                              </a>
+                              <div class="media-body">
+                                 <a href="#">
+                                    <span class="float-right text-success">Delivered on Mon, Nov 12, 7:18 PM <i
+                                          class="feather-check-circle text-success"></i></span>
+                                 </a>
+                                 <h6 class="mb-3"><a href="#">
+                                    </a><a href="detail.html" class="text-dark">Product name
+                                    </a>
+                                 </h6>
+                                 <p class="text-black-50 mb-1"><i class="far fa-user"></i> User
+                                 </p>
+                                 <p class="text-black-50 mb-1"><i class="feather-map-pin"></i> Location and description
+                                 </p>
+                                 <p class="text-black-50 mb-3"><i class="feather-list"></i> ORDER Phone <i
+                                       class="feather-clock ml-2"></i> Time order</p>
+                                 <p class="text-dark">Product Name x 1, Product Name x 1, Product Name x 1
+                                 </p>
+                                 <hr>
+                                 <div class="float-right">
+                                    <a class="btn btn-info" href="#"><i class="far fa-eye"></i>View</a>
+                                    <a href="#0" class="btn btn-sm btn-success"><i class="feather-check-circle"></i>
+                                       Approve</a>
+                                    <a href="#0" class="btn btn-sm btn-info" data-toggle="modal"
+                                       data-target="#edit_booking"><i class="feather-edit"></i> Edit</a>
+                                    <a href="#0" class="btn btn-sm btn-danger"><i class="feather-trash"></i> Cancel</a>
+                                 </div>
+                                 <p class="mb-0 text-dark text-dark pt-2"><span class="text-dark font-weight-bold">
+                                       Total Paid:</span> $300
+                                 </p>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+
+
+                     <nav aria-label="Page navigation example">
+                        <ul class="pagination pagination-sm mb-4 justify-content-center">
+                           <li class="page-item disabled">
+                              <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+                           </li>
+                           <li class="page-item"><a class="page-link" href="#">1</a></li>
+                           <li class="page-item"><a class="page-link" href="#">2</a></li>
+                           <li class="page-item"><a class="page-link" href="#">3</a></li>
+                           <li class="page-item">
+                              <a class="page-link" href="#">Next</a>
+                           </li>
+                        </ul>
+                     </nav>
+                  </div>
+               </div>
+            </div>
+         </main>
+         <footer class="py-4 bg-light mt-auto">
+            <div class="container-fluid">
+               <div class="d-flex align-items-center justify-content-between small">
+                  <div class="text-muted">Copyright &copy; Your Website 2020</div>
+                  <div>
+                     <a href="#">Privacy Policy</a>
+                     &middot;
+                     <a href="#">Terms &amp; Conditions</a>
+                  </div>
+               </div>
+            </div>
+         </footer>
+      </div>
+   </div>
+   <!-- Edit Booking Modal -->
+   <div class="modal fade" id="edit_booking" tabindex="-1" role="dialog" aria-labelledby="edit_bookingLabel"
+      aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+         <div class="modal-content">
+            <div class="modal-header">
+               <h5 class="modal-title" id="edit_bookingLabel">Edit Booking</h5>
+               <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">×</span>
+               </button>
+            </div>
+            <div class="modal-body">
+               <div class="form-group">
+                  <label>Restaurant Name</label>
+                  <input type="text" class="form-control" value="Restaurant Name">
+               </div>
+               <div class="form-group">
+                  <label>Client Name</label>
+                  <input type="text" class="form-control" value="Mark Twain">
+               </div>
+               <div class="row">
+                  <div class="col-md-6">
+                     <div class="form-group">
+                        <label>Date</label>
+                        <input type="text" class="form-control" value="5 November 2020">
+                     </div>
+                  </div>
+                  <div class="col-md-6">
+                     <div class="form-group">
+                        <label>Time</label>
+                        <input type="text" class="form-control" value="08.30pm">
+                     </div>
+                  </div>
+               </div>
+               <!-- /Row -->
+               <div class="row">
+                  <div class="col-md-6">
+                     <div class="form-group">
+                        <label>Peolple</label>
+                        <input type="text" class="form-control" value="2">
+                     </div>
+                  </div>
+               </div>
+               <!-- /Row -->
+            </div>
+            <div class="modal-footer">
+               <a class="btn btn-primary" href="">Save</a>
+            </div>
+         </div>
+      </div>
+   </div>
+   <!-- Jquery -->
+   <script src="js/jquery.min.js"></script>
+   <!-- Fontawesome -->
+   <script src="js/all.min.js"></script>
+   <!-- Bootstrap -->
+   <script src="js/bootstrap.bundle.min.js"></script>
+   <!-- Custom Js -->
+   <!-- <script src="js/scripts.js"></script> -->
+   <!-- Ajax Chart Js -->
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
+   <!-- Chart Js -->
+   <script src="js/chart-area-demo.js"></script>
+   <script src="js/chart-bar-demo.js"></script>
+   <script src="js/chart-pie-demo.js"></script>
+   <!-- Datatable Js -->
+   <script src="js/jquery.dataTables.min.js"></script>
+   <script src="js/dataTables.bootstrap.min.js"></script>
+   <script src="js/datatables-demo.js"></script>
+</body>
+
+</html>

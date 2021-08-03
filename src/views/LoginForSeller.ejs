@@ -50,7 +50,7 @@
                                     </div>
                                     <a class="btn btn-lg btn-outline-primary btn-block btn-login text-uppercase font-weight-bold mb-2" id="btn">Sign in</a>
                                     <div class="text-center pt-3">
-                                        Don’t have an account? <a class="font-weight-bold" href="/RegisterUser">Sign
+                                        Don’t have an account? <a class="font-weight-bold" href="">Sign
                                             Up</a>
                                     </div>
                                 </form>
@@ -105,9 +105,9 @@
             }
         }).then(function(data) {
             if (data.message == "SUCCESS") {
-                window.location.href = "/MyProfileUser"
+                window.location.href = "/DashboardSeller"
                 alert("Login Successfull");
-                setCookie("token", data.data.token, 1)
+                setCookie("token", data.data.token, 31)
             } else {
                 alert("Login Fail")
             }
@@ -120,6 +120,7 @@
         let expires = "expires=" + d.toUTCString();
         document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
     }
+    
 </script>
 
 </html>
