@@ -620,22 +620,27 @@
         }
 
         $('#changeImage').click(function (e) {
+            var data = document.getElementById("wizard-picture").files;
+            var formdData = new FormData();
+            formdData.append("file",data[0])
             var text = localStorage.getItem('userId').replaceAll('"', '');
+            formdData.append("id",text)
+            
             // const reader = new FileReader()
             // let files = document.getElementById('wizard-picture').files
             // reader.onload = async (event) => {
             //     document.getElementById('wizardPicturePreview').setAttribute('src', event.target.result)
             // }
             // reader.readAsDataURL(files[0])
-            var data = JSON.parse(document.getElementById("wizard-picture").files);
+           
+           
             $.ajax({
                 url: '/api/user/avatar',
                 method: 'POST',
-                dataType : 'json',
-                data: {
-                    id: text,
-                    file: data,
-                },
+                // dataType : 'json',
+                data: formdData,
+                processData: false,
+                contentType: false
             }).then(function (data) {
                 if (data.message == 'SUCCESS') {
                     alert("Save Change");

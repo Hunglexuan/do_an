@@ -1,5 +1,5 @@
 import { MidUser, MidUserForm } from '../models/middle';
-import { uploadMultiMedia } from '../libs/upload';
+import { uploadMedia, uploadMultiMedia } from '../libs/upload';
 
 class UserController {
 
@@ -51,10 +51,10 @@ class UserController {
     async avatarUpdate(req, res) {
         
         console.log('2222222');
-        const dataUpload = await uploadMultiMedia(req, res);
+        const dataUpload = await uploadMedia(req, res);
         console.log('3333333',dataUpload);
 
-        let logo = dataUpload[0] ? dataUpload[0].filename : '';
+        let logo = dataUpload ? dataUpload.filename : '';
         let data = req.body;
         return await MidUser.updateAvatar(data, logo);
     }

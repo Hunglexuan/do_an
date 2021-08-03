@@ -143,7 +143,7 @@ var shoppingCart = (function() {
 // Add item
 function addToCartFunc(){
   var cartArray1 = shoppingCart.listCart();
-  if(cartArray1[0].shopID == idURL){
+  if(cartArray1[0] &&cartArray1[0].shopID == idURL){
     console.log("id dung",cartArray1[0].shopID);
     var id = $(this).data('id');
     var name = $(this).data('name');
@@ -156,6 +156,13 @@ function addToCartFunc(){
 
     // console.log("id doi lan 1",idURL);
     // cartArray1[0].shopID = idURL;
+    sessionStorage.setItem('shoppingCart', null);
+    console.log("object");
+    var cart = [];
+    var shopID = {
+      shopID : idURL
+    }
+    cart.push(shopID);
     
     var id = $(this).data('id');
     var name = $(this).data('name');
