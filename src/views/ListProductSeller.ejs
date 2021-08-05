@@ -240,7 +240,7 @@
                      <div class="sb-nav-link-icon"><i class="fas fa-user-cog"></i></div>
                      My Profile
                   </a>
-                  <a class="nav-link" href="">
+                  <a class="nav-link" href="SellerShopProfile">
                      <div class="sb-nav-link-icon"><i class="fas fa-store"></i></div>
                      Shop Profiles
                   </a>
@@ -576,6 +576,116 @@
       </div>
    </div>
 
+   <!--Edit product-->
+   <div class="modal fade" id="EditProduct" tabindex="-1" role="dialog" aria-labelledby="edit_bookingLabel"
+      aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+         <div class="modal-content">
+            <div class="modal-header">
+               <h5 class="modal-title" id="edit_bookingLabel">Edit Product</h5>
+               <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">×</span>
+               </button>
+            </div>
+            <div class="modal-body">
+               <div class="row">
+                  <div class="col-xl-12">
+                     <div class="card mb-4">
+                        <div class="card-header">
+                           Basic info
+                        </div>
+                        <div class="card-body">
+                           <div class="row">
+                              <div class="col-md-12">
+                                 <div class="form-group">
+                                    <label>Name</label>
+                                    <input type="text" class="form-control" placeholder="" id="namePro">
+                                 </div>
+                              </div>
+                           </div>
+                           <!-- /row-->
+                           <div class="row">
+                              <div class="col-md-6">
+                                 <div class="form-group">
+                                    <label>Quantity</label>
+                                    <input type="text" class="form-control" placeholder="" id="quantityPro">
+                                 </div>
+                              </div>
+                              <div class="col-md-6">
+                                 <div class="form-group">
+                                    <label>Unit-Price</label>
+                                    <input type="text" class="form-control" placeholder="" id="Price">
+                                 </div>
+                              </div>
+                           </div>
+                           <!-- /row-->
+                           <div class="row">
+                              <div class="col-md-12">
+                                 <div class="form-group">
+                                    <label>Description</label>
+                                    <input type="text" class="form-control" placeholder="" id="Des">
+                                 </div>
+                              </div>
+                           </div>
+                           <!-- /row-->
+                           <div class="row">
+                              <div class="col-md-6">
+                                 <div class="form-group">
+                                    <label>Time-from</label>
+                                    <input type="text" class="form-control" placeholder="" id="itimefrom">
+                                 </div>
+                              </div>
+                              <div class="col-md-6">
+                                 <div class="form-group">
+                                    <label>Time-to</label>
+                                    <input type="text" class="form-control" placeholder="" id="itimeto">
+                                 </div>
+                              </div>
+                           </div>
+                           <!-- /row-->
+                           <div class="row">
+                              <div class="col-md-12">
+                                 <div class="form-group">
+                                    <label>Sale</label>
+                                    <input type="text" class="form-control" placeholder="" id="iSale">
+                                 </div>
+                              </div>
+                           </div>
+                           <!-- /row-->
+                           <div class="row">
+                              <div class="col-md-6">
+                                 <div class="form-group">
+                                    <label>Sale-from</label>
+                                    <input type="text" class="form-control" placeholder="" id="isalefrom">
+                                 </div>
+                              </div>
+                              <div class="col-md-6">
+                                 <div class="form-group">
+                                    <label>Sale-to</label>
+                                    <input type="text" class="form-control" placeholder="" id="isaleto">
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="row">
+                              <div class="col-md-12">
+                                 <div class="form-group">
+                                    <label>CreateAt</label>
+                                    <input type="text" class="form-control" placeholder="" id="CreateAt">
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="modal-footer">
+               <input type="button" class="btn btn-primary" id="EditProduct" value="Edit"></input>
+            </div>
+         </div>
+      </div>
+   </div>
+
    <!-- Jquery -->
    <script src="js/jquery.min.js"></script>
    <!-- Fontawesome -->
@@ -655,67 +765,67 @@
                targets: -1,
                render: function (data, type, row, meta) {
                   return '<input type="button" class="btn btn-info" data-toggle="modal" data-target="#inforProduct" idproduct="' + row.id + '" value="Info"/>' +
-                     '<input type="button" class="btn btn-primary" id=post-"' + meta.row + '" value="Edit"/>' +
+                     '<input type="button" class="btn btn-primary" data-toggle="modal" data-target="#EditProduct" editproduct="' + row.id + '" value="Edit"/>' +
                      '<input type="button" class="btn btn-danger" id=post-"' + meta.row + '" value="Delete"/>';
                }
             }]
          });
-
-         $('#CreateProduct').click(function () {
-            var text = localStorage.getItem('sellerId').replaceAll('"', '');
-            $.ajax({
-               url: '/api/product/create',
-               method: 'POST',
-               data: {
-                  user_id: text,
-                  id: $('#IdProduct').val(),
-                  name: $('#nameProduct').val(),
-                  quantity: $('#quantityProduct').val(),
-                  unit_price: $('#unitPrice').val(),
-                  description: $('#Description').val(),
-                  time_from: $('#timefrom').val(),
-                  time_to: $('#timeto').val(),
-                  sale: $('#Sale').val(),
-                  sale_from: $('#salefrom').val(),
-                  sale_to: $('#saleto').val(),
-               },
-            }).then(function (data) {
-               if (data.message == 'SUCCESS') {
-                  alert("Create success");
-               } else {
-                  alert("Create fail");
-               }
-            })
-         })
-
-         $('#dataProduct tbody').on('click', '.btn-info', function () {
-            let idpro = $(this).attr('idproduct');
-            console.log(idpro);
-            $.ajax({
-               url: "/api/product/getById",
-               type: "GET",
-               dataType: "json",
-               data: {
-                  id: idpro,
-               },
-               success: function (data) {
-                  var list = data.data.product;
-                  console.log(data)
-                  document.getElementById('IdPro').value = list.id;
-                  document.getElementById('namePro').value = list.name;
-                  document.getElementById('quantityPro').value = list.quantity;
-                  document.getElementById('Price').value = list.unit_price;
-                  document.getElementById('Des').value = list.description;
-                  document.getElementById('itimefrom').value = list.time_from;
-                  document.getElementById('itimeto').value = list.time_to;
-                  document.getElementById('iSale').value = list.sale;
-                  document.getElementById('isalefrom').value = list.sale_from;
-                  document.getElementById('isaleto').value = list.sale_to;
-                  document.getElementById('CreateAt').value = list.createdAt;
-               }
-            });
-         })
       });
+
+      $('#CreateProduct').click(function () {
+         var text = localStorage.getItem('sellerId').replaceAll('"', '');
+         $.ajax({
+            url: '/api/product/create',
+            method: 'POST',
+            data: {
+               user_id: text,
+               id: $('#IdProduct').val(),
+               name: $('#nameProduct').val(),
+               quantity: $('#quantityProduct').val(),
+               unit_price: $('#unitPrice').val(),
+               description: $('#Description').val(),
+               time_from: $('#timefrom').val(),
+               time_to: $('#timeto').val(),
+               sale: $('#Sale').val(),
+               sale_from: $('#salefrom').val(),
+               sale_to: $('#saleto').val(),
+            },
+         }).then(function (data) {
+            if (data.message == 'SUCCESS') {
+               alert("Create success");
+            } else {
+               alert("Create fail");
+            }
+         })
+      })
+
+      $('#dataProduct tbody').on('click', '.btn-info', function () {
+         let idpro = $(this).attr('idproduct');
+         console.log(idpro);
+         $.ajax({
+            url: "/api/product/getById",
+            type: "GET",
+            dataType: "json",
+            data: {
+               id: idpro,
+            },
+            success: function (data) {
+               var list = data.data.product;
+               console.log(data)
+               document.getElementById('IdPro').value = list.id;
+               document.getElementById('namePro').value = list.name;
+               document.getElementById('quantityPro').value = list.quantity;
+               document.getElementById('Price').value = list.unit_price;
+               document.getElementById('Des').value = list.description;
+               document.getElementById('itimefrom').value = list.time_from;
+               document.getElementById('itimeto').value = list.time_to;
+               document.getElementById('iSale').value = list.sale;
+               document.getElementById('isalefrom').value = list.sale_from;
+               document.getElementById('isaleto').value = list.sale_to;
+               document.getElementById('CreateAt').value = list.createdAt;
+            }
+         });
+      })
    </script>
 </body>
 

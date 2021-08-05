@@ -7,7 +7,7 @@
    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
    <meta name="description" content="Askbootstrap" />
    <meta name="author" content="Askbootstrap" />
-   <title>FU Market - Online Food Ordering Website</title>
+   <title>FU Market - Online Food Ordering </title>
    <!-- Favicon Icon -->
    <link rel="icon" type="image/png" href="image/favicon.png">
    <!-- Feather Icon-->
@@ -18,10 +18,16 @@
    <link href="skin/bootstrap/bootstrap.min.css" rel="stylesheet">
    <!-- Custom Css -->
    <link href="skin/css/styles.css" rel="stylesheet" />
+   <!-- Dropzone -->
+   <link href="skin/font/dropzone.css" rel="stylesheet">
+   <!-- Date Picker -->
+   <link href="http://www.ansonika.com/foogra/admin_section/css/date_picker.css" rel="stylesheet">
+   <!-- Summernote Editor -->
+   <link href="skin/font/summernote-bs4.min.css" rel="stylesheet">
    <!-- Datatables css -->
    <link href="skin/bootstrap/dataTables.bootstrap4.min.css" rel="stylesheet">
-
-   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+   <link href="skin/font/HungCSS.css" rel="stylesheet">
+   <link href="skin/font/osahan.css" rel="stylesheet">
 </head>
 
 <body class="sb-nav-fixed">
@@ -190,7 +196,7 @@
                <a class="dropdown-item" href=""><i class="fas fa-user-circle"></i> My Account</a>
                <a class="dropdown-item" href=""><i class="fas fa-cog"></i> Account Settings</a>
                <div class="dropdown-divider"></div>
-               <a class="dropdown-item" href="/LoginSeller" id="btnLogout"><i class="fas fa-sign-out-alt"></i> Logout</a>
+               <a class="dropdown-item" href=""><i class="fas fa-sign-out-alt"></i> Logout</a>
             </div>
          </li>
       </ul>
@@ -208,17 +214,6 @@
                      <div class="sb-nav-link-icon"><i class="far fa-calendar-alt"></i></div>
                      Bookings <span class="badge badge-pill ml-2 badge-primary">6 New</span>
                   </a>
-                  <div class="collapse" id="collapseLayoutss" aria-labelledby="headingOne"
-                     data-parent="#sidenavAccordion">
-                     <nav class="sb-sidenav-menu-nested nav">
-                        <a class="nav-link" href="">Pending <span
-                              class="badge badge-pill ml-2 badge-primary">6</span></a>
-                        <a class="nav-link" href="">Active <span
-                              class="badge badge-pill ml-2 badge-success">5</span></a>
-                        <a class="nav-link" href="">Expired <span
-                              class="badge badge-pill ml-2 badge-danger">4</span></a>
-                     </nav>
-                  </div>
                   <a class="nav-link" href="listfeedbackSeller">
                      <div class="sb-nav-link-icon"><i class="far fa-star"></i></div>
                      Reviews
@@ -261,187 +256,82 @@
       </div>
       <div id="layoutSidenav_content">
          <main>
-            <div class="container-fluid">
-               <h1 class="mt-4">Welcome Seller</h1>
-               <ol class="breadcrumb mb-4">
-                  <li class="breadcrumb-item active">Dashboard</li>
-               </ol>
-               <div class="row">
-                  <div class="col-xl-3 col-md-6">
-                     <div class="card bg-primary text-white mb-4">
-                        <div class="card-body">26 New Messages!</div>
-                        <div class="card-footer d-flex align-items-center justify-content-between">
-                           <a class="small text-white stretched-link" href="">View Details</a>
-                           <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+            <div class="col-md-10 mt-3">
+                <div class="osahan-account-page-right shadow-sm bg-white p-4 h-100">
+                    <div class="tab-content" id="myTabContent">
+                        <div class="tab-pane fade show active" id="myPro" role="tabpanel" aria-labelledby="profile-tab">
+                            <h4 class="font-weight-bold mt-0 mb-4">Shop Profile</h4>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="osahan-user text-center">
+                                        <div class="osahan-user-media">
+                                            <div class="picture-container">
+                                                <div class="picture">
+                                                    <img class="picture-src" id="wizardPicturePreview">
+                                                    <input type="file" class="form-control" id="wizard-picture"
+                                                        name="uploadfile"></input>
+                                                </div>
+                                                <h6 class="text">Choose Picture</h6>
+                                            </div>
+                                            <input type="button" value="Save changes" id="changeImageShop"
+                                                class="btn btn-success"></input>
+                                            <div class="osahan-user-media-body"> </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-8 add_top_30">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Shop Name</label>
+                                                <input type="text" class="form-control" id="Shopname"
+                                                    placeholder="Shop name">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- /row-->
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Open</label>
+                                                <input type="text" class="form-control" id="Open"
+                                                    placeholder="Time open">
+                                                <span class="form-message text-danger" id="messagePhone"></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Close</label>
+                                                <input type="email" class="form-control" id="Close"
+                                                    placeholder="Time close" >
+                                                <span class="form-message text-danger" id="messageEmail"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- /row-->
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label> Address </label>
+                                                <textarea style="height:70px;" class="form-control" id="address"
+                                                    placeholder="Address Shop "></textarea>
+                                                <span class="form-message text-danger" id="ShopAddress"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="save col-md-12">
+                                            <input type="button" value="Save" id="SaveUpdateShop"
+                                                class="btn btn-success"></input>
+                                        </div>
+                                    </div>
+                                    <!-- /row-->
+                                </div>
+                            </div>
                         </div>
-                     </div>
-                  </div>
-                  <div class="col-xl-3 col-md-6">
-                     <div class="card bg-warning text-white mb-4">
-                        <div class="card-body">10 New Bookings!</div>
-                        <div class="card-footer d-flex align-items-center justify-content-between">
-                           <a class="small text-white stretched-link" href="">View Details</a>
-                           <div class="small text-white"><i class="fas fa-angle-right"></i></div>
-                        </div>
-                     </div>
-                  </div>
-                  <div class="col-xl-3 col-md-6">
-                     <div class="card bg-success text-white mb-4">
-                        <div class="card-body">11 New Reviews!</div>
-                        <div class="card-footer d-flex align-items-center justify-content-between">
-                           <a class="small text-white stretched-link" href="">View Details</a>
-                           <div class="small text-white"><i class="fas fa-angle-right"></i></div>
-                        </div>
-                     </div>
-                  </div>
-                  <div class="col-xl-3 col-md-6">
-                     <div class="card bg-danger text-white mb-4">
-                        <div class="card-body">10 New Bookmarks!</div>
-                        <div class="card-footer d-flex align-items-center justify-content-between">
-                           <a class="small text-white stretched-link" href="">View Details</a>
-                           <div class="small text-white"><i class="fas fa-angle-right"></i></div>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-               <div class="card mb-4">
-                  <div class="card-header">
-                     <i class="fas fa-table mr-1"></i>
-                     RECENT 10 ORDER
-                  </div>
-                  <div class="card-body">
-                     <div class="table-responsive">
-                        <table class="table" id="dataTable" width="100%" cellspacing="0">
-                           <thead>
-                              <tr class="text-uppercase">
-                                 <th>User</th>
-                                 <th>User Name</th>
-                                 <th>Restaurant</th>
-                                 <th>Status</th>
-                                 <th>Ordered on</th>
-                                 <th>Total</th>
-                                 <th>Quantity</th>
-                                 <th>Action</th>
-                              </tr>
-                           </thead>
-                           <tbody>
-                              <!---->
-                              <!---->
-                              <tr>
-                                 <td><img class="img-profile rounded-circle" src="image/user/1.png"></td>
-                                 <td> Rhona Davidson </td>
-                                 <td>Metro Resto</td>
-                                 <td><button disabled="" type="button"
-                                       class="btn btn-sm btn-success btn-round">delivered</button></td>
-                                 <td>Sat, Jul 11, 2020 1:38 AM</td>
-                                 <td>$262.49</td>
-                                 <td>4</td>
-                                 <td><a href="" class="btn btn-primary btn-sm">View</a></td>
-                              </tr>
-                              <tr>
-                                 <td><img class="img-profile rounded-circle" src="image/user/2.png"></td>
-                                 <td> Herrod Chandler </td>
-                                 <td>Metro Resto</td>
-                                 <td><button disabled="" type="button"
-                                       class="btn btn-sm btn-danger btn-round">cancel</button></td>
-                                 <td>Fri, Jul 10, 2020 4:55 PM</td>
-                                 <td>$170.77</td>
-                                 <td>5</td>
-                                 <td><a href="" class="btn btn-primary btn-sm">View</a></td>
-                              </tr>
-                              <tr>
-                                 <td><img class="img-profile rounded-circle" src="image/user/3.png"></td>
-                                 <td> Airi Satou </td>
-                                 <td>Metro Resto</td>
-                                 <td><button disabled="" type="button"
-                                       class="btn btn-sm btn-success btn-round">delivered</button></td>
-                                 <td>Fri, Jul 10, 2020 3:48 PM</td>
-                                 <td>$26.78</td>
-                                 <td>2</td>
-                                 <td><a href="" class="btn btn-primary btn-sm">View</a></td>
-                              </tr>
-                              <tr>
-                                 <td><img class="img-profile rounded-circle" src="image/user/4.png"></td>
-                                 <td> Brielle Williamson </td>
-                                 <td>The Square restaurants</td>
-                                 <td><button disabled="" type="button"
-                                       class="btn btn-sm btn-primary btn-round">created</button></td>
-                                 <td>Fri, Jul 10, 2020 2:24 PM</td>
-                                 <td>$81.23</td>
-                                 <td>2</td>
-                                 <td><a href="" class="btn btn-primary btn-sm">View</a></td>
-                              </tr>
-                              <tr>
-                                 <td><img class="img-profile rounded-circle" src="image/user/5.png"></td>
-                                 <td> Cedric Kelly </td>
-                                 <td>Metro Resto</td>
-                                 <td><button disabled="" type="button"
-                                       class="btn btn-sm btn-success btn-round">delivered</button></td>
-                                 <td>Fri, Jul 10, 2020 11:45 AM</td>
-                                 <td>$1578.00</td>
-                                 <td>1</td>
-                                 <td><a href="" class="btn btn-primary btn-sm">View</a></td>
-                              </tr>
-                              <tr>
-                                 <td><img class="img-profile rounded-circle" src="image/user/6.png"></td>
-                                 <td> Ashton Cox </td>
-                                 <td>The Square restaurants</td>
-                                 <td><button disabled="" type="button"
-                                       class="btn btn-sm btn-primary btn-round">created</button></td>
-                                 <td>Fri, Jul 10, 2020 11:37 AM</td>
-                                 <td>$238.53</td>
-                                 <td>4</td>
-                                 <td><a href="" class="btn btn-primary btn-sm">View</a></td>
-                              </tr>
-                              <tr>
-                                 <td><img class="img-profile rounded-circle" src="image/user/1.png"></td>
-                                 <td> Garrett Winters </td>
-                                 <td>Metro Resto</td>
-                                 <td><button disabled="" type="button"
-                                       class="btn btn-sm btn-danger btn-round">rejected</button></td>
-                                 <td>Thu, Jul 9, 2020 3:54 PM</td>
-                                 <td>$107.85</td>
-                                 <td>2</td>
-                                 <td><a href="" class="btn btn-primary btn-sm">View</a></td>
-                              </tr>
-                              <tr>
-                                 <td><img class="img-profile rounded-circle" src="image/user/2.png"></td>
-                                 <td> Tiger Nixon </td>
-                                 <td>The Square restaurants</td>
-                                 <td><button disabled="" type="button"
-                                       class="btn btn-sm btn-danger btn-round">rejected</button></td>
-                                 <td>Thu, Jul 9, 2020 3:19 PM</td>
-                                 <td>$83.65</td>
-                                 <td>2</td>
-                                 <td><a href="" class="btn btn-primary btn-sm">View</a></td>
-                              </tr>
-                              <tr>
-                                 <td><img class="img-profile rounded-circle" src="image/user/3.png"></td>
-                                 <td> AMITKUMAR CHAUHAN</td>
-                                 <td>Jassi de Parathe</td>
-                                 <td><button disabled="" type="button"
-                                       class="btn btn-sm btn-primary btn-round">created</button></td>
-                                 <td>Thu, Jul 9, 2020 2:28 PM</td>
-                                 <td>$46.62</td>
-                                 <td>2</td>
-                                 <td><a href="" class="btn btn-primary btn-sm">View</a></td>
-                              </tr>
-                              <tr>
-                                 <td><img class="img-profile rounded-circle" src="image/user/4.png"></td>
-                                 <td> Umed Ibodulloev</td>
-                                 <td>Metro Resto</td>
-                                 <td><button disabled="" type="button"
-                                       class="btn btn-sm btn-success btn-round">delivered</button></td>
-                                 <td>Thu, Jul 9, 2020 1:26 PM</td>
-                                 <td>$66.71</td>
-                                 <td>1</td>
-                                 <td><a href="" class="btn btn-primary btn-sm">View</a></td>
-                              </tr>
-                           </tbody>
-                        </table>
-                     </div>
-                  </div>
-               </div>
+                    </div>
+                </div>
             </div>
          </main>
          <footer class="py-4 bg-light mt-auto">
@@ -458,6 +348,7 @@
          </footer>
       </div>
    </div>
+
    <!-- Jquery -->
    <script src="js/jquery.min.js"></script>
    <!-- Fontawesome -->
@@ -469,42 +360,33 @@
    <!-- Ajax Chart Js -->
    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
    <!-- Chart Js -->
-   <!-- <script src="assets/demo/chart-area-demo.js"></script>
-      <script src="assets/demo/chart-bar-demo.js"></script>
-      <script src="assets/demo/chart-pie-demo.js"></script> -->
+   <!-- <script src="js/chart-area-demo.js"></script>
+   <script src="js/chart-bar-demo.js"></script>
+   <script src="js/chart-pie-demo.js"></script> -->
    <!-- Datatable Js -->
-   <!-- <script src="vendor/dataTables/dataTables/js/jquery.dataTables.min.js"></script>
-      <script src="vendor/dataTables/dataTables/js/dataTables.bootstrap.min.js"></script>
-      <script src="assets/demo/datatables-demo.js"></script> -->
-</body>
-<script>
-   var token = getCookie("token");
-   $("#btnLogout").click(function (res) {
-      setCookie("token", " ", 0);
-   })
+   <script src="js/jquery.dataTables.min.js"></script>
+   <script src="js/dataTables.bootstrap.min.js"></script>
+   <script src="js/datatables-demo.js"></script>
+   <!-- Dropzone-->
+   <script src="js/dropzone.min.js"></script>
+   <script src="http://www.ansonika.com/foogra/admin_section/vendor/bootstrap-datepicker.js"></script>
 
-   function setCookie(cname, cvalue, exdays) {
-      const d = new Date();
-      d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
-      let expires = "expires=" + d.toUTCString();
-      document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
-   }
+   <script>
+       $(document).ready(function () {
+            // Prepare the preview for profile picture
+            $("#wizard-picture").change(function () {
+                readURL(this);
+            });
+        });
 
-   function getCookie(cname) {
-      let name = cname + "=";
-      let decodedCookie = decodeURIComponent(document.cookie);
-      let ca = decodedCookie.split(';');
-      for (let i = 0; i < ca.length; i++) {
-         let c = ca[i];
-         while (c.charAt(0) == ' ') {
-            c = c.substring(1);
-         }
-         if (c.indexOf(name) == 0) {
-            return c.substring(name.length, c.length);
-         }
-      }
-      return "";
-   }
-</script>
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
 
-</html>
+                reader.onload = function (e) {
+                    $('#wizardPicturePreview').attr('src', e.target.result).fadeIn('slow');
+                }
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+   </script>

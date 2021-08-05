@@ -140,7 +140,9 @@ app.get('/ListVoucher', function(req, res) {
     return res.render('ListVoucher');
 });
 
-
+app.get('/SellerShopProfile', function(req, res) {
+    return res.render('SellerShopProfile');
+});
 
 app.get('/admin', function(req, res) {
     app.use(express.static(path.join(__dirname, '../build')))
