@@ -92,7 +92,7 @@
 
                                 <div class="dropdown-cart-top-body border-top p-4">
                                     <table class=" table" id="show-cart">
-                                        
+
                                     </table>
                                 </div>
                                 <div class="dropdown-cart-top-footer border-top p-4">
@@ -120,14 +120,14 @@
                     <div class="col-md-12">
                         <div class="restaurant-detailed-header-left">
                             <div id="inforShop">
-                                
+
                             </div>
 
                             <p class="text-white mb-0"><i class="icofont-food-cart"></i> North Indian, Chinese, Fast Food, South Indian
                                 <button type="button" id="SaveUpdate" data-toggle="modal" data-target="#basicModal" class="btn btn-outline-danger ml-3 fa fa-flag" style="float: right;"> </button>
                             </p>
 
-                          
+
 
 
 
@@ -217,7 +217,7 @@
                                 </div>
                                 <div class="row allProduct">
                                     <h5 class="mb-4 mt-3 col-md-12">All product</h5>
-                                     
+
                                 </div>
                             </div>
                             <div class="tab-pane fade" id="pills-gallery" role="tabpanel" aria-labelledby="pills-gallery-tab">
@@ -294,27 +294,16 @@
                                 </div>
                             </div>
                             <div class="tab-pane fade" id="pills-reviews" role="tabpanel" aria-labelledby="pills-reviews-tab">
-                                <div id="ratings-and-reviews" class="bg-white rounded shadow-sm p-4 mb-4 clearfix restaurant-detailed-star-rating">
-                                    <span class="star-rating float-right">
-                              <a href="#"><i class="icofont-ui-rating icofont-2x active"></i></a>
-                              <a href="#"><i class="icofont-ui-rating icofont-2x active"></i></a>
-                              <a href="#"><i class="icofont-ui-rating icofont-2x active"></i></a>
-                              <a href="#"><i class="icofont-ui-rating icofont-2x active"></i></a>
-                              <a href="#"><i class="icofont-ui-rating icofont-2x"></i></a>
-                              </span>
-                                    <h5 class="mb-0 pt-1">Rate this Place</h5>
-                                </div>
                                 <div class="bg-white rounded shadow-sm p-4 mb-4 clearfix graph-star-rating">
                                     <h5 class="mb-0 mb-4">Ratings and Reviews</h5>
                                     <div class="graph-star-rating-header">
                                         <div class="star-rating">
-                                            <a href="#"><i class="icofont-ui-rating active"></i></a>
-                                            <a href="#"><i class="icofont-ui-rating active"></i></a>
-                                            <a href="#"><i class="icofont-ui-rating active"></i></a>
-                                            <a href="#"><i class="icofont-ui-rating active"></i></a>
-                                            <a href="#"><i class="icofont-ui-rating"></i></a> <b class="text-black ml-2">334</b>
+                                            <div id=rateTotal>
+                                                <b class="text-black ml-2" id="rateStar"></b>
+                                            </div>
+
                                         </div>
-                                        <p class="text-black mb-4 mt-2">Rated 3.5 out of 5</p>
+                                        <p class="text-black mb-4 mt-2" id="rateOfStar"></p>
                                     </div>
                                     <div class="graph-star-rating-body">
                                         <div class="rating-list">
@@ -323,12 +312,11 @@
                                             </div>
                                             <div class="rating-list-center">
                                                 <div class="progress">
-                                                    <div style="width: 56%" aria-valuemax="5" aria-valuemin="0" aria-valuenow="5" role="progressbar" class="progress-bar bg-primary">
-                                                        <span class="sr-only">80% Complete (danger)</span>
+                                                    <div aria-valuemax="5" aria-valuemin="0" aria-valuenow="5" role="progressbar" class="progress-bar bg-primary" id="rateColor5">
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="rating-list-right text-black">56%</div>
+                                            <div class="rating-list-right text-black" id="rateOf5"></div>
                                         </div>
                                         <div class="rating-list">
                                             <div class="rating-list-left text-black">
@@ -336,12 +324,11 @@
                                             </div>
                                             <div class="rating-list-center">
                                                 <div class="progress">
-                                                    <div style="width: 23%" aria-valuemax="5" aria-valuemin="0" aria-valuenow="5" role="progressbar" class="progress-bar bg-primary">
-                                                        <span class="sr-only">80% Complete (danger)</span>
+                                                    <div aria-valuemax="5" aria-valuemin="0" aria-valuenow="5" role="progressbar" class="progress-bar bg-primary" id="rateColor4">
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="rating-list-right text-black">23%</div>
+                                            <div class="rating-list-right text-black" id="rateOf4"></div>
                                         </div>
                                         <div class="rating-list">
                                             <div class="rating-list-left text-black">
@@ -349,12 +336,11 @@
                                             </div>
                                             <div class="rating-list-center">
                                                 <div class="progress">
-                                                    <div style="width: 11%" aria-valuemax="5" aria-valuemin="0" aria-valuenow="5" role="progressbar" class="progress-bar bg-primary">
-                                                        <span class="sr-only">80% Complete (danger)</span>
+                                                    <div aria-valuemax="5" aria-valuemin="0" aria-valuenow="5" role="progressbar" class="progress-bar bg-primary" id="rateColor3">
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="rating-list-right text-black">11%</div>
+                                            <div class="rating-list-right text-black" id="rateOf3"></div>
                                         </div>
                                         <div class="rating-list">
                                             <div class="rating-list-left text-black">
@@ -362,109 +348,39 @@
                                             </div>
                                             <div class="rating-list-center">
                                                 <div class="progress">
-                                                    <div style="width: 2%" aria-valuemax="5" aria-valuemin="0" aria-valuenow="5" role="progressbar" class="progress-bar bg-primary">
-                                                        <span class="sr-only">80% Complete (danger)</span>
+                                                    <div aria-valuemax="5" aria-valuemin="0" aria-valuenow="5" role="progressbar" class="progress-bar bg-primary" id="rateColor2">
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="rating-list-right text-black">02%</div>
+                                            <div class="rating-list-right text-black" id="rateOf2"></div>
                                         </div>
-                                    </div>
-                                    <div class="graph-star-rating-footer text-center mt-3 mb-3">
-                                        <button type="button" class="btn btn-outline-primary btn-sm">Rate and Review</button>
+                                        <div class="rating-list">
+                                            <div class="rating-list-left text-black">
+                                                1 Star
+                                            </div>
+                                            <div class="rating-list-center">
+                                                <div class="progress">
+                                                    <div aria-valuemax="5" aria-valuemin="0" aria-valuenow="5" role="progressbar" class="progress-bar bg-primary" id="rateColor1">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="rating-list-right text-black" id="rateOf1"></div>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="bg-white rounded shadow-sm p-4 mb-4 restaurant-detailed-ratings-and-reviews">
-                                    <a href="#" class="btn btn-outline-primary btn-sm float-right">Top Rated</a>
-                                    <h5 class="mb-1">All Ratings and Reviews</h5>
-                                    <div class="reviews-members pt-4 pb-4">
-                                        <div class="media">
-                                            <a href="#"><img alt="Generic placeholder image" src="img/user/1.png" class="mr-3 rounded-pill"></a>
-                                            <div class="media-body">
-                                                <div class="reviews-members-header">
-                                                    <span class="star-rating float-right">
-                                          <a href="#"><i class="icofont-ui-rating active"></i></a>
-                                          <a href="#"><i class="icofont-ui-rating active"></i></a>
-                                          <a href="#"><i class="icofont-ui-rating active"></i></a>
-                                          <a href="#"><i class="icofont-ui-rating active"></i></a>
-                                          <a href="#"><i class="icofont-ui-rating"></i></a>
-                                          </span>
-                                                    <h6 class="mb-1"><a class="text-black" href="#">Singh Osahan</a></h6>
-                                                    <p class="text-gray">Tue, 20 Mar 2020</p>
-                                                </div>
-                                                <div class="reviews-members-body">
-                                                    <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor
-                                                        at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered
-                                                        the undoubtable source. Lorem Ipsum comes from sections </p>
-                                                </div>
-                                                <div class="reviews-members-footer">
-                                                    <a class="total-like" href="#"><i class="icofont-thumbs-up"></i> 856M</a> <a class="total-like" href="#"><i class="icofont-thumbs-down"></i> 158K</a>
-                                                    <span class="total-like-user-main ml-2" dir="rtl">
-                                          <a data-toggle="tooltip" data-placement="top" title="Gurdeep Osahan" href="#"><img alt="Generic placeholder image" src="img/user/5.png" class="total-like-user rounded-pill"></a>
-                                          <a data-toggle="tooltip" data-placement="top" title="Gurdeep Singh" href="#"><img alt="Generic placeholder image" src="img/user/2.png" class="total-like-user rounded-pill"></a>
-                                          <a data-toggle="tooltip" data-placement="top" title="Askbootstrap" href="#"><img alt="Generic placeholder image" src="img/user/3.png" class="total-like-user rounded-pill"></a>
-                                          <a data-toggle="tooltip" data-placement="top" title="Osahan" href="#"><img alt="Generic placeholder image" src="img/user/4.png" class="total-like-user rounded-pill"></a>
-                                          </span>
-                                                </div>
-                                            </div>
-                                        </div>
+                                    <div>
+                                        <a href="#" class="btn btn-outline-primary btn-sm float-right">Top Rated</a>
+                                        <h5 class="mb-1">All Ratings and Reviews</h5>
                                     </div>
-                                    <hr>
-                                    <div class="reviews-members pt-4 pb-4">
-                                        <div class="media">
-                                            <a href="#"><img alt="Generic placeholder image" src="image/user/6.png" class="mr-3 rounded-pill"></a>
-                                            <div class="media-body">
-                                                <div class="reviews-members-header">
-                                                    <span class="star-rating float-right">
-                                          <a href="#"><i class="icofont-ui-rating active"></i></a>
-                                          <a href="#"><i class="icofont-ui-rating active"></i></a>
-                                          <a href="#"><i class="icofont-ui-rating active"></i></a>
-                                          <a href="#"><i class="icofont-ui-rating active"></i></a>
-                                          <a href="#"><i class="icofont-ui-rating"></i></a>
-                                          </span>
-                                                    <h6 class="mb-1"><a class="text-black" href="#">Gurdeep Singh</a></h6>
-                                                    <p class="text-gray">Tue, 20 Mar 2020</p>
-                                                </div>
-                                                <div class="reviews-members-body">
-                                                    <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution
-                                                        of letters, as opposed to using 'Content here, content here', making it look like readable English.</p>
-                                                </div>
-                                                <div class="reviews-members-footer">
-                                                    <a class="total-like" href="#"><i class="icofont-thumbs-up"></i> 88K</a> <a class="total-like" href="#"><i class="icofont-thumbs-down"></i> 1K</a>
-                                                    <span class="total-like-user-main ml-2" dir="rtl">
-                                          <a data-toggle="tooltip" data-placement="top" title="Gurdeep Osahan" href="#"><img alt="Generic placeholder image" src="img/user/5.png" class="total-like-user rounded-pill"></a>
-                                          <a data-toggle="tooltip" data-placement="top" title="Gurdeep Singh" href="#"><img alt="Generic placeholder image" src="img/user/2.png" class="total-like-user rounded-pill"></a>
-                                          <a data-toggle="tooltip" data-placement="top" title="Askbootstrap" href="#"><img alt="Generic placeholder image" src="img/user/3.png" class="total-like-user rounded-pill"></a>
-                                          <a data-toggle="tooltip" data-placement="top" title="Osahan" href="#"><img alt="Generic placeholder image" src="img/user/4.png" class="total-like-user rounded-pill"></a>
-                                          </span>
-                                                </div>
-                                            </div>
-                                        </div>
+                                    <div id="feedbackUser">
                                     </div>
-                                    <hr>
-                                    <a class="text-center w-100 d-block mt-4 font-weight-bold" href="#">See All Reviews</a>
+                                    <a class="text-center w-100 d-block mt-4 font-weight-bold" href="#"></a>
                                 </div>
                                 <div class="bg-white rounded shadow-sm p-4 mb-5 rating-review-select-page">
-                                    <h5 class="mb-4">Leave Comment</h5>
-                                    <p class="mb-2">Rate the Place</p>
-                                    <div class="mb-4">
-                                        <span class="star-rating">
-                                 <a href="#"><i class="icofont-ui-rating icofont-2x"></i></a>
-                                 <a href="#"><i class="icofont-ui-rating icofont-2x"></i></a>
-                                 <a href="#"><i class="icofont-ui-rating icofont-2x"></i></a>
-                                 <a href="#"><i class="icofont-ui-rating icofont-2x"></i></a>
-                                 <a href="#"><i class="icofont-ui-rating icofont-2x"></i></a>
-                                 </span>
+                                    <div id="checkFeedback">
                                     </div>
-                                    <form>
-                                        <div class="form-group">
-                                            <label>Your Comment</label>
-                                            <textarea class="form-control"></textarea>
-                                        </div>
-                                        <div class="form-group">
-                                            <button class="btn btn-primary btn-sm" type="button"> Submit Comment </button>
-                                        </div>
-                                    </form>
+
                                 </div>
                             </div>
                         </div>
@@ -503,6 +419,8 @@
                     <li><a href="#">Điều Kiện Chính Sách</a></li>
                 </ul>
             </div>
+
+
             <!--Kết Thúc Nội Dung Đường Dẫn-->
             <!--Bắt Đâu Nội Dung Liên Hệ-->
             <div class="noi-dung contact">
@@ -549,6 +467,8 @@
     <script>
         $(document).ready(function() {
             loaddata()
+            loadFeedback()
+            checkfeedback()
         });
 
         function loaddata() {
@@ -568,19 +488,19 @@
             });
 
             $.ajax({
-                url:"http://localhost:3999/api/product/searchSellerproduct?id="+idURL,
-                type:"GET",
+                url: "http://localhost:3999/api/product/searchSellerproduct?id=" + idURL,
+                type: "GET",
 
-            }).then(function(data){
-                if(data.message == "SUCCESS"){
-                    for(var i = 0 ; i < data.data.listProduct.length ; i++){
-                        var product = data.data.listProduct[i];  
+            }).then(function(data) {
+                if (data.message == "SUCCESS") {
+                    for (var i = 0; i < data.data.listProduct.length; i++) {
+                        var product = data.data.listProduct[i];
                         // <div class="star position-absolute"><span class="badge badge-success"><i class="icofont-star"></i> 3.1 (300+)</span></div>
-                        var template =`
+                        var template = `
                         <div class="col-md-4 col-sm-6 mb-4">
                         <div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm " >
                                             <div class="list-card-image">
-                                                
+
                                                 <a href="#">
                                                     <img src="image/list/7.png" class="img-fluid item-img">
                                                 </a>
@@ -590,7 +510,7 @@
                                                     <h6 class="mb-1"><a href="#" class="item-name text-black">${product.name}</a></h6>
                                                     <p class="text-gray mb-2">North Indian • Indian</p>
                                                     <p class="text-gray time mb-0"><a class="item-price btn btn-link btn-sm pl-0 text-black pr-0" >${product.unit_price} </a> <span class="badge badge-success">NEW</span> <span class="float-right">
-                                                        <span class="count-number">                                                      
+                                                        <span class="count-number">
                                                             <button value="ADD" data-name="${product.name}" data-price="${product.unit_price}" data-id="${product.id}"  class="add-to-cart btn btn-outline-secondary btn-sm" onclick="addToCartFunc.call(this)" > ADD </button>
                                                         </span>
                                                         </span>
@@ -600,20 +520,172 @@
                                         </div>
                                     </div>`
 
-                         $(".allProduct").append(template)               
+                        $(".allProduct").append(template)
                     }
                 }
             })
-
-
-
-
-           
         }
 
-       
+        function loadFeedback() {
+            var params = (new URL(document.location)).searchParams;
+            var idURL = params.get('id');
+            $.ajax({
+                type: "GET",
+                dataType: "json",
+                data: {
+                    id: idURL
+                },
+                url: "/api/feedback/searchShopFeedback",
+                success: function(data) {
+                    var list = data.data.listFeedback;
 
 
+                    for (var j = 1; j <= 5; j++) {
+                        if (j <= data.data.count / data.data.total) {
+                            document.getElementById('rateTotal').innerHTML += '<label><i class="icofont-ui-rating" style="color: red !important;"></i></label>';
+                        } else {
+                            document.getElementById('rateTotal').innerHTML += '<label><i class="icofont-ui-rating"></i></label>';
+                        }
+
+                    }
+
+                    document.getElementById('rateStar').innerHTML = data.data.count;
+                    document.getElementById('rateOfStar').innerHTML = 'Rated ' + data.data.count / data.data.total + ' out of 5';
+                    document.getElementById('rateOf5').innerHTML = ((data.data.star_5 / data.data.total)).toFixed(2) * 100 + '%';
+                    var color5 = data.data.star_5 / data.data.total;
+                    document.getElementById('rateColor5').style.width = color5 * 100 + '%';
+
+                    document.getElementById('rateOf4').innerHTML = ((data.data.star_4 / data.data.total)).toFixed(2) * 100 + '%';
+                    var color4 = data.data.star_4 / data.data.total;
+                    document.getElementById('rateColor4').style.width = color4 * 100 + '%';
+
+                    document.getElementById('rateOf3').innerHTML = ((data.data.star_3 / data.data.total)).toFixed(2) * 100 + '%';
+                    var color3 = data.data.star_3 / data.data.total;
+                    document.getElementById('rateColor3').style.width = color3 * 100 + '%';
+
+                    document.getElementById('rateOf2').innerHTML = ((data.data.star_2 / data.data.total)).toFixed(2) * 100 + '%';
+                    var color2 = data.data.star_2 / data.data.total;
+                    document.getElementById('rateColor2').style.width = color2 * 100 + '%';
+
+                    document.getElementById('rateOf1').innerHTML = ((data.data.star_1 / data.data.total) * 100).toFixed(2) + '%';
+                    var color1 = data.data.star_1 / data.data.total;
+                    document.getElementById('rateColor1').style.width = color1 * 100 + '%';
+
+                    for (var i = 0; i < list.length; i++) {
+                        var text = list[i].user_id;
+                        let content = list[i].content;
+                        let rate = list[i].rate;
+
+
+                        var d = new Date(list[i].createdAt);
+                        var n;
+                        if (d.getUTCDate() < 10) {
+                            n = '0' + d.getUTCDate();
+                        } else {
+                            n = d.getUTCDate();
+                        }
+                        var m;
+                        m = d.getUTCMonth().toLocaleString('en-us', {
+                            month: 'short'
+                        });
+                        var y = d.getUTCFullYear();
+                        var dob = n + ', ' + m + ' ' + y;
+
+
+
+
+
+                        $.ajax({
+                            type: "GET",
+                            dataType: "json",
+                            data: {
+                                id: text
+                            },
+                            url: "/api/user/getbyId",
+                            success: function(data) {
+
+                                let star = '';
+                                for (var j = 1; j <= 5; j++) {
+                                    if (j <= rate) {
+                                        star += '<label><i class="icofont-ui-rating" style="color: red !important;"></i></label>';
+                                    } else {
+                                        star += '<label><i class="icofont-ui-rating"></i></label>';
+                                    }
+
+                                }
+
+                                document.getElementById('feedbackUser').innerHTML += '<div class="reviews-members pt-4 pb-4"> <div class="media"> <a href="#"> <img alt="Generic placeholder image" src="image/user/1.png" class="mr-3 rounded-pill"></a> <div class="media-body"> <div class="reviews-members-header"> <span class="star-rating float-right">' + star + '</span> <h6 class="mb-1"><a class="text-black" href="#">' + data.data.name + '</a></h6> <p class="text-gray">' + dob + '</p> </div> <div class="reviews-members-body"> <p>' + content + '</p> </div> </div> </div> </div> <hr>';
+                            }
+                        })
+                    }
+                }
+            });
+        }
+
+        function checkfeedback() {
+
+            var userId = localStorage.getItem('userId').replaceAll('"', '');
+            var params = (new URL(document.location)).searchParams;
+            var shopId = params.get('id');
+
+            $.ajax({
+                type: "GET",
+                data: {
+                    user_id: userId,
+                    shop_id: shopId,
+                },
+                url: "/api/feedback/check",
+                success: function(data) {
+                    if (data.data == true) {
+                        document.getElementById('checkFeedback').innerHTML = 'Bạn chưa mua hàng!!!';
+                    } else {
+                        document.getElementById('checkFeedback').innerHTML = '<h5 class="mb-4">Leave Feedback</h5> <p class="mb-2">Rate the Place</p> <div class="mb-4"> <span class="star-rating"> <label data-index="1" class="rating" id="rate1"><i class="icofont-ui-rating icofont-2x"></i></label> <label data-index="2" class="rating" id="rate2"><i class="icofont-ui-rating icofont-2x"></i></label> <label data-index="3" class="rating" id="rate3"><i class="icofont-ui-rating icofont-2x"></i></label> <label data-index="4" class="rating" id="rate4"><i class="icofont-ui-rating icofont-2x"></i></label> <label data-index="5" class="rating" id="rate5"><i class="icofont-ui-rating icofont-2x"></i></label> </span> </div> <form> <div class="form-group"> <label>Your Feedback</label> <textarea class="form-control" id="textFeedback"></textarea> </div> <div class="form-group"> <button class="btn btn-primary btn-sm" type="button" onclick="feedback()"> Submit Feedback </button> </div> </form>';
+                    }
+                }
+            })
+        }
+
+        var x = 0;
+
+        $(document).on('click', '.rating', function() {
+            var index = $(this).data("index");
+            x = index;
+        });
+
+        $(document).on('mouseenter', '.rating', function() {
+            var index = $(this).data("index");
+            for (var j = 0; j <= 5; j++) {
+                if (j <= index) {
+                    $('#rate' + j).css('color', 'red');
+                } else if (j > index) {
+                    $('#rate' + j).css('color', 'black');
+                }
+            }
+        });
+
+        function feedback() {
+
+            var userId = localStorage.getItem('userId').replaceAll('"', '');
+            var params = (new URL(document.location)).searchParams;
+            var shopId = params.get('id');
+
+            $.ajax({
+                url: '/api/feedback/create',
+                method: 'POST',
+                data: {
+                    user_id: userId,
+                    shop_id: shopId,
+                    content: document.getElementById('textFeedback').value,
+                    rate: x,
+                },
+            }).then(function(data) {
+                if (data.message == 'SUCCESS') {
+                    alert('thanh cong');
+                } else {
+                    alert('khong thanh cong');
+                }
+            })
+        }
     </script>
 
 </body>

@@ -872,7 +872,7 @@
                 url: "/api/user/getbyId",
                 success: function (data) {
                     var list = data.data;
-                    console.log(list);
+                    console.log(list.dob);
                     document.getElementById('name').value = list.name;
                     document.getElementById('phone').value = list.phone;
                     document.getElementById('email').value = list.email;
