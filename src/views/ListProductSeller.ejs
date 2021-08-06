@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="utf-8" />
+   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+   <meta name="description" content="Askbootstrap" />
+   <meta name="author" content="Askbootstrap" />
+   <title>FU Market - Online Food Ordering </title>
+   <!-- Favicon Icon -->
+   <link rel="icon" type="image/png" href="image/favicon.png">
+   <!-- Feather Icon-->
+   <link href="skin/css/feather.css" rel="stylesheet" type="text/css">
+   <!-- Fontawesome Icon-->
+   <link href="skin/font/fontawesome.min.css" rel="stylesheet" type="text/css">
+   <!-- Bootstrap Css -->
+   <link href="skin/bootstrap/bootstrap.min.css" rel="stylesheet">
+   <!-- Custom Css -->
+   <link href="skin/css/styles.css" rel="stylesheet" />
+   <!-- Dropzone -->
+   <link href="skin/font/dropzone.css" rel="stylesheet">
+   <!-- Date Picker -->
+   <link href="http://www.ansonika.com/foogra/admin_section/css/date_picker.css" rel="stylesheet">
+   <!-- Summernote Editor -->
+   <link href="skin/font/summernote-bs4.min.css" rel="stylesheet">
+   <!-- Datatables css -->
+   <link href="skin/bootstrap/dataTables.bootstrap4.min.css" rel="stylesheet">
+</head>
+
+<body class="sb-nav-fixed">
+   <nav class="sb-topnav navbar navbar-expand navbar-light bg-white shadow-sm">
+      <a class="navbar-brand" href="DashboardSeller"><img alt="logo" src="image/image0.jpg" width="100px"></a>
+      <!-- Navbar Search-->
+      <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
+         
+      </form>
+      <!-- Navbar-->
+      <ul class="navbar-nav ml-auto ml-md-0">
+         <li class="nav-item dropdown no-arrow d-sm-none">
+            <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown"
+               aria-haspopup="true" aria-expanded="false">
+               <i class="fas fa-search"></i>
+            </a>
+            <!-- Dropdown - Messages -->
+            <div class="dropdown-menu dropdown-menu-right p-3 shadow-sm animated--grow-in"
+               aria-labelledby="searchDropdown">
+               <form class="form-inline mr-auto w-100 navbar-search">
+                  <div class="input-group">
+                     <input type="text" class="form-control border-0 shadow-none"
+                        placeholder="Search people, jobs and more..." aria-label="Search"
+                        aria-describedby="basic-addon2">
+                     <div class="input-group-append">
+                        <button class="btn" type="button">
+                           <i class="fas fa-search"></i>
+                        </button>
+                     </div>
+                  </div>
+               </form>
+            </div>
+         </li>
+         
+
+         <!-- Nav Item - User Information -->
+         <li class="nav-item dropdown no-arrow ml-1 osahan-profile-dropdown">
+            <a class="nav-link dropdown-toggle pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
+               aria-expanded="false">
+               <img class="img-profile rounded-circle" src="image/user/1.png">
+            </a>
+            <!-- Dropdown - User Information -->
+            <div class="dropdown-menu dropdown-menu-right shadow-sm">
+               <div class="p-3 d-flex align-items-center">
+                  <div class="dropdown-list-image mr-3">
+                     <img class="rounded-circle" src="image/user/1.png" alt="">
+                     <div class="status-indicator bg-success"></div>
+                  </div>
+                  <div class="font-weight-bold">
+                     <div class="text-truncate">Gurdeep Osahan</div>
+                     <div class="small text-gray-500">Restaurants Owner</div>
+                  </div>
+               </div>
+               <div class="dropdown-divider"></div>
+               <a class="dropdown-item" href=""><i class="fas fa-sign-out-alt"></i> Logout</a>
+            </div>
+         </li>
+      </ul>
+   </nav>
+   <div id="layoutSidenav">
+      <div id="layoutSidenav_nav">
+         <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+            <div class="sb-sidenav-menu">
+               <div class="nav">
+                  <div class="sb-sidenav-menu-heading">Core</div>
+                  <a class="nav-link" href="DashboardSeller">
+                     Dashboard
+                  </a>
+                  <a class="nav-link" href="listOrderSeller">
+                     <div class="sb-nav-link-icon"><i class="far fa-calendar-alt"></i></div>
+                     Bookings <span class="badge badge-pill ml-2 badge-primary">6 New</span>
+                  </a>
+                  <a class="nav-link" href="listfeedbackSeller">
+                     <div class="sb-nav-link-icon"><i class="far fa-star"></i></div>
+                     Reviews
+                  </a>
+                  <a class="nav-link" href="">
+                     <div class="sb-nav-link-icon"><i class="fas fa-chart-line"></i></div>
+                     Income Statement
+                  </a>
+                  <a class="nav-link" href="listProductSeller">
+                     <div class="sb-nav-link-icon"><i class="fas fa-boxes"></i></div>
+                     Product Manager
+                  </a>
+                  <a class="nav-link" href="">
+                     <div class="sb-nav-link-icon"><i class="fas fa-user-edit"></i></div>
+                     User Manager
+                  </a>
+                  <a class="nav-link" href="">
+                     <div class="sb-nav-link-icon"><i class="fas fa-shopping-cart"></i></div>
+                     Orders Page
+                  </a>
+                  <a class="nav-link" href="">
+                     <div class="sb-nav-link-icon"><i class="fas fa-cog"></i></div>
+                     Edit Order
+                  </a>
+                  <a class="nav-link" href="">
+                     <div class="sb-nav-link-icon"><i class="fas fa-user-cog"></i></div>
+                     My Profile
+                  </a>
+                  <a class="nav-link" href="SellerShopProfile">
+                     <div class="sb-nav-link-icon"><i class="fas fa-store"></i></div>
+                     Shop Profiles
+                  </a>
+                  <a class="nav-link" href="">
+                     <div class="sb-nav-link-icon"><i class="fas fa-file-signature"></i></div>
+                     Manager Report
+                  </a>
+               </div>
+            </div>
+         </nav>
+      </div>
+      <div id="layoutSidenav_content">
+         <main>
+            <div class="container-fluid">
+               <h1 class="mt-4">List Product</h1>
+               <ol class="breadcrumb mb-4">
+                  <li class="breadcrumb-item"><a href="DashboardSeller">Dashboard</a></li>
+                  <li class="breadcrumb-item active">List Product</li>
+               </ol>
+               <div class="row">
+                  <div class="col-xl-12">
+                     <div class="card mb-4">
+                        <div class="card-header">
+                           List Product
+                        </div>
+                        <div class="card-body">
+                           <div class="row">
+                              <div class="col-md-12">
+                                 <!-- <h6>Item</h6> -->
+                                 <!-- <table id="pricing-list-container" style="width:100%;">
+                                       <tr class="pricing-list-item">
+                                          <td>
+                                             <div class="row">
+                                                <div class="col-md-2">
+                                                   <div class="form-group">
+                                                      <input type="text" class="form-control" placeholder="Title" readonly>
+                                                   </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                   <div class="form-group">
+                                                      <input type="text" class="form-control" placeholder="Description" readonly>
+                                                   </div>
+                                                </div>
+                                                <div class="col-md-2">
+                                                   <div class="form-group">
+                                                      <input type="text" class="form-control" placeholder="Quantity" readonly>
+                                                   </div>
+                                                </div>
+                                                <div class="col-md-2">
+                                                   <div class="form-group">
+                                                      <input type="text" class="form-control" placeholder="Price" readonly>
+                                                   </div>
+                                                </div>
+                                                
+                                                <div class="col-md-2">
+                                                   <div class="form-group">
+                                                      <a class="btn btn-info" href="#"><i class="far fa-eye"></i></a>
+                                                      <a class="btn btn-primary" href="#"><i class="fas fa-edit"></i></a>
+                                                      <a class="btn btn-danger" href="#"><i class="fa fa-fw fa-trash"></i></a>
+                                                      <a class="btn btn-danger" style="color: white;"><i class="fas fa-percentage"></i> Sales</a>
+                                                   </div>
+                                                </div>
+                                             </div>
+                                          </td>
+                                       </tr>
+                                    </table> -->
+                                 <div class="card-body">
+                                    <div class="table-responsive">
+                                       <table class="table" id="dataProduct" width="100%" cellspacing="0">
+                                          <thead>
+                                             <tr class="text-uppercase">
+                                                <th>Name</th>
+                                                <th>Description</th>
+                                                <th>Quantity</th>
+                                                <th>Unit-Price</th>
+                                                <th>Action</th>
+                                             </tr>
+                                          </thead>
+                                          <tbody>
+                                             <!---->
+                                             <!---->
+                                             <!-- ajax xu ly ben duoi -->
+
+                                          </tbody>
+                                       </table>
+                                    </div>
+                                 </div>
+                                 <!-- </div> -->
+                                 <a href="" class="btn btn-primary" data-toggle="modal" data-target="#edit_booking"><i
+                                       class="fa fa-fw fa-plus-circle"></i>Add</a>
+                              </div>
+                           </div>
+                           <!-- /row-->
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </main>
+         <footer class="py-4 bg-light mt-auto">
+            <div class="container-fluid">
+               <div class="d-flex align-items-center justify-content-between small">
+                  <div class="text-muted">Copyright &copy; Your Website 2020</div>
+                  <div>
+                     <a href="#">Privacy Policy</a>
+                     &middot;
+                     <a href="#">Terms &amp; Conditions</a>
+                  </div>
+               </div>
+            </div>
+         </footer>
+      </div>
+   </div>
+   <!-- create product -->
+   <div class="modal fade" id="edit_booking" tabindex="-1" role="dialog" aria-labelledby="edit_bookingLabel"
+      aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+         <div class="modal-content">
+            <div class="modal-header">
+               <h5 class="modal-title" id="edit_bookingLabel">Create Product</h5>
+               <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">×</span>
+               </button>
+            </div>
+            <div class="modal-body">
+               <div class="row">
+                  <div class="col-xl-12">
+                     <div class="card mb-4">
+                        <div class="card-header">
+                           Basic info
+                        </div>
+                        <div class="card-body">
+                           <div class="row">
+                              <div class="col-md-12">
+                                 <div class="form-group">
+                                    <label>Name</label>
+                                    <input type="text" class="form-control" placeholder="" id="nameProduct">
+                                 </div>
+                              </div>
+                           </div>
+                           <!-- /row-->
+                           <div class="row">
+                              <div class="col-md-6">
+                                 <div class="form-group">
+                                    <label>Quantity</label>
+                                    <input type="text" class="form-control" placeholder="" id="quantityProduct">
+                                 </div>
+                              </div>
+                              <div class="col-md-6">
+                                 <div class="form-group">
+                                    <label>Unit-Price</label>
+                                    <input type="text" class="form-control" placeholder="" id="unitPrice">
+                                 </div>
+                              </div>
+                           </div>
+                           <!-- /row-->
+                           <div class="row">
+                              <div class="col-md-12">
+                                 <div class="form-group">
+                                    <label>Description</label>
+                                    <input type="text" class="form-control" placeholder="" id="Description">
+                                 </div>
+                              </div>
+                           </div>
+                           <!-- /row-->
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <!-- /Row -->
+            </div>
+            <div class="modal-footer">
+               <input type="button" class="btn btn-primary" id="CreateProduct" value="Save"></input>
+            </div>
+         </div>
+      </div>
+   </div>
+   <!-- info Product -->
+   <div class="modal fade" id="inforProduct" tabindex="-1" role="dialog" aria-labelledby="edit_bookingLabel"
+      aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+         <div class="modal-content">
+            <div class="modal-header">
+               <h5 class="modal-title" id="edit_bookingLabel">Info Product</h5>
+               <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">×</span>
+               </button>
+            </div>
+            <div class="modal-body">
+               <div class="row">
+                  <div class="col-xl-12">
+                     <div class="card mb-4">
+                        <div class="card-header">
+                           Basic info
+                        </div>
+                        <div class="card-body">
+                           <div class="row">
+                              <div class="col-md-12">
+                                 <div class="form-group">
+                                    <label>Name</label>
+                                    <input type="text" class="form-control" placeholder="" id="namePro" readonly>
+                                 </div>
+                              </div>
+                           </div>
+                           <!-- /row-->
+                           <div class="row">
+                              <div class="col-md-6">
+                                 <div class="form-group">
+                                    <label>Quantity</label>
+                                    <input type="text" class="form-control" placeholder="" id="quantityPro" readonly>
+                                 </div>
+                              </div>
+                              <div class="col-md-6">
+                                 <div class="form-group">
+                                    <label>Unit-Price</label>
+                                    <input type="text" class="form-control" placeholder="" id="Price" readonly>
+                                 </div>
+                              </div>
+                           </div>
+                           <!-- /row-->
+                           <div class="row">
+                              <div class="col-md-12">
+                                 <div class="form-group">
+                                    <label>Description</label>
+                                    <input type="text" class="form-control" placeholder="" id="Des" readonly>
+                                 </div>
+                              </div>
+                           </div>
+                           <!-- /row-->
+                           <div class="row">
+                              <div class="col-md-6">
+                                 <div class="form-group">
+                                    <label>Time-from</label>
+                                    <input type="text" class="form-control" placeholder="" id="itimefrom" readonly>
+                                 </div>
+                              </div>
+                              <div class="col-md-6">
+                                 <div class="form-group">
+                                    <label>Time-to</label>
+                                    <input type="text" class="form-control" placeholder="" id="itimeto" readonly>
+                                 </div>
+                              </div>
+                           </div>
+                           <!-- /row-->
+                           <div class="row">
+                              <div class="col-md-12">
+                                 <div class="form-group">
+                                    <label>Sale</label>
+                                    <input type="text" class="form-control" placeholder="" id="iSale" readonly>
+                                 </div>
+                              </div>
+                           </div>
+                           <!-- /row-->
+                           <div class="row">
+                              <div class="col-md-6">
+                                 <div class="form-group">
+                                    <label>Sale-from</label>
+                                    <input type="text" class="form-control" placeholder="" id="isalefrom" readonly>
+                                 </div>
+                              </div>
+                              <div class="col-md-6">
+                                 <div class="form-group">
+                                    <label>Sale-to</label>
+                                    <input type="text" class="form-control" placeholder="" id="isaleto" readonly>
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="row">
+                              <div class="col-md-12">
+                                 <div class="form-group">
+                                    <label>CreateAt</label>
+                                    <input type="text" class="form-control" placeholder="" id="CreateAt" readonly>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+
+   <!--Edit product-->
+   <div class="modal fade" id="EditProduct" tabindex="-1" role="dialog" aria-labelledby="edit_bookingLabel"
+      aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+         <div class="modal-content">
+            <div class="modal-header">
+               <h5 class="modal-title" id="edit_bookingLabel">Edit Product</h5>
+               <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">×</span>
+               </button>
+            </div>
+            <div class="modal-body">
+               <div class="row">
+                  <div class="col-xl-12">
+                     <div class="card mb-4">
+                        <div class="card-header">
+                           Basic info
+                        </div>
+                        <div class="card-body">
+                           <div class="row">
+                              <div class="col-md-12">
+                                 <div class="form-group">
+                                    <label>Name</label>
+                                    <input type="text" class="form-control" placeholder="" id="enamePro">
+                                 </div>
+                              </div>
+                           </div>
+                           <!-- /row-->
+                           <div class="row">
+                              <div class="col-md-6">
+                                 <div class="form-group">
+                                    <label>Quantity</label>
+                                    <input type="text" class="form-control" placeholder="" id="equantityPro">
+                                 </div>
+                              </div>
+                              <div class="col-md-6">
+                                 <div class="form-group">
+                                    <label>Unit-Price</label>
+                                    <input type="text" class="form-control" placeholder="" id="ePrice">
+                                 </div>
+                              </div>
+                           </div>
+                           <!-- /row-->
+                           <div class="row">
+                              <div class="col-md-12">
+                                 <div class="form-group">
+                                    <label>Description</label>
+                                    <input type="text" class="form-control" placeholder="" id="eDes">
+                                 </div>
+                              </div>
+                           </div>
+                           <!-- /row-->
+                           <div class="row">
+                              <div class="col-md-6">
+                                 <div class="form-group">
+                                    <label>Time-from</label>
+                                    <input type="text" class="form-control" placeholder="" id="eitimefrom">
+                                 </div>
+                              </div>
+                              <div class="col-md-6">
+                                 <div class="form-group">
+                                    <label>Time-to</label>
+                                    <input type="text" class="form-control" placeholder="" id="eitimeto">
+                                 </div>
+                              </div>
+                           </div>
+                           <!-- /row-->
+                           <div class="row">
+                              <div class="col-md-12">
+                                 <div class="form-group">
+                                    <label>Sale</label>
+                                    <input type="text" class="form-control" placeholder="" id="eiSale">
+                                 </div>
+                              </div>
+                           </div>
+                           <!-- /row-->
+                           <div class="row">
+                              <div class="col-md-6">
+                                 <div class="form-group">
+                                    <label>Sale-from</label>
+                                    <input type="text" class="form-control" placeholder="" id="eisalefrom">
+                                 </div>
+                              </div>
+                              <div class="col-md-6">
+                                 <div class="form-group">
+                                    <label>Sale-to</label>
+                                    <input type="text" class="form-control" placeholder="" id="eisaleto">
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="modal-footer">
+               <input type="button" class="btn btn-primary" id="EditProduct" value="Edit"></input>
+            </div>
+         </div>
+      </div>
+   </div>
+
+   <!-- Jquery -->
+   <script src="js/jquery.min.js"></script>
+   <!-- Fontawesome -->
+   <script src="js/all.min.js"></script>
+   <!-- Bootstrap -->
+   <script src="js/bootstrap.bundle.min.js"></script>
+   <!-- Custom Js -->
+   <!-- <script src="js/scripts.js"></script> -->
+   <!-- Ajax Chart Js -->
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
+   <!-- Chart Js -->
+   <!-- <script src="js/chart-area-demo.js"></script>
+   <script src="js/chart-bar-demo.js"></script>
+   <script src="js/chart-pie-demo.js"></script> -->
+   <!-- Datatable Js -->
+   <script src="js/jquery.dataTables.min.js"></script>
+   <script src="js/dataTables.bootstrap.min.js"></script>
+   <script src="js/datatables-demo.js"></script>
+   <!-- Dropzone-->
+   <script src="js/dropzone.min.js"></script>
+   <script src="http://www.ansonika.com/foogra/admin_section/vendor/bootstrap-datepicker.js"></script>
+   <script>
+      $('input.date-pick').datepicker();
+   </script>
+   <!-- Summernote Editor -->
+   <!-- <script src="vendor/summernote/summernote-bs4.min.js"></script> -->
+   <script>
+      // $('.editor').summernote({
+      //    fontSizes: ['10', '14'],
+      //    toolbar: [
+      //       // [groupName, [list of button]]
+      //       ['style', ['bold', 'italic', 'underline', 'clear']],
+      //       ['font', ['strikethrough']],
+      //       ['fontsize', ['fontsize']],
+      //       ['para', ['ul', 'ol', 'paragraph']]
+      //    ],
+      //    placeholder: 'Write here ....',
+      //    tabsize: 2,
+      //    height: 200
+      // });
+
+      $(document).ready(function () {
+         var text = localStorage.getItem('sellerId').replaceAll('"', '');
+         $('#dataProduct').DataTable({
+            'ajax': function (data, callback, settings) {
+               $.ajax({
+                  url: "/api/product/searchSellerproduct",
+                  data: {
+                     id: text,
+                  }
+               }).then(function (response, textStatus, jqXHR) {
+                  let data = response.data.listProduct
+                  data.forEach((val, idx) => {
+                     val.no = idx + 1
+                  });
+                  callback({
+                     "data": data
+                  });
+               });
+            },
+
+            'columns': [{
+               data: 'name'
+            }, {
+               data: 'description'
+            }, {
+               data: 'quantity'
+            }, {
+               data: 'unit_price'
+            }, {
+               data: ""
+            }
+            ],
+            'columnDefs': [{
+               targets: -1,
+               render: function (data, type, row, meta) {
+                  return '<input type="button" class="btn btn-info" data-toggle="modal" data-target="#inforProduct" idproduct="' + row.id + '" value="Info"/>' +
+                     '<input type="button" class="btn btn-primary" data-toggle="modal" data-target="#EditProduct" editproduct="' + row.id + '" value="Edit"/>' +
+                     '<input type="button" class="btn btn-danger" idDeleteproduct="' + row.id + '" value="Delete"/>';
+               }
+            }]
+         });
+      });
+
+      $('#CreateProduct').click(function () {
+         var text = localStorage.getItem('sellerId').replaceAll('"', '');
+         $.ajax({
+            url: '/api/product/create',
+            method: 'POST',
+            data: {
+               user_id: text,
+               id: $('#IdProduct').val(),
+               name: $('#nameProduct').val(),
+               quantity: $('#quantityProduct').val(),
+               unit_price: $('#unitPrice').val(),
+               description: $('#Description').val(),
+            },
+         }).then(function (data) {
+            if (data.message == 'SUCCESS') {
+               alert("Create success");
+               window.location.href = '/listProductSeller'
+            } else {
+               alert("Create fail");
+            }
+         })
+      })
+
+      $('#dataProduct tbody').on('click', '.btn-info', function () {
+         let idpro = $(this).attr('idproduct');
+         console.log(idpro);
+         $.ajax({
+            url: "/api/product/getById",
+            type: "GET",
+            dataType: "json",
+            data: {
+               id: idpro,
+            },
+            success: function (data) {
+               var list = data.data.product;
+               console.log(data)
+               document.getElementById('namePro').value = list.name;
+               document.getElementById('quantityPro').value = list.quantity;
+               document.getElementById('Price').value = list.unit_price;
+               document.getElementById('Des').value = list.description;
+               document.getElementById('itimefrom').value = list.time_from;
+               document.getElementById('itimeto').value = list.time_to;
+               document.getElementById('iSale').value = list.sale;
+               document.getElementById('isalefrom').value = list.sale_from;
+               document.getElementById('isaleto').value = list.sale_to;
+               document.getElementById('CreateAt').value = list.createdAt;
+            }
+         });
+      })
+
+      $('#dataProduct tbody').on('click', '.btn-danger', function () {
+         let id = $(this).attr('idDeleteproduct');
+         $.ajax({
+            url: '/api/product/delete',
+            method: 'GET',
+            data: {
+               id: id,
+            },
+         }).then(function () {
+            window.location.reload();
+         })
+      });
+   </script>
+</body>
+
+</html>

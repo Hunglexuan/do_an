@@ -239,6 +239,25 @@
             </div>
       </div>
    </div>
+   <div class="modal" tabindex="-1" role="dialog">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Modal title</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <p>Modal body text goes here.</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary">Save changes</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
    </main>
    <footer class="py-4 bg-light mt-auto">
       <div class="container-fluid">
@@ -359,14 +378,31 @@ function listReportPage(){
 					targets: -1,
 					render: function (data, type, row, meta) {
 						return '<input type="button" class="show-user-id btn-primary mr-3" id=user-id-"' + meta.row + '" value="Show User Info"/>' +
-							'<input type="button" class="show-post-id btn-success mr-3 " id=post-"' + meta.row + '" value="Down Role"/>' ;
+							'<input type="button" class="show-post-id btn-success mr-3 " data-toggle="modal" data-target="#exampleModal" id=post-"' + meta.row + '" value="Down Role"/>' ;
 							
 					}
 
 				}
-			]
+			],
+         'responsive': {
+            details: {
+                display: $.fn.dataTable.Responsive.display.modal( {
+                    header: function ( row ) {
+                        var data = row.data();
+                        return 'Details for ';
+                    }
+                } ),
+                renderer: $.fn.dataTable.Responsive.renderer.tableAll( {
+                    tableClass: 'table'
+                } )
+            }
+        }
+
    
    } );
+//    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+//   Launch demo modal
+// </button>
 
 
 
@@ -379,19 +415,19 @@ function listReportPage(){
 
 
 		$('#dataTable tbody').on('click', '.show-post-id', function () {
-			let id = $(this).attr('id').match(/\d+/)[0];
-			let data = $('#dataTable').DataTable().row(id).data();
-         let id_User = data.id;
+			// let id = $(this).attr('id').match(/\d+/)[0];
+			// let data = $('#dataTable').DataTable().row(id).data();
+         // let id_User = data.id;
         
          
-         $.ajax({
-            url:'/api/user/downRole?token='+token+'&id='+id_User,
-            method:'GET',
+         // $.ajax({
+         //    url:'/api/user/downRole?token='+token+'&id='+id_User,
+         //    method:'GET',
             
-         }).then(function(){
+         // }).then(function(){
             
-            window.location.reload();
-         })
+         //    window.location.reload();
+         // })
 		});
 
 		$('#dataTable tbody').on('click', '.show-post-title', function () {

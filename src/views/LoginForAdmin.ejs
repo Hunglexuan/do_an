@@ -93,7 +93,7 @@
     $("#btn").click(function() {
         checkBlankLogin();
         $.ajax({
-            url: "/api/auth/login",
+            url: "/api/auth/loginAdmin",
             type: "POST",
             data: {
                 email: $("#inputEmail").val(),
@@ -103,7 +103,7 @@
             if (data.message == "SUCCESS") {
                 window.location.href = "/ListSeller"
                 alert("Login Successfull");
-                setCookie("token", data.data.token, 1)
+                setCookie("token", data.data.token, 31)
             } else {
                 alert("Login Fail")
             }

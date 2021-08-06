@@ -19,8 +19,7 @@ export { default as Comment }
     from './Comment';
 export { default as Feedback }
     from './Feedback';
-export { default as Image }
-    from './Image';
+
 export { default as UserBill }
     from './UserBill';
 export { default as Favorite }

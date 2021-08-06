@@ -13,8 +13,7 @@ export { default as MidComment }
 from './MidComment';
 export { default as MidFeedback }
 from './MidFeedback';
-export { default as MidImage }
-from './MidImage';
+
 export { default as MidProduct }
 from './MidProduct';
 export { default as MidRole }

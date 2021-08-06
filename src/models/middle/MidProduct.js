@@ -181,8 +181,12 @@ class MidProduct {
             name: data.name,
             quantity: data.quantity,
             unit_price: data.unit_price,
+            time_from: data.time_from,
+            time_to: data.time_to,
+            sale: data.sale,
+            sale_from: data.sale_from,
+            sale_to: data.sale_to,
             description: data.description,
-            user_id: data.user_id,
 
         }
         return await objUpdate.update(dataUpdate)

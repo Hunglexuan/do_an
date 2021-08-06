@@ -1,5 +1,5 @@
 import {
-    Role,Users,Bill
+    Role, Users, Bill, UserBill, Voucher
 } from '../core';
 import { Op } from 'sequelize';
 import { checkPassword, hashPassword } from '../../libs/encrypt';
@@ -7,7 +7,7 @@ import { generateToken } from '../../libs/token';
 import { ERROR_MESSAGE } from '../../config/error';
 import { sendMailActiveOrder, sendMailForgotPassword } from '../../libs/sendmail';
 import { v4 as uuidv4 } from 'uuid';
-import { password } from '../../config/database';
+import database, { password } from '../../config/database';
 import { name } from 'ejs';
 
 class MidBill {
@@ -44,59 +44,81 @@ class MidBill {
         }
 
     }
-async createBill(data){
-    if (!data.quantity) {
-        throw new Error(ERROR_MESSAGE.BILL.BILL_QUANTITY);
-    }
-    if (!data.total_price) {
-        throw new Error(ERROR_MESSAGE.BILL.BILL_TOTAL_PRICE);
-    }
+    async createBill(data) {
+        let totalPrice
+        let voucher
+        // if(billID){
 
-    if (!data.status) {
-        throw new Error(ERROR_MESSAGE.BILL.BILL_STATUS);
-    }
-    let dataCreate = {
-        quantity: data.quantity,
-        total_price: data.total_price,
-        // voucher_id: data.voucher_id,
-        status : data.status,
-        del: 0
-    }
-    return await Bill.create(dataCreate);
-}
-async deleteBill(data) {
-    let objDelete = await Bill.findOne({
-        where: {
-            id: data.id,
-            del: 0
+        // }
+        // else{
+
+        // }
+        for (let i = 0; i < data.cart.listCart.length; i++) {
+            totalPrice += data.cart.listCart[i].price * data.cart.listCart[i].count
         }
-    })
-    let dataDelete = {
-        del: 1,
-    }
-
-    objDelete.update(dataDelete)
-}
-async updateBill(data) {
-    if (!data.id) {
-        throw new Error(ERROR_MESSAGE.BILL.BILL_NOT_EXIST);
-    }
-    let objUpdate = await Bill.findOne({
-        where: {
-            id: data.id,
-            del: 0
+        if (data.cart.voucherCode != '') {
+            voucher = await Voucher.findOne({
+                where: {
+                    code: data.cart.voucherCode,
+                    del: 0
+                }
+            })
+            totalPrice += voucher.discount_number
         }
-    })
+        let status = data.cart.status;
+        if (!data.cart.address) {
+            throw new Error("Chưa nhận địa chỉ ship");
+        }
+        let address = data.cart.address;
+        let billCreate = {
+            total_price: totalPrice,
+            status: status,
+            address: address,
+        }
 
-    let dataUpdate = {
-        quantity: data.quantity,
-        total_price: data.total_price,
-        voucher_id: data.voucher_id,
-        status : data.status,
+        let bill = await Bill.create(billCreate);
+
+        let userBill = {
+            bill_id: bill.data.id,
+            user_id: data.cart.userId
+        }
+        await UserBill.create(userBill);
+
+       
     }
-    return await objUpdate.update(dataUpdate)
+    async deleteBill(data) {
+        let objDelete = await Bill.findOne({
+            where: {
+                id: data.id,
+                del: 0
+            }
+        })
+        let dataDelete = {
+            del: 1,
+        }
 
-}
+        objDelete.update(dataDelete)
+    }
+    async updateBill(data) {
+        if (!data.id) {
+            throw new Error(ERROR_MESSAGE.BILL.BILL_NOT_EXIST);
+        }
+        let objUpdate = await Bill.findOne({
+            where: {
+                id: data.id,
+                del: 0
+            }
+        })
+
+        let dataUpdate = {
+            quantity: data.quantity,
+            total_price: data.total_price,
+            voucher_id: data.voucher_id,
+            status: data.status,
+        }
+        return await objUpdate.update(dataUpdate)
+
+    }
 
 }
 

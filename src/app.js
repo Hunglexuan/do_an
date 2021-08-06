@@ -81,6 +81,19 @@ app.get('/RegisterUser', function(req, res) {
 
 });
 
+app.get('/listProductSeller', function(req, res) {
+    return res.render('ListProductSeller');
+
+});
+
+app.get('/listOrderSeller', function(req, res) {
+    return res.render('ListOrderSeller');
+
+});
+
+app.get('/listfeedbackSeller', function(req, res) {
+    return res.render('ListFeedbackSeller');
+});
 app.get('/CheckOut', function(req, res) {
     return res.render('CheckOut');
 });
@@ -127,7 +140,9 @@ app.get('/ListVoucher', function(req, res) {
     return res.render('ListVoucher');
 });
 
-
+app.get('/SellerShopProfile', function(req, res) {
+    return res.render('SellerShopProfile');
+});
 
 app.get('/admin', function(req, res) {
     app.use(express.static(path.join(__dirname, '../build')))
