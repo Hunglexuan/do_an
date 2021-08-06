@@ -73,7 +73,6 @@ function loadName() {
         },
         url: "/api/user/getbyId",
         success: function(data) {
-            console.log(data);
             document.getElementById('nameUsers').innerHTML = '<a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <img alt="Generic placeholder image" src="image/user/4.png" class="nav-osahan-pic rounded-pill"> ' + data.data.name + ' </a> <div class="dropdown-menu dropdown-menu-right shadow-sm border-0"> <button class="dropdown-item" onclick="idURL(' + "'" + data.data.id + "'" + ')"><i class="icofont-ui-user"></i> My Profile </button> <a class="dropdown-item" href="/" onclick="logOutClick()"><i class="icofont-logout"></i> Logout </a> </div>';
         }
     });
