@@ -257,7 +257,7 @@
             <div class="container-fluid">
                <h1 class="mt-4">List Product</h1>
                <ol class="breadcrumb mb-4">
-                  <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+                  <li class="breadcrumb-item"><a href="DashboardSeller">Dashboard</a></li>
                   <li class="breadcrumb-item active">List Product</li>
                </ol>
                <div class="row">
@@ -308,25 +308,26 @@
                                        </tr>
                                     </table> -->
                                  <div class="card-body">
-                                    <!-- <div class="table-responsive"> -->
-                                    <table class="table" id="dataProduct" width="100%" cellspacing="0">
-                                       <thead>
-                                          <tr class="text-uppercase">
-                                             <th>ID</th>
-                                             <th>Name</th>
-                                             <th>Description</th>
-                                             <th>Quantity</th>
-                                             <th>Unit-Price</th>
-                                             <th>Action</th>
-                                          </tr>
-                                       </thead>
-                                       <tbody>
-                                          <!---->
-                                          <!---->
-                                          <!-- ajax xu ly ben duoi -->
+                                    <div class="table-responsive">
+                                       <table class="table" id="dataProduct" width="100%" cellspacing="0">
+                                          <thead>
+                                             <tr class="text-uppercase">
+                                                <th>ID</th>
+                                                <th>Name</th>
+                                                <th>Description</th>
+                                                <th>Quantity</th>
+                                                <th>Unit-Price</th>
+                                                <th>Action</th>
+                                             </tr>
+                                          </thead>
+                                          <tbody>
+                                             <!---->
+                                             <!---->
+                                             <!-- ajax xu ly ben duoi -->
 
-                                       </tbody>
-                                    </table>
+                                          </tbody>
+                                       </table>
+                                    </div>
                                  </div>
                                  <!-- </div> -->
                                  <a href="" class="btn btn-primary" data-toggle="modal" data-target="#edit_booking"><i
@@ -599,7 +600,7 @@
                               <div class="col-md-12">
                                  <div class="form-group">
                                     <label>Name</label>
-                                    <input type="text" class="form-control" placeholder="" id="namePro">
+                                    <input type="text" class="form-control" placeholder="" id="enamePro">
                                  </div>
                               </div>
                            </div>
@@ -608,13 +609,13 @@
                               <div class="col-md-6">
                                  <div class="form-group">
                                     <label>Quantity</label>
-                                    <input type="text" class="form-control" placeholder="" id="quantityPro">
+                                    <input type="text" class="form-control" placeholder="" id="equantityPro">
                                  </div>
                               </div>
                               <div class="col-md-6">
                                  <div class="form-group">
                                     <label>Unit-Price</label>
-                                    <input type="text" class="form-control" placeholder="" id="Price">
+                                    <input type="text" class="form-control" placeholder="" id="ePrice">
                                  </div>
                               </div>
                            </div>
@@ -623,7 +624,7 @@
                               <div class="col-md-12">
                                  <div class="form-group">
                                     <label>Description</label>
-                                    <input type="text" class="form-control" placeholder="" id="Des">
+                                    <input type="text" class="form-control" placeholder="" id="eDes">
                                  </div>
                               </div>
                            </div>
@@ -632,13 +633,13 @@
                               <div class="col-md-6">
                                  <div class="form-group">
                                     <label>Time-from</label>
-                                    <input type="text" class="form-control" placeholder="" id="itimefrom">
+                                    <input type="text" class="form-control" placeholder="" id="eitimefrom">
                                  </div>
                               </div>
                               <div class="col-md-6">
                                  <div class="form-group">
                                     <label>Time-to</label>
-                                    <input type="text" class="form-control" placeholder="" id="itimeto">
+                                    <input type="text" class="form-control" placeholder="" id="eitimeto">
                                  </div>
                               </div>
                            </div>
@@ -647,7 +648,7 @@
                               <div class="col-md-12">
                                  <div class="form-group">
                                     <label>Sale</label>
-                                    <input type="text" class="form-control" placeholder="" id="iSale">
+                                    <input type="text" class="form-control" placeholder="" id="eiSale">
                                  </div>
                               </div>
                            </div>
@@ -656,21 +657,13 @@
                               <div class="col-md-6">
                                  <div class="form-group">
                                     <label>Sale-from</label>
-                                    <input type="text" class="form-control" placeholder="" id="isalefrom">
+                                    <input type="text" class="form-control" placeholder="" id="eisalefrom">
                                  </div>
                               </div>
                               <div class="col-md-6">
                                  <div class="form-group">
                                     <label>Sale-to</label>
-                                    <input type="text" class="form-control" placeholder="" id="isaleto">
-                                 </div>
-                              </div>
-                           </div>
-                           <div class="row">
-                              <div class="col-md-12">
-                                 <div class="form-group">
-                                    <label>CreateAt</label>
-                                    <input type="text" class="form-control" placeholder="" id="CreateAt">
+                                    <input type="text" class="form-control" placeholder="" id="eisaleto">
                                  </div>
                               </div>
                            </div>
@@ -793,6 +786,7 @@
          }).then(function (data) {
             if (data.message == 'SUCCESS') {
                alert("Create success");
+               window.location.href='/listProductSeller'
             } else {
                alert("Create fail");
             }
