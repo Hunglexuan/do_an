@@ -94,7 +94,7 @@
          <div class="input-group">
             <div class="input-group-append">
                <label class="switch">
-                  <input type="checkbox" id="switchShop" name="swiShop" checked>
+                  <input type="checkbox" id="switchShop" name="swiShop" value="true" checked>
                   <span class="slider round"></span>
                </label>
             </div>
@@ -469,6 +469,10 @@
       setSwitch();
    })
 
+   $('#switchShop').click(function () {
+      setSwitch();
+   })
+
    function loadProfile() {
       var text = localStorage.getItem('sellerId').replaceAll('"', '');
       $.ajax({
@@ -482,19 +486,21 @@
       })
    }
 
-   function setSwitch(){
+   function setSwitch() {
       var text = localStorage.getItem('sellerId').replaceAll('"', '');
-      let switchShop = $('switchShop').attr('swiShop',true);
+      let switchShop = $('#switchShop').is(":checked")
+      console.log(switchShop)
       $.ajax({
          url: '/api/user/status',
          method: 'GET',
          data: {
             id: text,
-            shop_status:switchShop,
+            shop_status: switchShop,
          },
       }).then(function (data) {
-         console.log(data.data)
+         console.log(data)
       })
+
    }
 
 </script>

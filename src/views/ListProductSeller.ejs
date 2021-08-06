@@ -33,7 +33,7 @@
       <a class="navbar-brand" href="DashboardSeller"><img alt="logo" src="image/image0.jpg" width="100px"></a>
       <!-- Navbar Search-->
       <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
-         
+
       </form>
       <!-- Navbar-->
       <ul class="navbar-nav ml-auto ml-md-0">
@@ -59,7 +59,7 @@
                </form>
             </div>
          </li>
-         
+
 
          <!-- Nav Item - User Information -->
          <li class="nav-item dropdown no-arrow ml-1 osahan-profile-dropdown">
@@ -507,12 +507,55 @@
                </div>
             </div>
             <div class="modal-footer">
-               <input type="button" class="btn btn-primary" id="EditProduct" value="Edit"></input>
+               <input type="button" class="btn btn-primary" id="EditProduct" value="Edit" onclick="editProduct()"></input>
             </div>
          </div>
       </div>
    </div>
 
+
+   <!--Pop up delete-->
+
+   <div class="modal fade" id="deleteProduct" tabindex="-1" role="dialog" aria-labelledby="edit_bookingLabel"
+      aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+         <div class="modal-content">
+            <div class="modal-header">
+               <h5 class="modal-title" id="edit_bookingLabel">Product</h5>
+               <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">×</span>
+               </button>
+            </div>
+            <div class="modal-body">
+               <div class="row">
+                  <div class="col-xl-12">
+                     <div class="card mb-4">
+                        <div class="card-body">
+                           <h5>Bạn có muốn xóa sản phẩm này không?</h5>
+                           <div class="card-body">
+                              <div class="row">
+                                 <div class="col-md-6">
+                                    <div class="form-group">
+                                       <input type="button" class="btn btn-primary" id="deletePro" value="Yes"
+                                          onclick="deletepro()"></input>
+                                    </div>
+                                 </div>
+                                 <div class="col-md-6">
+                                    <div class="form-group">
+                                       <input type="button" class="btn btn-primary" id="cancelDelete"
+                                          value="Cancel" data-dismiss="modal"></input>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
    <!-- Jquery -->
    <script src="js/jquery.min.js"></script>
    <!-- Fontawesome -->
@@ -534,6 +577,7 @@
    <!-- Dropzone-->
    <script src="js/dropzone.min.js"></script>
    <script src="http://www.ansonika.com/foogra/admin_section/vendor/bootstrap-datepicker.js"></script>
+   
    <script>
       $('input.date-pick').datepicker();
    </script>
@@ -590,8 +634,9 @@
                targets: -1,
                render: function (data, type, row, meta) {
                   return '<input type="button" class="btn btn-info" data-toggle="modal" data-target="#inforProduct" idproduct="' + row.id + '" value="Info"/>' +
-                     '<input type="button" class="btn btn-primary" data-toggle="modal" data-target="#EditProduct" editproduct="' + row.id + '" value="Edit"/>' +
-                     '<input type="button" class="btn btn-danger" idDeleteproduct="' + row.id + '" value="Delete"/>';
+                     '<input type="button" class="btn btn-primary" data-toggle="modal" data-target="#EditProduct"  onclick="editproduct(' + "'" + row.id + "'" + ')" value="Edit"/>' +
+                     '<input type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteProduct" onclick="deleteproduct(' + "'" + row.id + "'" + ')" value="Delete"/>';
+                     
                }
             }]
          });
@@ -647,18 +692,58 @@
          });
       })
 
-      $('#dataProduct tbody').on('click', '.btn-danger', function () {
-         let id = $(this).attr('idDeleteproduct');
+      function deleteproduct(id){
+         localStorage.setItem('deleteId', JSON.stringify(id));
+      }
+
+      function editproduct(id){
+         localStorage.setItem('deleteId', JSON.stringify(id));
+      }
+
+      function deletepro() {
+         var text = localStorage.getItem('deleteId').replaceAll('"', '');
+         console.log(text)
          $.ajax({
             url: '/api/product/delete',
             method: 'GET',
             data: {
-               id: id,
+               id: text,
             },
          }).then(function () {
             window.location.reload();
          })
-      });
+      };
+
+      function editProduct() {
+         var text = localStorage.getItem('deleteId').replaceAll('"', '');
+         console.log(text)
+         $.ajax({
+            url: '/api/product/update',
+            method: 'POST',
+            data: {
+               id: text,
+               name: $("#enamePro").val(),
+               quantity: $("#equantityPro").val(),
+               unit_price: $("#ePrice").val(),
+               description: $("#eDes").val(),
+               time_from: $("#eitimefrom").val(),
+               time_to: $("#eitimeto").val(),
+               sale: $("#eiSale").val(),
+               sale_from: $("#eisalefrom").val(),
+               sale_to: $("#eisaleto").val(),
+            },
+         }).then(function (data) {
+            
+            if (data.message == 'SUCCESS') {
+               alert("Edit success");
+               window.location.href = '/listProductSeller'
+            } else {
+               alert("Edit fail");
+            }
+         })
+      };
+
+
    </script>
 </body>
 
