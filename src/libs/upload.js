@@ -32,12 +32,12 @@ export const uploadMultiMedia = (req, res) => {
         let storage = multer.diskStorage({
             destination: function (req, file, cb) {
                 cb(null, path.join(__dirname, '../../media'));
+               
             },
             filename: function (req, file, cb) {
                 cb(null, Date.now() + '_' + file.originalname);
             }
         });
-
         let upload = multer({
             storage: storage
         }).array('file',2);

@@ -48,7 +48,14 @@ class UserController {
         let dataQuery = req.query;
         return await MidUser.downgradeRole(dataQuery);
     }
+    async avatarUpdate(req, res) {
+        
 
+        const dataUpload = await uploadMultiMedia(req, res);
+        let logo = dataUpload[0] ? dataUpload[0].filename : '';
+        let data = req.body;
+        return await MidUser.updateAvatar(data, logo);
+    }
 
 }
 
