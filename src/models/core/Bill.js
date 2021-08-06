@@ -38,7 +38,7 @@ const attributes = {
         allowNull:true,
         defaultValue:null
     },
-    status: {
+    status: { //
         type: DataTypes.TINYINT(1),
         allowNull:true,
         defaultValue:null
