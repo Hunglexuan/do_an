@@ -33,6 +33,11 @@ const attributes = {
         defaultValue: null
     },
 
+    image: {
+        type: DataTypes.STRING(255),
+        allowNull: true,
+        defaultValue: null
+    },
     quantity: {
         type: DataTypes.INTEGER(10),
         allowNull: true,

@@ -19,8 +19,7 @@ export { default as Comment }
     from './Comment';
 export { default as Feedback }
     from './Feedback';
-export { default as Image }
-    from './Image';
+
 export { default as UserBill }
     from './UserBill';
 export { default as Favorite }
@@ -29,9 +28,9 @@ export { default as Favorite }
 import { sequelize } from '../../connections';
 
 
-for (let m in sequelize.models) {
-    sequelize.models[m].sync();
-}
+// for (let m in sequelize.models) {
+//     sequelize.models[m].sync();
+// }
 
 // Init association
 for (let m in sequelize.models) {

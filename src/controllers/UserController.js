@@ -58,7 +58,10 @@ class UserController {
         let data = req.body;
         return await MidUser.updateAvatar(data, logo);
     }
-
+    async updateStatus(req, res) {
+        let dataQuery = req.query;
+        return await MidUser.updateShopStatus(dataQuery);
+    }
 }
 
 export default new UserController();

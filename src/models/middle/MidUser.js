@@ -24,6 +24,19 @@ class MidUser {
         };
         objUpdate.update(dataUpdate);
     }
+
+    async updateShopStatus(data) {
+        let obj = await Users.findOne({
+            where: {
+                id: data.id,
+                del: 0,
+            },
+        });
+        let dataUpdate = {
+            shop_status: data.shop_status
+        };
+        obj.update(dataUpdate);
+    }
     async getUserByEmail(email) {
         return await Users.findOne({
             where: {

@@ -23,6 +23,14 @@ class ProductController {
         let dataQuery = req.query;
         return MidProduct.searchAllProduct(dataQuery);
     }
+    async updateProduct(req, res) {
+        let dataQuery = req.query;
+        return await MidProduct.updateProduct(dataQuery);
+    }
+    async deleteProduct(req, res) {
+        let dataQuery = req.query;
+        return await MidProduct.deleteProduct(dataQuery);
+    }
 }
 
 export default new ProductController();

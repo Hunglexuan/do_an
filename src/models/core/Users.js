@@ -53,9 +53,7 @@ const attributes = {
         type: DataTypes.UUID,
         allowNull: true,
         defaultValue: null
-
     },
-
     address: {
         type: DataTypes.STRING(255),
         allowNull: true,
@@ -69,13 +67,6 @@ const attributes = {
     },
     dob: {
         type: DataTypes.DATE,
-        allowNull: true,
-        defaultValue: null
-
-
-    },
-    shop_name: {
-        type: DataTypes.STRING(255),
         allowNull: true,
         defaultValue: null
     },
@@ -118,4 +109,4 @@ const options = {
 /**
  * Init Model
  */
-Users.init(attributes, {...options, sequelize });
+Users.init(attributes, { ...options, sequelize });
