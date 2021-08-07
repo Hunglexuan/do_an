@@ -67,8 +67,8 @@
                aria-expanded="false">
                <img class="img-profile rounded-circle" src="image/user/1.png">
             </a> -->
-            <!-- Dropdown - User Information -->
-            <!-- <div class="dropdown-menu dropdown-menu-right shadow-sm">
+         <!-- Dropdown - User Information -->
+         <!-- <div class="dropdown-menu dropdown-menu-right shadow-sm">
                <div class="p-3 d-flex align-items-center">
                   <div class="dropdown-list-image mr-3">
                      <img class="rounded-circle" src="image/user/1.png" alt="">
@@ -82,7 +82,7 @@
          <li class="nav-item dropdown" id="nameSeller"></li>
       </ul>
    </nav>
-   <div id="layoutSidenav" >
+   <div id="layoutSidenav">
       <div id="layoutSidenav_nav">
          <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
             <div class="sb-sidenav-menu">
@@ -368,7 +368,7 @@
    <!--Edit product-->
    <div class="modal fade" id="EditProduct" tabindex="-1" role="dialog" aria-labelledby="edit_bookingLabel"
       aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-dialog modal-xl">
          <div class="modal-content">
             <div class="modal-header">
                <h5 class="modal-title" id="edit_bookingLabel">Sửa Thông tin Sản Phẩm</h5>
@@ -378,7 +378,7 @@
             </div>
             <div class="modal-body">
                <div class="row">
-                  <div class="col-xl-12">
+                  <div class="col-8 col-sm-6">
                      <div class="card mb-4">
                         <div class="card-header">
                            Thông Tin Cơ Bản
@@ -458,30 +458,46 @@
                                  </div>
                               </div>
                            </div>
-                           <div class="row">
-                              <div class="col-md-12">
-                                 <div class="form-group">
-                                    <div style="border-radius: 5% !important; width: 100%; height: 350px;"
-                                       class="picture">
-                                       <img class="picture-src" id="wizardPicturePreview"
-                                          style="width: 100% !important; height: 100% !important;">
-                                       <input type="file" class="form-control" id="wizard-picture"
-                                          style="width: 100% !important; height: 89% !important;"
-                                          name="uploadfile"></input>
+                           <input type="button" class="btn btn-primary" id="EditProduct" value="Lưu"
+                           onclick="editProduct()" style="float: right;"></input>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="col-4 col-sm-6">
+                     <div class="row">
+                        <div class="col-xl-12">
+                           <div class="card mb-4">
+                              <div class="card-header">
+                                 Tải ảnh mới
+                              </div>
+                              <div class="card-body">
+                                 <!-- /row-->
+                                 <!-- /row-->
+                                 <!-- /row-->
+                                 <!-- /row-->
+                                 <!-- /row-->
+                                 <div class="row">
+                                    <div class="col-md-12">
+                                       <div class="form-group">
+                                          <div style="border-radius: 5% !important; width: 100%; height: 350px;"
+                                             class="picture">
+                                             <img class="picture-src" id="wizardPicturePreview"
+                                                style="width: 100% !important; height: 100% !important;">
+                                             <input type="file" class="form-control" id="wizard-picture"
+                                                style="width: 100% !important; height: 89% !important;"
+                                                name="uploadfile"></input>
+                                          </div>
+                                       </div>
+                                       <input type="button" class="btn btn-primary" id="updateAnh" value="Lưu Ảnh"
+                                          style="float: right;"></input>
                                     </div>
                                  </div>
-                                 <input type="button" class="btn btn-primary" id="updateAnh" value="Lưu Ảnh"
-                                    style="float: right;"></input>
                               </div>
                            </div>
                         </div>
                      </div>
                   </div>
                </div>
-            </div>
-            <div class="modal-footer">
-               <input type="button" class="btn btn-primary" id="EditProduct" value="Lưu"
-                  onclick="editProduct()"></input>
             </div>
          </div>
       </div>
@@ -662,10 +678,10 @@
             },
          }).then(function (data) {
             if (data.message == 'SUCCESS') {
-               alert("Create success");
+               alert("Thêm mới Sản Phẩm Thành Công");
                window.location.href = '/listProductSeller'
             } else {
-               alert("Create fail");
+               alert("Thêm mới Sản Phẩm Thất Bại");
             }
          })
       })
@@ -739,10 +755,10 @@
             },
          }).then(function (data) {
             if (data.message == 'SUCCESS') {
-               alert("Edit success");
+               alert("Sửa thông tin Sản Phẩm Hoàn Tất");
                window.location.href = '/listProductSeller'
             } else {
-               alert("Edit fail");
+               alert("Sửa Thông tin Sản Phẩm Thất Bại");
             }
          })
       };
@@ -781,9 +797,9 @@
          }).then(function (data) {
             console.log(data)
             if (data.message == 'SUCCESS') {
-               alert("Save Change");
+               alert("Tải ảnh Thành Công");
             } else {
-               alert("Save fail");
+               alert("Tải ảnh Thất Bại");
             }
          })
       });
