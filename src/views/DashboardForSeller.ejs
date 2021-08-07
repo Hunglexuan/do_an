@@ -93,6 +93,7 @@
       <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
          <div class="input-group">
             <div class="input-group-append">
+               <label id="statusShop" class="mr-2"></label>  
                <label class="switch">
                   <input type="checkbox" id="switchShop" name="swiShop" value="true" checked>
                   <span class="slider round"></span>
@@ -126,31 +127,32 @@
          </li>
 
          <!-- Nav Item - User Information -->
-         <li class="nav-item dropdown no-arrow ml-1 osahan-profile-dropdown">
+         <!-- <li class="nav-item dropdown no-arrow ml-1 osahan-profile-dropdown">
             <a class="nav-link dropdown-toggle pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
                aria-expanded="false">
                <img class="img-profile rounded-circle" src="image/user/1.png">
-            </a>
+            </a> -->
             <!-- Dropdown - User Information -->
-            <div class="dropdown-menu dropdown-menu-right shadow-sm">
+            <!-- <div class="dropdown-menu dropdown-menu-right shadow-sm">
                <div class="p-3 d-flex align-items-center">
                   <div class="dropdown-list-image mr-3">
                      <img class="rounded-circle" src="image/user/1.png" alt="">
                      <div class="status-indicator bg-success"></div>
                   </div>
                   <div class="font-weight-bold">
-                     <!-- <div class="text-truncate">Gurdeep Osahan</div>
+                      <div class="text-truncate">Gurdeep Osahan</div>
                      <div class="small text-gray-500">Restaurants Owner</div> -->
-                  </div>
+                  <!-- </div>
                </div>
-               <div class="dropdown-divider"></div>
+               <div class="dropdown-divider"></div>  -->
                <!-- <a class="dropdown-item" href=""><i class="fas fa-user-circle"></i> My Account</a>
                <a class="dropdown-item" href=""><i class="fas fa-cog"></i> Account Settings</a> -->
-               <div class="dropdown-divider"></div>
+               <!-- <div class="dropdown-divider"></div>
                <a class="dropdown-item" href="/LoginSeller" id="btnLogout"><i class="fas fa-sign-out-alt"></i>
                   Logout</a>
             </div>
-         </li>
+         </li> -->
+         <li class="nav-item dropdown" id="nameSeller"></li>
       </ul>
    </nav>
    <div id="layoutSidenav">
@@ -164,54 +166,35 @@
                   </a>
                   <a class="nav-link" href="listOrderSeller">
                      <div class="sb-nav-link-icon"><i class="far fa-calendar-alt"></i></div>
-                     Bookings <span class="badge badge-pill ml-2 badge-primary">6 New</span>
+                     Danh Sách Đặt hàng <span class="badge badge-pill ml-2 badge-primary">6 New</span>
                   </a>
-                  <div class="collapse" id="collapseLayoutss" aria-labelledby="headingOne"
-                     data-parent="#sidenavAccordion">
-                     <nav class="sb-sidenav-menu-nested nav">
-                        <a class="nav-link" href="">Pending <span
-                              class="badge badge-pill ml-2 badge-primary">6</span></a>
-                        <a class="nav-link" href="">Active <span
-                              class="badge badge-pill ml-2 badge-success">5</span></a>
-                        <a class="nav-link" href="">Expired <span
-                              class="badge badge-pill ml-2 badge-danger">4</span></a>
-                     </nav>
-                  </div>
                   <a class="nav-link" href="listfeedbackSeller">
                      <div class="sb-nav-link-icon"><i class="far fa-star"></i></div>
-                     Reviews
+                     Đánh Giá
                   </a>
                   <a class="nav-link" href="">
                      <div class="sb-nav-link-icon"><i class="fas fa-chart-line"></i></div>
-                     Income Statement
+                     Doanh Thu
                   </a>
                   <a class="nav-link" href="listProductSeller">
                      <div class="sb-nav-link-icon"><i class="fas fa-boxes"></i></div>
-                     Product Manager
+                     Quản Lý Sản Phẩm
                   </a>
                   <a class="nav-link" href="">
                      <div class="sb-nav-link-icon"><i class="fas fa-user-edit"></i></div>
-                     User Manager
+                     Danh sách Khách Hàng
                   </a>
                   <a class="nav-link" href="">
                      <div class="sb-nav-link-icon"><i class="fas fa-shopping-cart"></i></div>
-                     Orders Page
+                     Quản Lý Đặt Hàng 
                   </a>
                   <a class="nav-link" href="">
                      <div class="sb-nav-link-icon"><i class="fas fa-cog"></i></div>
-                     Edit Order
-                  </a>
-                  <a class="nav-link" href="">
-                     <div class="sb-nav-link-icon"><i class="fas fa-user-cog"></i></div>
-                     My Profile
-                  </a>
-                  <a class="nav-link" href="SellerShopProfile">
-                     <div class="sb-nav-link-icon"><i class="fas fa-store"></i></div>
-                     Shop Profiles
+                     Chỉnh Sửa Đơn Hàng
                   </a>
                   <a class="nav-link" href="">
                      <div class="sb-nav-link-icon"><i class="fas fa-file-signature"></i></div>
-                     Manager Report
+                     Dánh sách Báo Cáo 
                   </a>
                </div>
             </div>
@@ -422,6 +405,7 @@
    <script src="js/all.min.js"></script>
    <!-- Bootstrap -->
    <script src="js/bootstrap.bundle.min.js"></script>
+   <script src="js/headerSeller.js"></script>
    <!-- Custom Js -->
    <!-- <script src="js/scripts.js"></script> -->
    <!-- Ajax Chart Js -->
@@ -499,9 +483,17 @@
          },
       }).then(function (data) {
          console.log(data)
+         if(switchShop){
+            document.getElementById('statusShop').innerHTML = 'Shop đang mở cửa'
+            document.getElementById('statusShop').style.color = "Green"
+         }else{
+            document.getElementById('statusShop').innerHTML = 'Shop đang đóng cửa'
+            document.getElementById('statusShop').style.color = "red"
+         }
       })
-
    }
+
+   
 
 </script>
 

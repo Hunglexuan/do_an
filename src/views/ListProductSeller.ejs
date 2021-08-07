@@ -26,6 +26,7 @@
    <link href="skin/font/summernote-bs4.min.css" rel="stylesheet">
    <!-- Datatables css -->
    <link href="skin/bootstrap/dataTables.bootstrap4.min.css" rel="stylesheet">
+   <link href="skin/font/HungCSS.css" rel="stylesheet">
 </head>
 
 <body class="sb-nav-fixed">
@@ -37,13 +38,13 @@
       </form>
       <!-- Navbar-->
       <ul class="navbar-nav ml-auto ml-md-0">
-         <li class="nav-item dropdown no-arrow d-sm-none">
+         <!-- <li class="nav-item dropdown no-arrow d-sm-none">
             <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown"
                aria-haspopup="true" aria-expanded="false">
                <i class="fas fa-search"></i>
-            </a>
-            <!-- Dropdown - Messages -->
-            <div class="dropdown-menu dropdown-menu-right p-3 shadow-sm animated--grow-in"
+            </a> -->
+         <!-- Dropdown - Messages -->
+         <!-- <div class="dropdown-menu dropdown-menu-right p-3 shadow-sm animated--grow-in"
                aria-labelledby="searchDropdown">
                <form class="form-inline mr-auto w-100 navbar-search">
                   <div class="input-group">
@@ -58,34 +59,30 @@
                   </div>
                </form>
             </div>
-         </li>
-
+         </li> -->
 
          <!-- Nav Item - User Information -->
-         <li class="nav-item dropdown no-arrow ml-1 osahan-profile-dropdown">
+         <!-- <li class="nav-item dropdown no-arrow ml-1 osahan-profile-dropdown">
             <a class="nav-link dropdown-toggle pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
                aria-expanded="false">
                <img class="img-profile rounded-circle" src="image/user/1.png">
-            </a>
+            </a> -->
             <!-- Dropdown - User Information -->
-            <div class="dropdown-menu dropdown-menu-right shadow-sm">
+            <!-- <div class="dropdown-menu dropdown-menu-right shadow-sm">
                <div class="p-3 d-flex align-items-center">
                   <div class="dropdown-list-image mr-3">
                      <img class="rounded-circle" src="image/user/1.png" alt="">
                      <div class="status-indicator bg-success"></div>
                   </div>
-                  <div class="font-weight-bold">
-                     <div class="text-truncate">Gurdeep Osahan</div>
-                     <div class="small text-gray-500">Restaurants Owner</div>
-                  </div>
                </div>
                <div class="dropdown-divider"></div>
-               <a class="dropdown-item" href=""><i class="fas fa-sign-out-alt"></i> Logout</a>
+               <a class="dropdown-item" href="LoginSeller" id="btnLogout"><i class="fas fa-sign-out-alt"></i> Logout</a>
             </div>
-         </li>
+         </li> -->
+         <li class="nav-item dropdown" id="nameSeller"></li>
       </ul>
    </nav>
-   <div id="layoutSidenav">
+   <div id="layoutSidenav" >
       <div id="layoutSidenav_nav">
          <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
             <div class="sb-sidenav-menu">
@@ -96,43 +93,35 @@
                   </a>
                   <a class="nav-link" href="listOrderSeller">
                      <div class="sb-nav-link-icon"><i class="far fa-calendar-alt"></i></div>
-                     Bookings <span class="badge badge-pill ml-2 badge-primary">6 New</span>
+                     Danh Sách Đặt hàng <span class="badge badge-pill ml-2 badge-primary">6 New</span>
                   </a>
                   <a class="nav-link" href="listfeedbackSeller">
                      <div class="sb-nav-link-icon"><i class="far fa-star"></i></div>
-                     Reviews
+                     Đánh Giá
                   </a>
                   <a class="nav-link" href="">
                      <div class="sb-nav-link-icon"><i class="fas fa-chart-line"></i></div>
-                     Income Statement
+                     Doanh Thu
                   </a>
                   <a class="nav-link" href="listProductSeller">
                      <div class="sb-nav-link-icon"><i class="fas fa-boxes"></i></div>
-                     Product Manager
+                     Quản Lý Sản Phẩm
                   </a>
                   <a class="nav-link" href="">
                      <div class="sb-nav-link-icon"><i class="fas fa-user-edit"></i></div>
-                     User Manager
+                     Danh sách Khách Hàng
                   </a>
                   <a class="nav-link" href="">
                      <div class="sb-nav-link-icon"><i class="fas fa-shopping-cart"></i></div>
-                     Orders Page
+                     Quản Lý Đặt Hàng
                   </a>
                   <a class="nav-link" href="">
                      <div class="sb-nav-link-icon"><i class="fas fa-cog"></i></div>
-                     Edit Order
-                  </a>
-                  <a class="nav-link" href="">
-                     <div class="sb-nav-link-icon"><i class="fas fa-user-cog"></i></div>
-                     My Profile
-                  </a>
-                  <a class="nav-link" href="SellerShopProfile">
-                     <div class="sb-nav-link-icon"><i class="fas fa-store"></i></div>
-                     Shop Profiles
+                     Chỉnh Sửa Đơn Hàng
                   </a>
                   <a class="nav-link" href="">
                      <div class="sb-nav-link-icon"><i class="fas fa-file-signature"></i></div>
-                     Manager Report
+                     Dánh sách Báo Cáo
                   </a>
                </div>
             </div>
@@ -141,68 +130,30 @@
       <div id="layoutSidenav_content">
          <main>
             <div class="container-fluid">
-               <h1 class="mt-4">List Product</h1>
+               <h1 class="mt-4">Danh Sách Sản Phẩm</h1>
                <ol class="breadcrumb mb-4">
                   <li class="breadcrumb-item"><a href="DashboardSeller">Dashboard</a></li>
-                  <li class="breadcrumb-item active">List Product</li>
+                  <li class="breadcrumb-item active">Danh Sách Sản Phẩm</li>
                </ol>
                <div class="row">
                   <div class="col-xl-12">
                      <div class="card mb-4">
                         <div class="card-header">
-                           List Product
+                           Danh Sách Sản Phẩm
                         </div>
                         <div class="card-body">
                            <div class="row">
                               <div class="col-md-12">
-                                 <!-- <h6>Item</h6> -->
-                                 <!-- <table id="pricing-list-container" style="width:100%;">
-                                       <tr class="pricing-list-item">
-                                          <td>
-                                             <div class="row">
-                                                <div class="col-md-2">
-                                                   <div class="form-group">
-                                                      <input type="text" class="form-control" placeholder="Title" readonly>
-                                                   </div>
-                                                </div>
-                                                <div class="col-md-4">
-                                                   <div class="form-group">
-                                                      <input type="text" class="form-control" placeholder="Description" readonly>
-                                                   </div>
-                                                </div>
-                                                <div class="col-md-2">
-                                                   <div class="form-group">
-                                                      <input type="text" class="form-control" placeholder="Quantity" readonly>
-                                                   </div>
-                                                </div>
-                                                <div class="col-md-2">
-                                                   <div class="form-group">
-                                                      <input type="text" class="form-control" placeholder="Price" readonly>
-                                                   </div>
-                                                </div>
-                                                
-                                                <div class="col-md-2">
-                                                   <div class="form-group">
-                                                      <a class="btn btn-info" href="#"><i class="far fa-eye"></i></a>
-                                                      <a class="btn btn-primary" href="#"><i class="fas fa-edit"></i></a>
-                                                      <a class="btn btn-danger" href="#"><i class="fa fa-fw fa-trash"></i></a>
-                                                      <a class="btn btn-danger" style="color: white;"><i class="fas fa-percentage"></i> Sales</a>
-                                                   </div>
-                                                </div>
-                                             </div>
-                                          </td>
-                                       </tr>
-                                    </table> -->
                                  <div class="card-body">
                                     <div class="table-responsive">
                                        <table class="table" id="dataProduct" width="100%" cellspacing="0">
                                           <thead>
                                              <tr class="text-uppercase">
-                                                <th>Name</th>
-                                                <th>Description</th>
-                                                <th>Quantity</th>
-                                                <th>Unit-Price</th>
-                                                <th>Action</th>
+                                                <th>Tên Sản Phẩm</th>
+                                                <th>Miêu Tả Sản Phẩm</th>
+                                                <th>Số Lượng</th>
+                                                <th>Đơn Giá</th>
+                                                <th>Hành Động</th>
                                              </tr>
                                           </thead>
                                           <tbody>
@@ -216,7 +167,7 @@
                                  </div>
                                  <!-- </div> -->
                                  <a href="" class="btn btn-primary" data-toggle="modal" data-target="#edit_booking"><i
-                                       class="fa fa-fw fa-plus-circle"></i>Add</a>
+                                       class="fa fa-fw fa-plus-circle"></i>Thêm sản phẩm</a>
                               </div>
                            </div>
                            <!-- /row-->
@@ -246,7 +197,7 @@
       <div class="modal-dialog modal-dialog-centered" role="document">
          <div class="modal-content">
             <div class="modal-header">
-               <h5 class="modal-title" id="edit_bookingLabel">Create Product</h5>
+               <h5 class="modal-title" id="edit_bookingLabel">Thêm Mới Sản Phẩm</h5>
                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">×</span>
                </button>
@@ -256,14 +207,14 @@
                   <div class="col-xl-12">
                      <div class="card mb-4">
                         <div class="card-header">
-                           Basic info
+                           Thông tin cơ bản
                         </div>
                         <div class="card-body">
                            <div class="row">
                               <div class="col-md-12">
                                  <div class="form-group">
-                                    <label>Name</label>
-                                    <input type="text" class="form-control" placeholder="" id="nameProduct">
+                                    <label>Tên Sản Phẩm</label>
+                                    <input type="text" class="form-control" placeholder="Tên Sản Phẩm" id="nameProduct">
                                  </div>
                               </div>
                            </div>
@@ -271,14 +222,16 @@
                            <div class="row">
                               <div class="col-md-6">
                                  <div class="form-group">
-                                    <label>Quantity</label>
-                                    <input type="text" class="form-control" placeholder="" id="quantityProduct">
+                                    <label>Số Lượng</label>
+                                    <input type="text" class="form-control" placeholder="Số Lượng Sản Phẩm"
+                                       id="quantityProduct">
                                  </div>
                               </div>
                               <div class="col-md-6">
                                  <div class="form-group">
-                                    <label>Unit-Price</label>
-                                    <input type="text" class="form-control" placeholder="" id="unitPrice">
+                                    <label>Đơn Giá</label>
+                                    <input type="text" class="form-control" placeholder="Đơn Giá Sản Phẩm"
+                                       id="unitPrice">
                                  </div>
                               </div>
                            </div>
@@ -286,8 +239,9 @@
                            <div class="row">
                               <div class="col-md-12">
                                  <div class="form-group">
-                                    <label>Description</label>
-                                    <input type="text" class="form-control" placeholder="" id="Description">
+                                    <label>Miêu Tả</label>
+                                    <input type="text" class="form-control" placeholder="Miêu Tả Sản Phẩm"
+                                       id="Description">
                                  </div>
                               </div>
                            </div>
@@ -299,7 +253,7 @@
                <!-- /Row -->
             </div>
             <div class="modal-footer">
-               <input type="button" class="btn btn-primary" id="CreateProduct" value="Save"></input>
+               <input type="button" class="btn btn-primary" id="CreateProduct" value="Thêm"></input>
             </div>
          </div>
       </div>
@@ -310,7 +264,7 @@
       <div class="modal-dialog modal-dialog-centered" role="document">
          <div class="modal-content">
             <div class="modal-header">
-               <h5 class="modal-title" id="edit_bookingLabel">Info Product</h5>
+               <h5 class="modal-title" id="edit_bookingLabel">Thông Tin Sản Phẩm</h5>
                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">×</span>
                </button>
@@ -320,13 +274,13 @@
                   <div class="col-xl-12">
                      <div class="card mb-4">
                         <div class="card-header">
-                           Basic info
+                           Thông Tin Cơ Bản
                         </div>
                         <div class="card-body">
                            <div class="row">
                               <div class="col-md-12">
                                  <div class="form-group">
-                                    <label>Name</label>
+                                    <label>Tên Sản Phẩm</label>
                                     <input type="text" class="form-control" placeholder="" id="namePro" readonly>
                                  </div>
                               </div>
@@ -335,13 +289,13 @@
                            <div class="row">
                               <div class="col-md-6">
                                  <div class="form-group">
-                                    <label>Quantity</label>
+                                    <label>Số Lượng</label>
                                     <input type="text" class="form-control" placeholder="" id="quantityPro" readonly>
                                  </div>
                               </div>
                               <div class="col-md-6">
                                  <div class="form-group">
-                                    <label>Unit-Price</label>
+                                    <label>Đơn Giá</label>
                                     <input type="text" class="form-control" placeholder="" id="Price" readonly>
                                  </div>
                               </div>
@@ -350,7 +304,7 @@
                            <div class="row">
                               <div class="col-md-12">
                                  <div class="form-group">
-                                    <label>Description</label>
+                                    <label>Miêu Tả</label>
                                     <input type="text" class="form-control" placeholder="" id="Des" readonly>
                                  </div>
                               </div>
@@ -359,13 +313,13 @@
                            <div class="row">
                               <div class="col-md-6">
                                  <div class="form-group">
-                                    <label>Time-from</label>
+                                    <label>Thời gian Ship từ(phút)</label>
                                     <input type="text" class="form-control" placeholder="" id="itimefrom" readonly>
                                  </div>
                               </div>
                               <div class="col-md-6">
                                  <div class="form-group">
-                                    <label>Time-to</label>
+                                    <label>Đến(phút)</label>
                                     <input type="text" class="form-control" placeholder="" id="itimeto" readonly>
                                  </div>
                               </div>
@@ -374,7 +328,7 @@
                            <div class="row">
                               <div class="col-md-12">
                                  <div class="form-group">
-                                    <label>Sale</label>
+                                    <label>Giảm Giá</label>
                                     <input type="text" class="form-control" placeholder="" id="iSale" readonly>
                                  </div>
                               </div>
@@ -383,13 +337,13 @@
                            <div class="row">
                               <div class="col-md-6">
                                  <div class="form-group">
-                                    <label>Sale-from</label>
+                                    <label>Ngày giảm giá từ</label>
                                     <input type="text" class="form-control" placeholder="" id="isalefrom" readonly>
                                  </div>
                               </div>
                               <div class="col-md-6">
                                  <div class="form-group">
-                                    <label>Sale-to</label>
+                                    <label>Đến</label>
                                     <input type="text" class="form-control" placeholder="" id="isaleto" readonly>
                                  </div>
                               </div>
@@ -397,7 +351,7 @@
                            <div class="row">
                               <div class="col-md-12">
                                  <div class="form-group">
-                                    <label>CreateAt</label>
+                                    <label>Ngày Tạo Sản Phẩm</label>
                                     <input type="text" class="form-control" placeholder="" id="CreateAt" readonly>
                                  </div>
                               </div>
@@ -417,7 +371,7 @@
       <div class="modal-dialog modal-dialog-centered" role="document">
          <div class="modal-content">
             <div class="modal-header">
-               <h5 class="modal-title" id="edit_bookingLabel">Edit Product</h5>
+               <h5 class="modal-title" id="edit_bookingLabel">Sửa Thông tin Sản Phẩm</h5>
                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">×</span>
                </button>
@@ -427,14 +381,15 @@
                   <div class="col-xl-12">
                      <div class="card mb-4">
                         <div class="card-header">
-                           Basic info
+                           Thông Tin Cơ Bản
                         </div>
                         <div class="card-body">
                            <div class="row">
                               <div class="col-md-12">
                                  <div class="form-group">
-                                    <label>Name</label>
-                                    <input type="text" class="form-control" placeholder="" id="enamePro">
+                                    <label>Tên Sản Phẩm</label>
+                                    <input type="text" class="form-control" placeholder="Tên Sản Phẩm mới"
+                                       id="enamePro">
                                  </div>
                               </div>
                            </div>
@@ -442,38 +397,14 @@
                            <div class="row">
                               <div class="col-md-6">
                                  <div class="form-group">
-                                    <label>Quantity</label>
-                                    <input type="text" class="form-control" placeholder="" id="equantityPro">
+                                    <label>Số Lượng</label>
+                                    <input type="text" class="form-control" placeholder="Số lượng" id="equantityPro">
                                  </div>
                               </div>
                               <div class="col-md-6">
                                  <div class="form-group">
-                                    <label>Unit-Price</label>
-                                    <input type="text" class="form-control" placeholder="" id="ePrice">
-                                 </div>
-                              </div>
-                           </div>
-                           <!-- /row-->
-                           <div class="row">
-                              <div class="col-md-12">
-                                 <div class="form-group">
-                                    <label>Description</label>
-                                    <input type="text" class="form-control" placeholder="" id="eDes">
-                                 </div>
-                              </div>
-                           </div>
-                           <!-- /row-->
-                           <div class="row">
-                              <div class="col-md-6">
-                                 <div class="form-group">
-                                    <label>Time-from</label>
-                                    <input type="text" class="form-control" placeholder="" id="eitimefrom">
-                                 </div>
-                              </div>
-                              <div class="col-md-6">
-                                 <div class="form-group">
-                                    <label>Time-to</label>
-                                    <input type="text" class="form-control" placeholder="" id="eitimeto">
+                                    <label>Đơn Giá</label>
+                                    <input type="text" class="form-control" placeholder="Đơn giá mới" id="ePrice">
                                  </div>
                               </div>
                            </div>
@@ -481,8 +412,8 @@
                            <div class="row">
                               <div class="col-md-12">
                                  <div class="form-group">
-                                    <label>Sale</label>
-                                    <input type="text" class="form-control" placeholder="" id="eiSale">
+                                    <label>Miêu Tả</label>
+                                    <input type="text" class="form-control" placeholder="Miêu tả" id="eDes">
                                  </div>
                               </div>
                            </div>
@@ -490,15 +421,57 @@
                            <div class="row">
                               <div class="col-md-6">
                                  <div class="form-group">
-                                    <label>Sale-from</label>
-                                    <input type="text" class="form-control" placeholder="" id="eisalefrom">
+                                    <label>Thời gian Ship từ(phút)</label>
+                                    <input type="text" class="form-control" placeholder="thời gian ship từ(phút)"
+                                       id="eitimefrom">
                                  </div>
                               </div>
                               <div class="col-md-6">
                                  <div class="form-group">
-                                    <label>Sale-to</label>
-                                    <input type="text" class="form-control" placeholder="" id="eisaleto">
+                                    <label>Đến(phút)</label>
+                                    <input type="text" class="form-control" placeholder="đến(phút)" id="eitimeto">
                                  </div>
+                              </div>
+                           </div>
+                           <!-- /row-->
+                           <div class="row">
+                              <div class="col-md-12">
+                                 <div class="form-group">
+                                    <label>Giảm Giá</label>
+                                    <input type="text" class="form-control" placeholder="mã giảm giá" id="eiSale">
+                                 </div>
+                              </div>
+                           </div>
+                           <!-- /row-->
+                           <div class="row">
+                              <div class="col-md-6">
+                                 <div class="form-group">
+                                    <label>Ngày giảm giá từ</label>
+                                    <input type="date" class="form-control" placeholder="ngày giảm giá từ"
+                                       id="eisalefrom">
+                                 </div>
+                              </div>
+                              <div class="col-md-6">
+                                 <div class="form-group">
+                                    <label>Đến</label>
+                                    <input type="date" class="form-control" placeholder="đến" id="eisaleto">
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="row">
+                              <div class="col-md-12">
+                                 <div class="form-group">
+                                    <div style="border-radius: 5% !important; width: 100%; height: 350px;"
+                                       class="picture">
+                                       <img class="picture-src" id="wizardPicturePreview"
+                                          style="width: 100% !important; height: 100% !important;">
+                                       <input type="file" class="form-control" id="wizard-picture"
+                                          style="width: 100% !important; height: 89% !important;"
+                                          name="uploadfile"></input>
+                                    </div>
+                                 </div>
+                                 <input type="button" class="btn btn-primary" id="updateAnh" value="Lưu Ảnh"
+                                    style="float: right;"></input>
                               </div>
                            </div>
                         </div>
@@ -507,7 +480,8 @@
                </div>
             </div>
             <div class="modal-footer">
-               <input type="button" class="btn btn-primary" id="EditProduct" value="Edit" onclick="editProduct()"></input>
+               <input type="button" class="btn btn-primary" id="EditProduct" value="Lưu"
+                  onclick="editProduct()"></input>
             </div>
          </div>
       </div>
@@ -521,7 +495,7 @@
       <div class="modal-dialog modal-dialog-centered" role="document">
          <div class="modal-content">
             <div class="modal-header">
-               <h5 class="modal-title" id="edit_bookingLabel">Product</h5>
+               <h5 class="modal-title" id="edit_bookingLabel">Sản Phẩm</h5>
                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">×</span>
                </button>
@@ -531,19 +505,19 @@
                   <div class="col-xl-12">
                      <div class="card mb-4">
                         <div class="card-body">
-                           <h5>Bạn có muốn xóa sản phẩm này không?</h5>
+                           <h5 style="text-align: center;">Bạn có muốn xóa sản phẩm này không?</h5>
                            <div class="card-body">
-                              <div class="row">
+                              <div class="row ml-5">
                                  <div class="col-md-6">
                                     <div class="form-group">
-                                       <input type="button" class="btn btn-primary" id="deletePro" value="Yes"
+                                       <input type="button" class="btn btn-primary" id="deletePro" value="Đồng Ý"
                                           onclick="deletepro()"></input>
                                     </div>
                                  </div>
                                  <div class="col-md-6">
                                     <div class="form-group">
-                                       <input type="button" class="btn btn-primary" id="cancelDelete"
-                                          value="Cancel" data-dismiss="modal"></input>
+                                       <input type="button" class="btn btn-primary" id="cancelDelete" value="Hủy Bỏ"
+                                          data-dismiss="modal"></input>
                                     </div>
                                  </div>
                               </div>
@@ -574,15 +548,18 @@
    <script src="js/jquery.dataTables.min.js"></script>
    <script src="js/dataTables.bootstrap.min.js"></script>
    <script src="js/datatables-demo.js"></script>
+   <script src="js/headerSeller.js"></script>
    <!-- Dropzone-->
    <script src="js/dropzone.min.js"></script>
    <script src="http://www.ansonika.com/foogra/admin_section/vendor/bootstrap-datepicker.js"></script>
-   
+
    <script>
       $('input.date-pick').datepicker();
    </script>
    <!-- Summernote Editor -->
    <!-- <script src="vendor/summernote/summernote-bs4.min.js"></script> -->
+
+
    <script>
       // $('.editor').summernote({
       //    fontSizes: ['10', '14'],
@@ -597,6 +574,34 @@
       //    tabsize: 2,
       //    height: 200
       // });
+
+      var token = getCookie("token");
+      $("#btnLogout").click(function (res) {
+         setCookie("token", " ", 0);
+      })
+
+      function setCookie(cname, cvalue, exdays) {
+         const d = new Date();
+         d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+         let expires = "expires=" + d.toUTCString();
+         document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+      }
+
+      function getCookie(cname) {
+         let name = cname + "=";
+         let decodedCookie = decodeURIComponent(document.cookie);
+         let ca = decodedCookie.split(';');
+         for (let i = 0; i < ca.length; i++) {
+            let c = ca[i];
+            while (c.charAt(0) == ' ') {
+               c = c.substring(1);
+            }
+            if (c.indexOf(name) == 0) {
+               return c.substring(name.length, c.length);
+            }
+         }
+         return "";
+      }
 
       $(document).ready(function () {
          var text = localStorage.getItem('sellerId').replaceAll('"', '');
@@ -633,10 +638,10 @@
             'columnDefs': [{
                targets: -1,
                render: function (data, type, row, meta) {
-                  return '<input type="button" class="btn btn-info" data-toggle="modal" data-target="#inforProduct" idproduct="' + row.id + '" value="Info"/>' +
-                     '<input type="button" class="btn btn-primary" data-toggle="modal" data-target="#EditProduct"  onclick="editproduct(' + "'" + row.id + "'" + ')" value="Edit"/>' +
-                     '<input type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteProduct" onclick="deleteproduct(' + "'" + row.id + "'" + ')" value="Delete"/>';
-                     
+                  return '<input type="button" class="btn btn-info ml-2" data-toggle="modal" data-target="#inforProduct" idproduct="' + row.id + '"  value="Thông tin"/>' +
+                     '<input type="button" class="btn btn-primary ml-2" data-toggle="modal" data-target="#EditProduct"  onclick="editproduct(' + "'" + row.id + "'" + ')" value="Sửa sản phẩm"/>' +
+                     '<input type="button" class="btn btn-danger ml-2" data-toggle="modal" data-target="#deleteProduct" onclick="deleteproduct(' + "'" + row.id + "'" + ')" value="Xóa sản Phẩm"/>';
+
                }
             }]
          });
@@ -692,11 +697,11 @@
          });
       })
 
-      function deleteproduct(id){
+      function deleteproduct(id) {
          localStorage.setItem('deleteId', JSON.stringify(id));
       }
 
-      function editproduct(id){
+      function editproduct(id) {
          localStorage.setItem('deleteId', JSON.stringify(id));
       }
 
@@ -742,6 +747,46 @@
          })
       };
 
+      $(document).ready(function () {
+         // Prepare the preview for profile picture
+         $("#wizard-picture").change(function () {
+            readURL(this);
+         });
+      });
+
+      function readURL(input) {
+         if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+               $('#wizardPicturePreview').attr('src', e.target.result).fadeIn('slow');
+            }
+            reader.readAsDataURL(input.files[0]);
+         }
+      }
+
+      $('#updateAnh').click(function (e) {
+         var data = document.getElementById("wizard-picture").files;
+         var formdData = new FormData();
+         formdData.append("file", data[0])
+         var text = localStorage.getItem('sellerId').replaceAll('"', '');
+         formdData.append("id", text)
+         $.ajax({
+            url: '/api/user/avatar',
+            method: 'POST',
+            // dataType : 'json',
+            data: formdData,
+            processData: false,
+            contentType: false
+         }).then(function (data) {
+            console.log(data)
+            if (data.message == 'SUCCESS') {
+               alert("Save Change");
+            } else {
+               alert("Save fail");
+            }
+         })
+      });
 
    </script>
 </body>
