@@ -53,6 +53,8 @@ class MidBill {
         // else{
 
         // }
+        console.log(data.cart.listCart);
+        console.log(data);
         for (let i = 0; i < data.cart.listCart.length; i++) {
             totalPrice += data.cart.listCart[i].price * data.cart.listCart[i].count
         }
@@ -65,9 +67,12 @@ class MidBill {
             })
             totalPrice += voucher.discount_number
         }
+        else {
+            voucher = ''
+        }
         let status = data.cart.status;
         if (!data.cart.address) {
-            throw new Error("Chưa nhận địa chỉ ship");
+            throw new Error("Chưa nhập địa chỉ ship");
         }
         let address = data.cart.address;
         let billCreate = {
@@ -75,16 +80,25 @@ class MidBill {
             status: status,
             address: address,
         }
-
         let bill = await Bill.create(billCreate);
+        for (let i = 0; i < data.cart.listCart.length; i++) {
+            totalPrice += data.cart.listCart[i].price * data.cart.listCart[i].count
+            let billProduct = {
+                quantity: data.cart.listCart[i].count,
+                unit_price: data.cart.listCart[i].price,
+                total_price: data.cart.listCart[i].count * data.cart.listCart[i].price,
+                product_id: data.cart.listCart[i].id,
+                bill_id: bill.data.id,
 
+            }
+            await BillProduct.create(billProduct)
+        }
         let userBill = {
             bill_id: bill.data.id,
-            user_id: data.cart.userId
+            user_id: data.cart.userID,
+            shop_id: data.cart.shopID,
         }
         await UserBill.create(userBill);
-
-       
     }
     async deleteBill(data) {
         let objDelete = await Bill.findOne({

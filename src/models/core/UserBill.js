@@ -40,6 +40,12 @@ const attributes = {
         allowNull: true,
         defaultValue: null
     },
+    
+    shop_id: {
+        type: DataTypes.UUID,
+        allowNull: true,
+        defaultValue: null
+    },
     del: {
         type: DataTypes.TINYINT(1),
         allowNull: true,
