@@ -498,11 +498,6 @@
                                  Tải ảnh mới
                               </div>
                               <div class="card-body">
-                                 <!-- /row-->
-                                 <!-- /row-->
-                                 <!-- /row-->
-                                 <!-- /row-->
-                                 <!-- /row-->
                                  <div class="row">
                                     <div class="col-md-12">
                                        <div class="form-group">
@@ -648,7 +643,6 @@
 
       $(document).ready(function () {
          var text = localStorage.getItem('sellerId').replaceAll('"', '');
-         
          $('#dataProduct').DataTable({
             'ajax': function (data, callback, settings) {
                $.ajax({
@@ -683,7 +677,7 @@
                targets: -1,
                render: function (data, type, row, meta) {
                   return '<input type="button" class="btn btn-info ml-2" data-toggle="modal" data-target="#inforProduct" idproduct="' + row.id + '"  value="Thông tin"/>' +
-                     '<input type="button" class="btn btn-primary ml-2" data-toggle="modal" data-target="#EditProduct"  onclick="editproduct(' + "'" + row.id + "'" + ')" value="Sửa sản phẩm"/>' +
+                     '<input type="button" class="btn btn-primary ml-2" data-toggle="modal" data-target="#EditProduct"  idInforEdit="'+row.id+'" onclick="editproduct(' + "'" + row.id + "'" + ')" value="Sửa sản phẩm"/>' +
                      '<input type="button" class="btn btn-danger ml-2" data-toggle="modal" data-target="#deleteProduct" onclick="deleteproduct(' + "'" + row.id + "'" + ')" value="Xóa sản Phẩm"/>';
                }
             }]
@@ -786,35 +780,14 @@
          });
       })
 
-      function deleteproduct(id) {
-         localStorage.setItem('deleteId', JSON.stringify(id));
-      }
-
-      function editproduct(id) {
-         localStorage.setItem('deleteId', JSON.stringify(id));
-      }
-
-      function deletepro() {
-         var text = localStorage.getItem('deleteId').replaceAll('"', '');
-         console.log(text)
-         $.ajax({
-            url: '/api/product/delete',
-            method: 'GET',
-            data: {
-               id: text,
-            },
-         }).then(function () {
-            window.location.reload();
-         })
-      };
-
-      function loadInfoEit(id) {
+      $('#dataProduct tbody').on('click', '.btn-primary', function(){
+         let idEditinfo = $(this).attr('idInforEdit');
          $.ajax({
             url: "/api/product/getById",
             type: "GET",
             dataType: "json",
             data: {
-               id: id,
+               id: idEditinfo,
             },
             success: function (data) {
                var list = data.data.product;
@@ -826,6 +799,7 @@
                document.getElementById('eitimefrom').value = list.time_from;
                document.getElementById('eitimeto').value = list.time_to;
                document.getElementById('eiSale').value = list.sale;
+               
                var d1 = new Date(list.sale_from);
                var n1;
                if (d1.getUTCDate() < 10) {
@@ -858,9 +832,32 @@
                var y2 = d2.getUTCFullYear();
                var dob2 = y2 + '-' + m2 + '-' + n2;
                document.getElementById('eisaleto').value = dob2;
+               document.getElementById('wizardPicturePreview').src = list.image;
             }
          });
+      })
+
+      function deleteproduct(id) {
+         localStorage.setItem('deleteId', JSON.stringify(id));
       }
+
+      function editproduct(id) {
+         localStorage.setItem('deleteId', JSON.stringify(id));
+      }
+
+      function deletepro() {
+         var text = localStorage.getItem('deleteId').replaceAll('"', '');
+         console.log(text)
+         $.ajax({
+            url: '/api/product/delete',
+            method: 'GET',
+            data: {
+               id: text,
+            },
+         }).then(function () {
+            window.location.reload();
+         })
+      };
 
       function editProduct() {
          var text = localStorage.getItem('deleteId').replaceAll('"', '');
