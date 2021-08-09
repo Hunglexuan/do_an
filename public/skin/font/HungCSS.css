@@ -21,15 +21,16 @@
 
 .show-cart li {
     display: flex;
-  }
+}
 
-  /* .table td, .table th{
+
+/* .table td, .table th{
       padding: -0.25rem;
   } */
 
-  .p-4{
-      padding: 1rem !important;
-  }
+.p-4 {
+    padding: 1rem !important;
+}
 
 .picture:hover {
     border-color: #2ca8ff;

@@ -35,6 +35,7 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
+
 </head>
 
 <body>
@@ -46,7 +47,7 @@
          </button>
                 <div class="modal fade" id="productDetail" role="dialog">
                     <div class="modal-dialog" role="document">
-                        <div class="modal-content" style="padding-bottom: 15px;">
+                        <div class="modal-content" style="padding-bottom: 15px; margin-left: 170px; width: 70% !important;">
                             <div>
                                 <div class="container">
                                     <div class="detail-image">
@@ -64,7 +65,7 @@
                                         <div class="address-restaurant">Cầu Giấy, Hà Nội</div>
                                         <div class="status-restaurant">
                                             <div class="time-status">
-                                                <span class="stt-online" title="mở cửa">mở cửa</span>
+                                                <span class="stt-online" title="mở cửa"> <i class="fa fa-circle" aria-hidden="true"></i> mở cửa</span>
                                             </div>
                                             <div class="time" id="timeOpen">
                                                 <i class="fa fa-clock-o"></i>
@@ -81,24 +82,24 @@
                         </div>
 
 
-                        <div class="modal-content bg-white rounded shadow-sm p-4 mt-3 restaurant-detailed-ratings-and-reviews">
-                            <h5 class="mb-1">All Comment</h5>
+                        <div class="modal-content bg-white rounded shadow-sm p-4 mt-3 restaurant-detailed-ratings-and-reviews" style="padding-bottom: 15px; margin-left: 170px; width: 70% !important;">
+                            <h5 class="mb-1">Tất cả bình luận</h5>
                             <div id="listComment">
                                 <div id="replyFeedback">
                                 </div>
                             </div>
                         </div>
-                        <a class="text-center w-100 d-block mt-4 font-weight-bold" href="#">See All Reviews</a>
+                        <!-- <a class="text-center w-100 d-block font-weight-bold" href="#">See All Reviews</a> -->
 
-                        <div class="modal-content bg-white rounded shadow-sm p-4 mb-5 rating-review-select-page">
-                            <h5 class="mb-4">Leave Comment</h5>
+                        <div class="modal-content bg-white rounded shadow-sm p-4 mb-5 mt-3 rating-review-select-page" style="padding-bottom: 15px; margin-left: 170px; width: 70% !important;">
+                            <h5 class="mb-4">Để lại bình luận</h5>
                             <form>
                                 <div class="form-group">
-                                    <label>Your Comment</label>
-                                    <textarea class="form-control"></textarea>
+                                    <label>Bình luận của bạn</label>
+                                    <textarea class="form-control" id="textComment"></textarea>
                                 </div>
                                 <div class="form-group">
-                                    <button class="btn btn-primary btn-sm" type="button"> Submit Comment </button>
+                                    <button class="btn btn-primary btn-sm" type="button" id="submitComment"> Gửi bình luận</button>
                                 </div>
                             </form>
                         </div>
@@ -134,9 +135,11 @@
                                             </span>
                         </li>
                         <li class="nav-item active">
-                            <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+                            <a class="nav-link" href="/">Trang Chủ <span class="sr-only">(current)</span></a>
                         </li>
-
+                        <li class="nav-item">
+                            <a class="nav-link" href="Offers"><i class="icofont-sale-discount"></i> Ưu Đãi <span class="badge badge-danger">Mới</span></a>
+                        </li>
                         <li id="checkLogin"></li>
                         <!-- <li class="nav-link" style="padding-top: 20px !important;">
                         <button class="btn btn-primary"> Login </button>
@@ -154,7 +157,7 @@
                     </li> -->
                         <li class="nav-item dropdown dropdown-cart">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="icofont-basket"></i> Cart
+                                <i class="icofont-basket"></i> Giỏ Hàng
                                 <span class="total-count badge badge-success"></span>
                             </a>
                             <div class="dropdown-menu dropdown-cart-top p-0 dropdown-menu-right shadow-sm border-0">
@@ -186,7 +189,7 @@
                 <div class="col-md-12" style="flex-direction: row; display: flex;">
                     <div id="findCate" style="width: 70% !important;"></div>
                     <form class="filters-search mb-3" style="width: 30% !important;">
-                        <div class="form-group"> <i class="icofont-search"></i> <input type="text" class="form-control" placeholder="Start typing to search..." id="categorySearch"> </div>
+                        <div class="form-group"> <i class="icofont-search"></i> <input type="text" class="form-control" placeholder="Bắt đầu nhập để tìm kiếm ..." id="categorySearch"> </div>
                     </form>
                 </div>
             </div>
@@ -198,7 +201,7 @@
                                 <div class="filters-card border-bottom p-4">
                                     <div class="filters-card-header" id="headingOne">
                                         <h6 class="mb-0">
-                                            <a href="#" class="btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" style="color: #ff3008 !important;"> Category <i class="icofont-arrow-down float-right"></i>  </a>
+                                            <a href="#" class="btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" style="color: #ff3008 !important;"> Thể Loại <i class="icofont-arrow-down float-right"></i>  </a>
                                         </h6>
                                     </div>
                                     <div id="collapseOne" class="collapse show">
@@ -206,7 +209,7 @@
                                             <form class="filters-search mb-3">
                                                 <div class="form-group">
                                                     <i class="icofont-search"></i>
-                                                    <input type="text" class="form-control" placeholder="Start typing to search...">
+                                                    <input type="text" class="form-control" placeholder="Bắt đầu nhập để tìm kiếm ...">
                                                 </div>
                                             </form>
                                             <!-- <div class="custom-control">
@@ -225,7 +228,29 @@
                     <div id="notFindProduct"></div>
                     <div class="row" id="findProduct">
                     </div>
+                    <div class="col-md-12 text-center load-more">
+                        <nav aria-label="Page navigation example">
+                            <ul class="pagination" style="justify-content: center;">
+                                <li class="page-item">
+                                    <a class="page-link" href="#" aria-label="Previous">
+                                        <span aria-hidden="true">&laquo;</span>
+                                        <span class="sr-only">Previous</span>
+                                    </a>
+                                </li>
+                                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                <li class="page-item">
+                                    <a class="page-link" href="#" aria-label="Next">
+                                        <span aria-hidden="true">&raquo;</span>
+                                        <span class="sr-only">Next</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
                 </div>
+
             </div>
         </div>
         </div>
@@ -235,7 +260,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-12">
-                    <h5 class="m-0">Operate food store or restaurants? <a href="login.html">Work With Us</a></h5>
+                    <h5 class="m-0">Điều hành các cửa hàng hoặc nhà hàng? <a href="login.html">Làm việc với chúng tôi</a></h5>
                 </div>
             </div>
         </div>
@@ -351,18 +376,21 @@
                 success: function(data) {
                     var listdata = data.data.listProduct;
                     var totalProduct = data.data.total;
+                    console.log(totalProduct);
 
                     document.getElementById('categorySearch').value = text;
 
                     if (totalProduct != 0) {
                         if (text) {
                             document.getElementById('findCate').innerHTML =
-                                '<h4 class="font-weight-bold mt-0 mb-3"> Find for ' + '"' + text + '"' + '<small class="h6 mb-0 ml-2"> About ' + totalProduct + ' product </small> </h4> ';
+                                '<h4 class="font-weight-bold mt-0 mb-3"> Tìm cho ' + '"' + text + '"' + '<small class="h6 mb-0 ml-2"> có ' + totalProduct + ' sản phẩm </small> </h4> ';
                         } else {
                             document.getElementById('findCate').innerHTML =
-                                '<h4 class="font-weight-bold mt-0 mb-3"> Find all <small class="h6 mb-0 ml-2"> About ' + totalProduct + ' product </small> </h4>';
+                                '<h4 class="font-weight-bold mt-0 mb-3"> Tìm được tất cả<small class="h6 mb-0 ml-2">có ' + totalProduct + ' sản phẩm </small> </h4>';
                         }
 
+                    } else {
+                        document.getElementById('findCate').innerHTML = '<h4 class="font-weight-bold mt-0 mb-3"> Không tìm thấy ' + '"' + text + '"' + ' </h4> ';
                     }
 
 
@@ -370,20 +398,31 @@
                         document.getElementById('notFindProduct').innerHTML = '';
                         document.getElementById('findProduct').innerHTML = '';
                         for (var i = 0; i < listdata.length; i++) {
-                            document.getElementById('findProduct').innerHTML +=
-                                '<div class="col-md-4 col-sm-6 mb-4 pb-2"> <div class="list-card bg-white overflow-hidden h-100 position-relative item-content" style="border: 1px solid #d7d7d7; border-radius: 6px;" data-toggle="modal" data-target="#productDetail" onclick="productDetail(' + "'" + listdata[i].id + "'" + ')"> <div class="list-card-image"> <div class="favourite-heart text-danger position-absolute"><a href="#"><i class="icofont-heart"></i></a></div> <a href="#"> <img src="image/list/1.png" class="img-fluid item-img"> </a> </div> <div class="p-3 position-relative"> <div class="list-card-body"> <h6 class="mb-1"><a href="#" class="text-black">' + listdata[i].name + '</a></h6> <p class="text-gray mb-3">' + listdata[i].description + '</p> <p class="text-gray mb-3 time"> <span class="float-right text-black-50"> Quantity: ' + listdata[i].quantity + '</span></p> </div> <div class="list-card-badge"> <small>Price:' + listdata[i].unit_price + '</small> </div> </div> </div> </div>';
+                            let image = (listdata[i].image ? listdata[i].image : 'image/list/1.png');
+                            if (listdata[i].sale != null) {
+                                let price_sale = (listdata[i].sale / listdata[i].unit_price) * 100;
+                                listdata[i].unit_price = listdata[i].unit_price - listdata[i].sale;
+                                document.getElementById('findProduct').innerHTML +=
+                                    '<div class="col-md-4 col-sm-6 mb-4 pb-2"> <div class="list-card bg-white overflow-hidden h-100 position-relative item-content" style="border: 1px solid #d7d7d7; border-radius: 6px;" data-toggle="modal" data-target="#productDetail" onclick="productDetail(' + "'" + listdata[i].id + "'" + ')"> <div class="list-card-image"> <div class="favourite-heart text-danger position-absolute"><a href="#"><i class="icofont-heart"></i></a></div> <a href="#"> <img src="' + image + '" class="img-fluid item-img"> </a> </div> <div class="p-3 position-relative"> <div class="list-card-body"> <h6 class="mb-1"><a href="#" class="text-black">' + listdata[i].name + '</a></h6> <p class="text-gray mb-3">' + listdata[i].description + '</p> <p class="text-gray mb-3 time"><span class="float-right text-black-50 ml-4"> Giảm giá: ' + price_sale + '%</span> <span class="float-right text-black-50"> Số lượng: ' + listdata[i].quantity + '</span> </p> </div> <div class="list-card-badge"> <small>Giá: ' + listdata[i].unit_price + '</small> <span class="badge badge-success">Mới</span> <span class="float-right"> <span class="count-number" style="margin-top: 0px !important;"> <button value="ADD" data-name="${product.name}" data-price="${product.unit_price}" data-id="${product.id}"  class="add-to-cart btn btn-outline-secondary btn-sm" onclick="addToCartFunc.call(this)" > Thêm Giỏ Hàng </button> </span> </span> </div> </div> </div> </div>';
+                            } else {
+                                document.getElementById('findProduct').innerHTML +=
+                                    '<div class="col-md-4 col-sm-6 mb-4 pb-2"> <div class="list-card bg-white overflow-hidden h-100 position-relative item-content" style="border: 1px solid #d7d7d7; border-radius: 6px;" data-toggle="modal" data-target="#productDetail" onclick="productDetail(' + "'" + listdata[i].id + "'" + ')"> <div class="list-card-image"> <div class="favourite-heart text-danger position-absolute"><a href="#"><i class="icofont-heart"></i></a></div> <a href="#"> <img src="image/list/1.png" class="img-fluid item-img"> </a> </div> <div class="p-3 position-relative"> <div class="list-card-body"> <h6 class="mb-1"><a href="#" class="text-black">' + listdata[i].name + '</a></h6> <p class="text-gray mb-3">' + listdata[i].description + '</p> <p class="text-gray mb-3 time"> <span class="float-right text-black-50"> Số lượng: ' + listdata[i].quantity + '</span> </p> </div> <div class="list-card-badge"> <small>Giá: ' + listdata[i].unit_price + '</small> <span class="badge badge-success">Mới</span> <span class="float-right"> <span class="count-number" style="margin-top: 0px !important;"> <button value="ADD" data-name="${product.name}" data-price="${product.unit_price}" data-id="${product.id}"  class="add-to-cart btn btn-outline-secondary btn-sm" onclick="addToCartFunc.call(this)" > Thêm Giỏ Hàng </button> </span> </span> </div> </div> </div> </div>';
+                            }
                         }
                     } else {
                         document.getElementById('findProduct').innerHTML = '';
                         document.getElementById('notFindProduct').innerHTML =
-                            '<section class="section pt-3 pb-5 osahan-not-found-page"> <div class="container"> <div class="row"> <div class="col-md-12 text-center pb-5"> <img class="img-fluid" src="image/notFind.png" alt="find"> <h1 class="mt-2 mb-2">Food not found</h1> <p>Uh-oh! Looks like the page you are trying to access<br>exist. Please start afresh.</p> </div> </div> </div> </section>';
+                            '<section class="section pt-3 pb-5 osahan-not-found-page"> <div class="container"> <div class="row"> <div class="col-md-12 text-center pb-5"> <img class="img-fluid" src="image/notFind.png" alt="find"> <h1 class="mt-2 mb-2">Không tìm thấy thức ăn</h1> <p>Ồ! Có vẻ như sản phẩm bạn đang cố gắng tìm kiếm không tồn tại. Vui lòng bắt đầu lại.</p> </div> </div> </div> </section>';
                     }
                 }
             });
         }
 
-        function productDetail(id) {
+        let product_id;
 
+        function productDetail(id) {
+            product_id = id;
+            console.log(product_id);
             $.ajax({
                 type: "GET",
                 dataType: "json",
@@ -398,18 +437,22 @@
                     document.getElementById('timeOpen').innerHTML = listdata.time_from + '.00' + ' - ' + listdata.time_to + '.00';
                     document.getElementById('priceProduct').innerHTML = listdata.unit_price + ' VND';
                     document.getElementById('descriptionProduct').innerHTML = listdata.description;
+                    showComment();
 
                 }
             });
+        }
 
+        function showComment() {
             $.ajax({
                 type: "GET",
                 data: {
-                    id: id
+                    id: product_id
                 },
                 url: "/api/comment/searchcomment",
                 success: function(data) {
-                    var list = data.data.listComment;
+
+                    let list = data.data.listComment;
 
                     for (var i = 0; i < list.length; i++) {
 
@@ -419,81 +462,100 @@
                         let user_id = list[i].user_id;
 
                         let d = new Date(list[i].createdAt);
-                        var n;
+                        let n;
                         if (d.getUTCDate() < 10) {
                             n = '0' + d.getUTCDate();
                         } else {
                             n = d.getUTCDate();
                         }
-                        var m;
+                        let m;
                         m = d.getUTCMonth().toLocaleString('en-us', {
                             month: 'short'
                         });
-                        var y = d.getUTCFullYear();
-                        var dob = n + ', ' + m + ' ' + y;
-
-
-                        $.ajax({
-                            type: "GET",
-                            dataType: "json",
-                            data: {
-                                id: user_id
-                            },
-                            url: "/api/user/getbyId",
-                            success: function(data) {
-
-                                if (cmt_id == '') {
-                                    document.getElementById('listComment').innerHTML += '<div class="reviews-members pt-2"><div class="media"> <a href="#"><img alt="Generic placeholder image" src="image/user/1.png" class="mr-3 rounded-pill" style="width: 40px; height: 40px;"></a> <div class="media-body"> <div class="reviews-members-header" style="display: flex; justify-content: space-between;"> <h6 class="mb-1"><a class="text-black" href="#">' + data.data.name + '</a></h6> <p class="text-gray" style="margin-bottom: 5px;">' + dob + '</p> </div> <div class="reviews-members-body"> <p>' + content + '</p> </div> </div> </div> </div> <div class="ml-5"> <button class="btn-danger reply" value="' + id + '" style="border-radius: 6px"> Reply </button> <button class=" btn-danger" value="' + id + '" style="border-radius: 6px;"> View Reply </button> <div class="reply-section"></div> </div> </div>';
-                                    console.log(id);
-                                    for (var j = 0; j < list.length; j++) {
-                                        if (list[j].cmt_id == id) {
-
-
-                                            let id_reply = list[j].id;
-                                            let content_reply = list[j].content;
-                                            let user_id_reply = list[j].user_id;
-
-                                            let d = new Date(list[j].createdAt);
-                                            var n;
-                                            if (d.getUTCDate() < 10) {
-                                                n = '0' + d.getUTCDate();
-                                            } else {
-                                                n = d.getUTCDate();
-                                            }
-                                            var m;
-                                            m = d.getUTCMonth().toLocaleString('en-us', {
-                                                month: 'short'
-                                            });
-                                            var y = d.getUTCFullYear();
-                                            var dob_reply = n + ', ' + m + ' ' + y;
-
-                                            document.getElementById('listComment').innerHTML += '<div class="reviews-members pt-2 ml-5"><div class="media"> <a href="#"><img alt="Generic placeholder image" src="image/user/1.png" class="mr-1 rounded-pill" style="width: 30px; height: 30px;"></a> <div class="media-body"> <div class="reviews-members-header" style="display: flex; justify-content: space-between;"> <h6 class="mb-1"><a class="text-black" href="#">heloo</a></h6> <p class="text-gray" style="margin-bottom: 5px;">' + dob_reply + '</p> </div> <div class="reviews-members-body"> <p>' + content_reply + '</p> </div> </div> </div> </div> <div class="ml-5"> <button class="btn-danger" style="border-radius: 6px"> Reply </button> <button class=" btn-danger" style="border-radius: 6px;"> View Reply </button> </div> </div>';
-
-                                            // $.ajax({
-                                            //     type: "GET",
-                                            //     dataType: "json",
-                                            //     data: {
-                                            //         id: user_id_reply
-                                            //     },
-                                            //     url: "/api/user/getbyId",
-                                            //     success: function(data) {
-
-                                            //         document.getElementById('listComment').innerHTML += '<div class="reviews-members pt-2 ml-5"><div class="media"> <a href="#"><img alt="Generic placeholder image" src="image/user/1.png" class="mr-1 rounded-pill" style="width: 30px; height: 30px;"></a> <div class="media-body"> <div class="reviews-members-header" style="display: flex; justify-content: space-between;"> <h6 class="mb-1"><a class="text-black" href="#">' + data.data.name + '</a></h6> <p class="text-gray" style="margin-bottom: 5px;">' + dob_reply + '</p> </div> <div class="reviews-members-body"> <p>' + content_reply + '</p> </div> </div> </div> </div> <div class="ml-5"> <button class="btn-danger" style="border-radius: 6px"> Reply </button> <button class=" btn-danger" style="border-radius: 6px;" onclick="viewReply()"> View Reply </button> </div> </div>';
-                                            //     }
-                                            // })
-                                        }
-
-                                    }
-
-                                }
-                            }
-
-                        })
-
+                        let y = d.getUTCFullYear();
+                        let dob = n + ', ' + m + ' ' + y;
+                        document.getElementById('listComment').innerHTML = ''
+                        inforUserComment(user_id, list, id, cmt_id, content, dob);
                     }
                 }
             })
         }
+
+        function inforUserComment(user_id, list, id, cmt_id, content, dob) {
+            $.ajax({
+                type: "GET",
+                dataType: "json",
+                data: {
+                    id: user_id
+                },
+                url: "/api/user/getbyId",
+                success: function(data) {
+                    if (cmt_id == '') {
+
+                        document.getElementById('listComment').innerHTML += '<div class="reviews-members pt-2"><div class="media"> <a href="#"><img alt="Generic placeholder image" src="' + data.data.avatar + '" class="mr-3 rounded-pill" style="width: 40px; height: 40px;"></a> <div class="media-body" style="border: 1px solid #f0f2f5; border-radius: 10px; background-color: #f0f2f5; padding: 10px"> <div class="reviews-members-header" style="display: flex; justify-content: space-between;"> <h6 class="mb-1"><a class="text-black" href="#">' + data.data.name + '</a></h6> <p class="text-gray" style="margin-bottom: 5px;">' + dob + '</p> </div> <div class="reviews-members-body"> <p>' + content + '</p> </div> </div> </div> </div> <div style="margin-left: 67px"> <label class="reply" value="' + id + '" style="border-radius: 6px"> Phản hồi </label> . <label value="' + id + '" style="border-radius: 6px;"> Hiển thị phản hồi </label> <div class="reply-section"></div> </div> </div>';
+                        for (var j = 0; j < list.length; j++) {
+                            if (list[j].cmt_id == id) {
+
+
+                                let id_reply = list[j].id;
+                                let content_reply = list[j].content;
+                                let user_id_reply = list[j].user_id;
+
+                                let d = new Date(list[j].createdAt);
+                                var n;
+                                if (d.getUTCDate() < 10) {
+                                    n = '0' + d.getUTCDate();
+                                } else {
+                                    n = d.getUTCDate();
+                                }
+                                var m;
+                                m = d.getUTCMonth().toLocaleString('en-us', {
+                                    month: 'short'
+                                });
+                                var y = d.getUTCFullYear();
+                                var dob_reply = n + ', ' + m + ' ' + y;
+
+                                // showInforReply(user_id_reply, content_reply, dob_reply);
+
+                                document.getElementById('listComment').innerHTML += '<div class="reviews-members pt-2 ml-5"><div class="media"> <a href="#"><img alt="Generic placeholder image" src="image/user/1.png" class="mr-1 rounded-pill" style="width: 30px; height: 30px;"></a> <div class="media-body" style="border: 1px solid #f0f2f5; border-radius: 10px; background-color: #f0f2f5; padding: 10px"> <div class="reviews-members-header" style="display: flex; justify-content: space-between;"> <h6 class="mb-1"><a class="text-black" href="#">heloo</a></h6> <p class="text-gray" style="margin-bottom: 5px;">' + dob_reply + '</p> </div> <div class="reviews-members-body"> <p>' + content_reply + '</p> </div> </div> </div> </div> <div style="margin-left: 93px"> <label class="reply" value="' + id + '" style="border-radius: 6px"> Phản hồi </label> . <label value="' + id + '" style="border-radius: 6px;"> Hiển thị phản hồi </label> <div class="reply-section"></div> </div> </div>';
+
+                                // $.ajax({
+                                //     type: "GET",
+                                //     dataType: "json",
+                                //     data: {
+                                //         id: user_id_reply
+                                //     },
+                                //     url: "/api/user/getbyId",
+                                //     success: function(data) {
+
+                                //         document.getElementById('listComment').innerHTML += '<div class="reviews-members pt-2 ml-5"><div class="media"> <a href="#"><img alt="Generic placeholder image" src="image/user/1.png" class="mr-1 rounded-pill" style="width: 30px; height: 30px;"></a> <div class="media-body"> <div class="reviews-members-header" style="display: flex; justify-content: space-between;"> <h6 class="mb-1"><a class="text-black" href="#">' + data.data.name + '</a></h6> <p class="text-gray" style="margin-bottom: 5px;">' + dob_reply + '</p> </div> <div class="reviews-members-body"> <p>' + content_reply + '</p> </div> </div> </div> </div> <div class="ml-5"> <button class="btn-danger" style="border-radius: 6px"> Reply </button> <button class=" btn-danger" style="border-radius: 6px;" onclick="viewReply()"> View Reply </button> </div> </div>';
+                                //     }
+                                // })
+                            }
+
+                        }
+
+                    }
+                }
+
+            })
+        }
+
+        // function showInforReply(user_id_reply, content_reply, dob_reply) {
+        //     $.ajax({
+        //         type: "GET",
+        //         dataType: "json",
+        //         data: {
+        //             id: user_id_reply
+        //         },
+        //         url: "/api/user/getbyId",
+        //         success: function(data) {
+
+        //             document.getElementById('listComment').innerHTML += '<div class="reviews-members pt-2 ml-5"><div class="media"> <a href="#"><img alt="Generic placeholder image" src="image/user/1.png" class="mr-1 rounded-pill" style="width: 30px; height: 30px;"></a> <div class="media-body"> <div class="reviews-members-header" style="display: flex; justify-content: space-between;"> <h6 class="mb-1"><a class="text-black" href="#">' + data.data.name + '</a></h6> <p class="text-gray" style="margin-bottom: 5px;">' + dob_reply + '</p> </div> <div class="reviews-members-body"> <p>' + content_reply + '</p> </div> </div> </div> </div> <div class="ml-5"> <button class="btn-danger" style="border-radius: 6px"> Reply </button> <button class=" btn-danger" style="border-radius: 6px;" onclick="viewReply()"> View Reply </button> </div> </div>';
+        //         }
+        //     })
+        // }
+
 
         $(document).on('click', '.reply', function() {
             var thisClicked = $(this);
@@ -506,6 +568,29 @@
             );
 
             // document.getElementsByClassName('reply-section').innerHTML += 'hello'
+        })
+
+        $('#submitComment').click(function() {
+
+            var userId = localStorage.getItem('userId').replaceAll('"', '');
+
+            $.ajax({
+                url: '/api/comment/create',
+                method: 'POST',
+                data: {
+                    user_id: userId,
+                    product_id: product_id,
+                    content: $('#textComment').val(),
+                    cmt_id: '',
+                },
+            }).then(function(data) {
+                if (data.message == 'SUCCESS') {
+                    showComment();
+                } else {
+                    alert("Update fail");
+                }
+                document.getElementById("textComment").value = "";
+            })
         })
     </script>
 </body>

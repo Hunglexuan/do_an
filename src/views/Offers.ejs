@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Askbootstrap">
+    <meta name="author" content="Askbootstrap">
+    <title>FUMK - Online Food Ordering</title>
+    <!-- Favicon Icon -->
+    <link rel="icon" type="image/png" href="image/favicon.png">
+    <!-- Bootstrap core CSS-->
+    <link href="skin/bootstrap/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome-->
+    <link href="skin/font/all.min.css" rel="stylesheet">
+    <!-- Font Awesome-->
+    <link href="skin/font/icofont.min.css" rel="stylesheet">
+    <!-- Select2 CSS-->
+    <link href="skin/font/select2.min.css" rel="stylesheet">
+    <!-- Custom styles for this template-->
+    <link href="skin/font/osahan.css" rel="stylesheet">
+    <!-- Dropzone-->
+    <link href="skin/font/dropzone.css" rel="stylesheet">
+    <!-- HungCSS -->
+    <link href="skin/font/HungCSS.css" rel="stylesheet">
+    <!-- Owl Carousel -->
+    <link rel="stylesheet" href="skin/owl/owl.carousel.css">
+    <link rel="stylesheet" href="skin/owl/owl.theme.css">
+
+    <link href="skin/font/DoanCSS.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light osahan-nav shadow-sm ">
+        <div class="container">
+            <a class="navbar-brand" href="/"><img alt="logo" style="max-width: 120px;" src="image/logoShop.png"></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+         </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav ml-auto">
+                    <div class="modal fade modal-search show modalsearch" id="modal-search" tabindex="-1" role="dialog">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <span class="close" data-dismiss="modal">
+                                        <div class="close-icon">X</div>
+                                    </span>
+                                <div class="modal-search-form" id="search_form">
+                                    <span class="sub-title">Tìm kiếm các quán ăn.......</span>
+                                    <form>
+                                        <input type="text" class="search-input" id="search-input">
+                                    </form>
+                                </div>
+                                <div id="suggest"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <li class="nav-item active">
+                        <span class="sizeIcon" data-toggle="modal" data-target="#modal-search">
+                            <i class="icofont-search-property nav-link" style="padding-top: 20px !important;"></i>
+                        </span>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/">Trang Chủ <span class="sr-only"></span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Offers"><i class="icofont-sale-discount"></i> Ưu Đãi <span class="badge badge-danger">Mới</span></a>
+                    </li>
+                    <li id="checkLogin"></li>
+
+                    <li class="nav-item dropdown dropdown-cart">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="icofont-basket"></i> Giỏ Hàng
+                            <span class="total-count badge badge-success"></span>
+                        </a>
+                        <div class="dropdown-menu dropdown-cart-top p-0 dropdown-menu-right shadow-sm border-0">
+
+                            <div class="dropdown-cart-top-body border-top p-4">
+                                <table class="table" id="show-cart">
+
+                                </table>
+                            </div>
+                            <div class="dropdown-cart-top-footer border-top p-4">
+                                <p class="mb-0 font-weight-bold text-secondary">Sub Total <span class=" total-cart float-right text-dark"></span></p>
+                                <small class="text-info">Extra charges may apply</small>
+                            </div>
+                            <div class="dropdown-cart-top-footer border-top p-2">
+                                <a class="btn btn-success btn-block btn-lg" href="/CheckOut"> Checkout</a>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+    </nav>
+    <section class="breadcrumb-osahan pt-5 pb-5 bg-dark position-relative text-center" style="margin-top: 75px;">
+        <h1 class="text-white">Ưu đãi dành cho bạn</h1>
+        <h6 class="text-white-50">Khám phá các giao dịch và ưu đãi hàng đầu dành riêng cho bạn!</h6>
+    </section>
+    <section class="section pt-5 pb-5">
+        <div class="container">
+            <div class="row" id="list_voucher">
+                <div class="col-md-12">
+                    <h4 class="font-weight-bold mt-0 mb-3">Phiếu giảm giá có sẵn</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="section pt-5 pb-5 text-center bg-white">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <h5 class="m-0">Điều hành cửa hàng hoặc nhà hàng? <a href="login.html">Làm việc với chúng tôi</a></h5>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer>
+        <div class="containers">
+            <!--Bắt Đầu Nội Dung Giới Thiệu-->
+            <div class="noi-dung about">
+                <h2>Về Chúng Tôi</h2>
+                <p> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Praesentium dolores alias ipsa vel hic tempore exercitationem ipsam explicabo repudiandae ut consectetur qui, earum at nostrum perspiciatis asperiores necessitatibus facilis esse.
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia id possimus quibusdam nihil earum in provident enim animi commodi quisquam! Molestiae cupiditate mollitia pariatur error ea, debitis eaque quo dolorum.</p>
+            </div>
+            <!--Kết Thúc Nội Dung Giới Thiệu-->
+            <!--Bắt Đầu Nội Dung Đường Dẫn-->
+            <div class="noi-dung links">
+                <h2>Đường Dẫn</h2>
+                <ul style="padding-left: 0px;">
+                    <li><a href="#">Trang Chủ</a></li>
+                    <li><a href="#">Về Chúng Tôi</a></li>
+                    <li><a href="#">Thông Tin Liên Lạc</a></li>
+                    <li><a href="#">Dịch Vụ</a></li>
+                    <li><a href="#">Điều Kiện Chính Sách</a></li>
+                </ul>
+            </div>
+            <!--Kết Thúc Nội Dung Đường Dẫn-->
+            <!--Bắt Đâu Nội Dung Liên Hệ-->
+            <div class="noi-dung contact">
+                <h2>Thông Tin Liên Hệ</h2>
+                <ul class="info" style="padding-left: 0px;">
+                    <li>
+                        <span><i class="fa fa-map-marker"></i></span>
+                        <span>Đường Số 1<br />
+                         Đường 1, Thủ Đô Hà Nội<br />
+                         Việt Nam</span>
+                    </li>
+                    <li>
+                        <span><i class="fa fa-phone"></i></span>
+                        <p><a href="#">+84 123 456 789</a>
+                            <br />
+                            <a href="#">+84 987 654 321</a></p>
+                    </li>
+                    <li>
+                        <span><i class="fa fa-envelope"></i></span>
+                        <p><a href="#">FUMK@gmail.com</a>
+                            <br/>
+                            <a href="#">FUMK@fpt.edu.vn</a>
+                        </p>
+                    </li>
+                </ul>
+            </div>
+            <!--Kết Thúc Nội Dung Liên Hệ-->
+        </div>
+    </footer>
+
+
+    <!-- jQuery -->
+    <script src="js/jquery-3.3.1.slim.min.js"></script>
+    <!-- Bootstrap core JavaScript-->
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <!-- Select2 JavaScript-->
+    <script src="js/select2.min.js"></script>
+    <!-- Owl Carousel -->
+    <script src="js/owl.carousel.js"></script>
+    <!-- Custom scripts for all pages-->
+    <script src="js/custom.js"></script>
+    <script src="js/header.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="../../customJS/shopDetail.js"></script>
+    <script>
+        $(document).ready(function() {
+            $.ajax({
+                type: "GET",
+                dataType: "json",
+                url: "/api/voucher/search",
+                success: function(data) {
+                    var listdata = data.data.listVoucher;
+                    for (var i = 0; i < listdata.length; i++) {
+                        document.getElementById('list_voucher').innerHTML +=
+                            '<div class="col-md-4 mt-3"> <div class="card offer-card border-0 shadow-sm"> <div class="card-body"> <h5 class="card-title" id="code"><img src="image/bank/1.png">' + listdata[i].code + '</h5> <p class="card-text">Use code OSAHANEAT50 & get 50% off on your first osahan order on Website and Mobile site. Maximum discount: ' + listdata[i].discount_number + ' VNĐ</p> <a href="#" class="card-link" id="buttonCopy" onclick="copyCode(' + "'" + listdata[i].id + "'" + ')">COPY CODE</a> </div> </div> </div>'
+                    }
+                }
+            });
+        });
+
+        function copyCode(id) {
+            // var copyText = document.getElementById('code').textContent;
+            // copyText.select;
+            // copyText.setSelectionRange;
+            // document.execCommand("copy");
+
+            // document.getElementById('buttonCopy').innerHTML = 'COPY CODED';
+
+            var copyText = document.getElementById('code').textContent;
+            copyText.select;
+            copyText.setSelectionRange
+            document.execCommand("copy");
+
+        }
+    </script>
+</body>
+
+</html>
