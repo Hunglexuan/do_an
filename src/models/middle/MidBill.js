@@ -12,7 +12,6 @@ import { name } from 'ejs';
 
 class MidBill {
     async listCart(data) {
-
         let cart = {
             shopID: '',
             userID: data.userID,
@@ -25,56 +24,62 @@ class MidBill {
         let billList = await UserBill.findAll({
             where: {
                 user_id: data.userID,
-                del: 0
             }
         })
+        let billTemp
         for (let i = 0; i < billList.length; i++) {
-            let billTemp = await Bill.findOne({
+            billTemp = await Bill.findOne({
                 where: {
                     id: billList[i].bill_id,
                     status: null,
-                    del: 0
                 }
             })
-            if (billTemp) {
-                listTemp = await BillProduct.findAll({
+
+        }
+        if (billTemp) {
+            let shopIDTemp = await UserBill.findOne({
+                where: {
+                    bill_id: billTemp.dataValues.id,
+                }
+            })
+            console.log('11111', billTemp.dataValues.id);
+            cart.shopID = shopIDTemp.dataValues.shop_id;
+            let listTemp = await BillProduct.findAll({
+                where: {
+                    bill_id: billTemp.dataValues.id,
+                }
+            })
+            for (let j = 0; j < listTemp.length; j++) {
+                let objProduct = await Product.findOne({
                     where: {
-                        bill_id: billTemp,
-                        del: 0
+                        id: listTemp[j].product_id
                     }
                 })
-                for (let j = 0; j < listTemp.length; j++) {
-                    let objProduct = await Product.findOne({
-                        where: {
-                            id: listTemp[j].product_id
-                        }
-                    })
-                    cart.listCart.push({
-                        count: listTemp[j].quantity,
-                        id: listTemp[j].product_id,
-                        name: objProduct.name,
-                        price: objProduct.unit_price,
-                    })
+                cart.listCart.push({
+                    count: listTemp[j].quantity,
+                    id: listTemp[j].product_id,
+                    name: objProduct.name,
+                    price: objProduct.unit_price,
+                })
 
-                }
-                if (billTemp.voucher_id) {
-                    let voucher = await Voucher.findOne({
-                        where: {
-                            id: billTemp.voucher_id,
-                            del: 0,
-                        }
-                    })
-                    cart.voucherCode = voucher.code
-                }
-                cart.address = billTemp.address;
-                cart.status = billTemp.status;
-                return cart;
             }
-            else {
-                return {}
+            if (billTemp.dataValues.voucher_id) {
+                let voucher = await Voucher.findOne({
+                    where: {
+                        id: billTemp.dataValues.voucher_id,
+                        del: 0,
+                    }
+                })
+                cart.voucherCode = voucher.code
             }
+            cart.billID = billTemp.dataValues.id;
+            cart.address = billTemp.dataValues.address;
+            cart.status = billTemp.dataValues.status;
+            return cart;
         }
-
+        else {
+            return {}
+        }
 
 
     }
