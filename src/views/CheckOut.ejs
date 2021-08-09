@@ -307,7 +307,7 @@
 
         <script>
             var cart = JSON.parse(sessionStorage.getItem('shoppingCart'));
-            var idUser = localStorage.getItem('userId');
+            var idUser = localStorage.getItem('userId').replaceAll('"', '');
             $(".checkout-btn").click(function() {
                 $.ajax({
                     url: "/api/bill/create",
@@ -346,15 +346,15 @@
                 })
             })
 
-
+            console.log(idUser);
             $.ajax({
-                url:"http://localhost:3999/api/user/getbyId?id="+idUser,
+                url:"/api/user/getbyId",
                 type:"GET",
                 data:{
-                    id : idUser
+                    id:idUser,
                 }
             }).then(function(data) {
-                console.log("uchihahaha",data);
+                $("#address").html(data.data.address);
             })
 
         </script>
