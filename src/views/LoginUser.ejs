@@ -151,7 +151,9 @@
                 password: $("#inputPassword").val()
             }
         }).then(function(data) {
+            console.log(data);
             var userId = data.data.userid;
+            
             if (data.message == "SUCCESS") {
                 setCookie("token", data.data.token, 30)
                 localStorage.setItem('userId', JSON.stringify(userId));
