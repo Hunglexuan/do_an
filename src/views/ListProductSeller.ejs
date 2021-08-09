@@ -27,6 +27,67 @@
    <!-- Datatables css -->
    <link href="skin/bootstrap/dataTables.bootstrap4.min.css" rel="stylesheet">
    <link href="skin/font/HungCSS.css" rel="stylesheet">
+   <style>
+      .switch {
+         position: relative;
+         display: inline-block;
+         width: 60px;
+         height: 34px;
+      }
+
+      .switch input {
+         opacity: 0;
+         width: 0;
+         height: 0;
+      }
+
+      .slider {
+         position: absolute;
+         cursor: pointer;
+         top: 0;
+         left: 0;
+         right: 0;
+         bottom: 0;
+         background-color: #ccc;
+         -webkit-transition: .4s;
+         transition: .4s;
+      }
+
+      .slider:before {
+         position: absolute;
+         content: "";
+         height: 26px;
+         width: 26px;
+         left: 4px;
+         bottom: 4px;
+         background-color: white;
+         -webkit-transition: .4s;
+         transition: .4s;
+      }
+
+      input:checked+.slider {
+         background-color: #2196F3;
+      }
+
+      input:focus+.slider {
+         box-shadow: 0 0 1px #2196F3;
+      }
+
+      input:checked+.slider:before {
+         -webkit-transform: translateX(26px);
+         -ms-transform: translateX(26px);
+         transform: translateX(26px);
+      }
+
+      /* Rounded sliders */
+      .slider.round {
+         border-radius: 34px;
+      }
+
+      .slider.round:before {
+         border-radius: 50%;
+      }
+   </style>
 </head>
 
 <body class="sb-nav-fixed">
@@ -34,7 +95,15 @@
       <a class="navbar-brand" href="DashboardSeller"><img alt="logo" src="image/image0.jpg" width="100px"></a>
       <!-- Navbar Search-->
       <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
-
+         <div class="input-group">
+            <div class="input-group-append">
+               <label id="statusShop" class="mr-2"></label>
+               <label class="switch">
+                  <input type="checkbox" id="switchShop" name="swiShop">
+                  <span class="slider round"></span>
+               </label>
+            </div>
+         </div>
       </form>
       <!-- Navbar-->
       <ul class="navbar-nav ml-auto ml-md-0">
@@ -533,7 +602,7 @@
       <div class="modal-dialog modal-dialog-centered" role="document">
          <div class="modal-content">
             <div class="modal-header">
-               <h5 class="modal-title" id="edit_bookingLabel">Sản Phẩm</h5>
+               <h5 class="modal-title" id="edit_bookingLabel">Thông Báo</h5>
                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">×</span>
                </button>
@@ -599,19 +668,6 @@
 
 
    <script>
-      // $('.editor').summernote({
-      //    fontSizes: ['10', '14'],
-      //    toolbar: [
-      //       // [groupName, [list of button]]
-      //       ['style', ['bold', 'italic', 'underline', 'clear']],
-      //       ['font', ['strikethrough']],
-      //       ['fontsize', ['fontsize']],
-      //       ['para', ['ul', 'ol', 'paragraph']]
-      //    ],
-      //    placeholder: 'Write here ....',
-      //    tabsize: 2,
-      //    height: 200
-      // });
 
       var token = getCookie("token");
       $("#btnLogout").click(function (res) {
@@ -677,7 +733,7 @@
                targets: -1,
                render: function (data, type, row, meta) {
                   return '<input type="button" class="btn btn-info ml-2" data-toggle="modal" data-target="#inforProduct" idproduct="' + row.id + '"  value="Thông tin"/>' +
-                     '<input type="button" class="btn btn-primary ml-2" data-toggle="modal" data-target="#EditProduct"  idInforEdit="'+row.id+'" onclick="editproduct(' + "'" + row.id + "'" + ')" value="Sửa sản phẩm"/>' +
+                     '<input type="button" class="btn btn-primary ml-2" data-toggle="modal" data-target="#EditProduct"  idInforEdit="' + row.id + '" onclick="editproduct(' + "'" + row.id + "'" + ')" value="Sửa sản phẩm"/>' +
                      '<input type="button" class="btn btn-danger ml-2" data-toggle="modal" data-target="#deleteProduct" onclick="deleteproduct(' + "'" + row.id + "'" + ')" value="Xóa sản Phẩm"/>';
                }
             }]
@@ -727,38 +783,47 @@
                document.getElementById('itimefrom').value = list.time_from;
                document.getElementById('itimeto').value = list.time_to;
                document.getElementById('iSale').value = list.sale;
-               var d1 = new Date(list.sale_from);
-               var n1;
-               if (d1.getUTCDate() < 10) {
-                  n1 = '0' + d1.getUTCDate();
-               } else {
-                  n1 = d1.getUTCDate();
+               if (list.sale_from == null) {
+                  document.getElementById('isalefrom').defaulValue = "";
                }
-               var m1;
-               if (d1.getUTCMonth() < 10) {
-                  m1 = '0' + d1.getUTCMonth();
+               if (list.sale_to == null) {
+                  document.getElementById('isaleto').defaulValue = "";
                } else {
-                  m1 = d1.getUTCMonth();
+                  var d1 = new Date(list.sale_from);
+                  var n1;
+                  if (d1.getUTCDate() < 10) {
+                     n1 = '0' + d1.getUTCDate();
+                  } else {
+                     n1 = d1.getUTCDate();
+                  }
+                  var m1;
+                  if (d1.getUTCMonth() < 10) {
+                     m1 = '0' + d1.getUTCMonth();
+                  } else {
+                     m1 = d1.getUTCMonth();
+                  }
+                  var y1 = d1.getUTCFullYear();
+                  var dob1 = y1 + '-' + m1 + '-' + n1;
+                  document.getElementById('isalefrom').value = dob1;
+
+                  var d2 = new Date(list.sale_to);
+                  var n2;
+                  if (d2.getUTCDate() < 10) {
+                     n2 = '0' + d2.getUTCDate();
+                  } else {
+                     n2 = d2.getUTCDate();
+                  }
+                  var m2;
+                  if (d2.getUTCMonth() < 10) {
+                     m2 = '0' + d2.getUTCMonth();
+                  } else {
+                     m2 = d2.getUTCMonth();
+                  }
+                  var y2 = d2.getUTCFullYear();
+                  var dob2 = y2 + '-' + m2 + '-' + n2;
+                  document.getElementById('isaleto').value = dob2;
                }
-               var y1 = d1.getUTCFullYear();
-               var dob1 = y1 + '-' + m1 + '-' + n1;
-               document.getElementById('isalefrom').value = dob1;
-               var d2 = new Date(list.sale_to);
-               var n2;
-               if (d2.getUTCDate() < 10) {
-                  n2 = '0' + d2.getUTCDate();
-               } else {
-                  n2 = d2.getUTCDate();
-               }
-               var m2;
-               if (d2.getUTCMonth() < 10) {
-                  m2 = '0' + d2.getUTCMonth();
-               } else {
-                  m2 = d2.getUTCMonth();
-               }
-               var y2 = d2.getUTCFullYear();
-               var dob2 = y2 + '-' + m2 + '-' + n2;
-               document.getElementById('isaleto').value = dob2;
+
                var d = new Date(list.createdAt);
                var n;
                if (d.getUTCDate() < 10) {
@@ -780,7 +845,7 @@
          });
       })
 
-      $('#dataProduct tbody').on('click', '.btn-primary', function(){
+      $('#dataProduct tbody').on('click', '.btn-primary', function () {
          let idEditinfo = $(this).attr('idInforEdit');
          $.ajax({
             url: "/api/product/getById",
@@ -799,7 +864,7 @@
                document.getElementById('eitimefrom').value = list.time_from;
                document.getElementById('eitimeto').value = list.time_to;
                document.getElementById('eiSale').value = list.sale;
-               
+
                var d1 = new Date(list.sale_from);
                var n1;
                if (d1.getUTCDate() < 10) {
@@ -816,6 +881,7 @@
                var y1 = d1.getUTCFullYear();
                var dob1 = y1 + '-' + m1 + '-' + n1;
                document.getElementById('eisalefrom').value = dob1;
+
                var d2 = new Date(list.sale_to);
                var n2;
                if (d2.getUTCDate() < 10) {
@@ -880,7 +946,6 @@
          }).then(function (data) {
             if (data.message == 'SUCCESS') {
                alert("Sửa thông tin Sản Phẩm Hoàn Tất");
-               window.location.href = '/listProductSeller'
             } else {
                alert("Sửa Thông tin Sản Phẩm Thất Bại");
             }
@@ -928,6 +993,54 @@
          })
       });
 
+      $(document).ready(function () {
+         loadProfile();
+      })
+
+      $('#switchShop').click(function () {
+         var text = localStorage.getItem('sellerId').replaceAll('"', '');
+         let switchShop = $('#switchShop').is(":checked")
+         $.ajax({
+            url: '/api/user/status',
+            method: 'GET',
+            data: {
+               id: text,
+               shop_status: switchShop,
+            },
+         }).then(function (data) {
+            console.log(data)
+            if (switchShop == true) {
+               document.getElementById('statusShop').innerHTML = 'Shop đang mở cửa'
+               document.getElementById('statusShop').style.color = "Green"
+            } else {
+
+               document.getElementById('statusShop').innerHTML = 'Shop đang đóng cửa'
+               document.getElementById('statusShop').style.color = "red"
+            }
+         })
+      })
+
+      function loadProfile() {
+         var text = localStorage.getItem('sellerId').replaceAll('"', '');
+         $.ajax({
+            url: '/api/user/getbyId',
+            method: 'GET',
+            data: {
+               id: text,
+            },
+         }).then(function (data) {
+            console.log(data.data.shop_status)
+            if (data.data.shop_status == true) {
+               document.getElementById('switchShop').checked = true
+               document.getElementById('statusShop').innerHTML = 'Shop đang mở cửa'
+               document.getElementById('statusShop').style.color = "Green"
+            } else {
+               document.getElementById('switchShop').checked = false
+               document.getElementById('statusShop').innerHTML = 'Shop đang đóng cửa'
+               document.getElementById('statusShop').style.color = "red"
+            }
+         })
+      }
    </script>
 </body>
 
