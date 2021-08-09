@@ -11,6 +11,15 @@ import { password } from '../../config/database';
 import { name } from 'ejs';
 
 class MidVoucher {
+
+    async getVoucherById(data) {
+        return Users.findOne({
+            where: {
+                code: data.code,
+                del: 0,
+            },
+        });
+    }
     async searchVoucher(data) {
         let condition = {
             del: 0
