@@ -1,5 +1,5 @@
 import {
-    Role, Users, Bill, UserBill, Voucher
+    Role, Users, Bill, UserBill, Voucher , BillProduct
 } from '../core';
 import { Op } from 'sequelize';
 import { checkPassword, hashPassword } from '../../libs/encrypt';
@@ -45,7 +45,7 @@ class MidBill {
 
     }
     async createBill(data) {
-        let totalPrice
+        let totalPrice = 0;
         let voucher
         // if(billID){
 
@@ -53,11 +53,14 @@ class MidBill {
         // else{
 
         // }
-        console.log(data.cart.listCart);
-        console.log(data);
+        // console.log(data.cart.listCart);
+        // console.log(data);
+        console.log("object",data);
         for (let i = 0; i < data.cart.listCart.length; i++) {
             totalPrice += data.cart.listCart[i].price * data.cart.listCart[i].count
+            console.log(totalPrice);
         }
+        
         if (data.cart.voucherCode != '') {
             voucher = await Voucher.findOne({
                 where: {
@@ -81,6 +84,7 @@ class MidBill {
             address: address,
         }
         let bill = await Bill.create(billCreate);
+        console.log("hahahah",bill.dataValues);
         for (let i = 0; i < data.cart.listCart.length; i++) {
             totalPrice += data.cart.listCart[i].price * data.cart.listCart[i].count
             let billProduct = {
@@ -88,13 +92,13 @@ class MidBill {
                 unit_price: data.cart.listCart[i].price,
                 total_price: data.cart.listCart[i].count * data.cart.listCart[i].price,
                 product_id: data.cart.listCart[i].id,
-                bill_id: bill.data.id,
+                bill_id: bill.dataValues.id,
 
             }
             await BillProduct.create(billProduct)
         }
         let userBill = {
-            bill_id: bill.data.id,
+            bill_id: bill.dataValues.id,
             user_id: data.cart.userID,
             shop_id: data.cart.shopID,
         }
