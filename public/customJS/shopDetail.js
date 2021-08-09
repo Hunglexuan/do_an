@@ -128,6 +128,13 @@ var shoppingCart = (function() {
         return Number(totalCart.toFixed(2));
     }
 
+    obj.finalCart = function(voucher_price){
+        var finalCart = 0 ;
+        var totalCart = obj.totalCart();
+        finalcart = totalCart - voucher_price;
+        return finalCart;
+    }
+
     // List cart
     obj.listCart = function() {
         var cartCopy = [];
