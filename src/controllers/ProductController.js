@@ -31,6 +31,14 @@ class ProductController {
         let dataQuery = req.query;
         return await MidProduct.deleteProduct(dataQuery);
     }
+    async imageUpdate(req, res) {
+        
+        const dataUpload = await uploadMedia(req, res);
+
+        let logo = dataUpload ? dataUpload.filename : '';
+        let data = req.body;
+        return await MidProduct.updateImage(data, logo);
+    }
 }
 
 export default new ProductController();
