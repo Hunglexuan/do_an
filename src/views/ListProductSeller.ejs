@@ -533,7 +533,7 @@
       <div class="modal-dialog modal-dialog-centered" role="document">
          <div class="modal-content">
             <div class="modal-header">
-               <h5 class="modal-title" id="edit_bookingLabel">Sản Phẩm</h5>
+               <h5 class="modal-title" id="edit_bookingLabel">Thông Báo</h5>
                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">×</span>
                </button>
@@ -743,6 +743,7 @@
                var y1 = d1.getUTCFullYear();
                var dob1 = y1 + '-' + m1 + '-' + n1;
                document.getElementById('isalefrom').value = dob1;
+
                var d2 = new Date(list.sale_to);
                var n2;
                if (d2.getUTCDate() < 10) {
@@ -759,6 +760,7 @@
                var y2 = d2.getUTCFullYear();
                var dob2 = y2 + '-' + m2 + '-' + n2;
                document.getElementById('isaleto').value = dob2;
+
                var d = new Date(list.createdAt);
                var n;
                if (d.getUTCDate() < 10) {
@@ -816,6 +818,7 @@
                var y1 = d1.getUTCFullYear();
                var dob1 = y1 + '-' + m1 + '-' + n1;
                document.getElementById('eisalefrom').value = dob1;
+
                var d2 = new Date(list.sale_to);
                var n2;
                if (d2.getUTCDate() < 10) {
