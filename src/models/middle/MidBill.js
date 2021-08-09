@@ -11,52 +11,73 @@ import database, { password } from '../../config/database';
 import { name } from 'ejs';
 
 class MidBill {
-    // async listCart(data) {
-    //     let cart = {
-    //         shopID: '',
-    //         userID: data.userID,
-    //         billID: '',
-    //         status: '',
-    //         address: '',
-    //         voucherCode: '',
-    //         listCart: [],
-    //     }
-    //     let billList = await UserBill.findAll({
-    //         where: {
-    //             user_id: data.userID,
-    //             del: 0
-    //         }
-    //     })
-    //     for (let i = 0; i < billList.length; i++) {
-    //         let billTemp = Bill.findOne({
-    //             where: {
-    //                 id: billList[i].bill_id,
-    //                 status: '',
-    //                 del: 0
-    //             }
-    //         })
-    //         if (billTemp) {
-    //             listTemp = BillProduct.findAll({
-    //                 where: {
-    //                     bill_id: billTemp,
-    //                     del: 0
-    //                 }
-    //             })  
-    //             if(listTemp){
-    //                 cart.listCart = Product.
-    //                 for (let j = 0; j < listTemp.length; j++) {
+    async listCart(data) {
 
-    //                 }
-    //             }
-    //         }
-    //         else {
-    //             return {}
-    //         }
-    //     }
+        let cart = {
+            shopID: '',
+            userID: data.userID,
+            billID: '',
+            status: null,
+            address: '',
+            voucherCode: '',
+            listCart: [],
+        }
+        let billList = await UserBill.findAll({
+            where: {
+                user_id: data.userID,
+                del: 0
+            }
+        })
+        for (let i = 0; i < billList.length; i++) {
+            let billTemp = await Bill.findOne({
+                where: {
+                    id: billList[i].bill_id,
+                    status: null,
+                    del: 0
+                }
+            })
+            if (billTemp) {
+                listTemp = await BillProduct.findAll({
+                    where: {
+                        bill_id: billTemp,
+                        del: 0
+                    }
+                })
+                for (let j = 0; j < listTemp.length; j++) {
+                    let objProduct = await Product.findOne({
+                        where: {
+                            id: listTemp[j].product_id
+                        }
+                    })
+                    cart.listCart.push({
+                        count: listTemp[j].quantity,
+                        id: listTemp[j].product_id,
+                        name: objProduct.name,
+                        price: objProduct.unit_price,
+                    })
+
+                }
+                if (billTemp.voucher_id) {
+                    let voucher = await Voucher.findOne({
+                        where: {
+                            id: billTemp.voucher_id,
+                            del: 0,
+                        }
+                    })
+                    cart.voucherCode = voucher.code
+                }
+                cart.address = billTemp.address;
+                cart.status = billTemp.status;
+                return cart;
+            }
+            else {
+                return {}
+            }
+        }
 
 
 
-    // }
+    }
     async createBill(data) {
         let totalPrice = 0;
         let voucher
