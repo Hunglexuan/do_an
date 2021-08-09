@@ -93,9 +93,9 @@
       <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
          <div class="input-group">
             <div class="input-group-append">
-               <label id="statusShop" class="mr-2"></label>  
+               <label id="statusShop" class="mr-2"></label>
                <label class="switch">
-                  <input type="checkbox" id="switchShop" name="swiShop" value="true" checked>
+                  <input type="checkbox" id="switchShop" name="swiShop">
                   <span class="slider round"></span>
                </label>
             </div>
@@ -132,8 +132,8 @@
                aria-expanded="false">
                <img class="img-profile rounded-circle" src="image/user/1.png">
             </a> -->
-            <!-- Dropdown - User Information -->
-            <!-- <div class="dropdown-menu dropdown-menu-right shadow-sm">
+         <!-- Dropdown - User Information -->
+         <!-- <div class="dropdown-menu dropdown-menu-right shadow-sm">
                <div class="p-3 d-flex align-items-center">
                   <div class="dropdown-list-image mr-3">
                      <img class="rounded-circle" src="image/user/1.png" alt="">
@@ -142,12 +142,12 @@
                   <div class="font-weight-bold">
                       <div class="text-truncate">Gurdeep Osahan</div>
                      <div class="small text-gray-500">Restaurants Owner</div> -->
-                  <!-- </div>
+         <!-- </div>
                </div>
                <div class="dropdown-divider"></div>  -->
-               <!-- <a class="dropdown-item" href=""><i class="fas fa-user-circle"></i> My Account</a>
+         <!-- <a class="dropdown-item" href=""><i class="fas fa-user-circle"></i> My Account</a>
                <a class="dropdown-item" href=""><i class="fas fa-cog"></i> Account Settings</a> -->
-               <!-- <div class="dropdown-divider"></div>
+         <!-- <div class="dropdown-divider"></div>
                <a class="dropdown-item" href="/LoginSeller" id="btnLogout"><i class="fas fa-sign-out-alt"></i>
                   Logout</a>
             </div>
@@ -186,7 +186,7 @@
                   </a>
                   <a class="nav-link" href="">
                      <div class="sb-nav-link-icon"><i class="fas fa-shopping-cart"></i></div>
-                     Quản Lý Đặt Hàng 
+                     Quản Lý Đặt Hàng
                   </a>
                   <a class="nav-link" href="">
                      <div class="sb-nav-link-icon"><i class="fas fa-cog"></i></div>
@@ -194,7 +194,7 @@
                   </a>
                   <a class="nav-link" href="">
                      <div class="sb-nav-link-icon"><i class="fas fa-file-signature"></i></div>
-                     Dánh sách Báo Cáo 
+                     Dánh sách Báo Cáo
                   </a>
                </div>
             </div>
@@ -450,11 +450,29 @@
 
    $(document).ready(function () {
       loadProfile();
-      setSwitch();
    })
 
    $('#switchShop').click(function () {
-      setSwitch();
+      var text = localStorage.getItem('sellerId').replaceAll('"', '');
+      let switchShop = $('#switchShop').is(":checked")
+      $.ajax({
+         url: '/api/user/status',
+         method: 'GET',
+         data: {
+            id: text,
+            shop_status: switchShop,
+         },
+      }).then(function (data) {
+         console.log(data)
+         if (switchShop == true) {
+            document.getElementById('statusShop').innerHTML = 'Shop đang mở cửa'
+            document.getElementById('statusShop').style.color = "Green"
+         } else {
+
+            document.getElementById('statusShop').innerHTML = 'Shop đang đóng cửa'
+            document.getElementById('statusShop').style.color = "red"
+         }
+      })
    })
 
    function loadProfile() {
@@ -466,34 +484,43 @@
             id: text,
          },
       }).then(function (data) {
-         console.log(data.data)
-      })
-   }
-
-   function setSwitch() {
-      var text = localStorage.getItem('sellerId').replaceAll('"', '');
-      let switchShop = $('#switchShop').is(":checked")
-      console.log(switchShop)
-      $.ajax({
-         url: '/api/user/status',
-         method: 'GET',
-         data: {
-            id: text,
-            shop_status: switchShop,
-         },
-      }).then(function (data) {
-         console.log(data)
-         if(switchShop){
+         console.log(data.data.shop_status)
+         if (data.data.shop_status == true) {
+            document.getElementById('switchShop').checked = true
             document.getElementById('statusShop').innerHTML = 'Shop đang mở cửa'
             document.getElementById('statusShop').style.color = "Green"
-         }else{
+         } else {
+            document.getElementById('switchShop').checked = false
             document.getElementById('statusShop').innerHTML = 'Shop đang đóng cửa'
             document.getElementById('statusShop').style.color = "red"
          }
       })
    }
 
-   
+   // function setSwitch() {
+   //    var text = localStorage.getItem('sellerId').replaceAll('"', '');
+   //    let switchShop = $('#switchShop').is(":checked")
+   //    console.log(switchShop)
+   //    $.ajax({
+   //       url: '/api/user/status',
+   //       method: 'GET',
+   //       data: {
+   //          id: text,
+   //          shop_status: switchShop,
+   //       },
+   //    }).then(function (data) {
+   //       console.log(data)
+   //       if (switchShop == true) {
+
+   //          document.getElementById('statusShop').innerHTML = 'Shop đang mở cửa'
+   //          document.getElementById('statusShop').style.color = "Green"
+   //       } else {
+
+   //          document.getElementById('statusShop').innerHTML = 'Shop đang đóng cửa'
+   //          document.getElementById('statusShop').style.color = "red"
+   //       }
+   //    })
+   // }
 
 </script>
 
