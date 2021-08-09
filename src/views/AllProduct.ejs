@@ -9,7 +9,8 @@
     <meta name="author" content="Askbootstrap">
     <title>FUMK - Online Food Ordering</title>
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
 
     <!-- Favicon Icon -->
     <link rel="icon" type="image/png" href="image/favicon.png">
@@ -43,11 +44,14 @@
         <nav class="navbar navbar-expand-lg navbar-light bg-light osahan-nav shadow-sm ">
             <div class="container">
                 <a class="navbar-brand" href="/"><img alt="logo" style="max-width: 120px;" src="image/logoShop.png"></a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span>
-         </button>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+                    aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation"> <span
+                        class="navbar-toggler-icon"></span>
+                </button>
                 <div class="modal fade" id="productDetail" role="dialog">
                     <div class="modal-dialog" role="document">
-                        <div class="modal-content" style="padding-bottom: 15px; margin-left: 170px; width: 70% !important;">
+                        <div class="modal-content"
+                            style="padding-bottom: 15px; margin-left: 170px; width: 70% !important;">
                             <div>
                                 <div class="container">
                                     <div class="detail-image">
@@ -65,7 +69,8 @@
                                         <div class="address-restaurant">Cầu Giấy, Hà Nội</div>
                                         <div class="status-restaurant">
                                             <div class="time-status">
-                                                <span class="stt-online" title="mở cửa"> <i class="fa fa-circle" aria-hidden="true"></i> mở cửa</span>
+                                                <span class="stt-online" title="mở cửa"> <i class="fa fa-circle"
+                                                        aria-hidden="true"></i> mở cửa</span>
                                             </div>
                                             <div class="time" id="timeOpen">
                                                 <i class="fa fa-clock-o"></i>
@@ -82,7 +87,8 @@
                         </div>
 
 
-                        <div class="modal-content bg-white rounded shadow-sm p-4 mt-3 restaurant-detailed-ratings-and-reviews" style="padding-bottom: 15px; margin-left: 170px; width: 70% !important;">
+                        <div class="modal-content bg-white rounded shadow-sm p-4 mt-3 restaurant-detailed-ratings-and-reviews"
+                            style="padding-bottom: 15px; margin-left: 170px; width: 70% !important;">
                             <h5 class="mb-1">Tất cả bình luận</h5>
                             <div id="listComment">
                                 <div id="replyFeedback">
@@ -91,7 +97,8 @@
                         </div>
                         <!-- <a class="text-center w-100 d-block font-weight-bold" href="#">See All Reviews</a> -->
 
-                        <div class="modal-content bg-white rounded shadow-sm p-4 mb-5 mt-3 rating-review-select-page" style="padding-bottom: 15px; margin-left: 170px; width: 70% !important;">
+                        <div class="modal-content bg-white rounded shadow-sm p-4 mb-5 mt-3 rating-review-select-page"
+                            style="padding-bottom: 15px; margin-left: 170px; width: 70% !important;">
                             <h5 class="mb-4">Để lại bình luận</h5>
                             <form>
                                 <div class="form-group">
@@ -99,7 +106,8 @@
                                     <textarea class="form-control" id="textComment"></textarea>
                                 </div>
                                 <div class="form-group">
-                                    <button class="btn btn-primary btn-sm" type="button" id="submitComment"> Gửi bình luận</button>
+                                    <button class="btn btn-primary btn-sm" type="button" id="submitComment"> Gửi bình
+                                        luận</button>
                                 </div>
                             </form>
                         </div>
@@ -113,7 +121,8 @@
 
                 <div class="collapse navbar-collapse" id="navbarNavDropdown">
                     <ul class="navbar-nav ml-auto">
-                        <div class="modal fade modal-search show modalsearch" id="modal-search" tabindex="-1" role="dialog">
+                        <div class="modal fade modal-search show modalsearch" id="modal-search" tabindex="-1"
+                            role="dialog">
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                     <span class="close" data-dismiss="modal">
@@ -131,14 +140,15 @@
                         </div>
                         <li class="nav-item active">
                             <span class="sizeIcon" data-toggle="modal" data-target="#modal-search">
-                            <i class="icofont-search-property nav-link" style="padding-top: 20px !important;"></i>
-                                            </span>
+                                <i class="icofont-search-property nav-link" style="padding-top: 20px !important;"></i>
+                            </span>
                         </li>
                         <li class="nav-item active">
                             <a class="nav-link" href="/">Trang Chủ <span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="Offers"><i class="icofont-sale-discount"></i> Ưu Đãi <span class="badge badge-danger">Mới</span></a>
+                            <a class="nav-link" href="Offers"><i class="icofont-sale-discount"></i> Ưu Đãi <span
+                                    class="badge badge-danger">Mới</span></a>
                         </li>
                         <li id="checkLogin"></li>
                         <!-- <li class="nav-link" style="padding-top: 20px !important;">
@@ -156,7 +166,8 @@
                         </div>
                     </li> -->
                         <li class="nav-item dropdown dropdown-cart">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false">
                                 <i class="icofont-basket"></i> Giỏ Hàng
                                 <span class="total-count badge badge-success"></span>
                             </a>
@@ -168,7 +179,8 @@
                                     </table>
                                 </div>
                                 <div class="dropdown-cart-top-footer border-top p-4">
-                                    <p class="mb-0 font-weight-bold text-secondary">Sub Total <span class="total-cart float-right text-dark"></span></p>
+                                    <p class="mb-0 font-weight-bold text-secondary">Sub Total <span
+                                            class="total-cart float-right text-dark"></span></p>
                                     <small class="text-info">Extra charges may apply</small>
                                 </div>
                                 <div class="dropdown-cart-top-footer border-top p-2">
@@ -189,7 +201,8 @@
                 <div class="col-md-12" style="flex-direction: row; display: flex;">
                     <div id="findCate" style="width: 70% !important;"></div>
                     <form class="filters-search mb-3" style="width: 30% !important;">
-                        <div class="form-group"> <i class="icofont-search"></i> <input type="text" class="form-control" placeholder="Bắt đầu nhập để tìm kiếm ..." id="categorySearch"> </div>
+                        <div class="form-group"> <i class="icofont-search"></i> <input type="text" class="form-control"
+                                placeholder="Bắt đầu nhập để tìm kiếm ..." id="categorySearch"> </div>
                     </form>
                 </div>
             </div>
@@ -201,7 +214,10 @@
                                 <div class="filters-card border-bottom p-4">
                                     <div class="filters-card-header" id="headingOne">
                                         <h6 class="mb-0">
-                                            <a href="#" class="btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" style="color: #ff3008 !important;"> Thể Loại <i class="icofont-arrow-down float-right"></i>  </a>
+                                            <a href="#" class="btn-link" data-toggle="collapse"
+                                                data-target="#collapseOne" aria-expanded="true"
+                                                aria-controls="collapseOne" style="color: #ff3008 !important;"> Thể Loại
+                                                <i class="icofont-arrow-down float-right"></i> </a>
                                         </h6>
                                     </div>
                                     <div id="collapseOne" class="collapse show">
@@ -209,7 +225,8 @@
                                             <form class="filters-search mb-3">
                                                 <div class="form-group">
                                                     <i class="icofont-search"></i>
-                                                    <input type="text" class="form-control" placeholder="Bắt đầu nhập để tìm kiếm ...">
+                                                    <input type="text" class="form-control"
+                                                        placeholder="Bắt đầu nhập để tìm kiếm ...">
                                                 </div>
                                             </form>
                                             <!-- <div class="custom-control">
@@ -260,7 +277,8 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-12">
-                    <h5 class="m-0">Điều hành các cửa hàng hoặc nhà hàng? <a href="login.html">Làm việc với chúng tôi</a></h5>
+                    <h5 class="m-0">Điều hành các cửa hàng hoặc nhà hàng? <a href="login.html">Làm việc với chúng
+                            tôi</a></h5>
                 </div>
             </div>
         </div>
@@ -271,8 +289,12 @@
             <!--Bắt Đầu Nội Dung Giới Thiệu-->
             <div class="noi-dung about">
                 <h2>Về Chúng Tôi</h2>
-                <p> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Praesentium dolores alias ipsa vel hic tempore exercitationem ipsam explicabo repudiandae ut consectetur qui, earum at nostrum perspiciatis asperiores necessitatibus facilis esse.
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia id possimus quibusdam nihil earum in provident enim animi commodi quisquam! Molestiae cupiditate mollitia pariatur error ea, debitis eaque quo dolorum.</p>
+                <p> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Praesentium dolores alias ipsa vel hic
+                    tempore exercitationem ipsam explicabo repudiandae ut consectetur qui, earum at nostrum perspiciatis
+                    asperiores necessitatibus facilis esse.
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia id possimus quibusdam nihil earum in
+                    provident enim animi commodi quisquam! Molestiae cupiditate mollitia pariatur error ea, debitis
+                    eaque quo dolorum.</p>
             </div>
             <!--Kết Thúc Nội Dung Giới Thiệu-->
             <!--Bắt Đầu Nội Dung Đường Dẫn-->
@@ -294,19 +316,20 @@
                     <li>
                         <span><i class="fa fa-map-marker"></i></span>
                         <span>Đường Số 1<br />
-                         Đường 1, Thủ Đô Hà Nội<br />
-                         Việt Nam</span>
+                            Đường 1, Thủ Đô Hà Nội<br />
+                            Việt Nam</span>
                     </li>
                     <li>
                         <span><i class="fa fa-phone"></i></span>
                         <p><a href="#">+84 123 456 789</a>
                             <br />
-                            <a href="#">+84 987 654 321</a></p>
+                            <a href="#">+84 987 654 321</a>
+                        </p>
                     </li>
                     <li>
                         <span><i class="fa fa-envelope"></i></span>
                         <p><a href="#">FUMK@gmail.com</a>
-                            <br/>
+                            <br />
                             <a href="#">FUMK@fpt.edu.vn</a>
                         </p>
                     </li>
@@ -333,7 +356,7 @@
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src="../../customJS/shopDetail.js"></script>
     <script>
-        $(document).ready(function() {
+        $(document).ready(function () {
             loadcategory();
             loadproduct();
         });
@@ -343,7 +366,7 @@
                 type: "GET",
                 dataType: "json",
                 url: "/api/category/searchcategory",
-                success: function(data) {
+                success: function (data) {
                     var listdata = data.data.listCategory;
                     for (var i = 0; i < listdata.length; i++) {
                         document.getElementById('searchCategory').innerHTML +=
@@ -357,7 +380,7 @@
             localStorage.setItem('listProduct', JSON.stringify(cate));
         }
 
-        $('#categorySearch').keyup(function(event) {
+        $('#categorySearch').keyup(function (event) {
             event.preventDefault();
             localStorage.setItem('listProduct', JSON.stringify(document.getElementById('categorySearch').value));
             loadproduct();
@@ -373,7 +396,7 @@
                     name: text
                 },
                 url: "/api/product/searchAllProduct",
-                success: function(data) {
+                success: function (data) {
                     var listdata = data.data.listProduct;
                     var totalProduct = data.data.total;
                     console.log(totalProduct);
@@ -398,15 +421,18 @@
                         document.getElementById('notFindProduct').innerHTML = '';
                         document.getElementById('findProduct').innerHTML = '';
                         for (var i = 0; i < listdata.length; i++) {
-                            let image = (listdata[i].image ? listdata[i].image : 'image/list/1.png');
+                            console.log('1111', listdata[i].image);
+                            let image = (listdata[i].image != null ? listdata[i].image : 'image/list/1.png');
+                            console.log('1111', image);
+
                             if (listdata[i].sale != null) {
                                 let price_sale = (listdata[i].sale / listdata[i].unit_price) * 100;
                                 listdata[i].unit_price = listdata[i].unit_price - listdata[i].sale;
                                 document.getElementById('findProduct').innerHTML +=
-                                    '<div class="col-md-4 col-sm-6 mb-4 pb-2"> <div class="list-card bg-white overflow-hidden h-100 position-relative item-content" style="border: 1px solid #d7d7d7; border-radius: 6px;" data-toggle="modal" data-target="#productDetail" onclick="productDetail(' + "'" + listdata[i].id + "'" + ')"> <div class="list-card-image"> <div class="favourite-heart text-danger position-absolute"><a href="#"><i class="icofont-heart"></i></a></div> <a href="#"> <img src="' + listdata[i].image + '" class="img-fluid item-img"> </a> </div> <div class="p-3 position-relative"> <div class="list-card-body"> <h6 class="mb-1"><a href="#" class="text-black">' + listdata[i].name + '</a></h6> <p class="text-gray mb-3">' + listdata[i].description + '</p> <p class="text-gray mb-3 time"><span class="float-right text-black-50 ml-4"> Giảm giá: ' + price_sale + '%</span> <span class="float-right text-black-50"> Số lượng: ' + listdata[i].quantity + '</span> </p> </div> <div class="list-card-badge"> <small>Giá: ' + listdata[i].unit_price + '</small> <span class="badge badge-success">Mới</span> <span class="float-right"> <span class="count-number" style="margin-top: 0px !important;"> <button value="ADD" data-name="${product.name}" data-price="${product.unit_price}" data-id="${product.id}"  class="add-to-cart btn btn-outline-secondary btn-sm" onclick="addToCartFunc.call(this)" > Thêm Giỏ Hàng </button> </span> </span> </div> </div> </div> </div>';
+                                    '<div class="col-md-4 col-sm-6 mb-4 pb-2"> <div class="list-card bg-white overflow-hidden h-100 position-relative item-content" style="border: 1px solid #d7d7d7; border-radius: 6px;" data-toggle="modal" data-target="#productDetail" onclick="productDetail(' + "'" + listdata[i].id + "'" + ')"> <div class="list-card-image"> <div class="favourite-heart text-danger position-absolute"><a href="#"><i class="icofont-heart"></i></a></div> <a href="#"> <img src= ' + image + ' class="img-fluid item-img"> </a> </div> <div class="p-3 position-relative"> <div class="list-card-body"> <h6 class="mb-1"><a href="#" class="text-black">' + listdata[i].name + '</a></h6> <p class="text-gray mb-3">' + listdata[i].description + '</p> <p class="text-gray mb-3 time"><span class="float-right text-black-50 ml-4"> Giảm giá: ' + price_sale + '%</span> <span class="float-right text-black-50"> Số lượng: ' + listdata[i].quantity + '</span> </p> </div> <div class="list-card-badge"> <small>Giá: ' + listdata[i].unit_price + '</small> <span class="badge badge-success">Mới</span> <span class="float-right"> <span class="count-number" style="margin-top: 0px !important;"> <button value="ADD" data-name="${product.name}" data-price="${product.unit_price}" data-id="${product.id}"  class="add-to-cart btn btn-outline-secondary btn-sm" onclick="addToCartFunc.call(this)" > Thêm Giỏ Hàng </button> </span> </span> </div> </div> </div> </div>';
                             } else {
                                 document.getElementById('findProduct').innerHTML +=
-                                    '<div class="col-md-4 col-sm-6 mb-4 pb-2"> <div class="list-card bg-white overflow-hidden h-100 position-relative item-content" style="border: 1px solid #d7d7d7; border-radius: 6px;" data-toggle="modal" data-target="#productDetail" onclick="productDetail(' + "'" + listdata[i].id + "'" + ')"> <div class="list-card-image"> <div class="favourite-heart text-danger position-absolute"><a href="#"><i class="icofont-heart"></i></a></div> <a href="#"> <img src="image/list/1.png" class="img-fluid item-img"> </a> </div> <div class="p-3 position-relative"> <div class="list-card-body"> <h6 class="mb-1"><a href="#" class="text-black">' + listdata[i].name + '</a></h6> <p class="text-gray mb-3">' + listdata[i].description + '</p> <p class="text-gray mb-3 time"> <span class="float-right text-black-50"> Số lượng: ' + listdata[i].quantity + '</span> </p> </div> <div class="list-card-badge"> <small>Giá: ' + listdata[i].unit_price + '</small> <span class="badge badge-success">Mới</span> <span class="float-right"> <span class="count-number" style="margin-top: 0px !important;"> <button value="ADD" data-name="${product.name}" data-price="${product.unit_price}" data-id="${product.id}"  class="add-to-cart btn btn-outline-secondary btn-sm" onclick="addToCartFunc.call(this)" > Thêm Giỏ Hàng </button> </span> </span> </div> </div> </div> </div>';
+                                    '<div class="col-md-4 col-sm-6 mb-4 pb-2"> <div class="list-card bg-white overflow-hidden h-100 position-relative item-content" style="border: 1px solid #d7d7d7; border-radius: 6px;" data-toggle="modal" data-target="#productDetail" onclick="productDetail(' + "'" + listdata[i].id + "'" + ')"> <div class="list-card-image"> <div class="favourite-heart text-danger position-absolute"><a href="#"><i class="icofont-heart"></i></a></div> <a href="#"> <img src= ' + image + ' class="img-fluid item-img"> </a> </div> <div class="p-3 position-relative"> <div class="list-card-body"> <h6 class="mb-1"><a href="#" class="text-black">' + listdata[i].name + '</a></h6> <p class="text-gray mb-3">' + listdata[i].description + '</p> <p class="text-gray mb-3 time"> <span class="float-right text-black-50"> Số lượng: ' + listdata[i].quantity + '</span> </p> </div> <div class="list-card-badge"> <small>Giá: ' + listdata[i].unit_price + '</small> <span class="badge badge-success">Mới</span> <span class="float-right"> <span class="count-number" style="margin-top: 0px !important;"> <button value="ADD" data-name="${product.name}" data-price="${product.unit_price}" data-id="${product.id}"  class="add-to-cart btn btn-outline-secondary btn-sm" onclick="addToCartFunc.call(this)" > Thêm Giỏ Hàng </button> </span> </span> </div> </div> </div> </div>';
                             }
                         }
                     } else {
@@ -430,7 +456,7 @@
                     id: id
                 },
                 url: "/api/product/getById",
-                success: function(data) {
+                success: function (data) {
                     var listdata = data.data.product;
 
                     document.getElementById('nameProduct').innerHTML = listdata.name;
@@ -450,7 +476,7 @@
                     id: product_id
                 },
                 url: "/api/comment/searchcomment",
-                success: function(data) {
+                success: function (data) {
 
                     let list = data.data.listComment;
 
@@ -489,7 +515,7 @@
                     id: user_id
                 },
                 url: "/api/user/getbyId",
-                success: function(data) {
+                success: function (data) {
                     if (cmt_id == '') {
 
                         document.getElementById('listComment').innerHTML += '<div class="reviews-members pt-2"><div class="media"> <a href="#"><img alt="Generic placeholder image" src="' + data.data.avatar + '" class="mr-3 rounded-pill" style="width: 40px; height: 40px;"></a> <div class="media-body" style="border: 1px solid #f0f2f5; border-radius: 10px; background-color: #f0f2f5; padding: 10px"> <div class="reviews-members-header" style="display: flex; justify-content: space-between;"> <h6 class="mb-1"><a class="text-black" href="#">' + data.data.name + '</a></h6> <p class="text-gray" style="margin-bottom: 5px;">' + dob + '</p> </div> <div class="reviews-members-body"> <p>' + content + '</p> </div> </div> </div> </div> <div style="margin-left: 67px"> <label class="reply" value="' + id + '" style="border-radius: 6px"> Phản hồi </label> . <label value="' + id + '" style="border-radius: 6px;"> Hiển thị phản hồi </label> <div class="reply-section"></div> </div> </div>';
@@ -557,7 +583,7 @@
         // }
 
 
-        $(document).on('click', '.reply', function() {
+        $(document).on('click', '.reply', function () {
             var thisClicked = $(this);
             var cmt_id = thisClicked;
 
@@ -570,7 +596,7 @@
             // document.getElementsByClassName('reply-section').innerHTML += 'hello'
         })
 
-        $('#submitComment').click(function() {
+        $('#submitComment').click(function () {
 
             var userId = localStorage.getItem('userId').replaceAll('"', '');
 
@@ -583,7 +609,7 @@
                     content: $('#textComment').val(),
                     cmt_id: '',
                 },
-            }).then(function(data) {
+            }).then(function (data) {
                 if (data.message == 'SUCCESS') {
                     showComment();
                 } else {
