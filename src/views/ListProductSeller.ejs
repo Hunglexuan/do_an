@@ -261,7 +261,7 @@
    <!-- info Product -->
    <div class="modal fade" id="inforProduct" tabindex="-1" role="dialog" aria-labelledby="edit_bookingLabel"
       aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-dialog modal-xl" role="document">
          <div class="modal-content">
             <div class="modal-header">
                <h5 class="modal-title" id="edit_bookingLabel">Thông Tin Sản Phẩm</h5>
@@ -271,7 +271,7 @@
             </div>
             <div class="modal-body">
                <div class="row">
-                  <div class="col-xl-12">
+                  <div class="col-8 col-sm-6">
                      <div class="card mb-4">
                         <div class="card-header">
                            Thông Tin Cơ Bản
@@ -353,6 +353,33 @@
                                  <div class="form-group">
                                     <label>Ngày Tạo Sản Phẩm</label>
                                     <input type="text" class="form-control" placeholder="" id="CreateAt" readonly>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="col-4 col-sm-6">
+                     <div class="row">
+                        <div class="col-xl-12">
+                           <div class="card mb-4">
+                              <div class="card-header">
+                                 Ảnh Sản Phẩm
+                              </div>
+                              <div class="card-body">
+                                 <div class="row">
+                                    <div class="col-md-12">
+                                       <div class="form-group">
+                                          <div style="border-radius: 5% !important; width: 100%; height: 350px;"
+                                             class="picture">
+                                             <img class="picture-src" id="wizardPicturePreviews"
+                                                style="width: 100% !important; height: 100% !important;">
+                                             <input type="file" class="form-control" id="wizard-pictures"
+                                                style="width: 100% !important; height: 89% !important;"
+                                                name="uploadfile"></input>
+                                          </div>
+                                       </div>
+                                    </div>
                                  </div>
                               </div>
                            </div>
@@ -459,7 +486,7 @@
                               </div>
                            </div>
                            <input type="button" class="btn btn-primary" id="EditProduct" value="Lưu"
-                           onclick="editProduct()" style="float: right;"></input>
+                              onclick="editProduct()" style="float: right;"></input>
                         </div>
                      </div>
                   </div>
@@ -621,6 +648,7 @@
 
       $(document).ready(function () {
          var text = localStorage.getItem('sellerId').replaceAll('"', '');
+         
          $('#dataProduct').DataTable({
             'ajax': function (data, callback, settings) {
                $.ajax({
@@ -657,7 +685,6 @@
                   return '<input type="button" class="btn btn-info ml-2" data-toggle="modal" data-target="#inforProduct" idproduct="' + row.id + '"  value="Thông tin"/>' +
                      '<input type="button" class="btn btn-primary ml-2" data-toggle="modal" data-target="#EditProduct"  onclick="editproduct(' + "'" + row.id + "'" + ')" value="Sửa sản phẩm"/>' +
                      '<input type="button" class="btn btn-danger ml-2" data-toggle="modal" data-target="#deleteProduct" onclick="deleteproduct(' + "'" + row.id + "'" + ')" value="Xóa sản Phẩm"/>';
-
                }
             }]
          });
@@ -706,9 +733,55 @@
                document.getElementById('itimefrom').value = list.time_from;
                document.getElementById('itimeto').value = list.time_to;
                document.getElementById('iSale').value = list.sale;
-               document.getElementById('isalefrom').value = list.sale_from;
-               document.getElementById('isaleto').value = list.sale_to;
-               document.getElementById('CreateAt').value = list.createdAt;
+               var d1 = new Date(list.sale_from);
+               var n1;
+               if (d1.getUTCDate() < 10) {
+                  n1 = '0' + d1.getUTCDate();
+               } else {
+                  n1 = d1.getUTCDate();
+               }
+               var m1;
+               if (d1.getUTCMonth() < 10) {
+                  m1 = '0' + d1.getUTCMonth();
+               } else {
+                  m1 = d1.getUTCMonth();
+               }
+               var y1 = d1.getUTCFullYear();
+               var dob1 = y1 + '-' + m1 + '-' + n1;
+               document.getElementById('isalefrom').value = dob1;
+               var d2 = new Date(list.sale_to);
+               var n2;
+               if (d2.getUTCDate() < 10) {
+                  n2 = '0' + d2.getUTCDate();
+               } else {
+                  n2 = d2.getUTCDate();
+               }
+               var m2;
+               if (d2.getUTCMonth() < 10) {
+                  m2 = '0' + d2.getUTCMonth();
+               } else {
+                  m2 = d2.getUTCMonth();
+               }
+               var y2 = d2.getUTCFullYear();
+               var dob2 = y2 + '-' + m2 + '-' + n2;
+               document.getElementById('isaleto').value = dob2;
+               var d = new Date(list.createdAt);
+               var n;
+               if (d.getUTCDate() < 10) {
+                  n = '0' + d.getUTCDate();
+               } else {
+                  n = d.getUTCDate();
+               }
+               var m;
+               if (d.getUTCMonth() < 10) {
+                  m = '0' + d.getUTCMonth();
+               } else {
+                  m = d.getUTCMonth();
+               }
+               var y = d.getUTCFullYear();
+               var dob = y + '-' + m + '-' + n;
+               document.getElementById('CreateAt').value = dob;
+               document.getElementById('wizardPicturePreviews').src = list.image;
             }
          });
       })
@@ -734,6 +807,60 @@
             window.location.reload();
          })
       };
+
+      function loadInfoEit(id) {
+         $.ajax({
+            url: "/api/product/getById",
+            type: "GET",
+            dataType: "json",
+            data: {
+               id: id,
+            },
+            success: function (data) {
+               var list = data.data.product;
+               console.log(data)
+               document.getElementById('enamePro').value = list.name;
+               document.getElementById('equantityPro').value = list.quantity;
+               document.getElementById('ePrice').value = list.unit_price;
+               document.getElementById('eDes').value = list.description;
+               document.getElementById('eitimefrom').value = list.time_from;
+               document.getElementById('eitimeto').value = list.time_to;
+               document.getElementById('eiSale').value = list.sale;
+               var d1 = new Date(list.sale_from);
+               var n1;
+               if (d1.getUTCDate() < 10) {
+                  n1 = '0' + d1.getUTCDate();
+               } else {
+                  n1 = d1.getUTCDate();
+               }
+               var m1;
+               if (d1.getUTCMonth() < 10) {
+                  m1 = '0' + d1.getUTCMonth();
+               } else {
+                  m1 = d1.getUTCMonth();
+               }
+               var y1 = d1.getUTCFullYear();
+               var dob1 = y1 + '-' + m1 + '-' + n1;
+               document.getElementById('eisalefrom').value = dob1;
+               var d2 = new Date(list.sale_to);
+               var n2;
+               if (d2.getUTCDate() < 10) {
+                  n2 = '0' + d2.getUTCDate();
+               } else {
+                  n2 = d2.getUTCDate();
+               }
+               var m2;
+               if (d2.getUTCMonth() < 10) {
+                  m2 = '0' + d2.getUTCMonth();
+               } else {
+                  m2 = d2.getUTCMonth();
+               }
+               var y2 = d2.getUTCFullYear();
+               var dob2 = y2 + '-' + m2 + '-' + n2;
+               document.getElementById('eisaleto').value = dob2;
+            }
+         });
+      }
 
       function editProduct() {
          var text = localStorage.getItem('deleteId').replaceAll('"', '');
@@ -785,10 +912,10 @@
          var data = document.getElementById("wizard-picture").files;
          var formdData = new FormData();
          formdData.append("file", data[0])
-         var text = localStorage.getItem('sellerId').replaceAll('"', '');
+         var text = localStorage.getItem('deleteId').replaceAll('"', '');
          formdData.append("id", text)
          $.ajax({
-            url: '/api/user/avatar',
+            url: '/api/product/image',
             method: 'POST',
             // dataType : 'json',
             data: formdData,
