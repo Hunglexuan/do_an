@@ -15,6 +15,21 @@ import { name } from 'ejs';
 
 class MidProduct {
 
+    async updateImage(data,logo) {
+        if (!logo) {
+            throw new Error('Vui lòng chọn ảnh');
+        }
+        let objUpdate = await Product.findOne({
+            where: {
+                id: data.id,
+                del: 0,
+            },
+        });
+        let dataUpdate = {
+            image: logo,
+        };
+        objUpdate.update(dataUpdate);
+    }
 
     async getProductById(id) {
         let product = await Product.findOne({

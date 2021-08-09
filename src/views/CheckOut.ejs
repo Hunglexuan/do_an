@@ -20,11 +20,15 @@
     <link href="skin/font/select2.min.css" rel="stylesheet">
     <!-- Custom styles for this template-->
     <link href="skin/font/osahan.css" rel="stylesheet">
-
+    <!-- Dropzone-->
+    <link href="skin/font/dropzone.css" rel="stylesheet">
+    <!-- HungCSS -->
     <link href="skin/font/HungCSS.css" rel="stylesheet">
     <!-- Owl Carousel -->
-    <link rel="stylesheet" href="vendor/owl-carousel/owl.carousel.css">
-    <link rel="stylesheet" href="vendor/owl-carousel/owl.theme.css">
+    <link rel="stylesheet" href="skin/owl/owl.carousel.css">
+    <link rel="stylesheet" href="skin/owl/owl.theme.css">
+
+    <link href="skin/font/DoanCSS.css" rel="stylesheet">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
@@ -89,82 +93,64 @@
     </div>
     <header>
         <header>
-            <nav class="navbar navbar-expand-lg navbar-light bg-light osahan-nav shadow-sm">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light osahan-nav shadow-sm ">
                 <div class="container">
-                    <a class="navbar-brand" href="index.html"><img alt="logo" src=""></a>
+                    <a class="navbar-brand" href="/"><img alt="logo" style="max-width: 120px;" src="image/logoShop.png"></a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-            </button>
+                <span class="navbar-toggler-icon"></span>
+             </button>
                     <div class="collapse navbar-collapse" id="navbarNavDropdown">
                         <ul class="navbar-nav ml-auto">
+                            <div class="modal fade modal-search show modalsearch" id="modal-search" tabindex="-1" role="dialog">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <span class="close" data-dismiss="modal">
+                                            <div class="close-icon">X</div>
+                                        </span>
+                                        <div class="modal-search-form" id="search_form">
+                                            <span class="sub-title">Tìm kiếm các quán ăn.......</span>
+                                            <form>
+                                                <input type="text" class="search-input" id="search-input">
+                                            </form>
+                                        </div>
+                                        <div id="suggest"></div>
+                                    </div>
+                                </div>
+                            </div>
                             <li class="nav-item active">
-                                <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+                                <span class="sizeIcon" data-toggle="modal" data-target="#modal-search">
+                                <i class="icofont-search-property nav-link" style="padding-top: 20px !important;"></i>
+                            </span>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="offers.html"><i class="icofont-sale-discount"></i> Offers <span class="badge badge-danger">New</span></a>
+                            <li class="nav-item active">
+                                <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
                             </li>
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                     Restaurants
-                     </a>
-                                <div class="dropdown-menu dropdown-menu-right shadow-sm border-0">
-                                    <a class="dropdown-item" href="listing.html">Listing</a>
-                                    <a class="dropdown-item" href="detail.html">Detail + Cart</a>
-                                    <a class="dropdown-item" href="checkout.html">Checkout</a>
-                                </div>
-                            </li>
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                     Pages
-                     </a>
-                                <div class="dropdown-menu dropdown-menu-right shadow-sm border-0">
-                                    <a class="dropdown-item" href="track-order.html">Track Order</a>
-                                    <a class="dropdown-item" href="invoice.html">Invoice</a>
-                                    <a class="dropdown-item" href="login.html">Login</a>
-                                    <a class="dropdown-item" href="register.html">Register</a>
-                                    <a class="dropdown-item" href="404.html">404</a>
-                                    <a class="dropdown-item" href="extra.html">Extra :)</a>
-                                </div>
-                            </li>
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <img alt="Generic placeholder image" src="image/user/4.png" class="nav-osahan-pic rounded-pill"> My Account
-                                </a>
-                                <div class="dropdown-menu dropdown-menu-right shadow-sm border-0">
-                                    <a class="dropdown-item" href="orders.html#orders"><i class="icofont-food-cart"></i> Orders</a>
-                                    <a class="dropdown-item" href="orders.html#offers"><i class="icofont-sale-discount"></i> Offers</a>
-                                    <a class="dropdown-item" href="orders.html#favourites"><i class="icofont-heart"></i> Favourites</a>
-                                    <a class="dropdown-item" href="orders.html#payments"><i class="icofont-credit-card"></i> Payments</a>
-                                    <a class="dropdown-item" href="orders.html#addresses"><i class="icofont-location-pin"></i> Addresses</a>
-                                </div>
-                            </li>
+    
+                            <li id="checkLogin"></li>
+    
                             <!-- <li class="nav-item dropdown dropdown-cart">
                                 <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <i class="fas fa-shopping-basket"></i> Cart
+                                    <i class="icofont-basket"></i> Cart
                                     <span class="total-count badge badge-success"></span>
                                 </a>
                                 <div class="dropdown-menu dropdown-cart-top p-0 dropdown-menu-right shadow-sm border-0">
-                                    <div class="dropdown-cart-top-header p-4">
-                                        <img class="img-fluid mr-3" alt="osahan" src="image/cart.jpg">
-                                        <h6 class="mb-0">Gus's World Famous Chicken</h6>
-                                        <p class="text-secondary mb-0">310 S Front St, Memphis, USA</p>
-                                        <small><a class="text-primary font-weight-bold" href="#">View Full Menu</a></small>
-                                    </div>
+    
                                     <div class="dropdown-cart-top-body border-top p-4">
-                                        <table class="table" id='show-cart'>
-
+                                        <table class="table" id="show-cart">
+    
                                         </table>
                                     </div>
                                     <div class="dropdown-cart-top-footer border-top p-4">
-                                        <p class="mb-0 font-weight-bold text-secondary">Sub Total <span class="total-cart float-right text-dark"></span></p>
+                                        <p class="mb-0 font-weight-bold text-secondary">Sub Total <span class=" total-cart float-right text-dark"></span></p>
                                         <small class="text-info">Extra charges may apply</small>
                                     </div>
                                     <div class="dropdown-cart-top-footer border-top p-2">
-                                        <a class="btn btn-success btn-block btn-lg" href="checkout.html"> Checkout</a>
+                                        <a class="btn btn-success btn-block btn-lg" href="/CheckOut"> Checkout</a>
                                     </div>
                                 </div>
                             </li> -->
                         </ul>
+    
                     </div>
                 </div>
             </nav>
@@ -256,7 +242,7 @@
                                 <hr />
                                 <h6 class="font-weight-bold mb-0">TO PAY <span class="float-right">$1329</span></h6>
                             </div>
-                            <a href="thanks.html" class="btn btn-success btn-block btn-lg">PAY $1329
+                            <a href="thanks.html" class="checkout-btn btn btn-success btn-block btn-lg">PAY
                      <i class="icofont-long-arrow-right"></i></a>
                         </div>
                     </div>
@@ -336,10 +322,30 @@
         <script src="js/custom.js"></script>
         <!-- Ajax -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
+        <script src="js/header.js"></script>
         <script src="../../customJS/shopDetail.js"></script>
 
         <script>
+            var cart = JSON.parse(sessionStorage.getItem('shoppingCart'));
+
+            $(".checkout-btn").click(function() {
+                $.ajax({
+                    url: "/api/bill/create",
+                    type: "POST",
+                    data: {
+                        "cart" : cart
+                    }
+                }).then(function(data) {
+                    
+                    console.log(data);
+                    if (data.message == "SUCCESS") {
+                       alert("done")
+                    } else {
+                       alert("ngu")
+                    }
+                })
+                
+            })
 
         </script>
 
