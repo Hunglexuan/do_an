@@ -2,6 +2,11 @@ $(document).ready(function () {
     loadName();
  });
 
+ function logOutClick() {
+   setCookie("token", "", 0);
+   window.location = "/"
+}
+
  function loadName() {
     var text = localStorage.getItem('sellerId').replaceAll('"', '');
     $.ajax({
