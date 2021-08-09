@@ -783,39 +783,46 @@
                document.getElementById('itimefrom').value = list.time_from;
                document.getElementById('itimeto').value = list.time_to;
                document.getElementById('iSale').value = list.sale;
-               var d1 = new Date(list.sale_from);
-               var n1;
-               if (d1.getUTCDate() < 10) {
-                  n1 = '0' + d1.getUTCDate();
-               } else {
-                  n1 = d1.getUTCDate();
+               if (list.sale_from == null) {
+                  document.getElementById('isalefrom').defaulValue = "";
                }
-               var m1;
-               if (d1.getUTCMonth() < 10) {
-                  m1 = '0' + d1.getUTCMonth();
+               if (list.sale_to == null) {
+                  document.getElementById('isaleto').defaulValue = "";
                } else {
-                  m1 = d1.getUTCMonth();
-               }
-               var y1 = d1.getUTCFullYear();
-               var dob1 = y1 + '-' + m1 + '-' + n1;
-               document.getElementById('isalefrom').value = dob1;
+                  var d1 = new Date(list.sale_from);
+                  var n1;
+                  if (d1.getUTCDate() < 10) {
+                     n1 = '0' + d1.getUTCDate();
+                  } else {
+                     n1 = d1.getUTCDate();
+                  }
+                  var m1;
+                  if (d1.getUTCMonth() < 10) {
+                     m1 = '0' + d1.getUTCMonth();
+                  } else {
+                     m1 = d1.getUTCMonth();
+                  }
+                  var y1 = d1.getUTCFullYear();
+                  var dob1 = y1 + '-' + m1 + '-' + n1;
+                  document.getElementById('isalefrom').value = dob1;
 
-               var d2 = new Date(list.sale_to);
-               var n2;
-               if (d2.getUTCDate() < 10) {
-                  n2 = '0' + d2.getUTCDate();
-               } else {
-                  n2 = d2.getUTCDate();
+                  var d2 = new Date(list.sale_to);
+                  var n2;
+                  if (d2.getUTCDate() < 10) {
+                     n2 = '0' + d2.getUTCDate();
+                  } else {
+                     n2 = d2.getUTCDate();
+                  }
+                  var m2;
+                  if (d2.getUTCMonth() < 10) {
+                     m2 = '0' + d2.getUTCMonth();
+                  } else {
+                     m2 = d2.getUTCMonth();
+                  }
+                  var y2 = d2.getUTCFullYear();
+                  var dob2 = y2 + '-' + m2 + '-' + n2;
+                  document.getElementById('isaleto').value = dob2;
                }
-               var m2;
-               if (d2.getUTCMonth() < 10) {
-                  m2 = '0' + d2.getUTCMonth();
-               } else {
-                  m2 = d2.getUTCMonth();
-               }
-               var y2 = d2.getUTCFullYear();
-               var dob2 = y2 + '-' + m2 + '-' + n2;
-               document.getElementById('isaleto').value = dob2;
 
                var d = new Date(list.createdAt);
                var n;
