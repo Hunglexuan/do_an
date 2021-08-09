@@ -13,7 +13,7 @@ import { name } from 'ejs';
 class MidVoucher {
 
     async getVoucherById(data) {
-        return Users.findOne({
+        return Voucher.findOne({
             where: {
                 code: data.code,
                 del: 0,
