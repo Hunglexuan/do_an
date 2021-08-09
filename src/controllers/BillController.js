@@ -11,7 +11,7 @@ async createBill(req,res){
 }
 async searchBill(req, res) {
     let dataQuery = req.query;
-    return MidBill.searchBill(dataQuery);
+    return MidBill.searchBillUser(dataQuery);
 }
 
 }

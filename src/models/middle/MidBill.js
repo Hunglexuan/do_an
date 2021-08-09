@@ -1,5 +1,5 @@
 import {
-    Role, Users, Bill, UserBill, Voucher
+    Role, Users, Bill, UserBill, Voucher,BillProduct,Product
 } from '../core';
 import { Op } from 'sequelize';
 import { checkPassword, hashPassword } from '../../libs/encrypt';
@@ -11,6 +11,74 @@ import database, { password } from '../../config/database';
 import { name } from 'ejs';
 
 class MidBill {
+    async searchBillUser(data) {       
+        let listBillTotal = []
+        let condition = {
+            del: 0
+        }
+        const [listBill, total] = await Promise.all([
+            UserBill.findAll({
+                where: condition,
+                order: [[
+                    "createdAt", "DESC"
+                ]],
+            }),
+            UserBill.count({
+                where: condition
+            })
+        ])
+        for (let i = 0; i < listBill.length; i++) {
+            let userBill = {
+                user: {},
+                bill: [],
+                shop: {},
+            }
+            userBill.user = await User.findOne({
+                where: {
+                    id: data.user_id,
+                    del: 0
+                }
+            })
+            userBill.shop = await User.findOne({
+                where: {
+                    id: data.shop_id,
+                    del: 0
+                }
+            })
+            let bill = await Bill.findOne({
+                where: {
+                    id: data.bill_id,
+                    del: 0
+                }
+            })
+            let billList = BillProduct.findAll({
+                where: {
+                    bill_id : bill.id
+                },
+                order: [[
+                    "createdAt", "DESC"
+                ]],
+            });
+            for(let j = 0 ; j < billList.length ;j++){
+               
+                let bill = await Product.findOne({
+                    where: {
+                        id: billList[j].product_id,
+                        del: 0
+                    }
+                })
+                userBill.bill.push(bill)
+            }
+            
+            listBillTotal.push(userBill);
+
+        }
+
+        return {
+            listBillTotal
+        }
+
+    }
     async searchBill(data) {
         let condition = {
             del: 0
