@@ -16,7 +16,10 @@ async updateRole(req,res){
     let data = req.body;
     return MidRole.updateRole(data);
 }
-
+async searchRole(req, res) {
+    let dataQuery = req.query;
+    return MidRole.searchRole(dataQuery);
+}
 }
 
 export default new RoleController();

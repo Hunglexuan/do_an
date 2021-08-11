@@ -53,20 +53,11 @@ const attributes = {
         type: DataTypes.UUID,
         allowNull: true,
         defaultValue: null
-
     },
-
     address: {
         type: DataTypes.STRING(255),
         allowNull: true,
         defaultValue: null
-
-    },
-    bill_id: {
-        type: DataTypes.UUID,
-        allowNull: true,
-        defaultValue: null
-
 
     },
     avatar: {
@@ -78,21 +69,13 @@ const attributes = {
         type: DataTypes.DATE,
         allowNull: true,
         defaultValue: null
-
-
     },
-    shop_name: {
-
-        type: DataTypes.STRING(255),
+    shop_status: {
+        type: DataTypes.BOOLEAN,
         allowNull: true,
-        defaultValue: null
+        defaultValue: true
     },
-    product_id: {
-        type: DataTypes.UUID,
-        allowNull: true,
-        defaultValue: null
 
-    },
     del: {
         type: DataTypes.TINYINT(1),
         allowNull: true,
@@ -126,4 +109,4 @@ const options = {
 /**
  * Init Model
  */
-Users.init(attributes, {...options, sequelize });
+Users.init(attributes, { ...options, sequelize });

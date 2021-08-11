@@ -6,7 +6,5 @@ import { isAuth } from '../middlewares/auth';
 let routerApp = new Router();
 
 
-routerApp.post('/create', Response(BillProductController.createBillProduct));
-
 
 export default routerApp;

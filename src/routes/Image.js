@@ -7,6 +7,6 @@ let routerApp = new Router();
 
 
 routerApp.post('/create', Response(ImageController.createImage));
-
+routerApp.get('/searchimage', Response(ImageController.searchImage));
 
 export default routerApp;

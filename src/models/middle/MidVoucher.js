@@ -11,6 +11,41 @@ import { password } from '../../config/database';
 import { name } from 'ejs';
 
 class MidVoucher {
+
+    async getVoucherById(data) {
+        return Voucher.findOne({
+            where: {
+                code: data.code,
+                del: 0,
+            },
+        });
+    }
+    async searchVoucher(data) {
+        let condition = {
+            del: 0
+        }
+        if (data.name) {
+            condition.name = {
+                [Op.like]: `%${data.name}%`
+            }
+        }
+        const [listVoucher, total] = await Promise.all([
+            Voucher.findAll({
+                where: condition,
+                order: [[
+                    "createdAt", "DESC"
+                ]],
+            }),
+            Voucher.count({
+                where: condition
+            })
+        ])
+        return {
+            listVoucher,
+            total: total || 0
+        }
+
+    }
 async createVoucher(data){
     if (!data.code) {
         throw new Error(ERROR_MESSAGE.VOUCHER.VOUCHER_CODE);

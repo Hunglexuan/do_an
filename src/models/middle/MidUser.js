@@ -3,17 +3,41 @@ import { Op } from "sequelize";
 import { checkPassword, hashPassword } from "../../libs/encrypt";
 import { generateToken } from "../../libs/token";
 import { ERROR_MESSAGE } from "../../config/error";
-import {
-    sendMailActiveOrder,
-    sendMailForgotPassword,
-} from "../../libs/sendmail";
-import { v4 as uuidv4 } from "uuid";
-import { password } from "../../config/database";
-import { name } from "ejs";
-import { find } from "lodash";
+
+
 
 
 class MidUser {
+
+
+    async updateAvatar(data,logo) {
+        if (!logo) {
+            throw new Error('Vui lòng chọn ảnh');
+        }
+        let objUpdate = await Users.findOne({
+            where: {
+                id: data.id,
+                del: 0,
+            },
+        });
+        let dataUpdate = {
+            avatar: logo,
+        };
+        objUpdate.update(dataUpdate);
+    }
+
+    async updateShopStatus(data) {
+        let obj = await Users.findOne({
+            where: {
+                id: data.id,
+                del: 0,
+            },
+        });
+        let dataUpdate = {
+            shop_status: data.shop_status
+        };
+        obj.update(dataUpdate);
+    }
     async getUserByEmail(email) {
         return await Users.findOne({
             where: {
@@ -104,7 +128,7 @@ class MidUser {
 
         const userData = await this.getUserByEmail(email);
         let check = this.checkRole(userData);
-        if (check == "admin") {}
+        if (check == "admin") { }
         if (!userData) {
             throw new Error(ERROR_MESSAGE.LOGIN.ERR_ACC);
         }
@@ -118,8 +142,10 @@ class MidUser {
         const token = await generateToken({ userid: userData.id, email: email });
         return {
             token,
+            userid: userData.id,
         };
     }
+
     async loginAdmin(credentials) {
         const { email, password } = credentials;
 
@@ -180,6 +206,7 @@ class MidUser {
         const token = await generateToken({ userid: userData.id, email: email });
         return {
             token,
+            sellerid: userData.id,
         };
     }
 
@@ -202,9 +229,17 @@ class MidUser {
 
     //done
     async searchUser(data) {
+        let role = await Role.findOne({
+            where: {
+                name: "",
+                del: 0,
+            },
+        });
         let condition = {
             del: 0,
+            role_id: role.id,
         };
+
         if (data.name) {
             condition.name = {
                 [Op.like]: `%${data.name}%`,
@@ -260,9 +295,7 @@ class MidUser {
                 [Op.like]: `%${data.name}%`,
             };
         }
-        let { page, limit } = data;
-        page = page ? parseInt(page) : 1;
-        limit = limit ? parseInt(limit) : 10;
+
 
         const [listUsers, total] = await Promise.all([
             Users.findAll({
@@ -270,8 +303,6 @@ class MidUser {
                 order: [
                     ["createdAt", "DESC"]
                 ],
-                limit,
-                offset: (page - 1) * limit,
             }),
             Users.count({
                 where: condition,

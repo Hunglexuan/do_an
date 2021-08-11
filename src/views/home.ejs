@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Askbootstrap">
+    <meta name="author" content="Askbootstrap">
+    <title>FUMK - Online Food Ordering</title>
+
+    <!-- Favicon Icon -->
+    <link rel="icon" type="image/png" href="image/favicon.png">
+    <!-- Bootstrap core CSS-->
+    <link href="skin/bootstrap/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome-->
+    <link href="skin/font/all.min.css" rel="stylesheet">
+    <!-- Font Awesome-->
+    <link href="skin/font/icofont.min.css" rel="stylesheet">
+    <!-- Select2 CSS-->
+    <link href="skin/font/select2.min.css" rel="stylesheet">
+    <!-- Custom styles for this template-->
+    <link href="skin/font/osahan.css" rel="stylesheet">
+
+    <link href="skin/font/DoanCSS.css" rel="stylesheet">
+
+    <!-- Owl Carousel -->
+    <link rel="stylesheet" href="skin/owl/owl.carousel.css">
+    <link rel="stylesheet" href="skin/owl/owl.theme.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+</head>
+
+<body class="portal">
+    <div class="fallingLeaves">
+        <span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span>
+    </div>
+    <header class="main-header">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light osahan-nav shadow-sm ">
+            <div class="container">
+                <a class="navbar-brand" href="/"><img alt="logo" style="max-width: 120px;" src="image/logoShop.png"></a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+         </button>
+                <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                    <ul class="navbar-nav ml-auto">
+                        <div class="modal fade modal-search show modalsearch" id="modal-search" tabindex="-1" role="dialog">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <span class="close" data-dismiss="modal">
+                                        <div class="close-icon">X</div>
+                                    </span>
+                                    <div class="modal-search-form" id="search_form">
+                                        <span class="sub-title">Tìm kiếm các quán ăn.......</span>
+                                        <form>
+                                            <input type="text" class="search-input" id="search-input">
+                                        </form>
+                                    </div>
+                                    <div id="suggest"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <li class="nav-item active">
+                            <span class="sizeIcon" data-toggle="modal" data-target="#modal-search">
+                            <i class="icofont-search-property nav-link" style="padding-top: 20px !important;"></i>
+                        </span>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+                        </li>
+
+                        <li id="checkLogin"></li>
+
+                        <li class="nav-item dropdown dropdown-cart">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="icofont-basket"></i> Cart
+                                <span class="total-count badge badge-success"></span>
+                            </a>
+                            <div class="dropdown-menu dropdown-cart-top p-0 dropdown-menu-right shadow-sm border-0">
+
+                                <div class="dropdown-cart-top-body border-top p-4">
+                                    <table class="table" id="show-cart">
+
+                                    </table>
+                                </div>
+                                <div class="dropdown-cart-top-footer border-top p-4">
+                                    <p class="mb-0 font-weight-bold text-secondary">Sub Total <span class=" total-cart float-right text-dark"></span></p>
+                                    <small class="text-info">Extra charges may apply</small>
+                                </div>
+                                <div class="dropdown-cart-top-footer border-top p-2">
+                                    <a class="btn btn-success btn-block btn-lg" href="/CheckOut"> Checkout</a>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container" style="max-width: 1430px;">
+        <section class="col-md-3 category-list">
+            <!-- <div class="banner-overlay"></div> -->
+            <div class="col-md-15">
+
+                <div class="search-item">
+                    <h1 class="title"> FU Market !!!</h1>
+                    <div class="local">Yêu là phải nói, đói là phải ăn.</div>
+                    <div class="homepage-search-form">
+                        <form class="form-noborder">
+                            <div class="form-row">
+                                <div class="col-lg-8 col-md-5 col-sm-12 form-group">
+                                    <input type="text" placeholder="Tìm địa điểm, món ăn,..." class="form-control form-control-lg text-search" id="findfood">
+                                </div>
+                                <div class="col-lg-2 col-md-2 col-sm-12 form-group">
+                                    <a href="/AllProduct" class="btn btn-primary btn-block btn-lg btn-gradient form-search" style="width: 90px;" onclick="searchPro()">Search</a>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div id="searchCategory"> </div>
+                </div>
+            </div>
+        </section>
+        <section class="col-md-8 main-right">
+            <div class="col-md-12 pt-5">
+                <div class="container">
+                    <div class="list-restaurant">
+                        <div class="title-wrapper">
+                            <h2 class="tittle"> BÁN CHẠY </h2>
+                            <span class="line"></span>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="owl-carousel owl-carousel-four owl-theme">
+                                    <div class="item">
+                                        <div class="list-card bg-white h-100 overflow-hidden position-relative shadow-sm">
+                                            <div class="list-card-image">
+                                                <div class="star position-absolute"><span class="badge badge-success"><i class="icofont-star"></i> 3.1 (300+)</span></div>
+                                                <div class="favourite-heart text-danger position-absolute"><a href="detail.html"><i class="icofont-heart"></i></a></div>
+                                                <div class="member-plan position-absolute"><span class="badge badge-dark">Promoted</span>
+                                                </div>
+                                                <a href="/AllProduct">
+                                                    <img src="image/list/1.png" class="img-fluid item-img img-restaurant">
+                                                </a>
+                                            </div>
+                                            <div class="p-3 position-relative item-restaurant">
+                                                <div class="list-card-body">
+                                                    <h6 class="mb-1"><a href="/AllProduct" class="text-black">World Famous</a></h6>
+                                                    <p class="text-gray mb-3">North Indian • American • Pure veg</p>
+                                                    <p class="text-gray mb-3 time"><span class="bg-light text-dark rounded-sm pl-2 pb-1 pt-1 pr-2"><i class="icofont-wall-clock"></i> 20–25 min</span></p>
+                                                </div>
+                                                <div class="list-card-badge">
+                                                    <span class="badge badge-success">OFFER</span> <small>65% off | Use Coupon OSAHAN50</small>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="item">
+                                        <div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
+                                            <div class="list-card-image">
+                                                <div class="star position-absolute"><span class="badge badge-warning"><i
+                                          class="icofont-star"></i> 3.1 (300+)</span></div>
+                                                <div class="favourite-heart text-danger position-absolute"><a href="detail.html"><i
+                                          class="icofont-heart"></i></a></div>
+                                                <div class="member-plan position-absolute"><span class="badge badge-dark">Promoted</span>
+                                                </div>
+                                                <a href="/AllProduct">
+                                                    <img src="image/list/3.png" class="img-fluid item-img img-restaurant">
+                                                </a>
+                                            </div>
+                                            <div class="p-3 position-relative item-restaurant">
+                                                <div class="list-card-body">
+                                                    <h6 class="mb-1"><a href="/AllProduct" class="text-black">Bite Me Sandwiches</a>
+                                                    </h6>
+                                                    <p class="text-gray mb-3">North Indian • Indian • Pure veg</p>
+                                                    <p class="text-gray mb-3 time"><span class="bg-light text-dark rounded-sm pl-2 pb-1 pt-1 pr-2"><i
+                                             class="icofont-wall-clock"></i> 15–25 min</span> </p>
+                                                </div>
+                                                <div class="list-card-badge">
+                                                    <span class="badge badge-danger">OFFER</span> <small>65% off | Use Coupon
+                                       OSAHAN50</small>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="item">
+                                        <div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
+                                            <div class="list-card-image">
+                                                <div class="star position-absolute"><span class="badge badge-success"><i
+                                          class="icofont-star"></i> 3.1 (300+)</span></div>
+                                                <div class="favourite-heart text-danger position-absolute"><a href="detail.html"><i
+                                          class="icofont-heart"></i></a></div>
+                                                <div class="member-plan position-absolute"><span class="badge badge-danger">Promoted</span>
+                                                </div>
+                                                <a href="/AllProduct">
+                                                    <img src="image/list/6.png" class="img-fluid item-img img-restaurant">
+                                                </a>
+                                            </div>
+                                            <div class="p-3 position-relative item-restaurant">
+                                                <div class="list-card-body">
+                                                    <h6 class="mb-1"><a href="/AllProduct" class="text-black">The osahan Restaurant
+                                       </a>
+                                                    </h6>
+                                                    <p class="text-gray mb-3">North • Hamburgers • Pure veg</p>
+                                                    <p class="text-gray mb-3 time"><span class="bg-light text-dark rounded-sm pl-2 pb-1 pt-1 pr-2"><i
+                                             class="icofont-wall-clock"></i> 15–25 min</span></p>
+                                                </div>
+                                                <div class="list-card-badge">
+                                                    <span class="badge badge-danger">OFFER</span> <small>65% off | Use Coupon
+                                       OSAHAN50</small>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="item">
+                                        <div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
+                                            <div class="list-card-image">
+                                                <div class="star position-absolute"><span class="badge badge-success"><i
+                                          class="icofont-star"></i> 3.1 (300+)</span></div>
+                                                <div class="favourite-heart text-danger position-absolute"><a href="detail.html"><i
+                                          class="icofont-heart"></i></a></div>
+                                                <div class="member-plan position-absolute"><span class="badge badge-dark">Promoted</span>
+                                                </div>
+                                                <a href="/AllProduct">
+                                                    <img src="image/list/8.png" class="img-fluid item-img img-restaurant">
+                                                </a>
+                                            </div>
+                                            <div class="p-3 position-relative item-restaurant">
+                                                <div class="list-card-body">
+                                                    <h6 class="mb-1"><a href="/AllProduct" class="text-black">Polo Lounge
+                                       </a>
+                                                    </h6>
+                                                    <p class="text-gray mb-3">North Indian • Indian • Pure veg</p>
+                                                    <p class="text-gray mb-3 time"><span class="bg-light text-dark rounded-sm pl-2 pb-1 pt-1 pr-2"><i
+                                             class="icofont-wall-clock"></i> 15–25 min</span> </p>
+                                                </div>
+                                                <div class="list-card-badge">
+                                                    <span class="badge badge-danger">OFFER</span> <small>65% off | Use Coupon
+                                       OSAHAN50</small>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="item">
+                                        <div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
+                                            <div class="list-card-image">
+                                                <div class="star position-absolute"><span class="badge badge-success"><i
+                                          class="icofont-star"></i> 3.1 (300+)</span></div>
+                                                <div class="favourite-heart text-danger position-absolute"><a href="detail.html"><i
+                                          class="icofont-heart"></i></a></div>
+                                                <div class="member-plan position-absolute"><span class="badge badge-dark">Promoted</span>
+                                                </div>
+                                                <a href="/AllProduct">
+                                                    <img src="image/list/9.png" class="img-fluid item-img img-restaurant">
+                                                </a>
+                                            </div>
+                                            <div class="p-3 position-relative item-restaurant">
+                                                <div class="list-card-body">
+                                                    <h6 class="mb-1"><a href="/AllProduct" class="text-black">Jack Fry's
+                                       </a>
+                                                    </h6>
+                                                    <p class="text-gray mb-3">North Indian • Indian • Pure veg</p>
+                                                    <p class="text-gray mb-3 time"><span class="bg-light text-dark rounded-sm pl-2 pb-1 pt-1 pr-2"><i
+                                             class="icofont-wall-clock"></i> 15–25 min</span> </p>
+                                                </div>
+                                                <div class="list-card-badge">
+                                                    <span class="badge badge-danger">OFFER</span> <small>65% off | Use Coupon
+                                       OSAHAN50</small>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="list-restaurant">
+                        <div class="title-wrapper">
+                            <h2 class="tittle"> SHIP NHANH </h2>
+                            <span class="line"></span>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="owl-carousel owl-carousel-four owl-theme">
+                                    <div class="item">
+                                        <div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
+                                            <div class="list-card-image">
+                                                <div class="star position-absolute"><span class="badge badge-success"><i
+                                          class="icofont-star"></i> 3.1 (300+)</span></div>
+                                                <div class="favourite-heart text-danger position-absolute"><a href="detail.html"><i
+                                          class="icofont-heart"></i></a></div>
+                                                <div class="member-plan position-absolute"><span class="badge badge-dark">Promoted</span>
+                                                </div>
+                                                <a href="/AllProduct">
+                                                    <img src="image/list/1.png" class="img-fluid item-img img-restaurant">
+                                                </a>
+                                            </div>
+                                            <div class="p-3 position-relative item-restaurant">
+                                                <div class="list-card-body">
+                                                    <h6 class="mb-1"><a href="/AllProduct" class="text-black">World Famous</a></h6>
+                                                    <p class="text-gray mb-3">North Indian • American • Pure veg</p>
+                                                    <p class="text-gray mb-3 time"><span class="bg-light text-dark rounded-sm pl-2 pb-1 pt-1 pr-2"><i
+                                             class="icofont-wall-clock"></i> 20–25 min</span> </p>
+                                                </div>
+                                                <div class="list-card-badge">
+                                                    <span class="badge badge-success">OFFER</span> <small>65% off | Use Coupon
+                                       OSAHAN50</small>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="item">
+                                        <div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
+                                            <div class="list-card-image">
+                                                <div class="star position-absolute"><span class="badge badge-warning"><i
+                                          class="icofont-star"></i> 3.1 (300+)</span></div>
+                                                <div class="favourite-heart text-danger position-absolute"><a href="detail.html"><i
+                                          class="icofont-heart"></i></a></div>
+                                                <div class="member-plan position-absolute"><span class="badge badge-dark">Promoted</span>
+                                                </div>
+                                                <a href="/AllProduct">
+                                                    <img src="image/list/3.png" class="img-fluid item-img img-restaurant">
+                                                </a>
+                                            </div>
+                                            <div class="p-3 position-relative item-restaurant">
+                                                <div class="list-card-body">
+                                                    <h6 class="mb-1"><a href="/AllProduct" class="text-black">Bite Me Sandwiches</a>
+                                                    </h6>
+                                                    <p class="text-gray mb-3">North Indian • Indian • Pure veg</p>
+                                                    <p class="text-gray mb-3 time"><span class="bg-light text-dark rounded-sm pl-2 pb-1 pt-1 pr-2"><i
+                                             class="icofont-wall-clock"></i> 15–25 min</span> </p>
+                                                </div>
+                                                <div class="list-card-badge">
+                                                    <span class="badge badge-danger">OFFER</span> <small>65% off | Use Coupon
+                                       OSAHAN50</small>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="item">
+                                        <div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
+                                            <div class="list-card-image">
+                                                <div class="star position-absolute"><span class="badge badge-success"><i
+                                          class="icofont-star"></i> 3.1 (300+)</span></div>
+                                                <div class="favourite-heart text-danger position-absolute"><a href="detail.html"><i
+                                          class="icofont-heart"></i></a></div>
+                                                <div class="member-plan position-absolute"><span class="badge badge-danger">Promoted</span>
+                                                </div>
+                                                <a href="/AllProduct">
+                                                    <img src="image/list/6.png" class="img-fluid item-img img-restaurant">
+                                                </a>
+                                            </div>
+                                            <div class="p-3 position-relative item-restaurant">
+                                                <div class="list-card-body">
+                                                    <h6 class="mb-1"><a href="/AllProduct" class="text-black">The osahan Restaurant
+                                       </a>
+                                                    </h6>
+                                                    <p class="text-gray mb-3">North • Hamburgers • Pure veg</p>
+                                                    <p class="text-gray mb-3 time"><span class="bg-light text-dark rounded-sm pl-2 pb-1 pt-1 pr-2"><i
+                                             class="icofont-wall-clock"></i> 15–25 min</span> </p>
+                                                </div>
+                                                <div class="list-card-badge">
+                                                    <span class="badge badge-danger">OFFER</span> <small>65% off | Use Coupon
+                                       OSAHAN50</small>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="item">
+                                        <div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
+                                            <div class="list-card-image">
+                                                <div class="star position-absolute"><span class="badge badge-success"><i
+                                          class="icofont-star"></i> 3.1 (300+)</span></div>
+                                                <div class="favourite-heart text-danger position-absolute"><a href="detail.html"><i
+                                          class="icofont-heart"></i></a></div>
+                                                <div class="member-plan position-absolute"><span class="badge badge-dark">Promoted</span>
+                                                </div>
+                                                <a href="/AllProduct">
+                                                    <img src="image/list/8.png" class="img-fluid item-img img-restaurant">
+                                                </a>
+                                            </div>
+                                            <div class="p-3 position-relative item-restaurant">
+                                                <div class="list-card-body">
+                                                    <h6 class="mb-1"><a href="/AllProduct" class="text-black">Polo Lounge
+                                       </a>
+                                                    </h6>
+                                                    <p class="text-gray mb-3">North Indian • Indian • Pure veg</p>
+                                                    <p class="text-gray mb-3 time"><span class="bg-light text-dark rounded-sm pl-2 pb-1 pt-1 pr-2"><i
+                                             class="icofont-wall-clock"></i> 15–25 min</span> </p>
+                                                </div>
+                                                <div class="list-card-badge">
+                                                    <span class="badge badge-danger">OFFER</span> <small>65% off | Use Coupon
+                                       OSAHAN50</small>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="item">
+                                        <div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
+                                            <div class="list-card-image">
+                                                <div class="star position-absolute"><span class="badge badge-success"><i
+                                          class="icofont-star"></i> 3.1 (300+)</span></div>
+                                                <div class="favourite-heart text-danger position-absolute"><a href="detail.html"><i
+                                          class="icofont-heart"></i></a></div>
+                                                <div class="member-plan position-absolute"><span class="badge badge-dark">Promoted</span>
+                                                </div>
+                                                <a href="/AllProduct">
+                                                    <img src="image/list/9.png" class="img-fluid item-img img-restaurant">
+                                                </a>
+                                            </div>
+                                            <div class="p-3 position-relative item-restaurant">
+                                                <div class="list-card-body">
+                                                    <h6 class="mb-1"><a href="/AllProduct" class="text-black">Jack Fry's
+                                       </a>
+                                                    </h6>
+                                                    <p class="text-gray mb-3">North Indian • Indian • Pure veg</p>
+                                                    <p class="text-gray mb-3 time"><span class="bg-light text-dark rounded-sm pl-2 pb-1 pt-1 pr-2"><i
+                                             class="icofont-wall-clock"></i> 15–25 min</span></p>
+                                                </div>
+                                                <div class="list-card-badge">
+                                                    <span class="badge badge-danger">OFFER</span> <small>65% off | Use Coupon
+                                       OSAHAN50</small>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="list-restaurant">
+                        <div class="title-wrapper">
+                            <h2 class="tittle"> GIẢM GIÁ </h2>
+                            <span class="line"></span>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="owl-carousel owl-carousel-four owl-theme">
+                                    <div class="item">
+                                        <div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
+                                            <div class="list-card-image">
+                                                <div class="star position-absolute"><span class="badge badge-success"><i
+                                          class="icofont-star"></i> 3.1 (300+)</span></div>
+                                                <div class="favourite-heart text-danger position-absolute"><a href="detail.html"><i
+                                          class="icofont-heart"></i></a></div>
+                                                <div class="member-plan position-absolute"><span class="badge badge-dark">Promoted</span>
+                                                </div>
+                                                <a href="/AllProduct">
+                                                    <img src="image/list/1.png" class="img-fluid item-img img-restaurant">
+                                                </a>
+                                            </div>
+                                            <div class="p-3 position-relative item-restaurant">
+                                                <div class="list-card-body">
+                                                    <h6 class="mb-1"><a href="/AllProduct" class="text-black">World Famous</a></h6>
+                                                    <p class="text-gray mb-3">North Indian • American • Pure veg</p>
+                                                    <p class="text-gray mb-3 time"><span class="bg-light text-dark rounded-sm pl-2 pb-1 pt-1 pr-2"><i
+                                             class="icofont-wall-clock"></i> 20–25 min</span> </p>
+                                                </div>
+                                                <div class="list-card-badge">
+                                                    <span class="badge badge-success">OFFER</span> <small>65% off | Use Coupon
+                                       OSAHAN50</small>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="item">
+                                        <div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
+                                            <div class="list-card-image">
+                                                <div class="star position-absolute"><span class="badge badge-warning"><i
+                                          class="icofont-star"></i> 3.1 (300+)</span></div>
+                                                <div class="favourite-heart text-danger position-absolute"><a href="detail.html"><i
+                                          class="icofont-heart"></i></a></div>
+                                                <div class="member-plan position-absolute"><span class="badge badge-dark">Promoted</span>
+                                                </div>
+                                                <a href="/AllProduct">
+                                                    <img src="image/list/3.png" class="img-fluid item-img img-restaurant">
+                                                </a>
+                                            </div>
+                                            <div class="p-3 position-relative item-restaurant">
+                                                <div class="list-card-body">
+                                                    <h6 class="mb-1"><a href="/AllProduct" class="text-black">Bite Me Sandwiches</a>
+                                                    </h6>
+                                                    <p class="text-gray mb-3">North Indian • Indian • Pure veg</p>
+                                                    <p class="text-gray mb-3 time"><span class="bg-light text-dark rounded-sm pl-2 pb-1 pt-1 pr-2"><i
+                                             class="icofont-wall-clock"></i> 15–25 min</span> </p>
+                                                </div>
+                                                <div class="list-card-badge">
+                                                    <span class="badge badge-danger">OFFER</span> <small>65% off | Use Coupon
+                                       OSAHAN50</small>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="item">
+                                        <div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
+                                            <div class="list-card-image">
+                                                <div class="star position-absolute"><span class="badge badge-success"><i
+                                          class="icofont-star"></i> 3.1 (300+)</span></div>
+                                                <div class="favourite-heart text-danger position-absolute"><a href="detail.html"><i
+                                          class="icofont-heart"></i></a></div>
+                                                <div class="member-plan position-absolute"><span class="badge badge-danger">Promoted</span>
+                                                </div>
+                                                <a href="/AllProduct">
+                                                    <img src="image/list/6.png" class="img-fluid item-img img-restaurant">
+                                                </a>
+                                            </div>
+                                            <div class="p-3 position-relative item-restaurant">
+                                                <div class="list-card-body">
+                                                    <h6 class="mb-1"><a href="/AllProduct" class="text-black">The osahan Restaurant
+                                       </a>
+                                                    </h6>
+                                                    <p class="text-gray mb-3">North • Hamburgers • Pure veg</p>
+                                                    <p class="text-gray mb-3 time"><span class="bg-light text-dark rounded-sm pl-2 pb-1 pt-1 pr-2"><i
+                                             class="icofont-wall-clock"></i> 15–25 min</span> </p>
+                                                </div>
+                                                <div class="list-card-badge">
+                                                    <span class="badge badge-danger">OFFER</span> <small>65% off | Use Coupon
+                                       OSAHAN50</small>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="item">
+                                        <div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
+                                            <div class="list-card-image">
+                                                <div class="star position-absolute"><span class="badge badge-success"><i
+                                          class="icofont-star"></i> 3.1 (300+)</span></div>
+                                                <div class="favourite-heart text-danger position-absolute"><a href="detail.html"><i
+                                          class="icofont-heart"></i></a></div>
+                                                <div class="member-plan position-absolute"><span class="badge badge-dark">Promoted</span>
+                                                </div>
+                                                <a href="/AllProduct">
+                                                    <img src="image/list/8.png" class="img-fluid item-img img-restaurant">
+                                                </a>
+                                            </div>
+                                            <div class="p-3 position-relative item-restaurant">
+                                                <div class="list-card-body">
+                                                    <h6 class="mb-1"><a href="/AllProduct" class="text-black">Polo Lounge
+                                       </a>
+                                                    </h6>
+                                                    <p class="text-gray mb-3">North Indian • Indian • Pure veg</p>
+                                                    <p class="text-gray mb-3 time"><span class="bg-light text-dark rounded-sm pl-2 pb-1 pt-1 pr-2"><i
+                                             class="icofont-wall-clock"></i> 15–25 min</span> </p>
+                                                </div>
+                                                <div class="list-card-badge">
+                                                    <span class="badge badge-danger">OFFER</span> <small>65% off | Use Coupon
+                                       OSAHAN50</small>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="item">
+                                        <div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
+                                            <div class="list-card-image">
+                                                <div class="star position-absolute"><span class="badge badge-success"><i class="icofont-star"></i> 3.1 (300+)</span></div>
+                                                <div class="favourite-heart text-danger position-absolute"><a href="detail.html"><i class="icofont-heart"></i></a></div>
+                                                <div class="member-plan position-absolute"><span class="badge badge-dark">Promoted</span>
+                                                </div>
+                                                <a href="/AllProduct">
+                                                    <img src="image/list/9.png" class="img-fluid item-img img-restaurant">
+                                                </a>
+                                            </div>
+                                            <div class="p-3 position-relative item-restaurant">
+                                                <div class="list-card-body">
+                                                    <h6 class="mb-1"><a href="/AllProduct" class="text-black">Jack Fry's </a>
+                                                    </h6>
+                                                    <p class="text-gray mb-3">North Indian • Indian • Pure veg</p>
+                                                    <p class="text-gray mb-3 time"><span class="bg-light text-dark rounded-sm pl-2 pb-1 pt-1 pr-2"><i class="icofont-wall-clock"></i> 15–25 min</span> </p>
+                                                </div>
+                                                <div class="list-card-badge">
+                                                    <span class="badge badge-danger">OFFER</span> <small>65% off | Use Coupon OSAHAN50</small>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- jQuery -->
+    <script src="js/jquery-3.3.1.slim.min.js"></script>
+    <!-- Bootstrap core JavaScript-->
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <!-- Select2 JavaScript-->
+    <script src="js/select2.min.js"></script>
+    <!-- Owl Carousel -->
+    <script src="js/owl.carousel.js"></script>
+    <!-- Custom scripts for all pages-->
+    <script src="js/custom.js"></script>
+    <script src="js/header.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <!-- <script src="../../customJS/shopDetail.js"></script> -->
+
+    <script>
+        $(document).ready(function() {
+            loaddata();
+            loadCategory();
+        });
+
+        function searchPro() {
+            var food = document.getElementById('findfood').value;
+            localStorage.setItem('listProduct', JSON.stringify(food));
+        }
+
+        function loaddata() {
+            var text = document.getElementById('search-input').value;
+            $.ajax({
+                type: "GET",
+                dataType: "json",
+                data: {
+                    name: text
+                },
+                url: "/api/user/searchSeller",
+                success: function(data) {
+                    var listdata = data.data.listUsers;
+                    list = listdata;
+                }
+            });
+        }
+
+        function loadCategory() {
+            $.ajax({
+                type: "GET",
+                dataType: "json",
+                url: "/api/category/searchcategory",
+                success: function(data) {
+                    var listdata = data.data.listCategory;
+                    for (var i = 0; i < listdata.length; i++) {
+                        document.getElementById('searchCategory').innerHTML +=
+                            '<button class="btn btn-link link item-category" onclick="searchCate(' + "'" + listdata[i].name + "'" + ')"><B> ' + listdata[i].name + ' </B></button>';
+                    }
+                }
+            });
+        }
+
+        function searchCate(cateName) {
+            localStorage.setItem('listProduct', JSON.stringify(cateName));
+            window.location = '/AllProduct';
+        }
+    </script>
+
+</body>
+
+</html>

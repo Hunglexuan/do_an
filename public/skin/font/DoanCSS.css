@@ -1,0 +1,365 @@
+.fullbody {
+    margin-right: 0px;
+    margin-left: 0px;
+}
+
+.portal {
+    background-image: url('/image/nenfpt1.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    height: auto;
+    overflow-y: auto;
+    font-family: inherit;
+}
+
+.sizeIcon {
+    font-size: xx-large;
+    padding-bottom: 0px;
+}
+
+.link:hover {
+    color: #252525 !important;
+    background-color: #fff;
+}
+
+.category-list {
+    position: fixed;
+    padding-top: 50px;
+}
+
+.main-right {
+    padding-top: 80px;
+    height: 1000px!important;
+    padding-top: 80px;
+    float: right;
+}
+
+.list-restaurant {
+    padding: 13px 35px 10px 35px;
+    border: 1px solid #d7d7d7;
+    background-color: #fff;
+    border-radius: 6px;
+    margin-bottom: 20px;
+    position: relative;
+    width: 950px;
+    padding-bottom: 20px;
+}
+
+.tittle {
+    color: #252525;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.title-wrapper {
+    height: 50px;
+    padding-left: 6px;
+}
+
+.img-restaurant {
+    position: relative;
+    border-radius: 6px 6px 0px 0px;
+}
+
+.item-restaurant {
+    border: 1px solid #d7d7d7;
+    border-radius: 0px 0px 6px 6px !important;
+}
+
+.search-item {
+    width: 100%;
+    position: absolute;
+    margin-top: 110px;
+}
+
+.item-category {
+    color: #fff;
+    border: 1px solid #fff;
+    border-radius: 6px;
+    margin-right: 10px;
+    height: auto;
+    width: auto;
+    margin-top: 15px;
+}
+
+.text-search {
+    border-radius: 6px 0px 0px 6px;
+}
+
+.form-search {
+    border-radius: 0px 6px 6px 0px;
+    padding: 27px 0px 40px 0px;
+}
+
+.title {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 5px;
+    margin-top: 60px;
+    color: #fff;
+}
+
+.local {
+    font-size: 15px;
+    text-transform: capitalize;
+    color: #fff;
+}
+
+.modal-dialog {
+    width: 70%;
+    max-width: 1140px;
+}
+
+.modal-search .modal-content {
+    /* width: 70%;
+    max-width: 1140px; */
+    background-color: transparent;
+    border: 0;
+}
+
+.detail-image {
+    width: 440px;
+    height: auto;
+    position: relative;
+    float: left;
+    padding-top: 15px;
+}
+
+.detail-info {
+    color: #252525;
+    width: 645px;
+    padding-bottom: 15px;
+    padding-top: 15px;
+}
+
+.kind-restaurants {
+    font-size: 11px;
+    color: #959595;
+    text-transform: uppercase;
+    display: flex;
+}
+
+.link-brand {
+    text-transform: none;
+    padding-left: 10px;
+}
+
+.modal-search-form {
+    text-align: center;
+    background-image: url('/image/FPT.png');
+    background-position: top;
+    background-repeat: no-repeat;
+    padding-top: 140px;
+    margin-top: 35px;
+}
+
+.name-restaurant {
+    font-size: 22px;
+    color: #464646;
+    font-weight: 700;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    margin-bottom: 4px;
+    line-height: 33px;
+}
+
+.address-restaurant {
+    font-size: 13px;
+    margin-bottom: 2px;
+}
+
+.sub-title {
+    color: #fff;
+    font-size: 16px;
+    text-align: center;
+}
+
+.search-input {
+    color: #fff;
+    text-align: center;
+    width: 100%;
+    margin-top: 10px;
+    border: 0;
+    border-bottom: 2px solid #fff;
+    background-color: transparent;
+    outline: none;
+}
+
+.status-restaurant {
+    margin-bottom: 6px;
+}
+
+.time-status {
+    position: relative;
+    top: 0;
+    left: 0;
+    display: inline-block;
+}
+
+.stt-online {
+    width: inherit;
+    height: inherit;
+    vertical-align: middle;
+    display: inline-block;
+    color: #329900;
+}
+
+.time {
+    font-size: 15px;
+    display: inline-block;
+    padding-left: 10px;
+    vertical-align: middle;
+}
+
+.priceProduct {
+    color: #959595;
+    font-size: 15px;
+}
+
+.descriptionProduct {
+    font-size: 15px;
+    margin-top: 10px;
+}
+
+.main-header .modal .modal-search .show :after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #000;
+    opacity: .8;
+    z-index: -1;
+    height: 100%;
+}
+
+.modal-backdrop {
+    opacity: .8 !important;
+    z-index: 1 !important;
+}
+
+.modal-dialog {
+    margin-top: 85px;
+}
+
+.modalsearch {
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    opacity: .8;
+}
+
+.close {
+    color: #fff;
+    opacity: 1 !important;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.close:hover {
+    color: #fff !important;
+}
+
+.close .close-icon {
+    width: 24px;
+    display: fixed;
+    right: 0;
+}
+
+.close .close-icon:hover {
+    color: #fff;
+    cursor: pointer;
+}
+
+.item-content:hover {
+    transition: box-shadow .25s;
+    box-shadow: 0 2px 2px 0 rgb(0 0 0 / 20%), 0 4px 15px 0 rgb(0 0 0 / 19%);
+    text-decoration: none;
+    cursor: pointer;
+}
+
+
+/* #search_form {
+    z-index: 200 !important;
+} */
+
+
+/* .now-search {
+    color: #fff;
+    width: 470px;
+    z-index: 2;
+    position: absolute;
+    top: 50%;
+    left: 20px;
+    transform: translateY(-50%);
+    /* margin-top: -30%; */
+
+
+/* } */
+
+.fallingLeaves {
+    text-align: center;
+    z-index: 2000;
+}
+
+.fallingLeaves span {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    background: url('/image/LaPhong.png');
+    margin: -280px 40px 40px 130px;
+    animation: fallingLeaves 10s infinite linear;
+}
+
+span:nth-child(5n+5) {
+    animation-delay: 1.3s !important;
+    /* -moz-animation-delay: 1.3s; */
+}
+
+span:nth-child(3n+2) {
+    animation-delay: 1.5s !important;
+    /* -moz-animation-delay: 1.5s; */
+}
+
+span:nth-child(2n+5) {
+    animation-delay: 1.7s !important;
+    /* -moz-animation-delay: 1.7s; */
+}
+
+span:nth-child(3n+10) {
+    animation-delay: 2.7s !important;
+    /* -moz-animation-delay: 2.7s; */
+}
+
+span:nth-child(7n+2) {
+    animation-delay: 3.5s !important;
+    /* -moz-animation-delay: 3.5s; */
+}
+
+span:nth-child(4n+5) {
+    animation-delay: 5.5s !important;
+    /* -moz-animation-delay: 5.5s; */
+}
+
+span:nth-child(3n+7) {
+    animation-delay: 8s !important;
+    /* -moz-animation-delay: 8s; */
+}
+
+@keyframes fallingLeaves {
+    0% {
+        opacity: 1;
+        transform: translate(0px, 0px) rotate(0deg);
+    }
+    75% {
+        opacity: 1;
+        transform: translate(100px, 600px) rotate(270deg);
+    }
+    100% {
+        opacity: 0;
+        transform: translate(100px, 800px) rotate(360deg);
+    }
+}

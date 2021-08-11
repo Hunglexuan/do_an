@@ -7,6 +7,7 @@ let routerApp = new Router();
 
 
 routerApp.post('/create', Response(FeedbackController.createFeedback));
-
+routerApp.get('/searchShopFeedback', Response(FeedbackController.searchFeedback));
+routerApp.get('/check', Response(FeedbackController.checkPermissionFeed));
 
 export default routerApp;

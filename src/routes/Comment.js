@@ -7,6 +7,6 @@ let routerApp = new Router();
 
 
 routerApp.post('/create', Response(CommentController.createComment));
-
+routerApp.get('/searchcomment', Response(CommentController.searchComment));
 
 export default routerApp;

@@ -7,6 +7,8 @@ let routerApp = new Router();
 
 
 routerApp.post('/create', Response(VoucherController.createVoucher));
-
+routerApp.get('/search', Response(VoucherController.searchVoucher));
+routerApp.get('/delete', Response(VoucherController.deleteVourcher));
+routerApp.get('/getCode', Response(VoucherController.getByID));
 
 export default routerApp;

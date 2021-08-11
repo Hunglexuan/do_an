@@ -28,12 +28,6 @@ const attributes = {
         type: DataTypes.UUID,
         defaultValue: Sequelize.UUIDV4
     },
-    quantity: {
-        type: DataTypes.INTEGER(10),
-        allowNull: true,
-        defaultValue: null
-
-    },
     total_price: {
         type: DataTypes.INTEGER(10),
         allowNull: true,
@@ -44,8 +38,8 @@ const attributes = {
         allowNull:true,
         defaultValue:null
     },
-    status: {
-        type: DataTypes.STRING(255),
+    status: { //
+        type: DataTypes.TINYINT(1),
         allowNull:true,
         defaultValue:null
     },
@@ -54,6 +48,7 @@ const attributes = {
         allowNull:true,
         defaultValue:null
     },
+
     del: {
         type: DataTypes.TINYINT(1),
         allowNull: true,

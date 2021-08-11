@@ -4,6 +4,7 @@ import { sequelize } from '../../connections';
 import Sequelize from 'sequelize';
 import { v4 as uuidv4 } from 'uuid';
 import Product from './Product';
+import Bill  from './Bill';
 /**
  * Define Role Model
  * 
@@ -15,6 +16,7 @@ import Product from './Product';
 
     static association() {
         BillProduct.belongsTo(Product, { as: 'products', foreignKey: 'product_id' })
+        BillProduct.belongsTo(Bill, { as: 'bill', foreignKey: 'bill_id' })
     }
 }
 
@@ -48,7 +50,11 @@ const attributes = {
         allowNull: true,
         defaultValue: null
     },
-    
+    bill_id:{
+        type: DataTypes.UUID,
+        allowNull: true,
+        defaultValue: null
+    },
     del: {  // 0: Not delete , 1: delete
         type: DataTypes.TINYINT(1),
         allowNull: true,

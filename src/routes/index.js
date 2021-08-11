@@ -12,7 +12,6 @@ import Feedback from './Feedback';
 import Voucher from './Voucher';
 import BillProduct from './BillProduct';
 import Product from './Product';
-import BillTemp from './BillTemp';
 
 
 
@@ -32,8 +31,6 @@ routerApp.use('/feedback', Feedback);
 routerApp.use('/voucher', Voucher);
 routerApp.use('/billproduct', BillProduct);
 routerApp.use('/product', Product);
-routerApp.use('/BillTemp', BillTemp);
-
 
 
 

@@ -34,8 +34,12 @@ const attributes = {
         type: DataTypes.STRING(255),
         allowNull: true,
         defaultValue:null
-
     },
+    // description: {
+    //     type: DataTypes.STRING(255),
+    //     allowNull: true,
+    //     defaultValue:null
+    // },
     del: {
         type: DataTypes.TINYINT(1),
         allowNull: true,

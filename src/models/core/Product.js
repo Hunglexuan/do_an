@@ -33,6 +33,11 @@ const attributes = {
         defaultValue: null
     },
 
+    image: {
+        type: DataTypes.STRING(255),
+        allowNull: true,
+        defaultValue: null
+    },
     quantity: {
         type: DataTypes.INTEGER(10),
         allowNull: true,
@@ -46,6 +51,16 @@ const attributes = {
     description: {
         type: DataTypes.STRING(255),
         allowNull: true,
+        defaultValue:null
+    },
+    time_from:{
+        type: DataTypes.INTEGER(10),
+        allowNull:true,
+        defaultValue:null
+    },
+    time_to:{
+        type: DataTypes.INTEGER(10),
+        allowNull:true,
         defaultValue:null
     },
     user_id: {
