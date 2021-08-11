@@ -16,6 +16,10 @@ class VoucherController {
         let dataQuery = req.query;
         return await MidVoucher.deleteVoucher(dataQuery);
     }
+    async getByID(req, res) {
+        let dataQuery = req.query;
+        return await MidVoucher.getVoucherById(dataQuery);
+    }
 }
 
 export default new VoucherController();

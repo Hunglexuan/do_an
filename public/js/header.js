@@ -64,7 +64,6 @@ $('#search-input').keypress(function(event) {
 function loadName() {
 
     var text = localStorage.getItem('userId').replaceAll('"', '');
-
     $.ajax({
         type: "GET",
         dataType: "json",
