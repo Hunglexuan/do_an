@@ -1,5 +1,5 @@
 import { MidRole, MidUser, MidUserForm } from '../models/middle';
-import { uploadMultiMedia } from '../libs/upload';
+import { uploadMultiMedia,uploadMedia } from '../libs/upload';
 import { MidProduct, MidRoleForm } from '../models/middle';
 
 class ProductController {
@@ -30,6 +30,14 @@ class ProductController {
     async deleteProduct(req, res) {
         let dataQuery = req.query;
         return await MidProduct.deleteProduct(dataQuery);
+    }
+    async imageUpdate(req, res) {
+        
+        const dataUpload = await uploadMedia(req, res);
+
+        let logo = dataUpload ? dataUpload.filename : '';
+        let data = req.body;
+        return await MidProduct.updateImage(data, logo);
     }
 }
 

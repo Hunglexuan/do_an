@@ -1,5 +1,5 @@
 import {
-    Role, Users, Bill, UserBill, Voucher,BillProduct,Product
+    Role, Users, Bill, UserBill, Voucher, BillProduct, Product
 } from '../core';
 import { Op } from 'sequelize';
 import { checkPassword, hashPassword } from '../../libs/encrypt';
@@ -11,7 +11,8 @@ import database, { password } from '../../config/database';
 import { name } from 'ejs';
 
 class MidBill {
-    async searchBillUser(data) {       
+
+    async searchBillUser(data) {
         let listBillTotal = []
         let condition = {
             del: 0
@@ -53,14 +54,14 @@ class MidBill {
             })
             let billList = BillProduct.findAll({
                 where: {
-                    bill_id : bill.id
+                    bill_id: bill.id
                 },
                 order: [[
                     "createdAt", "DESC"
                 ]],
             });
-            for(let j = 0 ; j < billList.length ;j++){
-               
+            for (let j = 0; j < billList.length; j++) {
+
                 let bill = await Product.findOne({
                     where: {
                         id: billList[j].product_id,
@@ -69,7 +70,7 @@ class MidBill {
                 })
                 userBill.bill.push(bill)
             }
-            
+
             listBillTotal.push(userBill);
 
         }
@@ -79,41 +80,82 @@ class MidBill {
         }
 
     }
-    async searchBill(data) {
-        let condition = {
-            del: 0
+
+    async listCart(data) {
+        let cart = {
+            shopID: '',
+            userID: data.userID,
+            billID: '',
+            status: null,
+            address: '',
+            voucherCode: '',
+            listCart: [],
+
         }
-        if (data.name) {
-            condition.name = {
-                [Op.like]: `%${data.name}%`
+        let billList = await UserBill.findAll({
+            where: {
+                user_id: data.userID,
             }
-        }
-
-        let { page, limit } = data;
-        page = page ? parseInt(page) : 1;
-        limit = limit ? parseInt(limit) : 10;
-
-        const [listBill, total] = await Promise.all([
-            Bill.findAll({
-                where: condition,
-                order: [[
-                    "createdAt", "DESC"
-                ]],
-                limit,
-                offset: (page - 1) * limit
-            }),
-            Bill.count({
-                where: condition
+        })
+        let billTemp
+        for (let i = 0; i < billList.length; i++) {
+            billTemp = await Bill.findOne({
+                where: {
+                    id: billList[i].bill_id,
+                    status: null,
+                }
             })
-        ])
-        return {
-            listBill,
-            total: total || 0
+
         }
+        if (billTemp) {
+            let shopIDTemp = await UserBill.findOne({
+                where: {
+                    bill_id: billTemp.dataValues.id,
+                }
+            })
+            console.log('11111', billTemp.dataValues.id);
+            cart.shopID = shopIDTemp.dataValues.shop_id;
+            let listTemp = await BillProduct.findAll({
+                where: {
+                    bill_id: billTemp.dataValues.id,
+                }
+            })
+            for (let j = 0; j < listTemp.length; j++) {
+                let objProduct = await Product.findOne({
+                    where: {
+                        id: listTemp[j].product_id
+                    }
+                })
+                cart.listCart.push({
+                    count: listTemp[j].quantity,
+                    id: listTemp[j].product_id,
+                    name: objProduct.name,
+                    price: objProduct.unit_price,
+                })
+
+            }
+            if (billTemp.dataValues.voucher_id) {
+                let voucher = await Voucher.findOne({
+                    where: {
+                        id: billTemp.dataValues.voucher_id,
+                        del: 0,
+                    }
+                })
+                cart.voucherCode = voucher.code
+            }
+            cart.billID = billTemp.dataValues.id;
+            cart.address = billTemp.dataValues.address;
+            cart.status = billTemp.dataValues.status;
+            return cart;
+        }
+        else {
+            return {}
+        }
+
 
     }
     async createBill(data) {
-        let totalPrice
+        let totalPrice = 0;
         let voucher
         // if(billID){
 
@@ -121,11 +163,13 @@ class MidBill {
         // else{
 
         // }
-        console.log(data.cart.listCart);
-        console.log(data);
+        // console.log(data.cart.listCart);
+        // console.log(data);
+        console.log("object", data);
         for (let i = 0; i < data.cart.listCart.length; i++) {
             totalPrice += data.cart.listCart[i].price * data.cart.listCart[i].count
         }
+
         if (data.cart.voucherCode != '') {
             voucher = await Voucher.findOne({
                 where: {
@@ -133,7 +177,7 @@ class MidBill {
                     del: 0
                 }
             })
-            totalPrice += voucher.discount_number
+            totalPrice -= voucher.discount_number
         }
         else {
             voucher = ''
@@ -156,13 +200,12 @@ class MidBill {
                 unit_price: data.cart.listCart[i].price,
                 total_price: data.cart.listCart[i].count * data.cart.listCart[i].price,
                 product_id: data.cart.listCart[i].id,
-                bill_id: bill.data.id,
-
+                bill_id: bill.dataValues.id,
             }
             await BillProduct.create(billProduct)
         }
         let userBill = {
-            bill_id: bill.data.id,
+            bill_id: bill.dataValues.id,
             user_id: data.cart.userID,
             shop_id: data.cart.shopID,
         }

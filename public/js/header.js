@@ -36,7 +36,7 @@ var checkLogin = document.getElementById('checkLogin');
 
 if (token == "") {
     checkLogin.innerHTML += `<li class="nav-link" style="padding-top: 20px !important;">
-                        <a href="/LoginUser" class="btn btn-outline-danger" style="border-radius: 6px;"> Login </a>
+                        <a href="/LoginUser" class="btn btn-outline-danger" style="border-radius: 6px;"> Đăng nhập </a>
                     </li>`
 } else {
     checkLogin.innerHTML += `<li class="nav-item dropdown" id="nameUsers"> </li>`
@@ -64,7 +64,6 @@ $('#search-input').keypress(function(event) {
 function loadName() {
 
     var text = localStorage.getItem('userId').replaceAll('"', '');
-
     $.ajax({
         type: "GET",
         dataType: "json",
@@ -73,7 +72,10 @@ function loadName() {
         },
         url: "/api/user/getbyId",
         success: function(data) {
-            document.getElementById('nameUsers').innerHTML = '<a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <img alt="Generic placeholder image" src="image/user/4.png" class="nav-osahan-pic rounded-pill"> ' + data.data.name + ' </a> <div class="dropdown-menu dropdown-menu-right shadow-sm border-0"> <button class="dropdown-item" onclick="idURL(' + "'" + data.data.id + "'" + ')"><i class="icofont-ui-user"></i> My Profile </button> <a class="dropdown-item" href="/" onclick="logOutClick()"><i class="icofont-logout"></i> Logout </a> </div>';
+            document.getElementById('nameUsers').innerHTML = '<a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <img alt="Generic placeholder image" src="' + data.data.avatar + '" id="imageUser" class="nav-osahan-pic rounded-pill"> ' + data.data.name + ' </a> <div class="dropdown-menu dropdown-menu-right shadow-sm border-0"> <button class="dropdown-item" onclick="idURL(' + "'" + data.data.id + "'" + ')"><i class="icofont-ui-user"></i> Thông tin của tôi </button> <a class="dropdown-item" href="/" onclick="logOutClick()"><i class="icofont-logout"></i> Đăng xuất </a> </div>';
+
+            // document.getElementById('imageUser').src = data.data.avatar;
+            // $('#imageUser').append(data.data.avatar);
         }
     });
 }

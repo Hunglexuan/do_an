@@ -41,10 +41,13 @@ app.get('/', function(req, res) {
     return res.render('home');
 });
 
-app.get('/index', function(req, res) {
-    return res.render('index');
-});
+// app.get('/index', function(req, res) {
+//     return res.render('index');
+// });
 
+app.get('/Offers', function(req, res) {
+    return res.render('Offers');
+});
 
 app.get('/AllProduct', function(req, res) {
     return res.render('AllProduct');
