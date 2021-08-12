@@ -92,10 +92,7 @@ class MidComment {
         })
 
         let dataUpdate = {
-            user_id: data.user_id,
-            product_id: data.product_id,
             content: data.content,
-            cmt_id: data.cmt_id,
         }
         return await objUpdate.update(dataUpdate)
 

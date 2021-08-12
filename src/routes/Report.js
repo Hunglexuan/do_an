@@ -8,6 +8,7 @@ let routerApp = new Router();
 
 routerApp.post('/create', Response(ReportController.createReport)); //done
 routerApp.get('/search', Response(ReportController.searchReport));
+routerApp.get('/searchByShop', Response(ReportController.searchReportByShop));
 routerApp.get('/getById', Response(ReportController.getReportById));
 routerApp.get('/deleteReportById', Response(ReportController.deleteReportById));
 

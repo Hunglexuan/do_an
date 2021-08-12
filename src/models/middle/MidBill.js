@@ -12,6 +12,20 @@ import { name } from 'ejs';
 
 class MidBill {
 
+    async cancelBill(data) {
+        let objCancel = await Bill.findOne({
+            where: {
+                id: data.id,
+                del: 0
+            }
+        })
+        let dataCancel = {
+            status: 2,
+        }
+
+        objCancel.update(dataCancel)
+    }
+
     async searchBillUser(data) {
         let listBillTotal = []
         let condition = {
@@ -113,7 +127,7 @@ class MidBill {
                     bill_id: billTemp.dataValues.id,
                 }
             })
-            console.log('11111', billTemp.dataValues.id);
+
             cart.shopID = shopIDTemp.dataValues.shop_id;
             let listTemp = await BillProduct.findAll({
                 where: {
@@ -157,60 +171,62 @@ class MidBill {
     async createBill(data) {
         let totalPrice = 0;
         let voucher
-        // if(billID){
-
-        // }
-        // else{
-
-        // }
-        // console.log(data.cart.listCart);
-        // console.log(data);
-        console.log("object", data);
-        for (let i = 0; i < data.cart.listCart.length; i++) {
-            totalPrice += data.cart.listCart[i].price * data.cart.listCart[i].count
-        }
-
-        if (data.cart.voucherCode != '') {
-            voucher = await Voucher.findOne({
+        if (data.cart.billID) {
+            let billTemp = await Bill.findOne({
                 where: {
-                    code: data.cart.voucherCode,
-                    del: 0
+                    id: data.cart.billID,
                 }
             })
-            totalPrice -= voucher.discount_number
+
         }
         else {
-            voucher = ''
-        }
-        let status = data.cart.status;
-        if (!data.cart.address) {
-            throw new Error("Chưa nhập địa chỉ ship");
-        }
-        let address = data.cart.address;
-        let billCreate = {
-            total_price: totalPrice,
-            status: status,
-            address: address,
-        }
-        let bill = await Bill.create(billCreate);
-        for (let i = 0; i < data.cart.listCart.length; i++) {
-            totalPrice += data.cart.listCart[i].price * data.cart.listCart[i].count
-            let billProduct = {
-                quantity: data.cart.listCart[i].count,
-                unit_price: data.cart.listCart[i].price,
-                total_price: data.cart.listCart[i].count * data.cart.listCart[i].price,
-                product_id: data.cart.listCart[i].id,
-                bill_id: bill.dataValues.id,
+            for (let i = 0; i < data.cart.listCart.length; i++) {
+                totalPrice += data.cart.listCart[i].price * data.cart.listCart[i].count
             }
-            await BillProduct.create(billProduct)
+
+            if (data.cart.voucherCode != '') {
+                voucher = await Voucher.findOne({
+                    where: {
+                        code: data.cart.voucherCode,
+                        del: 0
+                    }
+                })
+                totalPrice -= voucher.discount_number
+            }
+            else {
+                voucher = ''
+            }
+            let status = data.cart.status;
+            if (!data.cart.address) {
+                throw new Error("Chưa nhập địa chỉ ship");
+            }
+            let address = data.cart.address;
+            let billCreate = {
+                total_price: totalPrice,
+                status: status,
+                address: address,
+            }
+            let bill = await Bill.create(billCreate);
+            for (let i = 0; i < data.cart.listCart.length; i++) {
+                totalPrice += data.cart.listCart[i].price * data.cart.listCart[i].count
+                let billProduct = {
+                    quantity: data.cart.listCart[i].count,
+                    unit_price: data.cart.listCart[i].price,
+                    total_price: data.cart.listCart[i].count * data.cart.listCart[i].price,
+                    product_id: data.cart.listCart[i].id,
+                    bill_id: bill.dataValues.id,
+                }
+                await BillProduct.create(billProduct)
+            }
+            let userBill = {
+                bill_id: bill.dataValues.id,
+                user_id: data.cart.userID,
+                shop_id: data.cart.shopID,
+            }
+            await UserBill.create(userBill);
         }
-        let userBill = {
-            bill_id: bill.dataValues.id,
-            user_id: data.cart.userID,
-            shop_id: data.cart.shopID,
-        }
-        await UserBill.create(userBill);
     }
+
     async deleteBill(data) {
         let objDelete = await Bill.findOne({
             where: {

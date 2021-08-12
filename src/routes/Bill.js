@@ -7,8 +7,10 @@ let routerApp = new Router();
 
 
 routerApp.post('/create', Response(BillController.createBill));
-routerApp.get('/searchbill', Response(BillController.searchBill));
+// routerApp.get('/searchbill', Response(BillController.searchBill));
 routerApp.get('/listCart', Response(BillController.listCart));
+routerApp.get('/cancel', Response(BillController.cancelBill));
+
 
 
 export default routerApp;
