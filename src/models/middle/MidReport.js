@@ -23,7 +23,7 @@ class MidReport {
     }
 
     async createReport(data) {
-        
+
         if (!data.type_report) {
             throw new Error(ERROR_MESSAGE.REPORT.REPORT_TYPE_NOT_EXIST);
         }
@@ -64,16 +64,30 @@ class MidReport {
         let condition = {
             del: 0
         }
-
-        if (data.type_report) {
-            condition.type_report = {
-                [Op.like]: `%${data.type_report}%`
-            }
+        
+        const [listReport, total] = await Promise.all([
+            Report.findAll({
+                where: condition,
+                order: [
+                    [
+                        ["createdAt", "ASC"],
+                    ]
+                ],
+            }),
+            Report.count({
+                where: condition
+            })
+        ])
+        return {
+            listReport,
+            total: total || 0
         }
-
-        let { page, limit } = data;
-        page = page ? parseInt(page) : 1;
-        limit = limit ? parseInt(limit) : 10;
+    }
+    async searchReportByShop(data) {
+        let condition = {
+            shop_id: data.id,
+            del: 0
+        }
 
         const [listReport, total] = await Promise.all([
             Report.findAll({
@@ -83,8 +97,6 @@ class MidReport {
                         ["createdAt", "ASC"],
                     ]
                 ],
-                limit,
-                offset: (page - 1) * limit
             }),
             Report.count({
                 where: condition

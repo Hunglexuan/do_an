@@ -1,7 +1,9 @@
 import {
     Role,
     Users,
-    Product
+    Product,
+    BillProduct,
+    Bill
 } from '../core';
 import { Op } from 'sequelize';
 import { checkPassword, hashPassword } from '../../libs/encrypt';
@@ -11,11 +13,12 @@ import { sendMailActiveOrder, sendMailForgotPassword } from '../../libs/sendmail
 import { v4 as uuidv4 } from 'uuid';
 import { password } from '../../config/database';
 import { name } from 'ejs';
+import { sequelize } from "../../connections";
 
 
 class MidProduct {
 
-    async updateImage(data,logo) {
+    async updateImage(data, logo) {
         if (!logo) {
             throw new Error('Vui lòng chọn ảnh');
         }
@@ -38,7 +41,7 @@ class MidProduct {
                 del: 0
             }
         })
-        let user 
+        let user
         if (product) {
             user = await Users.findOne({
                 where: {
@@ -46,11 +49,11 @@ class MidProduct {
                     del: 0
                 }
             })
-           
+
         }
-        return {product,user};
+        return { product, user };
     }
-  
+
 
     async searchSellerProduct(data) {
         let user = await Users.findOne({
@@ -90,7 +93,6 @@ class MidProduct {
                         "createdAt", "DESC"
                     ]
                 ],
-
             }),
             Product.count({
                 where: condition
@@ -138,6 +140,57 @@ class MidProduct {
         }
 
     }
+
+
+    async listDefault(data) {
+        let condition = {
+            del: 0
+        }
+
+        return Product.findAll({
+            where: condition,
+            order: [
+                [
+                    "createdAt", "DESC"
+                ]
+            ],
+            limit: 6
+        })
+
+    }
+    async listMostBuy(data) {
+        let condition = {
+            del: 0
+        }
+
+        return Product.findAll({
+            where: condition,
+            attributes: [
+                'id', 'quantity', 'unit_price', 'name', 'image', 'description', 'time_from', 'time_to', 'user_id', 'sale', 'sale_to', 'sale_from',
+                [sequelize.literal('(SELECT COUNT(*) FROM doan.billproduct WHERE doan.billproduct.product_id = product.id)'), 'BoughtCount']
+            ],
+            order: [[sequelize.literal('BoughtCount'), 'DESC']],
+            limit: 6
+        })
+
+    }
+    async listFastDelivery(data) {
+        let condition = {
+            del: 0
+        }
+
+        return Product.findAll({
+            where: condition,
+            order: [
+                [
+                    "time_to", "ASC"
+                ]
+            ],
+            limit: 6
+        })
+
+    }
+
 
 
     //done
@@ -191,13 +244,13 @@ class MidProduct {
                 del: 0
             }
         })
-        if(!data.sale){
+        if (!data.sale) {
             data.sale = null
         }
-        if(data.sale_from == ''){
+        if (data.sale_from == '') {
             data.sale_from = null
         }
-        if(data.sale_to == ''){
+        if (data.sale_to == '') {
             data.sale_to = null
         }
         let dataUpdate = {
@@ -212,7 +265,7 @@ class MidProduct {
             description: data.description,
 
         }
-       
+
         return objUpdate.update(dataUpdate)
 
     }

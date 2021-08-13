@@ -9,13 +9,17 @@ class BillController {
         let data = req.body;
         return MidBill.createBill(data);
     }
-    async searchBill(req, res) {
-        let dataQuery = req.query;
-        return MidBill.searchBill(dataQuery);
-    }
+    // async searchBill(req, res) {
+    //     let dataQuery = req.query;
+    //     return MidBill.searchBillUser(dataQuery);
+    // }
     async listCart(req, res) {
         let dataQuery = req.query;
         return MidBill.listCart(dataQuery);
+    } 
+    async cancelBill(req, res) {
+        let dataQuery = req.query;
+        return await MidBill.cancelBill(dataQuery);
     }
 }
 
