@@ -53,7 +53,7 @@ class MidCategory {
             throw new Error(ERROR_MESSAGE.ROLE.ROLE_NOT_EXIST);
         }
         let dataCreate = {
-            name: data.name,
+            name: data.name.trim(),
             del: 0
         }
         return await Category.create(dataCreate);

@@ -8,6 +8,10 @@ class ReportController {
         let dataQuery = req.query;
         return MidReport.searchReport(dataQuery);
     }
+    async searchReportByShop(req, res) {
+        let dataQuery = req.query;
+        return MidReport.searchReportByShop(dataQuery);
+    }
     async createReport(req, res) {
         let data = req.body;
         return MidReport.createReport(data);

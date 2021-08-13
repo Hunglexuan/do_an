@@ -65,10 +65,25 @@
                         </span>
                         </li>
                         <li class="nav-item active">
-                            <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+                            <a class="nav-link" href="/">Trang Chủ <span class="sr-only">(current)</span></a>
                         </li>
-
+                        <li class="nav-item">
+                            <a class="nav-link" href="Offers"><i class="icofont-sale-discount"></i> Ưu Đãi <span class="badge badge-danger">Mới</span></a>
+                        </li>
                         <li id="checkLogin"></li>
+                        <li class="nav-item dropdown no-arrow mx-1 osahan-list-dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fa fa-bell-o" style="font-size: large;"></i>
+                                <!-- Counter - Alerts -->
+                                <span class="badge badge-info badge-counter" style="position: absolute; border-radius: 50px; min-width: 15px; height: 15px; font-size: 9px; right: -7px; line-height: 15px; top: 20px;">1</span>
+                            </a>
+                            <!-- Dropdown - Alerts -->
+                            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow-sm">
+                                <h6 class="dropdown-header">
+                                    Thông Báo :
+                                </h6>
+                            </div>
+                        </li>
                         <!-- <li class="nav-link" style="padding-top: 20px !important;">
                         <button class="btn btn-primary"> Login </button>
                     </li>
@@ -85,7 +100,7 @@
                     </li> -->
                         <li class="nav-item dropdown dropdown-cart">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="icofont-basket"></i> Cart
+                                <i class="icofont-basket"></i> Giỏ Hàng
                                 <span class="total-count badge badge-success"></span>
                             </a>
                             <div class="dropdown-menu dropdown-cart-top p-0 dropdown-menu-right shadow-sm border-0">
@@ -112,7 +127,7 @@
     </header>
     <section class="restaurant-detailed-banner">
         <div class="text-center">
-            <img class="img-fluid cover" src="image/mall-dedicated-banner.png">
+            <img class="img-fluid cover" src="image/backgroundHome.HEIC" style="width: 100%;">
         </div>
         <div class="restaurant-detailed-header">
             <div class="container">
@@ -123,44 +138,40 @@
 
                             </div>
 
-                            <p class="text-white mb-0"><i class="icofont-food-cart"></i> North Indian, Chinese, Fast Food, South Indian
+                            <!-- <p class="text-white mb-0"><i class="icofont-food-cart"></i> North Indian, Chinese, Fast Food, South Indian
                                 <button type="button" id="SaveUpdate" data-toggle="modal" data-target="#basicModal" class="btn btn-outline-danger ml-3 fa fa-flag" style="float: right;"> </button>
-                            </p>
+                            </p> -->
 
 
 
 
 
-                            <div class="modal fade" id="basicModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+                            <div class="modal fade" id="basicModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true" style="text-shadow: none;">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                            <h6 class="m-0"><i class="fa fa-flag text-muted mr-2"></i>Report</h6>
+                                            <h6 class="m-0"><i class="fa fa-flag text-muted mr-2"></i>Báo Cáo</h6>
                                         </div>
                                         <div class="modal-body">
                                             <div class="dropdown form-group">
                                                 <select class="dropdown-menu dropdown-toggle" aria-labelledby="dropdownMenuButton" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                    <option>Ship</option>
-                                                    <option>Quatity Product</option>
-                                                    <option>Reply</option>
-                                                    <option>Attitude</option>
-                                                    <option>Other</option>
+                                                    <option value="Vận chuyển">Vận chuyển</option>
+                                                    <option value="Số lượng sản phẩm">Số lượng sản phẩm</option>
+                                                    <option value="Phản hồi">Phản hồi</option>
+                                                    <option value="Thái độ">Thái độ</option>
+                                                    <option value="Khác">Khác...</option>
                                                 </select>
                                             </div>
 
-
-
-
-
                                             <div class="form-group">
-                                                <label>Note:</label>
-                                                <textarea class="form-control" id="Confirm_new_password" type="text"> </textarea>
+                                                <label>Ghi chú:</label>
+                                                <textarea class="form-control" id="text_report" type="text"> </textarea>
                                                 <span class="form-message text-danger" id="confirmpassword"></span>
                                             </div>
                                         </div>
                                         <div class="modal-footer">
                                             <input type="button" value="Close" class="btn btn-light" data-dismiss="modal"> </input>
-                                            <input type="button" value="Send" id="change" class="btn btn-danger"></input>
+                                            <input type="button" value="Send" id="change" class="btn btn-danger" onclick="sendReport()"></input>
                                         </div>
                                     </div>
                                 </div>
@@ -181,16 +192,16 @@
                 <div class="col-md-12">
                     <ul class="nav" id="pills-tab" role="tablist">
                         <li class="nav-item">
-                            <a class="nav-link active" id="pills-order-online-tab" data-toggle="pill" href="#pills-order-online" role="tab" aria-controls="pills-order-online" aria-selected="true">Order Online</a>
+                            <a class="nav-link active" id="pills-order-online-tab" data-toggle="pill" href="#pills-order-online" role="tab" aria-controls="pills-order-online" aria-selected="true">Đặt hàng trực tuyến</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" id="pills-gallery-tab" data-toggle="pill" href="#pills-gallery" role="tab" aria-controls="pills-gallery" aria-selected="false">Gallery</a>
+                            <a class="nav-link" id="pills-gallery-tab" data-toggle="pill" href="#pills-gallery" role="tab" aria-controls="pills-gallery" aria-selected="false">Phòng trưng bày</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" id="pills-restaurant-info-tab" data-toggle="pill" href="#pills-restaurant-info" role="tab" aria-controls="pills-restaurant-info" aria-selected="false">Restaurant Info</a>
+                            <a class="nav-link" id="pills-restaurant-info-tab" data-toggle="pill" href="#pills-restaurant-info" role="tab" aria-controls="pills-restaurant-info" aria-selected="false">Thông tin nhà hàng</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" id="pills-reviews-tab" data-toggle="pill" href="#pills-reviews" role="tab" aria-controls="pills-reviews" aria-selected="false">Ratings & Reviews</a>
+                            <a class="nav-link" id="pills-reviews-tab" data-toggle="pill" href="#pills-reviews" role="tab" aria-controls="pills-reviews" aria-selected="false">Xếp hạng và đánh giá</a>
                         </li>
                     </ul>
                 </div>
@@ -205,10 +216,10 @@
                         <div class="tab-content" id="pills-tabContent">
                             <div class="tab-pane fade show active" id="pills-order-online" role="tabpanel" aria-labelledby="pills-order-online-tab">
                                 <div id="#menu" class="bg-white rounded shadow-sm p-4 mb-4 explore-outlets">
-                                    <h5 class="mb-4">Recommended</h5>
+                                    <h5 class="mb-4">Khuyến khích</h5>
                                     <form class="explore-outlets-search mb-4">
                                         <div class="input-group">
-                                            <input type="text" placeholder="Search for dishes..." class="form-control">
+                                            <input type="text" placeholder="Tìm kiếm các món ăn ..." class="form-control">
                                             <div class="input-group-append">
                                                 <button type="button" class="btn btn-link"> <i class="icofont-search"></i> </button>
                                             </div>
@@ -216,7 +227,7 @@
                                     </form>
                                 </div>
                                 <div class="row allProduct">
-                                    <h5 class="mb-4 mt-3 col-md-12">All product</h5>
+                                    <h5 class="mb-4 mt-3 col-md-12">Tất cả sản phẩm</h5>
 
                                 </div>
                             </div>
@@ -295,7 +306,7 @@
                             </div>
                             <div class="tab-pane fade" id="pills-reviews" role="tabpanel" aria-labelledby="pills-reviews-tab">
                                 <div class="bg-white rounded shadow-sm p-4 mb-4 clearfix graph-star-rating">
-                                    <h5 class="mb-0 mb-4">Ratings and Reviews</h5>
+                                    <h5 class="mb-0 mb-4">Xếp hạng và đánh giá</h5>
                                     <div class="graph-star-rating-header">
                                         <div class="star-rating">
                                             <div id=rateTotal>
@@ -308,7 +319,7 @@
                                     <div class="graph-star-rating-body">
                                         <div class="rating-list">
                                             <div class="rating-list-left text-black">
-                                                5 Star
+                                                5 sao
                                             </div>
                                             <div class="rating-list-center">
                                                 <div class="progress">
@@ -320,7 +331,7 @@
                                         </div>
                                         <div class="rating-list">
                                             <div class="rating-list-left text-black">
-                                                4 Star
+                                                4 sao
                                             </div>
                                             <div class="rating-list-center">
                                                 <div class="progress">
@@ -332,7 +343,7 @@
                                         </div>
                                         <div class="rating-list">
                                             <div class="rating-list-left text-black">
-                                                3 Star
+                                                3 sao
                                             </div>
                                             <div class="rating-list-center">
                                                 <div class="progress">
@@ -344,7 +355,7 @@
                                         </div>
                                         <div class="rating-list">
                                             <div class="rating-list-left text-black">
-                                                2 Star
+                                                2 sao
                                             </div>
                                             <div class="rating-list-center">
                                                 <div class="progress">
@@ -356,7 +367,7 @@
                                         </div>
                                         <div class="rating-list">
                                             <div class="rating-list-left text-black">
-                                                1 Star
+                                                1 sao
                                             </div>
                                             <div class="rating-list-center">
                                                 <div class="progress">
@@ -370,8 +381,8 @@
                                 </div>
                                 <div class="bg-white rounded shadow-sm p-4 mb-4 restaurant-detailed-ratings-and-reviews">
                                     <div>
-                                        <a href="#" class="btn btn-outline-primary btn-sm float-right">Top Rated</a>
-                                        <h5 class="mb-1">All Ratings and Reviews</h5>
+                                        <a href="#" class="btn btn-outline-primary btn-sm float-right">Xếp hạng mới nhất</a>
+                                        <h5 class="mb-1">Tất cả xếp hạng và đánh giá</h5>
                                     </div>
                                     <div id="feedbackUser">
                                     </div>
@@ -393,7 +404,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-12">
-                    <h5 class="m-0">Operate food store or restaurants? <a href="login.html">Work With Us</a></h5>
+                    <h5 class="m-0">Điều hành cửa hàng thực phẩm hoặc nhà hàng? <a href="login.html">Làm việc với chúng tôi</a></h5>
                 </div>
             </div>
         </div>
@@ -471,6 +482,34 @@
             checkfeedback()
         });
 
+        function sendReport() {
+
+            var userId = localStorage.getItem('userId').replaceAll('"', '');
+            var params = (new URL(document.location)).searchParams;
+            var idURL = params.get('id');
+            var type = document.getElementById('dropdownMenuButton').value;
+            var text_report = document.getElementById('text_report').value;
+            console.log(type + ' ' + text_report + ' ' + idURL);
+
+            $.ajax({
+                url: '/api/report/create',
+                method: 'POST',
+                data: {
+                    type_report: type,
+                    content: text_report,
+                    shop_id: idURL,
+                    user_id: userId,
+                },
+            }).then(function(data) {
+                if (data.message == 'SUCCESS') {
+                    alert('success');
+                    // window.location.href = "/"
+                } else {
+                    alert("Update fail");
+                }
+            })
+        }
+
         function loaddata() {
 
             var params = (new URL(document.location)).searchParams;
@@ -483,7 +522,7 @@
                 },
                 url: "/api/user/getbyId",
                 success: function(data) {
-                    document.getElementById('inforShop').innerHTML = '<img class="img-fluid mr-3 float-left" alt="osahan" src="image/1.jpg"> <h2 class="text-white">' + data.data.name + '</h2> <p class="text-white mb-1"><i class="icofont-location-pin"></i>' + data.data.address + '<span class="badge badge-success">OPEN</span></p>';
+                    document.getElementById('inforShop').innerHTML = '<img class="img-fluid mr-3 float-left" alt="osahan" src="image/1.jpg"> <h2 class="text-white" style="padding-top: 25px;"> ' + data.data.name + '</h2> <p class="text-white mb-1"><i class="icofont-location-pin"></i>' + data.data.address + '<span class="badge badge-success">OPEN</span><button type="button" id="SaveUpdate" data-toggle="modal" data-target="#basicModal" class="btn btn-outline-danger ml-3 fa fa-flag" style="float: right;"> </button></p>';
                 }
             });
 
@@ -508,8 +547,8 @@
                                             <div class="p-3 position-relative">
                                                 <div class="list-card-body">
                                                     <h6 class="mb-1"><a href="#" class="item-name text-black">${product.name}</a></h6>
-                                                    <p class="text-gray mb-2">North Indian • Indian</p>
-                                                    <p class="text-gray time mb-0"><a class="item-price btn btn-link btn-sm pl-0 text-black pr-0" >${product.unit_price} </a> <span class="badge badge-success">NEW</span> <span class="float-right">
+                                                    <p class="text-gray mb-2">${product.description}</p>
+                                                    <p class="text-gray time mb-0" style="width: 100%;"><a class="item-price btn btn-link btn-sm pl-0 text-black pr-0" >${product.unit_price} VNĐ </a> <span class="badge badge-success">NEW</span> <span class="float-right">
                                                         <span class="count-number">
                                                             <button value="ADD" data-name="${product.name}" data-price="${product.unit_price}" data-id="${product.id}"  class="add-to-cart btn btn-outline-secondary btn-sm" onclick="addToCartFunc.call(this)" > ADD </button>
                                                         </span>
@@ -550,24 +589,24 @@
                     }
 
                     document.getElementById('rateStar').innerHTML = data.data.count;
-                    document.getElementById('rateOfStar').innerHTML = 'Rated ' + data.data.count / data.data.total + ' out of 5';
-                    document.getElementById('rateOf5').innerHTML = ((data.data.star_5 / data.data.total)).toFixed(2) * 100 + '%';
+                    document.getElementById('rateOfStar').innerHTML = 'Đánh giá ' + (data.data.count / data.data.total).toFixed(2) + ' trên 5';
+                    document.getElementById('rateOf5').innerHTML = ((data.data.star_5 / data.data.total).toFixed(2)) * 100 + '%';
                     var color5 = data.data.star_5 / data.data.total;
                     document.getElementById('rateColor5').style.width = color5 * 100 + '%';
 
-                    document.getElementById('rateOf4').innerHTML = ((data.data.star_4 / data.data.total)).toFixed(2) * 100 + '%';
+                    document.getElementById('rateOf4').innerHTML = ((data.data.star_4 / data.data.total).toFixed(2)) * 100 + '%';
                     var color4 = data.data.star_4 / data.data.total;
                     document.getElementById('rateColor4').style.width = color4 * 100 + '%';
 
-                    document.getElementById('rateOf3').innerHTML = ((data.data.star_3 / data.data.total)).toFixed(2) * 100 + '%';
+                    document.getElementById('rateOf3').innerHTML = ((data.data.star_3 / data.data.total).toFixed(2)) * 100 + '%';
                     var color3 = data.data.star_3 / data.data.total;
                     document.getElementById('rateColor3').style.width = color3 * 100 + '%';
 
-                    document.getElementById('rateOf2').innerHTML = ((data.data.star_2 / data.data.total)).toFixed(2) * 100 + '%';
+                    document.getElementById('rateOf2').innerHTML = ((data.data.star_2 / data.data.total).toFixed(2)) * 100 + '%';
                     var color2 = data.data.star_2 / data.data.total;
                     document.getElementById('rateColor2').style.width = color2 * 100 + '%';
 
-                    document.getElementById('rateOf1').innerHTML = ((data.data.star_1 / data.data.total) * 100).toFixed(2) + '%';
+                    document.getElementById('rateOf1').innerHTML = ((data.data.star_1 / data.data.total).toFixed(2)) * 100 + '%';
                     var color1 = data.data.star_1 / data.data.total;
                     document.getElementById('rateColor1').style.width = color1 * 100 + '%';
 
@@ -585,7 +624,7 @@
                             n = d.getUTCDate();
                         }
                         var m;
-                        m = d.getUTCMonth().toLocaleString('en-us', {
+                        m = d.getUTCMonth().toLocaleString('default', {
                             month: 'short'
                         });
                         var y = d.getUTCFullYear();
@@ -602,6 +641,7 @@
                                 id: text
                             },
                             url: "/api/user/getbyId",
+
                             success: function(data) {
 
                                 let star = '';
@@ -614,8 +654,11 @@
 
                                 }
 
-                                document.getElementById('feedbackUser').innerHTML += '<div class="reviews-members pt-4 pb-4"> <div class="media"> <a href="#"> <img alt="Generic placeholder image" src="image/user/1.png" class="mr-3 rounded-pill"></a> <div class="media-body"> <div class="reviews-members-header"> <span class="star-rating float-right">' + star + '</span> <h6 class="mb-1"><a class="text-black" href="#">' + data.data.name + '</a></h6> <p class="text-gray">' + dob + '</p> </div> <div class="reviews-members-body"> <p>' + content + '</p> </div> </div> </div> </div> <hr>';
+                                document.getElementById('feedbackUser').innerHTML += '<div class="reviews-members pt-4 pb-4"> <div class="media"> <a href="#"> <img alt="Generic placeholder image" src="' + data.data.avatar + '" class="mr-3 rounded-pill"></a> <div class="media-body"> <div class="reviews-members-header"> <span class="star-rating float-right">' + star + '</span> <h6 class="mb-1"><a class="text-black" href="#">' + data.data.name + '</a></h6> <p class="text-gray">' + dob + '</p> </div> <div class="reviews-members-body"> <p>' + content + '</p> </div> </div> </div> </div> <hr>';
+
+
                             }
+
                         })
                     }
                 }
@@ -639,7 +682,7 @@
                     if (data.data == true) {
                         document.getElementById('checkFeedback').innerHTML = 'Bạn chưa mua hàng!!!';
                     } else {
-                        document.getElementById('checkFeedback').innerHTML = '<h5 class="mb-4">Leave Feedback</h5> <p class="mb-2">Rate the Place</p> <div class="mb-4"> <span class="star-rating"> <label data-index="1" class="rating" id="rate1"><i class="icofont-ui-rating icofont-2x"></i></label> <label data-index="2" class="rating" id="rate2"><i class="icofont-ui-rating icofont-2x"></i></label> <label data-index="3" class="rating" id="rate3"><i class="icofont-ui-rating icofont-2x"></i></label> <label data-index="4" class="rating" id="rate4"><i class="icofont-ui-rating icofont-2x"></i></label> <label data-index="5" class="rating" id="rate5"><i class="icofont-ui-rating icofont-2x"></i></label> </span> </div> <form> <div class="form-group"> <label>Your Feedback</label> <textarea class="form-control" id="textFeedback"></textarea> </div> <div class="form-group"> <button class="btn btn-primary btn-sm" type="button" onclick="feedback()"> Submit Feedback </button> </div> </form>';
+                        document.getElementById('checkFeedback').innerHTML = '<h5 class="mb-4">Để lại phản hồi</h5> <p class="mb-2">Xếp hạng địa điểm</p> <div class="mb-4"> <span class="star-rating"> <label data-index="1" class="rating" id="rate1"><i class="icofont-ui-rating icofont-2x"></i></label> <label data-index="2" class="rating" id="rate2"><i class="icofont-ui-rating icofont-2x"></i></label> <label data-index="3" class="rating" id="rate3"><i class="icofont-ui-rating icofont-2x"></i></label> <label data-index="4" class="rating" id="rate4"><i class="icofont-ui-rating icofont-2x"></i></label> <label data-index="5" class="rating" id="rate5"><i class="icofont-ui-rating icofont-2x"></i></label> </span> </div> <form> <div class="form-group"> <label>Thông tin phản hồi của bạn</label> <textarea class="form-control" id="textFeedback"></textarea> </div> <div class="form-group"> <button class="btn btn-primary btn-sm" type="button" onclick="feedback()"> Gửi phản hồi </button> </div> </form>';
                     }
                 }
             })
@@ -680,7 +723,9 @@
                 },
             }).then(function(data) {
                 if (data.message == 'SUCCESS') {
-                    alert('thanh cong');
+                    document.getElementById('feedbackUser').innerHTML = '';
+                    document.getElementById('textFeedback').value = '';
+                    loadFeedback();
                 } else {
                     alert('khong thanh cong');
                 }
