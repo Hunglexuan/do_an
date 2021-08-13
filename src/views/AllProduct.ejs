@@ -9,8 +9,7 @@
     <meta name="author" content="Askbootstrap">
     <title>FUMK - Online Food Ordering</title>
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
 
     <!-- Favicon Icon -->
     <link rel="icon" type="image/png" href="image/favicon.png">
@@ -35,7 +34,11 @@
     <link href="skin/font/DoanCSS.css" rel="stylesheet">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
+    <style>
+        label:hover {
+            cursor: pointer;
+        }
+    </style>
 
 </head>
 
@@ -44,18 +47,16 @@
         <nav class="navbar navbar-expand-lg navbar-light bg-light osahan-nav shadow-sm ">
             <div class="container">
                 <a class="navbar-brand" href="/"><img alt="logo" style="max-width: 120px;" src="image/logoShop.png"></a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
-                    aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation"> <span
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation"> <span
                         class="navbar-toggler-icon"></span>
                 </button>
                 <div class="modal fade" id="productDetail" role="dialog">
                     <div class="modal-dialog" role="document">
-                        <div class="modal-content"
-                            style="padding-bottom: 15px; margin-left: 170px; width: 70% !important;">
+                        <div class="modal-content" style="padding-bottom: 15px; margin-left: 170px; width: 70% !important;">
                             <div>
                                 <div class="container">
                                     <div class="detail-image">
-                                        <img src="/image/1.jpg">
+                                        <img src="/image/1.jpg" id="imageProduct" style="width: 90%;">
                                     </div>
                                     <div class="detail-info">
                                         <div class="kind-restaurants">
@@ -87,8 +88,7 @@
                         </div>
 
 
-                        <div class="modal-content bg-white rounded shadow-sm p-4 mt-3 restaurant-detailed-ratings-and-reviews"
-                            style="padding-bottom: 15px; margin-left: 170px; width: 70% !important;">
+                        <div class="modal-content bg-white rounded shadow-sm p-4 mt-3 restaurant-detailed-ratings-and-reviews" style="padding-bottom: 15px; margin-left: 170px; width: 70% !important;">
                             <h5 class="mb-1">Tất cả bình luận</h5>
                             <div id="listComment">
                                 <div id="replyFeedback">
@@ -97,8 +97,7 @@
                         </div>
                         <!-- <a class="text-center w-100 d-block font-weight-bold" href="#">See All Reviews</a> -->
 
-                        <div class="modal-content bg-white rounded shadow-sm p-4 mb-5 mt-3 rating-review-select-page"
-                            style="padding-bottom: 15px; margin-left: 170px; width: 70% !important;">
+                        <div class="modal-content bg-white rounded shadow-sm p-4 mb-5 mt-3 rating-review-select-page" style="padding-bottom: 15px; margin-left: 170px; width: 70% !important;">
                             <h5 class="mb-4">Để lại bình luận</h5>
                             <form>
                                 <div class="form-group">
@@ -121,8 +120,7 @@
 
                 <div class="collapse navbar-collapse" id="navbarNavDropdown">
                     <ul class="navbar-nav ml-auto">
-                        <div class="modal fade modal-search show modalsearch" id="modal-search" tabindex="-1"
-                            role="dialog">
+                        <div class="modal fade modal-search show modalsearch" id="modal-search" tabindex="-1" role="dialog">
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                     <span class="close" data-dismiss="modal">
@@ -151,6 +149,19 @@
                                     class="badge badge-danger">Mới</span></a>
                         </li>
                         <li id="checkLogin"></li>
+                        <li class="nav-item dropdown no-arrow mx-1 osahan-list-dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fa fa-bell-o" style="font-size: large;"></i>
+                                <!-- Counter - Alerts -->
+                                <span class="badge badge-info badge-counter" style="position: absolute; border-radius: 50px; min-width: 15px; height: 15px; font-size: 9px; right: -7px; line-height: 15px; top: 20px;">1</span>
+                            </a>
+                            <!-- Dropdown - Alerts -->
+                            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow-sm">
+                                <h6 class="dropdown-header">
+                                    Thông Báo :
+                                </h6>
+                            </div>
+                        </li>
                         <!-- <li class="nav-link" style="padding-top: 20px !important;">
                         <button class="btn btn-primary"> Login </button>
                     </li>
@@ -166,8 +177,7 @@
                         </div>
                     </li> -->
                         <li class="nav-item dropdown dropdown-cart">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"
-                                aria-haspopup="true" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="icofont-basket"></i> Giỏ Hàng
                                 <span class="total-count badge badge-success"></span>
                             </a>
@@ -179,8 +189,7 @@
                                     </table>
                                 </div>
                                 <div class="dropdown-cart-top-footer border-top p-4">
-                                    <p class="mb-0 font-weight-bold text-secondary">Sub Total <span
-                                            class="total-cart float-right text-dark"></span></p>
+                                    <p class="mb-0 font-weight-bold text-secondary">Sub Total <span class="total-cart float-right text-dark"></span></p>
                                     <small class="text-info">Extra charges may apply</small>
                                 </div>
                                 <div class="dropdown-cart-top-footer border-top p-2">
@@ -201,8 +210,7 @@
                 <div class="col-md-12" style="flex-direction: row; display: flex;">
                     <div id="findCate" style="width: 70% !important;"></div>
                     <form class="filters-search mb-3" style="width: 30% !important;">
-                        <div class="form-group"> <i class="icofont-search"></i> <input type="text" class="form-control"
-                                placeholder="Bắt đầu nhập để tìm kiếm ..." id="categorySearch"> </div>
+                        <div class="form-group"> <i class="icofont-search"></i> <input type="text" class="form-control" placeholder="Bắt đầu nhập để tìm kiếm ..." id="categorySearch"> </div>
                     </form>
                 </div>
             </div>
@@ -214,9 +222,7 @@
                                 <div class="filters-card border-bottom p-4">
                                     <div class="filters-card-header" id="headingOne">
                                         <h6 class="mb-0">
-                                            <a href="#" class="btn-link" data-toggle="collapse"
-                                                data-target="#collapseOne" aria-expanded="true"
-                                                aria-controls="collapseOne" style="color: #ff3008 !important;"> Thể Loại
+                                            <a href="#" class="btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" style="color: #ff3008 !important;"> Thể Loại
                                                 <i class="icofont-arrow-down float-right"></i> </a>
                                         </h6>
                                     </div>
@@ -225,8 +231,7 @@
                                             <form class="filters-search mb-3">
                                                 <div class="form-group">
                                                     <i class="icofont-search"></i>
-                                                    <input type="text" class="form-control"
-                                                        placeholder="Bắt đầu nhập để tìm kiếm ...">
+                                                    <input type="text" class="form-control" placeholder="Bắt đầu nhập để tìm kiếm ...">
                                                 </div>
                                             </form>
                                             <!-- <div class="custom-control">
@@ -248,16 +253,16 @@
                     <div class="col-md-12 text-center load-more">
                         <nav aria-label="Page navigation example">
                             <ul class="pagination" style="justify-content: center;">
-                                <li class="page-item">
+                                <li class="page-item" id="btn_privious">
                                     <a class="page-link" href="#" aria-label="Previous">
                                         <span aria-hidden="true">&laquo;</span>
                                         <span class="sr-only">Previous</span>
                                     </a>
                                 </li>
-                                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                <li class="page-item">
+                                <div class="number_page" id="number_page" style="display: flex;">
+                                </div>
+
+                                <li class="page-item" id="btn_next">
                                     <a class="page-link" href="#" aria-label="Next">
                                         <span aria-hidden="true">&raquo;</span>
                                         <span class="sr-only">Next</span>
@@ -289,12 +294,8 @@
             <!--Bắt Đầu Nội Dung Giới Thiệu-->
             <div class="noi-dung about">
                 <h2>Về Chúng Tôi</h2>
-                <p> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Praesentium dolores alias ipsa vel hic
-                    tempore exercitationem ipsam explicabo repudiandae ut consectetur qui, earum at nostrum perspiciatis
-                    asperiores necessitatibus facilis esse.
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia id possimus quibusdam nihil earum in
-                    provident enim animi commodi quisquam! Molestiae cupiditate mollitia pariatur error ea, debitis
-                    eaque quo dolorum.</p>
+                <p> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Praesentium dolores alias ipsa vel hic tempore exercitationem ipsam explicabo repudiandae ut consectetur qui, earum at nostrum perspiciatis asperiores necessitatibus facilis esse.
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia id possimus quibusdam nihil earum in provident enim animi commodi quisquam! Molestiae cupiditate mollitia pariatur error ea, debitis eaque quo dolorum.</p>
             </div>
             <!--Kết Thúc Nội Dung Giới Thiệu-->
             <!--Bắt Đầu Nội Dung Đường Dẫn-->
@@ -356,17 +357,22 @@
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src="../../customJS/shopDetail.js"></script>
     <script>
-        $(document).ready(function () {
+        $(document).ready(function() {
             loadcategory();
             loadproduct();
+            getLength();
+            renderPage();
         });
+
+
+
 
         function loadcategory() {
             $.ajax({
                 type: "GET",
                 dataType: "json",
                 url: "/api/category/searchcategory",
-                success: function (data) {
+                success: function(data) {
                     var listdata = data.data.listCategory;
                     for (var i = 0; i < listdata.length; i++) {
                         document.getElementById('searchCategory').innerHTML +=
@@ -380,15 +386,16 @@
             localStorage.setItem('listProduct', JSON.stringify(cate));
         }
 
-        $('#categorySearch').keyup(function (event) {
+        $('#categorySearch').keyup(function(event) {
             event.preventDefault();
             localStorage.setItem('listProduct', JSON.stringify(document.getElementById('categorySearch').value));
             loadproduct();
         });
 
+
         function loadproduct() {
             var text = localStorage.getItem('listProduct').replaceAll('"', '');
-
+            totalPage;
             $.ajax({
                 type: "GET",
                 dataType: "json",
@@ -396,10 +403,13 @@
                     name: text
                 },
                 url: "/api/product/searchAllProduct",
-                success: function (data) {
+                success: function(data) {
                     var listdata = data.data.listProduct;
                     var totalProduct = data.data.total;
-                    console.log(totalProduct);
+                    let length = Math.ceil(listdata.length / perPage);
+
+                    getLength(length);
+                    renderPage(length);
 
                     document.getElementById('categorySearch').value = text;
 
@@ -416,24 +426,24 @@
                         document.getElementById('findCate').innerHTML = '<h4 class="font-weight-bold mt-0 mb-3"> Không tìm thấy ' + '"' + text + '"' + ' </h4> ';
                     }
 
-
                     if (listdata != '') {
                         document.getElementById('notFindProduct').innerHTML = '';
                         document.getElementById('findProduct').innerHTML = '';
                         for (var i = 0; i < listdata.length; i++) {
-                            console.log('1111', listdata[i].image);
-                            let image = (listdata[i].image != null ? listdata[i].image : 'image/list/1.png');
-                            console.log('1111', image);
-
-                            if (listdata[i].sale != null) {
-                                let price_sale = (listdata[i].sale / listdata[i].unit_price) * 100;
-                                listdata[i].unit_price = listdata[i].unit_price - listdata[i].sale;
-                                document.getElementById('findProduct').innerHTML +=
-                                    '<div class="col-md-4 col-sm-6 mb-4 pb-2"> <div class="list-card bg-white overflow-hidden h-100 position-relative item-content" style="border: 1px solid #d7d7d7; border-radius: 6px;" data-toggle="modal" data-target="#productDetail" onclick="productDetail(' + "'" + listdata[i].id + "'" + ')"> <div class="list-card-image"> <div class="favourite-heart text-danger position-absolute"><a href="#"><i class="icofont-heart"></i></a></div> <a href="#"> <img src= ' + image + ' class="img-fluid item-img"> </a> </div> <div class="p-3 position-relative"> <div class="list-card-body"> <h6 class="mb-1"><a href="#" class="text-black">' + listdata[i].name + '</a></h6> <p class="text-gray mb-3">' + listdata[i].description + '</p> <p class="text-gray mb-3 time"><span class="float-right text-black-50 ml-4"> Giảm giá: ' + price_sale + '%</span> <span class="float-right text-black-50"> Số lượng: ' + listdata[i].quantity + '</span> </p> </div> <div class="list-card-badge"> <small>Giá: ' + listdata[i].unit_price + '</small> <span class="badge badge-success">Mới</span> <span class="float-right"> <span class="count-number" style="margin-top: 0px !important;"> <button value="ADD" data-name="${product.name}" data-price="${product.unit_price}" data-id="${product.id}"  class="add-to-cart btn btn-outline-secondary btn-sm" onclick="addToCartFunc.call(this)" > Thêm Giỏ Hàng </button> </span> </span> </div> </div> </div> </div>';
-                            } else {
-                                document.getElementById('findProduct').innerHTML +=
-                                    '<div class="col-md-4 col-sm-6 mb-4 pb-2"> <div class="list-card bg-white overflow-hidden h-100 position-relative item-content" style="border: 1px solid #d7d7d7; border-radius: 6px;" data-toggle="modal" data-target="#productDetail" onclick="productDetail(' + "'" + listdata[i].id + "'" + ')"> <div class="list-card-image"> <div class="favourite-heart text-danger position-absolute"><a href="#"><i class="icofont-heart"></i></a></div> <a href="#"> <img src= ' + image + ' class="img-fluid item-img"> </a> </div> <div class="p-3 position-relative"> <div class="list-card-body"> <h6 class="mb-1"><a href="#" class="text-black">' + listdata[i].name + '</a></h6> <p class="text-gray mb-3">' + listdata[i].description + '</p> <p class="text-gray mb-3 time"> <span class="float-right text-black-50"> Số lượng: ' + listdata[i].quantity + '</span> </p> </div> <div class="list-card-badge"> <small>Giá: ' + listdata[i].unit_price + '</small> <span class="badge badge-success">Mới</span> <span class="float-right"> <span class="count-number" style="margin-top: 0px !important;"> <button value="ADD" data-name="${product.name}" data-price="${product.unit_price}" data-id="${product.id}"  class="add-to-cart btn btn-outline-secondary btn-sm" onclick="addToCartFunc.call(this)" > Thêm Giỏ Hàng </button> </span> </span> </div> </div> </div> </div>';
+                            if (i >= start && i < end) {
+                                let image = (listdata[i].image ? listdata[i].image : 'image/list/1.png');
+                                console.log(image);
+                                if (listdata[i].sale != null) {
+                                    let price_sale = (listdata[i].sale / listdata[i].unit_price) * 100;
+                                    let newPrice = listdata[i].unit_price - listdata[i].sale;
+                                    document.getElementById('findProduct').innerHTML +=
+                                        '<div class="col-md-4 col-sm-6 mb-4 pb-2"> <div class="list-card bg-white overflow-hidden h-100 position-relative item-content" style="border: 1px solid #d7d7d7; border-radius: 6px;" data-toggle="modal" data-target="#productDetail" onclick="productDetail(' + "'" + listdata[i].id + "'" + ')"> <div class="list-card-image"> <div class="favourite-heart text-danger position-absolute"><a href="#"><i class="icofont-heart"></i></a></div> <a href="#"> <img src=' + image + ' class="img-fluid item-img"> </a> </div> <div class="p-3 position-relative"> <div class="list-card-body"> <h6 class="mb-1"><a href="#" class="text-black">' + listdata[i].name + '</a></h6> <p class="text-gray mb-3">' + listdata[i].description + '</p> <p class="text-gray mb-3 time"><span class="float-right text-black-50 ml-4"> Giảm giá: ' + price_sale + '%</span> <span class="float-right text-black-50"> Số lượng: ' + listdata[i].quantity + '</span> </p> </div> <div class="list-card-badge"> <small>Giá: <del>' + listdata[i].unit_price + '</del> <i class="fa fa-angle-double-right" aria-hidden="true"></i> ' + newPrice + '</small> <span class="badge badge-success">Mới</span> <span class="float-right"> <span class="count-number" style="margin-top: 0px !important;"> <button value="ADD" data-name="${product.name}" data-price="${product.unit_price}" data-id="${product.id}"  class="add-to-cart btn btn-outline-secondary btn-sm" onclick="addToCartFunc.call(this)" > Thêm </button> </span> </span> </div> </div> </div> </div>';
+                                } else {
+                                    document.getElementById('findProduct').innerHTML +=
+                                        '<div class="col-md-4 col-sm-6 mb-4 pb-2"> <div class="list-card bg-white overflow-hidden h-100 position-relative item-content" style="border: 1px solid #d7d7d7; border-radius: 6px;" data-toggle="modal" data-target="#productDetail" onclick="productDetail(' + "'" + listdata[i].id + "'" + ')"> <div class="list-card-image"> <div class="favourite-heart text-danger position-absolute"><a href="#"><i class="icofont-heart"></i></a></div> <a href="#"> <img src=' + image + ' class="img-fluid item-img"> </a> </div> <div class="p-3 position-relative"> <div class="list-card-body"> <h6 class="mb-1"><a href="#" class="text-black">' + listdata[i].name + '</a></h6> <p class="text-gray mb-3">' + listdata[i].description + '</p> <p class="text-gray mb-3 time"> <span class="float-right text-black-50"> Số lượng: ' + listdata[i].quantity + '</span> </p> </div> <div class="list-card-badge"> <small>Giá: ' + listdata[i].unit_price + '</small> <span class="float-right"> <span class="count-number" style="margin-top: 0px !important;"> <button value="ADD" data-name="${product.name}" data-price="${product.unit_price}" data-id="${product.id}"  class="add-to-cart btn btn-outline-secondary btn-sm" onclick="addToCartFunc.call(this)" > Thêm </button> </span> </span> </div> </div> </div> </div>';
+                                }
                             }
+
                         }
                     } else {
                         document.getElementById('findProduct').innerHTML = '';
@@ -443,12 +453,10 @@
                 }
             });
         }
-
         let product_id;
 
         function productDetail(id) {
             product_id = id;
-            console.log(product_id);
             $.ajax({
                 type: "GET",
                 dataType: "json",
@@ -456,9 +464,10 @@
                     id: id
                 },
                 url: "/api/product/getById",
-                success: function (data) {
+                success: function(data) {
                     var listdata = data.data.product;
 
+                    document.getElementById('imageProduct').src = listdata.image;
                     document.getElementById('nameProduct').innerHTML = listdata.name;
                     document.getElementById('timeOpen').innerHTML = listdata.time_from + '.00' + ' - ' + listdata.time_to + '.00';
                     document.getElementById('priceProduct').innerHTML = listdata.unit_price + ' VND';
@@ -476,7 +485,7 @@
                     id: product_id
                 },
                 url: "/api/comment/searchcomment",
-                success: function (data) {
+                success: function(data) {
 
                     let list = data.data.listComment;
 
@@ -501,13 +510,13 @@
                         let y = d.getUTCFullYear();
                         let dob = n + ', ' + m + ' ' + y;
                         document.getElementById('listComment').innerHTML = ''
-                        inforUserComment(user_id, list, id, cmt_id, content, dob);
+                        inforUserComment(user_id, list, id, cmt_id, content, dob, i);
                     }
                 }
             })
         }
 
-        function inforUserComment(user_id, list, id, cmt_id, content, dob) {
+        function inforUserComment(user_id, list, id, cmt_id, content, dob, i) {
             $.ajax({
                 type: "GET",
                 dataType: "json",
@@ -515,51 +524,54 @@
                     id: user_id
                 },
                 url: "/api/user/getbyId",
-                success: function (data) {
+                success: function(data) {
                     if (cmt_id == '') {
 
-                        document.getElementById('listComment').innerHTML += '<div class="reviews-members pt-2"><div class="media"> <a href="#"><img alt="Generic placeholder image" src="' + data.data.avatar + '" class="mr-3 rounded-pill" style="width: 40px; height: 40px;"></a> <div class="media-body" style="border: 1px solid #f0f2f5; border-radius: 10px; background-color: #f0f2f5; padding: 10px"> <div class="reviews-members-header" style="display: flex; justify-content: space-between;"> <h6 class="mb-1"><a class="text-black" href="#">' + data.data.name + '</a></h6> <p class="text-gray" style="margin-bottom: 5px;">' + dob + '</p> </div> <div class="reviews-members-body"> <p>' + content + '</p> </div> </div> </div> </div> <div style="margin-left: 67px"> <label class="reply" value="' + id + '" style="border-radius: 6px"> Phản hồi </label> . <label value="' + id + '" style="border-radius: 6px;"> Hiển thị phản hồi </label> <div class="reply-section"></div> </div> </div>';
-                        for (var j = 0; j < list.length; j++) {
-                            if (list[j].cmt_id == id) {
+                        document.getElementById('listComment').innerHTML += '<div class="reviews-members pt-2"><div class="media"> <a href="#"><img alt="Generic placeholder image" src="' + data.data.avatar + '" class="mr-3 rounded-pill" style="width: 40px; height: 40px;"></a> <div class="media-body" style="border: 1px solid #f0f2f5; border-radius: 10px; background-color: #f0f2f5; padding: 10px"> <div class="reviews-members-header" style="display: flex; justify-content: space-between;"> <h6 class="mb-1"><a class="text-black" href="#">' + data.data.name + '</a></h6> <p class="text-gray" style="margin-bottom: 5px;">' + dob + '</p> </div> <div class="reviews-members-body"> <p>' + content + '</p> </div> </div> </div> </div> <div style="margin-left: 67px"> <label class="reply" style="border-radius: 6px" onclick="Reply(' + "'" + i + "','" + data.data.name + "','" + id + "'" + ')"> Phản hồi </label> . <label style="border-radius: 6px;" onclick="showReply(' + "'" + i + "'" + ')"> Hiển thị phản hồi </label> <div id="showReply' + i + '"> </div> <div class="reply-section" id="replytoreply' + i + '"> </div></div> </div> </div>';
+
+                        ReplyToReply(i, list, id);
+
+                        // for (var j = 0; j < list.length; j++) {
+                        //     if (list[j].cmt_id == id) {
 
 
-                                let id_reply = list[j].id;
-                                let content_reply = list[j].content;
-                                let user_id_reply = list[j].user_id;
+                        //         let id_reply = list[j].id;
+                        //         let content_reply = list[j].content;
+                        //         let user_id_reply = list[j].user_id;
 
-                                let d = new Date(list[j].createdAt);
-                                var n;
-                                if (d.getUTCDate() < 10) {
-                                    n = '0' + d.getUTCDate();
-                                } else {
-                                    n = d.getUTCDate();
-                                }
-                                var m;
-                                m = d.getUTCMonth().toLocaleString('en-us', {
-                                    month: 'short'
-                                });
-                                var y = d.getUTCFullYear();
-                                var dob_reply = n + ', ' + m + ' ' + y;
+                        //         let d = new Date(list[j].createdAt);
+                        //         var n;
+                        //         if (d.getUTCDate() < 10) {
+                        //             n = '0' + d.getUTCDate();
+                        //         } else {
+                        //             n = d.getUTCDate();
+                        //         }
+                        //         var m;
+                        //         m = d.getUTCMonth().toLocaleString('en-us', {
+                        //             month: 'short'
+                        //         });
+                        //         var y = d.getUTCFullYear();
+                        //         var dob_reply = n + ', ' + m + ' ' + y;
 
-                                // showInforReply(user_id_reply, content_reply, dob_reply);
+                        //         // showInforReply(user_id_reply, content_reply, dob_reply);
 
-                                document.getElementById('listComment').innerHTML += '<div class="reviews-members pt-2 ml-5"><div class="media"> <a href="#"><img alt="Generic placeholder image" src="image/user/1.png" class="mr-1 rounded-pill" style="width: 30px; height: 30px;"></a> <div class="media-body" style="border: 1px solid #f0f2f5; border-radius: 10px; background-color: #f0f2f5; padding: 10px"> <div class="reviews-members-header" style="display: flex; justify-content: space-between;"> <h6 class="mb-1"><a class="text-black" href="#">heloo</a></h6> <p class="text-gray" style="margin-bottom: 5px;">' + dob_reply + '</p> </div> <div class="reviews-members-body"> <p>' + content_reply + '</p> </div> </div> </div> </div> <div style="margin-left: 93px"> <label class="reply" value="' + id + '" style="border-radius: 6px"> Phản hồi </label> . <label value="' + id + '" style="border-radius: 6px;"> Hiển thị phản hồi </label> <div class="reply-section"></div> </div> </div>';
+                        //         document.getElementById('listComment').innerHTML += '<div class="reviews-members pt-2 ml-5"><div class="media"> <a href="#"><img alt="Generic placeholder image" src="image/user/1.png" class="mr-1 rounded-pill" style="width: 30px; height: 30px;"></a> <div class="media-body" style="border: 1px solid #f0f2f5; border-radius: 10px; background-color: #f0f2f5; padding: 10px"> <div class="reviews-members-header" style="display: flex; justify-content: space-between;"> <h6 class="mb-1"><a class="text-black" href="#">heloo</a></h6> <p class="text-gray" style="margin-bottom: 5px;">' + dob_reply + '</p> </div> <div class="reviews-members-body"> <p>' + content_reply + '</p> </div> </div> </div> </div> <div style="margin-left: 93px"> <label class="reply" value="' + id + '" style="border-radius: 6px"> Phản hồi </label> . <label value="' + id + '" style="border-radius: 6px;"> Hiển thị phản hồi </label> <div class="reply-section" id="replytoreply"></div> </div> </div>';
 
-                                // $.ajax({
-                                //     type: "GET",
-                                //     dataType: "json",
-                                //     data: {
-                                //         id: user_id_reply
-                                //     },
-                                //     url: "/api/user/getbyId",
-                                //     success: function(data) {
+                        //         // $.ajax({
+                        //         //     type: "GET",
+                        //         //     dataType: "json",
+                        //         //     data: {
+                        //         //         id: user_id_reply
+                        //         //     },
+                        //         //     url: "/api/user/getbyId",
+                        //         //     success: function(data) {
 
-                                //         document.getElementById('listComment').innerHTML += '<div class="reviews-members pt-2 ml-5"><div class="media"> <a href="#"><img alt="Generic placeholder image" src="image/user/1.png" class="mr-1 rounded-pill" style="width: 30px; height: 30px;"></a> <div class="media-body"> <div class="reviews-members-header" style="display: flex; justify-content: space-between;"> <h6 class="mb-1"><a class="text-black" href="#">' + data.data.name + '</a></h6> <p class="text-gray" style="margin-bottom: 5px;">' + dob_reply + '</p> </div> <div class="reviews-members-body"> <p>' + content_reply + '</p> </div> </div> </div> </div> <div class="ml-5"> <button class="btn-danger" style="border-radius: 6px"> Reply </button> <button class=" btn-danger" style="border-radius: 6px;" onclick="viewReply()"> View Reply </button> </div> </div>';
-                                //     }
-                                // })
-                            }
+                        //         //         document.getElementById('listComment').innerHTML += '<div class="reviews-members pt-2 ml-5"><div class="media"> <a href="#"><img alt="Generic placeholder image" src="image/user/1.png" class="mr-1 rounded-pill" style="width: 30px; height: 30px;"></a> <div class="media-body"> <div class="reviews-members-header" style="display: flex; justify-content: space-between;"> <h6 class="mb-1"><a class="text-black" href="#">' + data.data.name + '</a></h6> <p class="text-gray" style="margin-bottom: 5px;">' + dob_reply + '</p> </div> <div class="reviews-members-body"> <p>' + content_reply + '</p> </div> </div> </div> </div> <div class="ml-5"> <button class="btn-danger" style="border-radius: 6px"> Reply </button> <button class=" btn-danger" style="border-radius: 6px;" onclick="viewReply()"> View Reply </button> </div> </div>';
+                        //         //     }
+                        //         // })
+                        //     }
 
-                        }
+                        // }
 
                     }
                 }
@@ -567,36 +579,112 @@
             })
         }
 
-        // function showInforReply(user_id_reply, content_reply, dob_reply) {
-        //     $.ajax({
-        //         type: "GET",
-        //         dataType: "json",
-        //         data: {
-        //             id: user_id_reply
-        //         },
-        //         url: "/api/user/getbyId",
-        //         success: function(data) {
+        function ReplyToReply(i, listReply, id) {
+            for (var j = 0; j < listReply.length; j++) {
 
-        //             document.getElementById('listComment').innerHTML += '<div class="reviews-members pt-2 ml-5"><div class="media"> <a href="#"><img alt="Generic placeholder image" src="image/user/1.png" class="mr-1 rounded-pill" style="width: 30px; height: 30px;"></a> <div class="media-body"> <div class="reviews-members-header" style="display: flex; justify-content: space-between;"> <h6 class="mb-1"><a class="text-black" href="#">' + data.data.name + '</a></h6> <p class="text-gray" style="margin-bottom: 5px;">' + dob_reply + '</p> </div> <div class="reviews-members-body"> <p>' + content_reply + '</p> </div> </div> </div> </div> <div class="ml-5"> <button class="btn-danger" style="border-radius: 6px"> Reply </button> <button class=" btn-danger" style="border-radius: 6px;" onclick="viewReply()"> View Reply </button> </div> </div>';
-        //         }
-        //     })
-        // }
+                if (listReply[j].cmt_id == id) {
 
 
-        $(document).on('click', '.reply', function () {
-            var thisClicked = $(this);
-            var cmt_id = thisClicked;
+
+                    let id_reply = listReply[j].id;
+                    let content_reply = listReply[j].content;
+                    let user_id_reply = listReply[j].user_id;
+
+                    let d = new Date(listReply[j].createdAt);
+                    var n;
+                    if (d.getUTCDate() < 10) {
+                        n = '0' + d.getUTCDate();
+                    } else {
+                        n = d.getUTCDate();
+                    }
+                    var m;
+                    m = d.getUTCMonth().toLocaleString('en-us', {
+                        month: 'short'
+                    });
+                    var y = d.getUTCFullYear();
+                    var dob_reply = n + ', ' + m + ' ' + y;
+
+                    // showInforReply(user_id_reply, content_reply, dob_reply);
+
+                    // document.getElementById("showReply" + i).innerHTML += '<div class="reviews-members pt-2 ml-5"><div class="media"> <a href="#"><img alt="Generic placeholder image" src="image/user/1.png" class="mr-1 rounded-pill" style="width: 30px; height: 30px;"></a> <div class="media-body" style="border: 1px solid #f0f2f5; border-radius: 10px; background-color: #f0f2f5; padding: 10px"> <div class="reviews-members-header" style="display: flex; justify-content: space-between;"> <h6 class="mb-1"><a class="text-black" href="#">heloo</a></h6> <p class="text-gray" style="margin-bottom: 5px;">' + dob_reply + '</p> </div> <div class="reviews-members-body"> <p>' + content_reply + '</p> </div> </div> </div> </div> <div style="margin-left: 93px"> <label class="reply" style="border-radius: 6px"> Phản hồi </label> . <label style="border-radius: 6px;"> Hiển thị phản hồi </label> <div class="reply-section" id="replytoreply"></div> </div> </div>';
+
+                    $.ajax({
+                        type: "GET",
+                        dataType: "json",
+                        data: {
+                            id: user_id_reply
+                        },
+                        url: "/api/user/getbyId",
+                        success: function(data) {
+
+                            // document.getElementById("showReply" + i).innerHTML += '<div class="reviews-members pt-2"><div class="media"> <a href="#"><img alt="Generic placeholder image" src="' + data.data.avatar + '" class="mr-1 rounded-pill" style="width: 30px; height: 30px;"></a> <div class="media-body"> <div class="reviews-members-header" style="display: flex; justify-content: space-between;"> <h6 class="mb-1"><a class="text-black" href="#">' + data.data.name + '</a></h6> <p class="text-gray" style="margin-bottom: 5px;">' + dob_reply + '</p> </div> <div class="reviews-members-body"> <p>' + content_reply + '</p> </div> </div> </div> </div> <div> <button class="btn-danger" style="border-radius: 6px"> Reply </button> <button class=" btn-danger" style="border-radius: 6px;" onclick="viewReply()"> View Reply </button> </div> </div>';
+
+                            document.getElementById("showReply" + i).innerHTML += '<div class="reviews-members pt-2"><div class="media"> <a href="#"><img alt="Generic placeholder image" src="' + data.data.avatar + '" class="mr-3 rounded-pill" style="width: 40px; height: 40px;"></a> <div class="media-body" style="border: 1px solid #f0f2f5; border-radius: 10px; background-color: #f0f2f5; padding: 10px"> <div class="reviews-members-header" style="display: flex; justify-content: space-between;"> <h6 class="mb-1"><a class="text-black" href="#">' + data.data.name + '</a></h6> <p class="text-gray" style="margin-bottom: 5px;">' + dob_reply + '</p> </div> <div class="reviews-members-body"> <p>' + content_reply + '</p> </div> </div> </div> </div> <div style="margin-left: 67px"> <label class="reply" style="border-radius: 6px" onclick="Reply(' + "'" + i + "','" + data.data.name + "','" + id + "'" + ')"> Phản hồi </label> . <label style="border-radius: 6px;"> Hiển thị phản hồi </label> <div id="showReply' + i + '"> </div> <div class="reply-section" id="replytoreply' + i + '"> </div></div> </div> </div>';
+                        }
+                    })
+                }
+
+            }
+        }
 
 
-            $('.reply-section').html('<input type="text" class="form-control mt-2" placeholder="Reply"> <div class="text-end mt-2"> <button class="btn-danger" style="border-radius: 6px"> Reply </button> <button class=" btn-danger" style="border-radius: 6px;"> Cancel </button> </div>');
-            thisClicked.closest('.reviews-members').find('.reply-section').html(
-                '<input type="text" class="form-control mt-2" placeholder="Reply"> <div class="text-end mt-2"> <button class="btn-danger" style="border-radius: 6px"> Reply </button> <button class=" btn-danger" style="border-radius: 6px;"> Cancel </button> </div>'
-            );
+
+        function Reply(iId, name, id) {
+            // var thisClicked = $(this);
+            // var cmt_id = thisClicked;
+
+
+            // $('.reply-section').html('');
+            // thisClicked.closest('.reviews-members').find('.reply-section').html(
+            //     '<input type="text" class="form-control mt-2" placeholder="Reply"> <div class="text-end mt-2"> <button class="btn-danger" style="border-radius: 6px"> Reply </button> <button class=" btn-danger" style="border-radius: 6px;"> Cancel </button> </div>'
+            // );
 
             // document.getElementsByClassName('reply-section').innerHTML += 'hello'
-        })
+            var x = document.getElementById("replytoreply" + iId);
+            if (x.style.display === "none") {
+                x.style.display = "block";
+                x.innerHTML = '<input type="text" class="form-control mt-2" id="textReplyComment"> <div class="text-end mt-2"> <button class="btn-danger" style="border-radius: 6px" id="sendReplyToReply" onclick="sendReplyToReply(' + "'" + id + "'" + ')"> Gửi </button> ';
+                document.getElementById('textReplyComment').value = '@' + name + ': ';
+            } else {
+                x.style.display = "none";
 
-        $('#submitComment').click(function () {
+            }
+        }
+
+        function showReply(iIds) {
+            var x = document.getElementById("showReply" + iIds);
+            if (x.style.display === "none") {
+                x.style.display = "block";
+            } else {
+                x.style.display = "none";
+
+            }
+        }
+
+        function sendReplyToReply(id) {
+            var userId = localStorage.getItem('userId').replaceAll('"', '');
+
+            $.ajax({
+                url: '/api/comment/create',
+                method: 'POST',
+                data: {
+                    user_id: userId,
+                    product_id: product_id,
+                    content: $('#textReplyComment').val(),
+                    cmt_id: id,
+                },
+            }).then(function(data) {
+                if (data.message == 'SUCCESS') {
+                    alert('susscess');
+                    showComment();
+                } else {
+                    alert("Update fail");
+                }
+                document.getElementById("textReplyComment").value = "";
+            })
+        }
+
+        $('#submitComment').click(function() {
 
             var userId = localStorage.getItem('userId').replaceAll('"', '');
 
@@ -609,7 +697,7 @@
                     content: $('#textComment').val(),
                     cmt_id: '',
                 },
-            }).then(function (data) {
+            }).then(function(data) {
                 if (data.message == 'SUCCESS') {
                     showComment();
                 } else {
@@ -618,6 +706,61 @@
                 document.getElementById("textComment").value = "";
             })
         })
+
+
+        let perPage = 6;
+        let currentPage = 1;
+        let start = 0;
+        let end = perPage;
+        const btnnext = document.querySelector('#btn_next');
+        const btnprivious = document.querySelector('#btn_privious');
+        let totalPage;
+
+        function renderPage(lengths) {
+            let html = '';
+            for (let i = 1; i <= lengths; i++) {
+                html += `<li class="page-item pagess"><a class="page-link" href="#">${i}</a></li>`;
+            }
+            document.getElementById('number_page').innerHTML = html;
+
+            const currentPages = document.querySelectorAll('.number_page li');
+            console.log(currentPages);
+            for (let i = 0; i < currentPages.length; i++) {
+                currentPages[i].addEventListener('click', () => {
+                    let value = i + 1;
+                    currentPage = value;
+                    currentPagess(currentPage);
+                    loadproduct();
+                })
+            }
+        }
+
+        function currentPagess(currentPage) {
+            start = (currentPage - 1) * perPage;
+            end = currentPage * perPage;
+        }
+
+        function getLength(length) {
+            totalPage = length;
+
+            btnnext.addEventListener('click', () => {
+                currentPage++;
+                if (currentPage > totalPage) {
+                    currentPage = totalPage;
+                }
+                currentPagess(currentPage);
+                loadproduct();
+            })
+
+            btnprivious.addEventListener('click', () => {
+                currentPage--;
+                if (currentPage <= 1) {
+                    currentPage = 1;
+                }
+                currentPagess(currentPage);
+                loadproduct();
+            })
+        }
     </script>
 </body>
 

@@ -23,6 +23,18 @@ class ProductController {
         let dataQuery = req.query;
         return MidProduct.searchAllProduct(dataQuery);
     }
+    async search6slot(req, res) {
+        let dataQuery = req.query;
+        return MidProduct.listMostBuy(dataQuery);
+    }
+    async searchDefault(req, res) {
+        let dataQuery = req.query;
+        return MidProduct.listDefault(dataQuery);
+    }
+    async listFastDelivery(req, res) {
+        let dataQuery = req.query;
+        return MidProduct.listFastDelivery(dataQuery);
+    }
     async updateProduct(req, res) {
         let dataQuery = req.body;
         return await MidProduct.updateProduct(dataQuery);
