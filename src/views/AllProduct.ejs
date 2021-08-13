@@ -10,7 +10,8 @@
     <title>FUMK - Online Food Ordering</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
-
+    <!-- Custom Css -->
+    <link href="skin/css/styles.css" rel="stylesheet" />
     <!-- Favicon Icon -->
     <link rel="icon" type="image/png" href="image/favicon.png">
     <!-- Bootstrap core CSS-->
@@ -138,7 +139,7 @@
                         </div>
                         <li class="nav-item active">
                             <span class="sizeIcon" data-toggle="modal" data-target="#modal-search">
-                                <i class="icofont-search-property nav-link" style="padding-top: 20px !important;"></i>
+                                <i class="icofont-search-property nav-link" style="padding-top: 20px !important; cursor: pointer;"></i>
                             </span>
                         </li>
                         <li class="nav-item active">
@@ -250,7 +251,7 @@
                     <div id="notFindProduct"></div>
                     <div class="row" id="findProduct">
                     </div>
-                    <div class="col-md-12 text-center load-more">
+                    <div class="col-md-12 text-center load-more" id="pagingWeb">
                         <nav aria-label="Page navigation example">
                             <ul class="pagination" style="justify-content: center;">
                                 <li class="page-item" id="btn_privious">
@@ -425,14 +426,14 @@
                     } else {
                         document.getElementById('findCate').innerHTML = '<h4 class="font-weight-bold mt-0 mb-3"> Không tìm thấy ' + '"' + text + '"' + ' </h4> ';
                     }
-
+                    (listdata.length > 6) ? document.getElementById("pagingWeb").hidden = false: document.getElementById("pagingWeb").hidden = true;
                     if (listdata != '') {
+
                         document.getElementById('notFindProduct').innerHTML = '';
                         document.getElementById('findProduct').innerHTML = '';
                         for (var i = 0; i < listdata.length; i++) {
                             if (i >= start && i < end) {
                                 let image = (listdata[i].image ? listdata[i].image : 'image/list/1.png');
-                                console.log(image);
                                 if (listdata[i].sale != null) {
                                     let price_sale = (listdata[i].sale / listdata[i].unit_price) * 100;
                                     let newPrice = listdata[i].unit_price - listdata[i].sale;

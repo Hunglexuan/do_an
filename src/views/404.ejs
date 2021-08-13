@@ -1,0 +1,286 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Askbootstrap">
+    <meta name="author" content="Askbootstrap">
+    <title>Osahan Eat - Online Food Ordering Website HTML Template</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <!-- Custom Css -->
+    <link href="skin/css/styles.css" rel="stylesheet" />
+    <!-- Favicon Icon -->
+    <link rel="icon" type="image/png" href="image/favicon.png">
+    <!-- Bootstrap core CSS-->
+    <link href="skin/bootstrap/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome-->
+    <link href="skin/font/all.min.css" rel="stylesheet">
+    <!-- Font Awesome-->
+    <link href="skin/font/icofont.min.css" rel="stylesheet">
+    <!-- Select2 CSS-->
+    <link href="skin/font/select2.min.css" rel="stylesheet">
+    <!-- Custom styles for this template-->
+    <link href="skin/font/osahan.css" rel="stylesheet">
+    <!-- Dropzone-->
+    <link href="skin/font/dropzone.css" rel="stylesheet">
+    <!-- HungCSS -->
+    <link href="skin/font/HungCSS.css" rel="stylesheet">
+    <!-- Owl Carousel -->
+    <link rel="stylesheet" href="skin/owl/owl.carousel.css">
+    <link rel="stylesheet" href="skin/owl/owl.theme.css">
+
+    <link href="skin/font/DoanCSS.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light osahan-nav shadow-sm ">
+        <div class="container">
+            <a class="navbar-brand" href="/"><img alt="logo" style="max-width: 120px;" src="image/logoShop.png"></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation"> <span
+                        class="navbar-toggler-icon"></span>
+                </button>
+            <div class="modal fade" id="productDetail" role="dialog">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content" style="padding-bottom: 15px; margin-left: 170px; width: 70% !important;">
+                        <div>
+                            <div class="container">
+                                <div class="detail-image">
+                                    <img src="/image/1.jpg" id="imageProduct" style="width: 90%;">
+                                </div>
+                                <div class="detail-info">
+                                    <div class="kind-restaurants">
+                                        <span>Shop
+                                                <span> -
+                                                    <a href="#" class="link-brand">chi nhánh</a>
+                                                </span>
+                                        </span>
+                                    </div>
+                                    <h1 class="name-restaurant" id="nameProduct"></h1>
+                                    <div class="address-restaurant">Cầu Giấy, Hà Nội</div>
+                                    <div class="status-restaurant">
+                                        <div class="time-status">
+                                            <span class="stt-online" title="mở cửa"> <i class="fa fa-circle"
+                                                        aria-hidden="true"></i> mở cửa</span>
+                                        </div>
+                                        <div class="time" id="timeOpen">
+                                            <i class="fa fa-clock-o"></i>
+                                        </div>
+                                    </div>
+                                    <div class="priceProduct" id="priceProduct">
+                                        <i class="fa fa-money"></i>
+                                    </div>
+                                    <div class="descriptionProduct" id="descriptionProduct"></div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="modal-content bg-white rounded shadow-sm p-4 mt-3 restaurant-detailed-ratings-and-reviews" style="padding-bottom: 15px; margin-left: 170px; width: 70% !important;">
+                        <h5 class="mb-1">Tất cả bình luận</h5>
+                        <div id="listComment">
+                            <div id="replyFeedback">
+                            </div>
+                        </div>
+                    </div>
+                    <!-- <a class="text-center w-100 d-block font-weight-bold" href="#">See All Reviews</a> -->
+
+                    <div class="modal-content bg-white rounded shadow-sm p-4 mb-5 mt-3 rating-review-select-page" style="padding-bottom: 15px; margin-left: 170px; width: 70% !important;">
+                        <h5 class="mb-4">Để lại bình luận</h5>
+                        <form>
+                            <div class="form-group">
+                                <label>Bình luận của bạn</label>
+                                <textarea class="form-control" id="textComment"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <button class="btn btn-primary btn-sm" type="button" id="submitComment"> Gửi bình
+                                        luận</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+
+
+
+
+
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav ml-auto">
+                    <div class="modal fade modal-search show modalsearch" id="modal-search" tabindex="-1" role="dialog">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <span class="close" data-dismiss="modal">
+                                        <div class="close-icon">X</div>
+                                    </span>
+                                <div class="modal-search-form" id="search_form">
+                                    <span class="sub-title">Tìm kiếm các quán ăn.......</span>
+                                    <form>
+                                        <input type="text" class="search-input" id="search-input">
+                                    </form>
+                                </div>
+                                <div id="suggest"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <li class="nav-item active">
+                        <span class="sizeIcon" data-toggle="modal" data-target="#modal-search">
+                                <i class="icofont-search-property nav-link" style="padding-top: 20px !important; cursor: pointer;"></i>
+                            </span>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/">Trang Chủ <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Offers"><i class="icofont-sale-discount"></i> Ưu Đãi <span
+                                    class="badge badge-danger">Mới</span></a>
+                    </li>
+                    <li id="checkLogin"></li>
+                    <li class="nav-item dropdown no-arrow mx-1 osahan-list-dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fa fa-bell-o" style="font-size: large;"></i>
+                            <!-- Counter - Alerts -->
+                            <span class="badge badge-info badge-counter" style="position: absolute; border-radius: 50px; min-width: 15px; height: 15px; font-size: 9px; right: -7px; line-height: 15px; top: 20px;">1</span>
+                        </a>
+                        <!-- Dropdown - Alerts -->
+                        <div class="dropdown-list dropdown-menu dropdown-menu-right shadow-sm">
+                            <h6 class="dropdown-header">
+                                Thông Báo :
+                            </h6>
+                        </div>
+                    </li>
+                    <!-- <li class="nav-link" style="padding-top: 20px !important;">
+                        <button class="btn btn-primary"> Login </button>
+                    </li>
+
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <img alt="Generic placeholder image" src="image/user/4.png" class="nav-osahan-pic rounded-pill"> My Account
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right shadow-sm border-0">
+                            <a class="dropdown-item" href="orders.html#orders"><i class="icofont-ui-user"></i> My Profile </a>
+                            <a class="dropdown-item" href="orders.html#offers"><i class="icofont-logout"></i> Logout </a>
+                        </div>
+                    </li> -->
+                    <li class="nav-item dropdown dropdown-cart">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="icofont-basket"></i> Giỏ Hàng
+                            <span class="total-count badge badge-success"></span>
+                        </a>
+                        <div class="dropdown-menu dropdown-cart-top p-0 dropdown-menu-right shadow-sm border-0">
+
+                            <div class="dropdown-cart-top-body border-top p-4">
+                                <table class="table" id="show-cart">
+
+                                </table>
+                            </div>
+                            <div class="dropdown-cart-top-footer border-top p-4">
+                                <p class="mb-0 font-weight-bold text-secondary">Sub Total <span class="total-cart float-right text-dark"></span></p>
+                                <small class="text-info">Extra charges may apply</small>
+                            </div>
+                            <div class="dropdown-cart-top-footer border-top p-2">
+                                <a class="btn btn-success btn-block btn-lg" href="/CheckOut"> Checkout</a>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+    </nav>
+    <section class="section pt-5 pb-5 osahan-not-found-page">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-center pt-5 pb-5">
+                    <img class="img-fluid" src="image/404.png" alt="404" style="height: 70% !important;">
+                    <h1 class="mt-2 mb-2">Không tìm thấy trang</h1>
+                    <p>Ồ! Có vẻ như trang bạn đang cố gắng truy cập không tồn tại. <br>Vui lòng bắt đầu lại.</p>
+                    <a class="btn btn-primary btn-lg" href="/">Về Trang Chủ</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="section pt-5 pb-5 text-center bg-white">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <h5 class="m-0">Điều hành cửa hàng hoặc nhà hàng? <a href="login.html">Làm việc với chúng tôi</a></h5>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer>
+        <div class="containers">
+            <!--Bắt Đầu Nội Dung Giới Thiệu-->
+            <div class="noi-dung about">
+                <h2>Về Chúng Tôi</h2>
+                <p> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Praesentium dolores alias ipsa vel hic tempore exercitationem ipsam explicabo repudiandae ut consectetur qui, earum at nostrum perspiciatis asperiores necessitatibus facilis esse.
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia id possimus quibusdam nihil earum in provident enim animi commodi quisquam! Molestiae cupiditate mollitia pariatur error ea, debitis eaque quo dolorum.</p>
+            </div>
+            <!--Kết Thúc Nội Dung Giới Thiệu-->
+            <!--Bắt Đầu Nội Dung Đường Dẫn-->
+            <div class="noi-dung links">
+                <h2>Đường Dẫn</h2>
+                <ul style="padding-left: 0px;">
+                    <li><a href="#">Trang Chủ</a></li>
+                    <li><a href="#">Về Chúng Tôi</a></li>
+                    <li><a href="#">Thông Tin Liên Lạc</a></li>
+                    <li><a href="#">Dịch Vụ</a></li>
+                    <li><a href="#">Điều Kiện Chính Sách</a></li>
+                </ul>
+            </div>
+            <!--Kết Thúc Nội Dung Đường Dẫn-->
+            <!--Bắt Đâu Nội Dung Liên Hệ-->
+            <div class="noi-dung contact">
+                <h2>Thông Tin Liên Hệ</h2>
+                <ul class="info" style="padding-left: 0px;">
+                    <li>
+                        <span><i class="fa fa-map-marker"></i></span>
+                        <span>Đường Số 1<br />
+                            Đường 1, Thủ Đô Hà Nội<br />
+                            Việt Nam</span>
+                    </li>
+                    <li>
+                        <span><i class="fa fa-phone"></i></span>
+                        <p><a href="#">+84 123 456 789</a>
+                            <br />
+                            <a href="#">+84 987 654 321</a>
+                        </p>
+                    </li>
+                    <li>
+                        <span><i class="fa fa-envelope"></i></span>
+                        <p><a href="#">FUMK@gmail.com</a>
+                            <br />
+                            <a href="#">FUMK@fpt.edu.vn</a>
+                        </p>
+                    </li>
+                </ul>
+            </div>
+            <!--Kết Thúc Nội Dung Liên Hệ-->
+        </div>
+    </footer>
+    <!-- jQuery -->
+    <script src="js/jquery-3.3.1.slim.min.js"></script>
+    <!-- Bootstrap core JavaScript-->
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <!-- Select2 JavaScript-->
+    <script src="js/select2.min.js"></script>
+    <!-- Owl Carousel -->
+    <script src="js/owl.carousel.js"></script>
+    <!-- Custom scripts for all pages-->
+    <script src="js/custom.js"></script>
+    <script src="js/header.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="../../customJS/shopDetail.js"></script>
+</body>
+
+</html>

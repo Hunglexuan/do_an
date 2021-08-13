@@ -41,6 +41,10 @@ app.get('/', function(req, res) {
     return res.render('home');
 });
 
+app.get('/404', function(req, res) {
+    return res.render('404');
+});
+
 // app.get('/index', function(req, res) {
 //     return res.render('index');
 // });
