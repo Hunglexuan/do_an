@@ -191,7 +191,15 @@ class MidProduct {
                 del: 0
             }
         })
-
+        if(!data.sale){
+            data.sale = null
+        }
+        if(data.sale_from == ''){
+            data.sale_from = null
+        }
+        if(data.sale_to == ''){
+            data.sale_to = null
+        }
         let dataUpdate = {
             name: data.name,
             quantity: data.quantity,
@@ -204,7 +212,8 @@ class MidProduct {
             description: data.description,
 
         }
-        return await objUpdate.update(dataUpdate)
+       
+        return objUpdate.update(dataUpdate)
 
     }
 
