@@ -94,7 +94,7 @@ class MidBill {
         // }
         // console.log(data.cart.listCart);
         // console.log(data);
-        console.log("object", data);
+       
         for (let i = 0; i < data.cart.listCart.length; i++) {
             totalPrice += data.cart.listCart[i].price * data.cart.listCart[i].count
         }
@@ -112,14 +112,19 @@ class MidBill {
             voucher = ''
         }
         let status = data.cart.status;
+        if(status == ""){
+            status = null;
+        }
         if (!data.cart.address) {
             throw new Error("Chưa nhập địa chỉ ship");
         }
+        
         let address = data.cart.address;
         let billCreate = {
             total_price: totalPrice,
             status: status,
             address: address,
+            voucher_id : voucher.id 
         }
         let bill = await Bill.create(billCreate);
         for (let i = 0; i < data.cart.listCart.length; i++) {
