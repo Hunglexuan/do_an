@@ -20,6 +20,67 @@
    <link href="skin/css/styles.css" rel="stylesheet" />
    <!-- Datatables css -->
    <link href="skin/bootstrap/dataTables.bootstrap4.min.css" rel="stylesheet">
+   <style>
+      .switch {
+         position: relative;
+         display: inline-block;
+         width: 60px;
+         height: 34px;
+      }
+
+      .switch input {
+         opacity: 0;
+         width: 0;
+         height: 0;
+      }
+
+      .slider {
+         position: absolute;
+         cursor: pointer;
+         top: 0;
+         left: 0;
+         right: 0;
+         bottom: 0;
+         background-color: #ccc;
+         -webkit-transition: .4s;
+         transition: .4s;
+      }
+
+      .slider:before {
+         position: absolute;
+         content: "";
+         height: 26px;
+         width: 26px;
+         left: 4px;
+         bottom: 4px;
+         background-color: white;
+         -webkit-transition: .4s;
+         transition: .4s;
+      }
+
+      input:checked+.slider {
+         background-color: #2196F3;
+      }
+
+      input:focus+.slider {
+         box-shadow: 0 0 1px #2196F3;
+      }
+
+      input:checked+.slider:before {
+         -webkit-transform: translateX(26px);
+         -ms-transform: translateX(26px);
+         transform: translateX(26px);
+      }
+
+      /* Rounded sliders */
+      .slider.round {
+         border-radius: 34px;
+      }
+
+      .slider.round:before {
+         border-radius: 50%;
+      }
+   </style>
 </head>
 
 <body class="sb-nav-fixed">
@@ -28,9 +89,12 @@
       <!-- Navbar Search-->
       <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
          <div class="input-group">
-            <input class="form-control" type="text" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2" />
             <div class="input-group-append">
-               <button class="btn btn-primary btn-sm" type="button"><i class="fas fa-search"></i></button>
+               <label id="statusShop" class="mr-2"></label>
+               <label class="switch">
+                  <input type="checkbox" id="switchShop" name="swiShop">
+                  <span class="slider round"></span>
+               </label>
             </div>
          </div>
       </form>
@@ -54,131 +118,23 @@
                </form>
             </div>
          </li>
-         <li class="nav-item dropdown no-arrow mx-1 osahan-list-dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-               <i class="far fa-comments"></i>
-               <!-- Counter - Alerts -->
-               <span class="badge badge-danger badge-counter">8</span>
-            </a>
-            <!-- Dropdown - Alerts -->
-            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow-sm">
-               <h6 class="dropdown-header">
-                  Message Center
-               </h6>
-               <a class="dropdown-item d-flex align-items-center" href="#">
-                  <div class="dropdown-list-image mr-3">
-                     <img class="rounded-circle" src="image/user/2.png" alt="">
-                     <div class="status-indicator bg-success"></div>
-                  </div>
-                  <div class="font-weight-bold overflow-hidden">
-                     <div class="text-truncate">Hi there! I am wondering if you can help me with a problem I've been having.</div>
-                     <div class="small text-gray-500">Emily Fowler · 58m</div>
-                  </div>
-               </a>
-               <a class="dropdown-item d-flex align-items-center" href="#">
-                  <div class="dropdown-list-image mr-3">
-                     <img class="rounded-circle" src="image/user/3.png" alt="">
-                     <div class="status-indicator"></div>
-                  </div>
-                  <div class="overflow-hidden">
-                     <div class="text-truncate">I have the photos that you ordered last month, how would you like them sent to you?</div>
-                     <div class="small text-gray-500">Jae Chun · 1d</div>
-                  </div>
-               </a>
-               <a class="dropdown-item d-flex align-items-center" href="#">
-                  <div class="dropdown-list-image mr-3">
-                     <img class="rounded-circle" src="image/user/4.png" alt="">
-                     <div class="status-indicator bg-warning"></div>
-                  </div>
-                  <div class="overflow-hidden">
-                     <div class="text-truncate">Last month's report looks great, I am very happy with the progress so far, keep up the good work!</div>
-                     <div class="small text-gray-500">Morgan Alvarez · 2d</div>
-                  </div>
-               </a>
-               <a class="dropdown-item d-flex align-items-center" href="#">
-                  <div class="dropdown-list-image mr-3">
-                     <img class="rounded-circle" src="image/user/5.png" alt="">
-                     <div class="status-indicator bg-success"></div>
-                  </div>
-                  <div class="overflow-hidden">
-                     <div class="text-truncate">Am I a good boy? The reason I ask is because someone told me that people say this to all dogs, even if they aren't good...</div>
-                     <div class="small text-gray-500">Chicken the Dog · 2w</div>
-                  </div>
-               </a>
-               <a class="dropdown-item text-center small text-gray-500" href="#">Read More Messages</a>
-            </div>
-         </li>
+         
          <li class="nav-item dropdown no-arrow mx-1 osahan-list-dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                <i class="far fa-bell"></i>
                <!-- Counter - Alerts -->
-               <span class="badge badge-info badge-counter">6</span>
             </a>
             <!-- Dropdown - Alerts -->
             <div class="dropdown-list dropdown-menu dropdown-menu-right shadow-sm">
                <h6 class="dropdown-header">
-                  Alerts Center
+                  Thông Báo
                </h6>
-               <a class="dropdown-item d-flex align-items-center" href="#">
-                  <div class="mr-3">
-                     <div class="icon-circle bg-primary">
-                        <i class="fas fa-download text-white"></i>
-                     </div>
-                  </div>
-                  <div>
-                     <div class="small text-gray-500">December 12, 2020</div>
-                     <span class="font-weight-bold">A new monthly report is ready to download!</span>
-                  </div>
-               </a>
-               <a class="dropdown-item d-flex align-items-center" href="#">
-                  <div class="mr-3">
-                     <div class="icon-circle bg-success">
-                        <i class="fas fa-edit text-white"></i>
-                     </div>
-                  </div>
-                  <div>
-                     <div class="small text-gray-500">December 7, 2020</div>
-                     $290.29 has been deposited into your account!
-                  </div>
-               </a>
-               <a class="dropdown-item d-flex align-items-center" href="#">
-                  <div class="mr-3">
-                     <div class="icon-circle bg-warning">
-                        <i class="fas fa-folder text-white"></i>
-                     </div>
-                  </div>
-                  <div>
-                     <div class="small text-gray-500">December 2, 2020</div>
-                     Spending Alert: We've noticed unusually high spending for your account.
-                  </div>
-               </a>
-               <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
+               
+               <a class="dropdown-item text-center small text-gray-500" href="#">Tất Cả Thông Báo</a>
             </div>
          </li>
          <!-- Nav Item - User Information -->
-         <li class="nav-item dropdown no-arrow ml-1 osahan-profile-dropdown">
-            <a class="nav-link dropdown-toggle pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <img class="img-profile rounded-circle" src="image/user/1.png">
-            </a>
-            <!-- Dropdown - User Information -->
-            <div class="dropdown-menu dropdown-menu-right shadow-sm">
-               <div class="p-3 d-flex align-items-center">
-                  <div class="dropdown-list-image mr-3">
-                     <img class="rounded-circle" src="image/user/1.png" alt="">
-                     <div class="status-indicator bg-success"></div>
-                  </div>
-                  <div class="font-weight-bold">
-                     <div class="text-truncate">Gurdeep Osahan</div>
-                     <div class="small text-gray-500">Restaurants Owner</div>
-                  </div>
-               </div>
-               <div class="dropdown-divider"></div>
-               <a class="dropdown-item" href=""><i class="fas fa-user-circle"></i> My Account</a>
-               <a class="dropdown-item" href=""><i class="fas fa-cog"></i> Account Settings</a>
-               <div class="dropdown-divider"></div>
-               <a class="dropdown-item" href=""><i class="fas fa-sign-out-alt"></i> Logout</a>
-            </div>
-         </li>
+         <li class="nav-item dropdown" id="nameSeller"></li>
       </ul>
    </nav>
    <div id="layoutSidenav">
@@ -194,10 +150,6 @@
                      <div class="sb-nav-link-icon"><i class="far fa-calendar-alt"></i></div>
                      Danh Sách Đặt hàng <span class="badge badge-pill ml-2 badge-primary">6 New</span>
                   </a>
-                  <a class="nav-link" href="listfeedbackSeller">
-                     <div class="sb-nav-link-icon"><i class="far fa-star"></i></div>
-                     Đánh Giá
-                  </a>
                   <a class="nav-link" href="">
                      <div class="sb-nav-link-icon"><i class="fas fa-chart-line"></i></div>
                      Doanh Thu
@@ -207,20 +159,12 @@
                      Quản Lý Sản Phẩm
                   </a>
                   <a class="nav-link" href="">
-                     <div class="sb-nav-link-icon"><i class="fas fa-user-edit"></i></div>
-                     Danh sách Khách Hàng
-                  </a>
-                  <a class="nav-link" href="">
                      <div class="sb-nav-link-icon"><i class="fas fa-shopping-cart"></i></div>
-                     Quản Lý Đặt Hàng 
-                  </a>
-                  <a class="nav-link" href="">
-                     <div class="sb-nav-link-icon"><i class="fas fa-cog"></i></div>
-                     Chỉnh Sửa Đơn Hàng
+                     Quản Lý Đặt Hàng
                   </a>
                   <a class="nav-link" href="">
                      <div class="sb-nav-link-icon"><i class="fas fa-file-signature"></i></div>
-                     Dánh sách Báo Cáo 
+                     Dánh sách Báo Cáo
                   </a>
                </div>
             </div>
@@ -229,14 +173,14 @@
       <div id="layoutSidenav_content">
          <main>
             <div class="container-fluid">
-               <h1 class="mt-4">List Order</h1>
+               <h1 class="mt-4">Danh Sách Đặt Hàng</h1>
                <ol class="breadcrumb mb-4">
                   <li class="breadcrumb-item"><a href="DashboardSeller">Dashboard</a></li>
-                  <li class="breadcrumb-item active">Order</li>
+                  <li class="breadcrumb-item active">Đặt Hàng</li>
                </ol>
                <ol>
                   <a class="btn btn-info" href="#" style="position: relative; left:1280px;"><i class="fas fa-sync-alt"></i>
-                     Refresh</a>
+                     Làm Mới</a>
                </ol>
                <div class="row">
                   <div class="col-xl-12">
@@ -250,32 +194,32 @@
                               </a>
                               <div class="media-body">
                                  <a href="#">
-                                    <span class="float-right text-success">Delivered on Mon, Nov 12, 7:18 PM <i
+                                    <span class="float-right text-success">Được giao vào thứ 2, ngày 12 tháng 11, 7:18 chiều <i
                                           class="feather-check-circle text-success"></i></span>
                                  </a>
                                  <h6 class="mb-3"><a href="#">
-                                    </a><a href="detail.html" class="text-dark">Product name
+                                    </a><a href="detail.html" class="text-dark">Tên Sản Phẩm
                                     </a>
                                  </h6>
-                                 <p class="text-black-50 mb-1"><i class="far fa-user"></i> User
+                                 <p class="text-black-50 mb-1"><i class="far fa-user"></i> Người dùng
                                  </p>
-                                 <p class="text-black-50 mb-1"><i class="feather-map-pin"></i> Location and description
+                                 <p class="text-black-50 mb-1"><i class="feather-map-pin"></i> Địa chỉ và Chú Thích
                                  </p>
-                                 <p class="text-black-50 mb-3"><i class="feather-list"></i> ORDER Phone <i
-                                       class="feather-clock ml-2"></i> Time order</p>
-                                 <p class="text-dark">Product Name x 1, Product Name x 1, Product Name x 1
+                                 <p class="text-black-50 mb-3"><i class="feather-list"></i> Số điện thoại khách hàng <i
+                                       class="feather-clock ml-2"></i> Thời gian đặt hàng</p>
+                                 <p class="text-dark">Tên Sản Phẩm x 1, Tên Sản Phẩm x 1, Tên Sản Phẩm x 1
                                  </p>
                                  <hr>
                                  <div class="float-right">
-                                    <a class="btn btn-info" href="#"><i class="far fa-eye"></i>View</a>
+                                    <a class="btn btn-info" href="#"><i class="far fa-eye"></i>Thông tin</a>
                                     <a href="#0" class="btn btn-sm btn-success"><i class="feather-check-circle"></i>
-                                       Approve</a>
+                                       Chấp Thuận</a>
                                     <a href="#0" class="btn btn-sm btn-info" data-toggle="modal"
-                                       data-target="#edit_booking"><i class="feather-edit"></i> Edit</a>
-                                    <a href="#0" class="btn btn-sm btn-danger"><i class="feather-trash"></i> Cancel</a>
+                                       data-target="#edit_booking"><i class="feather-edit"></i> Chỉnh sửa</a>
+                                    <a href="#0" class="btn btn-sm btn-danger"><i class="feather-trash"></i> Hủy</a>
                                  </div>
                                  <p class="mb-0 text-dark text-dark pt-2"><span class="text-dark font-weight-bold">
-                                       Total Paid:</span> $300
+                                       Tổng Tiền: </span> $300
                                  </p>
                               </div>
                            </div>
@@ -292,32 +236,32 @@
                               </a>
                               <div class="media-body">
                                  <a href="#">
-                                    <span class="float-right text-success">Delivered on Mon, Nov 12, 7:18 PM <i
+                                    <span class="float-right text-success">Được giao vào thứ 2, ngày 12 tháng 11, 7:18 chiều <i
                                           class="feather-check-circle text-success"></i></span>
                                  </a>
                                  <h6 class="mb-3"><a href="#">
-                                    </a><a href="detail.html" class="text-dark">Product name
+                                    </a><a href="detail.html" class="text-dark">Tên Sản Phẩm
                                     </a>
                                  </h6>
-                                 <p class="text-black-50 mb-1"><i class="far fa-user"></i> User
+                                 <p class="text-black-50 mb-1"><i class="far fa-user"></i> Người dùng
                                  </p>
-                                 <p class="text-black-50 mb-1"><i class="feather-map-pin"></i> Location and description
+                                 <p class="text-black-50 mb-1"><i class="feather-map-pin"></i> Địa chỉ và Chú Thích
                                  </p>
-                                 <p class="text-black-50 mb-3"><i class="feather-list"></i> ORDER Phone <i
-                                       class="feather-clock ml-2"></i> Time order</p>
-                                 <p class="text-dark">Product Name x 1, Product Name x 1, Product Name x 1
+                                 <p class="text-black-50 mb-3"><i class="feather-list"></i> Số điện thoại khách hàng <i
+                                       class="feather-clock ml-2"></i> Thời gian đặt hàng</p>
+                                 <p class="text-dark">Tên Sản Phẩm x 1, Tên Sản Phẩm x 1, Tên Sản Phẩm x 1
                                  </p>
                                  <hr>
                                  <div class="float-right">
-                                    <a class="btn btn-info" href="#"><i class="far fa-eye"></i>View</a>
+                                    <a class="btn btn-info" href="#"><i class="far fa-eye"></i>Thông tin</a>
                                     <a href="#0" class="btn btn-sm btn-success"><i class="feather-check-circle"></i>
-                                       Approve</a>
+                                       Chấp Thuận</a>
                                     <a href="#0" class="btn btn-sm btn-info" data-toggle="modal"
-                                       data-target="#edit_booking"><i class="feather-edit"></i> Edit</a>
-                                    <a href="#0" class="btn btn-sm btn-danger"><i class="feather-trash"></i> Cancel</a>
+                                       data-target="#edit_booking"><i class="feather-edit"></i> Chỉnh sửa</a>
+                                    <a href="#0" class="btn btn-sm btn-danger"><i class="feather-trash"></i> Hủy</a>
                                  </div>
                                  <p class="mb-0 text-dark text-dark pt-2"><span class="text-dark font-weight-bold">
-                                       Total Paid:</span> $300
+                                       Tổng Tiền: </span> $300
                                  </p>
                               </div>
                            </div>
@@ -334,32 +278,32 @@
                               </a>
                               <div class="media-body">
                                  <a href="#">
-                                    <span class="float-right text-success">Delivered on Mon, Nov 12, 7:18 PM <i
+                                    <span class="float-right text-success">Được giao vào thứ 2, ngày 12 tháng 11, 7:18 chiều <i
                                           class="feather-check-circle text-success"></i></span>
                                  </a>
                                  <h6 class="mb-3"><a href="#">
-                                    </a><a href="detail.html" class="text-dark">Product name
+                                    </a><a href="detail.html" class="text-dark">Tên Sản Phẩm
                                     </a>
                                  </h6>
-                                 <p class="text-black-50 mb-1"><i class="far fa-user"></i> User
+                                 <p class="text-black-50 mb-1"><i class="far fa-user"></i> Người dùng
                                  </p>
-                                 <p class="text-black-50 mb-1"><i class="feather-map-pin"></i> Location and description
+                                 <p class="text-black-50 mb-1"><i class="feather-map-pin"></i> Địa chỉ và Chú Thích
                                  </p>
-                                 <p class="text-black-50 mb-3"><i class="feather-list"></i> ORDER Phone <i
-                                       class="feather-clock ml-2"></i> Time order</p>
-                                 <p class="text-dark">Product Name x 1, Product Name x 1, Product Name x 1
+                                 <p class="text-black-50 mb-3"><i class="feather-list"></i> Số điện thoại khách hàng <i
+                                       class="feather-clock ml-2"></i> Thời gian đặt hàng</p>
+                                 <p class="text-dark">Tên Sản Phẩm x 1, Tên Sản Phẩm x 1, Tên Sản Phẩm x 1
                                  </p>
                                  <hr>
                                  <div class="float-right">
-                                    <a class="btn btn-info" href="#"><i class="far fa-eye"></i>View</a>
+                                    <a class="btn btn-info" href="#"><i class="far fa-eye"></i>Thông tin</a>
                                     <a href="#0" class="btn btn-sm btn-success"><i class="feather-check-circle"></i>
-                                       Approve</a>
+                                       Chấp Thuận</a>
                                     <a href="#0" class="btn btn-sm btn-info" data-toggle="modal"
-                                       data-target="#edit_booking"><i class="feather-edit"></i> Edit</a>
-                                    <a href="#0" class="btn btn-sm btn-danger"><i class="feather-trash"></i> Cancel</a>
+                                       data-target="#edit_booking"><i class="feather-edit"></i> Chỉnh sửa</a>
+                                    <a href="#0" class="btn btn-sm btn-danger"><i class="feather-trash"></i> Hủy</a>
                                  </div>
                                  <p class="mb-0 text-dark text-dark pt-2"><span class="text-dark font-weight-bold">
-                                       Total Paid:</span> $300
+                                       Tổng Tiền: </span> $300
                                  </p>
                               </div>
                            </div>
@@ -370,13 +314,13 @@
                      <nav aria-label="Page navigation example">
                         <ul class="pagination pagination-sm mb-4 justify-content-center">
                            <li class="page-item disabled">
-                              <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+                              <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Trang Trước</a>
                            </li>
                            <li class="page-item"><a class="page-link" href="#">1</a></li>
                            <li class="page-item"><a class="page-link" href="#">2</a></li>
                            <li class="page-item"><a class="page-link" href="#">3</a></li>
                            <li class="page-item">
-                              <a class="page-link" href="#">Next</a>
+                              <a class="page-link" href="#">Trang Sau</a>
                            </li>
                         </ul>
                      </nav>
@@ -467,6 +411,7 @@
    <script src="js/jquery.dataTables.min.js"></script>
    <script src="js/dataTables.bootstrap.min.js"></script>
    <script src="js/datatables-demo.js"></script>
+   <script src="js/headerSeller.js"></script>
 </body>
 
 </html>

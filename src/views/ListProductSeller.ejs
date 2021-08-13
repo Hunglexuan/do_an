@@ -130,24 +130,20 @@
             </div>
          </li> -->
 
-         <!-- Nav Item - User Information -->
-         <!-- <li class="nav-item dropdown no-arrow ml-1 osahan-profile-dropdown">
-            <a class="nav-link dropdown-toggle pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
-               aria-expanded="false">
-               <img class="img-profile rounded-circle" src="image/user/1.png">
-            </a> -->
-         <!-- Dropdown - User Information -->
-         <!-- <div class="dropdown-menu dropdown-menu-right shadow-sm">
-               <div class="p-3 d-flex align-items-center">
-                  <div class="dropdown-list-image mr-3">
-                     <img class="rounded-circle" src="image/user/1.png" alt="">
-                     <div class="status-indicator bg-success"></div>
-                  </div>
-               </div>
-               <div class="dropdown-divider"></div>
-               <a class="dropdown-item" href="LoginSeller" id="btnLogout"><i class="fas fa-sign-out-alt"></i> Logout</a>
+         <li class="nav-item dropdown no-arrow mx-1 osahan-list-dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+               <i class="far fa-bell"></i>
+               <!-- Counter - Alerts -->
+            </a>
+            <!-- Dropdown - Alerts -->
+            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow-sm">
+               <h6 class="dropdown-header">
+                  Thông Báo
+               </h6>
+               
+               <a class="dropdown-item text-center small text-gray-500" href="#">Tất Cả Thông Báo</a>
             </div>
-         </li> -->
+         </li>
          <li class="nav-item dropdown" id="nameSeller"></li>
       </ul>
    </nav>
@@ -164,10 +160,6 @@
                      <div class="sb-nav-link-icon"><i class="far fa-calendar-alt"></i></div>
                      Danh Sách Đặt hàng <span class="badge badge-pill ml-2 badge-primary">6 New</span>
                   </a>
-                  <a class="nav-link" href="listfeedbackSeller">
-                     <div class="sb-nav-link-icon"><i class="far fa-star"></i></div>
-                     Đánh Giá
-                  </a>
                   <a class="nav-link" href="">
                      <div class="sb-nav-link-icon"><i class="fas fa-chart-line"></i></div>
                      Doanh Thu
@@ -177,16 +169,8 @@
                      Quản Lý Sản Phẩm
                   </a>
                   <a class="nav-link" href="">
-                     <div class="sb-nav-link-icon"><i class="fas fa-user-edit"></i></div>
-                     Danh sách Khách Hàng
-                  </a>
-                  <a class="nav-link" href="">
                      <div class="sb-nav-link-icon"><i class="fas fa-shopping-cart"></i></div>
                      Quản Lý Đặt Hàng
-                  </a>
-                  <a class="nav-link" href="">
-                     <div class="sb-nav-link-icon"><i class="fas fa-cog"></i></div>
-                     Chỉnh Sửa Đơn Hàng
                   </a>
                   <a class="nav-link" href="">
                      <div class="sb-nav-link-icon"><i class="fas fa-file-signature"></i></div>
@@ -668,35 +652,6 @@
 
 
    <script>
-
-      var token = getCookie("token");
-      $("#btnLogout").click(function (res) {
-         setCookie("token", " ", 0);
-      })
-
-      function setCookie(cname, cvalue, exdays) {
-         const d = new Date();
-         d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
-         let expires = "expires=" + d.toUTCString();
-         document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
-      }
-
-      function getCookie(cname) {
-         let name = cname + "=";
-         let decodedCookie = decodeURIComponent(document.cookie);
-         let ca = decodedCookie.split(';');
-         for (let i = 0; i < ca.length; i++) {
-            let c = ca[i];
-            while (c.charAt(0) == ' ') {
-               c = c.substring(1);
-            }
-            if (c.indexOf(name) == 0) {
-               return c.substring(name.length, c.length);
-            }
-         }
-         return "";
-      }
-
       $(document).ready(function () {
          var text = localStorage.getItem('sellerId').replaceAll('"', '');
          $('#dataProduct').DataTable({
@@ -993,54 +948,54 @@
          })
       });
 
-      $(document).ready(function () {
-         loadProfile();
-      })
+      // $(document).ready(function () {
+      //    loadProfile();
+      // })
 
-      $('#switchShop').click(function () {
-         var text = localStorage.getItem('sellerId').replaceAll('"', '');
-         let switchShop = $('#switchShop').is(":checked")
-         $.ajax({
-            url: '/api/user/status',
-            method: 'GET',
-            data: {
-               id: text,
-               shop_status: switchShop,
-            },
-         }).then(function (data) {
-            console.log(data)
-            if (switchShop == true) {
-               document.getElementById('statusShop').innerHTML = 'Shop đang mở cửa'
-               document.getElementById('statusShop').style.color = "Green"
-            } else {
+      // $('#switchShop').click(function () {
+      //    var text = localStorage.getItem('sellerId').replaceAll('"', '');
+      //    let switchShop = $('#switchShop').is(":checked")
+      //    $.ajax({
+      //       url: '/api/user/status',
+      //       method: 'GET',
+      //       data: {
+      //          id: text,
+      //          shop_status: switchShop,
+      //       },
+      //    }).then(function (data) {
+      //       console.log(data)
+      //       if (switchShop == true) {
+      //          document.getElementById('statusShop').innerHTML = 'Shop đang mở cửa'
+      //          document.getElementById('statusShop').style.color = "Green"
+      //       } else {
 
-               document.getElementById('statusShop').innerHTML = 'Shop đang đóng cửa'
-               document.getElementById('statusShop').style.color = "red"
-            }
-         })
-      })
+      //          document.getElementById('statusShop').innerHTML = 'Shop đang đóng cửa'
+      //          document.getElementById('statusShop').style.color = "red"
+      //       }
+      //    })
+      // })
 
-      function loadProfile() {
-         var text = localStorage.getItem('sellerId').replaceAll('"', '');
-         $.ajax({
-            url: '/api/user/getbyId',
-            method: 'GET',
-            data: {
-               id: text,
-            },
-         }).then(function (data) {
-            console.log(data.data.shop_status)
-            if (data.data.shop_status == true) {
-               document.getElementById('switchShop').checked = true
-               document.getElementById('statusShop').innerHTML = 'Shop đang mở cửa'
-               document.getElementById('statusShop').style.color = "Green"
-            } else {
-               document.getElementById('switchShop').checked = false
-               document.getElementById('statusShop').innerHTML = 'Shop đang đóng cửa'
-               document.getElementById('statusShop').style.color = "red"
-            }
-         })
-      }
+      // function loadProfile() {
+      //    var text = localStorage.getItem('sellerId').replaceAll('"', '');
+      //    $.ajax({
+      //       url: '/api/user/getbyId',
+      //       method: 'GET',
+      //       data: {
+      //          id: text,
+      //       },
+      //    }).then(function (data) {
+      //       console.log(data.data.shop_status)
+      //       if (data.data.shop_status == true) {
+      //          document.getElementById('switchShop').checked = true
+      //          document.getElementById('statusShop').innerHTML = 'Shop đang mở cửa'
+      //          document.getElementById('statusShop').style.color = "Green"
+      //       } else {
+      //          document.getElementById('switchShop').checked = false
+      //          document.getElementById('statusShop').innerHTML = 'Shop đang đóng cửa'
+      //          document.getElementById('statusShop').style.color = "red"
+      //       }
+      //    })
+      // }
    </script>
 </body>
 
