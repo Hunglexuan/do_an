@@ -206,12 +206,18 @@ class MidBill {
                     address: address,
                 }
                 let bill = await billTemp.update(billUpdate);
-                let billProduct = await BillProduct.findOne({
+                let billProductList = await BillProduct.findAll({
                     where: {
                         bill_id: billTemp.id,
-                        status: '',
+                        del: 0
                     }
                 })
+                let dataDelete = {
+                    del: 1,
+                }
+                for (let k = 0; k < billProductList.length; k++) {
+                    await billProductList[k].update(dataDelete);
+                }
 
                 for (let i = 0; i < data.cart.listCart.length; i++) {
                     totalPrice += data.cart.listCart[i].price * data.cart.listCart[i].count
@@ -222,8 +228,21 @@ class MidBill {
                         product_id: data.cart.listCart[i].id,
                         bill_id: bill.dataValues.id,
                     }
-                    await billProduct.update(billProduct)
+                    await BillProduct.create(billProduct)
                 }
+                let userBillList = await BillProduct.findOne({
+                    where: {
+                        bill_id: billTemp.id,
+                        del: 0
+                    }
+                })
+                let userBill = {
+                    bill_id: billTemp.id,
+                    user_id: data.cart.userID,
+                    shop_id: data.cart.shopID,
+                    del: 0,
+                }
+                await userBillList.update(userBill);
             }
         }
         else {
