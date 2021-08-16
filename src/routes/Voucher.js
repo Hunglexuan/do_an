@@ -10,5 +10,6 @@ routerApp.post('/create', Response(VoucherController.createVoucher));
 routerApp.get('/search', Response(VoucherController.searchVoucher));
 routerApp.get('/delete', Response(VoucherController.deleteVourcher));
 routerApp.get('/getCode', Response(VoucherController.getByID));
+routerApp.post('/update', Response(VoucherController.updateVoucher));
 
 export default routerApp;
