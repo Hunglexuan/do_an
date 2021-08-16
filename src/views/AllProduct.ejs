@@ -34,8 +34,6 @@
     <link href="skin/font/DoanCSS.css" rel="stylesheet">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<<<<<<< HEAD
-=======
     <style>
         label:hover {
             cursor: pointer;
@@ -45,7 +43,6 @@
             background-color: #f0f2f5;
         }
     </style>
->>>>>>> VuHung
 
 </head>
 
@@ -54,16 +51,10 @@
         <nav class="navbar navbar-expand-lg navbar-light bg-light osahan-nav shadow-sm ">
             <div class="container">
                 <a class="navbar-brand" href="/"><img alt="logo" style="max-width: 120px;" src="image/logoShop.png"></a>
-<<<<<<< HEAD
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span>
-         </button>
-                <div class="modal fade" id="productDetail" role="dialog">
-=======
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation"> <span
                         class="navbar-toggler-icon"></span>
                 </button>
                 <div class="modal fade modalsearch" id="productDetail" role="dialog" style="opacity: unset;">
->>>>>>> VuHung
                     <div class="modal-dialog" role="document">
                         <div class="modal-content" style="padding-bottom: 15px;">
                             <div>
@@ -122,7 +113,7 @@
                             </form>
                         </div>
                     </div>
- 
+
                 </div>
 
 
@@ -157,23 +148,6 @@
                         </li>
 
                         <li id="checkLogin"></li>
-<<<<<<< HEAD
-                        <!-- <li class="nav-link" style="padding-top: 20px !important;">
-                        <button class="btn btn-primary"> Login </button>
-                    </li>
-
-
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <img alt="Generic placeholder image" src="image/user/4.png" class="nav-osahan-pic rounded-pill"> My Account
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-right shadow-sm border-0">
-                            <a class="dropdown-item" href="orders.html#orders"><i class="icofont-ui-user"></i> My Profile </a>
-                            <a class="dropdown-item" href="orders.html#offers"><i class="icofont-logout"></i> Logout </a>
-                        </div>
-                    </li> -->
-=======
->>>>>>> VuHung
                         <li class="nav-item dropdown dropdown-cart">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="icofont-basket"></i> Cart
@@ -392,10 +366,6 @@
                         document.getElementById('notFindProduct').innerHTML = '';
                         document.getElementById('findProduct').innerHTML = '';
                         for (var i = 0; i < listdata.length; i++) {
-<<<<<<< HEAD
-                            document.getElementById('findProduct').innerHTML +=
-                                '<div class="col-md-4 col-sm-6 mb-4 pb-2"> <div class="list-card bg-white overflow-hidden h-100 position-relative item-content" style="border: 1px solid #d7d7d7; border-radius: 6px;" data-toggle="modal" data-target="#productDetail" onclick="productDetail(' + "'" + listdata[i].id + "'" + ')"> <div class="list-card-image"> <div class="favourite-heart text-danger position-absolute"><a href="#"><i class="icofont-heart"></i></a></div> <a href="#"> <img src="image/list/1.png" class="img-fluid item-img"> </a> </div> <div class="p-3 position-relative"> <div class="list-card-body"> <h6 class="mb-1"><a href="#" class="text-black">' + listdata[i].name + '</a></h6> <p class="text-gray mb-3">' + listdata[i].description + '</p> <p class="text-gray mb-3 time"> <span class="float-right text-black-50"> Quantity: ' + listdata[i].quantity + '</span></p> </div> <div class="list-card-badge"> <small>Price:' + listdata[i].unit_price + '</small> </div> </div> </div> </div>';
-=======
                             if (i >= start && i < end) {
                                 let image = (listdata[i].image ? listdata[i].image : 'image/list/1.png');
                                 if (listdata[i].sale != null) {
@@ -409,7 +379,6 @@
                                 }
                             }
 
->>>>>>> VuHung
                         }
                     } else {
                         document.getElementById('findProduct').innerHTML = '';
@@ -482,7 +451,7 @@
 
                                 if (cmt_id == '') {
                                     document.getElementById('listComment').innerHTML += '<div class="reviews-members pt-2"><div class="media"> <a href="#"><img alt="Generic placeholder image" src="image/user/1.png" class="mr-3 rounded-pill" style="width: 40px; height: 40px;"></a> <div class="media-body"> <div class="reviews-members-header" style="display: flex; justify-content: space-between;"> <h6 class="mb-1"><a class="text-black" href="#">' + data.data.name + '</a></h6> <p class="text-gray" style="margin-bottom: 5px;">' + dob + '</p> </div> <div class="reviews-members-body"> <p>' + content + '</p> </div> </div> </div> </div> <div class="ml-5"> <button class="btn-danger reply" value="' + id + '" style="border-radius: 6px"> Reply </button> <button class=" btn-danger" value="' + id + '" style="border-radius: 6px;"> View Reply </button> <div class="reply-section"></div> </div> </div>';
-                                    console.log(id);
+
                                     for (var j = 0; j < list.length; j++) {
                                         if (list[j].cmt_id == id) {
 
@@ -522,13 +491,14 @@
                                         }
 
                                     }
-
-<<<<<<< HEAD
                                 }
                             }
-
                         })
-=======
+                    }
+                }
+            })
+        }
+
         function inforUserComment(user_id, list, id, cmt_id, content, dob, i) {
             var text = localStorage.getItem('userId').replaceAll('"', '');
             $.ajax({
@@ -549,29 +519,11 @@
 
                             ReplyToReply(i, list, id);
                         }
-
-
-
->>>>>>> VuHung
-
                     }
                 }
             })
         }
 
-<<<<<<< HEAD
-        $(document).on('click', '.reply', function() {
-            var thisClicked = $(this);
-            var cmt_id = thisClicked;
-
-
-            $('.reply-section').html('<input type="text" class="form-control mt-2" placeholder="Reply"> <div class="text-end mt-2"> <button class="btn-danger" style="border-radius: 6px"> Reply </button> <button class=" btn-danger" style="border-radius: 6px;"> Cancel </button> </div>');
-            thisClicked.closest('.reviews-members').find('.reply-section').html(
-                '<input type="text" class="form-control mt-2" placeholder="Reply"> <div class="text-end mt-2"> <button class="btn-danger" style="border-radius: 6px"> Reply </button> <button class=" btn-danger" style="border-radius: 6px;"> Cancel </button> </div>'
-            );
-
-            // document.getElementsByClassName('reply-section').innerHTML += 'hello'
-=======
         function ReplyToReply(i, listReply, id) {
             for (var j = 0; j < listReply.length; j++) {
 
@@ -769,7 +721,6 @@
                 }
                 document.getElementById("textComment").value = "";
             })
->>>>>>> VuHung
         })
     </script>
 </body>
