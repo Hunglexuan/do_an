@@ -171,13 +171,60 @@ class MidBill {
     async createBill(data) {
         let totalPrice = 0;
         let voucher
+
         if (data.cart.billID) {
             let billTemp = await Bill.findOne({
                 where: {
                     id: data.cart.billID,
+                    status: '',
                 }
             })
+            if (billTemp) {
+                for (let i = 0; i < data.cart.listCart.length; i++) {
+                    totalPrice += data.cart.listCart[i].price * data.cart.listCart[i].count
+                }
+                if (data.cart.voucherCode != '') {
+                    voucher = await Voucher.findOne({
+                        where: {
+                            code: data.cart.voucherCode,
+                            del: 0
+                        }
+                    })
+                    totalPrice -= voucher.discount_number
+                }
+                else {
+                    voucher = ''
+                }
+                let status = data.cart.status;
+                if (!data.cart.address) {
+                    throw new Error("Chưa nhập địa chỉ ship");
+                }
+                let address = data.cart.address;
+                let billUpdate = {
+                    total_price: totalPrice,
+                    status: status,
+                    address: address,
+                }
+                let bill = await billTemp.update(billUpdate);
+                let billProduct = await BillProduct.findOne({
+                    where: {
+                        bill_id: billTemp.id,
+                        status: '',
+                    }
+                })
 
+                for (let i = 0; i < data.cart.listCart.length; i++) {
+                    totalPrice += data.cart.listCart[i].price * data.cart.listCart[i].count
+                    let billProduct = {
+                        quantity: data.cart.listCart[i].count,
+                        unit_price: data.cart.listCart[i].price,
+                        total_price: data.cart.listCart[i].count * data.cart.listCart[i].price,
+                        product_id: data.cart.listCart[i].id,
+                        bill_id: bill.dataValues.id,
+                    }
+                    await billProduct.update(billProduct)
+                }
+            }
         }
         else {
             for (let i = 0; i < data.cart.listCart.length; i++) {
@@ -205,6 +252,7 @@ class MidBill {
                 total_price: totalPrice,
                 status: status,
                 address: address,
+                del: 0,
             }
             let bill = await Bill.create(billCreate);
             for (let i = 0; i < data.cart.listCart.length; i++) {
@@ -215,6 +263,7 @@ class MidBill {
                     total_price: data.cart.listCart[i].count * data.cart.listCart[i].price,
                     product_id: data.cart.listCart[i].id,
                     bill_id: bill.dataValues.id,
+                    del: 0,
                 }
                 await BillProduct.create(billProduct)
             }
@@ -222,6 +271,7 @@ class MidBill {
                 bill_id: bill.dataValues.id,
                 user_id: data.cart.userID,
                 shop_id: data.cart.shopID,
+                del: 0,
             }
             await UserBill.create(userBill);
         }
