@@ -170,41 +170,120 @@ class MidBill {
     }
     async createBill(data) {
         let totalPrice = 0;
-        let voucher
+        let voucherID =''
+
         if (data.cart.billID) {
             let billTemp = await Bill.findOne({
                 where: {
                     id: data.cart.billID,
+                    status: 0,
+                    del:0,
                 }
             })
+          
+            if (billTemp) {
+               
+                for (let i = 0; i < data.cart.listCart.length; i++) {
+                    totalPrice += data.cart.listCart[i].price * data.cart.listCart[i].count
+                }
+              
+                if (data.cart.voucherCode != '') {
+                    let voucher = await Voucher.findOne({
+                        where: {
+                            code: data.cart.voucherCode,
+                            del: 0
+                        }
+                    }) 
+                    totalPrice -= voucher.dataValues.discount_number
+                    voucherID = voucher.dataValues.id
+                }
+                
+                let statusTemp = data.cart.status;
+                let addressTemp = data.cart.address;
+                
+                let billUpdate = {
+                    total_price: totalPrice,
+                    status: statusTemp,
+                    address: addressTemp,
+                    voucher_id: voucherID,            
+                    del: 0
+                }
+              
+                await billTemp.update(billUpdate);
+                let billProductList = await BillProduct.findAll({
+                    where: {
+                        bill_id: billTemp.dataValues.id,
+                        del : 0
+                    }
+                })
+              
 
+                let dataDelete = {
+                    del: 1,
+                }
+                for (let k = 0; k < billProductList.length; k++) {
+                    await billProductList[k].update(dataDelete);
+                }
+
+                for (let i = 0; i < data.cart.listCart.length; i++) {
+                    totalPrice += data.cart.listCart[i].price * data.cart.listCart[i].count
+                    let billProduct = {
+                        quantity: data.cart.listCart[i].count,
+                        unit_price: data.cart.listCart[i].price,
+                        total_price: data.cart.listCart[i].count * data.cart.listCart[i].price,
+                        product_id: data.cart.listCart[i].id,
+                        bill_id: bill.dataValues.id,
+                    }
+                    await BillProduct.create(billProduct)
+                }
+                
+
+                let userBillList = await BillProduct.findOne({
+                    where: {
+                        bill_id: billTemp.id,
+                        del: 0
+                    }
+                })
+                let userBill = {
+                    bill_id: billTemp.id,
+                    user_id: data.cart.userID,
+                    shop_id: data.cart.shopID,
+                    del: 0,
+                }
+                await userBillList.update(userBill);
+            }
         }
         else {
             for (let i = 0; i < data.cart.listCart.length; i++) {
                 totalPrice += data.cart.listCart[i].price * data.cart.listCart[i].count
             }
+            console.log('1111111',data.cart.voucherCode);
 
-            if (data.cart.voucherCode != '') {
-                voucher = await Voucher.findOne({
+            if (data.cart.voucherCode != null) {
+                let voucher = await Voucher.findOne({
                     where: {
                         code: data.cart.voucherCode,
                         del: 0
                     }
-                })
-                totalPrice -= voucher.discount_number
+                }) 
+                if(voucher){
+                    totalPrice -= voucher.dataValues.discount_number
+                    voucherID = voucher.dataValues.id
+
+                }
+
             }
-            else {
-                voucher = ''
-            }
+            console.log('2222222222',data.cart.voucherCode);
+          
             let status = data.cart.status;
-            if (!data.cart.address) {
-                throw new Error("Chưa nhập địa chỉ ship");
-            }
+            
             let address = data.cart.address;
             let billCreate = {
                 total_price: totalPrice,
                 status: status,
                 address: address,
+                voucher_id: voucherID,        
+                del: 0,
             }
             let bill = await Bill.create(billCreate);
             for (let i = 0; i < data.cart.listCart.length; i++) {
@@ -215,6 +294,7 @@ class MidBill {
                     total_price: data.cart.listCart[i].count * data.cart.listCart[i].price,
                     product_id: data.cart.listCart[i].id,
                     bill_id: bill.dataValues.id,
+                    del: 0,
                 }
                 await BillProduct.create(billProduct)
             }
@@ -222,6 +302,7 @@ class MidBill {
                 bill_id: bill.dataValues.id,
                 user_id: data.cart.userID,
                 shop_id: data.cart.shopID,
+                del: 0,
             }
             await UserBill.create(userBill);
         }
@@ -252,11 +333,12 @@ class MidBill {
         })
 
         let dataUpdate = {
-            quantity: data.quantity,
-            total_price: data.total_price,
-            voucher_id: data.voucher_id,
-            status: data.status,
+         
+            total_price: 1,
+            del: 0
         }
+        console.log('11111111',objUpdate); 
+        console.log('22222222',dataUpdate); 
         return await objUpdate.update(dataUpdate)
 
     }

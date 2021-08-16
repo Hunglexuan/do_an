@@ -13,7 +13,7 @@ var shoppingCart = (function () {
     var shopID = idSellerURL
     var userID = idUser
     var status = 0
-    var address = null
+    var address = ""
     var voucherCode = null
     var billID = null
     var listCart = [];
@@ -29,6 +29,34 @@ var shoppingCart = (function () {
 
     // sessionStorage.setItem('shoppingCart', JSON.stringify(cart));
 
+    function saveCartInDB() {
+        $.ajax({
+            url: "/api/bill/create",
+            type: "POST",
+            data: {
+                "cart": cart
+            }
+        }).then(function (data) {
+    
+            
+            if (data.message == "SUCCESS") {
+             
+                console.log("11111111",cart);
+            } else {
+                console.log("22222222",cart);
+             
+            }
+        })
+      }
+    
+      function displayCartInDB() {
+        $.ajax({
+          url: "/api/bill/listCart?userID=" + id,
+          type: "GET",
+        }).then(function (data) {
+          sessionStorage.setItem("shoppingCart", JSON.stringify(data.data));
+        });
+      }
     // Constructor
     function Item(id, name, price, count) {
         this.id = id;
@@ -40,6 +68,8 @@ var shoppingCart = (function () {
     // Save cart
     function saveCart() {
         sessionStorage.setItem('shoppingCart', JSON.stringify(cart));
+
+        saveCartInDB()
     }
 
     // Load cart
@@ -58,7 +88,7 @@ var shoppingCart = (function () {
 
     // Add to cart
     obj.addItemToCart = function (id, name, price, count) {
-        saveCart()
+        
         for (var item in cart.listCart) {
             if (cart.listCart[item].id === id) {
                 cart.listCart[item].count++;
@@ -66,8 +96,14 @@ var shoppingCart = (function () {
                 return;
             }
         }
-        var item = new Item(id, name, price, count);
+        var item ={
+            id: id,
+            name: name ,
+            price: price ,
+            count: count,
+        } 
         cart.listCart.push(item);
+        saveCart()
 
     }
     // Set count from item

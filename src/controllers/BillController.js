@@ -5,9 +5,14 @@ import { MidBill, MidRoleForm } from '../models/middle';
 class BillController {
 
     async createBill(req, res) {
-        console.log(req.body);
+        
         let data = req.body;
         return MidBill.createBill(data);
+    }
+    async update (req, res) {
+        
+        let data = req.body;
+        return MidBill.updateBill(data);
     }
     // async searchBill(req, res) {
     //     let dataQuery = req.query;
