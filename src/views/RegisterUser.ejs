@@ -227,6 +227,13 @@
             register();
         });
 
+        function setCookie(cname, cvalue, exdays) {
+            const d = new Date();
+            d.setTime(d.getTime() + (exdays*24*60*60*1000));
+            let expires = "expires="+ d.toUTCString();
+            document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+        }
+
         $('#signUp').click(function() {
             register();
             $.ajax({
@@ -241,10 +248,11 @@
                     phone: $('#inputPhone').val(),
                 },
             }).then(function(data) {
+                console.log("may co chiu ra ko ",data);
                 if (data.message == 'SUCCESS') {
                     setCookie("token", data.data.token, 30)
-                    localStorage.setItem('userId', JSON.stringify(userId));
-                    window.location.href = "/"
+                    localStorage.setItem('userId', JSON.stringify(data.data.id));
+                    window.location.href = "/LoginUser"
                 } else {
                     alert("Update fail");
                 }
