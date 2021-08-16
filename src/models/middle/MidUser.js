@@ -229,44 +229,17 @@ class MidUser {
 
     //done
     async searchUser(data) {
-        let role = await Role.findOne({
-            where: {
-                name: "",
-                del: 0,
-            },
-        });
         let condition = {
             del: 0,
-            role_id: role.id,
+            role_id: null,
         };
-
-        if (data.name) {
-            condition.name = {
-                [Op.like]: `%${data.name}%`,
-            };
-        }
-        if (data.email) {
-            condition.email = {
-                [Op.like]: `%${data.email}%`,
-            };
-        }
-        if (data.phone) {
-            condition.phone = {
-                [Op.like]: `%${data.phone}%`,
-            };
-        }
-        // let { page, limit } = data;
-        // page = page ? parseInt(page) : 1;
-        // limit = limit ? parseInt(limit) : 10;
-
+        
         const [listUsers, total] = await Promise.all([
             Users.findAll({
                 where: condition,
                 order: [
                     ["createdAt", "DESC"]
                 ],
-                // limit,
-                // offset: (page - 1) * limit
             }),
             Users.count({
                 where: condition,

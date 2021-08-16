@@ -34,33 +34,34 @@
                         <div class="row">
                             <div class="col-md-9 col-lg-8 mx-auto pl-5 pr-5">
                                 <a href="/">
-                                    <h3 class="login-heading mb-4">Welcome FUMK!</h3>
+                                    <h3 class="login-heading mb-4">Chào mừng đến FUMK!</h3>
                                 </a>
                                 <form name="myForm">
                                     <div class="form-label-group">
-                                        <input type="email" id="inputEmail" class="form-control" placeholder="Email address">
-                                        <label for="inputEmail">Email address</label>
+                                        <input type="email" id="inputEmail" class="form-control" placeholder="Email">
+                                        <label for="inputEmail">Email</label>
+                                        <span class="form-message text-danger" id="messageEmail"></span>
                                     </div>
                                     <div class="form-label-group">
-                                        <input type="password" id="inputPassword" class="form-control" placeholder="Password">
-                                        <label for="inputPassword">Password  <span onclick="hidePassword()" style="float: right;">
+                                        <input type="password" id="inputPassword" class="form-control" placeholder="Mật khẩu">
+                                        <label for="inputPassword">Mật khẩu  <span onclick="hidePassword()" style="float: right;">
                                             <i class="icofont-eye-blocked" id="hide1" style="font-size: x-large;"></i>
                                             <i class="icofont-eye-alt" id="hide2" style="font-size: x-large;"></i>
                                         </span> </label>
 
                                     </div>
                                     <div class="custom-control custom-checkbox mb-3">
-                                        <input type="checkbox" class="custom-control-input" id="customCheck1">
-                                        <label class="custom-control-label" for="customCheck1">Remember password</label>
-                                        <a href="/ForgotPasswordUser" class="forgotpassword"> Forgot password? </a>
+                                        <input type="checkbox" class="custom-control-input" id="remember">
+                                        <label class="custom-control-label" for="remember">Nhớ mật khẩu</label>
+                                        <a href="/ForgotPasswordUser" class="forgotpassword"> Quên mật khẩu? </a>
                                     </div>
-                                    <a class="btn btn-lg btn-outline-primary btn-block btn-login text-uppercase font-weight-bold mb-2" id="btn">Sign in</a>
+                                    <a class="btn btn-lg btn-outline-primary btn-block btn-login text-uppercase font-weight-bold mb-2" id="btn">ĐĂNG NHẬP</a>
                                     <div class="text-center pt-3">
-                                        Don’t have an account? <a class="font-weight-bold" href="/RegisterUser">Sign Up</a>
+                                        Bạn chưa có tài khoản? <a class="font-weight-bold" href="/RegisterUser">Tạo tài khoản mới</a>
                                     </div>
                                 </form>
                                 <hr class="my-4">
-                                <p class="text-center">LOGIN WITH</p>
+                                <p class="text-center">ĐĂNG NHẬP CÙNG</p>
                                 <div class="row">
                                     <div class="col pr-3">
                                         <button class="btn pl-1 pr-1 btn-lg btn-google font-weight-normal text-white btn-block text-uppercase" type="submit"><i class="fa fa-google"></i> Google</button>
@@ -88,6 +89,11 @@
     <!-- Custom scripts for all pages-->
     <script src="js/custom.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+
 
 </body>
 <script>
@@ -108,13 +114,8 @@
 
     }
 
-    function checkBlankLogin() {
-        if ($("#inputEmail").val() == "") {
-            alert("Email is Blank please Input")
-        } else if ($("#inputPassword").val() == "") {
-            alert("Password is black please input")
-        }
-    }
+
+
 
     function setCookie(cname, cvalue, exdays) {
         const d = new Date();
@@ -139,29 +140,86 @@
         return "";
     }
 
+    // $(document).ready(function() {
+
+    //     var remember = $.cookie('remember');
+    //     if (remember == 'true') {
+    //         var email = $.cookie('email');
+    //         var password = $.cookie('password');
+
+    //         // autofill the fields
+    //         $('#inputEmail').val(email);
+    //         $('#inputPassword').val(password);
+    //         $('#remember').prop("checked", true);
+    //     }
+
+    // });
+
+
 
     $("#btn").click(function() {
 
-        checkBlankLogin();
-        $.ajax({
-            url: "/api/auth/login",
-            type: "POST",
-            data: {
-                email: $("#inputEmail").val(),
-                password: $("#inputPassword").val()
-            }
-        }).then(function(data) {
-            console.log(data);
-            var userId = data.data.userid;
-            
-            if (data.message == "SUCCESS") {
-                setCookie("token", data.data.token, 30)
-                localStorage.setItem('userId', JSON.stringify(userId));
-                window.location.href = "/"
-            } else {
-                alert("Login Fail")
-            }
-        })
+        var inputEmail = $('#inputEmail').val();
+        var inputPass = $('#inputPassword').val();
+
+        if (inputEmail == '' || inputPass == '') {
+            document.getElementById('inputEmail').setAttribute('class', 'form-control border-danger');
+            document.getElementById('messageEmail').innerHTML = 'Email hoặc mật khẩu bạn không được để trống. Hãy đăng nhập lại';
+        } else if (inputEmail != '' || inputPass != '') {
+            $.ajax({
+                url: "/api/auth/login",
+                type: "POST",
+                data: {
+                    email: $("#inputEmail").val(),
+                    password: $("#inputPassword").val()
+                }
+            }).then(function(data) {
+
+
+                if (data.message == "SUCCESS") {
+
+                    var userId = data.data.userid;
+
+                    setCookie("token", data.data.token, 30)
+                    localStorage.setItem('userId', JSON.stringify(userId));
+
+                    // if ($('#remember').is(':checked')) {
+
+                    //     // set cookies to expire in 14 days
+                    //     $.cookie('email', inputEmail, {
+                    //         expires: 14
+                    //     });
+                    //     $.cookie('password', inputPass, {
+                    //         expires: 14
+                    //     });
+                    //     $.cookie('remember', true, {
+                    //         expires: 14
+                    //     });
+                    // } else {
+                    //     // reset cookies
+                    //     $.cookie('email', null);
+                    //     $.cookie('password', null);
+                    //     $.cookie('remember', null);
+                    // }
+
+
+                    Swal.fire({
+                        type: 'success',
+                        title: 'Đăng nhập thành công 🎉🎉🎉',
+                        // text: 'Your offer is safe 🙂',
+                        showConfirmButton: false,
+                        timer: 2000
+                    })
+                    window.setTimeout(function() {
+                        window.location.href = '/';
+                    }, 2000);
+
+                } else {
+                    document.getElementById('inputEmail').setAttribute('class', 'form-control border-danger');
+                    document.getElementById('messageEmail').innerHTML = 'Email bạn nhập không kết nối với tài khoản nào. Hãy đăng nhập lại';
+                }
+            })
+        }
     })
 
     // function goTo(shopIdClick) {

@@ -41,7 +41,11 @@ class MidComment {
             })
         ])
 
-
+        if(listComment){
+            console.log('MidComment-searchComment: SUCCESS ');
+        }else{
+            console.log('MidComment-searchComment: ERROR-47 ');
+        }
         return {
             listComment,
             total: total || 0
@@ -50,12 +54,15 @@ class MidComment {
     }
     async createComment(data) {
         if (!data.user_id) {
+            console.log('MidComment-createComment: ERROR-57 ');
             throw new Error(ERROR_MESSAGE.COMMENT.COMMENT_USER_ID);
         }
         if (!data.product_id) {
+            console.log('MidComment-searchComment: ERROR-61 ');
             throw new Error(ERROR_MESSAGE.COMMENT.COMMNET_SHOP_ID);
         }
         if (!data.content) {
+            console.log('MidComment-searchComment: ERROR-65 ');
             throw new Error(ERROR_MESSAGE.COMMENT.COMMENT_CONTENT);
         }
         let dataCreate = {
@@ -65,9 +72,18 @@ class MidComment {
             cmt_id: data.cmt_id,
             del: 0
         }
-        return await Comment.create(dataCreate);
+        let object = await Comment.create(dataCreate);
+        if(!object){
+            console.log('MidComment-searchComment: ERROR-77 ');
+        }console.log('MidComment-searchComment: SUCCESS');
+        
+        return object
     }
     async deleteComment(data) {
+        if (!data.id) {
+            console.log('MidComment-deleteComment: ERROR-84 ');
+            throw new Error(ERROR_MESSAGE.COMMENT.COMMENT_NOT_EXIST);
+        }
         let objDelete = await Comment.findOne({
             where: {
                 id: data.id,
@@ -82,6 +98,7 @@ class MidComment {
     }
     async updateComment(data) {
         if (!data.id) {
+            console.log('MidComment-updateComment: ERROR-101 ');
             throw new Error(ERROR_MESSAGE.COMMENT.COMMENT_NOT_EXIST);
         }
         let objUpdate = await Comment.findOne({
@@ -94,7 +111,11 @@ class MidComment {
         let dataUpdate = {
             content: data.content,
         }
-        return await objUpdate.update(dataUpdate)
+        let object = await objUpdate.update(dataUpdate)
+        if(!object){
+            console.log('MidComment-updateComment: ERROR-116 ');
+        }console.log('MidComment-updateComment: SUCCESS ');
+        return 
 
     }
 

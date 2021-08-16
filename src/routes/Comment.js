@@ -8,7 +8,7 @@ let routerApp = new Router();
 
 routerApp.post('/create', Response(CommentController.createComment));
 routerApp.get('/delete', Response(CommentController.deleteComment));
-routerApp.post('/update', isAuth, Response(CommentController.updateComment));
+routerApp.post('/update', Response(CommentController.updateComment));
 routerApp.get('/searchcomment', Response(CommentController.searchComment));
 
 export default routerApp;
