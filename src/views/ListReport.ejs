@@ -329,7 +329,7 @@ function logOutClick(){
    $('#dataTable').DataTable( {
       'ajax': function (data, callback, settings) {
       $.ajax({
-        url: "http://localhost:3999/api/report/search?token="+token,
+        url: "http://localhost:3999/api/report/search",
       })
       .then ( function( response, textStatus, jqXHR ) {
         

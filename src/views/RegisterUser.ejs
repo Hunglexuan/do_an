@@ -269,6 +269,13 @@
             return "";
         }
 
+        function setCookie(cname, cvalue, exdays) {
+            const d = new Date();
+            d.setTime(d.getTime() + (exdays*24*60*60*1000));
+            let expires = "expires="+ d.toUTCString();
+            document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+        }
+
         $('#signUp').click(function() {
             register();
             $.ajax({
@@ -283,22 +290,14 @@
                     phone: $('#inputPhone').val(),
                 },
             }).then(function(data) {
+                console.log("may co chiu ra ko ",data);
                 if (data.message == 'SUCCESS') {
 
                     var userId = data.data.id;
 
                     setCookie("token", data.data.token, 30)
-                    localStorage.setItem('userId', JSON.stringify(userId));
-                    Swal.fire({
-                        type: 'success',
-                        title: 'Đăng ký thành công 🎉🎉🎉',
-                        // text: 'Your offer is safe 🙂',
-                        showConfirmButton: false,
-                        timer: 2000
-                    })
-                    window.setTimeout(function() {
-                        window.location.href = '/';
-                    }, 2000);
+                    localStorage.setItem('userId', JSON.stringify(data.data.id));
+                    window.location.href = "/LoginUser"
                 } else {
 
                 }
