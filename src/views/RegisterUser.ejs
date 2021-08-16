@@ -31,42 +31,45 @@
                     <div class="container">
                         <div class="row">
                             <div class="col-md-9 col-lg-8 mx-auto pl-5 pr-5">
-                                <h3 class="login-heading mb-4">New Account!!!</h3>
+                                <h3 class="login-heading mb-4">Tạo tài khoản mới!!!</h3>
                                 <form method="POST" action="#" id="register">
                                     <div class="form-label-group mb-4 ">
-                                        <input type="text" id="userName" class="form-control" placeholder="User Name">
-                                        <label for="userName">User Name</label>
+                                        <input type="text" id="userName" class="form-control" placeholder="Tên">
+                                        <label for="userName">Tên</label>
                                         <span class="form-message text-danger" id="messageName"></span>
                                     </div>
                                     <div class="form-label-group mb-4">
-                                        <input type="password" id="inputPassword" class="form-control" placeholder="Password">
-                                        <label for="inputPassword">Password</label>
+                                        <input type="password" id="inputPassword" class="form-control" placeholder="Mật khẩu">
+                                        <label for="inputPassword">Mật khẩu</label>
                                         <span class="form-message text-danger" id="messagePass"></span>
                                     </div>
                                     <div class="form-label-group mb-4">
-                                        <input type="email" id="inputEmail" class="form-control" placeholder="Email address">
+                                        <input type="password" id="reInputPassword" class="form-control" placeholder="Nhập lại mật khẩu">
+                                        <label for="reInputPassword">Nhập lại mật khẩu</label>
+                                        <span class="form-message text-danger" id="messageRePass"></span>
+                                    </div>
+                                    <div class="form-label-group mb-4">
+                                        <input type="email" id="inputEmail" class="form-control" placeholder="Địa chỉ Email">
                                         <label for="inputEmail">Email</label>
                                         <span class="form-message text-danger" id="messageEmail"></span>
                                     </div>
                                     <div class="form-label-group mb-4">
-                                        <input type="text" id="inputAddress" class="form-control" placeholder="Address">
-                                        <label for="inputAddress">Address</label>
+                                        <input type="text" id="inputAddress" class="form-control" placeholder="Địa chỉ">
+                                        <label for="inputAddress">Địa chỉ</label>
                                         <span class="form-message text-danger" id="messageAddress"></span>
                                     </div>
                                     <div class="form-label-group mb-4">
-
                                         <input type="date" id="date" class="form-control">
                                         <span class="form-message text-danger" id="messageDate"></span>
                                     </div>
                                     <div class="form-label-group mb-4">
-
-                                        <input type="text" id="inputPhone" class="form-control" placeholder="Phone">
-                                        <label for="inputPhone"> Phone Number</label>
+                                        <input type="text" id="inputPhone" class="form-control" placeholder="Số điện thoại">
+                                        <label for="inputPhone"> Số điện thoại</label>
                                         <span class="form-message text-danger" id="messagePhone"></span>
                                     </div>
-                                    <input type="button" value="Sign Up" id="signUp" class="btn btn-lg btn-outline-primary btn-block btn-login text-uppercase font-weight-bold mb-2">
+                                    <input type="button" value="ĐĂNG KÝ" id="signUp" class="btn btn-lg btn-outline-primary btn-block btn-login text-uppercase font-weight-bold mb-2">
                                     <div class="text-center pt-3">
-                                        Already have an Account? <a href="/LoginUser" class="font-weight-bold">Sign In</a>
+                                        Bạn đã có sẵn tài khoản? <a href="/LoginUser" class="font-weight-bold">ĐĂNG NHẬP</a>
                                     </div>
                                 </form>
                             </div>
@@ -87,6 +90,9 @@
     <!--Script Input-->
     <!-- <script src="js/registerUser.js"></script> -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
     <script type="text/javascript" lang="javascript">
         // function register() {
         //     var regEmail = /^\w+@[a-zA-Z]{1,}/i;
@@ -144,34 +150,47 @@
         function register() {
             var userName = document.getElementById('userName').value.trim();
             var password = document.getElementById('inputPassword').value.trim();
+            var rePassword = document.getElementById('reInputPassword').value.trim();
             var email = document.getElementById('inputEmail').value.trim();
             var address = document.getElementById('inputAddress').value.trim();
             var date = document.getElementById('date').value.trim();
             var phone = document.getElementById('inputPhone').value.trim();
 
+            var regPass = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/i;
             var regEmail = /^\w+@[a-zA-Z]{1,}/i;
-            var regPhone = /^\d{10}/i;
+            var regPhone = /(84|0[3|5|7|8|9])+([0-9]{8})\b/i;
 
 
             if (userName == "") {
                 document.getElementById('userName').setAttribute('class', 'form-control border-danger');
-                document.getElementById('messageName').innerHTML = 'User Name is empty';
+                document.getElementById('messageName').innerHTML = 'Tên không được để trống';
             } else {
                 document.getElementById('userName').setAttribute('class', 'form-control');
                 document.getElementById('messageName').innerHTML = '';
             }
 
-            if (password == "") {
+            if (regPass.test(password) == false) {
                 document.getElementById('inputPassword').setAttribute('class', 'form-control border-danger');
-                document.getElementById('messagePass').innerHTML = 'Password is empty';
+                document.getElementById('messagePass').innerHTML = 'Tối thiểu 8 ký tự, ít nhất một chữ cái và một số';
             } else {
                 document.getElementById('inputPassword').setAttribute('class', 'form-control');
                 document.getElementById('messagePass').innerHTML = '';
             }
 
+            if (rePassword == "") {
+                document.getElementById('reInputPassword').setAttribute('class', 'form-control border-danger');
+                document.getElementById('messageRePass').innerHTML = 'Nhập lại mật khẩu không được để trống';
+            } else if (rePassword != password) {
+                document.getElementById('reInputPassword').setAttribute('class', 'form-control border-danger');
+                document.getElementById('messageRePass').innerHTML = 'Mật khẩu không khớp';
+            } else {
+                document.getElementById('reInputPassword').setAttribute('class', 'form-control');
+                document.getElementById('messageRePass').innerHTML = '';
+            }
+
             if (regEmail.test(email) == false) {
                 document.getElementById('inputEmail').setAttribute('class', 'form-control border-danger');
-                document.getElementById('messageEmail').innerHTML = 'invalid Email';
+                document.getElementById('messageEmail').innerHTML = 'Email chưa đúng dạng';
             } else {
                 document.getElementById('inputEmail').setAttribute('class', 'form-control');
                 document.getElementById('messageEmail').innerHTML = '';
@@ -179,7 +198,7 @@
 
             if (address == "") {
                 document.getElementById('inputAddress').setAttribute('class', 'form-control border-danger');
-                document.getElementById('messageAddress').innerHTML = 'Address is empty';
+                document.getElementById('messageAddress').innerHTML = 'Địa chỉ không được để trống';
             } else {
                 document.getElementById('inputAddress').setAttribute('class', 'form-control');
                 document.getElementById('messageAddress').innerHTML = '';
@@ -187,7 +206,7 @@
 
             if (date == "") {
                 document.getElementById('date').setAttribute('class', 'form-control border-danger');
-                document.getElementById('messageDate').innerHTML = 'You have not selected date';
+                document.getElementById('messageDate').innerHTML = 'Bạn chưa chọn ngày-tháng-năm sinh';
             } else {
                 document.getElementById('date').setAttribute('class', 'form-control');
                 document.getElementById('messageDate').innerHTML = '';
@@ -195,7 +214,7 @@
 
             if (regPhone.test(phone) == false) {
                 document.getElementById('inputPhone').setAttribute('class', 'form-control border-danger');
-                document.getElementById('messagePhone').innerHTML = 'invalid Phone';
+                document.getElementById('messagePhone').innerHTML = 'Số điện thoại phải 10 chữ số và đầu số phải 0 hoặc 84';
             } else {
                 document.getElementById('inputPhone').setAttribute('class', 'form-control');
                 document.getElementById('messagePhone').innerHTML = '';
@@ -203,29 +222,52 @@
 
 
         }
-        $("#userName").click(function() {
-            register();
-        });
+        // $("#userName").click(function() {
+        //     register();
+        // });
 
-        $("#inputPassword").click(function() {
-            register();
-        });
+        // $("#inputPassword").click(function() {
+        //     register();
+        // });
 
-        $("#inputEmail").click(function() {
-            register();
-        });
+        // $("#inputEmail").click(function() {
+        //     register();
+        // });
 
-        $("#inputAddress").click(function() {
-            register();
-        });
+        // $("#inputAddress").click(function() {
+        //     register();
+        // });
 
-        $("#date").click(function() {
-            register();
-        });
+        // $("#date").click(function() {
+        //     register();
+        // });
 
-        $("#inputPhone").click(function() {
-            register();
-        });
+        // $("#inputPhone").click(function() {
+        //     register();
+        // });
+
+        function setCookie(cname, cvalue, exdays) {
+            const d = new Date();
+            d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+            let expires = "expires=" + d.toUTCString();
+            document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+        }
+
+        function getCookie(cname) {
+            let name = cname + "=";
+            let decodedCookie = decodeURIComponent(document.cookie);
+            let ca = decodedCookie.split(';');
+            for (let i = 0; i < ca.length; i++) {
+                let c = ca[i];
+                while (c.charAt(0) == ' ') {
+                    c = c.substring(1);
+                }
+                if (c.indexOf(name) == 0) {
+                    return c.substring(name.length, c.length);
+                }
+            }
+            return "";
+        }
 
         $('#signUp').click(function() {
             register();
@@ -242,11 +284,23 @@
                 },
             }).then(function(data) {
                 if (data.message == 'SUCCESS') {
+
+                    var userId = data.data.id;
+
                     setCookie("token", data.data.token, 30)
                     localStorage.setItem('userId', JSON.stringify(userId));
-                    window.location.href = "/"
+                    Swal.fire({
+                        type: 'success',
+                        title: 'Đăng ký thành công 🎉🎉🎉',
+                        // text: 'Your offer is safe 🙂',
+                        showConfirmButton: false,
+                        timer: 2000
+                    })
+                    window.setTimeout(function() {
+                        window.location.href = '/';
+                    }, 2000);
                 } else {
-                    alert("Update fail");
+
                 }
             })
         })

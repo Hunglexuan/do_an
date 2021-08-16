@@ -9,7 +9,7 @@
     <meta name="author" content="Askbootstrap">
     <title>FUMK - Online Food Ordering</title>
     <!-- Custom Css -->
-    <link href="skin/css/styles.css" rel="stylesheet" />
+    <!-- <link href="skin/css/styles.css" rel="stylesheet" /> -->
     <!-- Favicon Icon -->
     <link rel="icon" type="image/png" href="image/favicon.png">
     <!-- Bootstrap core CSS-->
@@ -74,33 +74,6 @@
                             <a class="nav-link" href="Offers"><i class="icofont-sale-discount"></i> Ưu Đãi <span class="badge badge-danger">Mới</span></a>
                         </li>
                         <li id="checkLogin"></li>
-                        <li class="nav-item dropdown no-arrow mx-1 osahan-list-dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fa fa-bell-o" style="font-size: large;"></i>
-                                <!-- Counter - Alerts -->
-                                <span class="badge badge-info badge-counter" style="position: absolute; border-radius: 50px; min-width: 15px; height: 15px; font-size: 9px; right: -7px; line-height: 15px; top: 20px;">1</span>
-                            </a>
-                            <!-- Dropdown - Alerts -->
-                            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow-sm">
-                                <h6 class="dropdown-header">
-                                    Thông Báo :
-                                </h6>
-                            </div>
-                        </li>
-                        <!-- <li class="nav-link" style="padding-top: 20px !important;">
-                        <button class="btn btn-primary"> Login </button>
-                    </li>
-
-
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <img alt="Generic placeholder image" src="image/user/4.png" class="nav-osahan-pic rounded-pill"> My Account
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-right shadow-sm border-0">
-                            <a class="dropdown-item" href="orders.html#orders"><i class="icofont-ui-user"></i> My Profile </a>
-                            <a class="dropdown-item" href="orders.html#offers"><i class="icofont-logout"></i> Logout </a>
-                        </div>
-                    </li> -->
                         <li class="nav-item dropdown dropdown-cart">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="icofont-basket"></i> Giỏ Hàng
@@ -209,7 +182,6 @@
                             document.getElementById('allseller').innerHTML += '<div class="col-md-3 col-sm-6 mb-4 pb-2" onclick="goTo(' + "'" + listdata[i].id + "'" + ')">' +
                                 '<div class="list-card bg-white overflow-hidden h-100 position-relative item-content" style="border: 1px solid #d7d7d7; border-radius: 6px;">' +
                                 '<div class="list-card-image">' +
-                                '<div class="favourite-heart text-danger position-absolute"><a><i class="icofont-heart"></i></a></div>' +
                                 '<div class="member-plan position-absolute"></div>' +
                                 '<a> <img src="image/list/1.png" class="img-fluid item-img"> </a>' +
                                 '</div>' +
