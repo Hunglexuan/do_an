@@ -9,7 +9,7 @@
     <meta name="author" content="Askbootstrap">
     <title>FUMK - Online Food Ordering</title>
     <!-- Custom Css -->
-    <link href="skin/css/styles.css" rel="stylesheet" />
+    <!-- <link href="skin/css/styles.css" rel="stylesheet" /> -->
     <!-- Favicon Icon -->
     <link rel="icon" type="image/png" href="image/favicon.png">
     <!-- Bootstrap core CSS-->
@@ -72,19 +72,7 @@
                         <a class="nav-link" href="Offers"><i class="icofont-sale-discount"></i> Ưu Đãi <span class="badge badge-danger">Mới</span></a>
                     </li>
                     <li id="checkLogin"></li>
-                    <li class="nav-item dropdown no-arrow mx-1 osahan-list-dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <i class="fa fa-bell-o" style="font-size: large;"></i>
-                            <!-- Counter - Alerts -->
-                            <span class="badge badge-info badge-counter" style="position: absolute; border-radius: 50px; min-width: 15px; height: 15px; font-size: 9px; right: -7px; line-height: 15px; top: 20px;">1</span>
-                        </a>
-                        <!-- Dropdown - Alerts -->
-                        <div class="dropdown-list dropdown-menu dropdown-menu-right shadow-sm">
-                            <h6 class="dropdown-header">
-                                Thông Báo :
-                            </h6>
-                        </div>
-                    </li>
+
 
                     <li class="nav-item dropdown dropdown-cart">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -123,6 +111,12 @@
                     <h4 class="font-weight-bold mt-0 mb-3">Phiếu giảm giá có sẵn</h4>
                 </div>
             </div>
+            <label class="control-label" for="name">
+            <label class="text-info"> Saghir </label>
+            </label>
+            <div class="controls">
+                <a class="btn" href="#" id="edit"> Edit </a>
+            </div>
         </div>
     </section>
     <section class="section pt-5 pb-5 text-center bg-white">
@@ -139,7 +133,7 @@
             <!--Bắt Đầu Nội Dung Giới Thiệu-->
             <div class="noi-dung about">
                 <h2>Về Chúng Tôi</h2>
-                <p> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Praesentium dolores alias ipsa vel hic tempore exercitationem ipsam explicabo repudiandae ut consectetur qui, earum at nostrum perspiciatis asperiores necessitatibus facilis esse.
+                <p> Lorem ipsum, dolor sit amet consectetur adipisicing elite. Presenting dolores alias ipsa vel hic tempore exercitationem ipsam explicabo repudiandae ut consectetur qui, earum at nostrum perspiciatis asperiores necessitatibus facile esse.
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia id possimus quibusdam nihil earum in provident enim animi commodi quisquam! Molestiae cupiditate mollitia pariatur error ea, debitis eaque quo dolorum.</p>
             </div>
             <!--Kết Thúc Nội Dung Giới Thiệu-->
@@ -201,6 +195,19 @@
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src="../../customJS/shopDetail.js"></script>
     <script>
+        $('#edit').click(function() {
+            var text = $('.text-info').text();
+            var input = $('<input id="attribute" type="text" value="' + text + '" />')
+            $('.text-info').text('').append(input);
+            input.select();
+
+            input.blur(function() {
+                var text = $('#attribute').val();
+                $('#attribute').parent().text(text);
+                $('#attribute').remove();
+            });
+        });
+
         $(document).ready(function() {
             $.ajax({
                 type: "GET",

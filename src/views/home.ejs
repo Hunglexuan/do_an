@@ -14,7 +14,7 @@
     <!-- Bootstrap core CSS-->
     <link href="skin/bootstrap/bootstrap.min.css" rel="stylesheet">
     <!-- Custom Css -->
-    <link href="skin/css/styles.css" rel="stylesheet" />
+    <!-- <link href="skin/css/styles.css" rel="stylesheet" /> -->
     <!-- Font Awesome-->
     <link href="skin/font/all.min.css" rel="stylesheet">
     <!-- Font Awesome-->
@@ -32,7 +32,124 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-
+    <style>
+        .mySlides {
+            display: flex;
+        }
+        
+        .mySlidess {
+            display: flex;
+        }
+        
+        .mySlidesss {
+            display: flex;
+        }
+        
+        .slider {
+            width: 922px;
+            height: 330px;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        .slides {
+            width: 500%;
+            height: 309px;
+            display: flex;
+        }
+        
+        .slides input {
+            display: none;
+        }
+        
+        .slide {
+            margin-left: 15px;
+            width: 20%;
+            transition: 2s;
+        }
+        
+        .slide img {
+            width: 800px;
+            height: 500px;
+        }
+        /*css for manual slide navigation*/
+        
+        .navigation-manual {
+            position: absolute;
+            width: 800px;
+            margin-top: -40px;
+            display: flex;
+            justify-content: center;
+        }
+        
+        .manual-btn {
+            border: 2px solid #40D3DC;
+            padding: 5px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: 1s;
+        }
+        
+        .manual-btn:not(:last-child) {
+            margin-right: 40px;
+        }
+        
+        .manual-btn:hover {
+            background: #40D3DC;
+        }
+        
+        #radio1:checked~.first {
+            margin-left: 0;
+        }
+        
+        #radio2:checked~.first {
+            margin-left: -20%;
+        }
+        
+        #radio3:checked~.first {
+            margin-left: -40%;
+        }
+        
+        #radio4:checked~.first {
+            margin-left: -60%;
+        }
+        /*css for automatic navigation*/
+        
+        .navigation-auto {
+            position: absolute;
+            display: flex;
+            width: 800px;
+            justify-content: center;
+            margin-top: 460px;
+        }
+        
+        .navigation-auto div {
+            border: 2px solid #40D3DC;
+            padding: 5px;
+            border-radius: 10px;
+            transition: 1s;
+        }
+        
+        .navigation-auto div:not(:last-child) {
+            margin-right: 40px;
+        }
+        
+        #radio1:checked {
+            background: #40D3DC;
+        }
+        
+        #radio2:checked {
+            background: #40D3DC;
+        }
+        
+        #radio3:checked {
+            background: #40D3DC;
+        }
+        
+        #radio4:checked {
+            background: #40D3DC;
+        }
+    </style>
 </head>
 
 <body class="portal">
@@ -77,19 +194,7 @@
                             <a class="nav-link" href="Offers"><i class="icofont-sale-discount"></i> Ưu Đãi <span class="badge badge-danger">Mới</span></a>
                         </li>
                         <li id="checkLogin"></li>
-                        <li class="nav-item dropdown no-arrow mx-1 osahan-list-dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fa fa-bell-o" style="font-size: large;"></i>
-                                <!-- Counter - Alerts -->
-                                <span class="badge badge-info badge-counter" style="position: absolute; border-radius: 50px; min-width: 15px; height: 15px; font-size: 9px; right: -7px; line-height: 15px; top: 20px;">1</span>
-                            </a>
-                            <!-- Dropdown - Alerts -->
-                            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow-sm">
-                                <h6 class="dropdown-header">
-                                    Thông Báo :
-                                </h6>
-                            </div>
-                        </li>
+
                         <li class="nav-item dropdown dropdown-cart">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="icofont-basket"></i> Giỏ Hàng
@@ -144,7 +249,7 @@
             </div>
         </section>
         <section class="col-md-8 main-right">
-            <div class="col-md-12 pt-5">
+            <div class="col-md-12 pt-5 pb-3">
                 <div class="container">
                     <div class="list-restaurant">
                         <div class="title-wrapper">
@@ -152,146 +257,20 @@
                             <span class="line"></span>
                         </div>
                         <div class="row">
-                            <div class="col-md-12">
-                                <div class="owl-carousel owl-carousel-four owl-theme">
-                                    <div class="item">
-                                        <div class="list-card bg-white h-100 overflow-hidden position-relative shadow-sm">
-                                            <div class="list-card-image">
-                                                <div class="star position-absolute"><span class="badge badge-success"><i class="icofont-star"></i> 3.1 (300+)</span></div>
-                                                <div class="favourite-heart text-danger position-absolute"><a href="detail.html"><i class="icofont-heart"></i></a></div>
-                                                <div class="member-plan position-absolute"><span class="badge badge-dark">Promoted</span>
-                                                </div>
-                                                <a href="/AllProduct">
-                                                    <img src="image/list/1.png" class="img-fluid item-img img-restaurant">
-                                                </a>
-                                            </div>
-                                            <div class="p-3 position-relative item-restaurant">
-                                                <div class="list-card-body">
-                                                    <h6 class="mb-1"><a href="/AllProduct" class="text-black">World Famous</a></h6>
-                                                    <p class="text-gray mb-3">North Indian • American • Pure veg</p>
-                                                    <p class="text-gray mb-3 time"><span class="bg-light text-dark rounded-sm pl-2 pb-1 pt-1 pr-2"><i class="icofont-wall-clock"></i> 20–25 min</span></p>
-                                                </div>
-                                                <div class="list-card-badge">
-                                                    <span class="badge badge-success">OFFER</span> <small>65% off | Use Coupon OSAHAN50</small>
-                                                </div>
-                                            </div>
-                                        </div>
+                            <div class="slider">
+                                <div class="slides">
+                                    <input type="radio" name="radio-btn" id="radio1">
+                                    <input type="radio" name="radio-btn" id="radio2">
+
+                                    <div class="mySlides slide first" id="buyMost1">
                                     </div>
-                                    <div class="item">
-                                        <div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
-                                            <div class="list-card-image">
-                                                <div class="star position-absolute"><span class="badge badge-warning"><i
-                                          class="icofont-star"></i> 3.1 (300+)</span></div>
-                                                <div class="favourite-heart text-danger position-absolute"><a href="detail.html"><i
-                                          class="icofont-heart"></i></a></div>
-                                                <div class="member-plan position-absolute"><span class="badge badge-dark">Promoted</span>
-                                                </div>
-                                                <a href="/AllProduct">
-                                                    <img src="image/list/3.png" class="img-fluid item-img img-restaurant">
-                                                </a>
-                                            </div>
-                                            <div class="p-3 position-relative item-restaurant">
-                                                <div class="list-card-body">
-                                                    <h6 class="mb-1"><a href="/AllProduct" class="text-black">Bite Me Sandwiches</a>
-                                                    </h6>
-                                                    <p class="text-gray mb-3">North Indian • Indian • Pure veg</p>
-                                                    <p class="text-gray mb-3 time"><span class="bg-light text-dark rounded-sm pl-2 pb-1 pt-1 pr-2"><i
-                                             class="icofont-wall-clock"></i> 15–25 min</span> </p>
-                                                </div>
-                                                <div class="list-card-badge">
-                                                    <span class="badge badge-danger">OFFER</span> <small>65% off | Use Coupon
-                                       OSAHAN50</small>
-                                                </div>
-                                            </div>
-                                        </div>
+
+                                    <div class="mySlides slide" id="buyMost2">
                                     </div>
-                                    <div class="item">
-                                        <div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
-                                            <div class="list-card-image">
-                                                <div class="star position-absolute"><span class="badge badge-success"><i
-                                          class="icofont-star"></i> 3.1 (300+)</span></div>
-                                                <div class="favourite-heart text-danger position-absolute"><a href="detail.html"><i
-                                          class="icofont-heart"></i></a></div>
-                                                <div class="member-plan position-absolute"><span class="badge badge-danger">Promoted</span>
-                                                </div>
-                                                <a href="/AllProduct">
-                                                    <img src="image/list/6.png" class="img-fluid item-img img-restaurant">
-                                                </a>
-                                            </div>
-                                            <div class="p-3 position-relative item-restaurant">
-                                                <div class="list-card-body">
-                                                    <h6 class="mb-1"><a href="/AllProduct" class="text-black">The osahan Restaurant
-                                       </a>
-                                                    </h6>
-                                                    <p class="text-gray mb-3">North • Hamburgers • Pure veg</p>
-                                                    <p class="text-gray mb-3 time"><span class="bg-light text-dark rounded-sm pl-2 pb-1 pt-1 pr-2"><i
-                                             class="icofont-wall-clock"></i> 15–25 min</span></p>
-                                                </div>
-                                                <div class="list-card-badge">
-                                                    <span class="badge badge-danger">OFFER</span> <small>65% off | Use Coupon
-                                       OSAHAN50</small>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="item">
-                                        <div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
-                                            <div class="list-card-image">
-                                                <div class="star position-absolute"><span class="badge badge-success"><i
-                                          class="icofont-star"></i> 3.1 (300+)</span></div>
-                                                <div class="favourite-heart text-danger position-absolute"><a href="detail.html"><i
-                                          class="icofont-heart"></i></a></div>
-                                                <div class="member-plan position-absolute"><span class="badge badge-dark">Promoted</span>
-                                                </div>
-                                                <a href="/AllProduct">
-                                                    <img src="image/list/8.png" class="img-fluid item-img img-restaurant">
-                                                </a>
-                                            </div>
-                                            <div class="p-3 position-relative item-restaurant">
-                                                <div class="list-card-body">
-                                                    <h6 class="mb-1"><a href="/AllProduct" class="text-black">Polo Lounge
-                                       </a>
-                                                    </h6>
-                                                    <p class="text-gray mb-3">North Indian • Indian • Pure veg</p>
-                                                    <p class="text-gray mb-3 time"><span class="bg-light text-dark rounded-sm pl-2 pb-1 pt-1 pr-2"><i
-                                             class="icofont-wall-clock"></i> 15–25 min</span> </p>
-                                                </div>
-                                                <div class="list-card-badge">
-                                                    <span class="badge badge-danger">OFFER</span> <small>65% off | Use Coupon
-                                       OSAHAN50</small>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="item">
-                                        <div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
-                                            <div class="list-card-image">
-                                                <div class="star position-absolute"><span class="badge badge-success"><i
-                                          class="icofont-star"></i> 3.1 (300+)</span></div>
-                                                <div class="favourite-heart text-danger position-absolute"><a href="detail.html"><i
-                                          class="icofont-heart"></i></a></div>
-                                                <div class="member-plan position-absolute"><span class="badge badge-dark">Promoted</span>
-                                                </div>
-                                                <a href="/AllProduct">
-                                                    <img src="image/list/9.png" class="img-fluid item-img img-restaurant">
-                                                </a>
-                                            </div>
-                                            <div class="p-3 position-relative item-restaurant">
-                                                <div class="list-card-body">
-                                                    <h6 class="mb-1"><a href="/AllProduct" class="text-black">Jack Fry's
-                                       </a>
-                                                    </h6>
-                                                    <p class="text-gray mb-3">North Indian • Indian • Pure veg</p>
-                                                    <p class="text-gray mb-3 time"><span class="bg-light text-dark rounded-sm pl-2 pb-1 pt-1 pr-2"><i
-                                             class="icofont-wall-clock"></i> 15–25 min</span> </p>
-                                                </div>
-                                                <div class="list-card-badge">
-                                                    <span class="badge badge-danger">OFFER</span> <small>65% off | Use Coupon
-                                       OSAHAN50</small>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+
+                                    <!-- <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                                    <a class="next" onclick="plusSlides(1)">&#10095;</a> -->
+
                                 </div>
                             </div>
                         </div>
@@ -304,152 +283,37 @@
                             <span class="line"></span>
                         </div>
                         <div class="row">
-                            <div class="col-md-12">
-                                <div class="owl-carousel owl-carousel-four owl-theme">
-                                    <div class="item">
-                                        <div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
-                                            <div class="list-card-image">
-                                                <div class="star position-absolute"><span class="badge badge-success"><i
-                                          class="icofont-star"></i> 3.1 (300+)</span></div>
-                                                <div class="favourite-heart text-danger position-absolute"><a href="detail.html"><i
-                                          class="icofont-heart"></i></a></div>
-                                                <div class="member-plan position-absolute"><span class="badge badge-dark">Promoted</span>
-                                                </div>
-                                                <a href="/AllProduct">
-                                                    <img src="image/list/1.png" class="img-fluid item-img img-restaurant">
-                                                </a>
-                                            </div>
-                                            <div class="p-3 position-relative item-restaurant">
-                                                <div class="list-card-body">
-                                                    <h6 class="mb-1"><a href="/AllProduct" class="text-black">World Famous</a></h6>
-                                                    <p class="text-gray mb-3">North Indian • American • Pure veg</p>
-                                                    <p class="text-gray mb-3 time"><span class="bg-light text-dark rounded-sm pl-2 pb-1 pt-1 pr-2"><i
-                                             class="icofont-wall-clock"></i> 20–25 min</span> </p>
-                                                </div>
-                                                <div class="list-card-badge">
-                                                    <span class="badge badge-success">OFFER</span> <small>65% off | Use Coupon
-                                       OSAHAN50</small>
-                                                </div>
-                                            </div>
-                                        </div>
+                            <div class="slider">
+                                <div class="slides">
+                                    <input type="radio" name="radio-btn" id="radioo1">
+                                    <input type="radio" name="radio-btn" id="radioo2">
+
+                                    <div class="mySlidess slide first" id="shipFast1">
                                     </div>
-                                    <div class="item">
-                                        <div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
-                                            <div class="list-card-image">
-                                                <div class="star position-absolute"><span class="badge badge-warning"><i
-                                          class="icofont-star"></i> 3.1 (300+)</span></div>
-                                                <div class="favourite-heart text-danger position-absolute"><a href="detail.html"><i
-                                          class="icofont-heart"></i></a></div>
-                                                <div class="member-plan position-absolute"><span class="badge badge-dark">Promoted</span>
-                                                </div>
-                                                <a href="/AllProduct">
-                                                    <img src="image/list/3.png" class="img-fluid item-img img-restaurant">
-                                                </a>
-                                            </div>
-                                            <div class="p-3 position-relative item-restaurant">
-                                                <div class="list-card-body">
-                                                    <h6 class="mb-1"><a href="/AllProduct" class="text-black">Bite Me Sandwiches</a>
-                                                    </h6>
-                                                    <p class="text-gray mb-3">North Indian • Indian • Pure veg</p>
-                                                    <p class="text-gray mb-3 time"><span class="bg-light text-dark rounded-sm pl-2 pb-1 pt-1 pr-2"><i
-                                             class="icofont-wall-clock"></i> 15–25 min</span> </p>
-                                                </div>
-                                                <div class="list-card-badge">
-                                                    <span class="badge badge-danger">OFFER</span> <small>65% off | Use Coupon
-                                       OSAHAN50</small>
-                                                </div>
-                                            </div>
-                                        </div>
+
+                                    <div class="mySlidess slide" id="shipFast2">
                                     </div>
-                                    <div class="item">
-                                        <div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
-                                            <div class="list-card-image">
-                                                <div class="star position-absolute"><span class="badge badge-success"><i
-                                          class="icofont-star"></i> 3.1 (300+)</span></div>
-                                                <div class="favourite-heart text-danger position-absolute"><a href="detail.html"><i
-                                          class="icofont-heart"></i></a></div>
-                                                <div class="member-plan position-absolute"><span class="badge badge-danger">Promoted</span>
-                                                </div>
-                                                <a href="/AllProduct">
-                                                    <img src="image/list/6.png" class="img-fluid item-img img-restaurant">
-                                                </a>
-                                            </div>
-                                            <div class="p-3 position-relative item-restaurant">
-                                                <div class="list-card-body">
-                                                    <h6 class="mb-1"><a href="/AllProduct" class="text-black">The osahan Restaurant
-                                       </a>
-                                                    </h6>
-                                                    <p class="text-gray mb-3">North • Hamburgers • Pure veg</p>
-                                                    <p class="text-gray mb-3 time"><span class="bg-light text-dark rounded-sm pl-2 pb-1 pt-1 pr-2"><i
-                                             class="icofont-wall-clock"></i> 15–25 min</span> </p>
-                                                </div>
-                                                <div class="list-card-badge">
-                                                    <span class="badge badge-danger">OFFER</span> <small>65% off | Use Coupon
-                                       OSAHAN50</small>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="item">
-                                        <div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
-                                            <div class="list-card-image">
-                                                <div class="star position-absolute"><span class="badge badge-success"><i
-                                          class="icofont-star"></i> 3.1 (300+)</span></div>
-                                                <div class="favourite-heart text-danger position-absolute"><a href="detail.html"><i
-                                          class="icofont-heart"></i></a></div>
-                                                <div class="member-plan position-absolute"><span class="badge badge-dark">Promoted</span>
-                                                </div>
-                                                <a href="/AllProduct">
-                                                    <img src="image/list/8.png" class="img-fluid item-img img-restaurant">
-                                                </a>
-                                            </div>
-                                            <div class="p-3 position-relative item-restaurant">
-                                                <div class="list-card-body">
-                                                    <h6 class="mb-1"><a href="/AllProduct" class="text-black">Polo Lounge
-                                       </a>
-                                                    </h6>
-                                                    <p class="text-gray mb-3">North Indian • Indian • Pure veg</p>
-                                                    <p class="text-gray mb-3 time"><span class="bg-light text-dark rounded-sm pl-2 pb-1 pt-1 pr-2"><i
-                                             class="icofont-wall-clock"></i> 15–25 min</span> </p>
-                                                </div>
-                                                <div class="list-card-badge">
-                                                    <span class="badge badge-danger">OFFER</span> <small>65% off | Use Coupon
-                                       OSAHAN50</small>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="item">
-                                        <div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
-                                            <div class="list-card-image">
-                                                <div class="star position-absolute"><span class="badge badge-success"><i
-                                          class="icofont-star"></i> 3.1 (300+)</span></div>
-                                                <div class="favourite-heart text-danger position-absolute"><a href="detail.html"><i
-                                          class="icofont-heart"></i></a></div>
-                                                <div class="member-plan position-absolute"><span class="badge badge-dark">Promoted</span>
-                                                </div>
-                                                <a href="/AllProduct">
-                                                    <img src="image/list/9.png" class="img-fluid item-img img-restaurant">
-                                                </a>
-                                            </div>
-                                            <div class="p-3 position-relative item-restaurant">
-                                                <div class="list-card-body">
-                                                    <h6 class="mb-1"><a href="/AllProduct" class="text-black">Jack Fry's
-                                       </a>
-                                                    </h6>
-                                                    <p class="text-gray mb-3">North Indian • Indian • Pure veg</p>
-                                                    <p class="text-gray mb-3 time"><span class="bg-light text-dark rounded-sm pl-2 pb-1 pt-1 pr-2"><i
-                                             class="icofont-wall-clock"></i> 15–25 min</span></p>
-                                                </div>
-                                                <div class="list-card-badge">
-                                                    <span class="badge badge-danger">OFFER</span> <small>65% off | Use Coupon
-                                       OSAHAN50</small>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+
+                                    <!-- <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                                    <a class="next" onclick="plusSlides(1)">&#10095;</a> -->
+
                                 </div>
                             </div>
+                            <!-- <div class="col-md-12">
+
+                                <div class="slideshow-container">
+
+                                    <div class="mySlidess fade" id="shipFast1">
+                                    </div>
+
+                                    <div class="mySlidess fade" id="shipFast2">
+                                    </div>
+
+                                    <a class="prev" onclick="plusSlidess(-1)">&#10094;</a>
+                                    <a class="next" onclick="plusSlidess(1)">&#10095;</a>
+
+                                </div>
+                            </div> -->
                         </div>
                     </div>
                 </div>
@@ -460,145 +324,20 @@
                             <span class="line"></span>
                         </div>
                         <div class="row">
-                            <div class="col-md-12">
-                                <div class="owl-carousel owl-carousel-four owl-theme">
-                                    <div class="item">
-                                        <div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
-                                            <div class="list-card-image">
-                                                <div class="star position-absolute"><span class="badge badge-success"><i
-                                          class="icofont-star"></i> 3.1 (300+)</span></div>
-                                                <div class="favourite-heart text-danger position-absolute"><a href="detail.html"><i
-                                          class="icofont-heart"></i></a></div>
-                                                <div class="member-plan position-absolute"><span class="badge badge-dark">Promoted</span>
-                                                </div>
-                                                <a href="/AllProduct">
-                                                    <img src="image/list/1.png" class="img-fluid item-img img-restaurant">
-                                                </a>
-                                            </div>
-                                            <div class="p-3 position-relative item-restaurant">
-                                                <div class="list-card-body">
-                                                    <h6 class="mb-1"><a href="/AllProduct" class="text-black">World Famous</a></h6>
-                                                    <p class="text-gray mb-3">North Indian • American • Pure veg</p>
-                                                    <p class="text-gray mb-3 time"><span class="bg-light text-dark rounded-sm pl-2 pb-1 pt-1 pr-2"><i
-                                             class="icofont-wall-clock"></i> 20–25 min</span> </p>
-                                                </div>
-                                                <div class="list-card-badge">
-                                                    <span class="badge badge-success">OFFER</span> <small>65% off | Use Coupon
-                                       OSAHAN50</small>
-                                                </div>
-                                            </div>
-                                        </div>
+                            <div class="slider">
+                                <div class="slides">
+                                    <input type="radio" name="radio-btn" id="radiooo1">
+                                    <input type="radio" name="radio-btn" id="radiooo2">
+
+                                    <div class="mySlidesss slide first" id="listSale1">
                                     </div>
-                                    <div class="item">
-                                        <div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
-                                            <div class="list-card-image">
-                                                <div class="star position-absolute"><span class="badge badge-warning"><i
-                                          class="icofont-star"></i> 3.1 (300+)</span></div>
-                                                <div class="favourite-heart text-danger position-absolute"><a href="detail.html"><i
-                                          class="icofont-heart"></i></a></div>
-                                                <div class="member-plan position-absolute"><span class="badge badge-dark">Promoted</span>
-                                                </div>
-                                                <a href="/AllProduct">
-                                                    <img src="image/list/3.png" class="img-fluid item-img img-restaurant">
-                                                </a>
-                                            </div>
-                                            <div class="p-3 position-relative item-restaurant">
-                                                <div class="list-card-body">
-                                                    <h6 class="mb-1"><a href="/AllProduct" class="text-black">Bite Me Sandwiches</a>
-                                                    </h6>
-                                                    <p class="text-gray mb-3">North Indian • Indian • Pure veg</p>
-                                                    <p class="text-gray mb-3 time"><span class="bg-light text-dark rounded-sm pl-2 pb-1 pt-1 pr-2"><i
-                                             class="icofont-wall-clock"></i> 15–25 min</span> </p>
-                                                </div>
-                                                <div class="list-card-badge">
-                                                    <span class="badge badge-danger">OFFER</span> <small>65% off | Use Coupon
-                                       OSAHAN50</small>
-                                                </div>
-                                            </div>
-                                        </div>
+
+                                    <div class="mySlidesss slide" id="listSale2">
                                     </div>
-                                    <div class="item">
-                                        <div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
-                                            <div class="list-card-image">
-                                                <div class="star position-absolute"><span class="badge badge-success"><i
-                                          class="icofont-star"></i> 3.1 (300+)</span></div>
-                                                <div class="favourite-heart text-danger position-absolute"><a href="detail.html"><i
-                                          class="icofont-heart"></i></a></div>
-                                                <div class="member-plan position-absolute"><span class="badge badge-danger">Promoted</span>
-                                                </div>
-                                                <a href="/AllProduct">
-                                                    <img src="image/list/6.png" class="img-fluid item-img img-restaurant">
-                                                </a>
-                                            </div>
-                                            <div class="p-3 position-relative item-restaurant">
-                                                <div class="list-card-body">
-                                                    <h6 class="mb-1"><a href="/AllProduct" class="text-black">The osahan Restaurant
-                                       </a>
-                                                    </h6>
-                                                    <p class="text-gray mb-3">North • Hamburgers • Pure veg</p>
-                                                    <p class="text-gray mb-3 time"><span class="bg-light text-dark rounded-sm pl-2 pb-1 pt-1 pr-2"><i
-                                             class="icofont-wall-clock"></i> 15–25 min</span> </p>
-                                                </div>
-                                                <div class="list-card-badge">
-                                                    <span class="badge badge-danger">OFFER</span> <small>65% off | Use Coupon
-                                       OSAHAN50</small>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="item">
-                                        <div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
-                                            <div class="list-card-image">
-                                                <div class="star position-absolute"><span class="badge badge-success"><i
-                                          class="icofont-star"></i> 3.1 (300+)</span></div>
-                                                <div class="favourite-heart text-danger position-absolute"><a href="detail.html"><i
-                                          class="icofont-heart"></i></a></div>
-                                                <div class="member-plan position-absolute"><span class="badge badge-dark">Promoted</span>
-                                                </div>
-                                                <a href="/AllProduct">
-                                                    <img src="image/list/8.png" class="img-fluid item-img img-restaurant">
-                                                </a>
-                                            </div>
-                                            <div class="p-3 position-relative item-restaurant">
-                                                <div class="list-card-body">
-                                                    <h6 class="mb-1"><a href="/AllProduct" class="text-black">Polo Lounge
-                                       </a>
-                                                    </h6>
-                                                    <p class="text-gray mb-3">North Indian • Indian • Pure veg</p>
-                                                    <p class="text-gray mb-3 time"><span class="bg-light text-dark rounded-sm pl-2 pb-1 pt-1 pr-2"><i
-                                             class="icofont-wall-clock"></i> 15–25 min</span> </p>
-                                                </div>
-                                                <div class="list-card-badge">
-                                                    <span class="badge badge-danger">OFFER</span> <small>65% off | Use Coupon
-                                       OSAHAN50</small>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="item">
-                                        <div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
-                                            <div class="list-card-image">
-                                                <div class="star position-absolute"><span class="badge badge-success"><i class="icofont-star"></i> 3.1 (300+)</span></div>
-                                                <div class="favourite-heart text-danger position-absolute"><a href="detail.html"><i class="icofont-heart"></i></a></div>
-                                                <div class="member-plan position-absolute"><span class="badge badge-dark">Promoted</span>
-                                                </div>
-                                                <a href="/AllProduct">
-                                                    <img src="image/list/9.png" class="img-fluid item-img img-restaurant">
-                                                </a>
-                                            </div>
-                                            <div class="p-3 position-relative item-restaurant">
-                                                <div class="list-card-body">
-                                                    <h6 class="mb-1"><a href="/AllProduct" class="text-black">Jack Fry's </a>
-                                                    </h6>
-                                                    <p class="text-gray mb-3">North Indian • Indian • Pure veg</p>
-                                                    <p class="text-gray mb-3 time"><span class="bg-light text-dark rounded-sm pl-2 pb-1 pt-1 pr-2"><i class="icofont-wall-clock"></i> 15–25 min</span> </p>
-                                                </div>
-                                                <div class="list-card-badge">
-                                                    <span class="badge badge-danger">OFFER</span> <small>65% off | Use Coupon OSAHAN50</small>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+
+                                    <!-- <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                                    <a class="next" onclick="plusSlides(1)">&#10095;</a> -->
+
                                 </div>
                             </div>
                         </div>
@@ -625,10 +364,170 @@
     <script src="../../customJS/shopDetail.js"></script>
 
     <script>
+        // var counter = 1;
+        // setInterval(function() {
+        //     document.getElementById('radio' + counter).checked = true;
+        //     counter++;
+        //     if (counter > 2) {
+        //         counter = 1;
+        //     }
+        // }, 3500);
+
+        var counters = 1;
+        setInterval(function() {
+            document.getElementById('radioo' + counters).checked = true;
+            counters++;
+            if (counters > 2) {
+                counters = 1;
+            }
+        }, 3500);
+
+        // var counterss = 1;
+        // setInterval(function() {
+        //     document.getElementById('radiooo' + counterss).checked = true;
+        //     counterss++;
+        //     if (counterss > 2) {
+        //         counterss = 1;
+        //     }
+        // }, 3500);
+
         $(document).ready(function() {
             loaddata();
             loadCategory();
+            loadShipFast();
+            loadSaleList();
+            loadBuyMost();
+
         });
+
+        // var slideIndex = 1;
+        // showSlides(slideIndex);
+
+        // function plusSlides(n) {
+        //     showSlides(slideIndex += n);
+        // }
+
+        // function showSlides(n) {
+        //     var i;
+        //     var slides = document.getElementsByClassName("mySlides");
+        //     if (n > slides.length) {
+        //         slideIndex = 1
+        //     }
+        //     if (n < 1) {
+        //         slideIndex = slides.length
+        //     }
+        //     for (i = 0; i < slides.length; i++) {
+        //         slides[i].style.display = "flex";
+        //     }
+        //     slides[slideIndex - 1].style.display = "flex";
+        // }
+
+        // var slideIndexs = 1;
+        // showSlidess(slideIndexs);
+
+        // function plusSlidess(n) {
+        //     showSlidess(slideIndexs += n);
+        // }
+
+        // function showSlidess(n) {
+        //     var i;
+        //     var slides = document.getElementsByClassName("mySlidess");
+        //     if (n > slides.length) {
+        //         slideIndexs = 1
+        //     }
+        //     if (n < 1) {
+        //         slideIndexs = slides.length
+        //     }
+        //     for (i = 0; i < slides.length; i++) {
+        //         slides[i].style.display = "none";
+        //     }
+        //     slides[slideIndexs - 1].style.display = "flex";
+        // }
+
+        // var slideIndexss = 1;
+        // showSlidesss(slideIndexss);
+
+        // function plusSlidesss(n) {
+        //     showSlidesss(slideIndexss += n);
+        // }
+
+        // function showSlidesss(n) {
+        //     var i;
+        //     var slides = document.getElementsByClassName("mySlidesss");
+        //     if (n > slides.length) {
+        //         slideIndexss = 1
+        //     }
+        //     if (n < 1) {
+        //         slideIndexss = slides.length
+        //     }
+        //     for (i = 0; i < slides.length; i++) {
+        //         slides[i].style.display = "none";
+        //     }
+        //     slides[slideIndexss - 1].style.display = "flex";
+        // }
+
+        function loadBuyMost() {
+            $.ajax({
+                type: "GET",
+                dataType: "json",
+                url: "/api/product/list6MostBuy",
+                success: function(data) {
+                    var listdata = data.data;
+                    for (var i = 0; i < listdata.length; i++) {
+                        let image = (listdata[i].image ? listdata[i].image : 'image/list/1.png');
+                        if (i < 3) {
+                            document.getElementById('buyMost1').innerHTML += '<div class="item ml-1 mr-1" style="width: 80%;"> <div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm"> <div class="list-card-image"> <a href="/AllProduct"> <img src=' + image + ' class="img-fluid item-img img-restaurant" style="width: 100%;"> </a> </div> <div class="p-3 position-relative item-restaurant"> <div class="list-card-body"> <h6 class="mb-1"><a href="/AllProduct" class="text-black">' + listdata[i].name + '</a></h6> <p class="text-gray mb-3">' + listdata[i].description + '</p> <p class="text-gray mb-3 time"><span class="bg-light text-dark rounded-sm pl-2 pb-1 pt-1 pr-2"><i class="icofont-wall-clock"></i> ' + listdata[i].time_from + '–' + listdata[i].time_from + ' min</span></p> </div>  </div> </div> </div>';
+                        } else {
+                            document.getElementById('buyMost2').innerHTML += '<div class="item ml-1 mr-1" style="width: 80%;"> <div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm"> <div class="list-card-image"> <a href="/AllProduct"> <img src=' + image + ' class="img-fluid item-img img-restaurant" style="width: 100%;"> </a> </div> <div class="p-3 position-relative item-restaurant"> <div class="list-card-body"> <h6 class="mb-1"><a href="/AllProduct" class="text-black">' + listdata[i].name + '</a></h6> <p class="text-gray mb-3">' + listdata[i].description + '</p> <p class="text-gray mb-3 time"><span class="bg-light text-dark rounded-sm pl-2 pb-1 pt-1 pr-2"><i class="icofont-wall-clock"></i> ' + listdata[i].time_from + '–' + listdata[i].time_from + ' min</span></p> </div>  </div> </div> </div>';
+                        }
+
+                    }
+
+                }
+            });
+        }
+
+        function loadSaleList() {
+            $.ajax({
+                type: "GET",
+                dataType: "json",
+                url: "/api/product/listFastDeli",
+                success: function(data) {
+                    var listdata = data.data;
+                    for (var i = 0; i < listdata.length; i++) {
+                        let image = (listdata[i].image ? listdata[i].image : 'image/list/1.png');
+                        if (i < 3) {
+                            document.getElementById('listSale1').innerHTML += '<div class="item ml-1 mr-1" style="width: 80%;"> <div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm"> <div class="list-card-image"> <a href="/AllProduct"> <img src=' + image + ' class="img-fluid item-img img-restaurant" style="width: 100%;"> </a> </div> <div class="p-3 position-relative item-restaurant"> <div class="list-card-body"> <h6 class="mb-1"><a href="/AllProduct" class="text-black">' + listdata[i].name + '</a></h6> <p class="text-gray mb-3">' + listdata[i].description + '</p> <p class="text-gray mb-3 time"><span class="bg-light text-dark rounded-sm pl-2 pb-1 pt-1 pr-2"><i class="icofont-wall-clock"></i> ' + listdata[i].time_from + '–' + listdata[i].time_from + ' min</span></p> </div>  </div> </div> </div>';
+                        } else {
+                            document.getElementById('listSale2').innerHTML += '<div class="item ml-1 mr-1" style="width: 80%;"> <div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm"> <div class="list-card-image"> <a href="/AllProduct"> <img src=' + image + ' class="img-fluid item-img img-restaurant" style="width: 100%;"> </a> </div> <div class="p-3 position-relative item-restaurant"> <div class="list-card-body"> <h6 class="mb-1"><a href="/AllProduct" class="text-black">' + listdata[i].name + '</a></h6> <p class="text-gray mb-3">' + listdata[i].description + '</p> <p class="text-gray mb-3 time"><span class="bg-light text-dark rounded-sm pl-2 pb-1 pt-1 pr-2"><i class="icofont-wall-clock"></i> ' + listdata[i].time_from + '–' + listdata[i].time_from + ' min</span></p> </div>  </div> </div> </div>';
+                        }
+
+                    }
+
+                }
+            });
+        }
+
+        function loadShipFast() {
+            $.ajax({
+                type: "GET",
+                dataType: "json",
+                url: "/api/product/listDefault",
+                success: function(data) {
+                    var listdata = data.data;
+                    for (var i = 0; i < listdata.length; i++) {
+                        let image = (listdata[i].image ? listdata[i].image : 'image/list/1.png');
+                        if (i < 3) {
+                            document.getElementById('shipFast1').innerHTML += '<div class="item ml-1 mr-1" style="width: 80%;"> <div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm"> <div class="list-card-image"> <a href="/AllProduct"> <img src=' + image + ' class="img-fluid item-img img-restaurant" style="width: 100%;"> </a> </div> <div class="p-3 position-relative item-restaurant"> <div class="list-card-body"> <h6 class="mb-1"><a href="/AllProduct" class="text-black">' + listdata[i].name + '</a></h6> <p class="text-gray mb-3">' + listdata[i].description + '</p> <p class="text-gray mb-3 time"><span class="bg-light text-dark rounded-sm pl-2 pb-1 pt-1 pr-2"><i class="icofont-wall-clock"></i> ' + listdata[i].time_from + '–' + listdata[i].time_from + ' min</span></p> </div>  </div> </div> </div>';
+                        } else {
+                            document.getElementById('shipFast2').innerHTML += '<div class="item ml-1 mr-1" style="width: 80%;"> <div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm"> <div class="list-card-image"> <a href="/AllProduct"> <img src=' + image + ' class="img-fluid item-img img-restaurant" style="width: 100%;"> </a> </div> <div class="p-3 position-relative item-restaurant"> <div class="list-card-body"> <h6 class="mb-1"><a href="/AllProduct" class="text-black">' + listdata[i].name + '</a></h6> <p class="text-gray mb-3">' + listdata[i].description + '</p> <p class="text-gray mb-3 time"><span class="bg-light text-dark rounded-sm pl-2 pb-1 pt-1 pr-2"><i class="icofont-wall-clock"></i> ' + listdata[i].time_from + '–' + listdata[i].time_from + ' min</span></p> </div>  </div> </div> </div>';
+                        }
+
+                    }
+
+                }
+            });
+        }
 
         function searchPro() {
             var food = document.getElementById('findfood').value;
