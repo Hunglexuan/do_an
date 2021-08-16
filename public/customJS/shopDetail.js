@@ -204,7 +204,7 @@ function addToCartFunc() {
     var cartTemp = shoppingCart.getCart();
     var shop_id = cartTemp.shopID;
     
-    if (shop_id && shop_id == idURL) {
+    if (shop_id && shop_id == idSellerURL) {
       
         var id = $(this).data('id');
         var name = $(this).data('name');
@@ -218,7 +218,7 @@ function addToCartFunc() {
 
         console.log("object");
         var cart_tmp = shoppingCart.getCart();
-        cart_tmp.shopID = idURL;
+        cart_tmp.shopID = idSellerURL;
         cart_tmp.listCart = [];
         sessionStorage.setItem('shoppingCart', JSON.stringify(cart_tmp));
 
