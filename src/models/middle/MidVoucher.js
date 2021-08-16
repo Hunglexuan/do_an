@@ -13,6 +13,10 @@ import { name } from 'ejs';
 class MidVoucher {
 
     async getVoucherById(data) {
+        if(!data.code){
+            console.log('MidVoucher-getVoucherById: ErrorCode-17');
+            throw new Error(ERROR_MESSAGE.VOUCHER.VOUCHER_CODE);
+        }
         return Voucher.findOne({
             where: {
                 code: data.code,
@@ -40,6 +44,9 @@ class MidVoucher {
                 where: condition
             })
         ])
+        if(!listVoucher){
+            console.log('MidVoucher-createVoucher: ErrorCode-44');
+        }console.log('MidVoucher-createVoucher: SUCCESS');
         return {
             listVoucher,
             total: total || 0
@@ -48,9 +55,11 @@ class MidVoucher {
     }
 async createVoucher(data){
     if (!data.code) {
+        console.log('MidVoucher-createVoucher: ErrorCode-51');
         throw new Error(ERROR_MESSAGE.VOUCHER.VOUCHER_CODE);
     }
     if (!data.discount_number) {
+        console.log('MidVoucher-createVoucher: ErrorDiscount-55');
         throw new Error(ERROR_MESSAGE.VOUCHER.VOUCHER_DISCOUNT_NUMBER);
     }
     let dataCreate = {
@@ -58,9 +67,19 @@ async createVoucher(data){
         discount_number: data.discount_number,
         del: 0
     }
-    return await Voucher.create(dataCreate);
+    let object = await Voucher.create(dataCreate);
+    if(!object){
+        console.log('MidVoucher-createVoucher:ERROR-65');
+    }
+    console.log('MidVoucher-createVoucher: SUCCESS ');
+    return object
 }
 async deleteVoucher(data) {
+    if (!data.id) {
+        console.log('MidVoucher-deleteVoucher: ERROR-72');
+        throw new Error('Voucher is not exist');
+
+    }
     let objDelete = await Voucher.findOne({
         where: {
             id: data.id,
@@ -75,7 +94,9 @@ async deleteVoucher(data) {
 }
 async updateVoucher(data) {
     if (!data.id) {
-        throw new Error(ERROR_MESSAGE.ROLE.ROLE_EXIST);
+        console.log('MidVoucher-updateVoucher: ERROR');
+        throw new Error('Voucher is not exist');
+
     }
     let objUpdate = await Voucher.findOne({
         where: {
@@ -88,7 +109,14 @@ async updateVoucher(data) {
         code: data.code,
         discount_number: data.discount_number,
     }
-    return await objUpdate.update(dataUpdate)
+    let object = await objUpdate.update(dataUpdate)
+    if(object )
+    {
+        console.log('MidVoucher-updateVoucher: SUCCESS ');
+    }else{
+        console.log('MidVoucher-updateVoucher: ERROR');
+    }
+    return object.message
 
 }
 
