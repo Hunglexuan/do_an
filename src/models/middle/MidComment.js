@@ -115,7 +115,7 @@ class MidComment {
         if(!object){
             console.log('MidComment-updateComment: ERROR-116 ');
         }console.log('MidComment-updateComment: SUCCESS ');
-        return 
+        return object
 
     }
 
