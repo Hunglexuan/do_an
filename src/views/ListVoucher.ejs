@@ -19,6 +19,7 @@
    <!-- Custom Css -->
    <link href="/skin/css/listUser.css" rel="stylesheet" />
    <link href="/skin/bootstrap/dataTables.bootstrap4.min.css" rel="stylesheet"/>
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/AlertifyJS/1.13.1/css/alertify.min.css">
 
 </head>
 
@@ -197,8 +198,8 @@
       <div id="layoutSidenav_content">
          <main>
             <div class="container-fluid">
-               <h1 class="mt-4">Voucher Managerment</h1>
-
+               <h1 class="mt-4">Quản Lí Voucher</h1>
+               
 
             </div>
             
@@ -212,12 +213,10 @@
                      <thead>
                         <tr class="text-uppercase">
                            <th>ID</th>
-                           <th>Name</th>
-                           <th>ShopName</th>
-                           <th>Address</th>
-                           <th>Phone</th>
-                           <th>Email</th>
-                           <th>DOB</th>
+                           <th>CODE</th>
+                           <th>Discount-Number</th>
+                           <th>createdAt</th>
+                           <th>updatedAt</th>
                            <th>Action</th>
                         </tr>
                      </thead>
@@ -228,9 +227,11 @@
                      </tbody>
                   </table>
                   
-
+                  <a href="" class="btn btn-primary" data-toggle="modal" data-target="#edit_booking"><i
+                     class="fa fa-fw fa-plus-circle"></i>Thêm sản phẩm</a>
                </div>
             </div>
+            
       </div>
    </div>
    </main>
@@ -247,6 +248,111 @@
          </div>
       </div>
    </footer>
+
+   <!-- createVOucher -->
+   <div class="modal fade" id="edit_booking" tabindex="-1" role="dialog" aria-labelledby="edit_bookingLabel"
+   aria-hidden="true">
+   <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+         <div class="modal-header">
+            <h5 class="modal-title" id="edit_bookingLabel">Thêm Mới Voucher</h5>
+            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+               <span aria-hidden="true">×</span>
+            </button>
+         </div>
+         <div class="modal-body">
+            <div class="row">
+               <div class="col-xl-12">
+                  <div class="card mb-4">
+                     <div class="card-header">
+                        Thông tin cơ bản
+                     </div>
+                     <div class="card-body">
+                        <div class="row">
+                           <div class="col-md-12">
+                              <div class="form-group">
+                                 <label>Code Voucher</label>
+                                 <input type="text" class="form-control" placeholder="Code Voucher" id="voucher-code">
+                              </div>
+                           </div>
+                        </div>
+                       
+                        <!-- /row-->
+                        <div class="row">
+                           <div class="col-md-12">
+                              <div class="form-group">
+                                 <label>Giá Trị</label>
+                                 <input type="text" class="form-control" placeholder="Giá Trị"
+                                    id="voucher-price">
+                              </div>
+                           </div>
+                        </div>
+                        <!-- /row-->
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <!-- /Row -->
+         </div>
+         <div class="modal-footer">
+            <input type="button" class="btn btn-primary" id="add-voucher-btn" value="Thêm"></input>
+         </div>
+      </div>
+   </div>
+   </div>
+
+   <!-- updateVoucer -->
+   <div class="modal fade" id="editvoucher" tabindex="-1" role="dialog" aria-labelledby="edit_bookingLabel"
+   aria-hidden="true">
+   <div class="modal-dialog modal-dialog-centere">
+      <div class="modal-content">
+         <div class="modal-header">
+            <h5 class="modal-title" id="edit_bookingLabel">Sửa Thông tin Voucher</h5>
+            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+               <span aria-hidden="true">×</span>
+            </button>
+         </div>
+         <div class="modal-body">
+            <div class="row">
+               <div class="col-md-12 col-sm-6">
+                  <div class="card mb-4">
+                     <div class="card-header">
+                        Thông Tin Cơ Bản
+                     </div>
+                     <div class="card-body">
+                        <div class="row">
+                           <div class="col-md-12">
+                              <div class="form-group">
+                                 <label>Code Voucher</label>
+                                 <input type="text" class="form-control" placeholder="Code Voucher mới"
+                                    id="afterCodeVoucher">
+                              </div>
+                           </div>
+                        </div>
+                        <!-- /row-->
+                        <div class="row">
+                           <div class="col-md-12">
+                              <div class="form-group">
+                                 <label>Giá trị Voucher</label>
+                                 <input type="text" class="form-control" placeholder="Giá Trị Voucher mới"
+                                    id="afterPriceVoucher">
+                              </div>
+                           </div>
+                        </div>
+                           
+                        
+                        <input type="button" class="btn btn-primary" id="edit-voucher-btn1" value="Lưu"
+                           onclick="editVoucher()" style="float: right;"></input>
+                     </div>
+                  </div>
+               </div>
+               
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+
  
    <!-- Jquery -->
    <script src="/js/jquery.min.js"></script>
@@ -264,6 +370,7 @@
    <script src="/js/chart-pie-demo.js"></script> -->
    <script src="/js/jquery.dataTables.min.js"></script>
    <script src="/js/dataTables.bootstrap.min.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/AlertifyJS/1.13.1/alertify.min.js" ></script>
    <!-- <script src="/js/datatables-demo.js"></script> -->
 
 </body>
@@ -296,6 +403,16 @@ function setCookie(cname, cvalue, exdays) {
 
  var token = getCookie("token");
 
+ function checkBlankVoucher() {
+        if ($("#voucher-code").val() == "" && $("#voucher-price").val() != "") {
+            alert("Tên của voucher không được để trống ")
+        } else if ($("#voucher-price").val() == "" && $("#voucher-code").val() != "" ) {
+            alert("Giá trị đang trống đề nghị điền vào ")
+        }else if($("#voucher-code").val() == "" && $("#voucher-price").val() != ""){
+           alert("Đề nghị điền vào mục đang còn trống")
+        }
+    }
+
 //function chuyen trang
 function listUserPage(){
          window.location.href='/ListUsers'
@@ -320,7 +437,49 @@ function logOutClick(){
    window.location = "/LoginAdmin"
 }
 
- //btn-logout function
+//add-voucher
+$("#add-voucher-btn").click(function() {
+
+checkBlankVoucher();
+$.ajax({
+    url: "http://localhost:3999/api/voucher/create",
+    type: "POST",
+    data: {
+        code: $("#voucher-code").val(),
+        discount_number: $("#voucher-price").val()
+    }
+}).then(function(data) {
+    console.log(data);
+   
+    
+    if (data.message == "SUCCESS") {
+         alertify.success('Success message');
+         
+    } else {
+      alertify.error('Error message');
+    }
+    window.location.reload()
+})
+})
+
+function editVoucher(){
+   var id = localStorage.getItem('updatedID').replaceAll('"', '');
+   $.ajax({
+      url:"/api/voucher/update?id="+id,
+      type:"POST",
+      data:{
+         code : $("afterCodeVoucher").val(),
+         discount_number: $("afterPriceVoucher").val()
+      }
+   }).then(function(data){
+      if (data.message == "SUCCESS") {
+         alertify.success('Success message');
+         
+    } else {
+      alertify.error('Error message');
+    }
+   })
+}
 
 //datatable function
  $(document).ready(function() {
@@ -328,11 +487,11 @@ function logOutClick(){
    $('#dataTable').DataTable( {
       'ajax': function (data, callback, settings) {
       $.ajax({
-        url: "http://localhost:3999/api/user/searchUser?token="+token,
+        url: "/api/voucher/search",
       })
       .then ( function( response, textStatus, jqXHR ) {
          
-         let data = response.data.listUsers
+         let data = response.data.listVoucher
 		   data.forEach((val, idx) => {
              val.no = idx + 1
          });
@@ -342,12 +501,10 @@ function logOutClick(){
     
     'columns':[
        {data : 'no'},
-       {data : 'name'},
-       {data : 'role_id'},
-       {data : 'address'},
-       {data : 'phone'},
-       {data : 'email'},
-       {data : 'dob'},
+       {data : 'code'},
+       {data : 'discount_number'},
+       {data : 'createdAt'},
+       {data : 'updatedAt'},
        {data : ""}
 
     ],
@@ -355,9 +512,8 @@ function logOutClick(){
 				{
 					targets: -1,
 					render: function (data, type, row, meta) {
-						return '<input type="button" class="show-user-id btn-primary mr-3" id=user-id-"' + meta.row + '" value="Show User Info"/>' +
-							'<input type="button" class="show-post-id btn-success mr-3 " id=post-"' + meta.row + '" value="Up Row"/>' +
-							'<input type="button"  class="show-post-title btn-danger mr-3" id=post-"' + meta.row + '" value="Delete"/>';
+						return '<input type="button" class="update-voucher-btn btn-success mr-3" data-toggle="modal" data-target="#editvoucher"  " idVoucherEdit="' + row.code  + '" value="Sửa Voucher"/>' +
+							'<input type="button"  class="show-post-title btn-danger mr-3" id=post-"' + meta.row + '" value="Xóa Voucher"/>';
 					}
 
 				}
@@ -367,29 +523,42 @@ function logOutClick(){
 
 
 
-   $('#dataTable tbody').on('click', '.show-user-id', function () {
-			let id = $(this).attr('id').match(/\d+/)[0];
-			console.log('id: ', id);
-			let data = $('#dataTable').DataTable().row(id).data();
-			alert('User ID: ' + data.userId);
-		});
 
 
-		$('#dataTable tbody').on('click', '.show-post-id', function () {
-			let id = $(this).attr('id').match(/\d+/)[0];
-			let data = $('#dataTable').DataTable().row(id).data();
-         let id_User = data.id;
-         console.log("id = "+id_User);
-			alert('Post ID: ' + data.id);
-         console.log(data);
-         $.ajax({
-            url:'/api/user/downRole?token='+token+'&id='+id_User,
-            method:'GET',
+		$('#dataTable tbody').on('click', '.update-voucher-btn', function () {
+			
+
+         let code = $(this).attr('idVoucherEdit');
+         
+			$.ajax({
+            url:"/api/voucher/getCode",
+            type:"GET",
+            data:{
+               code:code
+            }
+         }).then(function (data) {
+            localStorage.setItem('updatedID', JSON.stringify(data.data.id));
+            document.getElementById("afterCodeVoucher").value = data.data.code;
+            // $("#afterCodeVoucher").html(data.data.code)
+            console.log(data.data.discount_number);
+            document.getElementById("afterPriceVoucher").value = data.data.discount_number;
             
-         }).then(function(){
-            
-            window.location.reload();
          })
+         
+         // $.ajax({
+         //    url:'/api/voucher/update?id='+id,
+         //    method:'POST',
+         //    data:{
+         //       code:$("#afterCodeVoucher").val(),
+         //       discount_number:$("#afterPriceVoucher").val()
+         //    }
+            
+         // }).then(function(){
+         //    if(data.message == "SUCCESS"){
+         //       alert("Thanh cong")
+         //    }
+            
+         // })
 		});
 
 		$('#dataTable tbody').on('click', '.show-post-title', function () {
