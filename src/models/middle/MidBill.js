@@ -100,7 +100,7 @@ class MidBill {
             shopID: '',
             userID: data.userID,
             billID: '',
-            status: null,
+            status: 0,
             address: '',
             voucherCode: '',
             listCart: [],
@@ -109,6 +109,7 @@ class MidBill {
         let billList = await UserBill.findAll({
             where: {
                 user_id: data.userID,
+                del: 0,
             }
         })
         let billTemp
@@ -116,7 +117,8 @@ class MidBill {
             billTemp = await Bill.findOne({
                 where: {
                     id: billList[i].bill_id,
-                    status: null,
+                    status: 0,
+                    del: 0,
                 }
             })
 
@@ -125,6 +127,7 @@ class MidBill {
             let shopIDTemp = await UserBill.findOne({
                 where: {
                     bill_id: billTemp.dataValues.id,
+                    del: 0,
                 }
             })
 
@@ -132,12 +135,14 @@ class MidBill {
             let listTemp = await BillProduct.findAll({
                 where: {
                     bill_id: billTemp.dataValues.id,
+                    del: 0,
                 }
             })
             for (let j = 0; j < listTemp.length; j++) {
                 let objProduct = await Product.findOne({
                     where: {
-                        id: listTemp[j].product_id
+                        id: listTemp[j].product_id,
+                        del: 0,
                     }
                 })
                 cart.listCart.push({
@@ -170,9 +175,10 @@ class MidBill {
     }
     async createBill(data) {
         let totalPrice = 0;
-        let voucherID =''
-
-        if (data.cart.billID) {
+        let voucherID = null
+        console.log('vaoooo',data.cart);
+        if (  data.cart.billID) {
+            console.log('vaoooo1');
             let billTemp = await Bill.findOne({
                 where: {
                     id: data.cart.billID,
@@ -187,15 +193,20 @@ class MidBill {
                     totalPrice += data.cart.listCart[i].price * data.cart.listCart[i].count
                 }
               
-                if (data.cart.voucherCode != '') {
+                if (data.cart.voucherCode) {
+
                     let voucher = await Voucher.findOne({
                         where: {
                             code: data.cart.voucherCode,
                             del: 0
                         }
                     }) 
-                    totalPrice -= voucher.dataValues.discount_number
-                    voucherID = voucher.dataValues.id
+                    if(voucher){
+                        totalPrice -= voucher.dataValues.discount_number
+                        voucherID = voucher.dataValues.id
+    
+                    }
+    
                 }
                 
                 let statusTemp = data.cart.status;
@@ -225,20 +236,21 @@ class MidBill {
                     await billProductList[k].update(dataDelete);
                 }
 
-                for (let i = 0; i < data.cart.listCart.length; i++) {
-                    totalPrice += data.cart.listCart[i].price * data.cart.listCart[i].count
+                for (let l = 0; l < data.cart.listCart.length; l++) {
+                    totalPrice += data.cart.listCart[l].price * data.cart.listCart[l].count
                     let billProduct = {
-                        quantity: data.cart.listCart[i].count,
-                        unit_price: data.cart.listCart[i].price,
-                        total_price: data.cart.listCart[i].count * data.cart.listCart[i].price,
-                        product_id: data.cart.listCart[i].id,
-                        bill_id: bill.dataValues.id,
+                        quantity: data.cart.listCart[l].count,
+                        unit_price: data.cart.listCart[l].price,
+                        total_price: data.cart.listCart[l].count * data.cart.listCart[l].price,
+                        product_id: data.cart.listCart[l].id,
+                        bill_id: data.cart.billID,
+                        del: 0,
                     }
                     await BillProduct.create(billProduct)
                 }
                 
 
-                let userBillList = await BillProduct.findOne({
+                let userBillList = await UserBill.findOne({
                     where: {
                         bill_id: billTemp.id,
                         del: 0
@@ -246,20 +258,22 @@ class MidBill {
                 })
                 let userBill = {
                     bill_id: billTemp.id,
-                    user_id: data.cart.userID,
                     shop_id: data.cart.shopID,
                     del: 0,
                 }
                 await userBillList.update(userBill);
+                return data.cart.billID //them moi
             }
         }
         else {
+        console.log('vaoooo2');
+
             for (let i = 0; i < data.cart.listCart.length; i++) {
                 totalPrice += data.cart.listCart[i].price * data.cart.listCart[i].count
             }
-            console.log('1111111',data.cart.voucherCode);
 
-            if (data.cart.voucherCode != null) {
+            if (data.cart.voucherCode) {
+
                 let voucher = await Voucher.findOne({
                     where: {
                         code: data.cart.voucherCode,
@@ -273,7 +287,6 @@ class MidBill {
                 }
 
             }
-            console.log('2222222222',data.cart.voucherCode);
           
             let status = data.cart.status;
             
@@ -305,6 +318,7 @@ class MidBill {
                 del: 0,
             }
             await UserBill.create(userBill);
+            return bill.dataValues.id
         }
     }
 
