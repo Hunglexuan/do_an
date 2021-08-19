@@ -14,10 +14,10 @@ class BillController {
         let data = req.body;
         return MidBill.updateBill(data);
     }
-    // async searchBill(req, res) {
-    //     let dataQuery = req.query;
-    //     return MidBill.searchBillUser(dataQuery);
-    // }
+    async listOrderForSeller(req, res) {
+        let dataQuery = req.query;
+        return MidBill.listOrderForSeller(dataQuery);
+    }
     async listCart(req, res) {
         let dataQuery = req.query;
         return MidBill.listCart(dataQuery);
