@@ -57,7 +57,7 @@ class MidUser {
         });
     }
     async getUserById(userid) {
-        if(!data.id){
+        if(!userid){
             console.log('MidUser-getUserById: ERROR-61');
             throw new Error(ERROR_MESSAGE.Customer.ERR_REQUIRE_ID);
         }
