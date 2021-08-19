@@ -176,22 +176,13 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>Tên</label>
-                                                <input type="text" class="form-control" id="name" placeholder="Your name">
+                                                <input type="text" class="form-control" id="name" placeholder="Tên của bạn">
                                                 <span class="form-message text-danger" id="messageName"></span>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>Ngày-tháng-năm sinh</label>
-                                                <!-- <div class="dropdown">
-                                                                        <button class="btn btn-outline-secondary dropdown-toggle " type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                              Choose
-                                            </button>
-                                                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                                                            <a class="dropdown-item" href="#">Male</a>
-                                                                            <a class="dropdown-item" href="#">Fermale</a>
-                                                                        </div>
-                                                                    </div> -->
                                                 <input type="date" id="date" class="form-control">
                                                 <span class="form-message text-danger" id="messageDate"></span>
                                             </div>
@@ -202,14 +193,14 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>Số điện thoại</label>
-                                                <input type="text" class="form-control" id="phone" placeholder="Your telephone number">
+                                                <input type="text" class="form-control" id="phone" placeholder="Số điện thoại">
                                                 <span class="form-message text-danger" id="messagePhone"></span>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>Email</label>
-                                                <input type="email" class="form-control" id="email" placeholder="Your email" disabled>
+                                                <input type="email" class="form-control" id="email" placeholder="Email" disabled>
                                                 <span class="form-message text-danger" id="messageEmail"></span>
                                             </div>
                                         </div>
@@ -219,7 +210,7 @@
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label> Địa chỉ </label>
-                                                <textarea style="height:70px;" class="form-control" id="address" placeholder="Address "></textarea>
+                                                <textarea style="height:70px;" class="form-control" id="address" placeholder="Địa chỉ"></textarea>
                                                 <span class="form-message text-danger" id="messageAddress"></span>
                                             </div>
                                         </div>
@@ -530,6 +521,7 @@
     <script src="js/dropzone.min.js"></script>
     <!-- Ajax -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
     <script>
         $(document).ready(function() {
 
@@ -578,16 +570,35 @@
                 contentType: false
             }).then(function(data) {
                 if (data.message == 'SUCCESS') {
-                    alert("Save Change");
+                    Swal.fire({
+                        type: 'success',
+                        title: 'Đã thay đổi ảnh ⚙️',
+                        // text: 'Your offer is safe 🙂',
+                        showConfirmButton: false,
+                        timer: 2000
+                    })
                 } else {
-                    alert("Save fail");
+                    Swal.fire({
+                        type: 'error',
+                        title: 'thay ảnh lỗi ⚙️',
+                        // text: 'Your offer is safe 🙂',
+                        showConfirmButton: false,
+                        timer: 2000
+                    })
                 }
             })
         });
 
-        function CheckUpdate() {
+
+
+
+        var regPhone = /(84|0[3|5|7|8|9])+([0-9]{8})\b/i;
+        // var regPass = /^(?=.*\d)(?=.*[a-z])(?=.*[a-zA-Z]).{8,}$/i;
+
+        function CheckUpdateProfile() {
+
             var userName = document.getElementById('name').value.trim();
-            var password = document.getElementById('password').value.trim();
+            // var password = document.getElementById('password').value.trim();
             var email = document.getElementById('email').value.trim();
             var address = document.getElementById('address').value.trim();
             var date = document.getElementById('date').value.trim();
@@ -598,134 +609,96 @@
             // var old_phone = document.getElementById('old_phoneNumber').value.trim();
             // var new_phone = document.getElementById('new_phoneNumber').value.trim();
 
-
-            var regEmail = /^\w+@[a-zA-Z]{1,}/i;
-            var regPhone = /^\d{11}/i;
-            var regPass = /^(?=.*\d)(?=.*[a-z])(?=.*[a-zA-Z]).{8,}$/i;
-
-
             if (userName == "") {
                 document.getElementById('name').setAttribute('class', 'form-control border-danger');
-                document.getElementById('messageName').innerHTML = 'User Name is empty';
+                document.getElementById('messageName').innerHTML = 'Tên không được để trống';
             } else {
                 document.getElementById('name').setAttribute('class', 'form-control');
                 document.getElementById('messageName').innerHTML = '';
             }
 
-            // if (password == "") {
-            //     document.getElementById('password').setAttribute('class', 'form-control border-danger');
-            //     document.getElementById('messagePass').innerHTML = 'Password is empty';
-            // } else {
-            //     document.getElementById('password').setAttribute('class', 'form-control');
-            //     document.getElementById('messagePass').innerHTML = '';
-            // }
-
-            // if (regEmail.test(email) == false) {
-            //     document.getElementById('email').setAttribute('class', 'form-control border-danger');
-            //     document.getElementById('messageEmail').innerHTML = 'invalid Email';
-            // } else {
-            //     document.getElementById('email').setAttribute('class', 'form-control');
-            //     document.getElementById('messageEmail').innerHTML = '';
-            // }
-
-            // if (address == "") {
-            //     document.getElementById('address').setAttribute('class', 'form-control border-danger');
-            //     document.getElementById('messageAddress').innerHTML = 'Address is empty';
-            // } else {
-            //     document.getElementById('address').setAttribute('class', 'form-control');
-            //     document.getElementById('messageAddress').innerHTML = '';
-            // }
-
             if (date == "") {
                 document.getElementById('date').setAttribute('class', 'form-control border-danger');
-                document.getElementById('messageDate').innerHTML = 'You have not selected date';
+                document.getElementById('messageDate').innerHTML = 'Bạn chưa chọn ngày-tháng-năm sinh';
             } else {
                 document.getElementById('date').setAttribute('class', 'form-control');
                 document.getElementById('messageDate').innerHTML = '';
             }
 
-
-            // if (old_phone == "") {
-            //     document.getElementById('old_phoneNumber').setAttribute('class', 'form-control');
-            //     document.getElementById('oldPhoneNumber').innerHTML = '';
-            // } else if (old_phone != phone) {
-            //     document.getElementById('old_phoneNumber').setAttribute('class', 'form-control border-danger');
-            //     document.getElementById('oldPhoneNumber').innerHTML = 'This password must match the current password';
-            // } else {
-            //     document.getElementById('old_phoneNumber').setAttribute('class', 'form-control');
-            //     document.getElementById('oldPhoneNumber').innerHTML = '';
-            // }
-
-
-            if (phone == "") {
+            if (regPhone.test(phone) == false) {
                 document.getElementById('phone').setAttribute('class', 'form-control border-danger');
-                document.getElementById('messagePhone').innerHTML = 'Phone empty';
-            } else if (regPhone.test(phone) == false) {
-                document.getElementById('phone').setAttribute('class', 'form-control border-danger');
-                document.getElementById('messagePhone').innerHTML = 'invalid Phone';
+                document.getElementById('messagePhone').innerHTML = 'Số điện thoại phải 10 chữ số và đầu số phải 0 hoặc 84';
             } else {
                 document.getElementById('phone').setAttribute('class', 'form-control');
                 document.getElementById('messagePhone').innerHTML = '';
             }
 
-            if (Old_password != password) {
-                document.getElementById('Old_password').setAttribute('class', 'form-control border-danger');
-                document.getElementById('oldpassword').innerHTML = 'This password must match the current password';
+            if (address == "") {
+                document.getElementById('address').setAttribute('class', 'form-control border-danger');
+                document.getElementById('messageAddress').innerHTML = 'Địa chỉ không được để trống';
             } else {
-                document.getElementById('Old_password').setAttribute('class', 'form-control');
-                document.getElementById('oldpassword').innerHTML = '';
+                document.getElementById('address').setAttribute('class', 'form-control');
+                document.getElementById('messageAddress').innerHTML = '';
             }
 
-            if (regPass.test(New_password) == false) {
-                document.getElementById('New_password').setAttribute('class', 'form-control border-danger');
-                document.getElementById('newpassword').innerHTML = 'Password must contain at least 8 characters, at least one number, and both lower letters';
-            } else if (New_password == Old_password) {
-                document.getElementById('New_password').setAttribute('class', 'form-control border-danger');
-                document.getElementById('newpassword').innerHTML = 'The new password must be different from the old password';
-            } else {
-                document.getElementById('New_password').setAttribute('class', 'form-control');
-                document.getElementById('newpassword').innerHTML = '';
-            }
+            // if (Old_password != password) {
+            //     document.getElementById('Old_password').setAttribute('class', 'form-control border-danger');
+            //     document.getElementById('oldpassword').innerHTML = 'This password must match the current password';
+            // } else {
+            //     document.getElementById('Old_password').setAttribute('class', 'form-control');
+            //     document.getElementById('oldpassword').innerHTML = '';
+            // }
 
-            if (Confirm_new_password != New_password) {
-                document.getElementById('Confirm_new_password').setAttribute('class', 'form-control border-danger');
-                document.getElementById('confirmpassword').innerHTML = 'Confirm new password must match new password';
-            } else {
-                document.getElementById('Confirm_new_password').setAttribute('class', 'form-control');
-                document.getElementById('confirmpassword').innerHTML = '';
-            }
+            // if (regPass.test(New_password) == false) {
+            //     document.getElementById('New_password').setAttribute('class', 'form-control border-danger');
+            //     document.getElementById('newpassword').innerHTML = 'Password must contain at least 8 characters, at least one number, and both lower letters';
+            // } else if (New_password == Old_password) {
+            //     document.getElementById('New_password').setAttribute('class', 'form-control border-danger');
+            //     document.getElementById('newpassword').innerHTML = 'The new password must be different from the old password';
+            // } else {
+            //     document.getElementById('New_password').setAttribute('class', 'form-control');
+            //     document.getElementById('newpassword').innerHTML = '';
+            // }
+
+            // if (Confirm_new_password != New_password) {
+            //     document.getElementById('Confirm_new_password').setAttribute('class', 'form-control border-danger');
+            //     document.getElementById('confirmpassword').innerHTML = 'Confirm new password must match new password';
+            // } else {
+            //     document.getElementById('Confirm_new_password').setAttribute('class', 'form-control');
+            //     document.getElementById('confirmpassword').innerHTML = '';
+            // }
         }
 
 
 
 
-        $("#name").click(function() {
-            CheckUpdate();
-        });
+        // $("#name").click(function() {
+        //     CheckUpdate();
+        // });
 
-        $("#password").click(function() {
-            CheckUpdate();
-        });
+        // $("#password").click(function() {
+        //     CheckUpdate();
+        // });
 
-        $("#email").click(function() {
-            CheckUpdate();
-        });
+        // $("#email").click(function() {
+        //     CheckUpdate();
+        // });
 
-        $("#address").click(function() {
-            CheckUpdate();
-        });
+        // $("#address").click(function() {
+        //     CheckUpdate();
+        // });
 
-        $("#phone").click(function() {
-            CheckUpdate();
-        });
+        // $("#phone").click(function() {
+        //     CheckUpdate();
+        // });
 
-        $("#date").click(function() {
-            CheckUpdate();
-        });
+        // $("#date").click(function() {
+        //     CheckUpdate();
+        // });
 
-        $('#change').click(function() {
-            CheckUpdate();
-        })
+        // $('#change').click(function() {
+        //     CheckUpdate();
+        // })
 
         // $("#Old_password").click(function() {
         //     CheckUpdate();
@@ -793,6 +766,36 @@
             loadDataProfile();
         });
 
+        $("#SaveUpdate").click(function() {
+
+            var userId = localStorage.getItem('userId').replaceAll('"', '');
+
+            CheckUpdateProfile();
+            $.ajax({
+                url: "/api/user/updateUser",
+                type: "POST",
+                data: {
+                    id: userId,
+                    name: $('#name').val().trim(),
+                    email: $('#email').val().trim(),
+                    address: $('#address').val().trim(),
+                    phone: $('#phone').val().trim(),
+                    dob: $('#date').val().trim()
+                }
+            }).then(function(data) {
+                if (data.message == "SUCCESS") {
+                    Swal.fire({
+                        type: 'success',
+                        title: 'Lưu thay đổi ⚙️',
+                        // text: 'Your offer is safe 🙂',
+                        showConfirmButton: false,
+                        timer: 2000
+                    })
+                    loadDataProfile();
+                    loadName();
+                }
+            })
+        })
 
         function loadDataProfile() {
 
@@ -807,7 +810,6 @@
                 url: "/api/user/getbyId",
                 success: function(data) {
                     var list = data.data;
-                    console.log(list.dob);
                     document.getElementById('name').value = list.name;
                     document.getElementById('phone').value = list.phone;
                     document.getElementById('email').value = list.email;

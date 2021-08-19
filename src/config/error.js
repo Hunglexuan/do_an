@@ -107,8 +107,5 @@ export const ERROR_MESSAGE = {
         BILL_TEMP_BILL_ID : 'Bill temp bill id khong ton tai',
         BILL_TEMP_BILL_PRODUCT_ID: 'Bill temp  bill product id khong ton tai',
     },
-    COMMENT: {
-
-    }
 
 }

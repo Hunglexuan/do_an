@@ -39,7 +39,10 @@ class MidRole {
                 where: condition
             })
         ])
-       
+        if(!listRole){
+            console.log('MidRole-searchRole: ErrorCode-43');
+        }
+        console.log('MidRole-searchRole: Success');
 
         return {
             listRole,
@@ -49,15 +52,26 @@ class MidRole {
     }
     async createRole(data) {
         if (!data.name) {
+            console.log('MidRole-createRole: ErrorCode-55');
             throw new Error(ERROR_MESSAGE.ROLE.ROLE_NOT_EXIST);
         }
         let dataCreate = {
             name: data.name,
             del: 0
         }
-        return await Role.create(dataCreate);
+        let object = await Role.create(dataCreate);
+        if(!object){
+            console.log('MidRole-createRole: ErrorCode-64');
+        }
+        console.log('MidRole-createRole: Success');
+        return 
     }
     async deleteRole(data) {
+        if (!data.id) {
+            console.log('MidRole-deleteRole: ErrorCode-71');
+            throw new Error('Role is not exist');
+    
+        }
         let objDelete = await Role.findOne({
             where: {
                 id: data.id,
@@ -72,6 +86,7 @@ class MidRole {
     }
     async updateRole(data) {
         if (!data.id) {
+            console.log('MidRole-udpateRole: ErrorCode-89');
             throw new Error(ERROR_MESSAGE.ROLE.ROLE_EXIST);
         }
         let objUpdate = await Role.findOne({
@@ -84,7 +99,12 @@ class MidRole {
         let dataUpdate = {
             name: data.name,
         }
-        return await objUpdate.update(dataUpdate)
+        let object = await objUpdate.update(dataUpdate)
+        if(!object){
+            console.log('MidRole-udpateRole: ErrorCode-104');
+        }
+        console.log('MidRole-udpateRole: Success');
+        return 
 
     }
 
