@@ -10,6 +10,7 @@ import { sendMailActiveOrder, sendMailForgotPassword } from '../../libs/sendmail
 import { v4 as uuidv4 } from 'uuid';
 import { password } from '../../config/database';
 import { name } from 'ejs';
+import MidUser from './MidUser';
 
 class MidReport {
 
@@ -89,7 +90,20 @@ class MidReport {
                 where: condition
             })
         ])
-        if(listReport){
+        for (let i = 0; i < listReport.length; i++) {
+            let user = await MidUser.getUserById(listReport[i].dataValues.user_id)
+            let shop = await MidUser.getUserById(listReport[i].dataValues.shop_id)
+      
+            if (name && shop) {
+                let temp = {
+                    user : user.name,
+                    shop : shop.name,
+
+                }
+                Object.assign(listReport[i].dataValues, temp);
+            }
+        }
+        if(!listReport){
             console.log('MidReport-searchReport: ErrorCode-93');
         }   console.log('MidReport-searchReport: Success');
         return {
