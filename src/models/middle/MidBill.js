@@ -372,41 +372,50 @@ class MidBill {
                 where: condition
             })
         ])
-        
+      
         for (let i = 0; i < listBill.length; i++) {
+         
+           
             let userBill = {
                 user: {},
                 bill: [],
+                billTotal: {},
                 shop: {},
+                createAt : listBill[i].dataValues.createdAt,
+
             }
-            userBill.user = await User.findOne({
+            userBill.user = await Users.findOne({
                 where: {
                     id: listBill[i].user_id,
                     del: 0
                 }
             })
-            userBill.shop = await User.findOne({
+            userBill.shop = await Users.findOne({
                 where: {
                     id: listBill[i].shop_id,
                     del: 0
                 }
             })
-            let bill = await Bill.findOne({
+ 
+            userBill.billTotal = await Bill.findOne({
                 where: {
                     id: listBill[i].bill_id,
                     status: 1,
                     del: 0
                 }
             })
-            let billList = BillProduct.findAll({
+          
+
+            let billList = await BillProduct.findAll({
                 where: {
-                    bill_id: bill.dataValues.id,
+                    bill_id: userBill.billTotal.dataValues.id,
                     del: 0,
                 },
                 order: [[
                     "createdAt", "DESC"
                 ]],
             });
+
             for (let j = 0; j < billList.length; j++) {
                 let product = await Product.findOne({
                     where: {
@@ -416,6 +425,7 @@ class MidBill {
                 })
                 userBill.bill.push(product)
             }
+          
 
             listBillTotal.push(userBill);
 
