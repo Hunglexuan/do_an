@@ -38,6 +38,55 @@
         label:hover {
             cursor: pointer;
         }
+        
+        .more-ot-alert {
+            padding: 0.5rem;
+            border-radius: 5px;
+            box-shadow: rgba(0, 0, 0, 0.5) 2px 2px 10px;
+            background-color: #eee;
+            border: 2px solid #9e9e9e;
+            height: 5rem;
+            width: 12.5rem;
+            transform: translateZ(0);
+            animation: move .4s ease 3;
+            position: absolute;
+            z-index: 55;
+        }
+        
+        .more-ot-alert:before {
+            content: "";
+            position: absolute;
+            top: 24px;
+            left: -15px;
+            border-style: solid;
+            border-width: 15px 15px 15px 0;
+            border-color: transparent #9e9e9e;
+            display: block;
+            width: 0;
+            z-index: 1;
+        }
+        
+        .more-ot-alert:after {
+            content: "";
+            position: absolute;
+            top: 27px;
+            left: -12px;
+            border-style: solid;
+            border-width: 12px 12px 12px 0;
+            border-color: transparent #eee;
+            display: block;
+            width: 0;
+            z-index: 1;
+        }
+        
+        .more-ot-alert .close-ot-alert {
+            font-size: 15px;
+            font-size: 1rem;
+            clear: both;
+            cursor: pointer;
+            float: right;
+            margin: -5px -3px 0 0;
+        }
     </style>
 </head>
 
@@ -210,8 +259,8 @@
 
                                             <div class="form-group">
                                                 <label>Ghi chú:</label>
-                                                <textarea class="form-control" id="text_report" type="text"> </textarea>
-                                                <span class="form-message text-danger" id="confirmpassword"></span>
+                                                <input class="form-control" id="text_report" type="text">
+                                                <span class="form-message text-danger" id="messReport"></span>
                                             </div>
                                         </div>
                                         <div class="modal-footer">
@@ -238,12 +287,6 @@
                     <ul class="nav" id="pills-tab" role="tablist">
                         <li class="nav-item">
                             <a class="nav-link active" id="pills-order-online-tab" data-toggle="pill" href="#pills-order-online" role="tab" aria-controls="pills-order-online" aria-selected="true">Đặt hàng trực tuyến</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" id="pills-gallery-tab" data-toggle="pill" href="#pills-gallery" role="tab" aria-controls="pills-gallery" aria-selected="false">Phòng trưng bày</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" id="pills-restaurant-info-tab" data-toggle="pill" href="#pills-restaurant-info" role="tab" aria-controls="pills-restaurant-info" aria-selected="false">Thông tin nhà hàng</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" id="pills-reviews-tab" data-toggle="pill" href="#pills-reviews" role="tab" aria-controls="pills-reviews" aria-selected="false">Xếp hạng và đánh giá</a>
@@ -273,91 +316,17 @@
                                 </div>
                                 <div class="row allProduct">
                                     <h5 class="mb-4 mt-3 col-md-12">Tất cả sản phẩm</h5>
+                                </div>
+                            </div>
 
-                                </div>
-                            </div>
-                            <div class="tab-pane fade" id="pills-gallery" role="tabpanel" aria-labelledby="pills-gallery-tab">
 
-                            </div>
-                            <div class="tab-pane fade" id="pills-restaurant-info" role="tabpanel" aria-labelledby="pills-restaurant-info-tab">
-                                <div id="restaurant-info" class="bg-white rounded shadow-sm p-4 mb-4">
-                                    <div class="address-map float-right ml-5">
-                                        <div class="mapouter">
-                                            <div class="gmap_canvas"><iframe width="300" height="170" id="gmap_canvas" src="https://maps.google.com/maps?q=university%20of%20san%20francisco&t=&z=9&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe></div>
-                                        </div>
-                                    </div>
-                                    <h5 class="mb-4">Restaurant Info</h5>
-                                    <p class="mb-3">Jagjit Nagar, Near Railway Crossing,
-                                        <br> Near Model Town, Ludhiana, PUNJAB
-                                    </p>
-                                    <p class="mb-2 text-black"><i class="icofont-phone-circle text-primary mr-2"></i> +91 01234-56789, +91 01234-56789</p>
-                                    <p class="mb-2 text-black"><i class="icofont-email text-primary mr-2"></i> iamosahan@gmail.com, osahaneat@gmail.com</p>
-                                    <p class="mb-2 text-black"><i class="icofont-clock-time text-primary mr-2"></i> Today 11am – 5pm, 6pm – 11pm
-                                        <span class="badge badge-success"> OPEN NOW </span>
-                                    </p>
-                                    <hr class="clearfix">
-                                    <p class="text-black mb-0">You can also check the 3D view by using our menue map clicking here &nbsp;&nbsp;&nbsp; <a class="text-info font-weight-bold" href="#">Venue Map</a></p>
-                                    <hr class="clearfix">
-                                    <h5 class="mt-4 mb-4">More Info</h5>
-                                    <p class="mb-3">Dal Makhani, Panneer Butter Masala, Kadhai Paneer, Raita, Veg Thali, Laccha Paratha, Butter Naan</p>
-                                    <div class="border-btn-main mb-4">
-                                        <a class="border-btn text-success mr-2" href="#"><i class="icofont-check-circled"></i> Breakfast</a>
-                                        <a class="border-btn text-danger mr-2" href="#"><i class="icofont-close-circled"></i> No Alcohol Available</a>
-                                        <a class="border-btn text-success mr-2" href="#"><i class="icofont-check-circled"></i> Vegetarian Only</a>
-                                        <a class="border-btn text-success mr-2" href="#"><i class="icofont-check-circled"></i> Indoor Seating</a>
-                                        <a class="border-btn text-success mr-2" href="#"><i class="icofont-check-circled"></i> Breakfast</a>
-                                        <a class="border-btn text-danger mr-2" href="#"><i class="icofont-close-circled"></i> No Alcohol Available</a>
-                                        <a class="border-btn text-success mr-2" href="#"><i class="icofont-check-circled"></i> Vegetarian Only</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="tab-pane fade" id="pills-book" role="tabpanel" aria-labelledby="pills-book-tab">
-                                <div id="book-a-table" class="bg-white rounded shadow-sm p-4 mb-5 rating-review-select-page">
-                                    <h5 class="mb-4">Book A Table</h5>
-                                    <form>
-                                        <div class="row">
-                                            <div class="col-sm-6">
-                                                <div class="form-group">
-                                                    <label>Full Name</label>
-                                                    <input class="form-control" type="text" placeholder="Enter Full Name">
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-6">
-                                                <div class="form-group">
-                                                    <label>Email Address</label>
-                                                    <input class="form-control" type="text" placeholder="Enter Email address">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-sm-6">
-                                                <div class="form-group">
-                                                    <label>Mobile number</label>
-                                                    <input class="form-control" type="text" placeholder="Enter Mobile number">
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-6">
-                                                <div class="form-group">
-                                                    <label>Date And Time</label>
-                                                    <input class="form-control" type="text" placeholder="Enter Date And Time">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="form-group text-right">
-                                            <button class="btn btn-primary" type="button"> Submit </button>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
                             <div class="tab-pane fade" id="pills-reviews" role="tabpanel" aria-labelledby="pills-reviews-tab">
                                 <div class="bg-white rounded shadow-sm p-4 mb-4 clearfix graph-star-rating">
                                     <h5 class="mb-0 mb-4">Xếp hạng và đánh giá</h5>
                                     <div class="graph-star-rating-header">
-                                        <div class="star-rating">
-                                            <div id=rateTotal>
-                                                <b class="text-black ml-2" id="rateStar"></b>
-                                            </div>
-
+                                        <div class="star-rating" style="display: flex;">
+                                            <b class="text-black ml-2" id="rateStar"></b>
+                                            <div id=rateTotal style="margin-left: 10px;"></div>
                                         </div>
                                         <p class="text-black mb-4 mt-2" id="rateOfStar"></p>
                                     </div>
@@ -522,6 +491,7 @@
     <script src="../../customJS/shopDetail.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="js/checkToken.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
     <script>
         $(document).ready(function() {
             loaddata()
@@ -539,26 +509,34 @@
             var params = (new URL(document.location)).searchParams;
             var idURL = params.get('id');
             var type = document.getElementById('dropdownMenuButton').value;
-            var text_report = document.getElementById('text_report').value;
-            console.log(type + ' ' + text_report + ' ' + idURL);
 
-            $.ajax({
-                url: '/api/report/create',
-                method: 'POST',
-                data: {
-                    type_report: type,
-                    content: text_report,
-                    shop_id: idURL,
-                    user_id: userId,
-                },
-            }).then(function(data) {
-                if (data.message == 'SUCCESS') {
-                    alert('success');
-                    // window.location.href = "/"
-                } else {
-                    alert("Update fail");
-                }
-            })
+            if (document.getElementById('text_report').value == '') {
+                document.getElementById('text_report').setAttribute('class', 'form-control border-danger');
+                document.getElementById('messReport').innerHTML = 'Hãy báo cáo khi bạn chưa vừa lòng về chúng tôi!!!';
+            } else {
+                $.ajax({
+                    url: '/api/report/create',
+                    method: 'POST',
+                    data: {
+                        type_report: type,
+                        content: $('#text_report').val().trim(),
+                        shop_id: idURL,
+                        user_id: userId,
+                    },
+                }).then(function(data) {
+                    if (data.message == 'SUCCESS') {
+                        Swal.fire({
+                            type: 'success',
+                            title: 'Cảm ơn về báo cáo của bạn',
+                            // text: 'Your offer is safe 🙂',
+                            showConfirmButton: false,
+                            timer: 2000
+                        })
+                        document.getElementById('text_report').setAttribute('class', 'form-control');
+                        document.getElementById('text_report').value = '';
+                    }
+                })
+            }
         }
 
         function loaddata() {
@@ -830,11 +808,13 @@
                 url: "/api/feedback/searchShopFeedback",
                 success: function(data) {
                     var list = data.data.listFeedback;
+                    var countStart = data.data.count;
 
+                    document.getElementById('rateStar').innerHTML = countStart;
+                    document.getElementById('rateTotal').innerHTML = '';
 
                     for (var j = 1; j <= 5; j++) {
-
-                        if (j <= data.data.count / data.data.total) {
+                        if (j <= countStart / data.data.total) {
                             document.getElementById('rateTotal').innerHTML += '<label><i class="icofont-ui-rating" style="color: red !important;"></i></label>';
                         } else {
                             document.getElementById('rateTotal').innerHTML += '<label><i class="icofont-ui-rating"></i></label>';
@@ -842,8 +822,8 @@
 
                     }
 
-                    document.getElementById('rateStar').innerHTML = data.data.count;
-                    document.getElementById('rateOfStar').innerHTML = 'Đánh giá ' + (data.data.count / data.data.total).toFixed(2) + ' trên 5';
+
+                    document.getElementById('rateOfStar').innerHTML = 'Đánh giá ' + (countStart / data.data.total).toFixed(2) + ' trên 5';
                     document.getElementById('rateOf5').innerHTML = Math.round((data.data.star_5 / data.data.total) * 100) + '%';
                     var color5 = data.data.star_5 / data.data.total;
                     document.getElementById('rateColor5').style.width = color5 * 100 + '%';
@@ -936,7 +916,7 @@
                     if (data.data == true) {
                         document.getElementById('checkFeedback').innerHTML = 'Bạn chưa mua hàng!!!';
                     } else {
-                        document.getElementById('checkFeedback').innerHTML = '<h5 class="mb-4">Để lại phản hồi</h5> <p class="mb-2">Xếp hạng địa điểm</p> <div class="mb-4"> <span class="star-rating"> <label data-index="1" class="rating" id="rate1"><i class="icofont-ui-rating icofont-2x"></i></label> <label data-index="2" class="rating" id="rate2"><i class="icofont-ui-rating icofont-2x"></i></label> <label data-index="3" class="rating" id="rate3"><i class="icofont-ui-rating icofont-2x"></i></label> <label data-index="4" class="rating" id="rate4"><i class="icofont-ui-rating icofont-2x"></i></label> <label data-index="5" class="rating" id="rate5"><i class="icofont-ui-rating icofont-2x"></i></label> </span> </div> <form> <div class="form-group"> <label>Thông tin phản hồi của bạn</label> <textarea class="form-control" id="textFeedback"></textarea> </div> <div class="form-group"> <button class="btn btn-primary btn-sm" type="button" onclick="feedback()"> Gửi phản hồi </button> </div> </form>';
+                        document.getElementById('checkFeedback').innerHTML = '<h5 class="mb-4">Để lại phản hồi</h5> <p class="mb-2">Xếp hạng địa điểm</p> <div class="mb-4" style="display: flex;"> <span class="star-rating"> <label data-index="1" class="rating" id="rate1"><i class="icofont-ui-rating icofont-2x"></i></label> <label data-index="2" class="rating" id="rate2"><i class="icofont-ui-rating icofont-2x"></i></label> <label data-index="3" class="rating" id="rate3"><i class="icofont-ui-rating icofont-2x"></i></label> <label data-index="4" class="rating" id="rate4"><i class="icofont-ui-rating icofont-2x"></i></label> <label data-index="5" class="rating" id="rate5"><i class="icofont-ui-rating icofont-2x"></i></label> </span> <div id="alertRate">  </div> </div> <form> <div class="form-group"> <label>Thông tin phản hồi của bạn</label> <textarea class="form-control" id="textFeedback"></textarea> <span class="form-message text-danger" id="messageFeedbacks"></span> </div> <div class="form-group"> <button class="btn btn-primary btn-sm" type="button" onclick="feedback()"> Gửi phản hồi </button> </div> </form>';
                     }
                 }
             })
@@ -966,27 +946,46 @@
             var params = (new URL(document.location)).searchParams;
             var shopId = params.get('id');
 
-            $.ajax({
-                url: '/api/feedback/create',
-                method: 'POST',
-                data: {
-                    user_id: userId,
-                    shop_id: shopId,
-                    content: document.getElementById('textFeedback').value,
-                    rate: x,
-                },
-            }).then(function(data) {
-                if (data.message == 'SUCCESS') {
-                    document.getElementById('feedbackUser').innerHTML = '';
-                    document.getElementById('textFeedback').value = '';
-                    loadFeedback();
-                } else {
-                    alert('khong thanh cong');
-                }
-            })
+            if (document.getElementById('textFeedback').value == '') {
+                document.getElementById('textFeedback').setAttribute('class', 'form-control border-danger');
+                document.getElementById('messageFeedbacks').innerHTML = 'Hãy để lại phản hồi của bạn...';
+            } else if (x < 1) {
+                document.getElementById('alertRate').innerHTML = `<div class="more-ot-alert" style="margin-left: 25px; margin-top: -28px;"> <span class="close-ot-alert" onclick="closeAlert()"> <i class="fa fa-close"></i> </span> <p>Hãy đánh giá sao để chúng tôi đánh giá chất lượng sản phẩm</p> </div>`;
+                document.getElementById('textFeedback').setAttribute('class', 'form-control');
+                document.getElementById('messageFeedbacks').innerHTML = '';
+            } else {
+                $.ajax({
+                    url: '/api/feedback/create',
+                    method: 'POST',
+                    data: {
+                        user_id: userId,
+                        shop_id: shopId,
+                        content: document.getElementById('textFeedback').value,
+                        rate: x,
+                    },
+                }).then(function(data) {
+                    if (data.message == 'SUCCESS') {
+                        document.getElementById('feedbackUser').innerHTML = '';
+                        document.getElementById('alertRate').innerHTML = '';
+                        document.getElementById('textFeedback').value = '';
+                        document.getElementById('textFeedback').setAttribute('class', 'form-control');
+                        document.getElementById('messageFeedbacks').innerHTML = '';
+                        loadFeedback();
+                    }
+                })
+            }
+        }
+
+        function closeAlert() {
+            closeAlert();
+        };
+
+        function closeAlert() {
+            setTimeout(function() {
+                $(".more-ot-alert").fadeOut("fast");
+            }, 100);
         }
     </script>
-
 </body>
 
 </html>

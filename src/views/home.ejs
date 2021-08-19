@@ -98,52 +98,28 @@
             background: #40D3DC;
         }
         
-        #radio1:checked~.first {
+        #radio1:checked~.one {
             margin-left: 0;
         }
         
-        #radio2:checked~.first {
+        #radio2:checked~.one {
             margin-left: -20%;
         }
         
-        #radio3:checked~.first {
-            margin-left: -40%;
-        }
-        
-        #radio4:checked~.first {
-            margin-left: -60%;
-        }
-        
-        #radioo1:checked~.first {
+        #radioo1:checked~.two {
             margin-left: 0;
         }
         
-        #radioo2:checked~.first {
+        #radioo2:checked~.two {
             margin-left: -20%;
         }
         
-        #radioo3:checked~.first {
-            margin-left: -40%;
-        }
-        
-        #radioo4:checked~.first {
-            margin-left: -60%;
-        }
-        
-        #radiooo1:checked~.first {
+        #radiooo1:checked~.three {
             margin-left: 0;
         }
         
-        #radiooo2:checked~.first {
+        #radiooo2:checked~.three {
             margin-left: -20%;
-        }
-        
-        #radiooo3:checked~.first {
-            margin-left: -40%;
-        }
-        
-        #radiooo4:checked~.first {
-            margin-left: -60%;
         }
         /*css for automatic navigation*/
         
@@ -165,54 +141,28 @@
         .navigation-auto div:not(:last-child) {
             margin-right: 40px;
         }
-        
-        #radio1:checked {
+        /* #radio1:checked {
             background: #40D3DC;
         }
-        
+
         #radio2:checked {
             background: #40D3DC;
         }
-        
-        #radio3:checked {
-            background: #40D3DC;
-        }
-        
-        #radio4:checked {
-            background: #40D3DC;
-        }
-        
+
         #radioo1:checked {
             background: #40D3DC;
         }
-        
+
         #radioo2:checked {
             background: #40D3DC;
         }
-        
-        #radioo3:checked {
-            background: #40D3DC;
-        }
-        
-        #radioo4:checked {
-            background: #40D3DC;
-        }
-        
         #radiooo1:checked {
             background: #40D3DC;
         }
-        
+
         #radiooo2:checked {
             background: #40D3DC;
-        }
-        
-        #radiooo3:checked {
-            background: #40D3DC;
-        }
-        
-        #radiooo4:checked {
-            background: #40D3DC;
-        }
+        } */
     </style>
 </head>
 
@@ -326,7 +276,7 @@
                                     <input type="radio" name="radio-btn" id="radio1">
                                     <input type="radio" name="radio-btn" id="radio2">
 
-                                    <div class="mySlides slide first" id="buyMost1">
+                                    <div class="mySlides slide one" id="buyMost1">
                                     </div>
 
                                     <div class="mySlides slide" id="buyMost2">
@@ -352,7 +302,7 @@
                                     <input type="radio" name="radio-btn" id="radioo1">
                                     <input type="radio" name="radio-btn" id="radioo2">
 
-                                    <div class="mySlidess slide first" id="shipFast1">
+                                    <div class="mySlidess slide two" id="shipFast1">
                                     </div>
 
                                     <div class="mySlidess slide" id="shipFast2">
@@ -393,7 +343,7 @@
                                     <input type="radio" name="radio-btn" id="radiooo1">
                                     <input type="radio" name="radio-btn" id="radiooo2">
 
-                                    <div class="mySlidesss slide first" id="listSale1">
+                                    <div class="mySlidesss slide three" id="listSale1">
                                     </div>
 
                                     <div class="mySlidesss slide" id="listSale2">
@@ -428,32 +378,35 @@
     <script src="../../customJS/shopDetail.js"></script>
 
     <script>
-        // var counter = 1;
-        // setInterval(function() {
-        //     document.getElementById('radio' + counter).checked = true;
-        //     counter++;
-        //     if (counter > 2) {
-        //         counter = 1;
-        //     }
-        // }, 3500);
+        var counter = 1;
+        setInterval(function() {
+            document.getElementById('radio' + counter).checked = true;
+            console.log('1')
+            counter++;
+            if (counter > 2) {
+                counter = 1;
+            }
+        }, 3500);
 
         var counters = 1;
         setInterval(function() {
             document.getElementById('radioo' + counters).checked = true;
+            console.log('2')
             counters++;
             if (counters > 2) {
                 counters = 1;
             }
-        }, 3500);
+        }, 3000);
 
-        // var counterss = 1;
-        // setInterval(function() {
-        //     document.getElementById('radiooo' + counterss).checked = true;
-        //     counterss++;
-        //     if (counterss > 2) {
-        //         counterss = 1;
-        //     }
-        // }, 3500);
+        var counterss = 1;
+        setInterval(function() {
+            document.getElementById('radiooo' + counterss).checked = true;
+            console.log('3')
+            counterss++;
+            if (counterss > 2) {
+                counterss = 1;
+            }
+        }, 2500);
 
         $(document).ready(function() {
             loaddata();
