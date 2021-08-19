@@ -13,6 +13,7 @@ routerApp.get('/searchSellerproduct', Response(ProductController.searchSellerPro
 routerApp.get('/searchAllProduct', Response(ProductController.searchAllProduct));
 routerApp.get('/list6MostBuy', Response(ProductController.search6slot));
 routerApp.get('/listDefault', Response(ProductController.searchDefault));
+routerApp.get('/listSale', Response(ProductController.listSale));
 routerApp.get('/listFastDeli', Response(ProductController.listFastDelivery));
 routerApp.get('/delete',  Response(ProductController.deleteProduct));
 routerApp.post('/update',  Response(ProductController.updateProduct));

@@ -190,7 +190,22 @@ class MidProduct {
         })
 
     }
+    async listSale(data) {
+        let condition = {
+            del: 0
+        }
 
+        return Product.findAll({
+            where: condition,
+            order: [
+                [
+                    "sale", "DESC"
+                ]
+            ],
+            limit: 6
+        })
+
+    }
 
 
     //done
