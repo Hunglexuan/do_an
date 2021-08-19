@@ -21,3 +21,5 @@ export { default as VoucherController }
 from './VoucherController';
 export { default as ProductController }
 from './ProductController';
+export { default as FavoriteController }
+from './FavoriteController';
