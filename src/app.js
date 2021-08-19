@@ -123,9 +123,7 @@ app.get('/MyProfileUser', function(req, res) {
 });
 
 
-app.get('/DashboardSeller', function(req, res) {
-    return res.render('DashboardForSeller');
-});
+
 
 app.get('/ListUsers', function(req, res) {
     return res.render('ListUsers');
