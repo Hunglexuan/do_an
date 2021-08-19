@@ -2,23 +2,32 @@
 // Shopping Cart API
 // ************************************************
 
+
+
 var params = (new URL(document.location)).searchParams;
 var idSellerURL = params.get('id');
 var idUser = localStorage.getItem('userId').replaceAll('"', '');
 var cart_TEMP =JSON.parse( sessionStorage.getItem('shoppingCart') ) 
+
 // localStorage.getItem('billID').replaceAll('"', '');
+
 var shoppingCart = (function () {
     // =============================
     // Private methods and propeties
     // =============================
+
+    displayCartInDB(idUser);
     var shopID = idSellerURL
     var userID = idUser
+    
     var status = 0
     var address = ""
     var voucherCode = null
-    var billID = cart_TEMP&&cart_TEMP.billID ? cart_TEMP.billID : "";
+    
+    var billID = !isEmptyObj(cart_TEMP)&&cart_TEMP.billID ? cart_TEMP.billID : "";
     //localStorage.getItem('billID')?localStorage.getItem('billID').replaceAll('"', ''):"";
-    var listCart = cart_TEMP&&cart_TEMP.listCart.length>0 ? cart_TEMP.listCart : [];
+   
+    var listCart = !isEmptyObj(cart_TEMP)&&cart_TEMP.listCart.length>0 ? cart_TEMP.listCart : [];
     var cart = {
         shopID,
         userID,
@@ -54,13 +63,24 @@ var shoppingCart = (function () {
         })
       }
     
-      function displayCartInDB() {
+      function displayCartInDB(idUserT) {
         $.ajax({
-          url: "/api/bill/listCart?userID=" + id,
+          url: "/api/bill/listCart?userID=" + idUserT,
           type: "GET",
         }).then(function (data) {
+            
           sessionStorage.setItem("shoppingCart", JSON.stringify(data.data));
+          return data.data;
         });
+      }
+
+      function isEmptyObj(obj){
+         if(!obj){
+             return true;
+
+         }
+        return  obj && Object.keys(obj).length === 0 && obj.constructor === Object  
+    
       }
 
 
@@ -235,8 +255,9 @@ $('.clear-cart').click(function () {
 });
 
 
+
 function displayCart() {
-    // console.log("cartTEmp 246",cart_TEMP);
+   
     var cartArray = shoppingCart.listCart();
     console.log("display", cartArray);
     var output = "";
@@ -246,12 +267,12 @@ function displayCart() {
         output +=
             "<tr>" +
             "<td style='padding:1'>" + cartArray[i].name + "</td>" +
-            "<td style='padding:1'>(" + cartArray[i].price + ")</td>" +
+            "<td style='padding:1'>" + cartArray[i].price + "</td>" +
             "<td style='padding:1'><div class='input-group-1' style='display:flex'><button class='minus-item input-group-addon btn btn-primary' data-id=" + cartArray[i].id + ">-</button>" +
-            "<input type='number' class='item-count form-control' data-name='" + cartArray[i].name + "' value='" + cartArray[i].count + "'>" +
+            "<input type='number' style='text-align:center !important ; width:50px ' class='item-count form-control' data-name='" + cartArray[i].name + "' value='" + cartArray[i].count + "'>" +
             "<button class='plus-item btn btn-primary input-group-addon' data-id=" + cartArray[i].id + ">+</button></div></td>" +
             "<td  style='padding:1'><button class='delete-item btn btn-danger' data-id=" + cartArray[i].id + ">X</button></td>" + " = " +
-            "<td style='padding:1'>" + cartArray[i].total + "</td>" +
+            "<td style='padding:1'>" + cartArray[i].price *  cartArray[i].count + "</td>" +
             "</tr>";
     }
     console.log(shoppingCart.totalCount());
