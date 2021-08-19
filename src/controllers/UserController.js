@@ -63,7 +63,7 @@ class UserController {
     }
     async changePass(req, res) {
         let data = req.body;
-        return MidUser.createUser(data);
+        return MidUser.changePass(data);
     }
 }
 
