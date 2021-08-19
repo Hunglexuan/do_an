@@ -45,7 +45,7 @@ class MidUser {
         obj.update(dataUpdate);
     }
     async getUserByEmail(email) {
-        if(!data.email){
+        if(!email){
             console.log('MidUser-getUserByEmail: ERROR-49');
             throw new Error(ERROR_MESSAGE.Customer.ERR_EMAIL);
         }
@@ -154,15 +154,17 @@ class MidUser {
             console.log('MidUser-loginUser: ERROR-154');
             throw new Error(ERROR_MESSAGE.LOGIN.ERR_REQUIRE_PASSWORD);
         }
-
+       
         const userData = await this.getUserByEmail(email);
+      
         let check = this.checkRole(userData);
+       
         if (check == "admin") { }
         if (!userData) {
             console.log('MidUser-loginUser: ERROR-162');
             throw new Error(ERROR_MESSAGE.LOGIN.ERR_ACC);
         }
-
+      
         const isCorrectPass = await checkPassword(password, userData.password);
         if (!isCorrectPass) {
             console.log('MidUser-loginUser: ERROR-168');

@@ -3,7 +3,7 @@ import { Console } from 'winston/lib/winston/transports';
 
 class AuthController {
     login(req, res) {
-
+        console.log('11111',req.body);
         return MidUser.loginUser(req.body);
     }
 
