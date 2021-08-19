@@ -213,10 +213,10 @@
                      <thead>
                         <tr class="text-uppercase">
                            <th>ID</th>
-                           <th>CODE</th>
-                           <th>Giá Trị (VND) </th>
+                           <th>Tên Thực đơn</th>
+                         
                            
-                           <th>Action</th>
+                           <th>Thao Tác</th>
                         </tr>
                      </thead>
                      <tbody>
@@ -254,7 +254,7 @@
    <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
          <div class="modal-header">
-            <h5 class="modal-title" id="edit_bookingLabel">Thêm Mới Voucher</h5>
+            <h5 class="modal-title" id="edit_bookingLabel">Thêm Mới Thực Đơn</h5>
             <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                <span aria-hidden="true">×</span>
             </button>
@@ -270,23 +270,13 @@
                         <div class="row">
                            <div class="col-md-12">
                               <div class="form-group">
-                                 <label>Code Voucher</label>
-                                 <input type="text" class="form-control" placeholder="Code Voucher" id="voucher-code">
+                                 <label>Tên Thực Đơn</label>
+                                 <input type="text" class="form-control" placeholder="Tên Thực Đơn" id="category-name">
                               </div>
                            </div>
                         </div>
                        
-                        <!-- /row-->
-                        <div class="row">
-                           <div class="col-md-12">
-                              <div class="form-group">
-                                 <label>Giá Trị</label>
-                                 <input type="text" class="form-control" placeholder="Giá Trị"
-                                    id="voucher-price">
-                              </div>
-                           </div>
-                        </div>
-                        <!-- /row-->
+                      
                      </div>
                   </div>
                </div>
@@ -294,64 +284,13 @@
             <!-- /Row -->
          </div>
          <div class="modal-footer">
-            <input type="button" class="btn btn-primary" id="add-voucher-btn" value="Thêm"></input>
+            <input type="button" class="btn btn-primary" id="add-cate-btn" value="Thêm"></input>
          </div>
       </div>
    </div>
    </div>
 
-   <!-- updateVoucer -->
-   <div class="modal fade" id="editvoucher" tabindex="-1" role="dialog" aria-labelledby="edit_bookingLabel"
-   aria-hidden="true">
-   <div class="modal-dialog modal-dialog-centere">
-      <div class="modal-content">
-         <div class="modal-header">
-            <h5 class="modal-title" id="edit_bookingLabel">Sửa Thông tin Voucher</h5>
-            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-               <span aria-hidden="true">×</span>
-            </button>
-         </div>
-         <div class="modal-body">
-            <div class="row">
-               <div class="col-md-12 col-sm-6">
-                  <div class="card mb-4">
-                     <div class="card-header">
-                        Thông Tin Cơ Bản
-                     </div>
-                     <div class="card-body">
-                        <div class="row">
-                           <div class="col-md-12">
-                              <div class="form-group">
-                                 <label>Code Voucher</label>
-                                 <input type="text" class="form-control" placeholder="Code Voucher mới"
-                                    id="afterCodeVoucher">
-                              </div>
-                           </div>
-                        </div>
-                        <!-- /row-->
-                        <div class="row">
-                           <div class="col-md-12">
-                              <div class="form-group">
-                                 <label>Giá trị Voucher</label>
-                                 <input type="text" class="form-control" placeholder="Giá Trị Voucher mới"
-                                    id="afterPriceVoucher">
-                              </div>
-                           </div>
-                        </div>
-                           
-                        
-                        <input type="button" class="btn btn-primary" id="edit-voucher-btn1" value="Lưu"
-                           onclick="editVoucher()" style="float: right;"></input>
-                     </div>
-                  </div>
-               </div>
-               
-            </div>
-         </div>
-      </div>
-   </div>
-   </div>
-
+  
    <!--Pop up delete-->
 
    <div class="modal fade" id="deleteVoucher" tabindex="-1" role="dialog" aria-labelledby="edit_bookingLabel"
@@ -369,7 +308,7 @@
                   <div class="col-xl-12">
                      <div class="card mb-4">
                         <div class="card-body">
-                           <h5 style="text-align: center;">Bạn có muốn xóa voucher này không?</h5>
+                           <h5 style="text-align: center;">Bạn có muốn xóa thực đơn này không?</h5>
                            <div class="card-body">
                               <div class="row ml-5">
                                  <div class="col-md-6">
@@ -414,6 +353,7 @@
    <script src="/js/jquery.dataTables.min.js"></script>
    <script src="/js/dataTables.bootstrap.min.js"></script>
    <script src="https://cdnjs.cloudflare.com/ajax/libs/AlertifyJS/1.13.1/alertify.min.js" ></script>
+   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
    
    <!-- <script src="/js/datatables-demo.js"></script> -->
 
@@ -447,13 +387,9 @@ function setCookie(cname, cvalue, exdays) {
 
  var token = getCookie("token");
 
- function checkBlankVoucher() {
-        if ($("#voucher-code").val() == "" && $("#voucher-price").val() != "") {
-            alert("Tên của voucher không được để trống ")
-        } else if ($("#voucher-price").val() == "" && $("#voucher-code").val() != "" ) {
-            alert("Giá trị đang trống đề nghị điền vào ")
-        }else if($("#voucher-code").val() == "" && $("#voucher-price").val() != ""){
-           alert("Đề nghị điền vào mục đang còn trống")
+ function checkBlankCAte() {
+        if ($("#category-name").val() == "" ) {
+            alert("Tên của Thực đơn  không được để trống ")
         }
     }
 
@@ -482,56 +418,47 @@ function logOutClick(){
 }
 
 //add-voucher done
-$("#add-voucher-btn").click(function() {
+$("#add-cate-btn").click(function() {
 
-checkBlankVoucher();
+checkBlankCAte();
 $.ajax({
-    url: "http://localhost:3999/api/voucher/create",
+    url: "/api/category/create",
     type: "POST",
     data: {
-        code: $("#voucher-code").val(),
-        discount_number: $("#voucher-price").val()
+        name:$("#category-name").val().trim()
     }
 }).then(function(data) {
-    console.log(data);
-   
-    
+
     if (data.message == "SUCCESS") {
-         alertify.success('Success message');
+      Swal.fire({
+                        type: 'success',
+                        title: 'Thêm mới thành công  ⚙️',
+                        // text: 'Your offer is safe 🙂',
+                        showConfirmButton: false,
+                        timer: 2000
+
+                    })
          
     } else {
-      alertify.error('Error message');
+      Swal.fire({
+                        type: 'error',
+                        title: 'Thêm mới không thành công  ⚙️',
+                        // text: 'Your offer is safe 🙂',
+                        showConfirmButton: false,
+                        timer: 5000
+                    })
     }
-    window.location.reload()
-})
-})
-//edit Voucher CAN FIX 
-function editVoucher(){
-   var id = localStorage.getItem('updatedID').replaceAll('"', '');
    
-   $.ajax({
-      url:"/api/voucher/update",
-      type:"POST",
-      data:{
-         id:id,
-         code : $("afterCodeVoucher").val(),
-         discount_number: $("afterPriceVoucher").val()
-      }
-   }).then(function(data){
-      if (data.message == "SUCCESS") {
-         alertify.success('Success message');
-         
-    } else {
-      alertify.error('Error message');
-    }
-   })
-}
+})
+})
+
 
 //delete-Voucher done
 function deleteVoucher(){
-   var id = localStorage.getItem('deleteID').replaceAll('"', '');
+   var id = localStorage.getItem('idCateDel').replaceAll('"', '');
+  
    $.ajax({
-      url:"/api/voucher/delete",
+      url:"/api/category/deleteCategory",
       type:"GET",
       data:{
          id:id
@@ -552,11 +479,12 @@ function deleteVoucher(){
    $('#dataTable').DataTable( {
       'ajax': function (data, callback, settings) {
       $.ajax({
-        url: "/api/voucher/search",
+        url: "/api/category/searchcategory",
+        type:"GET"
       })
       .then ( function( response, textStatus, jqXHR ) {
          
-         let data = response.data.listVoucher
+         let data = response.data.listCategory
 		   data.forEach((val, idx) => {
              val.no = idx + 1
          });
@@ -566,24 +494,23 @@ function deleteVoucher(){
     
     'columns':[
        {data : 'no'},
-       {data : 'name'}
+       {data : 'name'},
        
       //  {data : 'createdAt',render : $.fn.dataTable.render.momment('D/M/YYYY')},
       //  {data : 'updatedAt'},
-      //  {data : ""}
+       {data : ""}
 
     ]
-    // ,
-    // 'columnDefs': [
-		// 		{
-		// 			targets: -1,
-		// 			render: function (data, type, row, meta) {
-		// 				return '<input type="button" class="update-voucher-btn btn-success mr-3" data-toggle="modal" data-target="#editvoucher"  " idVoucherEdit="' + row.code  + '" value="Sửa Voucher"/>' +
-		// 					'<input type="button"  class="show-post-title btn-danger mr-3" data-toggle="modal" data-target="#deleteVoucher" idVoucherDel="' + row.code + '" value="Xóa Voucher"/>';
-		// 			}
+    ,
+    'columnDefs': [
+				{
+					targets: -1,
+					render: function (data, type, row, meta) {
+						return '<input type="button"  class="delete-category btn-danger mr-3" data-toggle="modal" data-target="#deleteVoucher" idCateDel="' + row.id + '" value="Xóa Thực Đơn"/>';
+					}
 
-		// 		}
-		// 	]
+				}
+			]
    
    } );
 
@@ -591,48 +518,15 @@ function deleteVoucher(){
 
 
 
-		$('#dataTable tbody').on('click', '.update-voucher-btn', function () {
+		$('#dataTable tbody').on('click', '.delete-category', function () {
 			
 
-         let code = $(this).attr('idVoucherEdit');
-         
-			$.ajax({
-            url:"/api/voucher/getCode",
-            type:"GET",
-            data:{
-               code:code
-            }
-         }).then(function (data) {
-            localStorage.setItem('updatedID', JSON.stringify(data.data.id));
-            document.getElementById("afterCodeVoucher").value = data.data.code;
-            // $("#afterCodeVoucher").html(data.data.code)
-            
-            document.getElementById("afterPriceVoucher").value = data.data.discount_number;
-            
-         })
-         
-         
+         let id = $(this).attr('idCateDel')
+         localStorage.setItem('idCateDel', JSON.stringify(id));
+
 		});
 
-		$('#dataTable tbody').on('click', '.show-post-title', function () {
-         let code = $(this).attr('idVoucherDel');
-         
-			$.ajax({
-            url:"/api/voucher/getCode",
-            type:"GET",
-            data:{
-               code:code
-            }
-         }).then(function (data) {
-            localStorage.setItem('deleteID', JSON.stringify(data.data.id));
-            // document.getElementById("afterCodeVoucher").value = data.data.code;
-            // // $("#afterCodeVoucher").html(data.data.code)
-            
-            // document.getElementById("afterPriceVoucher").value = data.data.discount_number;
-            
-         })
-		});
-
+		
      
 
 } );
