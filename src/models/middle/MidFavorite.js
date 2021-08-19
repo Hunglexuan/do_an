@@ -41,6 +41,28 @@ class MidFavorite {
 
         objDelete.update(dataDelete)
     }
+    async searchFavorite(data) {
+        let condition = {
+            del: 0,
+            user_id: data.user_id
+        }
+        const [listVoucher, total] = await Promise.all([
+            Favorite.findAll({
+                where: condition,
+                order: [[
+                    "createdAt", "DESC"
+                ]],
+            }),
+            Favorite.count({
+                where: condition
+            })
+        ])
+        return {
+            listVoucher,
+            total: total || 0
+        }
+
+    }
 }
 
 

@@ -12,6 +12,10 @@ class FavoriteController {
         let dataQuery = req.query;
         return await MidFavorite.deleteFavor(dataQuery);
     }
+    async searchFavorite(req, res) {
+        let dataQuery = req.query;
+        return MidFavorite.searchFavorite(dataQuery);
+    }
 }
 
 export default new FavoriteController();

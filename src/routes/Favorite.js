@@ -8,5 +8,6 @@ let routerApp = new Router();
 
 routerApp.post('/create', Response(FavoriteController.createFavorite));
 routerApp.get('/delete', Response(FavoriteController.deleteFavorite));
+routerApp.get('/search', Response(FavoriteController.searchFavorite));
 
 export default routerApp;
