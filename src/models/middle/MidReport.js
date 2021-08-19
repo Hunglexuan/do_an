@@ -14,6 +14,10 @@ import { name } from 'ejs';
 class MidReport {
 
     async getReportById(id) {
+        if(!data.code){
+            console.log('MidReport-getReportById: ErrorCode-18');
+            throw new Error(ERROR_MESSAGE.REPORT.REPORT_SHOP_ID_or_USER_ID);
+        }
         return await Report.findOne({
             where: {
                 id: id,
@@ -25,15 +29,19 @@ class MidReport {
     async createReport(data) {
 
         if (!data.type_report) {
+            console.log('MidReport-createReport: ErrorCode-32');
             throw new Error(ERROR_MESSAGE.REPORT.REPORT_TYPE_NOT_EXIST);
         }
         if (!data.content) {
+            console.log('MidReport-createReport: ErrorCode-36');
             throw new Error(ERROR_MESSAGE.REPORT.REPORT_CONTENT_NOT_EXIST)
         }
         if (!data.user_id) {
+            console.log('MidReport-createReport: ErrorCode-40');
             throw new Error(ERROR_MESSAGE.REPORT.REPORT_USER_ID)
         }
         if (!data.shop_id) {
+            console.log('MidReport-createReport: ErrorCode-44');
             throw new Error(ERROR_MESSAGE.REPORT.REPORT_SHOP_ID)
         }
         let user = await Users.findOne({
@@ -56,8 +64,11 @@ class MidReport {
             shop_id: data.shop_id,
             del: 0
         }
-
-        return await Report.create(dataCreate);
+        let object = await Report.create(dataCreate);
+        if(!object){
+            console.log('MidReport-createReport: ErrorCode-70');
+        }console.log('MidReport-createReport: Success');
+        return object
     }
 
     async searchReport(data) {
@@ -78,6 +89,9 @@ class MidReport {
                 where: condition
             })
         ])
+        if(listReport){
+            console.log('MidReport-searchReport: ErrorCode-93');
+        }   console.log('MidReport-searchReport: Success');
         return {
             listReport,
             total: total || 0
@@ -102,6 +116,9 @@ class MidReport {
                 where: condition
             })
         ])
+        if(!listReport){
+            console.log('MidReport-searchReportbyShop: ErrorCode-44');
+        }console.log('MidReport-searchReportbyShop: Success');
         return {
             listReport,
             total: total || 0

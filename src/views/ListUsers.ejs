@@ -41,53 +41,7 @@
 
             </li>
 
-            <li class="nav-item dropdown no-arrow mx-1 osahan-list-dropdown">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <i class="feather-bell"></i>
-                    <!-- Counter - Alerts -->
-                    <span class="badge badge-info badge-counter">6</span>
-                </a>
-                <!-- Dropdown - Alerts -->
-                <div class="dropdown-list dropdown-menu dropdown-menu-right shadow-sm">
-                    <h6 class="dropdown-header">
-                        Alerts Center
-                    </h6>
-                    <a class="dropdown-item d-flex align-items-center" href="#">
-                        <div class="mr-3">
-                            <div class="icon-circle bg-primary">
-                                <i class="fas fa-download text-white"></i>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="small text-gray-500">December 12, 2020</div>
-                            <span class="font-weight-bold">A new monthly report is ready to download!</span>
-                        </div>
-                    </a>
-                    <a class="dropdown-item d-flex align-items-center" href="#">
-                        <div class="mr-3">
-                            <div class="icon-circle bg-success">
-                                <i class="fas fa-edit text-white"></i>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="small text-gray-500">December 7, 2020</div>
-                            $290.29 has been deposited into your account!
-                        </div>
-                    </a>
-                    <a class="dropdown-item d-flex align-items-center" href="#">
-                        <div class="mr-3">
-                            <div class="icon-circle bg-warning">
-                                <i class="fas fa-folder text-white"></i>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="small text-gray-500">December 2, 2020</div>
-                            Spending Alert: We've noticed unusually high spending for your account.
-                        </div>
-                    </a>
-                    <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
-                </div>
-            </li>
+            
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow ml-1 osahan-profile-dropdown">
                 <a class="nav-link dropdown-toggle pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -123,25 +77,25 @@
                         <div class="sb-sidenav-menu-heading">Core</div>
                         <a class="nav-link" onclick="listUserPage()">
                             <div class="sb-nav-link-icon"><i class="feather-list"></i></div>
-                            List Of User
+                            Danh Sách Người Dùng
                         </a>
                         <a class="nav-link" onclick="listSellerPage()">
                             <div class="sb-nav-link-icon"><i class="feather-list"></i></div>
-                            List Of Seller
+                            Danh Sách Người Bán
                         </a>
 
                         <a class="nav-link" onclick="listVoucherPage()">
                             <div class="sb-nav-link-icon"><i class="feather-list"></i></div>
-                            List Of Voucher
+                            Danh Sách Giảm Giá
                         </a>
 
                         <a class="nav-link" onclick="AddRolePage()">
                             <div class="sb-nav-link-icon"><i class="feather-list"></i></div>
-                            Add Role
+                            Danh Sách Thực Đơn
                         </a>
                         <a class="nav-link" onclick="listReportPage()">
                             <div class="sb-nav-link-icon"><i class="feather-list"></i></div>
-                            Report List
+                            Danh Sách Báo Cáo
                         </a>
 
                         <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
@@ -190,7 +144,7 @@
         <div id="layoutSidenav_content">
             <main>
                 <div class="container-fluid">
-                    <h1 class="mt-4">User Managerment</h1>
+                    <h1 class="mt-4">Quản Lý Người Dùng</h1>
 
 
                 </div>
@@ -203,12 +157,12 @@
                             <thead>
                                 <tr class="text-uppercase">
                                     <th>ID</th>
-                                    <th>Name</th>
-                                    <th>ShopName</th>
-                                    <th>Address</th>
-                                    <th>Phone</th>
+                                    <th>Họ Và Tên</th>
+                                    
+                                    <th>Địa CHỉ</th>
+                                    <th>Điện Thoại</th>
                                     <th>Email</th>
-                                    <th>DOB</th>
+                                    
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -224,18 +178,168 @@
         </div>
     </div>
     </main>
-    <footer class="py-4 bg-light mt-auto">
-        <div class="container-fluid">
-            <div class="d-flex align-items-center justify-content-between small">
-                <div class="text-muted">Copyright &copy; Your Website 2020</div>
-                <div>
-                    <a href="#">Privacy Policy</a> &middot;
-                    <a href="#">Terms &amp; Conditions</a>
-                </div>
-
+   <!-- info User -->
+   <div class="modal fade" id="inforUser" tabindex="-1" role="dialog" aria-labelledby="edit_bookingLabel"
+      aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+         <div class="modal-content">
+            <div class="modal-header">
+               <h5 class="modal-title" id="edit_bookingLabel">Thông Tin Người Dùng</h5>
+               <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">×</span>
+               </button>
             </div>
-        </div>
-    </footer>
+            <div class="modal-body">
+               <div class="row">
+                  <div class="col-md-12 col-sm-6">
+                     <div class="card mb-4">
+                        <div class="card-header">
+                           Thông Tin Cơ Bản
+                        </div>
+                        <div class="card-body">
+                           <div class="row">
+                              <div class="col-md-12">
+                                 <div class="form-group">
+                                    <label>Họ Và Tên</label>
+                                    <input type="text" class="form-control" placeholder="" id="userName" readonly>
+                                 </div>
+                              </div>
+                           </div>
+                         
+                           
+                           <!-- /row-->
+                           <div class="row">
+                              <div class="col-md-12">
+                                 <div class="form-group">
+                                    <label>Địa Chỉ</label>
+                                    <input type="text" class="form-control" placeholder="" id="userAdd" readonly>
+                                 </div>
+                              </div>
+                           </div>
+                           <!-- /row-->
+                           <div class="row">
+                              <div class="col-md-12">
+                                 <div class="form-group">
+                                    <label>Số Điện Thoại</label>
+                                    <input type="text" class="form-control" placeholder="" id="userPhone" readonly>
+                                 </div>
+                              </div>
+                              
+                           </div>
+                           <!-- /row-->
+                           <div class="row">
+                              <div class="col-md-12">
+                                 <div class="form-group">
+                                    <label>Email</label>
+                                    <input type="text" class="form-control" placeholder="" id="userEmail" readonly>
+                                 </div>
+                              </div>
+                           </div>
+                           <!-- /row-->
+                          
+                           <div class="row">
+                              <div class="col-md-12">
+                                 <div class="form-group">
+                                    <label>Ngày Sinh</label>
+                                    <input type="text" class="form-control" placeholder="" id="userDOB" readonly>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                 
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+
+   <!--Pop up upRole-->
+
+   <div class="modal fade" id="upRole" tabindex="-1" role="dialog" aria-labelledby="edit_bookingLabel"
+      aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+         <div class="modal-content">
+            <div class="modal-header">
+               <h5 class="modal-title" id="edit_bookingLabel">Thông Báo</h5>
+               <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">×</span>
+               </button>
+            </div>
+            <div class="modal-body">
+               <div class="row">
+                  <div class="col-xl-12">
+                     <div class="card mb-4">
+                        <div class="card-body">
+                           <h5 style="text-align: center;">Bạn có muốn nâng quyền người dùng này không?</h5>
+                           <div class="card-body">
+                              <div class="row ml-5">
+                                 <div class="col-md-6">
+                                    <div class="form-group">
+                                       <input type="button" class="btn btn-primary" id="deletePro" value="Đồng Ý"
+                                          onclick="upRole()"></input>
+                                    </div>
+                                 </div>
+                                 <div class="col-md-6">
+                                    <div class="form-group">
+                                       <input type="button" class="btn btn-primary" id="cancelDelete" value="Hủy Bỏ"
+                                          data-dismiss="modal"></input>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+
+    <!--Pop up delete-->
+
+    <div class="modal fade" id="deleteUser" tabindex="-1" role="dialog" aria-labelledby="edit_bookingLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+       <div class="modal-content">
+          <div class="modal-header">
+             <h5 class="modal-title" id="edit_bookingLabel">Thông Báo</h5>
+             <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">×</span>
+             </button>
+          </div>
+          <div class="modal-body">
+             <div class="row">
+                <div class="col-xl-12">
+                   <div class="card mb-4">
+                      <div class="card-body">
+                         <h5 style="text-align: center;">Bạn có muốn xóa người dùng này không?</h5>
+                         <div class="card-body">
+                            <div class="row ml-5">
+                               <div class="col-md-6">
+                                  <div class="form-group">
+                                     <input type="button" class="btn btn-primary" id="deletePro" value="Đồng Ý"
+                                        onclick="deleteUser()"></input>
+                                  </div>
+                               </div>
+                               <div class="col-md-6">
+                                  <div class="form-group">
+                                     <input type="button" class="btn btn-primary" id="cancelDelete" value="Hủy Bỏ"
+                                        data-dismiss="modal"></input>
+                                  </div>
+                               </div>
+                            </div>
+                         </div>
+                      </div>
+                   </div>
+                </div>
+             </div>
+          </div>
+       </div>
+    </div>
+ </div>
 
     <!-- Jquery -->
     <script src="/js/jquery.min.js"></script>
@@ -310,8 +414,49 @@
         setCookie("token", "", 0);
         window.location = "/LoginAdmin"
     }
+    //upRole Function done
+    function upRole() {
+        let idUP = localStorage.getItem("idUpRole").replaceAll('"', '');
+        $.ajax({
+                url:'/api/user/upRole?token='+token,
+                method:'GET',
+                data:{
+                id:idUP
+                }
+                
+            }).then(function(data){
+                
+                if(data.message == "SUCCESS"){
+                
+                window.location.reload()
+                }else{
+                console.log("111111111111111111 listUser");
+                }
+                
+            })
+    }
 
-    //btn-logout function
+    //deleteUser function done
+    function deleteUser() {
+        let idDel = localStorage.getItem("idDel").replaceAll('"', '');
+        $.ajax({
+                url:'/api/user/delete?token='+token,
+                method:'GET',
+                data:{
+                id:idDel
+                }
+                
+            }).then(function(data){
+                
+                if(data.message == "SUCCESS"){
+                
+                window.location.reload()
+                }else{
+                console.log("111111111111111111 listUser");
+                }
+                
+            })
+    }
 
     //datatable function
     $(document).ready(function() {
@@ -319,7 +464,7 @@
         $('#dataTable').DataTable({
             'ajax': function(data, callback, settings) {
                 $.ajax({
-                        url: "http://localhost:3999/api/user/searchUser?token=" + token,
+                        url: "http://localhost:3999/api/user/searchUser" ,
                     })
                     .then(function(response, textStatus, jqXHR) {
 
@@ -338,15 +483,11 @@
                 }, {
                     data: 'name'
                 }, {
-                    data: 'role_id'
-                }, {
                     data: 'address'
                 }, {
                     data: 'phone'
                 }, {
                     data: 'email'
-                }, {
-                    data: 'dob'
                 }, {
                     data: ""
                 }
@@ -355,9 +496,9 @@
             'columnDefs': [{
                 targets: -1,
                 render: function(data, type, row, meta) {
-                    return '<input type="button" class="show-user-id btn-primary mr-3" id=user-id-"' + meta.row + '" value="Show User Info"/>' +
-                        '<input type="button" class="show-post-id btn-success mr-3 " id=post-"' + meta.row + '" value="Up Row"/>' +
-                        '<input type="button"  class="show-post-title btn-danger mr-3" id=post-"' + meta.row + '" value="Delete"/>';
+                    return '<input type="button" class="show-user-id btn-primary mr-3" data-toggle="modal" data-target="#inforUser" idUser="' + row.id + '" value="Thông Tin"/>' +
+                        '<input type="button" class="up-role-btn btn-success mr-3 " data-toggle="modal" data-target="#upRole" idUser="' + row.id + '" value="Nâng quyền"/>' +
+                        '<input type="button"  class="delete-user-btn btn-danger mr-3" data-toggle="modal" data-target="#deleteUser"idUser="' +  row.id + '" value="Xóa"/>';
                 }
 
             }]
@@ -367,43 +508,47 @@
 
 
         $('#dataTable tbody').on('click', '.show-user-id', function() {
-            let id = $(this).attr('id').match(/\d+/)[0];
-            console.log('id: ', id);
-            let data = $('#dataTable').DataTable().row(id).data();
-            alert('User ID: ' + data.userId);
-        });
-
-
-        $('#dataTable tbody').on('click', '.show-post-id', function() {
-            let id = $(this).attr('id').match(/\d+/)[0];
-            let data = $('#dataTable').DataTable().row(id).data();
-            let id_User = data.id;
-            console.log("id = " + id_User);
-            alert('Post ID: ' + data.id);
-            console.log(data);
+            let idUserTemp = $(this).attr("idUser");
             $.ajax({
-                url: '/api/user/downRole?token=' + token + '&id=' + id_User,
-                method: 'GET',
-
-            }).then(function() {
-
-                window.location.reload();
+                url:'http://localhost:3999/api/user/getById',
+                method:'GET',
+                data:{
+                id:idUserTemp
+                }
+                
+            }).then(function(data){
+                
+                if(data.message == "SUCCESS"){
+                    document.getElementById("userName").value = data.data.name
+                    document.getElementById("userAdd").value = data.data.address
+                    document.getElementById("userPhone").value = data.data.phone
+                    document.getElementById("userEmail").value = data.data.email
+                    document.getElementById("userDOB").value = new Date(data.data.dob).toLocaleDateString();
+                }
+                
             })
         });
 
-        $('#dataTable tbody').on('click', '.show-post-title', function() {
-            let id = $(this).attr('id').match(/\d+/)[0];
-            let data = $('#dataTable').DataTable().row(id).data();
-            let id_User = data.id;
 
-            $.ajax({
-                url: '/api/user/delete?token=' + token + '&id=' + id_User,
-                method: 'GET',
+        $('#dataTable tbody').on('click', '.up-role-btn', function() {
+            let idUpRole = $(this).attr("idUser")
 
-            }).then(function() {
+            localStorage.setItem('idUpRole', JSON.stringify(idUpRole));
 
-                window.location.reload();
-            })
+         
+            // $.ajax({
+            //     url: '/api/user/downRole?token=' + token + '&id=' + id_User,
+            //     method: 'GET',
+
+            // }).then(function() {
+
+            //     window.location.reload();
+            // })
+        });
+
+        $('#dataTable tbody').on('click', '.delete-user-btn', function() {
+            let idUserDel = $(this).attr("idUser")
+            localStorage.setItem('idDel', JSON.stringify(idUserDel));
         });
 
 

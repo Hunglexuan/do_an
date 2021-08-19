@@ -138,6 +138,10 @@ class MidFeedback {
 
             }
         }
+        if(!listFeedback){
+            console.log('MidFeedback-searchFeedback: ErrorCode-142');
+        }
+        console.log('MidFeedback-searchFeedback: Success');
 
         return {
             listFeedback,
@@ -153,15 +157,19 @@ class MidFeedback {
     }
     async createFeedback(data) {
         if (!data.user_id) {
+            console.log('MidFeedback-createFeedback: ErrorCode-160');
             throw new Error(ERROR_MESSAGE.FEEDBACK.FEEDBACK_USER_ID);
         }
         if (!data.shop_id) {
+            console.log('MidFeedback-createFeedback: ErrorCode-164');
             throw new Error(ERROR_MESSAGE.FEEDBACK.FEEDBACK_SHOP_ID);
         }
         if (!data.content) {
+            console.log('MidFeedback-createFeedback: ErrorCode-168');
             throw new Error(ERROR_MESSAGE.FEEDBACK.FEEDBACK_CONTENT);
         }
         if (!data.rate) {
+            console.log('MidFeedback-createFeedback: ErrorCode-172');
             throw new Error(ERROR_MESSAGE.FEEDBACK.FEEDBACK_RATE);
         }
         let dataCreate = {
@@ -171,7 +179,11 @@ class MidFeedback {
             rate: data.rate,
             del: 0
         }
-        return await Feedback.create(dataCreate);
+        let object = await Feedback.create(dataCreate);
+        if(!object){
+            console.log('MidFeedback-createFeedback: ErrorCode-184');
+        }console.log('MidFeedback-createFeedback: Success');
+        return object
     }
    
 

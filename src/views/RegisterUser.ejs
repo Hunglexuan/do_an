@@ -282,12 +282,12 @@
                 url: '/api/user/create',
                 method: 'POST',
                 data: {
-                    name: $('#userName').val(),
-                    password: $('#inputPassword').val(),
-                    email: $('#inputEmail').val(),
-                    address: $('#inputAddress').val(),
-                    dob: $('#date').val(),
-                    phone: $('#inputPhone').val(),
+                    name: $('#userName').val().trim(),
+                    password: $('#inputPassword').val().trim(),
+                    email: $('#inputEmail').val().trim(),
+                    address: $('#inputAddress').val().trim(),
+                    dob: $('#date').val().trim(),
+                    phone: $('#inputPhone').val().trim(),
                 },
             }).then(function(data) {
                 console.log("may co chiu ra ko ",data);
@@ -296,8 +296,17 @@
                     var userId = data.data.id;
 
                     setCookie("token", data.data.token, 30)
-                    localStorage.setItem('userId', JSON.stringify(data.data.id));
-                    window.location.href = "/LoginUser"
+                    localStorage.setItem('userId', JSON.stringify(userId));
+                    Swal.fire({
+                        type: 'success',
+                        title: 'Đăng ký thành công 🎊',
+                        // text: 'Your offer is safe 🙂',
+                        showConfirmButton: false,
+                        timer: 2000
+                    })
+                    window.setTimeout(function() {
+                        window.location.href = '/';
+                    }, 2000);
                 } else {
 
                 }

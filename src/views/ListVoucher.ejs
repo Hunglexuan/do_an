@@ -127,25 +127,25 @@
                   <div class="sb-sidenav-menu-heading">Core</div>
                   <a class="nav-link" onclick="listUserPage()">
                     <div class="sb-nav-link-icon"><i class="feather-list"></i></div>
-                    List Of User
+                    Danh Sách Người Dùng
                   </a>
                   <a class="nav-link" onclick="listSellerPage()">
                     <div class="sb-nav-link-icon"><i class="feather-list"></i></div>
-                    List Of Seller
+                    Danh Sách Người Bán
                   </a>
     
                   <a class="nav-link" onclick="listVoucherPage()">
                     <div class="sb-nav-link-icon"><i class="feather-list"></i></div>
-                    List Of Voucher
+                    Danh Sách Giảm Giá
                   </a>
     
                   <a class="nav-link"onclick="AddRolePage()">
                     <div class="sb-nav-link-icon"><i class="feather-list"></i></div>
-                    Add Role
+                    Danh Sách Thực Đơn
                   </a>
                   <a class="nav-link" onclick="listReportPage()">
                     <div class="sb-nav-link-icon"><i class="feather-list"></i></div>
-                    Report List
+                    Danh Sách Báo Cáo
                   </a>
                   <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne"
                      data-parent="#sidenavAccordion">
@@ -214,9 +214,8 @@
                         <tr class="text-uppercase">
                            <th>ID</th>
                            <th>CODE</th>
-                           <th>Discount-Number</th>
-                           <th>createdAt</th>
-                           <th>updatedAt</th>
+                           <th>Giá Trị (VND) </th>
+                           
                            <th>Action</th>
                         </tr>
                      </thead>
@@ -351,7 +350,51 @@
          </div>
       </div>
    </div>
-</div>
+   </div>
+
+   <!--Pop up delete-->
+
+   <div class="modal fade" id="deleteVoucher" tabindex="-1" role="dialog" aria-labelledby="edit_bookingLabel"
+      aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+         <div class="modal-content">
+            <div class="modal-header">
+               <h5 class="modal-title" id="edit_bookingLabel">Thông Báo</h5>
+               <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">×</span>
+               </button>
+            </div>
+            <div class="modal-body">
+               <div class="row">
+                  <div class="col-xl-12">
+                     <div class="card mb-4">
+                        <div class="card-body">
+                           <h5 style="text-align: center;">Bạn có muốn xóa voucher này không?</h5>
+                           <div class="card-body">
+                              <div class="row ml-5">
+                                 <div class="col-md-6">
+                                    <div class="form-group">
+                                       <input type="button" class="btn btn-primary" id="deletePro" value="Đồng Ý"
+                                          onclick="deleteVoucher()"></input>
+                                    </div>
+                                 </div>
+                                 <div class="col-md-6">
+                                    <div class="form-group">
+                                       <input type="button" class="btn btn-primary" id="cancelDelete" value="Hủy Bỏ"
+                                          data-dismiss="modal"></input>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+
 
  
    <!-- Jquery -->
@@ -371,6 +414,7 @@
    <script src="/js/jquery.dataTables.min.js"></script>
    <script src="/js/dataTables.bootstrap.min.js"></script>
    <script src="https://cdnjs.cloudflare.com/ajax/libs/AlertifyJS/1.13.1/alertify.min.js" ></script>
+   
    <!-- <script src="/js/datatables-demo.js"></script> -->
 
 </body>
@@ -437,7 +481,7 @@ function logOutClick(){
    window.location = "/LoginAdmin"
 }
 
-//add-voucher
+//add-voucher done
 $("#add-voucher-btn").click(function() {
 
 checkBlankVoucher();
@@ -461,13 +505,15 @@ $.ajax({
     window.location.reload()
 })
 })
-
+//edit Voucher CAN FIX 
 function editVoucher(){
    var id = localStorage.getItem('updatedID').replaceAll('"', '');
+   
    $.ajax({
-      url:"/api/voucher/update?id="+id,
+      url:"/api/voucher/update",
       type:"POST",
       data:{
+         id:id,
          code : $("afterCodeVoucher").val(),
          discount_number: $("afterPriceVoucher").val()
       }
@@ -481,7 +527,26 @@ function editVoucher(){
    })
 }
 
-//datatable function
+//delete-Voucher done
+function deleteVoucher(){
+   var id = localStorage.getItem('deleteID').replaceAll('"', '');
+   $.ajax({
+      url:"/api/voucher/delete",
+      type:"GET",
+      data:{
+         id:id
+      }
+   }).then(function(data){
+      if(data.message == 'SUCCESS'){
+         
+         window.location.reload()
+         alertify.success("XÓa Voucher Thành Công")
+      }else{
+         alertify.error("Xóa Voucher Thất Bại");
+      }
+   })
+}
+//datatable function 
  $(document).ready(function() {
     
    $('#dataTable').DataTable( {
@@ -503,8 +568,8 @@ function editVoucher(){
        {data : 'no'},
        {data : 'code'},
        {data : 'discount_number'},
-       {data : 'createdAt'},
-       {data : 'updatedAt'},
+      //  {data : 'createdAt',render : $.fn.dataTable.render.momment('D/M/YYYY')},
+      //  {data : 'updatedAt'},
        {data : ""}
 
     ],
@@ -513,7 +578,7 @@ function editVoucher(){
 					targets: -1,
 					render: function (data, type, row, meta) {
 						return '<input type="button" class="update-voucher-btn btn-success mr-3" data-toggle="modal" data-target="#editvoucher"  " idVoucherEdit="' + row.code  + '" value="Sửa Voucher"/>' +
-							'<input type="button"  class="show-post-title btn-danger mr-3" id=post-"' + meta.row + '" value="Xóa Voucher"/>';
+							'<input type="button"  class="show-post-title btn-danger mr-3" data-toggle="modal" data-target="#deleteVoucher" idVoucherDel="' + row.code + '" value="Xóa Voucher"/>';
 					}
 
 				}
@@ -540,39 +605,30 @@ function editVoucher(){
             localStorage.setItem('updatedID', JSON.stringify(data.data.id));
             document.getElementById("afterCodeVoucher").value = data.data.code;
             // $("#afterCodeVoucher").html(data.data.code)
-            console.log(data.data.discount_number);
+            
             document.getElementById("afterPriceVoucher").value = data.data.discount_number;
             
          })
          
-         // $.ajax({
-         //    url:'/api/voucher/update?id='+id,
-         //    method:'POST',
-         //    data:{
-         //       code:$("#afterCodeVoucher").val(),
-         //       discount_number:$("#afterPriceVoucher").val()
-         //    }
-            
-         // }).then(function(){
-         //    if(data.message == "SUCCESS"){
-         //       alert("Thanh cong")
-         //    }
-            
-         // })
+         
 		});
 
 		$('#dataTable tbody').on('click', '.show-post-title', function () {
-         let id = $(this).attr('id').match(/\d+/)[0];
-			let data = $('#dataTable').DataTable().row(id).data();
-         let id_User = data.id;
+         let code = $(this).attr('idVoucherDel');
          
-         $.ajax({
-            url:'/api/user/delete?token='+token+'&id='+id_User,
-            method:'GET',
+			$.ajax({
+            url:"/api/voucher/getCode",
+            type:"GET",
+            data:{
+               code:code
+            }
+         }).then(function (data) {
+            localStorage.setItem('deleteID', JSON.stringify(data.data.id));
+            // document.getElementById("afterCodeVoucher").value = data.data.code;
+            // // $("#afterCodeVoucher").html(data.data.code)
             
-         }).then(function(){
+            // document.getElementById("afterPriceVoucher").value = data.data.discount_number;
             
-            window.location.reload();
          })
 		});
 

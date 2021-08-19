@@ -35,6 +35,10 @@ class ProductController {
         let dataQuery = req.query;
         return MidProduct.listFastDelivery(dataQuery);
     }
+    async listSale(req, res) {
+        let dataQuery = req.query;
+        return MidProduct.listSale(dataQuery);
+    }
     async updateProduct(req, res) {
         let dataQuery = req.body;
         return await MidProduct.updateProduct(dataQuery);

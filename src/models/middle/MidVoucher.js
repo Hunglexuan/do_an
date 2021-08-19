@@ -94,7 +94,7 @@ async deleteVoucher(data) {
 }
 async updateVoucher(data) {
     if (!data.id) {
-        console.log('MidVoucher-updateVoucher: ERROR');
+        console.log('MidVoucher-updateVoucher: ERROR-97');
         throw new Error('Voucher is not exist');
 
     }

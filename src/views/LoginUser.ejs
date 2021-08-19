@@ -170,12 +170,11 @@
                 url: "/api/auth/login",
                 type: "POST",
                 data: {
-                    email: $("#inputEmail").val(),
-                    password: $("#inputPassword").val()
+                    email: $("#inputEmail").val().trim(),
+                    password: $("#inputPassword").val().trim()
                 }
             }).then(function(data) {
-
-
+                
                 if (data.message == "SUCCESS") {
 
                     var userId = data.data.userid;
@@ -205,7 +204,7 @@
 
                     Swal.fire({
                         type: 'success',
-                        title: 'Đăng nhập thành công 🎉🎉🎉',
+                        title: 'Đăng nhập thành công 🔓',
                         // text: 'Your offer is safe 🙂',
                         showConfirmButton: false,
                         timer: 2000
