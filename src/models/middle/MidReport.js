@@ -15,7 +15,7 @@ import MidUser from './MidUser';
 class MidReport {
 
     async getReportById(id) {
-        if(!data.code){
+        if(!id){
             console.log('MidReport-getReportById: ErrorCode-18');
             throw new Error(ERROR_MESSAGE.REPORT.REPORT_SHOP_ID_or_USER_ID);
         }

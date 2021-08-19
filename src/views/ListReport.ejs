@@ -213,13 +213,12 @@
                      <thead>
                         <tr class="text-uppercase">
                            <th>ID</th>
-                           <th>Name</th>
-                           <th>ShopName</th>
-                           <th>Address</th>
-                           <th>Phone</th>
-                           <th>Email</th>
-                           <th>DOB</th>
-                           <th>Action</th>
+                           <th>Người Dùng</th>
+                           <th>Cửa Hàng</th>
+                           <th>Thể Loại </th>
+                           <th>Nội Dung </th>
+                           <th>Hàng Động</th>
+                           
                         </tr>
                      </thead>
                      <tbody>
@@ -235,19 +234,75 @@
       </div>
    </div>
    </main>
-   <footer class="py-4 bg-light mt-auto">
-      <div class="container-fluid">
-         <div class="d-flex align-items-center justify-content-between small">
-            <div class="text-muted">Copyright &copy; Your Website 2020</div>
-            <div>
-               <a href="#">Privacy Policy</a>
-               &middot;
-               <a href="#">Terms &amp; Conditions</a>
-            </div>
+    <!-- info Report -->
+    <div class="modal fade" id="infoReport" tabindex="-1" role="dialog" aria-labelledby="edit_bookingLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+       <div class="modal-content">
+          <div class="modal-header">
+             <h5 class="modal-title" id="edit_bookingLabel">Thông Tin Báo Cáo</h5>
+             <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">×</span>
+             </button>
+          </div>
+          <div class="modal-body">
+             <div class="row">
+                <div class="col-md-12 col-sm-6">
+                   <div class="card mb-4">
+                      <div class="card-header">
+                         Thông Tin Cơ Bản
+                      </div>
+                      <div class="card-body">
+                         <div class="row">
+                            <div class="col-md-12">
+                               <div class="form-group">
+                                  <label>Người Dùng</label>
+                                  <input type="text" class="form-control" placeholder="" id="userName" readonly>
+                               </div>
+                            </div>
+                         </div>
 
-         </div>
-      </div>
-   </footer>
+                         <div class="row">
+                           <div class="col-md-12">
+                              <div class="form-group">
+                                 <label>Cửa Hàng</label>
+                                 <input type="text" class="form-control" placeholder="" id="sellerName" readonly>
+                              </div>
+                           </div>
+                        </div>
+                       
+                         
+                         <!-- /row-->
+                         <div class="row">
+                            <div class="col-md-12">
+                               <div class="form-group">
+                                  <label>Thể Loại Báo Cáo</label>
+                                  <input type="text" class="form-control" placeholder="" id="typeReport" readonly>
+                               </div>
+                            </div>
+                         </div>
+                         <!-- /row-->
+                         <div class="row">
+                            <div class="col-md-12">
+                               <div class="form-group">
+                                  <label>Nội Dung</label>
+                                  <input type="text" class="form-control" placeholder="" id="contentReport" readonly>
+                               </div>
+                            </div>
+                            
+                         </div>
+                        
+                        
+                        
+                      </div>
+                   </div>
+                </div>
+               
+             </div>
+          </div>
+       </div>
+    </div>
+ </div>
  
    <!-- Jquery -->
    <script src="/js/jquery.min.js"></script>
@@ -323,6 +378,14 @@ function logOutClick(){
 
  //btn-logout function
 
+ function getInfo(user,name,type,content){
+            
+            document.getElementById("userName").value = user
+            document.getElementById("sellerName").value = name
+            document.getElementById("typeReport").value = type
+            document.getElementById("contentReport").value = content
+         
+      }
 //datatable function
  $(document).ready(function() {
     
@@ -344,12 +407,11 @@ function logOutClick(){
     
     'columns':[
        {data : 'no'},
-       {data : 'user_id'},
-       {data : 'shop_id'},
+       {data : 'user'},
+       {data : 'shop'},
        {data : 'type_report'},
        {data : 'content'},
-       {data : 'createdAt'},
-       {data : 'updatedAt'},
+      
        {data : ""}
 
     ],
@@ -357,7 +419,7 @@ function logOutClick(){
 				{
 					targets: -1,
 					render: function (data, type, row, meta) {
-						return '<input type="button" class="show-report-detail btn-primary mr-3" id=user-id-"' + meta.row + '" value="Show Repot Detail"/>' 
+						return '<input type="button" class="show-report-detail btn-primary mr-3" data-toggle="modal" data-target="#infoReport" onclick="getInfo('+"'"+row.user+"'"+','+"'"+row.shop+"'"+','+"'"+row.type_report+"'"+','+"'"+row.content+"'"+')" idReport="' + row.id + '" value="Chi Tiết"/>' 
 							;
 					}
 
@@ -368,24 +430,25 @@ function logOutClick(){
 
 
 
-   
 
-
-		$('#dataTable tbody').on('click', '.show-report-detail', function () {
-			let id = $(this).attr('id').match(/\d+/)[0];
-			let data = $('#dataTable').DataTable().row(id).data();
-            let id_report = data.id;
-        
-         $.ajax({
-            url:'/api/report/getById?token='+token+'&id='+id_report,
-            method:'GET',
+		// $('#dataTable tbody').on('click', '.show-report-detail', function () {
+		// 	let id = $(this).attr('idReport')
+      //    console.log(id);
+      //    $.ajax({
+      //       url:'/api/report/getById',
+      //       method:'GET',
+      //       data:{
+      //          id:id
+      //       }
             
-         }).then(function(data){
+      //    }).then(function(data){
+      //       document.getElementById("userName").value = data.data.name
+      //       document.getElementById("sellerName").value = data.data.name
+      //       document.getElementById("sellerName").value = data.data.name
+      //       document.getElementById("sellerName").value = data.data.name
             
-           console.log(data.data);
-           alert(data.data);
-         })
-		});
+      //    })
+		// });
 
 
      
