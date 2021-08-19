@@ -1,5 +1,5 @@
 import {
-    Role, Users, Feedback, Bill, UserBill, BillProduct, Product,
+    Role, Users, Feedback, Bill, UserBill, BillProduct, Product, Favorite,
 } from '../core';
 import { Op } from 'sequelize';
 import { checkPassword, hashPassword } from '../../libs/encrypt';
@@ -12,8 +12,35 @@ import { name } from 'ejs';
 
 class MidFavorite {
 
-   
+    async createFavor(data) {
 
+        let dataCreate = {
+            product_id: data.product_id,
+            user_id: data.user_id,
+            del: 0,
+        };
+        let object = await Favorite.create(dataCreate);
+        if (!object) {
+            console.log('MidFavorite-createFavor: ERROR-24');
+        }
+        console.log('MidFavorite-createFavor: Success');
+        return
+    }
+    async deleteFavor(data) {
+
+        let objDelete = await Favorite.findOne({
+            where: {
+                product_id: data.product_id,
+                user_id: data.user_id,
+                del: 0
+            }
+        })
+        let dataDelete = {
+            del: 1,
+        }
+
+        objDelete.update(dataDelete)
+    }
 }
 
 

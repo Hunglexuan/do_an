@@ -501,6 +501,7 @@ class MidUser {
             console.log('MidUser-changePass: ERROR-501');
             throw new Error('Không có người dùng');
         }
+        
         let objUpdate = await Users.findOne({
             where: {
                 id: data.userId,

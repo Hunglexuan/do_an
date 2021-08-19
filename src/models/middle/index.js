@@ -20,3 +20,6 @@ export { default as MidRole }
 from './MidRole';
 export { default as MidVoucher }
 from './MidVoucher';
+export { default as MidFavorite }
+from './MidFavorite';
+
