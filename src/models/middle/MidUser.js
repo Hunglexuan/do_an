@@ -10,9 +10,9 @@ import { ERROR_MESSAGE } from "../../config/error";
 class MidUser {
 
 
-    async updateAvatar(data,logo) {
+    async updateAvatar(data, logo) {
         if (!logo) {
-         console.log('MidUser-updateAvatar: ERROR-15');
+            console.log('MidUser-updateAvatar: ERROR-15');
             throw new Error('Vui lòng chọn ảnh');
         }
         let objUpdate = await Users.findOne({
@@ -27,11 +27,12 @@ class MidUser {
         objUpdate.update(dataUpdate);
     }
 
+
     async updateShopStatus(data) {
         if (!data.id) {
             console.log('MidUser-updateStatus: ERROR-32');
             throw new Error('Status is not exist');
-    
+
         }
         let obj = await Users.findOne({
             where: {
@@ -45,7 +46,7 @@ class MidUser {
         obj.update(dataUpdate);
     }
     async getUserByEmail(email) {
-        if(!email){
+        if (!email) {
             console.log('MidUser-getUserByEmail: ERROR-49');
             throw new Error(ERROR_MESSAGE.Customer.ERR_EMAIL);
         }
@@ -57,7 +58,7 @@ class MidUser {
         });
     }
     async getUserById(userid) {
-        if(!userid){
+        if (!userid) {
             console.log('MidUser-getUserById: ERROR-61');
             throw new Error(ERROR_MESSAGE.Customer.ERR_REQUIRE_ID);
         }
@@ -110,11 +111,11 @@ class MidUser {
             del: 0,
         };
         let object = await Users.create(dataCreate);
-        if(!object){
+        if (!object) {
             console.log('MidUser-createUser: ERROR-114');
         }
         console.log('MidUser-createUser: Success');
-        return 
+        return
     }
 
     async checkRole(data) {
@@ -128,7 +129,7 @@ class MidUser {
                 },
             });
             if (!user) {
-            console.log('MidUser-checkRole: ERROR-131');
+                console.log('MidUser-checkRole: ERROR-131');
                 throw new Error(ERROR_MESSAGE.LOGIN.ERR_ACC);
             } else {
                 let role = await Role.findOne({
@@ -154,17 +155,17 @@ class MidUser {
             console.log('MidUser-loginUser: ERROR-154');
             throw new Error(ERROR_MESSAGE.LOGIN.ERR_REQUIRE_PASSWORD);
         }
-       
+
         const userData = await this.getUserByEmail(email);
-      
+
         let check = this.checkRole(userData);
-       
+
         if (check == "admin") { }
         if (!userData) {
             console.log('MidUser-loginUser: ERROR-162');
             throw new Error(ERROR_MESSAGE.LOGIN.ERR_ACC);
         }
-      
+
         const isCorrectPass = await checkPassword(password, userData.password);
         if (!isCorrectPass) {
             console.log('MidUser-loginUser: ERROR-168');
@@ -257,7 +258,7 @@ class MidUser {
         if (!data.id) {
             console.log('MidUser-updatePassword: ERROR-256');
             throw new Error('Voucher is not exist');
-    
+
         }
         let user = await Users.findOne({
             where: {
@@ -282,7 +283,7 @@ class MidUser {
             del: 0,
             role_id: null,
         };
-        
+
         const [listUsers, total] = await Promise.all([
             Users.findAll({
                 where: condition,
@@ -294,7 +295,7 @@ class MidUser {
                 where: condition,
             }),
         ]);
-        if(!listUsers){
+        if (!listUsers) {
             console.log('MidUser-searchUser: ERROR-323');
         }
         console.log('MidUser-searchUser: Success');
@@ -334,7 +335,7 @@ class MidUser {
                 where: condition,
             }),
         ]);
-        if(!listUsers){
+        if (!listUsers) {
             console.log('MidUser-searchSeller: ERROR-363');
         }
         console.log('MidUser-searchSeller: Success');
@@ -380,10 +381,10 @@ class MidUser {
             dob: data.dob,
         };
         let object = await objUpdate.update(dataUpdate);
-        if(!object){
+        if (!object) {
             console.log('MidUser-updateUser: ERROR-409');
-        }console.log('MidUser-updateUser: Success');
-        return 
+        } console.log('MidUser-updateUser: Success');
+        return
     }
 
     //done
@@ -427,10 +428,10 @@ class MidUser {
             shop_name: data.shop_name,
         };
         let object = await objUpdate.update(dataUpdate);
-        if(!object){
+        if (!object) {
             console.log('MidUser-updateSeller: ERROR-456');
-        }console.log('MidUser-updateSeller: Success');
-        return 
+        } console.log('MidUser-updateSeller: Success');
+        return
     }
 
     //done
@@ -438,7 +439,7 @@ class MidUser {
         if (!data.id) {
             console.log('MidUser-updateRole: ERROR-464');
             throw new Error('Role is not exist');
-    
+
         }
         let user = await Users.findOne({
             where: {
@@ -463,7 +464,7 @@ class MidUser {
         if (!data.id) {
             console.log('MidUser-updateRole: ERROR-489');
             throw new Error('Role is not exist');
-    
+
         }
         let user = await Users.findOne({
             where: {
@@ -482,7 +483,7 @@ class MidUser {
         if (!data.id) {
             console.log('MidUser-deleteUser: ERROR-508');
             throw new Error('User is not exist');
-    
+
         }
         let objDelete = await Users.findOne({
             where: {
@@ -495,6 +496,23 @@ class MidUser {
         };
         objDelete.update(dataDelete);
     }
+    async changePass(data) {
+        if (!data.userId) {
+            console.log('MidUser-changePass: ERROR-501');
+            throw new Error('Không có người dùng');
+        }
+        let objUpdate = await Users.findOne({
+            where: {
+                id: data.userId,
+                del: 0,
+            },
+        });
+        let dataUpdate = {
+            password: hashPassword(data.password),
+        };
+        objUpdate.update(dataUpdate);
+    }
+
 }
 
 export default new MidUser();
