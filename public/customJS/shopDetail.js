@@ -5,7 +5,8 @@
 var params = (new URL(document.location)).searchParams;
 var idSellerURL = params.get('id');
 var idUser = localStorage.getItem('userId').replaceAll('"', '');
-
+var cart_TEMP =JSON.parse( sessionStorage.getItem('shoppingCart') ) 
+// localStorage.getItem('billID').replaceAll('"', '');
 var shoppingCart = (function () {
     // =============================
     // Private methods and propeties
@@ -13,10 +14,11 @@ var shoppingCart = (function () {
     var shopID = idSellerURL
     var userID = idUser
     var status = 0
-    var address = null
+    var address = ""
     var voucherCode = null
-    var billID = null
-    var listCart = [];
+    var billID = cart_TEMP&&cart_TEMP.billID ? cart_TEMP.billID : "";
+    //localStorage.getItem('billID')?localStorage.getItem('billID').replaceAll('"', ''):"";
+    var listCart = cart_TEMP&&cart_TEMP.listCart.length>0 ? cart_TEMP.listCart : [];
     var cart = {
         shopID,
         userID,
@@ -29,27 +31,45 @@ var shoppingCart = (function () {
 
     // sessionStorage.setItem('shoppingCart', JSON.stringify(cart));
 
-    // Constructor
-    function Item(id, name, price, count) {
-        this.id = id;
-        this.name = name;
-        this.price = price;
-        this.count = count;
-    }
+    function saveCartInDB() {
+        $.ajax({
+            url: "/api/bill/create",
+            type: "POST",
+            data: {
+                "cart": cart
+            }
+        }).then(function (data) {
+    
+            
+            if (data.message == "SUCCESS") {
+                console.log('111112',data );
+                console.log('11111',cart );
+                
+                cart.billID = data.data
+                sessionStorage.setItem("shoppingCart", JSON.stringify(cart));
+            } else {
+                console.log("22222222",cart);
+             
+            }
+        })
+      }
+    
+      function displayCartInDB() {
+        $.ajax({
+          url: "/api/bill/listCart?userID=" + id,
+          type: "GET",
+        }).then(function (data) {
+          sessionStorage.setItem("shoppingCart", JSON.stringify(data.data));
+        });
+      }
+
 
     // Save cart
     function saveCart() {
         sessionStorage.setItem('shoppingCart', JSON.stringify(cart));
-    }
 
-    // Load cart
-    function loadCart() {
-        cart = JSON.parse(sessionStorage.getItem('shoppingCart'));
+        saveCartInDB()
     }
-    if (sessionStorage.getItem("shoppingCart") != null) {
-        loadCart();
-    }
-
 
     // =============================
     // Public methods and propeties
@@ -58,7 +78,7 @@ var shoppingCart = (function () {
 
     // Add to cart
     obj.addItemToCart = function (id, name, price, count) {
-        saveCart()
+        
         for (var item in cart.listCart) {
             if (cart.listCart[item].id === id) {
                 cart.listCart[item].count++;
@@ -66,8 +86,14 @@ var shoppingCart = (function () {
                 return;
             }
         }
-        var item = new Item(id, name, price, count);
+        var item ={
+            id: id,
+            name: name ,
+            price: price ,
+            count: count,
+        } 
         cart.listCart.push(item);
+        saveCart()
 
     }
     // Set count from item
@@ -97,7 +123,7 @@ var shoppingCart = (function () {
     obj.removeItemFromCartAll = function (id) {
         for (var item in cart.listCart) {
             if (cart.listCart[item].id === id) {
-                cart.listCart[item].splice(item, 1);
+                cart.listCart.splice(item, 1);
                 break;
             }
         }
@@ -148,7 +174,7 @@ var shoppingCart = (function () {
             itemCopy.total = Number(item.price * item.count).toFixed(2);
             cartCopy.push(itemCopy)
         }
-
+        console.log("99999999999",cart);
         return cartCopy;
 
     }
@@ -168,8 +194,8 @@ function addToCartFunc() {
     var cartTemp = shoppingCart.getCart();
     var shop_id = cartTemp.shopID;
     
-    if (shop_id && shop_id == idURL) {
-      
+    if (shop_id && shop_id == idSellerURL) {
+        
         var id = $(this).data('id');
         var name = $(this).data('name');
 
@@ -177,13 +203,15 @@ function addToCartFunc() {
 
         shoppingCart.addItemToCart(id, name, price, 1);
         displayCart();
+        
     } else {
 
 
         console.log("object");
         var cart_tmp = shoppingCart.getCart();
-        cart_tmp.shopID = idURL;
+        cart_tmp.shopID = idSellerURL;
         cart_tmp.listCart = [];
+        
         sessionStorage.setItem('shoppingCart', JSON.stringify(cart_tmp));
 
         var id = $(this).data('id');
@@ -208,6 +236,7 @@ $('.clear-cart').click(function () {
 
 
 function displayCart() {
+    // console.log("cartTEmp 246",cart_TEMP);
     var cartArray = shoppingCart.listCart();
     console.log("display", cartArray);
     var output = "";
@@ -216,13 +245,13 @@ function displayCart() {
 
         output +=
             "<tr>" +
-            "<td style='padding:0'>" + cartArray[i].name + "</td>" +
-            "<td style='padding:0'>(" + cartArray[i].price + ")</td>" +
-            "<td style='padding:0'><div class='input-group-1' style='display:flex'><button class='minus-item input-group-addon btn btn-primary' data-id=" + cartArray[i].id + ">-</button>" +
+            "<td style='padding:1'>" + cartArray[i].name + "</td>" +
+            "<td style='padding:1'>(" + cartArray[i].price + ")</td>" +
+            "<td style='padding:1'><div class='input-group-1' style='display:flex'><button class='minus-item input-group-addon btn btn-primary' data-id=" + cartArray[i].id + ">-</button>" +
             "<input type='number' class='item-count form-control' data-name='" + cartArray[i].name + "' value='" + cartArray[i].count + "'>" +
             "<button class='plus-item btn btn-primary input-group-addon' data-id=" + cartArray[i].id + ">+</button></div></td>" +
-            "<td  style='padding:0'><button class='delete-item btn btn-danger' data-id=" + cartArray[i].id + ">X</button></td>" + " = " +
-            "<td style='padding:0'>" + cartArray[i].total + "</td>" +
+            "<td  style='padding:1'><button class='delete-item btn btn-danger' data-id=" + cartArray[i].id + ">X</button></td>" + " = " +
+            "<td style='padding:1'>" + cartArray[i].total + "</td>" +
             "</tr>";
     }
     console.log(shoppingCart.totalCount());
