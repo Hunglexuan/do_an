@@ -86,23 +86,17 @@
                         <li class="nav-item dropdown dropdown-cart">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="icofont-basket"></i> Giỏ Hàng
-                                <span class="badge badge-success">5</span>
+                                <span class="total-count badge badge-success"></span>
                             </a>
                             <div class="dropdown-menu dropdown-cart-top p-0 dropdown-menu-right shadow-sm border-0">
 
                                 <div class="dropdown-cart-top-body border-top p-4">
-                                    <p class="mb-2"><i class="icofont-ui-press text-danger food-item"></i> Chicken Tikka Sub 12" (30 cm) x 1 <span class="float-right text-secondary">$314</span></p>
-                                    <p class="mb-2"><i class="icofont-ui-press text-success food-item"></i> Corn & Peas Salad x 1
-                                        <span class="float-right text-secondary">$209</span>
-                                    </p>
-                                    <p class="mb-2"><i class="icofont-ui-press text-success food-item"></i> Veg Seekh Sub 6" (15 cm) x 1 <span class="float-right text-secondary">$133</span></p>
-                                    <p class="mb-2"><i class="icofont-ui-press text-danger food-item"></i> Chicken Tikka Sub 12" (30 cm) x 1 <span class="float-right text-secondary">$314</span></p>
-                                    <p class="mb-2"><i class="icofont-ui-press text-danger food-item"></i> Corn & Peas Salad x 1
-                                        <span class="float-right text-secondary">$209</span>
-                                    </p>
+                                    <table class=" table" id="show-cart">
+
+                                    </table>
                                 </div>
                                 <div class="dropdown-cart-top-footer border-top p-4">
-                                    <p class="mb-0 font-weight-bold text-secondary">Sub Total <span class="float-right text-dark">$499</span></p>
+                                    <p class="mb-0 font-weight-bold text-secondary">Tổng Giá <span class=" total-cart float-right text-dark"></span></p>
                                     <small class="text-info">Extra charges may apply</small>
                                 </div>
                                 <div class="dropdown-cart-top-footer border-top p-2">
@@ -218,9 +212,10 @@
                                     <div class="row">
                                         <div class="save col-md-12">
                                             <input type="button" value="Lưu" id="SaveUpdate" class="btn btn-success"></input>
-                                            <input type="button" value="Đổi mật khẩu" id="SaveUpdate" data-toggle="modal" data-target="#basicModal" class="btn btn-secondary ml-3">
+                                            <input type="button" value="Đổi mật khẩu" id="SaveUpdatePassWord" data-toggle="modal" data-target="#basicModal" class="btn btn-secondary ml-3">
                                             </input>
                                         </div>
+                                        <!-- Save New password -->
                                         <div class="modal fade" id="basicModal" role="dialog">
                                             <div class="modal-dialog">
                                                 <div class="modal-dialog">
@@ -517,6 +512,7 @@
     <!-- Custom scripts for all pages-->
     <script src="js/custom.js"></script>
     <script src="js/header.js"></script>
+    <script src="../../customJS/shopDetail.js"></script>
     <!-- Dropzone-->
     <script src="js/dropzone.min.js"></script>
     <!-- Ajax -->
@@ -641,125 +637,13 @@
                 document.getElementById('messageAddress').innerHTML = '';
             }
 
-            // if (Old_password != password) {
-            //     document.getElementById('Old_password').setAttribute('class', 'form-control border-danger');
-            //     document.getElementById('oldpassword').innerHTML = 'This password must match the current password';
-            // } else {
-            //     document.getElementById('Old_password').setAttribute('class', 'form-control');
-            //     document.getElementById('oldpassword').innerHTML = '';
-            // }
 
-            // if (regPass.test(New_password) == false) {
-            //     document.getElementById('New_password').setAttribute('class', 'form-control border-danger');
-            //     document.getElementById('newpassword').innerHTML = 'Password must contain at least 8 characters, at least one number, and both lower letters';
-            // } else if (New_password == Old_password) {
-            //     document.getElementById('New_password').setAttribute('class', 'form-control border-danger');
-            //     document.getElementById('newpassword').innerHTML = 'The new password must be different from the old password';
-            // } else {
-            //     document.getElementById('New_password').setAttribute('class', 'form-control');
-            //     document.getElementById('newpassword').innerHTML = '';
-            // }
-
-            // if (Confirm_new_password != New_password) {
-            //     document.getElementById('Confirm_new_password').setAttribute('class', 'form-control border-danger');
-            //     document.getElementById('confirmpassword').innerHTML = 'Confirm new password must match new password';
-            // } else {
-            //     document.getElementById('Confirm_new_password').setAttribute('class', 'form-control');
-            //     document.getElementById('confirmpassword').innerHTML = '';
-            // }
         }
 
 
 
 
-        // $("#name").click(function() {
-        //     CheckUpdate();
-        // });
 
-        // $("#password").click(function() {
-        //     CheckUpdate();
-        // });
-
-        // $("#email").click(function() {
-        //     CheckUpdate();
-        // });
-
-        // $("#address").click(function() {
-        //     CheckUpdate();
-        // });
-
-        // $("#phone").click(function() {
-        //     CheckUpdate();
-        // });
-
-        // $("#date").click(function() {
-        //     CheckUpdate();
-        // });
-
-        // $('#change').click(function() {
-        //     CheckUpdate();
-        // })
-
-        // $("#Old_password").click(function() {
-        //     CheckUpdate();
-        // })
-
-        // $("#New_password").click(function() {
-        //     CheckUpdate();
-        // })
-
-        // $("#Confirm_new_password").click(function() {
-        //     CheckUpdate();
-        // })
-
-        // $("#old_phoneNumber").click(function() {
-        //     CheckUpdate();
-        // })
-
-        // $("#new_phoneNumber").click(function() {
-        //     CheckUpdate();
-        // })
-
-
-        // $('#SaveUpdate').click(function() {
-        //     var pass, phoned;
-        //     CheckUpdate();
-        //     if ($('#New_password').val() == "") {
-        //         pass = $('#password').val()
-        //     } else {
-        //         pass = $('#New_password').val()
-        //     }
-        //     if ($('#new_phoneNumber').val() == "") {
-        //         phoned = $('#phone').val()
-        //     } else {
-        //         phoned = $('#new_phoneNumber').val()
-        //     }
-        //     console.log($('#name').val());
-        //     console.log(pass);
-        //     console.log($('#email').val());
-        //     console.log($('#address').val());
-        //     console.log($('#date').val());
-        //     console.log(phoned);
-
-        //     $.ajax({
-        //         url: '/api/user/update',
-        //         method: 'POST',
-        //         data: {
-        //             name: $('#name').val(),
-        //             password: pass,
-        //             email: $('#email').val(),
-        //             address: $('#address').val(),
-        //             dob: $('#date').val(),
-        //             phone: phoned,
-        //         },
-        //     }).then(function(data) {
-        //         if (data.message == 'SUCCESS') {
-        //             alert("update success");
-        //         } else {
-        //             alert("Update fail");
-        //         }
-        //     })
-        // })
 
 
         $(document).ready(function() {
@@ -793,6 +677,31 @@
                     })
                     loadDataProfile();
                     loadName();
+                }
+            })
+        })
+
+        $("#change").click(function() {
+            var userId = localStorage.getItem('userId').replaceAll('"', '');
+            console.log(userId);
+            $.ajax({
+                url:"/api/user/changePass",
+                type:"POST",
+                data:{
+                    userId:userId,
+                    password:$("#confirmpassword").val().trim()
+                }
+            }).then(function(data) {
+
+                if (data.message == "SUCCESS") {
+                    Swal.fire({
+                        type: 'success',
+                        title: 'Lưu thay đổi ⚙️',
+                        // text: 'Your offer is safe 🙂',
+                        showConfirmButton: false,
+                        timer: 2000
+                    })
+                   
                 }
             })
         })
