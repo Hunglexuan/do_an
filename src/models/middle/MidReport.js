@@ -95,11 +95,11 @@ class MidReport {
             let shop = MidUser.getUserById(listReport[i].shop_id)
             if (name && shop) {
                 let temp = {
-                    user : user.dataValues.name,
-                    shop : shop.dataValues.name,
+                    user : user.name,
+                    shop : shop.name,
 
                 }
-                Object.assign(listProduct[i].dataValues, temp);
+                Object.assign(listReport[i].dataValues, temp);
             }
         }
         if(listReport){
