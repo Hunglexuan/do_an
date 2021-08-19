@@ -16,7 +16,7 @@ var shoppingCart = (function () {
     // Private methods and propeties
     // =============================
 
-    displayCartInDB(idUser);
+    
     var shopID = idSellerURL
     var userID = idUser
     
