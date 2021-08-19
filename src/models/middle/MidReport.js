@@ -91,8 +91,9 @@ class MidReport {
             })
         ])
         for (let i = 0; i < listReport.length; i++) {
-            let user = MidUser.getUserById(listReport[i].user_id)
-            let shop = MidUser.getUserById(listReport[i].shop_id)
+            let user = await MidUser.getUserById(listReport[i].dataValues.user_id)
+            let shop = await MidUser.getUserById(listReport[i].dataValues.shop_id)
+      
             if (name && shop) {
                 let temp = {
                     user : user.name,
@@ -102,7 +103,7 @@ class MidReport {
                 Object.assign(listReport[i].dataValues, temp);
             }
         }
-        if(listReport){
+        if(!listReport){
             console.log('MidReport-searchReport: ErrorCode-93');
         }   console.log('MidReport-searchReport: Success');
         return {
