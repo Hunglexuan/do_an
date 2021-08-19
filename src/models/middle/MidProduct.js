@@ -3,7 +3,8 @@ import {
     Users,
     Product,
     BillProduct,
-    Bill
+    Bill,
+    Favorite
 } from '../core';
 import { Op } from 'sequelize';
 import { checkPassword, hashPassword } from '../../libs/encrypt';
@@ -134,6 +135,24 @@ class MidProduct {
                 where: condition
             })
         ])
+
+
+        for (let i = 0; i < listProduct.length; i++) {
+            let userFavor = await Favorite.findOne({
+                where: {
+                    product_id: listProduct[i].id,
+                    user_id: data.user_id,
+                    del: 0
+                }
+            })
+            if (userFavor) {
+                let temp = {
+
+                    favorite : true
+                }
+                Object.assign(listProduct[i].dataValues, temp);
+            }
+        }
         return {
             listProduct,
             total: total || 0
