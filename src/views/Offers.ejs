@@ -202,9 +202,10 @@
             input.select();
 
             input.blur(function() {
-                var text = $('#attribute').val();
-                $('#attribute').parent().text(text);
-                $('#attribute').remove();
+                // var text = $('#attribute').val();
+                // $('#attribute').parent().text(text);
+                // $('#attribute').remove();
+                $('#attribute').replaceWith("<label>" + $('#attribute').val() + "</label>");
             });
         });
 

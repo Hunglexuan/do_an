@@ -1,0 +1,15 @@
+<div class="nav-item dropdown no-arrow mx-1 osahan-list-dropdown">
+                            <a class="nav-link dropdown-toggle rounded-pill" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="padding: 0 !important; width: 40px;height: 40px;margin-top: 18px;">
+                                <i class="fa fa-ellipsis-h" style="font-size: large;margin-left: 13px; margin-top: 12px; color: #606770 !important;"></i>
+                                <!-- Counter - Alerts -->
+                            </a>
+                            <!-- Dropdown - Alerts -->
+                            <div class="dropdown-menu dropdown-menu-right shadow-sm border-0">
+                                <button class="dropdown-item">
+                                    Sửa
+                                </button>
+                                <button class="dropdown-item">
+                                    Xóa
+                                </button>
+                            </div>
+                        </div> </div>
