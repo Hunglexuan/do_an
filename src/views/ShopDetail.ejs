@@ -548,7 +548,8 @@
                 },
                 url: "/api/user/getbyId",
                 success: function(data) {
-                    document.getElementById('inforShop').innerHTML = '<img class="img-fluid mr-3 float-left" alt="osahan" src="' + data.data.avatar + '" style="height: 88px !important"> <h2 class="text-white" style="padding-top: 25px;"> ' + data.data.name + '</h2> <p class="text-white mb-1"><i class="icofont-location-pin"></i>' + data.data.address + '<span class="badge badge-success">OPEN</span><button type="button" id="SaveUpdate" data-toggle="modal" data-target="#basicModal" class="btn btn-outline-danger ml-3 fa fa-flag" style="float: right;"> </button></p>';
+                    let image = (data.data.avatar ? data.data.avatar : 'image/list/1.png');
+                    document.getElementById('inforShop').innerHTML = '<img class="img-fluid mr-3 float-left" alt="osahan" src=' + image + ' style="height: 88px !important"> <h2 class="text-white" style="padding-top: 25px;"> ' + data.data.name + '</h2> <p class="text-white mb-1"><i class="icofont-location-pin"></i>' + data.data.address + '<span class="badge badge-success">OPEN</span><button type="button" id="SaveUpdate" data-toggle="modal" data-target="#basicModal" class="btn btn-outline-danger ml-3 fa fa-flag" style="float: right;"> </button></p>';
                 }
             });
 
@@ -742,7 +743,7 @@
                 x.style.display = "block";
             } else {
                 x.style.display = "none";
- 
+
             }
         }
 
