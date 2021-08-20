@@ -140,20 +140,20 @@
         return "";
     }
 
-    // $(document).ready(function() {
+    $(document).ready(function() {
 
-    //     var remember = $.cookie('remember');
-    //     if (remember == 'true') {
-    //         var email = $.cookie('email');
-    //         var password = $.cookie('password');
+        var remember = getCookie('remember');
+        if (remember == 'true') {
+            var email = getCookie('email');
+            var password = getCookie('password');
 
-    //         // autofill the fields
-    //         $('#inputEmail').val(email);
-    //         $('#inputPassword').val(password);
-    //         $('#remember').prop("checked", true);
-    //     }
+            // autofill the fields
+            $('#inputEmail').val(email);
+            $('#inputPassword').val(password);
+            $('#remember').prop("checked", true);
+        }
 
-    // });
+    });
 
 
 
@@ -174,7 +174,7 @@
                     password: $("#inputPassword").val().trim()
                 }
             }).then(function(data) {
-                
+
                 if (data.message == "SUCCESS") {
 
                     var userId = data.data.userid;
@@ -182,24 +182,24 @@
                     setCookie("token", data.data.token, 30)
                     localStorage.setItem('userId', JSON.stringify(userId));
 
-                    // if ($('#remember').is(':checked')) {
+                    if ($('#remember').is(':checked')) {
 
-                    //     // set cookies to expire in 14 days
-                    //     $.cookie('email', inputEmail, {
-                    //         expires: 14
-                    //     });
-                    //     $.cookie('password', inputPass, {
-                    //         expires: 14
-                    //     });
-                    //     $.cookie('remember', true, {
-                    //         expires: 14
-                    //     });
-                    // } else {
-                    //     // reset cookies
-                    //     $.cookie('email', null);
-                    //     $.cookie('password', null);
-                    //     $.cookie('remember', null);
-                    // }
+                        // set cookies to expire in 14 days
+                        setCookie('email', inputEmail, {
+                            expires: 14
+                        });
+                        setCookie('password', inputPass, {
+                            expires: 14
+                        });
+                        setCookie('remember', true, {
+                            expires: 14
+                        });
+                    } else {
+                        // reset cookies
+                        setCookie('email', null);
+                        setCookie('password', null);
+                        setCookie('remember', null);
+                    }
 
 
                     Swal.fire({

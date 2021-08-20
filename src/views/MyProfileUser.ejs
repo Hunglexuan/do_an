@@ -297,13 +297,13 @@
                         </div>
                         <div class="tab-pane fade" id="favourites" role="tabpanel" aria-labelledby="favourites-tab">
                             <h4 class="font-weight-bold mt-0 mb-4">Yêu thích</h4>
-                            <div class="row">
-                                <div class="col-md-4 col-sm-6 mb-4 pb-2">
+                            <div class="row" id="loadFavouries">
+                                <!-- <div class="col-sm-3 mb-4 pb-2">
                                     <div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
                                         <div class="list-card-image">
                                             <div class="favourite-heart text-danger position-absolute"><a href="detail.html"><i class="icofont-heart"></i></a></div>
                                             <a href="detail.html">
-                                                <img src="image/list/4.png" class="img-fluid item-img">
+                                                <img src="image/list/4.png" class="img-fluid item-img" style="width: 100%;">
                                             </a>
                                         </div>
                                         <div class="p-3 position-relative">
@@ -419,7 +419,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div> -->
                             </div>
                         </div>
                     </div>
@@ -648,6 +648,7 @@
 
         $(document).ready(function() {
             loadDataProfile();
+            loadDataFavourites();
         });
 
         $("#SaveUpdate").click(function() {
@@ -685,11 +686,11 @@
             var userId = localStorage.getItem('userId').replaceAll('"', '');
             console.log(userId);
             $.ajax({
-                url:"/api/user/changePass",
-                type:"POST",
-                data:{
-                    userId:userId,
-                    password:$("#confirmpassword").val().trim()
+                url: "/api/user/changePass",
+                type: "POST",
+                data: {
+                    userId: userId,
+                    password: $("#confirmpassword").val().trim()
                 }
             }).then(function(data) {
 
@@ -701,7 +702,7 @@
                         showConfirmButton: false,
                         timer: 2000
                     })
-                   
+
                 }
             })
         })
@@ -745,6 +746,59 @@
                     document.getElementById('wizardPicturePreview').src = list.avatar;
                 }
             });
+        }
+
+        function loadDataFavourites() {
+
+            var text = localStorage.getItem('userId').replaceAll('"', '');
+
+            $.ajax({
+                type: "GET",
+                data: {
+                    user_id: text
+                },
+                url: "/api/favorite/search",
+                success: function(data) {
+                    let list = data.data.productList;
+                    // let image = (list[i].image ? list[i].image : 'image/list/1.png');
+                    for (var i = 0; i < list.length; i++)
+                        document.getElementById('loadFavouries').innerHTML += `<div class="col-sm-3 mb-4 pb-2">
+                                    <div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
+                                        <div class="list-card-image">
+                                            <a href="#">
+                                                <img src=` + list[i].image + ` class="img-fluid item-img" style="width: 100%;">
+                                            </a>
+                                        </div>
+                                        <div class="p-3 position-relative">
+                                            <div class="list-card-body">
+                                                <h6 class="mb-1"><a href="detail.html" class="text-black">` + list[i].name + `</a>
+                                                </h6>
+                                                <p class="text-gray mb-3">Giá: ` + list[i].unit_price + ` VNĐ</p>
+                                                <p class="text-gray mb-3 time"><span class="bg-light text-dark rounded-sm pl-2 pb-1 pt-1 pr-2"><iclass="icofont-wall-clock"></iclass=> ` + list[i].time_from + `–` + list[i].time_to + ` phút</span></p>
+                                                            <span class="float-right"> <span class="count-number" style="margin-top: 0px !important;"> <button value="Hủy yêu thích" class="add-to-cart btn btn-outline-secondary btn-sm" onclick="deleteLike(` + "'" + list[i].id + "'" + `)" > Hủy yêu thích </button> </span> </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>`;
+                }
+            });
+        }
+
+        function deleteLike(id) {
+            var text = localStorage.getItem('userId').replaceAll('"', '');
+            $.ajax({
+                url: '/api/favorite/delete',
+                method: 'GET',
+                data: {
+                    product_id: id,
+                    user_id: text
+                },
+            }).then(function(data) {
+                if (data.message == 'SUCCESS') {
+                    document.getElementById('loadFavouries').innerHTML = '';
+                    loadDataFavourites()
+                }
+            })
         }
     </script>
 </body>
