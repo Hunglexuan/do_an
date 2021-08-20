@@ -702,7 +702,6 @@
                         showConfirmButton: false,
                         timer: 2000
                     })
-
                 }
             })
         })
@@ -760,13 +759,14 @@
                 url: "/api/favorite/search",
                 success: function(data) {
                     let list = data.data.productList;
-                    // let image = (list[i].image ? list[i].image : 'image/list/1.png');
-                    for (var i = 0; i < list.length; i++)
+
+                    for (var i = 0; i < list.length; i++) {
+                        let image = (list[i].image ? list[i].image : "image/list/1.png");
                         document.getElementById('loadFavouries').innerHTML += `<div class="col-sm-3 mb-4 pb-2">
-                                    <div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
+                                    <div class="list-card bg-white overflow-hidden h-100 position-relative item-content" style="border: 1px solid #d7d7d7; border-radius: 6px;" onclick="goTo(` + "'" + list[i].user_id + "'" + `)">
                                         <div class="list-card-image">
                                             <a href="#">
-                                                <img src=` + list[i].image + ` class="img-fluid item-img" style="width: 100%;">
+                                                <img src=` + image + ` class="img-fluid item-img" style="width: 100%;">
                                             </a>
                                         </div>
                                         <div class="p-3 position-relative">
@@ -780,8 +780,14 @@
                                         </div>
                                     </div>
                                 </div>`;
+                    }
                 }
             });
+        }
+
+        function goTo(shopIdClick) {
+            let id = "?id=" + shopIdClick;
+            window.location.href = '/ShopDetail' + id;
         }
 
         function deleteLike(id) {
