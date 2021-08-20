@@ -142,11 +142,11 @@
          <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
             <div class="sb-sidenav-menu">
                <div class="nav">
-                  <div class="sb-sidenav-menu-heading">Core</div>
+                  <div class="sb-sidenav-menu-heading">Danh Mục</div>
 
                   <a class="nav-link" href="listOrderSeller">
                      <div class="sb-nav-link-icon"><i class="far fa-calendar-alt"></i></div>
-                     Danh Sách Đặt hàng <span class="badge badge-pill ml-2 badge-primary">6 New</span>
+                     Danh Sách Đặt hàng <span class="badge badge-pill ml-2 badge-primary"></span>
                   </a>
                   <a class="nav-link" href="">
                      <div class="sb-nav-link-icon"><i class="fas fa-chart-line"></i></div>
@@ -177,57 +177,11 @@
                   <li class="breadcrumb-item active">Đặt Hàng</li>
                </ol>
                <ol>
-                  <a class="btn btn-info" href="#" style="position: relative; left:1280px;"><i class="fas fa-sync-alt"></i>
+                  <a class="btn btn-info" href="#" style="position: relative; "><i class="fas fa-sync-alt"></i>
                      Làm Mới</a>
                </ol>
-               <div class="row">
-                  <div class="col-xl-12">
-                     <div class="card mb-4 order-list">
-                        <div class="gold-members p-4">
-                           <a href="#">
-                           </a>
-                           <div class="media">
-                              <a href="#">
-                                 <img class="mr-4" src="image/3.jpg" alt="Generic placeholder image">
-                              </a>
-                              <div class="media-body">
-                                 <a href="#">
-                                    <span class="float-right text-success">Được giao vào thứ 2, ngày 12 tháng 11, 7:18 chiều <i
-                                          class="feather-check-circle text-success"></i></span>
-                                 </a>
-                                 <h6 class="mb-3"><a href="#">
-                                    </a><a href="detail.html" class="text-dark">Tên Sản Phẩm
-                                    </a>
-                                 </h6>
-                                 <p class="text-black-50 mb-1"><i class="far fa-user"></i> Người dùng
-                                 </p>
-                                 <p class="text-black-50 mb-1"><i class="feather-map-pin"></i> Địa chỉ và Chú Thích
-                                 </p>
-                                 <p class="text-black-50 mb-3"><i class="feather-list"></i> Số điện thoại khách hàng <i
-                                       class="feather-clock ml-2"></i> Thời gian đặt hàng</p>
-                                 <p class="text-dark">Tên Sản Phẩm x 1, Tên Sản Phẩm x 1, Tên Sản Phẩm x 1
-                                 </p>
-                                 <hr>
-                                 <div class="float-right">
-                                    <a class="btn btn-info" href="#"><i class="far fa-eye"></i>Thông tin</a>
-                                    <a href="#0" class="btn btn-sm btn-success"><i class="feather-check-circle"></i>
-                                       Chấp Thuận</a>
-                                    <a href="#0" class="btn btn-sm btn-info" data-toggle="modal"
-                                       data-target="#edit_booking"><i class="feather-edit"></i> Chỉnh sửa</a>
-                                    <a href="#0" class="btn btn-sm btn-danger"><i class="feather-trash"></i> Hủy</a>
-                                 </div>
-                                 <p class="mb-0 text-dark text-dark pt-2"><span class="text-dark font-weight-bold">
-                                       Tổng Tiền: </span> $300
-                                 </p>
-                              </div>
-                           </div>
-                        </div>
-                     </div>
-
-
-
-                   
-                  </div>
+               <div class="show-bill">
+                 
                </div>
             </div>
          </main>
@@ -296,16 +250,90 @@
    <!-- Ajax Chart Js -->
    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
    <!-- Chart Js -->
-   <script src="js/chart-area-demo.js"></script>
+   <!-- <script src="js/chart-area-demo.js"></script>
    <script src="js/chart-bar-demo.js"></script>
-   <script src="js/chart-pie-demo.js"></script>
+   <script src="js/chart-pie-demo.js"></script> -->
    <!-- Datatable Js -->
    <script src="js/jquery.dataTables.min.js"></script>
    <script src="js/dataTables.bootstrap.min.js"></script>
    <script src="js/datatables-demo.js"></script>
    <script src="js/headerSeller.js"></script>
    <script>
-      
+
+      $(document).ready(function() {
+         loadData()
+      });
+      function loadData(){
+         var sellerID = localStorage.getItem("sellerId").replaceAll('"', '');
+         $.ajax({
+            url:'http://localhost:3999/api/bill/listOrderForSeller',
+            type:"GET",
+            data:{
+               shop_id:sellerID
+            }
+         }).then(function(data){
+            
+            var billTEmp = data.data.listBillTotal;
+            console.log(billTEmp);  
+            for(var i = 0 ; i < billTEmp.length ; i++){
+               var bill_tmp = billTEmp[i];
+               for(var j = 0 ; j < bill_tmp.bill.length ; j++){
+                  var Template = `
+                  <div class="row">
+                     <div class="col-xl-12">
+                        <div class="card mb-4 order-list">
+                           <div class="gold-members p-4">
+                              <a href="#">
+                              </a>
+                              <div class="media">
+                                 <a href="#">
+                                    <img class="mr-4" src="${bill_tmp.bill[j].image}" alt="Generic placeholder image">
+                                 </a>
+                                 <div class="media-body">
+                                    <a href="#">
+                                       <span class="float-right text-success">Được giao vào thứ 2, ngày 12 tháng 11, 7:18 chiều <i
+                                             class="feather-check-circle text-success"></i></span>
+                                    </a>
+                                    <h6 class="mb-3"><a href="#">
+                                       </a><a href="detail.html" class="text-dark">Đơn ${j+1}
+                                       </a>
+                                    </h6>
+                                    <p class="text-black-50 mb-1"><i class="far fa-user"></i> ${bill_tmp.user.name}
+                                    </p>
+                                    <p class="text-black-50 mb-1"><i class="feather-map-pin"></i> ${bill_tmp.user.address}
+                                    </p>
+                                    <p class="text-black-50 mb-3"><i class="feather-list"></i> ${bill_tmp.user.phone} <i
+                                          class="feather-clock ml-2"></i> ${new Date(bill_tmp.user.createdAt).toLocaleDateString()}</p>
+                                    <p class="text-dark">Tên Sản Phẩm x 1, Tên Sản Phẩm x 1, Tên Sản Phẩm x 1
+                                    </p>
+                                    <hr>
+                                    <div class="float-right">
+                                       <a class="btn btn-info" href="#"><i class="far fa-eye"></i>Thông tin</a>
+                                       <a href="#0" class="btn btn-sm btn-success"><i class="feather-check-circle"></i>
+                                          Chấp Thuận</a>
+                                       <a href="#0" class="btn btn-sm btn-info" data-toggle="modal"
+                                          data-target="#edit_booking"><i class="feather-edit"></i> Chỉnh sửa</a>
+                                       <a href="#0" class="btn btn-sm btn-danger"><i class="feather-trash"></i> Hủy</a>
+                                    </div>
+                                    <p class="mb-0 text-dark text-dark pt-2"><span class="text-dark font-weight-bold">
+                                          Tổng Tiền: </span> $300
+                                    </p>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+   
+                     </div>
+                  </div>
+                  `
+
+                  $(".show-bill").append(Template);
+                  
+               }
+               
+            }
+         })
+      }
 
    </script>
 </body>
