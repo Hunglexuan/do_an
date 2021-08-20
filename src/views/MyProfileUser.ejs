@@ -297,13 +297,13 @@
                         </div>
                         <div class="tab-pane fade" id="favourites" role="tabpanel" aria-labelledby="favourites-tab">
                             <h4 class="font-weight-bold mt-0 mb-4">Yêu thích</h4>
-                            <div class="row">
-                                <div class="col-md-4 col-sm-6 mb-4 pb-2">
+                            <div class="row" id="loadFavouries">
+                                <div class="col-sm-3 mb-4 pb-2">
                                     <div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
                                         <div class="list-card-image">
                                             <div class="favourite-heart text-danger position-absolute"><a href="detail.html"><i class="icofont-heart"></i></a></div>
                                             <a href="detail.html">
-                                                <img src="image/list/4.png" class="img-fluid item-img">
+                                                <img src="image/list/4.png" class="img-fluid item-img" style="width: 100%;">
                                             </a>
                                         </div>
                                         <div class="p-3 position-relative">
@@ -648,6 +648,7 @@
 
         $(document).ready(function() {
             loadDataProfile();
+            loadDataFavourites();
         });
 
         $("#SaveUpdate").click(function() {
@@ -685,11 +686,11 @@
             var userId = localStorage.getItem('userId').replaceAll('"', '');
             console.log(userId);
             $.ajax({
-                url:"/api/user/changePass",
-                type:"POST",
-                data:{
-                    userId:userId,
-                    password:$("#confirmpassword").val().trim()
+                url: "/api/user/changePass",
+                type: "POST",
+                data: {
+                    userId: userId,
+                    password: $("#confirmpassword").val().trim()
                 }
             }).then(function(data) {
 
@@ -701,7 +702,7 @@
                         showConfirmButton: false,
                         timer: 2000
                     })
-                   
+
                 }
             })
         })
@@ -743,6 +744,24 @@
                     var dob = y + '-' + m + '-' + n;
                     document.getElementById('date').value = dob;
                     document.getElementById('wizardPicturePreview').src = list.avatar;
+                }
+            });
+        }
+
+        function loadDataFavourites() {
+
+            var text = localStorage.getItem('userId').replaceAll('"', '');
+
+            $.ajax({
+                type: "GET",
+                data: {
+                    user_id: text
+                },
+                url: "/api/favorite/search",
+                success: function(data) {
+
+                    document.getElementById('loadFavouries').innerHTML += ``;
+
                 }
             });
         }

@@ -1,5 +1,12 @@
 import {
-    Role, Users, Feedback, Bill, UserBill, BillProduct, Product, Favorite,
+    Role,
+    Users,
+    Feedback,
+    Bill,
+    UserBill,
+    BillProduct,
+    Product,
+    Favorite,
 } from '../core';
 import { Op } from 'sequelize';
 import { checkPassword, hashPassword } from '../../libs/encrypt';
@@ -42,6 +49,7 @@ class MidFavorite {
         objDelete.update(dataDelete)
     }
     async searchFavorite(data) {
+        let productList = [];
         let condition = {
             del: 0,
             user_id: data.user_id
@@ -49,16 +57,27 @@ class MidFavorite {
         const [listVoucher, total] = await Promise.all([
             Favorite.findAll({
                 where: condition,
-                order: [[
-                    "createdAt", "DESC"
-                ]],
+                order: [
+                    [
+                        "createdAt", "DESC"
+                    ]
+                ],
             }),
             Favorite.count({
                 where: condition
             })
         ])
+        for (let i = 0; i < listVoucher.length; i++) {
+            let product = await Product.findOne({
+                where: {
+                    id: listVoucher[i].product_id,
+                    del: 0
+                }
+            })
+            productList.push(product)
+        }
         return {
-            listVoucher,
+            productList,
             total: total || 0
         }
 

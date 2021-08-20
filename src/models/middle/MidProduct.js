@@ -148,11 +148,25 @@ class MidProduct {
             if (userFavor) {
                 let temp = {
 
-                    favorite : true
+                    favorite: true
+                }
+                Object.assign(listProduct[i].dataValues, temp);
+            }
+            let user = await Users.findOne({
+                where: {
+                    id: listProduct[i].user_id,
+                    del: 0
+                }
+            })
+            if (user) {
+                let temp = {
+
+                    shop_name: user.dataValues.name
                 }
                 Object.assign(listProduct[i].dataValues, temp);
             }
         }
+
         return {
             listProduct,
             total: total || 0
@@ -185,10 +199,11 @@ class MidProduct {
         return Product.findAll({
             where: condition,
             attributes: [
-                'id', 'quantity', 'unit_price', 'name', 'image', 'description', 'time_from', 'time_to', 'user_id', 'sale', 'sale_to', 'sale_from',
-                [sequelize.literal('(SELECT COUNT(*) FROM doan.billproduct WHERE doan.billproduct.product_id = product.id)'), 'BoughtCount']
+                'id', 'quantity', 'unit_price', 'name', 'image', 'description', 'time_from', 'time_to', 'user_id', 'sale', 'sale_to', 'sale_from', [sequelize.literal('(SELECT COUNT(*) FROM doan.billproduct WHERE doan.billproduct.product_id = product.id)'), 'BoughtCount']
             ],
-            order: [[sequelize.literal('BoughtCount'), 'DESC']],
+            order: [
+                [sequelize.literal('BoughtCount'), 'DESC']
+            ],
             limit: 6
         })
 

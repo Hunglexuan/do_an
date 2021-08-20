@@ -381,7 +381,6 @@
         var counter = 1;
         setInterval(function() {
             document.getElementById('radio' + counter).checked = true;
-            console.log('1')
             counter++;
             if (counter > 2) {
                 counter = 1;
@@ -391,7 +390,6 @@
         var counters = 1;
         setInterval(function() {
             document.getElementById('radioo' + counters).checked = true;
-            console.log('2')
             counters++;
             if (counters > 2) {
                 counters = 1;
@@ -401,7 +399,6 @@
         var counterss = 1;
         setInterval(function() {
             document.getElementById('radiooo' + counterss).checked = true;
-            console.log('3')
             counterss++;
             if (counterss > 2) {
                 counterss = 1;
@@ -490,12 +487,13 @@
                 url: "/api/product/list6MostBuy",
                 success: function(data) {
                     var listdata = data.data;
+                    console.log(listdata);
                     for (var i = 0; i < listdata.length; i++) {
                         let image = (listdata[i].image ? listdata[i].image : 'image/list/1.png');
                         if (i < 3) {
-                            document.getElementById('buyMost1').innerHTML += '<div class="item ml-1 mr-1" style="width: 80%;"> <div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm"> <div class="list-card-image"> <a href="/AllProduct"> <img src=' + image + ' class="img-fluid item-img img-restaurant" style="width: 100%;"> </a> </div> <div class="p-3 position-relative item-restaurant"> <div class="list-card-body"> <h6 class="mb-1"><a href="/AllProduct" class="text-black">' + listdata[i].name + '</a></h6> <p class="text-gray mb-3">' + listdata[i].description + '</p> <p class="text-gray mb-3 time"><span class="bg-light text-dark rounded-sm pl-2 pb-1 pt-1 pr-2"><i class="icofont-wall-clock"></i> ' + listdata[i].time_from + '–' + listdata[i].time_from + ' min</span></p> </div>  </div> </div> </div>';
+                            document.getElementById('buyMost1').innerHTML += '<div class="item ml-1 mr-1" style="width: 80%;"> <div class="list-card bg-white overflow-hidden h-100 position-relative item-content" style="border: 1px solid #d7d7d7; border-radius: 6px;" onclick="goToMostBuy(' + "'" + listdata[i].user_id + "'" + ')"> <div class="list-card-image"> <a href="#"> <img src=' + image + ' class="img-fluid item-img img-restaurant" style="width: 100%;"> </a> </div> <div class="p-3 position-relative item-restaurant"> <div class="list-card-body"> <h6 class="mb-1"><a href="/AllProduct" class="text-black">' + listdata[i].name + '</a></h6> <p class="text-gray mb-3">' + listdata[i].description + '</p> <p class="text-gray mb-3 time"><span class="bg-light text-dark rounded-sm pl-2 pb-1 pt-1 pr-2"><i class="icofont-wall-clock"></i> ' + listdata[i].time_from + '–' + listdata[i].time_from + ' min</span></p> </div>  </div> </div> </div>';
                         } else {
-                            document.getElementById('buyMost2').innerHTML += '<div class="item ml-1 mr-1" style="width: 80%;"> <div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm"> <div class="list-card-image"> <a href="/AllProduct"> <img src=' + image + ' class="img-fluid item-img img-restaurant" style="width: 100%;"> </a> </div> <div class="p-3 position-relative item-restaurant"> <div class="list-card-body"> <h6 class="mb-1"><a href="/AllProduct" class="text-black">' + listdata[i].name + '</a></h6> <p class="text-gray mb-3">' + listdata[i].description + '</p> <p class="text-gray mb-3 time"><span class="bg-light text-dark rounded-sm pl-2 pb-1 pt-1 pr-2"><i class="icofont-wall-clock"></i> ' + listdata[i].time_from + '–' + listdata[i].time_from + ' min</span></p> </div>  </div> </div> </div>';
+                            document.getElementById('buyMost2').innerHTML += '<div class="item ml-1 mr-1" style="width: 80%;"> <div class="list-card bg-white overflow-hidden h-100 position-relative item-content" style="border: 1px solid #d7d7d7; border-radius: 6px;" onclick="goToMostBuy(' + "'" + listdata[i].user_id + "'" + ')"> <div class="list-card-image"> <a href="/AllProduct"> <img src=' + image + ' class="img-fluid item-img img-restaurant" style="width: 100%;"> </a> </div> <div class="p-3 position-relative item-restaurant"> <div class="list-card-body"> <h6 class="mb-1"><a href="/AllProduct" class="text-black">' + listdata[i].name + '</a></h6> <p class="text-gray mb-3">' + listdata[i].description + '</p> <p class="text-gray mb-3 time"><span class="bg-light text-dark rounded-sm pl-2 pb-1 pt-1 pr-2"><i class="icofont-wall-clock"></i> ' + listdata[i].time_from + '–' + listdata[i].time_from + ' min</span></p> </div>  </div> </div> </div>';
                         }
 
                     }
@@ -514,9 +512,9 @@
                     for (var i = 0; i < listdata.length; i++) {
                         let image = (listdata[i].image ? listdata[i].image : 'image/list/1.png');
                         if (i < 3) {
-                            document.getElementById('listSale1').innerHTML += '<div class="item ml-1 mr-1" style="width: 80%;"> <div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm"> <div class="list-card-image"> <a href="/AllProduct"> <img src=' + image + ' class="img-fluid item-img img-restaurant" style="width: 100%;"> </a> </div> <div class="p-3 position-relative item-restaurant"> <div class="list-card-body"> <h6 class="mb-1"><a href="/AllProduct" class="text-black">' + listdata[i].name + '</a></h6> <p class="text-gray mb-3">' + listdata[i].description + '</p> <p class="text-gray mb-3 time"><span class="bg-light text-dark rounded-sm pl-2 pb-1 pt-1 pr-2"><i class="icofont-wall-clock"></i> ' + listdata[i].time_from + '–' + listdata[i].time_from + ' min</span></p> </div>  </div> </div> </div>';
+                            document.getElementById('listSale1').innerHTML += '<div class="item ml-1 mr-1" style="width: 80%;"> <div class="list-card bg-white overflow-hidden h-100 position-relative item-content" style="border: 1px solid #d7d7d7; border-radius: 6px;" onclick="goToSaleList(' + "'" + listdata[i].user_id + "'" + ')"> <div class="list-card-image"> <a href="/AllProduct"> <img src=' + image + ' class="img-fluid item-img img-restaurant" style="width: 100%;"> </a> </div> <div class="p-3 position-relative item-restaurant"> <div class="list-card-body"> <h6 class="mb-1"><a href="/AllProduct" class="text-black">' + listdata[i].name + '</a></h6> <p class="text-gray mb-3">' + listdata[i].description + '</p> <p class="text-gray mb-3 time"><span class="bg-light text-dark rounded-sm pl-2 pb-1 pt-1 pr-2"><i class="icofont-wall-clock"></i> ' + listdata[i].time_from + '–' + listdata[i].time_from + ' min</span></p> </div>  </div> </div> </div>';
                         } else {
-                            document.getElementById('listSale2').innerHTML += '<div class="item ml-1 mr-1" style="width: 80%;"> <div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm"> <div class="list-card-image"> <a href="/AllProduct"> <img src=' + image + ' class="img-fluid item-img img-restaurant" style="width: 100%;"> </a> </div> <div class="p-3 position-relative item-restaurant"> <div class="list-card-body"> <h6 class="mb-1"><a href="/AllProduct" class="text-black">' + listdata[i].name + '</a></h6> <p class="text-gray mb-3">' + listdata[i].description + '</p> <p class="text-gray mb-3 time"><span class="bg-light text-dark rounded-sm pl-2 pb-1 pt-1 pr-2"><i class="icofont-wall-clock"></i> ' + listdata[i].time_from + '–' + listdata[i].time_from + ' min</span></p> </div>  </div> </div> </div>';
+                            document.getElementById('listSale2').innerHTML += '<div class="item ml-1 mr-1" style="width: 80%;"> <div class="list-card bg-white overflow-hidden h-100 position-relative item-content" style="border: 1px solid #d7d7d7; border-radius: 6px;" onclick="goToSaleList(' + "'" + listdata[i].user_id + "'" + ')"> <div class="list-card-image"> <a href="/AllProduct"> <img src=' + image + ' class="img-fluid item-img img-restaurant" style="width: 100%;"> </a> </div> <div class="p-3 position-relative item-restaurant"> <div class="list-card-body"> <h6 class="mb-1"><a href="/AllProduct" class="text-black">' + listdata[i].name + '</a></h6> <p class="text-gray mb-3">' + listdata[i].description + '</p> <p class="text-gray mb-3 time"><span class="bg-light text-dark rounded-sm pl-2 pb-1 pt-1 pr-2"><i class="icofont-wall-clock"></i> ' + listdata[i].time_from + '–' + listdata[i].time_from + ' min</span></p> </div>  </div> </div> </div>';
                         }
 
                     }
@@ -535,15 +533,30 @@
                     for (var i = 0; i < listdata.length; i++) {
                         let image = (listdata[i].image ? listdata[i].image : 'image/list/1.png');
                         if (i < 3) {
-                            document.getElementById('shipFast1').innerHTML += '<div class="item ml-1 mr-1" style="width: 80%;"> <div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm"> <div class="list-card-image"> <a href="/AllProduct"> <img src=' + image + ' class="img-fluid item-img img-restaurant" style="width: 100%;"> </a> </div> <div class="p-3 position-relative item-restaurant"> <div class="list-card-body"> <h6 class="mb-1"><a href="/AllProduct" class="text-black">' + listdata[i].name + '</a></h6> <p class="text-gray mb-3">' + listdata[i].description + '</p> <p class="text-gray mb-3 time"><span class="bg-light text-dark rounded-sm pl-2 pb-1 pt-1 pr-2"><i class="icofont-wall-clock"></i> ' + listdata[i].time_from + '–' + listdata[i].time_from + ' min</span></p> </div>  </div> </div> </div>';
+                            document.getElementById('shipFast1').innerHTML += '<div class="item ml-1 mr-1" style="width: 80%;"> <div class="list-card bg-white overflow-hidden h-100 position-relative item-content" style="border: 1px solid #d7d7d7; border-radius: 6px;" onclick="goToShipFast(' + "'" + listdata[i].user_id + "'" + ')"> <div class="list-card-image"> <a href="/AllProduct"> <img src=' + image + ' class="img-fluid item-img img-restaurant" style="width: 100%;"> </a> </div> <div class="p-3 position-relative item-restaurant"> <div class="list-card-body"> <h6 class="mb-1"><a href="/AllProduct" class="text-black">' + listdata[i].name + '</a></h6> <p class="text-gray mb-3">' + listdata[i].description + '</p> <p class="text-gray mb-3 time"><span class="bg-light text-dark rounded-sm pl-2 pb-1 pt-1 pr-2"><i class="icofont-wall-clock"></i> ' + listdata[i].time_from + '–' + listdata[i].time_from + ' min</span></p> </div>  </div> </div> </div>';
                         } else {
-                            document.getElementById('shipFast2').innerHTML += '<div class="item ml-1 mr-1" style="width: 80%;"> <div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm"> <div class="list-card-image"> <a href="/AllProduct"> <img src=' + image + ' class="img-fluid item-img img-restaurant" style="width: 100%;"> </a> </div> <div class="p-3 position-relative item-restaurant"> <div class="list-card-body"> <h6 class="mb-1"><a href="/AllProduct" class="text-black">' + listdata[i].name + '</a></h6> <p class="text-gray mb-3">' + listdata[i].description + '</p> <p class="text-gray mb-3 time"><span class="bg-light text-dark rounded-sm pl-2 pb-1 pt-1 pr-2"><i class="icofont-wall-clock"></i> ' + listdata[i].time_from + '–' + listdata[i].time_from + ' min</span></p> </div>  </div> </div> </div>';
+                            document.getElementById('shipFast2').innerHTML += '<div class="item ml-1 mr-1" style="width: 80%;"> <div class="list-card bg-white overflow-hidden h-100 position-relative item-content" style="border: 1px solid #d7d7d7; border-radius: 6px;" onclick="goToShipFast(' + "'" + listdata[i].user_id + "'" + ')"> <div class="list-card-image"> <a href="/AllProduct"> <img src=' + image + ' class="img-fluid item-img img-restaurant" style="width: 100%;"> </a> </div> <div class="p-3 position-relative item-restaurant"> <div class="list-card-body"> <h6 class="mb-1"><a href="/AllProduct" class="text-black">' + listdata[i].name + '</a></h6> <p class="text-gray mb-3">' + listdata[i].description + '</p> <p class="text-gray mb-3 time"><span class="bg-light text-dark rounded-sm pl-2 pb-1 pt-1 pr-2"><i class="icofont-wall-clock"></i> ' + listdata[i].time_from + '–' + listdata[i].time_from + ' min</span></p> </div>  </div> </div> </div>';
                         }
 
                     }
 
                 }
             });
+        }
+
+        function goToMostBuy(mostBuyId) {
+            let id = "?id=" + mostBuyId;
+            window.location.href = '/ShopDetail' + id;
+        }
+
+        function goToSaleList(saleListId) {
+            let id = "?id=" + saleListId;
+            window.location.href = '/ShopDetail' + id;
+        }
+
+        function goToShipFast(shipFastId) {
+            let id = "?id=" + shipFastId;
+            window.location.href = '/ShopDetail' + id;
         }
 
         function searchPro() {

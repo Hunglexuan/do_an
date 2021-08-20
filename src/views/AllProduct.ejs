@@ -43,13 +43,21 @@
             background-color: #f0f2f5;
         }
         
-        [id="heart"] {
+        .heartCheck {
             position: absolute;
             left: -100vw;
         }
         
         .icofont-heart:hover {
             color: red;
+        }
+        
+        #check {
+            color: red;
+        }
+        
+        #uncheck {
+            color: gray;
         }
     </style>
 
@@ -82,9 +90,7 @@
                                         <h1 class="name-restaurant" id="nameProduct"></h1>
                                         <div class="address-restaurant" id="addressShop"></div>
                                         <div class="status-restaurant">
-                                            <div class="time-status">
-                                                <span class="stt-online" title="mở cửa" id="shop_status"> <i class="fa fa-circle"
-                                                        aria-hidden="true"></i></span>
+                                            <div class="time-status" id="shop_status">
                                             </div>
                                             <div class="time" id="timeOpen">
                                                 <i class="fa fa-clock-o"></i>
@@ -394,11 +400,11 @@
                 },
                 url: "/api/product/searchAllProduct",
                 success: function(data) {
-                    console.log(data);
+
                     var listdata = data.data.listProduct;
                     var totalProduct = data.data.total;
                     let length = Math.ceil(listdata.length / perPage);
-
+                    console.log(listdata);
                     getLength(length);
                     renderPage(length);
 
@@ -421,17 +427,20 @@
 
                         document.getElementById('notFindProduct').innerHTML = '';
                         document.getElementById('findProduct').innerHTML = '';
+
                         for (var i = 0; i < listdata.length; i++) {
                             if (i >= start && i < end) {
                                 let image = (listdata[i].image ? listdata[i].image : 'image/list/1.png');
+                                let favorite = (listdata[i].favorite ? 'check' : 'uncheck')
                                 if (listdata[i].sale != null) {
                                     let price_sale = (listdata[i].sale / listdata[i].unit_price) * 100;
                                     let newPrice = listdata[i].unit_price - listdata[i].sale;
+
                                     document.getElementById('findProduct').innerHTML +=
-                                        '<div class="col-md-4 col-sm-6 mb-4 pb-2"> <div class="list-card bg-white overflow-hidden h-100 position-relative item-content" style="border: 1px solid #d7d7d7; border-radius: 6px;"> <div class="list-card-image"> <div class="favourite-heart text-danger position-absolute"> <input id="heart" type="checkbox" onclick="checkLike(' + "'" + listdata[i].id + "'" + ')"/> <label  for="heart"><i class="icofont-heart"></i></label> </div> <a href="#"> <img src=' + image + ' class="img-fluid item-img"> </a> </div> <div class="p-3 position-relative"> <div class="list-card-body"> <h6 class="mb-1"><a href="#" data-toggle="modal" data-target="#productDetail" onclick="productDetail(' + "'" + listdata[i].id + "'" + ')">' + listdata[i].name + '</a></h6> <p class="text-gray mb-3">' + listdata[i].description + '</p> <p class="text-gray mb-3 time"><span class="float-right text-black-50 ml-4"> Giảm giá: ' + price_sale + '%</span> <span class="float-right text-black-50"> Số lượng: ' + listdata[i].quantity + '</span> </p> </div> <div class="list-card-badge"> <small>Giá: <del>' + listdata[i].unit_price + '</del> <i class="fa fa-angle-double-right" aria-hidden="true"></i> ' + newPrice + ' VNĐ</small> <span class="badge badge-success">Mới</span> <span class="float-right"> <span class="count-number" style="margin-top: 0px !important;"> <button value="ADD" data-name="${product.name}" data-price="${product.unit_price}" data-id="${product.id}"  class="add-to-cart btn btn-outline-secondary btn-sm" onclick="addToCartFunc.call(this)" > Thêm </button> </span> </span> </div> </div> </div> </div>';
+                                        '<div class="col-md-4 col-sm-6 mb-4 pb-2"> <div class="list-card bg-white overflow-hidden h-100 position-relative item-content" style="border: 1px solid #d7d7d7; border-radius: 6px;"> <div class="list-card-image"> <div class="favourite-heart text-danger position-absolute"> <input class="heartCheck" id="heart' + i + '" type="checkbox" onclick="checkLike(' + "'" + listdata[i].id + "','" + favorite + "'" + ')"/> <label  for="heart' + i + '"><i class="icofont-heart" id=' + favorite + '></i></label> </div> <a href="#"> <img src=' + image + ' class="img-fluid item-img"> </a> </div> <div class="p-3 position-relative"> <div class="list-card-body"> <h6 class="mb-1"><a href="#" data-toggle="modal" data-target="#productDetail" onclick="productDetail(' + "'" + listdata[i].id + "'" + ')">' + listdata[i].name + '</a></h6> <p class="text-gray mb-3">Quán: ' + listdata[i].shop_name + '</p> <p class="text-gray mb-3 time"><span class="float-right text-black-50 ml-4"> Giảm giá: ' + price_sale + '%</span> <span class="float-right text-black-50"> Số lượng: ' + listdata[i].quantity + '</span> </p> </div> <div class="list-card-badge"> <small>Giá: <del>' + listdata[i].unit_price + '</del> <i class="fa fa-angle-double-right" aria-hidden="true"></i> ' + newPrice + ' VNĐ</small> <span class="badge badge-success">Mới</span> <span class="float-right"> <span class="count-number" style="margin-top: 0px !important;"> <button value="ADD" data-name="${product.name}" data-price="${product.unit_price}" data-id="${product.id}"  class="add-to-cart btn btn-outline-secondary btn-sm" onclick="addToCartFunc.call(this)" > Thêm </button> </span> </span> </div> </div> </div> </div>';
                                 } else {
                                     document.getElementById('findProduct').innerHTML +=
-                                        '<div class="col-md-4 col-sm-6 mb-4 pb-2"> <div class="list-card bg-white overflow-hidden h-100 position-relative item-content" style="border: 1px solid #d7d7d7; border-radius: 6px;"> <div class="list-card-image"> <div class="favourite-heart text-danger position-absolute"><input id="heart" type="checkbox" onclick="checkLike(' + "'" + listdata[i].id + "'" + ')" /> <label  for="heart"><i class="icofont-heart"></i></label></div> <a href="#"> <img src=' + image + ' class="img-fluid item-img"> </a> </div> <div class="p-3 position-relative"> <div class="list-card-body"> <h6 class="mb-1"><a href="#" data-toggle="modal" data-target="#productDetail" onclick="productDetail(' + "'" + listdata[i].id + "'" + ')">' + listdata[i].name + '</a></h6> <p class="text-gray mb-3">' + listdata[i].description + '</p> <p class="text-gray mb-3 time"> <span class="float-right text-black-50"> Số lượng: ' + listdata[i].quantity + '</span> </p> </div> <div class="list-card-badge"> <small>Giá: ' + listdata[i].unit_price + ' VNĐ</small> <span class="float-right"> <span class="count-number" style="margin-top: 0px !important;"> <button value="ADD" data-name="${product.name}" data-price="${product.unit_price}" data-id="${product.id}"  class="add-to-cart btn btn-outline-secondary btn-sm" onclick="addToCartFunc.call(this)" > Thêm </button> </span> </span> </div> </div> </div> </div>';
+                                        '<div class="col-md-4 col-sm-6 mb-4 pb-2"> <div class="list-card bg-white overflow-hidden h-100 position-relative item-content" style="border: 1px solid #d7d7d7; border-radius: 6px;"> <div class="list-card-image"> <div class="favourite-heart text-danger position-absolute"><input class="heartCheck" id="heart' + i + '" type="checkbox" onclick="checkLike(' + "'" + listdata[i].id + "','" + favorite + "'" + ')" /> <label  for="heart' + i + '"><i class="icofont-heart" id=' + favorite + '></i></label></div> <a href="#"> <img src=' + image + ' class="img-fluid item-img"> </a> </div> <div class="p-3 position-relative"> <div class="list-card-body"> <h6 class="mb-1"><a href="#" data-toggle="modal" data-target="#productDetail" onclick="productDetail(' + "'" + listdata[i].id + "'" + ')">' + listdata[i].name + '</a></h6> <p class="text-gray mb-3">Quán: ' + listdata[i].shop_name + '</p> <p class="text-gray mb-3 time"> <span class="float-right text-black-50"> Số lượng: ' + listdata[i].quantity + '</span> </p> </div> <div class="list-card-badge"> <small>Giá: ' + listdata[i].unit_price + ' VNĐ</small> <span class="float-right"> <span class="count-number" style="margin-top: 0px !important;"> <button value="ADD" data-name="${product.name}" data-price="${product.unit_price}" data-id="${product.id}"  class="add-to-cart btn btn-outline-secondary btn-sm" onclick="addToCartFunc.call(this)" > Thêm </button> </span> </span> </div> </div> </div> </div>';
                                 }
                             }
 
@@ -463,14 +472,15 @@
                     var listdataUser = data.data.user;
 
                     document.getElementById('locationShop').innerHTML = listdataUser.name;
+                    document.getElementById('locationShop').href = '/ShopDetail?id=' + listdataUser.id;
                     document.getElementById('addressShop').innerHTML = listdataUser.address;
 
                     if (listdataUser.shop_status == true) {
-                        document.getElementById('shop_status').innerHTML = 'Mở cửa';
+                        document.getElementById('shop_status').innerHTML = '<span class="stt-online" title="Mở cửa" > <i class="fa fa-circle mr-1" aria-hidden="true"></i>Mở cửa</span>';
                         document.getElementById('shop_status').style.color = '#329900';
 
                     } else {
-                        document.getElementById('shop_status').innerHTML = 'Đóng cửa';
+                        document.getElementById('shop_status').innerHTML = '<span class="stt-online" title="mở cửa" > <i class="fa fa-circle mr-1" aria-hidden="true"></i>Đóng cửa</span>';
                         document.getElementById('shop_status').style.color = 'red';
                     }
 
@@ -486,38 +496,47 @@
             });
         }
 
-        function checkLike(id) { //checkFavourites
+        function checkLike(id, favorite) { //checkFavourites
+            var token = getCookie("token");
             var userIdLike = localStorage.getItem('userId').replaceAll('"', '');
-            let checkLike = $('#heart').is(":checked");
-            if (checkLike == true) {
-                $.ajax({
-                    url: '/api/favorite/create',
-                    method: 'POST',
-                    data: {
-                        product_id: id,
-                        user_id: userIdLike
-                    },
-                }).then(function(data) {
-                    if (data.message == 'SUCCESS') {
-                        document.getElementsByClassName('icofont-heart').style.color = 'red';
-                    }
-                })
+            if (token == '') {
+                window.location.href = '/LoginUser';
             } else {
-                $.ajax({
-                    url: '/api/favorite/delete',
-                    method: 'POST',
-                    data: {
-                        product_id: id,
-                        user_id: userIdLike
-                    },
-                }).then(function(data) {
-                    if (data.message == 'SUCCESS') {
-                        alert('oke1');
-                    } else {
-                        alert('meo dc1');
-                    }
-                })
+                if (favorite == "check") {
+                    $.ajax({
+                        url: '/api/favorite/delete',
+                        method: 'GET',
+                        data: {
+                            product_id: id,
+                            user_id: userIdLike
+                        },
+                    }).then(function(data) {
+                        if (data.message == 'SUCCESS') {
+
+
+                            loadproduct()
+                        }
+                    })
+                } else {
+
+                    $.ajax({
+                        url: '/api/favorite/create',
+                        method: 'POST',
+                        data: {
+                            product_id: id,
+                            user_id: userIdLike
+                        },
+                    }).then(function(data) {
+                        if (data.message == 'SUCCESS') {
+
+                            loadproduct()
+
+                        }
+                    })
+                }
             }
+
+
         }
 
         function showComment() {
