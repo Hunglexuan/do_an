@@ -176,23 +176,22 @@ class MidBill {
     async createBill(data) {
         let totalPrice = 0;
         let voucherID = null
-        console.log('vaoooo',data.cart);
-        if (  data.cart.billID) {
-            console.log('vaoooo1');
+
+        if (data.cart.billID) {
             let billTemp = await Bill.findOne({
                 where: {
                     id: data.cart.billID,
                     status: 0,
-                    del:0,
+                    del: 0,
                 }
             })
-          
+
             if (billTemp) {
-               
+
                 for (let i = 0; i < data.cart.listCart.length; i++) {
                     totalPrice += data.cart.listCart[i].price * data.cart.listCart[i].count
                 }
-              
+
                 if (data.cart.voucherCode) {
 
                     let voucher = await Voucher.findOne({
@@ -200,34 +199,34 @@ class MidBill {
                             code: data.cart.voucherCode,
                             del: 0
                         }
-                    }) 
-                    if(voucher){
+                    })
+                    if (voucher) {
                         totalPrice -= voucher.dataValues.discount_number
                         voucherID = voucher.dataValues.id
-    
+
                     }
-    
+
                 }
-                
+
                 let statusTemp = data.cart.status;
                 let addressTemp = data.cart.address;
-                
+
                 let billUpdate = {
                     total_price: totalPrice,
                     status: statusTemp,
                     address: addressTemp,
-                    voucher_id: voucherID,            
+                    voucher_id: voucherID,
                     del: 0
                 }
-              
+
                 await billTemp.update(billUpdate);
                 let billProductList = await BillProduct.findAll({
                     where: {
                         bill_id: billTemp.dataValues.id,
-                        del : 0
+                        del: 0
                     }
                 })
-              
+
 
                 let dataDelete = {
                     del: 1,
@@ -248,7 +247,7 @@ class MidBill {
                     }
                     await BillProduct.create(billProduct)
                 }
-                
+
 
                 let userBillList = await UserBill.findOne({
                     where: {
@@ -266,7 +265,7 @@ class MidBill {
             }
         }
         else {
-        console.log('vaoooo2');
+            console.log('vaoooo2');
 
             for (let i = 0; i < data.cart.listCart.length; i++) {
                 totalPrice += data.cart.listCart[i].price * data.cart.listCart[i].count
@@ -279,23 +278,23 @@ class MidBill {
                         code: data.cart.voucherCode,
                         del: 0
                     }
-                }) 
-                if(voucher){
+                })
+                if (voucher) {
                     totalPrice -= voucher.dataValues.discount_number
                     voucherID = voucher.dataValues.id
 
                 }
 
             }
-          
+
             let status = data.cart.status;
-            
+
             let address = data.cart.address;
             let billCreate = {
                 total_price: totalPrice,
                 status: status,
                 address: address,
-                voucher_id: voucherID,        
+                voucher_id: voucherID,
                 del: 0,
             }
             let bill = await Bill.create(billCreate);
@@ -347,13 +346,94 @@ class MidBill {
         })
 
         let dataUpdate = {
-         
+
             total_price: 1,
             del: 0
         }
-        console.log('11111111',objUpdate); 
-        console.log('22222222',dataUpdate); 
+        console.log('11111111', objUpdate);
+        console.log('22222222', dataUpdate);
         return await objUpdate.update(dataUpdate)
+
+    }
+    async listOrderForSeller(data) {
+        let listBillTotal = []
+        let condition = {
+            shop_id: data.shop_id,
+            del: 0
+        }
+        const [listBill, total] = await Promise.all([
+            UserBill.findAll({
+                where: condition,
+                order: [[
+                    "createdAt", "DESC"
+                ]],
+            }),
+            UserBill.count({
+                where: condition
+            })
+        ])
+      
+        for (let i = 0; i < listBill.length; i++) {
+         
+           
+            let userBill = {
+                user: {},
+                bill: [],
+                billTotal: {},
+                shop: {},
+                createAt : listBill[i].dataValues.createdAt,
+
+            }
+            userBill.user = await Users.findOne({
+                where: {
+                    id: listBill[i].user_id,
+                    del: 0
+                }
+            })
+            userBill.shop = await Users.findOne({
+                where: {
+                    id: listBill[i].shop_id,
+                    del: 0
+                }
+            })
+ 
+            userBill.billTotal = await Bill.findOne({
+                where: {
+                    id: listBill[i].bill_id,
+                    status: 1,
+                    del: 0
+                }
+            })
+          
+
+            let billList = await BillProduct.findAll({
+                where: {
+                    bill_id: userBill.billTotal.dataValues.id,
+                    del: 0,
+                },
+                order: [[
+                    "createdAt", "DESC"
+                ]],
+            });
+
+            for (let j = 0; j < billList.length; j++) {
+                let product = await Product.findOne({
+                    where: {
+                        id: billList[j].product_id,
+                        del: 0
+                    }
+                })
+                userBill.bill.push(product)
+            }
+          
+
+            listBillTotal.push(userBill);
+
+        }
+
+        return {
+            listBillTotal
+        }
 
     }
 

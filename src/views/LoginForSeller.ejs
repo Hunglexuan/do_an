@@ -134,7 +134,7 @@
 
                 if (data.message == "SUCCESS") {
                     var sellerID = data.data.sellerid;
-                    window.location.href = "/DashboardSeller"
+                    window.location.href = "/listProductSeller"
                     localStorage.setItem('sellerId', JSON.stringify(sellerID));
                     setCookie("token", data.data.token, 31)
                 } else {

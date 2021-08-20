@@ -378,6 +378,8 @@
     <script src="../../customJS/shopDetail.js"></script>
 
     <script>
+        var userId =  localStorage.getItem('userId').replaceAll('"', '');
+        // shoppingCart.displayCartInDB(userId)
         var counter = 1;
         setInterval(function() {
             document.getElementById('radio' + counter).checked = true;
