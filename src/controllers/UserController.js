@@ -39,6 +39,10 @@ class UserController {
         let dataQuery = req.query;
         return await MidUser.deleteUser(dataQuery);
     }
+    async enableUser(req, res) {
+        let dataQuery = req.query;
+        return await MidUser.enableUser(dataQuery);
+    }
     async upgradeRole(req, res) {
         let dataQuery = req.query;
         return await MidUser.upgradeRole(dataQuery);

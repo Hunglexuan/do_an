@@ -280,7 +280,6 @@ class MidUser {
     //done
     async searchUser(data) {
         let condition = {
-            del: 0,
             role_id: null,
         };
 
@@ -310,7 +309,6 @@ class MidUser {
         let role = await Role.findOne({
             where: {
                 name: "seller",
-                del: 0,
             },
         });
         let condition = {
@@ -493,6 +491,23 @@ class MidUser {
         });
         let dataDelete = {
             del: 1,
+        };
+        objDelete.update(dataDelete);
+    }
+    async enableUser(data) {
+        if (!data.id) {
+            console.log('MidUser-deleteUser: ERROR-508');
+            throw new Error('User is not exist');
+
+        }
+        let objDelete = await Users.findOne({
+            where: {
+                id: data.id,
+                del: 1,
+            },
+        });
+        let dataDelete = {
+            del: 0,
         };
         objDelete.update(dataDelete);
     }
