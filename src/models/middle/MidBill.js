@@ -376,58 +376,64 @@ class MidBill {
         for (let i = 0; i < listBill.length; i++) {
             let userBill = {
                 user: {},
-                bill: [],
-                // billTotal: {},
+                billList: [],
                 shop: {},
-                // createAt : listBill[i].dataValues.createdAt,
+                bill: {},
+                createAt : listBill[i].dataValues.createdAt,
 
             }
-            
-            userBill.user = await Users.findOne({
+            let billInprocess = await Bill.findOne({
                 where: {
-                    id: listBill[i].user_id,
+                    id: listBill[i].bill_id,
+                    status : 1,
                     del: 0
                 }
             })
-            
-            userBill.shop = await Users.findOne({
-                where: {
-                    id: listBill[i].shop_id,
-                    del: 0
-                }
-            })
- 
-            // userBill.billTotal = await Bill.findOne({
-            //     where: {
-            //         id: listBill[i].bill_id,
-            //         status: 1,
-            //         del: 0
-            //     }
-            // })
-          
-            let billList = await BillProduct.findAll({
-                where: {
-                    bill_id: userBill.billTotal.dataValues.id,
-                    del: 0,
-                },
-                order: [[
-                    "createdAt", "DESC"
-                ]],
-            });
-          
-
-            for (let j = 0; j < billList.length; j++) {
-                let product = await Product.findOne({
+            if(billInprocess){
+                userBill.bill = billInprocess;
+                userBill.user = await Users.findOne({
                     where: {
-                        id: billList[j].product_id,
+                        id: listBill[i].user_id,
                         del: 0
                     }
                 })
-                userBill.bill.push(product)
+                
+                userBill.shop = await Users.findOne({
+                    where: {
+                        id: listBill[i].shop_id,
+                        del: 0
+                    }
+                })
+     
+              
+               
+                
+              
+                let billList = await BillProduct.findAll({
+                    where: {
+                        bill_id: listBill[i].bill_id,
+                        del: 0,
+                    },
+                    order: [[
+                        "createdAt", "DESC"
+                    ]],
+                });
+              
+    
+                for (let j = 0; j < billList.length; j++) {
+                    let product = await Product.findOne({
+                        where: {
+                            id: billList[j].product_id,
+                            del: 0
+                        }
+                    })
+                    userBill.billList.push(product)
+                }
+              
+    
+                listBillTotal.push(userBill);
             }
           
-
-            listBillTotal.push(userBill);
 
         }
 
@@ -437,6 +443,185 @@ class MidBill {
 
     }
 
+
+    async listSuccessForSeller(data) {
+        let listBillTotal = []
+        let condition = {
+            shop_id: data.shop_id,
+            del: 0
+        }
+        const [listBill, total] = await Promise.all([
+            UserBill.findAll({
+                where: condition,
+                order: [[
+                    "createdAt", "DESC"
+                ]],
+            }),
+            UserBill.count({
+                where: condition
+            })
+        ])
+        
+      
+        for (let i = 0; i < listBill.length; i++) {
+            let userBill = {
+                user: {},
+                billList: [],
+                shop: {},
+                bill: {},
+                createAt : listBill[i].dataValues.createdAt,
+
+            }
+            let billInprocess = await Bill.findOne({
+                where: {
+                    id: listBill[i].bill_id,
+                    status : 2,
+                    del: 0
+                }
+            })
+            if(billInprocess){
+                userBill.bill = billInprocess;
+                userBill.user = await Users.findOne({
+                    where: {
+                        id: listBill[i].user_id,
+                        del: 0
+                    }
+                })
+                
+                userBill.shop = await Users.findOne({
+                    where: {
+                        id: listBill[i].shop_id,
+                        del: 0
+                    }
+                })
+     
+              
+               
+                
+              
+                let billList = await BillProduct.findAll({
+                    where: {
+                        bill_id: listBill[i].bill_id,
+                        del: 0,
+                    },
+                    order: [[
+                        "createdAt", "DESC"
+                    ]],
+                });
+              
+    
+                for (let j = 0; j < billList.length; j++) {
+                    let product = await Product.findOne({
+                        where: {
+                            id: billList[j].product_id,
+                            del: 0
+                        }
+                    })
+                    userBill.billList.push(product)
+                }
+              
+    
+                listBillTotal.push(userBill);
+            }
+          
+
+        }
+
+        return {
+            listBillTotal
+        }
+
+    }
+    async listCancelForSeller(data) {
+        let listBillTotal = []
+        let condition = {
+            shop_id: data.shop_id,
+            del: 0
+        }
+        const [listBill, total] = await Promise.all([
+            UserBill.findAll({
+                where: condition,
+                order: [[
+                    "createdAt", "DESC"
+                ]],
+            }),
+            UserBill.count({
+                where: condition
+            })
+        ])
+        
+      
+        for (let i = 0; i < listBill.length; i++) {
+            let userBill = {
+                user: {},
+                billList: [],
+                shop: {},
+                bill: {},
+                createAt : listBill[i].dataValues.createdAt,
+
+            }
+            let billInprocess = await Bill.findOne({
+                where: {
+                    id: listBill[i].bill_id,
+                    status : 3,
+                    del: 0
+                }
+            })
+            if(billInprocess){
+                userBill.bill = billInprocess;
+                userBill.user = await Users.findOne({
+                    where: {
+                        id: listBill[i].user_id,
+                        del: 0
+                    }
+                })
+                
+                userBill.shop = await Users.findOne({
+                    where: {
+                        id: listBill[i].shop_id,
+                        del: 0
+                    }
+                })
+     
+              
+               
+                
+              
+                let billList = await BillProduct.findAll({
+                    where: {
+                        bill_id: listBill[i].bill_id,
+                        del: 0,
+                    },
+                    order: [[
+                        "createdAt", "DESC"
+                    ]],
+                });
+              
+    
+                for (let j = 0; j < billList.length; j++) {
+                    let product = await Product.findOne({
+                        where: {
+                            id: billList[j].product_id,
+                            del: 0
+                        }
+                    })
+                    userBill.billList.push(product)
+                }
+              
+    
+                listBillTotal.push(userBill);
+            }
+          
+
+        }
+
+        return {
+            listBillTotal
+        }
+
+    }
+
+ 
 }
 
 
