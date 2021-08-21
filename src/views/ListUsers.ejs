@@ -534,16 +534,6 @@
             let idUpRole = $(this).attr("idUser")
 
             localStorage.setItem('idUpRole', JSON.stringify(idUpRole));
-
-         
-            // $.ajax({
-            //     url: '/api/user/downRole?token=' + token + '&id=' + id_User,
-            //     method: 'GET',
-
-            // }).then(function() {
-
-            //     window.location.reload();
-            // })
         });
 
         $('#dataTable tbody').on('click', '.delete-user-btn', function() {

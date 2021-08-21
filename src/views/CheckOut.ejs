@@ -360,9 +360,10 @@
                         console.log(data);
                         console.log(cart_tmp);
 
-                        
+                            
                         if (data.message == "SUCCESS") {
                             alert("done")
+                            document.getElementById("show-cart").innerHTML = ""
                             console.log("object");
                         } else {
                             alert("ngu")
