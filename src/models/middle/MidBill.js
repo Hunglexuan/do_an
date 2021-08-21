@@ -405,6 +405,85 @@ class MidBill {
     };
   }
 
+
+  async listOrderForUser(data) {
+    let listBillTotal = [];
+    let condition = {
+      user_id: data.user_id,
+      del: 0,
+    };
+    const [listBill, total] = await Promise.all([
+      UserBill.findAll({
+        where: condition,
+        order: [["createdAt", "DESC"]],
+      }),
+      UserBill.count({
+        where: condition,
+      }),
+    ]);
+
+    for (let i = 0; i < listBill.length; i++) {
+      let userBill = {
+        user: {},
+        billList: [],
+        shop: {},
+        bill: {},
+        createAt: listBill[i].dataValues.createdAt,
+      };
+      let billInprocess = await Bill.findOne({
+        where: {
+          id: listBill[i].bill_id,
+
+          del: 0,
+        },
+      });
+      if (billInprocess) {
+        userBill.bill = billInprocess;
+        userBill.user = await Users.findOne({
+          where: {
+            id: listBill[i].user_id,
+            del: 0,
+          },
+        });
+
+        userBill.shop = await Users.findOne({
+          where: {
+            id: listBill[i].shop_id,
+            del: 0,
+          },
+        });
+
+        let billList = await BillProduct.findAll({
+          where: {
+            bill_id: listBill[i].bill_id,
+            del: 0,
+          },
+          order: [["createdAt", "DESC"]],
+        });
+
+        for (let j = 0; j < billList.length; j++) {
+          let product = await Product.findOne({
+            where: {
+              id: billList[j].product_id,
+              del: 0,
+            },
+          });
+          let temp = {
+            name: product.dataValues.name,
+          };
+          Object.assign(billList[j].dataValues, temp);
+          userBill.billList.push(billList[j].dataValues);
+        }
+
+        listBillTotal.push(userBill);
+      }
+    }
+
+    return {
+      listBillTotal,
+    };
+  }
+
   async listSuccessForSeller(data) {
     let listBillTotal = [];
     let totalBill ={
@@ -490,6 +569,7 @@ class MidBill {
       listBillTotal,
     };
   }
+  
   async listCancelForSeller(data) {
     let listBillTotal = [];
     let condition = {
@@ -567,6 +647,10 @@ class MidBill {
       listBillTotal,
     };
   }
+
+
+
+  
 
   async acceptBill(data) {
     let objDelete = await Bill.findOne({
