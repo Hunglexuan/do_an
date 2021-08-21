@@ -350,8 +350,7 @@ class MidBill {
             total_price: 1,
             del: 0
         }
-        console.log('11111111', objUpdate);
-        console.log('22222222', dataUpdate);
+      
         return await objUpdate.update(dataUpdate)
 
     }
@@ -375,14 +374,12 @@ class MidBill {
         
       
         for (let i = 0; i < listBill.length; i++) {
-         
-           
             let userBill = {
                 user: {},
                 bill: [],
-                billTotal: {},
+                // billTotal: {},
                 shop: {},
-                createAt : listBill[i].dataValues.createdAt,
+                // createAt : listBill[i].dataValues.createdAt,
 
             }
             
@@ -400,15 +397,14 @@ class MidBill {
                 }
             })
  
-            userBill.billTotal = await Bill.findOne({
-                where: {
-                    id: listBill[i].bill_id,
-                    status: 1,
-                    del: 0
-                }
-            })
+            // userBill.billTotal = await Bill.findOne({
+            //     where: {
+            //         id: listBill[i].bill_id,
+            //         status: 1,
+            //         del: 0
+            //     }
+            // })
           
-
             let billList = await BillProduct.findAll({
                 where: {
                     bill_id: userBill.billTotal.dataValues.id,
@@ -418,10 +414,7 @@ class MidBill {
                     "createdAt", "DESC"
                 ]],
             });
-
           
-            
-
 
             for (let j = 0; j < billList.length; j++) {
                 let product = await Product.findOne({
