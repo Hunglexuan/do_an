@@ -628,7 +628,7 @@
                 url: "/api/favorite/search",
                 success: function(data) {
                     let list = data.data.productList;
-
+                    
                     for (var i = 0; i < list.length; i++) {
                         let image = (list[i].image ? list[i].image : "image/list/1.png");
                         document.getElementById('loadFavouries').innerHTML += `<div class="col-sm-3 mb-4 pb-2">

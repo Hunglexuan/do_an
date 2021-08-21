@@ -372,6 +372,7 @@ class MidBill {
                 where: condition
             })
         ])
+        
       
         for (let i = 0; i < listBill.length; i++) {
          
@@ -384,12 +385,14 @@ class MidBill {
                 createAt : listBill[i].dataValues.createdAt,
 
             }
+            
             userBill.user = await Users.findOne({
                 where: {
                     id: listBill[i].user_id,
                     del: 0
                 }
             })
+            
             userBill.shop = await Users.findOne({
                 where: {
                     id: listBill[i].shop_id,
@@ -415,6 +418,10 @@ class MidBill {
                     "createdAt", "DESC"
                 ]],
             });
+
+          
+            
+
 
             for (let j = 0; j < billList.length; j++) {
                 let product = await Product.findOne({
