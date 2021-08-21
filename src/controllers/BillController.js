@@ -34,6 +34,10 @@ class BillController {
         let dataQuery = req.query;
         return await MidBill.cancelBill(dataQuery);
     }
+    async acceptBill(req, res) {
+        let dataQuery = req.query;
+        return await MidBill.acceptBill(dataQuery);
+    }
 }
 
 export default new BillController();

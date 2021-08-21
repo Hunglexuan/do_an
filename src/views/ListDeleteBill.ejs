@@ -119,20 +119,7 @@
             </div>
          </li>
          
-         <li class="nav-item dropdown no-arrow mx-1 osahan-list-dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-               <i class="far fa-bell"></i>
-               <!-- Counter - Alerts -->
-            </a>
-            <!-- Dropdown - Alerts -->
-            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow-sm">
-               <h6 class="dropdown-header">
-                  Thông Báo
-               </h6>
-               
-               <a class="dropdown-item text-center small text-gray-500" href="#">Tất Cả Thông Báo</a>
-            </div>
-         </li>
+         
          <!-- Nav Item - User Information -->
          <li class="nav-item dropdown" id="nameSeller"></li>
       </ul>
@@ -151,12 +138,12 @@
                   </a>
                   <a class="nav-link" href="ListAcceptBill">
                      <div class="sb-nav-link-icon"><i class="fas fa-chart-line"></i></div>
-                     Danh Sách Đơn Chấp Nhận
+                     Doanh Thu
                   </a>
                  
                   <a class="nav-link" href="ListDeleteBill">
                      <div class="sb-nav-link-icon"><i class="fas fa-shopping-cart"></i></div>
-                     Danh Sách Đơn Hủy
+                     Quản Lý Đặt Hàng
                   </a>
                   <a class="nav-link" href="listProductSeller">
                      <div class="sb-nav-link-icon"><i class="fas fa-boxes"></i></div>
@@ -173,10 +160,10 @@
       <div id="layoutSidenav_content">
          <main>
             <div class="container-fluid">
-               <h1 class="mt-4">Danh Sách Đặt Hàng</h1>
+               <h1 class="mt-4">Danh Sách Đơn Đã Hủy</h1>
                <ol class="breadcrumb mb-4">
                   
-                  <li class="breadcrumb-item active">Đặt Hàng</li>
+                  <li class="breadcrumb-item active">Danh sách</li>
                </ol>
                <ol>
                   <a class="btn btn-info" onClick=ReloadFunc.call(this) style="position: relative; "><i class="fas fa-sync-alt"></i>
@@ -190,91 +177,7 @@
          
       </div>
    </div>
-   <!--Pop up Accept-->
-
-   <div class="modal fade" id="acceptBill" tabindex="-1" role="dialog" aria-labelledby="edit_bookingLabel"
-   aria-hidden="true">
-   <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
-         <div class="modal-header">
-            <h5 class="modal-title" id="edit_bookingLabel">Thông Báo</h5>
-            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-               <span aria-hidden="true">×</span>
-            </button>
-         </div>
-         <div class="modal-body">
-            <div class="row">
-               <div class="col-xl-12">
-                  <div class="card mb-4">
-                     <div class="card-body">
-                        <h5 style="text-align: center;">Bạn có chắc chấp nhận đơn này </h5>
-                        <div class="card-body">
-                           <div class="row ml-5">
-                              <div class="col-md-6">
-                                 <div class="form-group">
-                                    <input type="button" class="btn btn-primary" id="deletePro" value="Đồng Ý"
-                                       onclick="acceptBil()"></input>
-                                 </div>
-                              </div>
-                              <div class="col-md-6">
-                                 <div class="form-group">
-                                    <input type="button" class="btn btn-primary" id="cancelDelete" value="Hủy Bỏ"
-                                       data-dismiss="modal"></input>
-                                 </div>
-                              </div>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-            </div>
-         </div>
-      </div>
-   </div>
-</div>
-
- <!--Pop up Delete-->
-
- <div class="modal fade" id="deleteBill" tabindex="-1" role="dialog" aria-labelledby="edit_bookingLabel"
- aria-hidden="true">
- <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-       <div class="modal-header">
-          <h5 class="modal-title" id="edit_bookingLabel">Thông Báo</h5>
-          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-             <span aria-hidden="true">×</span>
-          </button>
-       </div>
-       <div class="modal-body">
-          <div class="row">
-             <div class="col-xl-12">
-                <div class="card mb-4">
-                   <div class="card-body">
-                      <h5 style="text-align: center;">Bạn có chắc chắn hủy đơn này </h5>
-                      <div class="card-body">
-                         <div class="row ml-5">
-                            <div class="col-md-6">
-                               <div class="form-group">
-                                  <input type="button" class="btn btn-primary" id="deletePro" value="Đồng Ý"
-                                     onclick="delBil()"></input>
-                               </div>
-                            </div>
-                            <div class="col-md-6">
-                               <div class="form-group">
-                                  <input type="button" class="btn btn-primary" id="cancelDelete" value="Hủy Bỏ"
-                                     data-dismiss="modal"></input>
-                               </div>
-                            </div>
-                         </div>
-                      </div>
-                   </div>
-                </div>
-             </div>
-          </div>
-       </div>
-    </div>
- </div>
-</div>
+   
   
    <!-- Jquery -->
    <script src="js/jquery.min.js"></script>
@@ -308,13 +211,13 @@
       function loadData(){
          var sellerID = localStorage.getItem("sellerId").replaceAll('"', '');
          $.ajax({
-            url:'http://localhost:3999/api/bill/listOrderForSeller',
+            url:'/api/bill/listCancelForSeller',
             type:"GET",
             data:{
                shop_id:sellerID
             }
          }).then(function(data){
-           
+         
             var billTEmp = data.data.listBillTotal;
             console.log(billTEmp);  
             for(var i = 0 ; i < billTEmp.length ; i++){
@@ -353,13 +256,7 @@
                                       ${ productTemp}
                                     </p>
                                     <hr>
-                                    <div class="float-right">
-                                       
-                                       <a   data-toggle="modal" data-target="#acceptBill"  onClick=acceptFunc.call(this,"${billTEmp[i].bill.id}") class="btn btn-sm btn-success"><i class="feather-check-circle"></i>
-                                          Chấp Thuận</a>
-                                      
-                                       <a   data-toggle="modal" data-target="#deleteBill "  onClick=delFunc.call(this,"${billTEmp[i].bill.id}") class="btn btn-sm btn-danger"><i class="feather-trash"></i> Hủy</a>
-                                    </div>
+                                    
                                     <p class="mb-0 text-dark text-dark pt-2"><span class="text-dark font-weight-bold">
                                           Tổng Tiền: </span> ${billTEmp[i].bill.total_price}
                                     </p>
@@ -383,57 +280,7 @@
          window.location.reload()
       }
 
-      function acceptFunc(id){
-         localStorage.setItem("billIdAcc",JSON.stringify(id));
-      }
-
-      function delFunc(id){
-         localStorage.setItem("billIdDel",JSON.stringify(id));
-      }
-
-      function delBil(){
-         var id = localStorage.getItem("billIdDel").replaceAll('"', '');
-         $.ajax({
-            url:"/api/bill/cancel",
-            type:"GET",
-            data:{
-               id:id
-            }
-         }).then(function(data) {
-            if(data.message == "SUCCESS"){
-               Swal.fire({
-                        type: 'success',
-                        title: 'Bạn Đã Hủy Thành Công ⚙️',
-                        // text: 'Your offer is safe 🙂',
-                        showConfirmButton: false,
-                        timer: 2000
-                    })
-            }
-            window.location.reload()
-         })
-      }
-
-      function acceptBil() {
-         var id = localStorage.getItem("billIdAcc").replaceAll('"', '');
-         $.ajax({
-            url:"/api/bill/accept",
-            type:"GET",
-            data:{
-               id:id
-            }
-         }).then(function(data) {
-            if(data.message == "SUCCESS"){
-               Swal.fire({
-                        type: 'success',
-                        title: 'Bạn Đã Chấp Nhận Đơn Thành Công ⚙️',
-                        // text: 'Your offer is safe 🙂',
-                        showConfirmButton: false,
-                        timer: 2000
-                    })
-            }
-            window.location.reload()
-         })
-      }
+      
    </script>
 </body>
 

@@ -93,6 +93,20 @@ app.get('/listProductSeller', function(req, res) {
 
 });
 
+app.get('/ListAcceptBill',function(req,res){
+    return res.render('ListAcceptBill')
+})
+
+
+app.get('/ListDeleteBill',function(req,res){
+    return res.render('ListDeleteBill')
+})
+
+
+app.get('/ListReportBySeller',function(req,res){
+    return res.render('ListReportBySeller')
+})
+
 app.get('/listOrderSeller', function(req, res) {
     return res.render('ListOrderSeller');
 

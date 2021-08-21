@@ -13,6 +13,7 @@ routerApp.get('/listSuccessForSeller', Response(BillController.listSuccessForSel
 routerApp.get('/listCancelForSeller', Response(BillController.listCancelForSeller));
 routerApp.get('/listCart', Response(BillController.listCart));
 routerApp.get('/cancel', Response(BillController.cancelBill));
+routerApp.get('/accept', Response(BillController.acceptBill));
 
 
 

@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta name="description" content="Askbootstrap" />
+    <meta name="author" content="Askbootstrap" />
+    <title>Osahan Eat - Online Food Ordering Website HTML Template</title>
+    <!-- Favicon Icon -->
+    <link rel="icon" type="image/png" href="image/favicon.png" />
+    <!-- Feather Icon-->
+    <link href="skin/css/feather.css" rel="stylesheet" type="text/css" />
+    <!-- Fontawesome Icon-->
+    <link
+      href="skin/font/fontawesome.min.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <!-- Bootstrap Css -->
+    <link href="skin/bootstrap/bootstrap.min.css" rel="stylesheet" />
+    <!-- Custom Css -->
+    <link href="skin/css/styles.css" rel="stylesheet" />
+    <!-- Datatables css -->
+    <link
+      href="skin/bootstrap/dataTables.bootstrap4.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      .switch {
+        position: relative;
+        display: inline-block;
+        width: 60px;
+        height: 34px;
+      }
+
+      .switch input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+      }
+
+      .slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #ccc;
+        -webkit-transition: 0.4s;
+        transition: 0.4s;
+      }
+
+      .slider:before {
+        position: absolute;
+        content: "";
+        height: 26px;
+        width: 26px;
+        left: 4px;
+        bottom: 4px;
+        background-color: white;
+        -webkit-transition: 0.4s;
+        transition: 0.4s;
+      }
+
+      input:checked + .slider {
+        background-color: #2196f3;
+      }
+
+      input:focus + .slider {
+        box-shadow: 0 0 1px #2196f3;
+      }
+
+      input:checked + .slider:before {
+        -webkit-transform: translateX(26px);
+        -ms-transform: translateX(26px);
+        transform: translateX(26px);
+      }
+
+      /* Rounded sliders */
+      .slider.round {
+        border-radius: 34px;
+      }
+
+      .slider.round:before {
+        border-radius: 50%;
+      }
+    </style>
+  </head>
+
+  <body class="sb-nav-fixed">
+    <nav class="sb-topnav navbar navbar-expand navbar-light bg-white shadow-sm">
+      <a class="navbar-brand" href="DashboardSeller"
+        ><img alt="logo" src="image/image0.jpg" width="100px"
+      /></a>
+      <!-- Navbar Search-->
+      <form
+        class="
+          d-none d-md-inline-block
+          form-inline
+          ml-auto
+          mr-0 mr-md-3
+          my-2 my-md-0
+        "
+      >
+        <div class="input-group">
+          <div class="input-group-append">
+            <label id="statusShop" class="mr-2"></label>
+            <label class="switch">
+              <input type="checkbox" id="switchShop" name="swiShop" />
+              <span class="slider round"></span>
+            </label>
+          </div>
+        </div>
+      </form>
+      <!-- Navbar-->
+      <ul class="navbar-nav ml-auto ml-md-0">
+        <li class="nav-item dropdown no-arrow d-sm-none">
+          <a
+            class="nav-link dropdown-toggle"
+            href="#"
+            id="searchDropdown"
+            role="button"
+            data-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >
+            <i class="fas fa-search"></i>
+          </a>
+          <!-- Dropdown - Messages -->
+          <div
+            class="
+              dropdown-menu dropdown-menu-right
+              p-3
+              shadow-sm
+              animated--grow-in
+            "
+            aria-labelledby="searchDropdown"
+          >
+            <form class="form-inline mr-auto w-100 navbar-search">
+              <div class="input-group">
+                <input
+                  type="text"
+                  class="form-control border-0 shadow-none"
+                  placeholder="Search people, jobs and more..."
+                  aria-label="Search"
+                  aria-describedby="basic-addon2"
+                />
+                <div class="input-group-append">
+                  <button class="btn" type="button">
+                    <i class="fas fa-search"></i>
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </li>
+
+        <!-- Nav Item - User Information -->
+        <li class="nav-item dropdown" id="nameSeller"></li>
+      </ul>
+    </nav>
+    <div id="layoutSidenav">
+      <div id="layoutSidenav_nav">
+        <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+          <div class="sb-sidenav-menu">
+            <div class="nav">
+              <div class="sb-sidenav-menu-heading">Danh Mục</div>
+
+              
+              <a class="nav-link" href="listOrderSeller">
+                <div class="sb-nav-link-icon"><i class="far fa-calendar-alt"></i></div>
+                Danh Sách Đặt hàng <span class="badge badge-pill ml-2 badge-primary"></span>
+             </a>
+             <a class="nav-link" href="ListAcceptBill">
+                <div class="sb-nav-link-icon"><i class="fas fa-chart-line"></i></div>
+                Doanh Thu
+             </a>
+            
+             <a class="nav-link" href="ListDeleteBill">
+                <div class="sb-nav-link-icon"><i class="fas fa-shopping-cart"></i></div>
+                Quản Lý Đặt Hàng
+             </a>
+             <a class="nav-link" href="listProductSeller">
+                <div class="sb-nav-link-icon"><i class="fas fa-boxes"></i></div>
+                Quản Lý Sản Phẩm
+             </a>
+             <a class="nav-link" href="ListReportBySeller">
+                <div class="sb-nav-link-icon"><i class="fas fa-file-signature"></i></div>
+                Dánh sách Báo Cáo
+             </a>
+            </div>
+          </div>
+        </nav>
+      </div>
+      <div id="layoutSidenav_content">
+        <main>
+          <div class="container-fluid">
+            <h1 class="mt-4">Danh Sách Đơn Chấp Nhận</h1>
+            <ol class="breadcrumb mb-4">
+              <li class="breadcrumb-item active">Danh sách</li>
+            </ol>
+            <ol>
+              <a
+                class="btn btn-info"
+                onClick="ReloadFunc.call(this)"
+                style="position: relative"
+                ><i class="fas fa-sync-alt"></i> Làm Mới</a
+              >
+            </ol>
+            <div class="show-bill"></div>
+          </div>
+        </main>
+      </div>
+    </div>
+
+    <!-- Jquery -->
+    <script src="js/jquery.min.js"></script>
+    <!-- Fontawesome -->
+    <script src="js/all.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <!-- Custom Js -->
+    <!-- <script src="js/scripts.js"></script> -->
+    <!-- Ajax Chart Js -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"
+      crossorigin="anonymous"
+    ></script>
+    <!-- Chart Js -->
+    <!-- <script src="js/chart-area-demo.js"></script>
+   <script src="js/chart-bar-demo.js"></script>
+   <script src="js/chart-pie-demo.js"></script> -->
+    <!-- Datatable Js -->
+    <script src="js/jquery.dataTables.min.js"></script>
+    <script src="js/dataTables.bootstrap.min.js"></script>
+    <script src="js/datatables-demo.js"></script>
+    <script src="js/headerSeller.js"></script>
+    <script>
+      // /load data
+      var sellerID = localStorage.getItem("sellerId").replaceAll('"', '');
+      $(document).ready(function () {
+        $("#dataTable").DataTable({
+
+          ajax: function (data, callback, settings) {
+            $.ajax({
+              url: "http://localhost:3999/api/report/searchByShop?id="+sellerID,
+            }).then(function (response, textStatus, jqXHR) {
+              let data = response.data.listReport;
+              data.forEach((val, idx) => {
+                val.no = idx + 1;
+              });
+              callback({ data: data });
+            });
+          },
+
+          columns: [
+            { data: "no" },
+            { data: "user" },
+            { data: "shop" },
+            { data: "type_report"},
+            { data: "content" },
+
+            { data: "" },
+          ],
+          columnDefs: [
+            {
+              targets: -1,
+              render: function (data, type, row, meta) {
+                return (
+                  '<input type="button" class="show-report-detail btn-primary mr-3" data-toggle="modal" data-target="#infoReport" onclick="getInfo(' +
+                  "'" +
+                  row.user +
+                  "'" +
+                  "," +
+                  "'" +
+                  row.shop +
+                  "'" +
+                  "," +
+                  "'" +
+                  row.type_report +
+                  "'" +
+                  "," +
+                  "'" +
+                  row.content +
+                  "'" +
+                  ')" idReport="' +
+                  row.id +
+                  '" value="Chi Tiết"/>'
+                );
+              },
+            },
+          ],
+        });
+      });
+
+      function ReloadFunc() {
+        window.location.reload();
+      }
+
+    </script>
+  </body>
+</html>
