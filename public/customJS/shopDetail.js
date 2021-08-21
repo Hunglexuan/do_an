@@ -218,7 +218,7 @@ function addToCartFunc() {
         
         var id = $(this).data('id');
         var name = $(this).data('name');
-
+        
         var price = Number($(this).data('price'));
 
         shoppingCart.addItemToCart(id, name, price, 1);
