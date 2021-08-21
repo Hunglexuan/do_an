@@ -585,8 +585,10 @@
                 url: "/api/user/getbyId",
                 success: function(data) {
                     if (cmt_id == '') {
+                        let image = (data.data.avatar ? data.data.avatar : 'image/list/1.png');
                         if (user_id == text) {
-                            document.getElementById('listComment').innerHTML += `<div class="reviews-members pt-2" style="display: flex;"><div class="media" style="width: 100%"> <a href="#"><img alt="Generic placeholder image" src="` + data.data.avatar + `" class="mr-3 rounded-pill" style="width: 40px; height: 40px;"></a> <div class="media-body" style="border: 1px solid #f0f2f5; border-radius: 10px; background-color: #f0f2f5; padding: 10px"> <div class="reviews-members-header" style="display: flex; justify-content: space-between;"> <h6 class="mb-1"><a class="text-black" href="#">` + data.data.name + `</a></h6> <p class="text-gray" style="margin-bottom: 5px;">` + dob + `</p> </div> <div class="reviews-members-body"> <p id="text-content` + i + `">` + content + `</p> </div> </div> </div> <div class="nav-item dropdown no-arrow mx-1 osahan-list-dropdown"> <a class="nav-link dropdown-toggle rounded-pill" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="padding: 0 !important; width: 40px;height: 40px;margin-top: 18px; margin-left: 0px;"> <i class="fa fa-ellipsis-h" style="font-size: large;margin-left: 13px; margin-top: 12px; color: #606770 !important;"></i> </a> <div class="dropdown-menu dropdown-menu-right shadow-sm border-0"> <button class="dropdown-item" onclick="editReply(` + "'" + i + "','" + id + "','" + content + "'" + `)"> Sửa </button> <button class="dropdown-item" data-toggle="modal" data-target="#deleteComment` + i + `"> Xóa </button> </div> </div> </div> </div> <div style="margin-left: 67px"> <label class="reply" style="border-radius: 6px" onclick="Reply(` + "'" + i + "','" + data.data.name + "','" + id + "'" + `)"> Phản hồi </label> . <label style="border-radius: 6px;" onclick="showReply(` + "'" + i + "'" + `)"> Hiển thị phản hồi </label> <div id="showReply` + i + `"> </div> <div class="reply-section" id="replytoreply` + i + `"> </div></div> </div> </div> <div class="modal fade modal" id="deleteComment` + i + `" tabindex="-1" role="dialog" aria-labelledby="edit_bookingLabel" aria-hidden="true" style="z-index: 10000;">
+
+                            document.getElementById('listComment').innerHTML += `<div class="reviews-members pt-2" style="display: flex;"><div class="media" style="width: 100%"> <a href="#"><img alt="Generic placeholder image" src="` + image + `" class="mr-3 rounded-pill" style="width: 40px; height: 40px;"></a> <div class="media-body" style="border: 1px solid #f0f2f5; border-radius: 10px; background-color: #f0f2f5; padding: 10px"> <div class="reviews-members-header" style="display: flex; justify-content: space-between;"> <h6 class="mb-1"><a class="text-black" href="#">` + data.data.name + `</a></h6> <p class="text-gray" style="margin-bottom: 5px;">` + dob + `</p> </div> <div class="reviews-members-body"> <p id="text-content` + i + `">` + content + `</p> </div> </div> </div> <div class="nav-item dropdown no-arrow mx-1 osahan-list-dropdown"> <a class="nav-link dropdown-toggle rounded-pill" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="padding: 0 !important; width: 40px;height: 40px;margin-top: 18px; margin-left: 0px;"> <i class="fa fa-ellipsis-h" style="font-size: large;margin-left: 13px; margin-top: 12px; color: #606770 !important;"></i> </a> <div class="dropdown-menu dropdown-menu-right shadow-sm border-0"> <button class="dropdown-item" onclick="editReply(` + "'" + i + "','" + id + "','" + content + "'" + `)"> Sửa </button> <button class="dropdown-item" data-toggle="modal" data-target="#deleteComment` + i + `"> Xóa </button> </div> </div> </div> </div> <div style="margin-left: 67px"> <label class="reply" style="border-radius: 6px" onclick="Reply(` + "'" + i + "','" + data.data.name + "','" + id + "'" + `)"> Phản hồi </label> . <label style="border-radius: 6px;" onclick="showReply(` + "'" + i + "'" + `)"> Hiển thị phản hồi </label> <div id="showReply` + i + `"> </div> <div class="reply-section" id="replytoreply` + i + `"> </div></div> </div> </div> <div class="modal fade modal" id="deleteComment` + i + `" tabindex="-1" role="dialog" aria-labelledby="edit_bookingLabel" aria-hidden="true" style="z-index: 10000;">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content" style="margin-top: 300px; margin-left: 260px; width: 50%;">
                             <div class="modal-header">
@@ -622,7 +624,7 @@
 
                             ReplyToReply(i, list, id);
                         } else {
-                            document.getElementById('listComment').innerHTML += '<div class="reviews-members pt-2" style="display: flex;"><div class="media" style="width: 100%"> <a href="#"><img alt="Generic placeholder image" src="' + data.data.avatar + '" class="mr-3 rounded-pill" style="width: 40px; height: 40px;"></a> <div class="media-body" style="border: 1px solid #f0f2f5; border-radius: 10px; background-color: #f0f2f5; padding: 10px"> <div class="reviews-members-header" style="display: flex; justify-content: space-between;"> <h6 class="mb-1"><a class="text-black" href="#">' + data.data.name + '</a></h6> <p class="text-gray" style="margin-bottom: 5px;">' + dob + '</p> </div> <div class="reviews-members-body"> <p>' + content + '</p> </div> </div> </div> </div> <div style="margin-left: 67px"> <label class="reply" style="border-radius: 6px" onclick="Reply(' + "'" + i + "','" + data.data.name + "','" + id + "'" + ')"> Phản hồi </label> . <label style="border-radius: 6px;" onclick="showReply(' + "'" + i + "'" + ')"> Hiển thị phản hồi </label> <div id="showReply' + i + '"> </div> <div class="reply-section" id="replytoreply' + i + '"> </div></div> </div> </div>';
+                            document.getElementById('listComment').innerHTML += '<div class="reviews-members pt-2" style="display: flex;"><div class="media" style="width: 100%"> <a href="#"><img alt="Generic placeholder image" src="' + image + '" class="mr-3 rounded-pill" style="width: 40px; height: 40px;"></a> <div class="media-body" style="border: 1px solid #f0f2f5; border-radius: 10px; background-color: #f0f2f5; padding: 10px"> <div class="reviews-members-header" style="display: flex; justify-content: space-between;"> <h6 class="mb-1"><a class="text-black" href="#">' + data.data.name + '</a></h6> <p class="text-gray" style="margin-bottom: 5px;">' + dob + '</p> </div> <div class="reviews-members-body"> <p>' + content + '</p> </div> </div> </div> </div> <div style="margin-left: 67px"> <label class="reply" style="border-radius: 6px" onclick="Reply(' + "'" + i + "','" + data.data.name + "','" + id + "'" + ')"> Phản hồi </label> . <label style="border-radius: 6px;" onclick="showReply(' + "'" + i + "'" + ')"> Hiển thị phản hồi </label> <div id="showReply' + i + '"> </div> <div class="reply-section" id="replytoreply' + i + '"> </div></div> </div> </div>';
 
                             ReplyToReply(i, list, id);
                         }
@@ -637,13 +639,13 @@
         }
 
         function ReplyToReply(i, listReply, id) {
+            console.log(listReply.length)
             for (var j = 0; j < listReply.length; j++) {
-
                 if (listReply[j].cmt_id == id) {
                     let id_reply = listReply[j].id;
                     let content_reply = listReply[j].content;
                     let user_id_reply = listReply[j].user_id;
-                    console.log(id_reply + ' --- ' + content_reply);
+
                     let d = new Date(listReply[j].createdAt);
                     var n;
                     if (d.getUTCDate() < 10) {
@@ -670,10 +672,10 @@
                         },
                         url: "/api/user/getbyId",
                         success: function(data) {
-
+                            let image = (data.data.avatar ? data.data.avatar : 'image/list/1.png');
                             // document.getElementById("showReply" + i).innerHTML += '<div class="reviews-members pt-2"><div class="media"> <a href="#"><img alt="Generic placeholder image" src="' + data.data.avatar + '" class="mr-1 rounded-pill" style="width: 30px; height: 30px;"></a> <div class="media-body"> <div class="reviews-members-header" style="display: flex; justify-content: space-between;"> <h6 class="mb-1"><a class="text-black" href="#">' + data.data.name + '</a></h6> <p class="text-gray" style="margin-bottom: 5px;">' + dob_reply + '</p> </div> <div class="reviews-members-body"> <p>' + content_reply + '</p> </div> </div> </div> </div> <div> <button class="btn-danger" style="border-radius: 6px"> Reply </button> <button class=" btn-danger" style="border-radius: 6px;" onclick="viewReply()"> View Reply </button> </div> </div>';
                             if (user_id_reply == text) {
-                                document.getElementById("showReply" + i).innerHTML += `<div class="reviews-members pt-2" style="display: flex;"><div class="media" style="width: 100%"> <a href="#"><img alt="Generic placeholder image" src="` + data.data.avatar + `" class="mr-3 rounded-pill" style="width: 40px; height: 40px;"></a> <div class="media-body" style="border: 1px solid #f0f2f5; border-radius: 10px; background-color: #f0f2f5; padding: 10px"> <div class="reviews-members-header" style="display: flex; justify-content: space-between;"> <h6 class="mb-1"><a class="text-black" href="#">` + data.data.name + `</a></h6> <p class="text-gray" style="margin-bottom: 5px;">` + dob_reply + `</p> </div> <div class="reviews-members-body"> <p id="textEditReplyToReply` + j + `">` + content_reply + `</p>  </div> </div> </div> <div class="nav-item dropdown no-arrow mx-1 osahan-list-dropdown"> <a class="nav-link dropdown-toggle rounded-pill" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="padding: 0 !important; width: 40px;height: 40px;margin-top: 18px; margin-left: 0px;"> <i class="fa fa-ellipsis-h" style="font-size: large;margin-left: 13px; margin-top: 12px; color: #606770 !important;"></i> </a> <div class="dropdown-menu dropdown-menu-right shadow-sm border-0"> <button class="dropdown-item" onclick="editReplyToReply(` + "'" + j + "','" + id_reply + "'" + `)"> Sửa </button> <button class="dropdown-item" data-toggle="modal" data-target="#deleteProduct` + j + `"> Xóa </button> </div> </div> </div> </div> <div style="margin-left: 67px"> <label class="reply" style="border-radius: 6px" onclick="Reply(` + "'" + i + "','" + data.data.name + "','" + id + "'" + `)"> Phản hồi </label> <div id="showReply` + j + `"> </div> <div class="reply-section" id="replytoreply` + j + `"> </div></div> </div> </div> <div class="modal fade" id="deleteProduct` + j + `" tabindex="-1" role="dialog" aria-labelledby="edit_bookingLabel" aria-hidden="true" style="z-index: 10000;">
+                                document.getElementById("showReply" + i).innerHTML += `<div class="reviews-members pt-2" style="display: flex;"><div class="media" style="width: 100%"> <a href="#"><img alt="Generic placeholder image" src="` + image + `" class="mr-3 rounded-pill" style="width: 40px; height: 40px;"></a> <div class="media-body" style="border: 1px solid #f0f2f5; border-radius: 10px; background-color: #f0f2f5; padding: 10px"> <div class="reviews-members-header" style="display: flex; justify-content: space-between;"> <h6 class="mb-1"><a class="text-black" href="#">` + data.data.name + `</a></h6> <p class="text-gray" style="margin-bottom: 5px;">` + dob_reply + `</p> </div> <div class="reviews-members-body"> <p id="textEditReplyToReply` + j + `">` + content_reply + `</p>  </div> </div> </div> <div class="nav-item dropdown no-arrow mx-1 osahan-list-dropdown"> <a class="nav-link dropdown-toggle rounded-pill" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="padding: 0 !important; width: 40px;height: 40px;margin-top: 18px; margin-left: 0px;"> <i class="fa fa-ellipsis-h" style="font-size: large;margin-left: 13px; margin-top: 12px; color: #606770 !important;"></i> </a> <div class="dropdown-menu dropdown-menu-right shadow-sm border-0"> <button class="dropdown-item" onclick="editReplyToReply(` + "'" + j + "','" + id_reply + "'" + `)"> Sửa </button> <button class="dropdown-item" data-toggle="modal" data-target="#deleteProduct` + j + `"> Xóa </button> </div> </div> </div> </div> <div style="margin-left: 67px"> <label class="reply" style="border-radius: 6px" onclick="Reply(` + "'" + i + "','" + data.data.name + "','" + id + "'" + `)"> Phản hồi </label> <div id="showReply` + j + `"> </div> <div class="reply-section" id="replytoreply` + j + `"> </div></div> </div> </div> <div class="modal fade" id="deleteProduct` + j + `" tabindex="-1" role="dialog" aria-labelledby="edit_bookingLabel" aria-hidden="true">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content" style="margin-top: 300px; margin-left: 260px; width: 50%;">
                             <div class="modal-header">
@@ -707,7 +709,7 @@
                     </div>
                 </div>`;
                             } else {
-                                document.getElementById("showReply" + i).innerHTML += `<div class="reviews-members pt-2" style="display: flex;"><div class="media" style="width: 100%"> <a href="#"><img alt="Generic placeholder image" src="` + data.data.avatar + `" class="mr-3 rounded-pill" style="width: 40px; height: 40px;"></a> <div class="media-body" style="border: 1px solid #f0f2f5; border-radius: 10px; background-color: #f0f2f5; padding: 10px"> <div class="reviews-members-header" style="display: flex; justify-content: space-between;"> <h6 class="mb-1"><a class="text-black" href="#">` + data.data.name + `</a></h6> <p class="text-gray" style="margin-bottom: 5px;">` + dob_reply + `</p> </div> <div class="reviews-members-body"> <p>` + content_reply + `</p>  </div> </div> </div> </div> <div style="margin-left: 67px"> <label class="reply" style="border-radius: 6px" onclick="Reply(` + "'" + i + "','" + data.data.name + "','" + id + "'" + `)"> Phản hồi </label>  <div id="showReply` + i + `"> </div> <div class="reply-section" id="replytoreply` + j + `"> </div></div> </div> </div>`;
+                                document.getElementById("showReply" + i).innerHTML += `<div class="reviews-members pt-2" style="display: flex;"><div class="media" style="width: 100%"> <a href="#"><img alt="Generic placeholder image" src="` + image + `" class="mr-3 rounded-pill" style="width: 40px; height: 40px;"></a> <div class="media-body" style="border: 1px solid #f0f2f5; border-radius: 10px; background-color: #f0f2f5; padding: 10px"> <div class="reviews-members-header" style="display: flex; justify-content: space-between;"> <h6 class="mb-1"><a class="text-black" href="#">` + data.data.name + `</a></h6> <p class="text-gray" style="margin-bottom: 5px;">` + dob_reply + `</p> </div> <div class="reviews-members-body"> <p>` + content_reply + `</p>  </div> </div> </div> </div> <div style="margin-left: 67px"> <label class="reply" style="border-radius: 6px" onclick="Reply(` + "'" + i + "','" + data.data.name + "','" + id + "'" + `)"> Phản hồi </label>  <div id="showReply` + i + `"> </div> <div class="reply-section" id="replytoreply` + j + `"> </div></div> </div> </div>`;
                             }
 
                         }
@@ -753,18 +755,21 @@
 
                 if (event.keyCode === 13) {
                     event.preventDefault();
-
-                    $.ajax({
-                        url: '/api/comment/update',
-                        method: 'POST',
-                        data: {
-                            id: idReply,
-                            content: $('#attribute').val(),
-                        },
-                    }).then(function(data) {
-                        showComment();
-                    })
-
+                    if ($('#attribute').val() == '') {
+                        document.getElementById('confirm').innerHTML = 'Hãy viết gì đó...';
+                        document.getElementById('confirm').style.color = 'red';
+                    } else {
+                        $.ajax({
+                            url: '/api/comment/update',
+                            method: 'POST',
+                            data: {
+                                id: idReply,
+                                content: $('#attribute').val(),
+                            },
+                        }).then(function(data) {
+                            showComment();
+                        })
+                    }
                 }
             });
         }
@@ -785,17 +790,21 @@
 
                 if (event.keyCode === 13) {
                     event.preventDefault();
-                    $.ajax({
-                        url: '/api/comment/update',
-                        method: 'POST',
-                        data: {
-                            id: idReply,
-                            content: $('#attribute').val(),
-                        },
-                    }).then(function(data) {
-                        showComment();
-                    })
-
+                    if ($('#attribute').val() == '') {
+                        document.getElementById('confirmReply').innerHTML = 'Hãy viết gì đó...';
+                        document.getElementById('confirmReply').style.color = 'red';
+                    } else {
+                        $.ajax({
+                            url: '/api/comment/update',
+                            method: 'POST',
+                            data: {
+                                id: idReply,
+                                content: $('#attribute').val(),
+                            },
+                        }).then(function(data) {
+                            showComment();
+                        })
+                    }
                 }
             });
         }
@@ -856,31 +865,35 @@
         }
 
         $('#submitComment').click(function() { //Gui comment
-
             var userId = localStorage.getItem('userId').replaceAll('"', '');
             var text = document.getElementById("textComment").value;
-            if (text == "") {
-                document.getElementById('textComment').setAttribute('class', 'form-control border-danger');
-                document.getElementById('messageComment').innerHTML = 'Hãy viết gì đó.....';
+            if (userId == '') {
+                window.location.href = '/LoginUser';
             } else {
-                $.ajax({
-                    url: '/api/comment/create',
-                    method: 'POST',
-                    data: {
-                        user_id: userId,
-                        product_id: product_id,
-                        content: $('#textComment').val(),
-                        cmt_id: '',
-                    },
-                }).then(function(data) {
-                    if (data.message == 'SUCCESS') {
-                        showComment();
-                    }
-                    document.getElementById("textComment").value = "";
-                    document.getElementById('textComment').setAttribute('class', 'form-control');
-                    document.getElementById('messageComment').innerHTML = '';
-                })
+                if (text == "") {
+                    document.getElementById('textComment').setAttribute('class', 'form-control border-danger');
+                    document.getElementById('messageComment').innerHTML = 'Hãy viết gì đó.....';
+                } else {
+                    $.ajax({
+                        url: '/api/comment/create',
+                        method: 'POST',
+                        data: {
+                            user_id: userId,
+                            product_id: product_id,
+                            content: $('#textComment').val(),
+                            cmt_id: '',
+                        },
+                    }).then(function(data) {
+                        if (data.message == 'SUCCESS') {
+                            showComment();
+                        }
+                        document.getElementById("textComment").value = "";
+                        document.getElementById('textComment').setAttribute('class', 'form-control');
+                        document.getElementById('messageComment').innerHTML = '';
+                    })
+                }
             }
+
         })
 
         let perPage = 6;
