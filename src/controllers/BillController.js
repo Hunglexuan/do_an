@@ -18,6 +18,10 @@ class BillController {
         let dataQuery = req.query;
         return MidBill.listOrderForSeller(dataQuery);
     }
+    async listOrderForUser(req, res) {
+        let dataQuery = req.query;
+        return MidBill.listOrderForUser(dataQuery);
+    }
     async listSuccessForSeller(req, res) {
         let dataQuery = req.query;
         return MidBill.listSuccessForSeller(dataQuery);

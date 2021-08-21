@@ -249,7 +249,7 @@
                         <form class="form-noborder">
                             <div class="form-row">
                                 <div class="col-lg-8 col-md-5 col-sm-12 form-group">
-                                    <input type="text" placeholder="Tìm địa điểm, món ăn,..." class="form-control form-control-lg text-search" id="findfood">
+                                    <input type="text" placeholder="Tìm món ăn,..." class="form-control form-control-lg text-search" id="findfood">
                                 </div>
                                 <div class="col-lg-2 col-md-2 col-sm-12 form-group">
                                     <a href="/AllProduct" class="btn btn-primary btn-block btn-lg btn-gradient form-search" style="width: 90px;" onclick="searchPro()">Tìm kiếm</a>
@@ -378,7 +378,7 @@
     <script src="../../customJS/shopDetail.js"></script>
 
     <script>
-        var userId =  localStorage.getItem('userId').replaceAll('"', '');
+        var userId = localStorage.getItem('userId').replaceAll('"', '');
         // shoppingCart.displayCartInDB(userId)
         var counter = 1;
         setInterval(function() {

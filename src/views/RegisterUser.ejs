@@ -271,8 +271,8 @@
 
         function setCookie(cname, cvalue, exdays) {
             const d = new Date();
-            d.setTime(d.getTime() + (exdays*24*60*60*1000));
-            let expires = "expires="+ d.toUTCString();
+            d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+            let expires = "expires=" + d.toUTCString();
             document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
         }
 
@@ -290,7 +290,6 @@
                     phone: $('#inputPhone').val().trim(),
                 },
             }).then(function(data) {
-                console.log("may co chiu ra ko ",data);
                 if (data.message == 'SUCCESS') {
 
                     var userId = data.data.id;

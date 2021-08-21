@@ -9,6 +9,7 @@ let routerApp = new Router();
 routerApp.post('/create', Response(BillController.createBill));
 routerApp.post('/update', Response(BillController.update));
 routerApp.get('/listOrderForSeller', Response(BillController.listOrderForSeller));
+routerApp.get('/listOrderForUser', Response(BillController.listOrderForUser));
 routerApp.get('/listSuccessForSeller', Response(BillController.listSuccessForSeller));
 routerApp.get('/listCancelForSeller', Response(BillController.listCancelForSeller));
 routerApp.get('/listCart', Response(BillController.listCart));
