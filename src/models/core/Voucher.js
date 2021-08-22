@@ -31,9 +31,9 @@ const attributes = {
         defaultValue:null
     },
     discount_number: {
-        type: DataTypes.STRING(255),
+        type: DataTypes.INTEGER(10),
         allowNull: true,
-        defaultValue:null
+        defaultValue: null
     },
     description: {
         type: DataTypes.STRING(255),

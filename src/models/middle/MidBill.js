@@ -98,6 +98,8 @@ class MidBill {
         del: 0,
       },
     });
+   
+
     let billTemp;
     for (let i = 0; i < billList.length; i++) {
       billTemp = await Bill.findOne({

@@ -25,7 +25,7 @@
 
 <body class="sb-nav-fixed">
    <nav class="sb-topnav navbar navbar-expand navbar-light bg-white shadow-sm">
-      <a class="navbar-brand" href="index.html"><img alt="logo" src="img/logo.png"></a>
+      <a class="navbar-brand" href="ListUsers"><img alt="logo" src="image/image0.jpg" width="100px"></a>
       <button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#"><i
             class="fas fa-bars"></i></button>
       <!-- Navbar Search-->
@@ -105,15 +105,14 @@
                      <div class="status-indicator bg-success"></div>
                   </div>
                   <div class="font-weight-bold">
-                     <div class="text-truncate">Gurdeep Osahan</div>
-                     <div class="small text-gray-500">Restaurants Owner</div>
+                     <div class="text-truncate name-admin"></div>
+                     <div class="small text-gray-500"></div>
                   </div>
                </div>
+               
+               
                <div class="dropdown-divider"></div>
-               <a class="dropdown-item" href="my-profile.html"><i class="feather-edit"></i> My Account</a>
-               <a class="dropdown-item" href="my-profile.html"><i class="feather-settings"></i> Account Settings</a>
-               <div class="dropdown-divider"></div>
-               <a class="dropdown-item" onclick="logOutClick()" ><i class="feather-log-out"></i> Log out</a>
+               <a class="dropdown-item" onclick="logOutClick()" ><i class="feather-log-out"></i> Đăng Xuất </a>
                   
             </div>
          </li>
@@ -440,7 +439,7 @@ $.ajax({
                     })
          
     } else {
-      Swal.fire({
+      Swal.fire({ 
                         type: 'error',
                         title: 'Thêm mới không thành công  ⚙️',
                         // text: 'Your offer is safe 🙂',
