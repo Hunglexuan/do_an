@@ -220,7 +220,7 @@ function addToCartFunc() {
         var name = $(this).data('name');
         
         var price = Number($(this).data('price'));
-        console.log(price);
+        
 
         shoppingCart.addItemToCart(id, name, price, 1);
         displayCart();
@@ -264,17 +264,17 @@ function displayCart() {
     console.log("display", cartArray);
     var output = "";
 
-    for (var i = 0; i < cartArray.length; i++) {
+    for (var i = 0; i < cartArray.listCart.length; i++) {
 
         output +=
             "<tr>" +
-            "<td style='padding:1'>" + cartArray[i].name + "</td>" +
-            "<td style='padding:1'>" + cartArray[i].price + "</td>" +
-            "<td style='padding:1'><div class='input-group-1' style='display:flex'><button class='minus-item input-group-addon btn btn-primary' data-id=" + cartArray[i].id + ">-</button>" +
-            "<input type='number' style='text-align:center !important ; width:50px ' class='item-count form-control' data-name='" + cartArray[i].name + "' value='" + cartArray[i].count + "'>" +
-            "<button class='plus-item btn btn-primary input-group-addon' data-id=" + cartArray[i].id + ">+</button></div></td>" +
-            "<td  style='padding:1'><button class='delete-item btn btn-danger' data-id=" + cartArray[i].id + ">X</button></td>" + " = " +
-            "<td style='padding:1'>" + cartArray[i].price *  cartArray[i].count + "</td>" +
+            "<td style='padding:1'>" + cartArray.listCart[i].name + "</td>" +
+            "<td style='padding:1'>" + cartArray.listCart[i].price + "</td>" +
+            "<td style='padding:1'><div class='input-group-1' style='display:flex'><button class='minus-item input-group-addon btn btn-primary' data-id=" + cartArray.listCart[i].id + ">-</button>" +
+            "<input type='number' style='text-align:center !important ; width:50px ' class='item-count form-control' data-name='" + cartArray.listCart[i].name + "' value='" + cartArray.listCart[i].count + "'>" +
+            "<button class='plus-item btn btn-primary input-group-addon' data-id=" + cartArray.listCart[i].id + ">+</button></div></td>" +
+            "<td  style='padding:1'><button class='delete-item btn btn-danger' data-id=" + cartArray.listCart[i].id + ">X</button></td>" + " = " +
+            "<td style='padding:1'>" + cartArray.listCart[i].price *  cartArray.listCart[i].count + "</td>" +
             "</tr>";
     }
     console.log(shoppingCart.totalCount());
