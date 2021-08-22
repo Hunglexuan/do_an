@@ -966,6 +966,9 @@
                 },
                 url: "/api/feedback/check",
                 success: function(data) {
+
+                    console.log(data);
+
                     if (data.data == true) {
                         document.getElementById('checkFeedback').innerHTML = 'Bạn chưa mua hàng!!!';
                     } else {
