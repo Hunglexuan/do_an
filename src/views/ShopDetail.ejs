@@ -221,7 +221,7 @@
     </header>
     <section class="restaurant-detailed-banner">
         <div class="text-center">
-            <img class="img-fluid cover" src="image/backgroundHome.HEIC" style="width: 100%;">
+            <img class="img-fluid cover" src="image/backgroundHome.HEIC" style="width: 100%; height: 400px !important;">
         </div>
         <div class="restaurant-detailed-header">
             <div class="container">
@@ -639,8 +639,10 @@
                 },
                 url: "/api/user/getbyId",
                 success: function(data) {
+                    console.log(data);
                     let image = (data.data.avatar ? data.data.avatar : 'image/list/1.png');
-                    document.getElementById('inforShop').innerHTML = '<img class="img-fluid mr-3 float-left" alt="osahan" src=' + image + ' style="height: 88px !important"> <h2 class="text-white" style="padding-top: 25px;"> ' + data.data.name + '</h2> <p class="text-white mb-1"><i class="icofont-location-pin"></i>' + data.data.address + '<span class="badge badge-success">OPEN</span><button type="button" id="SaveUpdate" data-toggle="modal" data-target="#basicModal" class="btn btn-outline-danger ml-3 fa fa-flag" style="float: right;"> </button></p>';
+                    let status = (data.data.shop_status ? '<span class="badge badge-success">Mở cửa</span>' : '<span class="badge badge-danger">Đóng cửa</span>');
+                    document.getElementById('inforShop').innerHTML = '<img class="img-fluid mr-3 float-left" alt="osahan" src=' + image + ' style="height: 88px !important"> <h2 class="text-white" style="padding-top: 25px;"> ' + data.data.name + '</h2> <p class="text-white mb-1"><i class="icofont-location-pin"></i>' + data.data.address + status + '<button type="button" id="SaveUpdate" data-toggle="modal" data-target="#basicModal" class="btn btn-outline-danger ml-3 fa fa-flag" style="float: right;"> </button></p>';
                 }
             });
         }
@@ -865,7 +867,6 @@
 
                     document.getElementById('rateStar').innerHTML = countStart;
                     document.getElementById('rateTotal').innerHTML = '';
-
                     for (var j = 1; j <= 5; j++) {
                         if (j <= countStart / data.data.total) {
                             document.getElementById('rateTotal').innerHTML += '<label><i class="icofont-ui-rating" style="color: red !important;"></i></label>';
@@ -875,27 +876,37 @@
 
                     }
 
+                    if (data.data.total == 0) {
+                        document.getElementById('rateOfStar').innerHTML = 'Đánh giá 0 trên 5';
+                        document.getElementById('rateOf5').innerHTML = '0%';
+                        document.getElementById('rateOf4').innerHTML = '0%';
+                        document.getElementById('rateOf3').innerHTML = '0%';
+                        document.getElementById('rateOf2').innerHTML = '0%';
+                        document.getElementById('rateOf1').innerHTML = '0%';
+                    } else {
+                        document.getElementById('rateOfStar').innerHTML = 'Đánh giá ' + (countStart / data.data.total).toFixed(2) + ' trên 5';
+                        document.getElementById('rateOf5').innerHTML = Math.round((data.data.star_5 / data.data.total) * 100) + '%';
+                        var color5 = data.data.star_5 / data.data.total;
+                        document.getElementById('rateColor5').style.width = color5 * 100 + '%';
 
-                    document.getElementById('rateOfStar').innerHTML = 'Đánh giá ' + (countStart / data.data.total).toFixed(2) + ' trên 5';
-                    document.getElementById('rateOf5').innerHTML = Math.round((data.data.star_5 / data.data.total) * 100) + '%';
-                    var color5 = data.data.star_5 / data.data.total;
-                    document.getElementById('rateColor5').style.width = color5 * 100 + '%';
+                        document.getElementById('rateOf4').innerHTML = Math.round((data.data.star_4 / data.data.total) * 100) + '%';
+                        var color4 = data.data.star_4 / data.data.total;
+                        document.getElementById('rateColor4').style.width = color4 * 100 + '%';
 
-                    document.getElementById('rateOf4').innerHTML = Math.round((data.data.star_4 / data.data.total) * 100) + '%';
-                    var color4 = data.data.star_4 / data.data.total;
-                    document.getElementById('rateColor4').style.width = color4 * 100 + '%';
+                        document.getElementById('rateOf3').innerHTML = Math.round((data.data.star_3 / data.data.total) * 100) + '%';
+                        var color3 = data.data.star_3 / data.data.total;
+                        document.getElementById('rateColor3').style.width = color3 * 100 + '%';
 
-                    document.getElementById('rateOf3').innerHTML = Math.round((data.data.star_3 / data.data.total) * 100) + '%';
-                    var color3 = data.data.star_3 / data.data.total;
-                    document.getElementById('rateColor3').style.width = color3 * 100 + '%';
+                        document.getElementById('rateOf2').innerHTML = Math.round((data.data.star_2 / data.data.total) * 100) + '%';
+                        var color2 = data.data.star_2 / data.data.total;
+                        document.getElementById('rateColor2').style.width = color2 * 100 + '%';
 
-                    document.getElementById('rateOf2').innerHTML = Math.round((data.data.star_2 / data.data.total) * 100) + '%';
-                    var color2 = data.data.star_2 / data.data.total;
-                    document.getElementById('rateColor2').style.width = color2 * 100 + '%';
+                        document.getElementById('rateOf1').innerHTML = Math.round((data.data.star_1 / data.data.total) * 100) + '%';
+                        var color1 = data.data.star_1 / data.data.total;
+                        document.getElementById('rateColor1').style.width = color1 * 100 + '%';
+                    }
 
-                    document.getElementById('rateOf1').innerHTML = Math.round((data.data.star_1 / data.data.total) * 100) + '%';
-                    var color1 = data.data.star_1 / data.data.total;
-                    document.getElementById('rateColor1').style.width = color1 * 100 + '%';
+
 
                     for (var i = 0; i < list.length; i++) {
                         var text = list[i].user_id;
@@ -967,8 +978,7 @@
                 url: "/api/feedback/check",
                 success: function(data) {
                     console.log(data.data);
-                    if (data.data == true) {
-
+                    if (data.data == false) {
                         document.getElementById('checkFeedback').innerHTML = 'Bạn chưa mua hàng!!!';
                     } else {
                         document.getElementById('checkFeedback').innerHTML = '<h5 class="mb-4">Để lại phản hồi</h5> <p class="mb-2">Xếp hạng địa điểm</p> <div class="mb-4" style="display: flex;"> <span class="star-rating"> <label data-index="1" class="rating" id="rate1"><i class="icofont-ui-rating icofont-2x"></i></label> <label data-index="2" class="rating" id="rate2"><i class="icofont-ui-rating icofont-2x"></i></label> <label data-index="3" class="rating" id="rate3"><i class="icofont-ui-rating icofont-2x"></i></label> <label data-index="4" class="rating" id="rate4"><i class="icofont-ui-rating icofont-2x"></i></label> <label data-index="5" class="rating" id="rate5"><i class="icofont-ui-rating icofont-2x"></i></label> </span> <div id="alertRate">  </div> </div> <form> <div class="form-group"> <label>Thông tin phản hồi của bạn</label> <textarea class="form-control" id="textFeedback"></textarea> <span class="form-message text-danger" id="messageFeedbacks"></span> </div> <div class="form-group"> <button class="btn btn-primary btn-sm" type="button" onclick="feedback()"> Gửi phản hồi </button> </div> </form>';
