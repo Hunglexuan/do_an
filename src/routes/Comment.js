@@ -10,5 +10,6 @@ routerApp.post('/create', Response(CommentController.createComment));
 routerApp.get('/delete', Response(CommentController.deleteComment));
 routerApp.post('/update', Response(CommentController.updateComment));
 routerApp.get('/searchcomment', Response(CommentController.searchComment));
+routerApp.get('/notify', Response(CommentController.notifyUser));
 
 export default routerApp;

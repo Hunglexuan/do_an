@@ -65,6 +65,7 @@ async createVoucher(data){
     let dataCreate = {
         code: data.code,
         discount_number: data.discount_number,
+        description : data.description,
         del: 0
     }
     let object = await Voucher.create(dataCreate);
@@ -108,6 +109,7 @@ async updateVoucher(data) {
     let dataUpdate = {
         code: data.code,
         discount_number: data.discount_number,
+        description : data.description,
     }
     let object = await objUpdate.update(dataUpdate)
     if(object )

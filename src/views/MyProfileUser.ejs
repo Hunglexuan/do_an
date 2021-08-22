@@ -97,10 +97,10 @@
                                 </div>
                                 <div class="dropdown-cart-top-footer border-top p-4">
                                     <p class="mb-0 font-weight-bold text-secondary">Tổng Giá <span class=" total-cart float-right text-dark"></span></p>
-                                    <small class="text-info">Extra charges may apply</small>
+                                    
                                 </div>
                                 <div class="dropdown-cart-top-footer border-top p-2">
-                                    <a class="btn btn-success btn-block btn-lg" href="/CheckOut"> Checkout</a>
+                                    <a class="btn btn-success btn-block btn-lg" href="/CheckOut"> Thanh Toán</a>
                                 </div>
                             </div>
                         </li>
@@ -260,7 +260,7 @@
                             </div>
                         </div>
                         <div class="tab-pane fade" id="orders" role="tabpanel" aria-labelledby="orders-tab">
-                            <h4 class="font-weight-bold mt-0 mb-4">Lịch sử mua hàng</h4>
+                            <h4 class="font-weight-bold mt-0 mb-4" > Lịch sử mua hàng </h4>
                             <div class="row">
                                 <div class="col-xl-12">
                                     <div>
@@ -272,11 +272,14 @@
                                                 </div>
                                             </div> -->
                                         <div class="card-body">
-                                            <div class="table-responsive">
-                                                <table class="table" id="dataTable" width="100%" cellspacing="0">
+                                            
+                                                <div class="show-bill">
+                 
+                                                </div>
+                                                <!-- <table class="table" id="dataTable"  width="100%" cellspacing="0">
                                                     <thead>
                                                         <tr class="text-uppercase">
-                                                            <th>Tên</th>
+                                                            <th>Số Thứ Tự</th>
                                                             <th>Tên sản phẩm</th>
                                                             <th>Cửa hàng</th>
                                                             <th>Số lượng</th>
@@ -288,8 +291,8 @@
                                                     <tbody>
 
                                                     </tbody>
-                                                </table>
-                                            </div>
+                                                </table> -->
+                                            
                                         </div>
                                     </div>
                                 </div>
@@ -373,7 +376,8 @@
 
 
     <!-- jQuery -->
-    <script src="js/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- <script src="js/jquery-3.3.1.slim.min.js"></script> -->
     <!-- Bootstrap core JavaScript-->
     <script src="js/bootstrap.bundle.min.js"></script>
     <!-- Select2 JavaScript-->
@@ -385,7 +389,7 @@
     <!-- Dropzone-->
     <script src="js/dropzone.min.js"></script>
     <!-- Ajax -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
     <script>
         $(document).ready(function() {
@@ -455,8 +459,6 @@
         });
 
 
-
-
         var regPhone = /(84|0[3|5|7|8|9])+([0-9]{8})\b/i;
         // var regPass = /^(?=.*\d)(?=.*[a-z])(?=.*[a-zA-Z]).{8,}$/i;
 
@@ -509,15 +511,10 @@
 
         }
 
-
-
-
-
-
-
         $(document).ready(function() {
             loadDataProfile();
             loadDataFavourites();
+            loadDataBuyed();
         });
 
         $("#SaveUpdate").click(function() {
@@ -675,6 +672,78 @@
                 }
             })
         }
+        
+        function loadDataBuyed(){
+            var userId = localStorage.getItem('userId').replaceAll('"', '');
+            $.ajax({
+                url:"/api/bill/listOrderForUser",
+                type:"GET",
+                data:{
+                    user_id : userId
+                }
+            }).then(function(data){
+                var billTEmp = data.data.listBillTotal;
+            console.log(billTEmp);  
+            for(var i = 0 ; i < billTEmp.length ; i++){
+
+               let productTemp =``
+               for(var j = 0 ; j < billTEmp[i].billList.length ; j++){
+                  productTemp += `<div style="display:flex">
+
+                  <div >
+                     <p>${billTEmp[i].billList[j].name} X ${billTEmp[i].billList[j].quantity} </p> 
+                     
+                  
+                     </div>
+                    </div>`
+               }
+
+                  var Template = `
+                  <div class="row">
+                     <div class="col-xl-12">
+                        <div class="card mb-4 order-list">
+                           <div class="gold-members p-4">
+                              <a href="#">
+                              </a>
+                              <div class="media">
+                                
+                                 <div class="media-body">
+                                   
+                                    <h6 class="mb-3"><a href="#">
+                                       </a><a href="detail.html" class="text-dark">Đơn ${i+1}
+                                       </a>
+                                    </h6>
+                                    <p class="text-black-50 mb-1"><i class=""></i> ${billTEmp[i].user.name}  ${billTEmp[i].user.address} </p>
+                                    <p class="text-black-50 mb-1"><i class="feather-map-pin"></i>
+                                    </p>
+                                    <p class="text-black-50 mb-3"><i class="feather-list"></i> ${billTEmp[i].user.phone} <i
+                                          class="feather-clock ml-2"></i> ${new Date(billTEmp[i].user.createdAt).toLocaleDateString()}</p>
+                                    <p class="text-dark">
+                                      ${ productTemp}
+                                    </p>
+                                    <hr>
+                                    
+                                    <p class="mb-0 text-dark text-dark pt-2"><span class="text-dark font-weight-bold">
+                                          Tổng Tiền: </span> ${billTEmp[i].bill.total_price}
+                                    </p>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+   
+                     </div>
+                  </div>
+                  `
+
+                  $(".show-bill").append(Template);
+                  
+               
+               
+            }
+            })
+        }
+
+
     </script>
 </body>
 

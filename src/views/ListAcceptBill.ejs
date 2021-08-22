@@ -119,20 +119,7 @@
             </div>
          </li>
          
-         <li class="nav-item dropdown no-arrow mx-1 osahan-list-dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-               <i class="far fa-bell"></i>
-               <!-- Counter - Alerts -->
-            </a>
-            <!-- Dropdown - Alerts -->
-            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow-sm">
-               <h6 class="dropdown-header">
-                  Thông Báo
-               </h6>
-               
-               <a class="dropdown-item text-center small text-gray-500" href="#">Tất Cả Thông Báo</a>
-            </div>
-         </li>
+         
          <!-- Nav Item - User Information -->
          <li class="nav-item dropdown" id="nameSeller"></li>
       </ul>
@@ -144,19 +131,18 @@
                <div class="nav">
                   <div class="sb-sidenav-menu-heading">Danh Mục</div>
 
-                  
                   <a class="nav-link" href="listOrderSeller">
                      <div class="sb-nav-link-icon"><i class="far fa-calendar-alt"></i></div>
                      Danh Sách Đặt hàng <span class="badge badge-pill ml-2 badge-primary"></span>
                   </a>
                   <a class="nav-link" href="ListAcceptBill">
                      <div class="sb-nav-link-icon"><i class="fas fa-chart-line"></i></div>
-                     Danh Sách Đơn Chấp Nhận
+                     Doanh Thu
                   </a>
                  
                   <a class="nav-link" href="ListDeleteBill">
                      <div class="sb-nav-link-icon"><i class="fas fa-shopping-cart"></i></div>
-                     Danh Sách Đơn Hủy
+                     Quản Lý Đặt Hàng
                   </a>
                   <a class="nav-link" href="listProductSeller">
                      <div class="sb-nav-link-icon"><i class="fas fa-boxes"></i></div>
@@ -173,10 +159,10 @@
       <div id="layoutSidenav_content">
          <main>
             <div class="container-fluid">
-               <h1 class="mt-4">Danh Sách Đặt Hàng</h1>
+               <h1 class="mt-4">Danh Sách Đơn Chấp Nhận</h1>
                <ol class="breadcrumb mb-4">
                   
-                  <li class="breadcrumb-item active">Đặt Hàng</li>
+                  <li class="breadcrumb-item active" style="text-align: center;">Doanh Thu Cửa Hàng : <span class="total">  </span></li>
                </ol>
                <ol>
                   <a class="btn btn-info" onClick=ReloadFunc.call(this) style="position: relative; "><i class="fas fa-sync-alt"></i>
@@ -308,13 +294,13 @@
       function loadData(){
          var sellerID = localStorage.getItem("sellerId").replaceAll('"', '');
          $.ajax({
-            url:'http://localhost:3999/api/bill/listOrderForSeller',
+            url:'http://localhost:3999/api/bill/listSuccessForSeller',
             type:"GET",
             data:{
                shop_id:sellerID
             }
          }).then(function(data){
-           
+            
             var billTEmp = data.data.listBillTotal;
             console.log(billTEmp);  
             for(var i = 0 ; i < billTEmp.length ; i++){
@@ -353,13 +339,7 @@
                                       ${ productTemp}
                                     </p>
                                     <hr>
-                                    <div class="float-right">
-                                       
-                                       <a   data-toggle="modal" data-target="#acceptBill"  onClick=acceptFunc.call(this,"${billTEmp[i].bill.id}") class="btn btn-sm btn-success"><i class="feather-check-circle"></i>
-                                          Chấp Thuận</a>
-                                      
-                                       <a   data-toggle="modal" data-target="#deleteBill "  onClick=delFunc.call(this,"${billTEmp[i].bill.id}") class="btn btn-sm btn-danger"><i class="feather-trash"></i> Hủy</a>
-                                    </div>
+                                    
                                     <p class="mb-0 text-dark text-dark pt-2"><span class="text-dark font-weight-bold">
                                           Tổng Tiền: </span> ${billTEmp[i].bill.total_price}
                                     </p>
@@ -373,7 +353,7 @@
                   `
 
                   $(".show-bill").append(Template);
-                  
+                  $(".total").html(billTEmp[billTEmp.length-1].total)
                
                
             }

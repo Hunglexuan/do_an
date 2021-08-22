@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="Askbootstrap" />
+    <meta name="author" content="Askbootstrap" />
+    <title>FU Market - Online Food Ordering </title>
+    <!-- Favicon Icon -->
+    <link rel="icon" type="image/png" href="image/favicon.png">
+    <!-- Feather Icon-->
+    <link href="skin/css/feather.css" rel="stylesheet" type="text/css">
+    <!-- Fontawesome Icon-->
+    <link href="skin/font/fontawesome.min.css" rel="stylesheet" type="text/css">
+    <!-- Bootstrap Css -->
+    <link href="skin/bootstrap/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom Css -->
+    <link href="skin/css/styles.css" rel="stylesheet" />
+    <!-- Datatables css -->
+    <link href="skin/bootstrap/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <style>
+       .switch {
+          position: relative;
+          display: inline-block;
+          width: 60px;
+          height: 34px;
+       }
+ 
+       .switch input {
+          opacity: 0;
+          width: 0;
+          height: 0;
+       }
+ 
+       .slider {
+          position: absolute;
+          cursor: pointer;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background-color: #ccc;
+          -webkit-transition: .4s;
+          transition: .4s;
+       }
+ 
+       .slider:before {
+          position: absolute;
+          content: "";
+          height: 26px;
+          width: 26px;
+          left: 4px;
+          bottom: 4px;
+          background-color: white;
+          -webkit-transition: .4s;
+          transition: .4s;
+       }
+ 
+       input:checked+.slider {
+          background-color: #2196F3;
+       }
+ 
+       input:focus+.slider {
+          box-shadow: 0 0 1px #2196F3;
+       }
+ 
+       input:checked+.slider:before {
+          -webkit-transform: translateX(26px);
+          -ms-transform: translateX(26px);
+          transform: translateX(26px);
+       }
+ 
+       /* Rounded sliders */
+       .slider.round {
+          border-radius: 34px;
+       }
+ 
+       .slider.round:before {
+          border-radius: 50%;
+       }
+    </style>
+ </head>
+
+<body class="sb-nav-fixed">
+  <nav class="sb-topnav navbar navbar-expand navbar-light bg-white shadow-sm">
+    <a class="navbar-brand" href="DashboardSeller"><img alt="logo" src="image/image0.jpg" width="100px"></a>
+    <!-- Navbar Search-->
+    <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
+       <div class="input-group">
+          <div class="input-group-append">
+             <label id="statusShop" class="mr-2"></label>
+             <label class="switch">
+                <input type="checkbox" id="switchShop" name="swiShop">
+                <span class="slider round"></span>
+             </label>
+          </div>
+       </div>
+    </form>
+    <!-- Navbar-->
+    <ul class="navbar-nav ml-auto ml-md-0">
+       <li class="nav-item dropdown no-arrow d-sm-none">
+          <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <i class="fas fa-search"></i>
+          </a>
+          <!-- Dropdown - Messages -->
+          <div class="dropdown-menu dropdown-menu-right p-3 shadow-sm animated--grow-in" aria-labelledby="searchDropdown">
+             <form class="form-inline mr-auto w-100 navbar-search">
+                <div class="input-group">
+                   <input type="text" class="form-control border-0 shadow-none" placeholder="Search people, jobs and more..." aria-label="Search" aria-describedby="basic-addon2">
+                   <div class="input-group-append">
+                      <button class="btn" type="button">
+                      <i class="fas fa-search"></i>
+                      </button>
+                   </div>
+                </div>
+             </form>
+          </div>
+       </li>
+       
+       <li class="nav-item dropdown no-arrow mx-1 osahan-list-dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+             <i class="far fa-bell"></i>
+             <!-- Counter - Alerts -->
+          </a>
+          <!-- Dropdown - Alerts -->
+          <div class="dropdown-list dropdown-menu dropdown-menu-right shadow-sm">
+             <h6 class="dropdown-header">
+                Thông Báo
+             </h6>
+             
+             <a class="dropdown-item text-center small text-gray-500" href="#">Tất Cả Thông Báo</a>
+          </div>
+       </li>
+       <!-- Nav Item - User Information -->
+       <li class="nav-item dropdown" id="nameSeller"></li>
+    </ul>
+ </nav>
+   <div id="layoutSidenav">
+    <div id="layoutSidenav_nav">
+      <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+         <div class="sb-sidenav-menu">
+            <div class="nav">
+               <div class="sb-sidenav-menu-heading">Danh Mục</div>
+
+               
+               <a class="nav-link" href="listOrderSeller">
+                  <div class="sb-nav-link-icon"><i class="far fa-calendar-alt"></i></div>
+                  Danh Sách Đặt hàng <span class="badge badge-pill ml-2 badge-primary"></span>
+               </a>
+               <a class="nav-link" href="ListAcceptBill">
+                  <div class="sb-nav-link-icon"><i class="fas fa-chart-line"></i></div>
+                  Danh Sách Đơn Chấp Nhận
+               </a>
+              
+               <a class="nav-link" href="ListDeleteBill">
+                  <div class="sb-nav-link-icon"><i class="fas fa-shopping-cart"></i></div>
+                  Danh Sách Đơn Hủy
+               </a>
+               <a class="nav-link" href="listProductSeller">
+                  <div class="sb-nav-link-icon"><i class="fas fa-boxes"></i></div>
+                  Quản Lý Sản Phẩm
+               </a>
+               <a class="nav-link" href="ListReportBySeller">
+                  <div class="sb-nav-link-icon"><i class="fas fa-file-signature"></i></div>
+                  Dánh sách Báo Cáo
+               </a>
+            </div>
+         </div>
+      </nav>
+   </div>
+      <div id="layoutSidenav_content">
+         <main>
+            <div class="container-fluid">
+               <h1 class="mt-4">Report List</h1>
+
+
+            </div>
+            
+
+
+            <div class="card-body">
+               <div class="table-responsive">
+                  
+
+                  <table class="table" id="dataTable" width="100%" cellspacing="0">
+                     <thead>
+                        <tr class="text-uppercase">
+                           <th>ID</th>
+                           <th>Người Dùng</th>
+                           <th>Cửa Hàng</th>
+                           <th>Thể Loại </th>
+                           <th>Nội Dung </th>
+                           <th>Hàng Động</th>
+                           
+                        </tr>
+                     </thead>
+                     <tbody>
+                        <!----><!---->
+                        <!-- ajax xu ly ben duoi -->
+                      
+                     </tbody>
+                  </table>
+                  
+
+               </div>
+            </div>
+      </div>
+   </div>
+   </main>
+    <!-- info Report -->
+    <div class="modal fade" id="infoReport" tabindex="-1" role="dialog" aria-labelledby="edit_bookingLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+       <div class="modal-content">
+          <div class="modal-header">
+             <h5 class="modal-title" id="edit_bookingLabel">Thông Tin Báo Cáo</h5>
+             <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">×</span>
+             </button>
+          </div>
+          <div class="modal-body">
+             <div class="row">
+                <div class="col-md-12 col-sm-6">
+                   <div class="card mb-4">
+                      <div class="card-header">
+                         Thông Tin Cơ Bản
+                      </div>
+                      <div class="card-body">
+                         <div class="row">
+                            <div class="col-md-12">
+                               <div class="form-group">
+                                  <label>Người Dùng</label>
+                                  <input type="text" class="form-control" placeholder="" id="userName" readonly>
+                               </div>
+                            </div>
+                         </div>
+
+                         <div class="row">
+                           <div class="col-md-12">
+                              <div class="form-group">
+                                 <label>Cửa Hàng</label>
+                                 <input type="text" class="form-control" placeholder="" id="sellerName" readonly>
+                              </div>
+                           </div>
+                        </div>
+                       
+                         
+                         <!-- /row-->
+                         <div class="row">
+                            <div class="col-md-12">
+                               <div class="form-group">
+                                  <label>Thể Loại Báo Cáo</label>
+                                  <input type="text" class="form-control" placeholder="" id="typeReport" readonly>
+                               </div>
+                            </div>
+                         </div>
+                         <!-- /row-->
+                         <div class="row">
+                            <div class="col-md-12">
+                               <div class="form-group">
+                                  <label>Nội Dung</label>
+                                  <input type="text" class="form-control" placeholder="" id="contentReport" readonly>
+                               </div>
+                            </div>
+                            
+                         </div>
+                        
+                        
+                        
+                      </div>
+                   </div>
+                </div>
+               
+             </div>
+          </div>
+       </div>
+    </div>
+ </div>
+ 
+   <!-- Jquery -->
+   <script src="/js/jquery.min.js"></script>
+   <!-- Fontawesome -->
+   <script src="/js/all.min.js"></script>
+   <!-- Bootstrap -->
+   <script src="/js/bootstrap.bundle.min.js"></script>
+   <!-- Custom Js -->
+   <script src="/js/scriptsListSeller.js"></script>
+   <!-- Ajax Chart Js -->
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
+   <!-- Chart Js -->
+   <!-- <script src="/js/chart-area-demo.js"></script>
+   <script src="/js/chart-bar-demo.js"></script>
+   <script src="/js/chart-pie-demo.js"></script> -->
+   <script src="/js/jquery.dataTables.min.js"></script>
+   <script src="/js/dataTables.bootstrap.min.js"></script>
+   <!-- <script src="/js/datatables-demo.js"></script> -->
+
+</body>
+
+
+
+<script>
+
+function getCookie(cname) {
+   let name = cname + "=";
+   let decodedCookie = decodeURIComponent(document.cookie);
+   let ca = decodedCookie.split(';');
+   for(let i = 0; i <ca.length; i++) {
+     let c = ca[i];
+     while (c.charAt(0) == ' ') {
+       c = c.substring(1);
+     }
+     if (c.indexOf(name) == 0) {
+       return c.substring(name.length, c.length);
+     }
+   }
+   return "";
+}
+function setCookie(cname, cvalue, exdays) {
+    const d = new Date();
+    d.setTime(d.getTime() + (exdays*24*60*60*1000));
+    let expires = "expires="+ d.toUTCString();
+    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+    }
+
+ var token = getCookie("token");
+
+//function chuyen trang
+function listUserPage(){
+         window.location.href='/ListUsers'
+       } 
+       function listSellerPage(){
+         window.location.href='/ListSeller'
+       } 
+       function listVoucherPage(){
+         window.location.href='/ListVoucher'
+       } 
+
+       function AddRolePage(){
+         window.location.href='/AddRole'
+       } 
+
+       function listReportPage(){
+         window.location.href='/ListReport'
+       } 
+ //btn-logout function
+function logOutClick(){
+   setCookie("token","",0);
+   window.location = "/LoginAdmin"
+}
+
+ //btn-logout function
+
+ function getInfo(user,name,type,content){
+            
+            document.getElementById("userName").value = user
+            document.getElementById("sellerName").value = name
+            document.getElementById("typeReport").value = type
+            document.getElementById("contentReport").value = content
+         
+      }
+//datatable function
+ $(document).ready(function() {
+  var text = localStorage.getItem('sellerId').replaceAll('"', '');
+   $('#dataTable').DataTable( {
+      'ajax': function (data, callback, settings) {
+      $.ajax({
+        url: "http://localhost:3999/api/report/searchByShop?id="+text,
+      })
+      .then ( function( response, textStatus, jqXHR ) {
+        
+         let data = response.data.listReport
+         console.log(data);
+		   data.forEach((val, idx) => {
+             val.no = idx + 1
+         });
+         callback({"data": data});
+         
+      });
+    },
+    
+    'columns':[
+       {data : 'no'},
+       {data : 'user_id'},
+       {data : 'shop_id'},
+       {data : 'type_report'},
+       {data : 'content'},
+      
+       {data : ""}
+
+    ],
+    'columnDefs': [
+				{
+					targets: -1,
+					render: function (data, type, row, meta) {
+						return '<input type="button" class="show-report-detail btn-primary mr-3" data-toggle="modal" data-target="#infoReport" onclick="getInfo('+"'"+row.user+"'"+','+"'"+row.shop+"'"+','+"'"+row.type_report+"'"+','+"'"+row.content+"'"+')" idReport="' + row.id + '" value="Chi Tiết"/>' 
+							;
+					}
+
+				}
+			]
+   
+   } );
+
+
+
+
+	
+
+     
+
+} );
+
+     
+   
+
+ 
+
+
+
+</script>
+
+</html>

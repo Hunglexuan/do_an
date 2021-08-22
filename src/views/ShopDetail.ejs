@@ -206,10 +206,10 @@
                                 </div>
                                 <div class="dropdown-cart-top-footer border-top p-4">
                                     <p class="mb-0 font-weight-bold text-secondary">Tổng Giá <span class="total-cart float-right text-dark"></span></p>
-                                    <small class="text-info">Extra charges may apply</small>
+                                   
                                 </div>
                                 <div class="dropdown-cart-top-footer border-top p-2">
-                                    <a class="btn btn-success btn-block btn-lg" href="/CheckOut"> Checkout</a>
+                                    <a class="btn btn-success btn-block btn-lg" href="/CheckOut"> Thanh Toán </a>
                                 </div>
                             </div>
                         </li>
@@ -221,7 +221,7 @@
     </header>
     <section class="restaurant-detailed-banner">
         <div class="text-center">
-            <img class="img-fluid cover" src="image/backgroundHome.HEIC" style="width: 100%;">
+            <img class="img-fluid cover" src="image/backgroundHome.HEIC" style="width: 100%; height: 400px !important;">
         </div>
         <div class="restaurant-detailed-header">
             <div class="container">
@@ -307,14 +307,14 @@
                                     <h5 class="mb-4">Khuyến khích</h5>
                                     <form class="explore-outlets-search mb-4">
                                         <div class="input-group">
-                                            <input type="text" placeholder="Tìm kiếm các món ăn ..." class="form-control">
+                                            <input type="text" placeholder="Tìm kiếm các món ăn ..." class="form-control" id="categorySearch">
                                             <div class="input-group-append">
                                                 <button type="button" class="btn btn-link"> <i class="icofont-search"></i> </button>
                                             </div>
                                         </div>
                                     </form>
                                 </div>
-                                <div class="row allProduct">
+                                <div class="row allProduct" id="productDetails">
                                     <h5 class="mb-4 mt-3 col-md-12">Tất cả sản phẩm</h5>
                                 </div>
                             </div>
@@ -494,10 +494,10 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
     <script>
         $(document).ready(function() {
-            loaddata()
+            loaddataInfor()
             loadFeedback()
             checkfeedback()
-
+            loaddataProduct()
         });
 
         function sendReport() {
@@ -536,29 +536,27 @@
             }
         }
 
-        function loaddata() {
+        $('#categorySearch').keyup(function(event) {
+            event.preventDefault();
+            localStorage.setItem('listProduct', JSON.stringify(document.getElementById('categorySearch').value));
+            loadProduct();
+        });
 
-            var params = (new URL(document.location)).searchParams;
+        function loadProduct() {
+            var text = localStorage.getItem('listProduct').replaceAll('"', '');
             var idURL = params.get('id');
             $.ajax({
                 type: "GET",
-                dataType: "json",
                 data: {
+                    name: text,
                     id: idURL
                 },
-                url: "/api/user/getbyId",
-                success: function(data) {
-                    let image = (data.data.avatar ? data.data.avatar : 'image/list/1.png');
-                    document.getElementById('inforShop').innerHTML = '<img class="img-fluid mr-3 float-left" alt="osahan" src=' + image + ' style="height: 88px !important"> <h2 class="text-white" style="padding-top: 25px;"> ' + data.data.name + '</h2> <p class="text-white mb-1"><i class="icofont-location-pin"></i>' + data.data.address + '<span class="badge badge-success">OPEN</span><button type="button" id="SaveUpdate" data-toggle="modal" data-target="#basicModal" class="btn btn-outline-danger ml-3 fa fa-flag" style="float: right;"> </button></p>';
-                }
-            });
+                url: "http://localhost:3999/api/product/searchSellerproduct",
 
-            $.ajax({
-                url: "http://localhost:3999/api/product/searchSellerproduct?id=" + idURL,
-                type: "GET",
 
             }).then(function(data) {
                 if (data.message == "SUCCESS") {
+                    document.getElementById('productDetails').innerHTML = '';
                     for (var i = 0; i < data.data.listProduct.length; i++) {
                         let image = (data.data.listProduct[i].image ? data.data.listProduct[i].image : 'image/list/1.png');
                         var product = data.data.listProduct[i];
@@ -588,6 +586,66 @@
                     }
                 }
             })
+        }
+
+        function loaddataProduct() {
+            var idURL = params.get('id');
+            $.ajax({
+                url: "http://localhost:3999/api/product/searchSellerproduct?id=" + idURL,
+                type: "GET",
+
+            }).then(function(data) {
+                if (data.message == "SUCCESS") {
+                    for (var i = 0; i < data.data.listProduct.length; i++) {
+                        let image = (data.data.listProduct[i].image ? data.data.listProduct[i].image : 'image/list/1.png');
+                        var product = data.data.listProduct[i];
+
+                        // <div class="star position-absolute"><span class="badge badge-success"><i class="icofont-star"></i> 3.1 (300+)</span></div>
+                        var template = `
+                        <div class="col-md-4 col-sm-6 mb-4">
+                        <div class="list-card bg-white overflow-hidden h-100 position-relative item-content" style="border: 1px solid #d7d7d7; border-radius: 6px;" >
+                                            <div class="list-card-image">
+                                                    <img src=` + image + ` class="img-fluid item-img" style="height: 245px !important;">
+                                            </div>
+                                            <div class="p-3 position-relative">
+                                                <div class="list-card-body">
+                                                    <h6 class="mb-1"><a href="#" class="item-name text-black">${product.name}</a></h6>
+                                                    <p class="text-gray mb-2">${product.description}</p>
+                                                    <p class="text-gray time mb-0" style="width: 100%;"><a class="item-price btn btn-link btn-sm pl-0 text-black pr-0" >${product.unit_price} VNĐ </a> <span class="badge badge-success">NEW</span> <span class="float-right">
+                                                        <span class="count-number">
+                                                            <button value="ADD" data-name="${product.name}" data-price="${product.unit_price}" data-id="${product.id}"  data-seller="${product.user_id}" class="add-to-cart btn btn-outline-secondary btn-sm" onclick="addToCartFunc.call(this)" > ADD </button>
+                                                        </span>
+                                                        </span>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>`
+
+                        $(".allProduct").append(template)
+                    }
+                }
+            })
+        }
+
+        function loaddataInfor() {
+
+            var params = (new URL(document.location)).searchParams;
+            var idURL = params.get('id');
+            $.ajax({
+                type: "GET",
+                dataType: "json",
+                data: {
+                    id: idURL
+                },
+                url: "/api/user/getbyId",
+                success: function(data) {
+                    console.log(data);
+                    let image = (data.data.avatar ? data.data.avatar : 'image/list/1.png');
+                    let status = (data.data.shop_status ? '<span class="badge badge-success">Mở cửa</span>' : '<span class="badge badge-danger">Đóng cửa</span>');
+                    document.getElementById('inforShop').innerHTML = '<img class="img-fluid mr-3 float-left" alt="osahan" src=' + image + ' style="height: 88px !important"> <h2 class="text-white" style="padding-top: 25px;"> ' + data.data.name + '</h2> <p class="text-white mb-1"><i class="icofont-location-pin"></i>' + data.data.address + status + '<button type="button" id="SaveUpdate" data-toggle="modal" data-target="#basicModal" class="btn btn-outline-danger ml-3 fa fa-flag" style="float: right;"> </button></p>';
+                }
+            });
         }
 
         let product_id;
@@ -810,7 +868,6 @@
 
                     document.getElementById('rateStar').innerHTML = countStart;
                     document.getElementById('rateTotal').innerHTML = '';
-
                     for (var j = 1; j <= 5; j++) {
                         if (j <= countStart / data.data.total) {
                             document.getElementById('rateTotal').innerHTML += '<label><i class="icofont-ui-rating" style="color: red !important;"></i></label>';
@@ -820,27 +877,37 @@
 
                     }
 
+                    if (data.data.total == 0) {
+                        document.getElementById('rateOfStar').innerHTML = 'Đánh giá 0 trên 5';
+                        document.getElementById('rateOf5').innerHTML = '0%';
+                        document.getElementById('rateOf4').innerHTML = '0%';
+                        document.getElementById('rateOf3').innerHTML = '0%';
+                        document.getElementById('rateOf2').innerHTML = '0%';
+                        document.getElementById('rateOf1').innerHTML = '0%';
+                    } else {
+                        document.getElementById('rateOfStar').innerHTML = 'Đánh giá ' + (countStart / data.data.total).toFixed(2) + ' trên 5';
+                        document.getElementById('rateOf5').innerHTML = Math.round((data.data.star_5 / data.data.total) * 100) + '%';
+                        var color5 = data.data.star_5 / data.data.total;
+                        document.getElementById('rateColor5').style.width = color5 * 100 + '%';
 
-                    document.getElementById('rateOfStar').innerHTML = 'Đánh giá ' + (countStart / data.data.total).toFixed(2) + ' trên 5';
-                    document.getElementById('rateOf5').innerHTML = Math.round((data.data.star_5 / data.data.total) * 100) + '%';
-                    var color5 = data.data.star_5 / data.data.total;
-                    document.getElementById('rateColor5').style.width = color5 * 100 + '%';
+                        document.getElementById('rateOf4').innerHTML = Math.round((data.data.star_4 / data.data.total) * 100) + '%';
+                        var color4 = data.data.star_4 / data.data.total;
+                        document.getElementById('rateColor4').style.width = color4 * 100 + '%';
 
-                    document.getElementById('rateOf4').innerHTML = Math.round((data.data.star_4 / data.data.total) * 100) + '%';
-                    var color4 = data.data.star_4 / data.data.total;
-                    document.getElementById('rateColor4').style.width = color4 * 100 + '%';
+                        document.getElementById('rateOf3').innerHTML = Math.round((data.data.star_3 / data.data.total) * 100) + '%';
+                        var color3 = data.data.star_3 / data.data.total;
+                        document.getElementById('rateColor3').style.width = color3 * 100 + '%';
 
-                    document.getElementById('rateOf3').innerHTML = Math.round((data.data.star_3 / data.data.total) * 100) + '%';
-                    var color3 = data.data.star_3 / data.data.total;
-                    document.getElementById('rateColor3').style.width = color3 * 100 + '%';
+                        document.getElementById('rateOf2').innerHTML = Math.round((data.data.star_2 / data.data.total) * 100) + '%';
+                        var color2 = data.data.star_2 / data.data.total;
+                        document.getElementById('rateColor2').style.width = color2 * 100 + '%';
 
-                    document.getElementById('rateOf2').innerHTML = Math.round((data.data.star_2 / data.data.total) * 100) + '%';
-                    var color2 = data.data.star_2 / data.data.total;
-                    document.getElementById('rateColor2').style.width = color2 * 100 + '%';
+                        document.getElementById('rateOf1').innerHTML = Math.round((data.data.star_1 / data.data.total) * 100) + '%';
+                        var color1 = data.data.star_1 / data.data.total;
+                        document.getElementById('rateColor1').style.width = color1 * 100 + '%';
+                    }
 
-                    document.getElementById('rateOf1').innerHTML = Math.round((data.data.star_1 / data.data.total) * 100) + '%';
-                    var color1 = data.data.star_1 / data.data.total;
-                    document.getElementById('rateColor1').style.width = color1 * 100 + '%';
+
 
                     for (var i = 0; i < list.length; i++) {
                         var text = list[i].user_id;
@@ -911,7 +978,8 @@
                 },
                 url: "/api/feedback/check",
                 success: function(data) {
-                    if (data.data == true) {
+                    console.log(data.data);
+                    if (data.data == false) {
                         document.getElementById('checkFeedback').innerHTML = 'Bạn chưa mua hàng!!!';
                     } else {
                         document.getElementById('checkFeedback').innerHTML = '<h5 class="mb-4">Để lại phản hồi</h5> <p class="mb-2">Xếp hạng địa điểm</p> <div class="mb-4" style="display: flex;"> <span class="star-rating"> <label data-index="1" class="rating" id="rate1"><i class="icofont-ui-rating icofont-2x"></i></label> <label data-index="2" class="rating" id="rate2"><i class="icofont-ui-rating icofont-2x"></i></label> <label data-index="3" class="rating" id="rate3"><i class="icofont-ui-rating icofont-2x"></i></label> <label data-index="4" class="rating" id="rate4"><i class="icofont-ui-rating icofont-2x"></i></label> <label data-index="5" class="rating" id="rate5"><i class="icofont-ui-rating icofont-2x"></i></label> </span> <div id="alertRate">  </div> </div> <form> <div class="form-group"> <label>Thông tin phản hồi của bạn</label> <textarea class="form-control" id="textFeedback"></textarea> <span class="form-message text-danger" id="messageFeedbacks"></span> </div> <div class="form-group"> <button class="btn btn-primary btn-sm" type="button" onclick="feedback()"> Gửi phản hồi </button> </div> </form>';

@@ -182,8 +182,8 @@
                                     </table>
                                 </div>
                                 <div class="dropdown-cart-top-footer border-top p-4">
-                                    <p class="mb-0 font-weight-bold text-secondary">Sub Total <span class="total-cart float-right text-dark"></span></p>
-                                    <small class="text-info">Extra charges may apply</small>
+                                    <p class="mb-0 font-weight-bold text-secondary">Tổng Tiền <span class="total-cart float-right text-dark"></span> </p>
+                                    
                                 </div>
                                 <div class="dropdown-cart-top-footer border-top p-2">
                                     <a class="btn btn-success btn-block btn-lg" href="/CheckOut"> Checkout</a>
@@ -332,10 +332,10 @@
             <!--Kết Thúc Nội Dung Liên Hệ-->
         </div>
     </footer>
-
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <!-- jQuery -->
-    <script src="js/jquery-3.3.1.slim.min.js"></script>
+    <!-- <script src="js/jquery-3.3.1.slim.min.js"></script> -->
     <!-- Bootstrap core JavaScript-->
     <script src="js/bootstrap.bundle.min.js"></script>
     <!-- Select2 JavaScript-->
@@ -346,8 +346,8 @@
     <script src="js/custom.js"></script>
     <script src="js/header.js"></script>
     <script src="../../customJS/shopDetail.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    
+    <!-- <script src="https://code.jquery.com/jquery-1.12.4.js"></script> -->
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
     <script>
@@ -433,14 +433,15 @@
                                 let image = (listdata[i].image ? listdata[i].image : 'image/list/1.png');
                                 let favorite = (listdata[i].favorite ? 'check' : 'uncheck')
                                 if (listdata[i].sale != null) {
+                                    
                                     let price_sale = (listdata[i].sale / listdata[i].unit_price) * 100;
                                     let newPrice = listdata[i].unit_price - listdata[i].sale;
 
                                     document.getElementById('findProduct').innerHTML +=
-                                        '<div class="col-md-4 col-sm-6 mb-4 pb-2"> <div class="list-card bg-white overflow-hidden h-100 position-relative item-content" style="border: 1px solid #d7d7d7; border-radius: 6px;"> <div class="list-card-image"> <div class="favourite-heart text-danger position-absolute"> <input class="heartCheck" id="heart' + i + '" type="checkbox" onclick="checkLike(' + "'" + listdata[i].id + "','" + favorite + "'" + ')"/> <label  for="heart' + i + '"><i class="icofont-heart" id=' + favorite + '></i></label> </div> <a href="#"> <img src=' + image + ' class="img-fluid item-img"> </a> </div> <div class="p-3 position-relative"> <div class="list-card-body"> <h6 class="mb-1"><a href="#" data-toggle="modal" data-target="#productDetail" onclick="productDetail(' + "'" + listdata[i].id + "'" + ')">' + listdata[i].name + '</a></h6> <p class="text-gray mb-3">Quán: ' + listdata[i].shop_name + '</p> <p class="text-gray mb-3 time"><span class="float-right text-black-50 ml-4"> Giảm giá: ' + price_sale + '%</span> <span class="bg-light text-dark rounded-sm pl-2 pb-1 pt-1 pr-2"><iclass="icofont-wall-clock"></iclass=> ' + listdata[i].time_from + '–' + listdata[i].time_to + ' min</span> </p> </div> <div class="list-card-badge"> <small>Giá: <del>' + listdata[i].unit_price + '</del> <i class="fa fa-angle-double-right" aria-hidden="true"></i> ' + newPrice + ' VNĐ</small> <span class="badge badge-success">Mới</span> <span class="float-right"> <span class="count-number" style="margin-top: 0px !important;"> <button value="ADD" data-name="${product.name}" data-price="${product.unit_price}" data-id="${product.id}"  class="add-to-cart btn btn-outline-secondary btn-sm" onclick="addToCartFunc.call(this)" > Thêm </button> </span> </span> </div> </div> </div> </div>';
+                                        '<div class="col-md-4 col-sm-6 mb-4 pb-2"> <div class="list-card bg-white overflow-hidden h-100 position-relative item-content" style="border: 1px solid #d7d7d7; border-radius: 6px;"> <div class="list-card-image"> <div class="favourite-heart text-danger position-absolute"> <input class="heartCheck" id="heart' + i + '" type="checkbox" onclick="checkLike(' + "'" + listdata[i].id + "','" + favorite + "'" + ')"/> <label  for="heart' + i + '"><i class="icofont-heart" id=' + favorite + '></i></label> </div> <a href="#"> <img src=' + image + ' class="img-fluid item-img"> </a> </div> <div class="p-3 position-relative"> <div class="list-card-body"> <h6 class="mb-1"><a href="#" data-toggle="modal" data-target="#productDetail" onclick="productDetail(' + "'" + listdata[i].id + "'" + ')">' + listdata[i].name + '</a></h6> <p class="text-gray mb-3">Quán: ' + listdata[i].shop_name + '</p> <p class="text-gray mb-3 time"><span class="float-right text-black-50 ml-4"> Giảm giá: ' + price_sale + '%</span> <span class="bg-light text-dark rounded-sm pl-2 pb-1 pt-1 pr-2"><iclass="icofont-wall-clock"></iclass=> ' + listdata[i].time_from + '–' + listdata[i].time_to + ' min</span> </p> </div> <div class="list-card-badge"> <small>Giá: <del>' + listdata[i].unit_price + '</del> <i class="fa fa-angle-double-right" aria-hidden="true"></i> ' + newPrice + ' VNĐ</small> <span class="badge badge-success">Mới</span> <span class="float-right"> <span class="count-number" style="margin-top: 0px !important;"> <button value="ADD" data-name=' +  listdata[i].name  + ' data-price=' +   newPrice  + ' data-id=' +  listdata[i].id   + ' data-seller=' +  listdata[i].user_id  + ' class="add-to-cart btn btn-outline-secondary btn-sm" onclick="addToCartFunc.call(this)" > Thêm </button> </span> </span> </div> </div> </div> </div>';
                                 } else {
                                     document.getElementById('findProduct').innerHTML +=
-                                        '<div class="col-md-4 col-sm-6 mb-4 pb-2"> <div class="list-card bg-white overflow-hidden h-100 position-relative item-content" style="border: 1px solid #d7d7d7; border-radius: 6px;"> <div class="list-card-image"> <div class="favourite-heart text-danger position-absolute"><input class="heartCheck" id="heart' + i + '" type="checkbox" onclick="checkLike(' + "'" + listdata[i].id + "','" + favorite + "'" + ')" /> <label  for="heart' + i + '"><i class="icofont-heart" id=' + favorite + '></i></label></div> <a href="#"> <img src=' + image + ' class="img-fluid item-img"> </a> </div> <div class="p-3 position-relative"> <div class="list-card-body"> <h6 class="mb-1"><a href="#" data-toggle="modal" data-target="#productDetail" onclick="productDetail(' + "'" + listdata[i].id + "'" + ')">' + listdata[i].name + '</a></h6> <p class="text-gray mb-3">Quán: ' + listdata[i].shop_name + '</p> <p class="text-gray mb-3 time"><span class="bg-light text-dark rounded-sm pl-2 pb-1 pt-1 pr-2"><iclass="icofont-wall-clock"></iclass=> ' + listdata[i].time_from + '–' + listdata[i].time_to + ' phút</span> </p> </div> <div class="list-card-badge"> <small>Giá: ' + listdata[i].unit_price + ' VNĐ</small> <span class="float-right"> <span class="count-number" style="margin-top: 0px !important;"> <button value="ADD" data-name="${product.name}" data-price="${product.unit_price}" data-id="${product.id}"  class="add-to-cart btn btn-outline-secondary btn-sm" onclick="addToCartFunc.call(this)" > Thêm </button> </span> </span> </div> </div> </div> </div>';
+                                        '<div class="col-md-4 col-sm-6 mb-4 pb-2"> <div class="list-card bg-white overflow-hidden h-100 position-relative item-content" style="border: 1px solid #d7d7d7; border-radius: 6px;"> <div class="list-card-image"> <div class="favourite-heart text-danger position-absolute"><input class="heartCheck" id="heart' + i + '" type="checkbox" onclick="checkLike(' + "'" + listdata[i].id + "','" + favorite + "'" + ')" /> <label  for="heart' + i + '"><i class="icofont-heart" id=' + favorite + '></i></label></div> <a href="#"> <img src=' + image + ' class="img-fluid item-img"> </a> </div> <div class="p-3 position-relative"> <div class="list-card-body"> <h6 class="mb-1"><a href="#" data-toggle="modal" data-target="#productDetail" onclick="productDetail(' + "'" + listdata[i].id + "'" + ')">' + listdata[i].name + '</a></h6> <p class="text-gray mb-3">Quán: ' + listdata[i].shop_name + '</p> <p class="text-gray mb-3 time"><span class="bg-light text-dark rounded-sm pl-2 pb-1 pt-1 pr-2"><iclass="icofont-wall-clock"></iclass=> ' + listdata[i].time_from + '–' + listdata[i].time_to + ' phút</span> </p> </div> <div class="list-card-badge"> <small>Giá: ' + listdata[i].unit_price + ' VNĐ</small> <span class="float-right"> <span class="count-number" style="margin-top: 0px !important;"> <button value="ADD" data-name=' + listdata[i].name  + ' data-price=' +  listdata[i].unit_price + ' data-id=' + listdata[i].id  + ' data-seller=' + listdata[i].user_id  + '  class="add-to-cart btn btn-outline-secondary btn-sm" onclick="addToCartFunc.call(this)" > Thêm </button> </span> </span> </div> </div> </div> </div>';
                                 }
                             }
 
@@ -585,8 +586,10 @@
                 url: "/api/user/getbyId",
                 success: function(data) {
                     if (cmt_id == '') {
+                        let image = (data.data.avatar ? data.data.avatar : 'image/list/1.png');
                         if (user_id == text) {
-                            document.getElementById('listComment').innerHTML += `<div class="reviews-members pt-2" style="display: flex;"><div class="media" style="width: 100%"> <a href="#"><img alt="Generic placeholder image" src="` + data.data.avatar + `" class="mr-3 rounded-pill" style="width: 40px; height: 40px;"></a> <div class="media-body" style="border: 1px solid #f0f2f5; border-radius: 10px; background-color: #f0f2f5; padding: 10px"> <div class="reviews-members-header" style="display: flex; justify-content: space-between;"> <h6 class="mb-1"><a class="text-black" href="#">` + data.data.name + `</a></h6> <p class="text-gray" style="margin-bottom: 5px;">` + dob + `</p> </div> <div class="reviews-members-body"> <p id="text-content` + i + `">` + content + `</p> </div> </div> </div> <div class="nav-item dropdown no-arrow mx-1 osahan-list-dropdown"> <a class="nav-link dropdown-toggle rounded-pill" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="padding: 0 !important; width: 40px;height: 40px;margin-top: 18px; margin-left: 0px;"> <i class="fa fa-ellipsis-h" style="font-size: large;margin-left: 13px; margin-top: 12px; color: #606770 !important;"></i> </a> <div class="dropdown-menu dropdown-menu-right shadow-sm border-0"> <button class="dropdown-item" onclick="editReply(` + "'" + i + "','" + id + "','" + content + "'" + `)"> Sửa </button> <button class="dropdown-item" data-toggle="modal" data-target="#deleteComment` + i + `"> Xóa </button> </div> </div> </div> </div> <div style="margin-left: 67px"> <label class="reply" style="border-radius: 6px" onclick="Reply(` + "'" + i + "','" + data.data.name + "','" + id + "'" + `)"> Phản hồi </label> . <label style="border-radius: 6px;" onclick="showReply(` + "'" + i + "'" + `)"> Hiển thị phản hồi </label> <div id="showReply` + i + `"> </div> <div class="reply-section" id="replytoreply` + i + `"> </div></div> </div> </div> <div class="modal fade modal" id="deleteComment` + i + `" tabindex="-1" role="dialog" aria-labelledby="edit_bookingLabel" aria-hidden="true" style="z-index: 10000;">
+
+                            document.getElementById('listComment').innerHTML += `<div class="reviews-members pt-2" style="display: flex;"><div class="media" style="width: 100%"> <a href="#"><img alt="Generic placeholder image" src="` + image + `" class="mr-3 rounded-pill" style="width: 40px; height: 40px;"></a> <div class="media-body" style="border: 1px solid #f0f2f5; border-radius: 10px; background-color: #f0f2f5; padding: 10px"> <div class="reviews-members-header" style="display: flex; justify-content: space-between;"> <h6 class="mb-1"><a class="text-black" href="#">` + data.data.name + `</a></h6> <p class="text-gray" style="margin-bottom: 5px;">` + dob + `</p> </div> <div class="reviews-members-body"> <p id="text-content` + i + `">` + content + `</p> </div> </div> </div> <div class="nav-item dropdown no-arrow mx-1 osahan-list-dropdown"> <a class="nav-link dropdown-toggle rounded-pill" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="padding: 0 !important; width: 40px;height: 40px;margin-top: 18px; margin-left: 0px;"> <i class="fa fa-ellipsis-h" style="font-size: large;margin-left: 13px; margin-top: 12px; color: #606770 !important;"></i> </a> <div class="dropdown-menu dropdown-menu-right shadow-sm border-0"> <button class="dropdown-item" onclick="editReply(` + "'" + i + "','" + id + "','" + content + "'" + `)"> Sửa </button> <button class="dropdown-item" data-toggle="modal" data-target="#deleteComment` + i + `"> Xóa </button> </div> </div> </div> </div> <div style="margin-left: 67px"> <label class="reply" style="border-radius: 6px" onclick="Reply(` + "'" + i + "','" + data.data.name + "','" + id + "'" + `)"> Phản hồi </label> . <label style="border-radius: 6px;" onclick="showReply(` + "'" + i + "'" + `)"> Hiển thị phản hồi </label> <div id="showReply` + i + `"> </div> <div class="reply-section" id="replytoreply` + i + `"> </div></div> </div> </div> <div class="modal fade modal" id="deleteComment` + i + `" tabindex="-1" role="dialog" aria-labelledby="edit_bookingLabel" aria-hidden="true" style="z-index: 10000;">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content" style="margin-top: 300px; margin-left: 260px; width: 50%;">
                             <div class="modal-header">
@@ -622,7 +625,7 @@
 
                             ReplyToReply(i, list, id);
                         } else {
-                            document.getElementById('listComment').innerHTML += '<div class="reviews-members pt-2" style="display: flex;"><div class="media" style="width: 100%"> <a href="#"><img alt="Generic placeholder image" src="' + data.data.avatar + '" class="mr-3 rounded-pill" style="width: 40px; height: 40px;"></a> <div class="media-body" style="border: 1px solid #f0f2f5; border-radius: 10px; background-color: #f0f2f5; padding: 10px"> <div class="reviews-members-header" style="display: flex; justify-content: space-between;"> <h6 class="mb-1"><a class="text-black" href="#">' + data.data.name + '</a></h6> <p class="text-gray" style="margin-bottom: 5px;">' + dob + '</p> </div> <div class="reviews-members-body"> <p>' + content + '</p> </div> </div> </div> </div> <div style="margin-left: 67px"> <label class="reply" style="border-radius: 6px" onclick="Reply(' + "'" + i + "','" + data.data.name + "','" + id + "'" + ')"> Phản hồi </label> . <label style="border-radius: 6px;" onclick="showReply(' + "'" + i + "'" + ')"> Hiển thị phản hồi </label> <div id="showReply' + i + '"> </div> <div class="reply-section" id="replytoreply' + i + '"> </div></div> </div> </div>';
+                            document.getElementById('listComment').innerHTML += '<div class="reviews-members pt-2" style="display: flex;"><div class="media" style="width: 100%"> <a href="#"><img alt="Generic placeholder image" src="' + image + '" class="mr-3 rounded-pill" style="width: 40px; height: 40px;"></a> <div class="media-body" style="border: 1px solid #f0f2f5; border-radius: 10px; background-color: #f0f2f5; padding: 10px"> <div class="reviews-members-header" style="display: flex; justify-content: space-between;"> <h6 class="mb-1"><a class="text-black" href="#">' + data.data.name + '</a></h6> <p class="text-gray" style="margin-bottom: 5px;">' + dob + '</p> </div> <div class="reviews-members-body"> <p>' + content + '</p> </div> </div> </div> </div> <div style="margin-left: 67px"> <label class="reply" style="border-radius: 6px" onclick="Reply(' + "'" + i + "','" + data.data.name + "','" + id + "'" + ')"> Phản hồi </label> . <label style="border-radius: 6px;" onclick="showReply(' + "'" + i + "'" + ')"> Hiển thị phản hồi </label> <div id="showReply' + i + '"> </div> <div class="reply-section" id="replytoreply' + i + '"> </div></div> </div> </div>';
 
                             ReplyToReply(i, list, id);
                         }
@@ -637,13 +640,13 @@
         }
 
         function ReplyToReply(i, listReply, id) {
+            console.log(listReply.length)
             for (var j = 0; j < listReply.length; j++) {
-
                 if (listReply[j].cmt_id == id) {
                     let id_reply = listReply[j].id;
                     let content_reply = listReply[j].content;
                     let user_id_reply = listReply[j].user_id;
-                    console.log(id_reply + ' --- ' + content_reply);
+
                     let d = new Date(listReply[j].createdAt);
                     var n;
                     if (d.getUTCDate() < 10) {
@@ -670,10 +673,10 @@
                         },
                         url: "/api/user/getbyId",
                         success: function(data) {
-
+                            let image = (data.data.avatar ? data.data.avatar : 'image/list/1.png');
                             // document.getElementById("showReply" + i).innerHTML += '<div class="reviews-members pt-2"><div class="media"> <a href="#"><img alt="Generic placeholder image" src="' + data.data.avatar + '" class="mr-1 rounded-pill" style="width: 30px; height: 30px;"></a> <div class="media-body"> <div class="reviews-members-header" style="display: flex; justify-content: space-between;"> <h6 class="mb-1"><a class="text-black" href="#">' + data.data.name + '</a></h6> <p class="text-gray" style="margin-bottom: 5px;">' + dob_reply + '</p> </div> <div class="reviews-members-body"> <p>' + content_reply + '</p> </div> </div> </div> </div> <div> <button class="btn-danger" style="border-radius: 6px"> Reply </button> <button class=" btn-danger" style="border-radius: 6px;" onclick="viewReply()"> View Reply </button> </div> </div>';
                             if (user_id_reply == text) {
-                                document.getElementById("showReply" + i).innerHTML += `<div class="reviews-members pt-2" style="display: flex;"><div class="media" style="width: 100%"> <a href="#"><img alt="Generic placeholder image" src="` + data.data.avatar + `" class="mr-3 rounded-pill" style="width: 40px; height: 40px;"></a> <div class="media-body" style="border: 1px solid #f0f2f5; border-radius: 10px; background-color: #f0f2f5; padding: 10px"> <div class="reviews-members-header" style="display: flex; justify-content: space-between;"> <h6 class="mb-1"><a class="text-black" href="#">` + data.data.name + `</a></h6> <p class="text-gray" style="margin-bottom: 5px;">` + dob_reply + `</p> </div> <div class="reviews-members-body"> <p id="textEditReplyToReply` + j + `">` + content_reply + `</p>  </div> </div> </div> <div class="nav-item dropdown no-arrow mx-1 osahan-list-dropdown"> <a class="nav-link dropdown-toggle rounded-pill" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="padding: 0 !important; width: 40px;height: 40px;margin-top: 18px; margin-left: 0px;"> <i class="fa fa-ellipsis-h" style="font-size: large;margin-left: 13px; margin-top: 12px; color: #606770 !important;"></i> </a> <div class="dropdown-menu dropdown-menu-right shadow-sm border-0"> <button class="dropdown-item" onclick="editReplyToReply(` + "'" + j + "','" + id_reply + "'" + `)"> Sửa </button> <button class="dropdown-item" data-toggle="modal" data-target="#deleteProduct` + j + `"> Xóa </button> </div> </div> </div> </div> <div style="margin-left: 67px"> <label class="reply" style="border-radius: 6px" onclick="Reply(` + "'" + i + "','" + data.data.name + "','" + id + "'" + `)"> Phản hồi </label> <div id="showReply` + j + `"> </div> <div class="reply-section" id="replytoreply` + j + `"> </div></div> </div> </div> <div class="modal fade" id="deleteProduct` + j + `" tabindex="-1" role="dialog" aria-labelledby="edit_bookingLabel" aria-hidden="true" style="z-index: 10000;">
+                                document.getElementById("showReply" + i).innerHTML += `<div class="reviews-members pt-2" style="display: flex;"><div class="media" style="width: 100%"> <a href="#"><img alt="Generic placeholder image" src="` + image + `" class="mr-3 rounded-pill" style="width: 40px; height: 40px;"></a> <div class="media-body" style="border: 1px solid #f0f2f5; border-radius: 10px; background-color: #f0f2f5; padding: 10px"> <div class="reviews-members-header" style="display: flex; justify-content: space-between;"> <h6 class="mb-1"><a class="text-black" href="#">` + data.data.name + `</a></h6> <p class="text-gray" style="margin-bottom: 5px;">` + dob_reply + `</p> </div> <div class="reviews-members-body"> <p id="textEditReplyToReply` + j + `">` + content_reply + `</p>  </div> </div> </div> <div class="nav-item dropdown no-arrow mx-1 osahan-list-dropdown"> <a class="nav-link dropdown-toggle rounded-pill" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="padding: 0 !important; width: 40px;height: 40px;margin-top: 18px; margin-left: 0px;"> <i class="fa fa-ellipsis-h" style="font-size: large;margin-left: 13px; margin-top: 12px; color: #606770 !important;"></i> </a> <div class="dropdown-menu dropdown-menu-right shadow-sm border-0"> <button class="dropdown-item" onclick="editReplyToReply(` + "'" + j + "','" + id_reply + "'" + `)"> Sửa </button> <button class="dropdown-item" data-toggle="modal" data-target="#deleteProduct` + j + `"> Xóa </button> </div> </div> </div> </div> <div style="margin-left: 67px"> <label class="reply" style="border-radius: 6px" onclick="Reply(` + "'" + i + "','" + data.data.name + "','" + id + "'" + `)"> Phản hồi </label> <div id="showReply` + j + `"> </div> <div class="reply-section" id="replytoreply` + j + `"> </div></div> </div> </div> <div class="modal fade" id="deleteProduct` + j + `" tabindex="-1" role="dialog" aria-labelledby="edit_bookingLabel" aria-hidden="true">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content" style="margin-top: 300px; margin-left: 260px; width: 50%;">
                             <div class="modal-header">
@@ -707,7 +710,7 @@
                     </div>
                 </div>`;
                             } else {
-                                document.getElementById("showReply" + i).innerHTML += `<div class="reviews-members pt-2" style="display: flex;"><div class="media" style="width: 100%"> <a href="#"><img alt="Generic placeholder image" src="` + data.data.avatar + `" class="mr-3 rounded-pill" style="width: 40px; height: 40px;"></a> <div class="media-body" style="border: 1px solid #f0f2f5; border-radius: 10px; background-color: #f0f2f5; padding: 10px"> <div class="reviews-members-header" style="display: flex; justify-content: space-between;"> <h6 class="mb-1"><a class="text-black" href="#">` + data.data.name + `</a></h6> <p class="text-gray" style="margin-bottom: 5px;">` + dob_reply + `</p> </div> <div class="reviews-members-body"> <p>` + content_reply + `</p>  </div> </div> </div> </div> <div style="margin-left: 67px"> <label class="reply" style="border-radius: 6px" onclick="Reply(` + "'" + i + "','" + data.data.name + "','" + id + "'" + `)"> Phản hồi </label>  <div id="showReply` + i + `"> </div> <div class="reply-section" id="replytoreply` + j + `"> </div></div> </div> </div>`;
+                                document.getElementById("showReply" + i).innerHTML += `<div class="reviews-members pt-2" style="display: flex;"><div class="media" style="width: 100%"> <a href="#"><img alt="Generic placeholder image" src="` + image + `" class="mr-3 rounded-pill" style="width: 40px; height: 40px;"></a> <div class="media-body" style="border: 1px solid #f0f2f5; border-radius: 10px; background-color: #f0f2f5; padding: 10px"> <div class="reviews-members-header" style="display: flex; justify-content: space-between;"> <h6 class="mb-1"><a class="text-black" href="#">` + data.data.name + `</a></h6> <p class="text-gray" style="margin-bottom: 5px;">` + dob_reply + `</p> </div> <div class="reviews-members-body"> <p>` + content_reply + `</p>  </div> </div> </div> </div> <div style="margin-left: 67px"> <label class="reply" style="border-radius: 6px" onclick="Reply(` + "'" + i + "','" + data.data.name + "','" + id + "'" + `)"> Phản hồi </label>  <div id="showReply` + i + `"> </div> <div class="reply-section" id="replytoreply` + j + `"> </div></div> </div> </div>`;
                             }
 
                         }
@@ -753,18 +756,21 @@
 
                 if (event.keyCode === 13) {
                     event.preventDefault();
-
-                    $.ajax({
-                        url: '/api/comment/update',
-                        method: 'POST',
-                        data: {
-                            id: idReply,
-                            content: $('#attribute').val(),
-                        },
-                    }).then(function(data) {
-                        showComment();
-                    })
-
+                    if ($('#attribute').val() == '') {
+                        document.getElementById('confirm').innerHTML = 'Hãy viết gì đó...';
+                        document.getElementById('confirm').style.color = 'red';
+                    } else {
+                        $.ajax({
+                            url: '/api/comment/update',
+                            method: 'POST',
+                            data: {
+                                id: idReply,
+                                content: $('#attribute').val(),
+                            },
+                        }).then(function(data) {
+                            showComment();
+                        })
+                    }
                 }
             });
         }
@@ -785,17 +791,21 @@
 
                 if (event.keyCode === 13) {
                     event.preventDefault();
-                    $.ajax({
-                        url: '/api/comment/update',
-                        method: 'POST',
-                        data: {
-                            id: idReply,
-                            content: $('#attribute').val(),
-                        },
-                    }).then(function(data) {
-                        showComment();
-                    })
-
+                    if ($('#attribute').val() == '') {
+                        document.getElementById('confirmReply').innerHTML = 'Hãy viết gì đó...';
+                        document.getElementById('confirmReply').style.color = 'red';
+                    } else {
+                        $.ajax({
+                            url: '/api/comment/update',
+                            method: 'POST',
+                            data: {
+                                id: idReply,
+                                content: $('#attribute').val(),
+                            },
+                        }).then(function(data) {
+                            showComment();
+                        })
+                    }
                 }
             });
         }
@@ -856,31 +866,35 @@
         }
 
         $('#submitComment').click(function() { //Gui comment
-
             var userId = localStorage.getItem('userId').replaceAll('"', '');
             var text = document.getElementById("textComment").value;
-            if (text == "") {
-                document.getElementById('textComment').setAttribute('class', 'form-control border-danger');
-                document.getElementById('messageComment').innerHTML = 'Hãy viết gì đó.....';
+            if (userId == '') {
+                window.location.href = '/LoginUser';
             } else {
-                $.ajax({
-                    url: '/api/comment/create',
-                    method: 'POST',
-                    data: {
-                        user_id: userId,
-                        product_id: product_id,
-                        content: $('#textComment').val(),
-                        cmt_id: '',
-                    },
-                }).then(function(data) {
-                    if (data.message == 'SUCCESS') {
-                        showComment();
-                    }
-                    document.getElementById("textComment").value = "";
-                    document.getElementById('textComment').setAttribute('class', 'form-control');
-                    document.getElementById('messageComment').innerHTML = '';
-                })
+                if (text == "") {
+                    document.getElementById('textComment').setAttribute('class', 'form-control border-danger');
+                    document.getElementById('messageComment').innerHTML = 'Hãy viết gì đó.....';
+                } else {
+                    $.ajax({
+                        url: '/api/comment/create',
+                        method: 'POST',
+                        data: {
+                            user_id: userId,
+                            product_id: product_id,
+                            content: $('#textComment').val(),
+                            cmt_id: '',
+                        },
+                    }).then(function(data) {
+                        if (data.message == 'SUCCESS') {
+                            showComment();
+                        }
+                        document.getElementById("textComment").value = "";
+                        document.getElementById('textComment').setAttribute('class', 'form-control');
+                        document.getElementById('messageComment').innerHTML = '';
+                    })
+                }
             }
+
         })
 
         let perPage = 6;

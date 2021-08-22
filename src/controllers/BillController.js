@@ -18,6 +18,10 @@ class BillController {
         let dataQuery = req.query;
         return MidBill.listOrderForSeller(dataQuery);
     }
+    async listOrderForUser(req, res) {
+        let dataQuery = req.query;
+        return MidBill.listOrderForUser(dataQuery);
+    }
     async listSuccessForSeller(req, res) {
         let dataQuery = req.query;
         return MidBill.listSuccessForSeller(dataQuery);
@@ -33,6 +37,10 @@ class BillController {
     async cancelBill(req, res) {
         let dataQuery = req.query;
         return await MidBill.cancelBill(dataQuery);
+    }
+    async acceptBill(req, res) {
+        let dataQuery = req.query;
+        return await MidBill.acceptBill(dataQuery);
     }
 }
 

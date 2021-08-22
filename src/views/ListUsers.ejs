@@ -2,12 +2,12 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta name="description" content="Askbootstrap" />
-    <meta name="author" content="Askbootstrap" />
-    <title>Osahan Eat - Online Food Ordering Website HTML Template</title>
+   <meta charset="utf-8" />
+   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+   <meta name="description" content="Askbootstrap" />
+   <meta name="author" content="Askbootstrap" />
+   <title>FU Market - Online Food Ordering </title>
     <!-- Favicon Icon -->
     <link rel="icon" type="image/png" href="img/favicon.png">
     <!-- Feather Icon-->
@@ -19,12 +19,13 @@
     <!-- Custom Css -->
     <link href="/skin/css/listUser.css" rel="stylesheet" />
     <link href="/skin/bootstrap/dataTables.bootstrap4.min.css" rel="stylesheet" />
-
+   
 </head>
+
 
 <body class="sb-nav-fixed">
     <nav class="sb-topnav navbar navbar-expand navbar-light bg-white shadow-sm">
-        <a class="navbar-brand" href="index.html"><img alt="logo" src="img/logo.png"></a>
+        <a class="navbar-brand" href="ListUsers"><img alt="logo" src="image/image0.jpg" width="100px"></a>
         <button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#"><i
             class="fas fa-bars"></i></button>
         <!-- Navbar Search-->
@@ -44,29 +45,29 @@
             
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow ml-1 osahan-profile-dropdown">
-                <a class="nav-link dropdown-toggle pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <img class="img-profile rounded-circle" src="/image/user/1.png">
+                <a class="nav-link dropdown-toggle pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
+                   aria-expanded="false">
+                   <img class="img-profile rounded-circle" src="/image/user/1.png">
                 </a>
                 <!-- Dropdown - User Information -->
                 <div class="dropdown-menu dropdown-menu-right shadow-sm">
-                    <div class="p-3 d-flex align-items-center">
-                        <div class="dropdown-list-image mr-3">
-                            <img class="rounded-circle" src="/image/user/1.png" alt="">
-                            <div class="status-indicator bg-success"></div>
-                        </div>
-                        <div class="font-weight-bold">
-                            <div class="text-truncate">Gurdeep Osahan</div>
-                            <div class="small text-gray-500">Restaurants Owner</div>
-                        </div>
-                    </div>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="my-profile.html"><i class="feather-edit"></i> My Account</a>
-                    <a class="dropdown-item" href="my-profile.html"><i class="feather-settings"></i> Account Settings</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" onclick="logOutClick()"><i class="feather-log-out"></i> Log out</a>
-
+                   <div class="p-3 d-flex align-items-center">
+                      <div class="dropdown-list-image mr-3">
+                         <img class="rounded-circle" src="/image/user/1.png" alt="">
+                         <div class="status-indicator bg-success"></div>
+                      </div>
+                      <div class="font-weight-bold">
+                         <div class="text-truncate name-admin"></div>
+                         <div class="small text-gray-500"></div>
+                      </div>
+                   </div>
+                   
+                   
+                   <div class="dropdown-divider"></div>
+                   <a class="dropdown-item" onclick="logOutClick()" ><i class="feather-log-out"></i> Đăng Xuất </a>
+                      
                 </div>
-            </li>
+             </li>
         </ul>
     </nav>
     <div id="layoutSidenav">
@@ -162,6 +163,7 @@
                                     <th>Địa CHỉ</th>
                                     <th>Điện Thoại</th>
                                     <th>Email</th>
+                                    <th>Trạng Thái</th>
                                     
                                     <th>Action</th>
                                 </tr>
@@ -297,6 +299,49 @@
          </div>
       </div>
    </div>
+ <!--Pop up Enable-->
+
+ <div class="modal fade" id="enableUser" tabindex="-1" role="dialog" aria-labelledby="edit_bookingLabel"
+ aria-hidden="true">
+ <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+       <div class="modal-header">
+          <h5 class="modal-title" id="edit_bookingLabel">Thông Báo</h5>
+          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+             <span aria-hidden="true">×</span>
+          </button>
+       </div>
+       <div class="modal-body">
+          <div class="row">
+             <div class="col-xl-12">
+                <div class="card mb-4">
+                   <div class="card-body">
+                      <h5 style="text-align: center;">Bạn có muốn kích hoạt lại người dùng này không?</h5>
+                      <div class="card-body">
+                         <div class="row ml-5">
+                            <div class="col-md-6">
+                               <div class="form-group">
+                                  <input type="button" class="btn btn-primary" id="deletePro" value="Đồng Ý"
+                                     onclick="enableUser()"></input>
+                               </div>
+                            </div>
+                            <div class="col-md-6">
+                               <div class="form-group">
+                                  <input type="button" class="btn btn-primary" id="cancelDelete" value="Hủy Bỏ"
+                                     data-dismiss="modal"></input>
+                               </div>
+                            </div>
+                         </div>
+                      </div>
+                   </div>
+                </div>
+             </div>
+          </div>
+       </div>
+    </div>
+ </div>
+</div>
+
 
     <!--Pop up delete-->
 
@@ -364,7 +409,7 @@
 
 
 <script>
-    function getCookie(cname) {
+    function getCookie(cname) { 
         let name = cname + "=";
         let decodedCookie = decodeURIComponent(document.cookie);
         let ca = decodedCookie.split(';');
@@ -460,8 +505,9 @@
 
     //datatable function
     $(document).ready(function() {
-
+        
         $('#dataTable').DataTable({
+            
             'ajax': function(data, callback, settings) {
                 $.ajax({
                         url: "http://localhost:3999/api/user/searchUser" ,
@@ -469,11 +515,19 @@
                     .then(function(response, textStatus, jqXHR) {
 
                         let data = response.data.listUsers
+                        
+                        console.log(data);
+                        
+
                         data.forEach((val, idx) => {
+                            
+                            
+                            
                             val.no = idx + 1
                         });
                         callback({
                             "data": data
+
                         });
                     });
             },
@@ -489,6 +543,8 @@
                 }, {
                     data: 'email'
                 }, {
+                    data: 'del'
+                }, {
                     data: ""
                 }
 
@@ -496,14 +552,18 @@
             'columnDefs': [{
                 targets: -1,
                 render: function(data, type, row, meta) {
+                    console.log("123 ra van de ",row);
+                    var checkStatus = (row.del  ? '<input type="button" class="delete-user-btn btn-danger mr-3" data-toggle="modal" data-target="#enableUser" idUser="${data[i].id}" value="Kích Hoạt"/>' : '<input type="button" class="delete-user-btn btn-danger mr-3" data-toggle="modal" data-target="#deleteUser" idUser="${data[i].id}" value="Vô Hiệu"/>' ) 
                     return '<input type="button" class="show-user-id btn-primary mr-3" data-toggle="modal" data-target="#inforUser" idUser="' + row.id + '" value="Thông Tin"/>' +
-                        '<input type="button" class="up-role-btn btn-success mr-3 " data-toggle="modal" data-target="#upRole" idUser="' + row.id + '" value="Nâng quyền"/>' +
-                        '<input type="button"  class="delete-user-btn btn-danger mr-3" data-toggle="modal" data-target="#deleteUser"idUser="' +  row.id + '" value="Xóa"/>';
+                        '<input type="button" class="up-role-btn btn-success mr-3 " data-toggle="modal" data-target="#upRole" idUser="' + row.id + '" value="Nâng quyền"/>' 
+                        +checkStatus;
                 }
 
             }]
 
         });
+      
+        
 
 
 
@@ -544,6 +604,8 @@
 
 
     });
+   
+    
 </script>
 
 </html>
