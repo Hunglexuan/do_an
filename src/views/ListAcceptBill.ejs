@@ -162,7 +162,7 @@
                <h1 class="mt-4">Danh Sách Đơn Chấp Nhận</h1>
                <ol class="breadcrumb mb-4">
                   
-                  <li class="breadcrumb-item active">Danh sách</li>
+                  <li class="breadcrumb-item active" style="text-align: center;">Doanh Thu Cửa Hàng : <span class="total">  </span></li>
                </ol>
                <ol>
                   <a class="btn btn-info" onClick=ReloadFunc.call(this) style="position: relative; "><i class="fas fa-sync-alt"></i>
@@ -300,7 +300,7 @@
                shop_id:sellerID
             }
          }).then(function(data){
-         
+            
             var billTEmp = data.data.listBillTotal;
             console.log(billTEmp);  
             for(var i = 0 ; i < billTEmp.length ; i++){
@@ -353,7 +353,7 @@
                   `
 
                   $(".show-bill").append(Template);
-                  
+                  $(".total").html(billTEmp[billTEmp.length-1].total)
                
                
             }

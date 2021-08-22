@@ -24,7 +24,7 @@
 
 <body class="sb-nav-fixed">
    <nav class="sb-topnav navbar navbar-expand navbar-light bg-white shadow-sm">
-      <a class="navbar-brand" href="index.html"><img alt="logo" src="img/logo.png"></a>
+      <a class="navbar-brand" href="ListUsers"><img alt="logo" src="image/image0.jpg" width="100px"></a>
       <button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#"><i
             class="fas fa-bars"></i></button>
       <!-- Navbar Search-->
@@ -104,15 +104,14 @@
                      <div class="status-indicator bg-success"></div>
                   </div>
                   <div class="font-weight-bold">
-                     <div class="text-truncate">Gurdeep Osahan</div>
-                     <div class="small text-gray-500">Restaurants Owner</div>
+                     <div class="text-truncate name-admin"></div>
+                     <div class="small text-gray-500"></div>
                   </div>
                </div>
+               
+               
                <div class="dropdown-divider"></div>
-               <a class="dropdown-item" href="my-profile.html"><i class="feather-edit"></i> My Account</a>
-               <a class="dropdown-item" href="my-profile.html"><i class="feather-settings"></i> Account Settings</a>
-               <div class="dropdown-divider"></div>
-               <a class="dropdown-item" onclick="logOutClick()" ><i class="feather-log-out"></i> Log out</a>
+               <a class="dropdown-item" onclick="logOutClick()" ><i class="feather-log-out"></i> Đăng Xuất </a>
                   
             </div>
          </li>
@@ -123,30 +122,29 @@
          <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
             <div class="sb-sidenav-menu">
                <div class="nav">
-                  <div class="sb-sidenav-menu-heading">Core</div>
+                  <div class="sb-sidenav-menu-heading">Danh Mục</div>
                   <a class="nav-link" onclick="listUserPage()">
-                     <div class="sb-nav-link-icon"><i class="feather-list"></i></div>
-                     List Of User
-                   </a>
-                   <a class="nav-link" onclick="listSellerPage()">
-                     <div class="sb-nav-link-icon"><i class="feather-list"></i></div>
-                     List Of Seller
-                   </a>
-     
-                   <a class="nav-link" onclick="listVoucherPage()">
-                     <div class="sb-nav-link-icon"><i class="feather-list"></i></div>
-                     List Of Voucher
-                   </a>
-     
-                   <a class="nav-link"onclick="AddRolePage()">
-                     <div class="sb-nav-link-icon"><i class="feather-list"></i></div>
-                     Add Role
-                   </a>
-                   <a class="nav-link" onclick="listReportPage()">
-                     <div class="sb-nav-link-icon"><i class="feather-list"></i></div>
-                     Report List
-                   </a>
-
+                    <div class="sb-nav-link-icon"><i class="feather-list"></i></div>
+                    Danh Sách Người Dùng
+                  </a>
+                  <a class="nav-link" onclick="listSellerPage()">
+                    <div class="sb-nav-link-icon"><i class="feather-list"></i></div>
+                    Danh Sách Người Bán
+                  </a>
+    
+                  <a class="nav-link" onclick="listVoucherPage()">
+                    <div class="sb-nav-link-icon"><i class="feather-list"></i></div>
+                    Danh Sách Giảm Giá
+                  </a>
+    
+                  <a class="nav-link"onclick="AddRolePage()">
+                    <div class="sb-nav-link-icon"><i class="feather-list"></i></div>
+                    Danh Sách Thực Đơn
+                  </a>
+                  <a class="nav-link" onclick="listReportPage()">
+                    <div class="sb-nav-link-icon"><i class="feather-list"></i></div>
+                    Danh Sách Báo Cáo
+                  </a>
                   <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne"
                      data-parent="#sidenavAccordion">
                      <nav class="sb-sidenav-menu-nested nav">

@@ -152,12 +152,14 @@
 
     <script>
         $(document).ready(function() {
+            console.log("object,",sessionStorage.getItem('shoppingCart'));
             loaddata()
         });
 
         $('#productSearch').keyup(function(event) {
             event.preventDefault();
             localStorage.setItem('searchListSeller', JSON.stringify(document.getElementById('productSearch').value));
+            
             loaddata();
         });
 

@@ -21,7 +21,7 @@ class VoucherController {
         return await MidVoucher.getVoucherById(dataQuery);
     }
     async updateVoucher(req, res) {
-        let dataQuery = req.query;
+        let dataQuery = req.body;
         return await MidVoucher.updateVoucher(dataQuery);
     }
 }

@@ -52,6 +52,7 @@ class MidComment {
         }
 
     }
+   
     async createComment(data) {
         if (!data.user_id) {
             console.log('MidComment-createComment: ERROR-57 ');
