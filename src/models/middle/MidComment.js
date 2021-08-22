@@ -15,6 +15,10 @@ import { name } from 'ejs';
 
 class MidComment {
     async searchComment(data) {
+        if(!data.id){
+            console.log('MidComment-searchComment: ErrorCode-19');
+            throw new Error(ERROR_MESSAGE.COMMENT.COMMENT_NOT_EXIST);
+        }
         let obj = await Product.findOne({
             where: {
                 id: data.id,
