@@ -41,9 +41,9 @@ class MidComment {
             })
         ])
 
-        if(listComment){
+        if (listComment) {
             console.log('MidComment-searchComment: SUCCESS ');
-        }else{
+        } else {
             console.log('MidComment-searchComment: ERROR-47 ');
         }
         return {
@@ -52,7 +52,36 @@ class MidComment {
         }
 
     }
-   
+
+    async notifyCommentUser(data) {
+        let obj = await Users.findOne({
+            where: {
+                id: data.user_id,
+                del: 0
+            }
+        })
+  
+
+        const [listComment, total] = await Promise.all([
+            Comment.findAll({
+                where: condition,
+                order: [
+                    [
+                        "createdAt", "DESC"
+                    ]
+                ],
+
+            }),
+            Comment.count({
+                where: condition
+            })
+        ])
+        return {
+            listComment,
+            total: total || 0
+        }
+
+    }
     async createComment(data) {
         if (!data.user_id) {
             console.log('MidComment-createComment: ERROR-57 ');
@@ -74,10 +103,10 @@ class MidComment {
             del: 0
         }
         let object = await Comment.create(dataCreate);
-        if(!object){
+        if (!object) {
             console.log('MidComment-searchComment: ERROR-77 ');
-        }console.log('MidComment-searchComment: SUCCESS');
-        
+        } console.log('MidComment-searchComment: SUCCESS');
+
         return object
     }
     async deleteComment(data) {
@@ -113,9 +142,9 @@ class MidComment {
             content: data.content,
         }
         let object = await objUpdate.update(dataUpdate)
-        if(!object){
+        if (!object) {
             console.log('MidComment-updateComment: ERROR-116 ');
-        }console.log('MidComment-updateComment: SUCCESS ');
+        } console.log('MidComment-updateComment: SUCCESS ');
         return object
 
     }

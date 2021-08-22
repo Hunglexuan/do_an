@@ -12,6 +12,10 @@ class BillController {
         let dataQuery = req.query;
         return MidComment.searchComment(dataQuery);
     }
+    async notifyUser(req, res) {
+        let dataQuery = req.query;
+        return MidComment.notifyCommentUser(dataQuery);
+    }
     async deleteComment(req, res) {
         let dataQuery = req.query;
         return await MidComment.deleteComment(dataQuery);
