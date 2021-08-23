@@ -34,7 +34,6 @@ class MidComment {
                         "createdAt", "DESC"
                     ]
                 ],
-
             }),
             Comment.count({
                 where: condition
@@ -54,23 +53,11 @@ class MidComment {
     }
 
     async notifyCommentUser(data) {
-        let obj = await Users.findOne({
-            where: {
-                id: data.user_id,
-                del: 0
-            }
-        })
+       
         let condition = {
-<<<<<<< HEAD
-            user_id: obj.id,
+            cmt_id: data.user_id,
             del: 0
         }
-
-=======
-            id: obj.dataValues.id,
-            del: 0
-        }
->>>>>>> 774a344434d6e1ac1364e7221a132d40d1f24360
 
         const [listComment, total] = await Promise.all([
             Comment.findAll({
@@ -86,6 +73,19 @@ class MidComment {
                 where: condition
             })
         ])
+        for(let i = 0 ; i < listComment.length ; i++ ){
+            let product = await Product.findOne({
+                where: {
+                    id: listComment[i].dataValues.product_id,
+                    del: 0
+                }
+            })
+            let temp = {
+                image: product.dataValues.image,
+                name: product.dataValues.name,
+              };
+            Object.assign(listComment[i].dataValues, temp);
+        }
         return {
             listComment,
             total: total || 0
