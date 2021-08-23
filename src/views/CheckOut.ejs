@@ -291,6 +291,7 @@
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
             <script src="js/header.js"></script>
             <script src="../../customJS/shopDetail.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
 
             <script>
                 var cart = JSON.parse(sessionStorage.getItem('shoppingCart'));
@@ -362,9 +363,16 @@
 
                             
                         if (data.message == "SUCCESS") {
-                            alert("done")
-                            // document.getElementById("show-cart").innerHTML = ""
-                            console.log("object");
+                            Swal.fire({
+                                type: 'success',
+                                title: 'Đặt Hàng Thành Công Theo Dõi Đơn Ở Lịch Sử Mua Hàng  🔓',
+                                // text: 'Your offer is safe 🙂',
+                                showConfirmButton: false,
+                                timer: 2000
+                            })
+                            window.setTimeout(function() {
+                                window.location.href = '/';
+                            }, 2000);
                         } else {
                             alert("ngu")
                         }

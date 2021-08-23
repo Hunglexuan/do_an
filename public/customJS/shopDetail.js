@@ -274,6 +274,7 @@ function displayCart() {
 
         output +=
             "<tr>" +
+            
             "<td style='padding:1'>" + cartArray.listCart[i].name + "</td>" +
             "<td style='padding:1'>" + cartArray.listCart[i].price + "</td>" +
             "<td style='padding:1'><div class='input-group-1' style='display:flex'><button class='minus-item input-group-addon btn btn-primary' data-id=" + cartArray.listCart[i].id + ">-</button>" +
@@ -284,6 +285,7 @@ function displayCart() {
             "</tr>";
     }
     console.log(shoppingCart.totalCount());
+    // $(".name-Store").html()
     $('#show-cart').html(output);
     $('.total-cart').html(shoppingCart.totalCart());
     $('.total-count').html(shoppingCart.totalCount());
