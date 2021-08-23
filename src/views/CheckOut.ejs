@@ -8,8 +8,6 @@
     <meta name="description" content="Askbootstrap">
     <meta name="author" content="Askbootstrap">
     <title>FUMK - Online Food Ordering</title>
-    <!-- Custom Css -->
-    <link href="skin/css/styles.css" rel="stylesheet" />
     <!-- Favicon Icon -->
     <link rel="icon" type="image/png" href="image/favicon.png">
     <!-- Bootstrap core CSS-->
@@ -33,24 +31,6 @@
     <link href="skin/font/DoanCSS.css" rel="stylesheet">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <style>
-        #notifies::-webkit-scrollbar-track {
-            box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-            border-radius: 10px;
-            background-color: #F5F5F5;
-        }
-        
-        #notifies::-webkit-scrollbar {
-            width: 12px;
-            background-color: #F5F5F5;
-        }
-        
-        #notifies::-webkit-scrollbar-thumb {
-            border-radius: 10px;
-            box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
-            background-color: #555;
-        }
-    </style>
 </head>
 
 <body>
@@ -91,21 +71,6 @@
                                 class="badge badge-danger">New</span></a>
                     </li>
                     <li id="checkLogin"></li>
-                    <li class="nav-item dropdown no-arrow mx-1 osahan-list-dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <i class="fa fa-bell-o" aria-hidden="true" style="font-size: 20px;"></i>
-                            <!-- Counter - Alerts -->
-                        </a>
-                        <!-- Dropdown - Alerts -->
-                        <div class="dropdown-list dropdown-menu dropdown-menu-right shadow-sm">
-                            <h6 class="dropdown-header">
-                                Thông Báo
-                            </h6>
-                            <div id="notifies" style="height: 240px; overflow: scroll; overflow-x: hidden;">
-                            </div>
-
-                        </div>
-                    </li>
                     <!-- <li class="nav-link" style="padding-top: 20px !important;">
                         <button class="btn btn-primary"> Login </button>
                     </li>
@@ -221,16 +186,16 @@
 
                                 </div>
                                 <div class="mb-2 bg-white rounded p-2 clearfix">
-                                    <p class="mb-1">Item Total <span class="total-cart float-right text-dark"></span></p>
+                                    <p class="mb-1">Tổng Tiền <span class="total-cart float-right text-dark"></span></p>
                                     </p>
-                                    <p class="mb-1 text-success"> Discount
+                                    <p class="mb-1 text-success"> Giảm Giá
                                         <span class="float-right text-success" id="sub-total-cart"></span>
                                     </p>
                                     <hr />
-                                    <h6 class=" font-weight-bold mb-0">TO PAY <span class="after-Voucher float-right"></span>
+                                    <h6 class=" font-weight-bold mb-0">Tổng <span class="after-Voucher float-right"></span>
                                     </h6>
                                 </div>
-                                <a class="checkout-btn btn btn-success btn-block btn-lg">PAY
+                                <a class="checkout-btn btn btn-success btn-block btn-lg">ĐẶT HÀNG
                                             <i class="icofont-long-arrow-right"></i></a>
                             </div>
 
@@ -317,6 +282,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="js/header.js"></script>
     <script src="../../customJS/shopDetail.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
 
     <script>
         var cart = JSON.parse(sessionStorage.getItem('shoppingCart'));
@@ -388,9 +354,16 @@
 
 
                 if (data.message == "SUCCESS") {
-                    alert("done")
-                        // document.getElementById("show-cart").innerHTML = ""
-                    console.log("object");
+                    Swal.fire({
+                        type: 'success',
+                        title: 'Đặt Hàng Thành Công Theo Dõi Đơn Ở Lịch Sử Mua Hàng  🔓',
+                        // text: 'Your offer is safe 🙂',
+                        showConfirmButton: false,
+                        timer: 2000
+                    })
+                    window.setTimeout(function() {
+                        window.location.href = '/';
+                    }, 2000);
                 } else {
                     alert("ngu")
                 }

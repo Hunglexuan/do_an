@@ -17,7 +17,8 @@ var shoppingCart = (function () {
     // =============================
 
     displayCartInDB(idUser);
-    var shopID = idSellerURL
+
+    var shopID = !isEmptyObj(cart_TEMP)&&cart_TEMP.billID ? cart_TEMP.billID : "";
     var userID = idUser
     
     var status = 0
@@ -51,9 +52,8 @@ var shoppingCart = (function () {
     
             
             if (data.message == "SUCCESS") {
-                console.log('111112',data );
-                console.log('11111',cart );
                 
+                console.log("111111",data);
                 cart.billID = data.data
                 sessionStorage.setItem("shoppingCart", JSON.stringify(cart));
             } else {
@@ -124,6 +124,7 @@ var shoppingCart = (function () {
                 break;
             }
         }
+        saveCart();
     };
     // Remove item from cart
     obj.removeItemFromCart = function (id) {
@@ -212,10 +213,15 @@ var shoppingCart = (function () {
 
 function addToCartFunc() {
     var cartTemp = shoppingCart.getCart();
-    var shop_id = cartTemp.shopID;
-    
-    if (shop_id && shop_id == idSellerURL) {
-        
+ 
+    var currentShopID = cartTemp.shopID;
+    var shopID =  $(this).data('seller');
+    console.log("id shop cua san pham",shopID);
+    console.log("id shop hien tai ",currentShopID);
+    console.log("trang thai",currentShopID == shopID);
+   
+    if ( currentShopID == shopID) {
+        console.log("111111");
         var id = $(this).data('id');
         var name = $(this).data('name');
         
@@ -227,10 +233,10 @@ function addToCartFunc() {
         
     } else {
 
-
+        console.log("111122222211");
       
         var cart_tmp = shoppingCart.getCart();
-        cart_tmp.shopID = idSellerURL;
+        cart_tmp.shopID = shopID;
         cart_tmp.listCart = [];
         
         sessionStorage.setItem('shoppingCart', JSON.stringify(cart_tmp));
@@ -268,6 +274,7 @@ function displayCart() {
 
         output +=
             "<tr>" +
+            
             "<td style='padding:1'>" + cartArray.listCart[i].name + "</td>" +
             "<td style='padding:1'>" + cartArray.listCart[i].price + "</td>" +
             "<td style='padding:1'><div class='input-group-1' style='display:flex'><button class='minus-item input-group-addon btn btn-primary' data-id=" + cartArray.listCart[i].id + ">-</button>" +
@@ -278,6 +285,7 @@ function displayCart() {
             "</tr>";
     }
     console.log(shoppingCart.totalCount());
+    // $(".name-Store").html()
     $('#show-cart').html(output);
     $('.total-cart').html(shoppingCart.totalCart());
     $('.total-count').html(shoppingCart.totalCount());

@@ -231,16 +231,17 @@
                             <div class="dropdown-menu dropdown-cart-top p-0 dropdown-menu-right shadow-sm border-0">
 
                                 <div class="dropdown-cart-top-body border-top p-4">
+                                    <div class="name-Store"> </div>
                                     <table class=" table" id="show-cart">
 
                                     </table>
                                 </div>
                                 <div class="dropdown-cart-top-footer border-top p-4">
                                     <p class="mb-0 font-weight-bold text-secondary">Tổng Giá <span class="total-cart float-right text-dark"></span></p>
-                                    <small class="text-info">Extra charges may apply</small>
+                                   
                                 </div>
                                 <div class="dropdown-cart-top-footer border-top p-2">
-                                    <a class="btn btn-success btn-block btn-lg" href="/CheckOut"> Checkout</a>
+                                    <a class="btn btn-success btn-block btn-lg" href="/CheckOut"> Thanh Toán </a>
                                 </div>
                             </div>
                         </li>
@@ -630,6 +631,7 @@
                     for (var i = 0; i < data.data.listProduct.length; i++) {
                         let image = (data.data.listProduct[i].image ? data.data.listProduct[i].image : 'image/list/1.png');
                         var product = data.data.listProduct[i];
+
                         // <div class="star position-absolute"><span class="badge badge-success"><i class="icofont-star"></i> 3.1 (300+)</span></div>
                         var template = `
                         <div class="col-md-4 col-sm-6 mb-4">
@@ -643,7 +645,7 @@
                                                     <p class="text-gray mb-2">${product.description}</p>
                                                     <p class="text-gray time mb-0" style="width: 100%;"><a class="item-price btn btn-link btn-sm pl-0 text-black pr-0" >${product.unit_price} VNĐ </a> <span class="badge badge-success">NEW</span> <span class="float-right">
                                                         <span class="count-number">
-                                                            <button value="ADD" data-name="${product.name}" data-price="${product.unit_price}" data-id="${product.id}"  class="add-to-cart btn btn-outline-secondary btn-sm" onclick="addToCartFunc.call(this)" > ADD </button>
+                                                            <button value="ADD" data-name="${product.name}" data-price="${product.unit_price}" data-id="${product.id}"  data-seller="${product.user_id}" class="add-to-cart btn btn-outline-secondary btn-sm" onclick="addToCartFunc.call(this)" > ADD </button>
                                                         </span>
                                                         </span>
                                                     </p>
@@ -1009,7 +1011,7 @@
                 url: "/api/feedback/check",
                 success: function(data) {
                     console.log(data.data);
-                    if (data.data == false) {
+                    if (data.data == true) {
                         document.getElementById('checkFeedback').innerHTML = 'Bạn chưa mua hàng!!!';
                     } else {
                         document.getElementById('checkFeedback').innerHTML = '<h5 class="mb-4">Để lại phản hồi</h5> <p class="mb-2">Xếp hạng địa điểm</p> <div class="mb-4" style="display: flex;"> <span class="star-rating"> <label data-index="1" class="rating" id="rate1"><i class="icofont-ui-rating icofont-2x"></i></label> <label data-index="2" class="rating" id="rate2"><i class="icofont-ui-rating icofont-2x"></i></label> <label data-index="3" class="rating" id="rate3"><i class="icofont-ui-rating icofont-2x"></i></label> <label data-index="4" class="rating" id="rate4"><i class="icofont-ui-rating icofont-2x"></i></label> <label data-index="5" class="rating" id="rate5"><i class="icofont-ui-rating icofont-2x"></i></label> </span> <div id="alertRate">  </div> </div> <form> <div class="form-group"> <label>Thông tin phản hồi của bạn</label> <textarea class="form-control" id="textFeedback"></textarea> <span class="form-message text-danger" id="messageFeedbacks"></span> </div> <div class="form-group"> <button class="btn btn-primary btn-sm" type="button" onclick="feedback()"> Gửi phản hồi </button> </div> </form>';

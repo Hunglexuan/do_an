@@ -658,26 +658,49 @@ class MidBill {
     let objDelete = await Bill.findOne({
       where: {
         id: data.id,
-        status: 1,
         del: 0,
       },
     });
     let dataDelete = {
       status: 2,
     };
-
     objDelete.update(dataDelete);
+    for(let i = 0 ; i <data.billList.length ; i++){
+      let productTemp = await Product.findOne({
+        where: {
+          id: data.billList[i].product_id,
+          del: 0,
+        },
+      });
+      let productUpdate = {
+        quantity : productTemp.dataValues.quantity - data.billList[i].quantity
+      };
+      productTemp.update(productUpdate);
+    }
   }
   async cancelBill(data) {
     let objDelete = await Bill.findOne({
       where: {
         id: data.id,
-        status: 1,
         del: 0,
       },
     });
     let dataDelete = {
       status: 3,
+    };
+
+    objDelete.update(dataDelete);
+  }
+
+  async completeBill(data) {
+    let objDelete = await Bill.findOne({
+      where: {
+        id: data.id,
+        del: 0,
+      },
+    });
+    let dataDelete = {
+      status: 4,
     };
 
     objDelete.update(dataDelete);

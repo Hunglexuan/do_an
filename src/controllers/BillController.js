@@ -39,8 +39,12 @@ class BillController {
         return await MidBill.cancelBill(dataQuery);
     }
     async acceptBill(req, res) {
-        let dataQuery = req.query;
+        let dataQuery = req.body;
         return await MidBill.acceptBill(dataQuery);
+    }
+    async completeBill(req, res) {
+        let dataQuery = req.query;
+        return await MidBill.completeBill(dataQuery);
     }
 }
 
