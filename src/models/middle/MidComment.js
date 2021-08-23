@@ -60,7 +60,11 @@ class MidComment {
                 del: 0
             }
         })
-  
+        let condition = {
+            user_id: obj.id,
+            del: 0
+        }
+
 
         const [listComment, total] = await Promise.all([
             Comment.findAll({
@@ -105,7 +109,8 @@ class MidComment {
         let object = await Comment.create(dataCreate);
         if (!object) {
             console.log('MidComment-searchComment: ERROR-77 ');
-        } console.log('MidComment-searchComment: SUCCESS');
+        }
+        console.log('MidComment-searchComment: SUCCESS');
 
         return object
     }
@@ -144,7 +149,8 @@ class MidComment {
         let object = await objUpdate.update(dataUpdate)
         if (!object) {
             console.log('MidComment-updateComment: ERROR-116 ');
-        } console.log('MidComment-updateComment: SUCCESS ');
+        }
+        console.log('MidComment-updateComment: SUCCESS ');
         return object
 
     }

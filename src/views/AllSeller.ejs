@@ -9,7 +9,7 @@
     <meta name="author" content="Askbootstrap">
     <title>FUMK - Online Food Ordering</title>
     <!-- Custom Css -->
-    <!-- <link href="skin/css/styles.css" rel="stylesheet" /> -->
+    <link href="skin/css/styles.css" rel="stylesheet" />
     <!-- Favicon Icon -->
     <link rel="icon" type="image/png" href="image/favicon.png">
     <!-- Bootstrap core CSS-->
@@ -33,7 +33,24 @@
     <link href="skin/font/DoanCSS.css" rel="stylesheet">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
+    <style>
+        #notifies::-webkit-scrollbar-track {
+            box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            background-color: #F5F5F5;
+        }
+        
+        #notifies::-webkit-scrollbar {
+            width: 12px;
+            background-color: #F5F5F5;
+        }
+        
+        #notifies::-webkit-scrollbar-thumb {
+            border-radius: 10px;
+            box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
+            background-color: #555;
+        }
+    </style>
 </head>
 
 <body>
@@ -74,6 +91,21 @@
                             <a class="nav-link" href="Offers"><i class="icofont-sale-discount"></i> Ưu Đãi <span class="badge badge-danger">Mới</span></a>
                         </li>
                         <li id="checkLogin"></li>
+                        <li class="nav-item dropdown no-arrow mx-1 osahan-list-dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fa fa-bell-o" aria-hidden="true" style="font-size: 20px;"></i>
+                                <!-- Counter - Alerts -->
+                            </a>
+                            <!-- Dropdown - Alerts -->
+                            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow-sm">
+                                <h6 class="dropdown-header">
+                                    Thông Báo
+                                </h6>
+                                <div id="notifies" style="height: 240px; overflow: scroll; overflow-x: hidden;">
+                                </div>
+
+                            </div>
+                        </li>
                         <li class="nav-item dropdown dropdown-cart">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="icofont-basket"></i> Giỏ Hàng
@@ -152,14 +184,14 @@
 
     <script>
         $(document).ready(function() {
-            console.log("object,",sessionStorage.getItem('shoppingCart'));
+            console.log("object,", sessionStorage.getItem('shoppingCart'));
             loaddata()
         });
 
         $('#productSearch').keyup(function(event) {
             event.preventDefault();
             localStorage.setItem('searchListSeller', JSON.stringify(document.getElementById('productSearch').value));
-            
+
             loaddata();
         });
 
