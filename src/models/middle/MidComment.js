@@ -60,7 +60,10 @@ class MidComment {
                 del: 0
             }
         })
-  
+        let condition = {
+            id: obj.dataValues.id,
+            del: 0
+        }
 
         const [listComment, total] = await Promise.all([
             Comment.findAll({
