@@ -133,7 +133,7 @@
 
                                 </div>
                                 <div class="dropdown-cart-top-footer border-top p-2">
-                                    <a class="btn btn-success btn-block btn-lg" href="/CheckOut"> Thanh Toán</a>
+                                    <a class="btn btn-success btn-block btn-lg" onclick="checkCart()"> Thanh Toán</a>
                                 </div>
                             </div>
                         </li>
@@ -329,7 +329,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-12">
-                    <h5 class="m-0">Điều hành các cửa hàng hoặc nhà hàng? <a href="login.html">Làm việc với chúng tôi</a></h5>
+                    <h5 class="m-0">Điều hành các cửa hàng hoặc nhà hàng? <a href="login.html" style="color: red !important;">Làm việc với chúng tôi</a></h5>
                 </div>
             </div>
         </div>
@@ -404,6 +404,24 @@
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
     <script>
+        function checkCart() {
+            var text = localStorage.getItem('userId').replaceAll('"', '');
+            if (text == '') {
+                Swal.fire({
+                    type: 'warning',
+                    title: 'Bạn hãy đăng nhập để thanh toán',
+                    // text: 'Your offer is safe 🙂',
+                    showConfirmButton: false,
+                    timer: 2500
+                })
+                window.setTimeout(function() {
+                    window.location.href = '/LoginUser';
+                }, 2500);
+            } else {
+                window.location.href = '/CheckOut';
+            }
+        }
+
         $(document).ready(function() {
 
             if (token == '') {

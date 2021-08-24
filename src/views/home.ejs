@@ -255,10 +255,10 @@
                                 </div>
                                 <div class="dropdown-cart-top-footer border-top p-4">
                                     <p class="mb-0 font-weight-bold text-secondary">Tổng Tiền <span class=" total-cart float-right text-dark"></span></p>
-                                    
+
                                 </div>
                                 <div class="dropdown-cart-top-footer border-top p-2">
-                                    <a class="btn btn-success btn-block btn-lg" href="/CheckOut"> Thanh Toán</a>
+                                    <a class="btn btn-success btn-block btn-lg" href="#" onclick="checkCart()"> Thanh Toán</a>
                                 </div>
                             </div>
                         </li>
@@ -410,6 +410,24 @@
     <script src="../../customJS/shopDetail.js"></script>
 
     <script>
+        function checkCart() {
+            var text = localStorage.getItem('userId').replaceAll('"', '');
+            if (text == '') {
+                Swal.fire({
+                    type: 'warning',
+                    title: 'Bạn hãy đăng nhập để thanh toán',
+                    // text: 'Your offer is safe 🙂',
+                    showConfirmButton: false,
+                    timer: 2500
+                })
+                window.setTimeout(function() {
+                    window.location.href = '/LoginUser';
+                }, 2500);
+            } else {
+                window.location.href = '/CheckOut';
+            }
+        }
+
         var userId = localStorage.getItem('userId').replaceAll('"', '');
         // shoppingCart.displayCartInDB(userId)
         var counter = 1;

@@ -219,7 +219,7 @@
 
                                 </div>
                                 <div class="dropdown-cart-top-footer border-top p-2">
-                                    <a class="btn btn-success btn-block btn-lg" href="/CheckOut"> Checkout</a>
+                                    <a class="btn btn-success btn-block btn-lg" onclick="checkCart()"> Thanh Toán</a>
                                 </div>
                             </div>
                         </li>
@@ -391,7 +391,23 @@
             renderPage();
         });
 
-
+        function checkCart() {
+            var text = localStorage.getItem('userId').replaceAll('"', '');
+            if (text == '') {
+                Swal.fire({
+                    type: 'warning',
+                    title: 'Bạn hãy đăng nhập để thanh toán',
+                    // text: 'Your offer is safe 🙂',
+                    showConfirmButton: false,
+                    timer: 2500
+                })
+                window.setTimeout(function() {
+                    window.location.href = '/LoginUser';
+                }, 2500);
+            } else {
+                window.location.href = '/CheckOut';
+            }
+        }
 
 
         function loadcategory() {
@@ -437,7 +453,6 @@
                     var listdata = data.data.listProduct;
                     var totalProduct = data.data.total;
                     let length = Math.ceil(listdata.length / perPage);
-                    console.log(listdata);
                     getLength(length);
                     renderPage(length);
 

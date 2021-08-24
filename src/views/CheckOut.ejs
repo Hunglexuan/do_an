@@ -210,7 +210,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-12">
-                    <h5 class="m-0">Operate food store or restaurants? <a href="login.html">Work With Us</a>
+                    <h5 class="m-0">Điều hành cửa hàng hoặc nhà hàng? <a href="login.html" style="color: red !important;">Làm việc với chúng tôi</a></h5>
                     </h5>
                 </div>
             </div>
@@ -356,16 +356,23 @@
                 if (data.message == "SUCCESS") {
                     Swal.fire({
                         type: 'success',
-                        title: 'Đặt Hàng Thành Công Theo Dõi Đơn Ở Lịch Sử Mua Hàng  🔓',
+                        title: 'Đặt Hàng Thành Công. Xin vui lòng theo dõi ở lịch sử đơn hàng 🛒',
                         // text: 'Your offer is safe 🙂',
                         showConfirmButton: false,
-                        timer: 2000
+                        timer: 2500
                     })
                     window.setTimeout(function() {
                         window.location.href = '/';
-                    }, 2000);
+                    }, 2500);
                 } else {
-                    alert("ngu")
+                    Swal.fire({
+                        type: 'error',
+                        title: 'Bạn chưa thêm sản phẩm vào giỏ hàng. Vui lòng thực hiện lại',
+                        // text: 'Your offer is safe 🙂',
+                        showConfirmButton: false,
+                        timer: 2500
+                    })
+                    window.setTimeout(2500);
                 }
             })
 

@@ -61,16 +61,9 @@ class MidComment {
             }
         })
         let condition = {
-<<<<<<< HEAD
-            user_id: obj.id,
-            del: 0
-        }
-
-=======
             id: obj.dataValues.id,
             del: 0
         }
->>>>>>> 774a344434d6e1ac1364e7221a132d40d1f24360
 
         const [listComment, total] = await Promise.all([
             Comment.findAll({

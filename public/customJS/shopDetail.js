@@ -7,28 +7,28 @@
 var params = (new URL(document.location)).searchParams;
 var idSellerURL = params.get('id');
 var idUser = localStorage.getItem('userId').replaceAll('"', '');
-var cart_TEMP =JSON.parse( sessionStorage.getItem('shoppingCart') ) 
+var cart_TEMP = JSON.parse(sessionStorage.getItem('shoppingCart'))
 
 // localStorage.getItem('billID').replaceAll('"', '');
 
-var shoppingCart = (function () {
+var shoppingCart = (function() {
     // =============================
     // Private methods and propeties
     // =============================
 
     displayCartInDB(idUser);
 
-    var shopID = !isEmptyObj(cart_TEMP)&&cart_TEMP.billID ? cart_TEMP.billID : "";
+    var shopID = !isEmptyObj(cart_TEMP) && cart_TEMP.billID ? cart_TEMP.billID : "";
     var userID = idUser
-    
+
     var status = 0
     var address = ""
     var voucherCode = null
-    
-    var billID = !isEmptyObj(cart_TEMP)&&cart_TEMP.billID ? cart_TEMP.billID : "";
+
+    var billID = !isEmptyObj(cart_TEMP) && cart_TEMP.billID ? cart_TEMP.billID : "";
     //localStorage.getItem('billID')?localStorage.getItem('billID').replaceAll('"', ''):"";
-   
-    var listCart = !isEmptyObj(cart_TEMP)&&cart_TEMP.listCart.length>0 ? cart_TEMP.listCart : [];
+
+    var listCart = !isEmptyObj(cart_TEMP) && cart_TEMP.listCart.length > 0 ? cart_TEMP.listCart : [];
     var cart = {
         shopID,
         userID,
@@ -48,40 +48,40 @@ var shoppingCart = (function () {
             data: {
                 "cart": cart
             }
-        }).then(function (data) {
-    
-            
+        }).then(function(data) {
+
+
             if (data.message == "SUCCESS") {
-                
-                console.log("111111",data);
+
+                console.log("111111", data);
                 cart.billID = data.data
                 sessionStorage.setItem("shoppingCart", JSON.stringify(cart));
             } else {
-                console.log("22222222",cart);
-             
+                console.log("22222222", cart);
+
             }
         })
-      }
-    
-      function displayCartInDB(idUserT) {
+    }
+
+    function displayCartInDB(idUserT) {
         $.ajax({
-          url: "/api/bill/listCart?userID=" + idUserT,
-          type: "GET",
-        }).then(function (data) {
-            
-          sessionStorage.setItem("shoppingCart", JSON.stringify(data.data));
-          return data.data;
+            url: "/api/bill/listCart?userID=" + idUserT,
+            type: "GET",
+        }).then(function(data) {
+
+            sessionStorage.setItem("shoppingCart", JSON.stringify(data.data));
+            return data.data;
         });
-      }
+    }
 
-      function isEmptyObj(obj){
-         if(!obj){
-             return true;
+    function isEmptyObj(obj) {
+        if (!obj) {
+            return true;
 
-         }
-        return  obj && Object.keys(obj).length === 0 && obj.constructor === Object  
-    
-      }
+        }
+        return obj && Object.keys(obj).length === 0 && obj.constructor === Object
+
+    }
 
 
     // Save cart
@@ -97,27 +97,27 @@ var shoppingCart = (function () {
     var obj = {};
 
     // Add to cart
-    obj.addItemToCart = function (id, name, price, count) {
-        
-        for (var item in cart.listCart) {
-            if (cart.listCart[item].id === id) {
-                cart.listCart[item].count++;
-                saveCart();
-                return;
-            }
-        }
-        var item ={
-            id: id,
-            name: name ,
-            price: price ,
-            count: count,
-        } 
-        cart.listCart.push(item);
-        saveCart()
+    obj.addItemToCart = function(id, name, price, count) {
 
-    }
-    // Set count from item
-    obj.setCountForItem = function (id, count) {
+            for (var item in cart.listCart) {
+                if (cart.listCart[item].id === id) {
+                    cart.listCart[item].count++;
+                    saveCart();
+                    return;
+                }
+            }
+            var item = {
+                id: id,
+                name: name,
+                price: price,
+                count: count,
+            }
+            cart.listCart.push(item);
+            saveCart()
+
+        }
+        // Set count from item
+    obj.setCountForItem = function(id, count) {
         for (var i in cart.listCart) {
             if (cart.listCart[item].id === id) {
                 cart.listCart[item].count = count;
@@ -127,7 +127,7 @@ var shoppingCart = (function () {
         saveCart();
     };
     // Remove item from cart
-    obj.removeItemFromCart = function (id) {
+    obj.removeItemFromCart = function(id) {
         for (var item in cart.listCart) {
             if (cart.listCart[item].id === id) {
                 cart.listCart[item].count--;
@@ -141,7 +141,7 @@ var shoppingCart = (function () {
     }
 
     // Remove all items from cart
-    obj.removeItemFromCartAll = function (id) {
+    obj.removeItemFromCartAll = function(id) {
         for (var item in cart.listCart) {
             if (cart.listCart[item].id === id) {
                 cart.listCart.splice(item, 1);
@@ -152,13 +152,13 @@ var shoppingCart = (function () {
     }
 
     // Clear cart
-    obj.clearCart = function () {
+    obj.clearCart = function() {
         cart = [];
         saveCart();
     }
 
     // Count cart
-    obj.totalCount = function () {
+    obj.totalCount = function() {
         var totalCount = 0;
         for (var item = 0; item < cart.listCart.length; item++) {
             totalCount += cart.listCart[item].count;
@@ -167,7 +167,7 @@ var shoppingCart = (function () {
     }
 
     // Total cart
-    obj.totalCart = function () {
+    obj.totalCart = function() {
         var totalCart = 0;
         for (var item = 0; item < cart.listCart.length; item++) {
             totalCart += cart.listCart[item].price * cart.listCart[item].count;
@@ -175,9 +175,9 @@ var shoppingCart = (function () {
         return Number(totalCart.toFixed(2));
     }
 
-    
 
-    obj.finalCart = function (voucher_price) {
+
+    obj.finalCart = function(voucher_price) {
         var finalCart = 0;
         var totalCart = obj.totalCart();
         finalcart = totalCart - voucher_price;
@@ -185,7 +185,7 @@ var shoppingCart = (function () {
     }
 
     // List cart
-    obj.listCart = function () {
+    obj.listCart = function() {
         var cartCopy = [];
 
         for (var i = 0; i < cart.listCart.length; i++) {
@@ -195,13 +195,13 @@ var shoppingCart = (function () {
             itemCopy.total = Number(item.price * item.count).toFixed(2);
             cartCopy.push(itemCopy)
         }
-       
+
         return cartCopy;
 
     }
 
-    obj.getCart = function () {
-       return cart
+    obj.getCart = function() {
+        return cart
 
     }
 
@@ -213,38 +213,35 @@ var shoppingCart = (function () {
 
 function addToCartFunc() {
     var cartTemp = shoppingCart.getCart();
- 
+
     var currentShopID = cartTemp.shopID;
-    var shopID =  $(this).data('seller');
-    console.log("id shop cua san pham",shopID);
-    console.log("id shop hien tai ",currentShopID);
-    console.log("trang thai",currentShopID == shopID);
-   
-    if ( currentShopID == shopID) {
-        console.log("111111");
+    var shopID = $(this).data('seller');
+    console.log("id shop cua san pham", shopID);
+    console.log("id shop hien tai ", currentShopID);
+    console.log("trang thai", currentShopID == shopID);
+
+    if (currentShopID == shopID) {
         var id = $(this).data('id');
         var name = $(this).data('name');
-        
+
         var price = Number($(this).data('price'));
-        
+
 
         shoppingCart.addItemToCart(id, name, price, 1);
         displayCart();
-        
+
     } else {
 
-        console.log("111122222211");
-      
         var cart_tmp = shoppingCart.getCart();
         cart_tmp.shopID = shopID;
         cart_tmp.listCart = [];
-        
+
         sessionStorage.setItem('shoppingCart', JSON.stringify(cart_tmp));
 
         var id = $(this).data('id');
         var name = $(this).data('name');
 
-        var price =Number($(this).data('price'));
+        var price = Number($(this).data('price'));
         console.log(price);
 
         shoppingCart.addItemToCart(id, name, price, 1);
@@ -257,7 +254,7 @@ function addToCartFunc() {
 
 
 // Clear items
-$('.clear-cart').click(function () {
+$('.clear-cart').click(function() {
     shoppingCart.clearCart();
     displayCart();
 });
@@ -265,7 +262,7 @@ $('.clear-cart').click(function () {
 
 
 function displayCart() {
-   
+
     var cartArray = shoppingCart.getCart();
     console.log("display", cartArray);
     var output = "";
@@ -274,14 +271,14 @@ function displayCart() {
 
         output +=
             "<tr>" +
-            
+
             "<td style='padding:1'>" + cartArray.listCart[i].name + "</td>" +
             "<td style='padding:1'>" + cartArray.listCart[i].price + "</td>" +
             "<td style='padding:1'><div class='input-group-1' style='display:flex'><button class='minus-item input-group-addon btn btn-primary' data-id=" + cartArray.listCart[i].id + ">-</button>" +
             "<input type='number' style='text-align:center !important ; width:50px ' class='item-count form-control' data-name='" + cartArray.listCart[i].name + "' value='" + cartArray.listCart[i].count + "'>" +
             "<button class='plus-item btn btn-primary input-group-addon' data-id=" + cartArray.listCart[i].id + ">+</button></div></td>" +
             "<td  style='padding:1'><button class='delete-item btn btn-danger' data-id=" + cartArray.listCart[i].id + ">X</button></td>" + " = " +
-            "<td style='padding:1'>" + cartArray.listCart[i].price *  cartArray.listCart[i].count + "</td>" +
+            "<td style='padding:1'>" + cartArray.listCart[i].price * cartArray.listCart[i].count + "</td>" +
             "</tr>";
     }
     console.log(shoppingCart.totalCount());
@@ -293,7 +290,7 @@ function displayCart() {
 
 // Delete item button
 
-$('#show-cart').on("click", ".delete-item", function (event) {
+$('#show-cart').on("click", ".delete-item", function(event) {
     var id = $(this).data('id');
     shoppingCart.removeItemFromCartAll(id);
 
@@ -302,20 +299,20 @@ $('#show-cart').on("click", ".delete-item", function (event) {
 
 
 // -1
-$('#show-cart').on("click", ".minus-item", function (event) {
-    var id = $(this).data('id');
-    shoppingCart.removeItemFromCart(id);
-    displayCart();
-})
-// +1
-$('#show-cart').on("click", ".plus-item", function (event) {
+$('#show-cart').on("click", ".minus-item", function(event) {
+        var id = $(this).data('id');
+        shoppingCart.removeItemFromCart(id);
+        displayCart();
+    })
+    // +1
+$('#show-cart').on("click", ".plus-item", function(event) {
     var id = $(this).data('id');
     shoppingCart.addItemToCart(id);
     displayCart();
 })
 
 // Item count input
-$('#show-cart').on("change", ".item-count", function (event) {
+$('#show-cart').on("change", ".item-count", function(event) {
     var id = $(this).data('id');
     var count = Number($(this).val());
     shoppingCart.setCountForItem(id, count);

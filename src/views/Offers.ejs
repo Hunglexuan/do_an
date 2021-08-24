@@ -120,11 +120,11 @@
                                 </table>
                             </div>
                             <div class="dropdown-cart-top-footer border-top p-4">
-                                <p class="mb-0 font-weight-bold text-secondary">Tổng Tiền  <span class=" total-cart float-right text-dark"></span></p>
-                                
+                                <p class="mb-0 font-weight-bold text-secondary">Tổng Tiền <span class=" total-cart float-right text-dark"></span></p>
+
                             </div>
                             <div class="dropdown-cart-top-footer border-top p-2">
-                                <a class="btn btn-success btn-block btn-lg" href="/CheckOut"> Thanh Toán</a>
+                                <a class="btn btn-success btn-block btn-lg" onclick="checkCart()"> Thanh Toán</a>
                             </div>
                         </div>
                     </li>
@@ -144,19 +144,13 @@
                     <h4 class="font-weight-bold mt-0 mb-3">Phiếu giảm giá có sẵn</h4>
                 </div>
             </div>
-            <label class="control-label" for="name">
-            <label class="text-info"> Saghir </label>
-            </label>
-            <div class="controls">
-                <a class="btn" href="#" id="edit"> Edit </a>
-            </div>
         </div>
     </section>
     <section class="section pt-5 pb-5 text-center bg-white">
         <div class="container">
             <div class="row">
                 <div class="col-sm-12">
-                    <h5 class="m-0">Điều hành cửa hàng hoặc nhà hàng? <a href="login.html">Làm việc với chúng tôi</a></h5>
+                    <h5 class="m-0">Điều hành cửa hàng hoặc nhà hàng? <a href="/LoginUser" style="color: red !important;">Làm việc với chúng tôi</a></h5>
                 </div>
             </div>
         </div>
@@ -228,19 +222,23 @@
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src="../../customJS/shopDetail.js"></script>
     <script>
-        $('#edit').click(function() {
-            var text = $('.text-info').text();
-            var input = $('<input id="attribute" type="text" value="' + text + '" />')
-            $('.text-info').text('').append(input);
-            input.select();
-
-            input.blur(function() {
-                // var text = $('#attribute').val();
-                // $('#attribute').parent().text(text);
-                // $('#attribute').remove();
-                $('#attribute').replaceWith("<label>" + $('#attribute').val() + "</label>");
-            });
-        });
+        function checkCart() {
+            var text = localStorage.getItem('userId').replaceAll('"', '');
+            if (text == '') {
+                Swal.fire({
+                    type: 'warning',
+                    title: 'Bạn hãy đăng nhập để thanh toán',
+                    // text: 'Your offer is safe 🙂',
+                    showConfirmButton: false,
+                    timer: 2500
+                })
+                window.setTimeout(function() {
+                    window.location.href = '/LoginUser';
+                }, 2500);
+            } else {
+                window.location.href = '/CheckOut';
+            }
+        }
 
         $(document).ready(function() {
             $.ajax({
