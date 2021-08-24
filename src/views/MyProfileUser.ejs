@@ -156,7 +156,7 @@
                                  <h6 class="mb-2">Gurdeep Singh</h6>
                                  <p class="mb-1">+91 85680-79956</p>
                                  <p>iamosahan@gmail.com</p>
-                                 <p class="mb-0 text-black font-weight-bold"><a class="text-primary mr-3" data-toggle="modal" data-target="#edit-profile-modal" href="#"><i class="icofont-ui-edit"></i> Update</a></p>
+                                 <p class="mb-0 text-dark font-weight-bold"><a class="text-primary mr-3" data-toggle="modal" data-target="#edit-profile-modal" href="#"><i class="icofont-ui-edit"></i> Update</a></p>
                               </div>
                            </div>
                         </div>
@@ -386,6 +386,94 @@
         </div>
     </footer>
 
+    
+    <!--Pop up delete-->
+
+    <div class="modal fade" id="deleteBill" tabindex="-1" role="dialog" aria-labelledby="edit_bookingLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+       <div class="modal-content">
+          <div class="modal-header">
+             <h5 class="modal-title" id="edit_bookingLabel">Thông Báo</h5>
+             <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">×</span>
+             </button>
+          </div>
+          <div class="modal-body">
+             <div class="row">
+                <div class="col-xl-12">
+                   <div class="card mb-4">
+                      <div class="card-body">
+                         <h5 style="text-align: center;">Bạn có chắc chắn hủy đơn hàng này không?</h5>
+                         <div class="card-body">
+                            <div class="row ml-5">
+                               <div class="col-md-6">
+                                  <div class="form-group">
+                                     <input type="button" class="btn btn-primary" id="deletePro" value="Đồng Ý"
+                                        onclick="deleteBill()"></input>
+                                  </div>
+                               </div>
+                               <div class="col-md-6">
+                                  <div class="form-group">
+                                     <input type="button" class="btn btn-primary" id="cancelDelete" value="Hủy Bỏ"
+                                        data-dismiss="modal"></input>
+                                  </div>
+                               </div>
+                            </div>
+                         </div>
+                      </div>
+                   </div>
+                </div>
+             </div>
+          </div>
+       </div>
+    </div>
+ </div>
+
+ 
+    <!--Pop up delete-->
+
+    <div class="modal fade" id="successBill" tabindex="-1" role="dialog" aria-labelledby="edit_bookingLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+       <div class="modal-content">
+          <div class="modal-header">
+             <h5 class="modal-title" id="edit_bookingLabel">Thông Báo</h5>
+             <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">×</span>
+             </button>
+          </div>
+          <div class="modal-body">
+             <div class="row">
+                <div class="col-xl-12">
+                   <div class="card mb-4">
+                      <div class="card-body">
+                         <h5 style="text-align: center;">Xác Nhận đã nhận hàng và hài lòng với sản nhẩm</h5>
+                         <div class="card-body">
+                            <div class="row ml-5">
+                               <div class="col-md-6">
+                                  <div class="form-group">
+                                     <input type="button" class="btn btn-primary" id="deletePro" value="Đồng Ý"
+                                        onclick="successBill()"></input>
+                                  </div>
+                               </div>
+                               <div class="col-md-6">
+                                  <div class="form-group">
+                                     <input type="button" class="btn btn-primary" id="cancelDelete" value="Hủy Bỏ"
+                                        data-dismiss="modal"></input>
+                                  </div>
+                               </div>
+                            </div>
+                         </div>
+                      </div>
+                   </div>
+                </div>
+             </div>
+          </div>
+       </div>
+    </div>
+ </div>
+
 
     <!-- jQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -605,7 +693,7 @@
         function loadDataProfile() {
 
             var text = localStorage.getItem('userId').replaceAll('"', '');
-            console.log(text);
+           
             $.ajax({
                 type: "GET",
                 dataType: "json",
@@ -667,7 +755,7 @@
                                         </div>
                                         <div class="p-3 position-relative">
                                             <div class="list-card-body">
-                                                <h6 class="mb-1"><a href="#" class="text-black" onclick="goTo(` + "'" + list[i].user_id + "'" + `)">` + list[i].name + `</a>
+                                                <h6 class="mb-1"><a href="#" class="text-dark" onclick="goTo(` + "'" + list[i].user_id + "'" + `)">` + list[i].name + `</a>
                                                 </h6>
                                                 <p class="text-gray mb-3">Giá: ` + list[i].unit_price + ` VNĐ</p>
                                                 <p class="text-gray mb-3 time"><span class="bg-light text-dark rounded-sm pl-2 pb-1 pt-1 pr-2"><iclass="icofont-wall-clock"></iclass=> ` + list[i].time_from + `–` + list[i].time_to + ` phút</span></p>
@@ -713,8 +801,10 @@
                 }
             }).then(function(data) {
                 var billTEmp = data.data.listBillTotal;
-                console.log(billTEmp);
-                for (var i = 0; i < billTEmp.length; i++) {
+            console.log(billTEmp);  
+            for(var i = 0 ; i < billTEmp.length ; i++){
+                var checkStatus = billTEmp[i].bill.status==1 ? '<input type="button" class="btn btn-success" style="float:right" data-toggle="modal" data-target="#deleteBill" data-id =" '+ billTEmp[i].bill.id+' " onclick="deletebill.call(this)"  value="Xóa">' :
+                billTEmp[i].bill.status==2 ? '<input type="button" class="btn btn-danger"  style="float:right" data-toggle="modal" data-target="#successBill" data-id =" '+ billTEmp[i].bill.id+' " onclick="successbill.call(this)" value="Nhận Đơn">': ""
 
                     let productTemp = ``
                     for (var j = 0; j < billTEmp[i].billList.length; j++) {
@@ -743,19 +833,20 @@
                                        </a><a href="detail.html" class="text-dark">Đơn ${i+1}
                                        </a>
                                     </h6>
-                                    <p class="text-black-50 mb-1"><i class=""></i> ${billTEmp[i].user.name}  ${billTEmp[i].user.address} </p>
-                                    <p class="text-black-50 mb-1"><i class="feather-map-pin"></i>
+                                    <p class="text-dark-50 mb-1"><i class=""></i> ${billTEmp[i].user.name}  ${billTEmp[i].user.address} </p>
+                                    <p class="text-dark-50 mb-1"><i class="feather-map-pin"></i> ${billTEmp[i].bill.status}
                                     </p>
-                                    <p class="text-black-50 mb-3"><i class="feather-list"></i> ${billTEmp[i].user.phone} <i
-                                          class="feather-clock ml-2"></i> ${new Date(billTEmp[i].user.createdAt).toLocaleDateString()}</p>
+                                    <p class="text-dark-50 mb-3"><i class="feather-list"></i> ${billTEmp[i].user.phone} <i
+                                          class="feather-clock ml-2"></i> ${new Date(billTEmp[i].createAt).toLocaleDateString('en-GB')}</p>
                                     <p class="text-dark">
-                                      ${ productTemp}
+                                      ${ productTemp} 
                                     </p>
                                     <hr>
-
-                                    <p class="mb-0 text-dark text-dark pt-2"><span class="text-dark font-weight-bold">
-                                          Tổng Tiền: </span> ${billTEmp[i].bill.total_price}
+                                    
+                                    <p class="checkStatus mb-0 text-dark text-dark pt-2"><span class="text-dark font-weight-bold">
+                                          Tổng Tiền: </span> ${billTEmp[i].bill.total_price}   ${checkStatus}
                                     </p>
+                                    
                                  </div>
                               </div>
                            </div>
@@ -765,13 +856,58 @@
                   </div>
                   `
 
-                    $(".show-bill").append(Template);
+                  $(".show-bill").append(Template);
+                  
+               
+               
+            }
+            })
+        }
+  
+        function successbill(){
+            let successID =$(this).data("id")
+            localStorage.setItem("successID",JSON.stringify(successID))
+           
+        }
+      
 
-
-
+        function successBill(){
+            let successID = localStorage.getItem('successID').replaceAll('"', '');
+            $.ajax({
+                url:"/api/bill/complete",
+                type:"GET",
+                data:{
+                    id:successID
+                }
+            }).then(function(data){
+                if(data.message == 'SUCCESS'){
+                    window.location.reload()
                 }
             })
         }
+
+        function deletebill(){
+            var delBill = $(this).data("id")
+            localStorage.setItem("deleteBillId",JSON.stringify(successID))
+           
+        }
+
+        function deleteBill (){
+            let delID = localStorage.getItem('deleteBillId').replaceAll('"', '');
+            $.ajax({
+                url:"/api/bill/cancel",
+                type:"GET",
+                data:{
+                    id:delID
+                }
+            }).then(function(data){
+                if(data.message == 'SUCCESS'){
+                    window.location.reload()
+                }
+            })
+        }
+
+                
     </script>
 </body>
 
