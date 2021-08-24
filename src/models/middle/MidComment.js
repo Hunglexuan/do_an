@@ -34,7 +34,6 @@ class MidComment {
                         "createdAt", "DESC"
                     ]
                 ],
-
             }),
             Comment.count({
                 where: condition
@@ -54,14 +53,9 @@ class MidComment {
     }
 
     async notifyCommentUser(data) {
-        let obj = await Users.findOne({
-            where: {
-                id: data.user_id,
-                del: 0
-            }
-        })
+       
         let condition = {
-            id: obj.dataValues.id,
+            cmt_id: data.user_id,
             del: 0
         }
 
@@ -79,6 +73,19 @@ class MidComment {
                 where: condition
             })
         ])
+        for(let i = 0 ; i < listComment.length ; i++ ){
+            let product = await Product.findOne({
+                where: {
+                    id: listComment[i].dataValues.product_id,
+                    del: 0
+                }
+            })
+            let temp = {
+                image: product.dataValues.image,
+                name: product.dataValues.name,
+              };
+            Object.assign(listComment[i].dataValues, temp);
+        }
         return {
             listComment,
             total: total || 0
@@ -108,7 +115,8 @@ class MidComment {
         let object = await Comment.create(dataCreate);
         if (!object) {
             console.log('MidComment-searchComment: ERROR-77 ');
-        } console.log('MidComment-searchComment: SUCCESS');
+        }
+        console.log('MidComment-searchComment: SUCCESS');
 
         return object
     }
@@ -147,7 +155,8 @@ class MidComment {
         let object = await objUpdate.update(dataUpdate)
         if (!object) {
             console.log('MidComment-updateComment: ERROR-116 ');
-        } console.log('MidComment-updateComment: SUCCESS ');
+        }
+        console.log('MidComment-updateComment: SUCCESS ');
         return object
 
     }

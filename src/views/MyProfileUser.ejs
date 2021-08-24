@@ -9,7 +9,7 @@
     <meta name="author" content="Askbootstrap">
     <title>FUMK - Online Food Ordering</title>
     <!-- Custom Css -->
-    <!-- <link href="skin/css/styles.css" rel="stylesheet" /> -->
+    <link href="skin/css/styles.css" rel="stylesheet" />
     <!-- Favicon Icon -->
     <link rel="icon" type="image/png" href="image/favicon.png">
     <!-- Bootstrap core CSS-->
@@ -33,6 +33,24 @@
     <link href="skin/font/DoanCSS.css" rel="stylesheet">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        #notifies::-webkit-scrollbar-track {
+            box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            background-color: #F5F5F5;
+        }
+        
+        #notifies::-webkit-scrollbar {
+            width: 12px;
+            background-color: #F5F5F5;
+        }
+        
+        #notifies::-webkit-scrollbar-thumb {
+            border-radius: 10px;
+            box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
+            background-color: #555;
+        }
+    </style>
 </head>
 
 <body>
@@ -82,7 +100,21 @@
                             <a class="nav-link" href="Offers"><i class="icofont-sale-discount"></i> Ưu Đãi <span class="badge badge-danger">Mới</span></a>
                         </li>
                         <li id="checkLogin"></li>
+                        <li class="nav-item dropdown no-arrow mx-1 osahan-list-dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fa fa-bell-o" aria-hidden="true" style="font-size: 20px;"></i>
+                                <!-- Counter - Alerts -->
+                            </a>
+                            <!-- Dropdown - Alerts -->
+                            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow-sm">
+                                <h6 class="dropdown-header">
+                                    Thông Báo
+                                </h6>
+                                <div id="notifies" style="height: 240px; overflow: scroll; overflow-x: hidden;">
+                                </div>
 
+                            </div>
+                        </li>
                         <li class="nav-item dropdown dropdown-cart">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="icofont-basket"></i> Giỏ Hàng
@@ -98,7 +130,7 @@
                                 </div>
                                 <div class="dropdown-cart-top-footer border-top p-4">
                                     <p class="mb-0 font-weight-bold text-secondary">Tổng Giá <span class=" total-cart float-right text-dark"></span></p>
-                                    
+
                                 </div>
                                 <div class="dropdown-cart-top-footer border-top p-2">
                                     <a class="btn btn-success btn-block btn-lg" href="/CheckOut"> Thanh Toán</a>
@@ -261,18 +293,18 @@
                             </div>
                         </div>
                         <div class="tab-pane fade" id="orders" role="tabpanel" aria-labelledby="orders-tab">
-                            <h4 class="font-weight-bold mt-0 mb-4" > Lịch sử mua hàng </h4>
+                            <h4 class="font-weight-bold mt-0 mb-4"> Lịch sử mua hàng </h4>
                             <div class="row">
                                 <div class="col-xl-12">
                                     <div>
-                                    
+
                                         <div class="card-body">
-                                            
-                                                <div class= "container show-bill">
-                 
-                                                </div>
-                                                
-                                            
+
+                                            <div class="container show-bill">
+
+                                            </div>
+
+
                                         </div>
                                     </div>
                                 </div>
@@ -281,11 +313,11 @@
                         <div class="tab-pane fade" id="favourites" role="tabpanel" aria-labelledby="favourites-tab">
                             <h4 class="font-weight-bold mt-0 mb-4">Yêu thích</h4>
                             <div class="row" id="loadFavouries">
-                                
+
                             </div>
                         </div>
                     </div>
-                    
+
                 </div>
             </div>
 
@@ -457,7 +489,7 @@
     <!-- Dropzone-->
     <script src="js/dropzone.min.js"></script>
     <!-- Ajax -->
-    
+
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
     <script>
         $(document).ready(function() {
@@ -693,7 +725,7 @@
                 url: "/api/favorite/search",
                 success: function(data) {
                     let list = data.data.productList;
-                    
+
                     for (var i = 0; i < list.length; i++) {
                         let image = (list[i].image ? list[i].image : "image/list/1.png");
                         document.getElementById('loadFavouries').innerHTML += `<div class="col-sm-3 mb-4 pb-2">
@@ -740,38 +772,35 @@
                 }
             })
         }
-        
-        function loadDataBuyed(){
+
+        function loadDataBuyed() {
             var userId = localStorage.getItem('userId').replaceAll('"', '');
             $.ajax({
-                url:"/api/bill/listOrderForUser",
-                type:"GET",
-                data:{
-                    user_id : userId
+                url: "/api/bill/listOrderForUser",
+                type: "GET",
+                data: {
+                    user_id: userId
                 }
-            }).then(function(data){
+            }).then(function(data) {
                 var billTEmp = data.data.listBillTotal;
             console.log(billTEmp);  
             for(var i = 0 ; i < billTEmp.length ; i++){
                 var checkStatus = billTEmp[i].bill.status==1 ? '<input type="button" class="btn btn-success" style="float:right" data-toggle="modal" data-target="#deleteBill" data-id =" '+ billTEmp[i].bill.id+' " onclick="deletebill.call(this)"  value="Xóa">' :
                 billTEmp[i].bill.status==2 ? '<input type="button" class="btn btn-danger"  style="float:right" data-toggle="modal" data-target="#successBill" data-id =" '+ billTEmp[i].bill.id+' " onclick="successbill.call(this)" value="Nhận Đơn">': ""
-                
-                
-                
 
-               let productTemp =``
-               for(var j = 0 ; j < billTEmp[i].billList.length ; j++){
-                  productTemp += `<div style="display:flex">
+                    let productTemp = ``
+                    for (var j = 0; j < billTEmp[i].billList.length; j++) {
+                        productTemp += `<div style="display:flex">
 
                   <div >
-                     <p>${billTEmp[i].billList[j].name} X ${billTEmp[i].billList[j].quantity} </p> 
-                     
-                  
+                     <p>${billTEmp[i].billList[j].name} X ${billTEmp[i].billList[j].quantity} </p>
+
+
                      </div>
                     </div>`
-               }
+                    }
 
-                  var Template = `
+                    var Template = `
                   <div class="row">
                      <div class="col-xl-12">
                         <div class="card mb-4 order-list">
@@ -779,9 +808,9 @@
                               <a href="#">
                               </a>
                               <div class="media">
-                                
+
                                  <div class="media-body">
-                                   
+
                                     <h6 class="mb-3"><a href="#">
                                        </a><a href="detail.html" class="text-dark">Đơn ${i+1}
                                        </a>
@@ -804,7 +833,7 @@
                               </div>
                            </div>
                         </div>
-   
+
                      </div>
                   </div>
                   `
@@ -860,6 +889,7 @@
             })
         }
 
+                
     </script>
 </body>
 
