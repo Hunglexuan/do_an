@@ -1,5 +1,11 @@
 import {
-    Role, Users, Feedback, Bill, UserBill, BillProduct, Product,
+    Role,
+    Users,
+    Feedback,
+    Bill,
+    UserBill,
+    BillProduct,
+    Product,
 } from '../core';
 import { Op } from 'sequelize';
 import { checkPassword, hashPassword } from '../../libs/encrypt';
@@ -13,74 +19,31 @@ import { name } from 'ejs';
 class MidFeedback {
 
     async checkPermissionFeedBack(data) {
-        let user = await Users.findOne({
+
+        let user_bill = await UserBill.findOne({
             where: {
-                id: data.user_id,
+                user_id: data.user_id,
+                shop_id: data.shop_id,
                 del: 0
             }
         })
-        if (user) {
-            let user_bill = await UserBill.findOne({
+        if (user_bill) {
+            let bill = await Bill.findOne({
                 where: {
-                    user_id: user.id,
+                    id: user_bill.dataValues.bill_id,
+                    status: 4,
                     del: 0
                 }
             })
-            if (user_bill) {
-
-                let bill = await Bill.findOne({
-                    where: {
-                        id: user_bill.bill_id,
-                        del: 0
-                    }
-                })
-                if (bill) {
-                    let product_bill = await BillProduct.findOne({
-                        where: {
-                            bill_id: bill.id,
-                            del: 0
-                        }
-                    })
-                    if (product_bill) {
-                        let product = await Product.findOne({
-                            where: {
-                                id: product_bill.product_id,
-                                del: 0
-                            }
-                        })
-                        if (product) {
-                            let shop = await Users.findOne({
-                                where: {
-                                    id: product.user_id,
-                                    del: 0
-                                }
-                            })
-                            if (shop.id == data.shop_id) {
-
-                                return true;
-                            }
-                            else {
-                                return false
-                            }
-                        }
-                        else {
-                            return false
-                        }
-                    }
-                    else {
-                        return false
-                    }
-                }
-                else {
-                    return false
-                }
+            console.log(bill);
+            if (bill) {
+                console.log('aaa')
+                return true;
+            } else {
+                return false;
             }
-            else {
-                return false
-            }
-        }
-        else {
-            return false
+        } else {
+            return false;
         }
     }
 
@@ -102,9 +65,11 @@ class MidFeedback {
         const [listFeedback, total] = await Promise.all([
             Feedback.findAll({
                 where: condition,
-                order: [[
-                    "createdAt", "DESC"
-                ]],
+                order: [
+                    [
+                        "createdAt", "DESC"
+                    ]
+                ],
             }),
             Feedback.count({
                 where: condition
@@ -138,7 +103,7 @@ class MidFeedback {
 
             }
         }
-        if(!listFeedback){
+        if (!listFeedback) {
             console.log('MidFeedback-searchFeedback: ErrorCode-142');
         }
         console.log('MidFeedback-searchFeedback: Success');
@@ -180,12 +145,13 @@ class MidFeedback {
             del: 0
         }
         let object = await Feedback.create(dataCreate);
-        if(!object){
+        if (!object) {
             console.log('MidFeedback-createFeedback: ErrorCode-184');
-        }console.log('MidFeedback-createFeedback: Success');
+        }
+        console.log('MidFeedback-createFeedback: Success');
         return object
     }
-   
+
 
 }
 

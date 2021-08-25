@@ -9,7 +9,7 @@
     <meta name="author" content="Askbootstrap">
     <title>FUMK - Online Food Ordering</title>
     <!-- Custom Css -->
-    <!-- <link href="skin/css/styles.css" rel="stylesheet" /> -->
+    <link href="skin/css/styles.css" rel="stylesheet" />
     <!-- Favicon Icon -->
     <link rel="icon" type="image/png" href="image/favicon.png">
     <!-- Bootstrap core CSS-->
@@ -33,6 +33,24 @@
     <link href="skin/font/DoanCSS.css" rel="stylesheet">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        #notifies::-webkit-scrollbar-track {
+            box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            background-color: #F5F5F5;
+        }
+        
+        #notifies::-webkit-scrollbar {
+            width: 12px;
+            background-color: #F5F5F5;
+        }
+        
+        #notifies::-webkit-scrollbar-thumb {
+            border-radius: 10px;
+            box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
+            background-color: #555;
+        }
+    </style>
 </head>
 
 <body>
@@ -73,7 +91,21 @@
                     </li>
                     <li id="checkLogin"></li>
 
+                    <!-- <li class="nav-item dropdown no-arrow mx-1 osahan-list-dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fa fa-bell-o" aria-hidden="true" style="font-size: 20px;"></i>
+                          
+                        </a>
+                        
+                        <div class="dropdown-list dropdown-menu dropdown-menu-right shadow-sm">
+                            <h6 class="dropdown-header">
+                                Thông Báo
+                            </h6>
+                            <div id="notifies" style="height: 240px; overflow: scroll; overflow-x: hidden;">
+                            </div>
 
+                        </div>
+                    </li> -->
                     <li class="nav-item dropdown dropdown-cart">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <i class="icofont-basket"></i> Giỏ Hàng
@@ -82,16 +114,17 @@
                         <div class="dropdown-menu dropdown-cart-top p-0 dropdown-menu-right shadow-sm border-0">
 
                             <div class="dropdown-cart-top-body border-top p-4">
+                                <div class="name-Store"> </div>
                                 <table class="table" id="show-cart">
 
                                 </table>
                             </div>
                             <div class="dropdown-cart-top-footer border-top p-4">
-                                <p class="mb-0 font-weight-bold text-secondary">Tổng Tiền  <span class=" total-cart float-right text-dark"></span></p>
-                                
+                                <p class="mb-0 font-weight-bold text-secondary">Tổng Tiền <span class=" total-cart float-right text-dark"></span></p>
+
                             </div>
                             <div class="dropdown-cart-top-footer border-top p-2">
-                                <a class="btn btn-success btn-block btn-lg" href="/CheckOut"> Thanh Toán</a>
+                                <a class="btn btn-success btn-block btn-lg" onclick="checkCart()"> Thanh Toán</a>
                             </div>
                         </div>
                     </li>
@@ -111,19 +144,13 @@
                     <h4 class="font-weight-bold mt-0 mb-3">Phiếu giảm giá có sẵn</h4>
                 </div>
             </div>
-            <label class="control-label" for="name">
-            <label class="text-info"> Saghir </label>
-            </label>
-            <div class="controls">
-                <a class="btn" href="#" id="edit"> Edit </a>
-            </div>
         </div>
     </section>
     <section class="section pt-5 pb-5 text-center bg-white">
         <div class="container">
             <div class="row">
                 <div class="col-sm-12">
-                    <h5 class="m-0">Điều hành cửa hàng hoặc nhà hàng? <a href="login.html">Làm việc với chúng tôi</a></h5>
+                    <h5 class="m-0">Điều hành cửa hàng hoặc nhà hàng? <a href="/LoginUser" style="color: red !important;">Làm việc với chúng tôi</a></h5>
                 </div>
             </div>
         </div>
@@ -195,19 +222,23 @@
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src="../../customJS/shopDetail.js"></script>
     <script>
-        $('#edit').click(function() {
-            var text = $('.text-info').text();
-            var input = $('<input id="attribute" type="text" value="' + text + '" />')
-            $('.text-info').text('').append(input);
-            input.select();
-
-            input.blur(function() {
-                // var text = $('#attribute').val();
-                // $('#attribute').parent().text(text);
-                // $('#attribute').remove();
-                $('#attribute').replaceWith("<label>" + $('#attribute').val() + "</label>");
-            });
-        });
+        function checkCart() {
+            var text = localStorage.getItem('userId').replaceAll('"', '');
+            if (text == '') {
+                Swal.fire({
+                    type: 'warning',
+                    title: 'Bạn hãy đăng nhập để thanh toán',
+                    // text: 'Your offer is safe 🙂',
+                    showConfirmButton: false,
+                    timer: 2500
+                })
+                window.setTimeout(function() {
+                    window.location.href = '/LoginUser';
+                }, 2500);
+            } else {
+                window.location.href = '/CheckOut';
+            }
+        }
 
         $(document).ready(function() {
             $.ajax({

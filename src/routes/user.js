@@ -12,8 +12,8 @@ routerApp.get('/searchSeller', Response(UserController.searchSeller));
 routerApp.get('/delete', Response(UserController.deleteUser));
 routerApp.get('/enable', Response(UserController.enableUser));
 routerApp.get('/status', Response(UserController.updateStatus));
-routerApp.get('/upRole', isAuth, Response(UserController.upgradeRole));
-routerApp.get('/downRole', isAuth, Response(UserController.downgradeRole));
+routerApp.get('/upRole', Response(UserController.upgradeRole));
+routerApp.get('/downRole', Response(UserController.downgradeRole));
 
 routerApp.post('/create', Response(UserController.createUser));
 routerApp.post('/changePass', Response(UserController.changePass));

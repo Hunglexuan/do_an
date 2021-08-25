@@ -435,11 +435,11 @@ class MidBill {
       let billInprocess = await Bill.findOne({
         where: {
           id: listBill[i].bill_id,
-
           del: 0,
         },
       });
-      if (billInprocess) {
+     
+      if (billInprocess.dataValues.status !== 0) {
         userBill.bill = billInprocess;
         userBill.user = await Users.findOne({
           where: {
@@ -516,7 +516,7 @@ class MidBill {
       let billInprocess = await Bill.findOne({
         where: {
           id: listBill[i].bill_id,
-          status: 2,
+          status: 4,
           del: 0,
         },
       });
@@ -651,33 +651,149 @@ class MidBill {
   }
 
 
+  async listShipForSeller(data) {
+    let listBillTotal = [];
+    let totalBill ={
+        total: 0
+    };
+    let condition = {
+      shop_id: data.shop_id,
+      del: 0,
+    };
+    const [listBill, total] = await Promise.all([
+      UserBill.findAll({
+        where: condition,
+        order: [["createdAt", "DESC"]],
+      }),
+      UserBill.count({
+        where: condition,
+      }),
+    ]);
+    
+    for (let i = 0; i < listBill.length; i++) {
+      let userBill = {
+        user: {},
+        billList: [],
+        shop: {},
+        bill: {},
+        createAt: listBill[i].dataValues.createdAt,
+      };
+      let billInprocess = await Bill.findOne({
+        where: {
+          id: listBill[i].bill_id,
+          status: 2,
+          del: 0,
+        },
+      });
+      
 
+      if (billInprocess) {
+        totalBill.total += billInprocess.dataValues.total_price;
+        userBill.bill = billInprocess;
+        userBill.user = await Users.findOne({
+          where: {
+            id: listBill[i].user_id,
+            del: 0,
+          },
+        });
+
+        userBill.shop = await Users.findOne({
+          where: {
+            id: listBill[i].shop_id,
+            del: 0,
+          },
+        });
+
+        let billList = await BillProduct.findAll({
+          where: {
+            bill_id: listBill[i].bill_id,
+            del: 0,
+          },
+          order: [["createdAt", "DESC"]],
+        });
+
+        for (let j = 0; j < billList.length; j++) {
+          let product = await Product.findOne({
+            where: {
+              id: billList[j].product_id,
+              del: 0,
+            },
+          });
+          let temp = {
+            name: product.dataValues.name,
+          };
+          Object.assign(billList[j].dataValues, temp);
+          userBill.billList.push(billList[j].dataValues);
+        }
+
+        listBillTotal.push(userBill);
+      }
+     
+      
+    }
+    listBillTotal.push(totalBill)
+    return {
+      listBillTotal,
+    };
+  }
   
 
   async acceptBill(data) {
     let objDelete = await Bill.findOne({
       where: {
         id: data.id,
-        status: 1,
         del: 0,
       },
     });
     let dataDelete = {
       status: 2,
     };
-
     objDelete.update(dataDelete);
+    let billProduct = await BillProduct.findAll({
+      where: {
+        bill_id: data.id,
+        del: 0,
+      },
+    })
+    for(let i = 0 ; i <billProduct.length ; i++){
+      let productTemp = await Product.findOne({
+        where: {
+          id: billProduct[i].dataValues.product_id,
+          del: 0,
+        },
+      });
+      
+      let productUpdate = {
+        quantity : productTemp.dataValues.quantity - billProduct[i].dataValues.quantity
+      };
+      productTemp.update(productUpdate);
+    }
   }
   async cancelBill(data) {
+    
     let objDelete = await Bill.findOne({
       where: {
         id: data.id,
-        status: 1,
+        del: 0,
+      },
+    });
+   
+    let dataDelete = {
+      status: 3,
+    };
+
+    objDelete.update(dataDelete);
+  }
+
+  async completeBill(data) {
+    let objDelete = await Bill.findOne({
+      where: {
+        id: data.id,
         del: 0,
       },
     });
     let dataDelete = {
-      status: 3,
+      status: 4,
     };
 
     objDelete.update(dataDelete);
