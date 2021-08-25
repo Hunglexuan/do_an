@@ -679,12 +679,14 @@ class MidBill {
     }
   }
   async cancelBill(data) {
+    
     let objDelete = await Bill.findOne({
       where: {
         id: data.id,
         del: 0,
       },
     });
+   
     let dataDelete = {
       status: 3,
     };
