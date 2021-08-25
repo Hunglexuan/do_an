@@ -1,20 +1,22 @@
+import { Role, Users, Comment, Product } from "../core";
+import { Op } from "sequelize";
+import { checkPassword, hashPassword } from "../../libs/encrypt";
+import { generateToken } from "../../libs/token";
+import { ERROR_MESSAGE } from "../../config/error";
 import {
-    Role,
-    Users,
-    Comment,
-    Product
-} from '../core';
-import { Op } from 'sequelize';
-import { checkPassword, hashPassword } from '../../libs/encrypt';
-import { generateToken } from '../../libs/token';
-import { ERROR_MESSAGE } from '../../config/error';
-import { sendMailActiveOrder, sendMailForgotPassword } from '../../libs/sendmail';
-import { v4 as uuidv4 } from 'uuid';
-import { password } from '../../config/database';
-import { name } from 'ejs';
+  sendMailActiveOrder,
+  sendMailForgotPassword,
+} from "../../libs/sendmail";
+import { v4 as uuidv4 } from "uuid";
+import { password } from "../../config/database";
+import { name } from "ejs";
 
 class MidComment {
     async searchComment(data) {
+        if(!data.id){
+            console.log('MidComment-searchComment: ErrorCode-19');
+            throw new Error(ERROR_MESSAGE.COMMENT.COMMENT_NOT_EXIST);
+        }
         let obj = await Product.findOne({
             where: {
                 id: data.id,
@@ -34,6 +36,7 @@ class MidComment {
                         "createdAt", "DESC"
                     ]
                 ],
+
             }),
             Comment.count({
                 where: condition
@@ -50,118 +53,120 @@ class MidComment {
             total: total || 0
         }
 
-    }
+    
 
-    async notifyCommentUser(data) {
+  }
 
-        let condition = {
-            cmt_id: data.user_id,
-            del: 0
-        }
+  async notifyCommentUser(data) {
+    let listCmtChild = [];
+    let condition = {
+      user_id: data.user_id,
+      del: 0,
+    };
 
-        const [listComment, total] = await Promise.all([
-            Comment.findAll({
-                where: condition,
-                order: [
-                    [
-                        "createdAt", "DESC"
-                    ]
-                ],
+    let listComment = await Comment.findAll({
+      where: condition,
+      order: [["createdAt", "DESC"]],
+    });
 
-            }),
-            Comment.count({
-                where: condition
-            })
-        ])
-        for (let i = 0; i < listComment.length; i++) {
-            let product = await Product.findOne({
-                where: {
-                    id: listComment[i].dataValues.product_id,
-                    del: 0
-                }
-            })
-            let temp = {
-                image: product.dataValues.image,
-                name: product.dataValues.name,
-            };
-            Object.assign(listComment[i].dataValues, temp);
-        }
-        return {
-            listComment,
-            total: total || 0
-        }
+    for (let i = 0; i < listComment.length; i++) {
+      let listCmtTemp = await Comment.findAll({
+        where: {
+          cmt_id: listComment[i].dataValues.id,
+          del: 0,
+        },
+        order: [["createdAt", "DESC"]],
+      });
 
-    }
-    async createComment(data) {
-        if (!data.user_id) {
-            console.log('MidComment-createComment: ERROR-57 ');
-            throw new Error(ERROR_MESSAGE.COMMENT.COMMENT_USER_ID);
-        }
-        if (!data.product_id) {
-            console.log('MidComment-searchComment: ERROR-61 ');
-            throw new Error(ERROR_MESSAGE.COMMENT.COMMNET_SHOP_ID);
-        }
-        if (!data.content) {
-            console.log('MidComment-searchComment: ERROR-65 ');
-            throw new Error(ERROR_MESSAGE.COMMENT.COMMENT_CONTENT);
-        }
-        let dataCreate = {
-            user_id: data.user_id,
-            product_id: data.product_id,
-            content: data.content,
-            cmt_id: data.cmt_id,
-            del: 0
-        }
-        let object = await Comment.create(dataCreate);
-        if (!object) {
-            console.log('MidComment-searchComment: ERROR-77 ');
-        }
-        console.log('MidComment-searchComment: SUCCESS');
-
-        return object
-    }
-    async deleteComment(data) {
-        if (!data.id) {
-            console.log('MidComment-deleteComment: ERROR-84 ');
-            throw new Error(ERROR_MESSAGE.COMMENT.COMMENT_NOT_EXIST);
-        }
-        let objDelete = await Comment.findOne({
+      if (listCmtTemp.length != 0) {
+        for (let j = 0; j < listCmtTemp.length; j++) {
+          let product = await Product.findOne({
             where: {
-                id: data.id,
-                del: 0
-            }
-        })
-        let dataDelete = {
-            del: 1,
-        }
+              id: listCmtTemp[j].dataValues.product_id,
+              del: 0,
+            },
+          });
 
-        objDelete.update(dataDelete)
+          let temp = {
+            image: product.dataValues.image,
+            name: product.dataValues.name,
+          };
+          Object.assign(listCmtTemp[j].dataValues, temp);
+        }
+        listCmtChild.push(listCmtTemp);
+      }
     }
-    async updateComment(data) {
-        if (!data.id) {
-            console.log('MidComment-updateComment: ERROR-101 ');
-            throw new Error(ERROR_MESSAGE.COMMENT.COMMENT_NOT_EXIST);
-        }
-        let objUpdate = await Comment.findOne({
-            where: {
-                id: data.id,
-                del: 0
-            }
-        })
-
-        let dataUpdate = {
-            content: data.content,
-        }
-        let object = await objUpdate.update(dataUpdate)
-        if (!object) {
-            console.log('MidComment-updateComment: ERROR-116 ');
-        }
-        console.log('MidComment-updateComment: SUCCESS ');
-        return object
-
+    return {
+      listCmtChild,
+    };
+  }
+  async createComment(data) {
+    if (!data.user_id) {
+      console.log("MidComment-createComment: ERROR-57 ");
+      throw new Error(ERROR_MESSAGE.COMMENT.COMMENT_USER_ID);
     }
+    if (!data.product_id) {
+      console.log("MidComment-searchComment: ERROR-61 ");
+      throw new Error(ERROR_MESSAGE.COMMENT.COMMNET_SHOP_ID);
+    }
+    if (!data.content) {
+      console.log("MidComment-searchComment: ERROR-65 ");
+      throw new Error(ERROR_MESSAGE.COMMENT.COMMENT_CONTENT);
+    }
+    let dataCreate = {
+      user_id: data.user_id,
+      product_id: data.product_id,
+      content: data.content,
+      cmt_id: data.cmt_id,
+      del: 0,
+    };
+    let object = await Comment.create(dataCreate);
+    if (!object) {
+      console.log("MidComment-searchComment: ERROR-77 ");
+    }
+    console.log("MidComment-searchComment: SUCCESS");
 
+    return object;
+  }
+  async deleteComment(data) {
+    if (!data.id) {
+      console.log("MidComment-deleteComment: ERROR-84 ");
+      throw new Error(ERROR_MESSAGE.COMMENT.COMMENT_NOT_EXIST);
+    }
+    let objDelete = await Comment.findOne({
+      where: {
+        id: data.id,
+        del: 0,
+      },
+    });
+    let dataDelete = {
+      del: 1,
+    };
+
+    objDelete.update(dataDelete);
+  }
+  async updateComment(data) {
+    if (!data.id) {
+      console.log("MidComment-updateComment: ERROR-101 ");
+      throw new Error(ERROR_MESSAGE.COMMENT.COMMENT_NOT_EXIST);
+    }
+    let objUpdate = await Comment.findOne({
+      where: {
+        id: data.id,
+        del: 0,
+      },
+    });
+
+    let dataUpdate = {
+      content: data.content,
+    };
+    let object = await objUpdate.update(dataUpdate);
+    if (!object) {
+      console.log("MidComment-updateComment: ERROR-116 ");
+    }
+    console.log("MidComment-updateComment: SUCCESS ");
+    return object;
+  }
 }
 
-
-export default new MidComment()
+export default new MidComment();

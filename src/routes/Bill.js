@@ -12,9 +12,10 @@ routerApp.get('/listOrderForSeller', Response(BillController.listOrderForSeller)
 routerApp.get('/listOrderForUser', Response(BillController.listOrderForUser));
 routerApp.get('/listSuccessForSeller', Response(BillController.listSuccessForSeller));
 routerApp.get('/listCancelForSeller', Response(BillController.listCancelForSeller));
+routerApp.get('/listShipForSeller', Response(BillController.listShipForSeller));
 routerApp.get('/listCart', Response(BillController.listCart));
 routerApp.get('/cancel', Response(BillController.cancelBill));  // dùng cho cả 2 -- nút cancel
-routerApp.post('/accept', Response(BillController.acceptBill));   // dùng cho seller -- nút accept
+routerApp.get('/accept', Response(BillController.acceptBill));   // dùng cho seller -- nút accept
 routerApp.get('/complete', Response(BillController.completeBill));  // dùng cho user -- nút complete
 
 
