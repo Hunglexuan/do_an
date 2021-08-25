@@ -183,7 +183,7 @@ class MidBill {
           //
 
 
-          
+
           let userBillList = await UserBill.findOne({
             where: {
               bill_id: billTemp.id,
@@ -203,7 +203,7 @@ class MidBill {
           let billUpdate = {
             total_price: 0,
             status: 0,
-            del: 0,
+            del: 1,
           };
 
           await billTemp.update(billUpdate);
@@ -220,6 +220,13 @@ class MidBill {
           for (let k = 0; k < billProductList.length; k++) {
             await billProductList[k].update(dataDelete);
           }
+          let userBillList = await UserBill.findOne({
+            where: {
+              bill_id: billTemp.dataValues.id,
+              del: 0,
+            },
+          });
+          await userBillList.update(dataDelete);
         }
       }
     } else {
