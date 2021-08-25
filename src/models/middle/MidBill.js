@@ -20,67 +20,6 @@ import database, { password } from "../../config/database";
 import { name } from "ejs";
 
 class MidBill {
-  async searchBillUser(data) {
-    let listBillTotal = [];
-    let condition = {
-      del: 0,
-    };
-    const [listBill, total] = await Promise.all([
-      UserBill.findAll({
-        where: condition,
-        order: [["createdAt", "DESC"]],
-      }),
-      UserBill.count({
-        where: condition,
-      }),
-    ]);
-    for (let i = 0; i < listBill.length; i++) {
-      let userBill = {
-        user: {},
-        bill: [],
-        shop: {},
-      };
-      userBill.user = await User.findOne({
-        where: {
-          id: data.user_id,
-          del: 0,
-        },
-      });
-      userBill.shop = await User.findOne({
-        where: {
-          id: data.shop_id,
-          del: 0,
-        },
-      });
-      let bill = await Bill.findOne({
-        where: {
-          id: data.bill_id,
-          del: 0,
-        },
-      });
-      let billList = BillProduct.findAll({
-        where: {
-          bill_id: bill.id,
-        },
-        order: [["createdAt", "DESC"]],
-      });
-      for (let j = 0; j < billList.length; j++) {
-        let bill = await Product.findOne({
-          where: {
-            id: billList[j].product_id,
-            del: 0,
-          },
-        });
-        userBill.bill.push(bill);
-      }
-
-      listBillTotal.push(userBill);
-    }
-
-    return {
-      listBillTotal,
-    };
-  }
 
   async listCart(data) {
     let cart = {
@@ -93,15 +32,17 @@ class MidBill {
       listCart: [],
     };
     let billList = await UserBill.findAll({
+      //tim bill trong db cua user
       where: {
         user_id: data.userID,
         del: 0,
       },
     });
-   
+
 
     let billTemp;
     for (let i = 0; i < billList.length; i++) {
+      //tim trong billist ra bill tam
       billTemp = await Bill.findOne({
         where: {
           id: billList[i].bill_id,
@@ -111,6 +52,7 @@ class MidBill {
       });
     }
     if (billTemp) {
+      //neu co bill tam thi tim ra thong tin cua bill tam
       let shopIDTemp = await UserBill.findOne({
         where: {
           bill_id: billTemp.dataValues.id,
@@ -120,12 +62,14 @@ class MidBill {
 
       cart.shopID = shopIDTemp.dataValues.shop_id;
       let listTemp = await BillProduct.findAll({
+        //tim ra tat ca id cua san pham trong bill tam
         where: {
           bill_id: billTemp.dataValues.id,
           del: 0,
         },
       });
       for (let j = 0; j < listTemp.length; j++) {
+        //tim ra thong tin cua tat ca san pham tu id san pham
         let objProduct = await Product.findOne({
           where: {
             id: listTemp[j].product_id,
@@ -161,6 +105,7 @@ class MidBill {
     let voucherID = null;
 
     if (data.cart.billID) {
+      //neu co bill id thi bill truyen ve la bill tam
       let billTemp = await Bill.findOne({
         where: {
           id: data.cart.billID,
@@ -168,80 +113,114 @@ class MidBill {
           del: 0,
         },
       });
-
+      // check neu bill tam day co ton tai 
       if (billTemp) {
-        for (let i = 0; i < data.cart.listCart.length; i++) {
-          totalPrice +=
-            data.cart.listCart[i].price * data.cart.listCart[i].count;
-        }
+        // check xem listCart tra ve rong hay khong
+        if (data.cart.listCart && data.cart.listCart.length != 0) {
+          // neu listCart tra ve khac rong thi cap nhat lai cac truong trong DB 
+          for (let i = 0; i < data.cart.listCart.length; i++) {
+            totalPrice +=
+              data.cart.listCart[i].price * data.cart.listCart[i].count;
+          }
 
-        if (data.cart.voucherCode) {
-          let voucher = await Voucher.findOne({
+          if (data.cart.voucherCode) {
+            let voucher = await Voucher.findOne({
+              where: {
+                code: data.cart.voucherCode,
+                del: 0,
+              },
+            });
+            if (voucher) {
+              totalPrice -= voucher.dataValues.discount_number;
+              voucherID = voucher.dataValues.id;
+            }
+          }
+
+          let statusTemp = data.cart.status;
+          let addressTemp = data.cart.address;
+
+          let billUpdate = {
+            total_price: totalPrice,
+            status: statusTemp,
+            address: addressTemp,
+            voucher_id: voucherID,
+            del: 0,
+          };
+
+          await billTemp.update(billUpdate);
+          // cap nhat lai bang BillProduct
+          let billProductList = await BillProduct.findAll({
             where: {
-              code: data.cart.voucherCode,
+              bill_id: billTemp.dataValues.id,
               del: 0,
             },
           });
-          if (voucher) {
-            totalPrice -= voucher.dataValues.discount_number;
-            voucherID = voucher.dataValues.id;
+
+          // Xoa het cac mat hang cu trong gio hang di
+          let dataDelete = {
+            del: 1,
+          };
+          for (let k = 0; k < billProductList.length; k++) {
+            await billProductList[k].update(dataDelete);
           }
-        }
+          //
 
-        let statusTemp = data.cart.status;
-        let addressTemp = data.cart.address;
+          // Sau khi xoa het cac mat hang cu, tao lai cac mat hang moi trong db
+          for (let l = 0; l < data.cart.listCart.length; l++) {
+            totalPrice +=
+              data.cart.listCart[l].price * data.cart.listCart[l].count;
+            let billProduct = {
+              quantity: data.cart.listCart[l].count,
+              unit_price: data.cart.listCart[l].price,
+              total_price:
+                data.cart.listCart[l].count * data.cart.listCart[l].price,
+              product_id: data.cart.listCart[l].id,
+              bill_id: data.cart.billID,
+              del: 0,
+            };
+            await BillProduct.create(billProduct);
+          }
+          //
 
-        let billUpdate = {
-          total_price: totalPrice,
-          status: statusTemp,
-          address: addressTemp,
-          voucher_id: voucherID,
-          del: 0,
-        };
 
-        await billTemp.update(billUpdate);
-        let billProductList = await BillProduct.findAll({
-          where: {
-            bill_id: billTemp.dataValues.id,
-            del: 0,
-          },
-        });
-
-        let dataDelete = {
-          del: 1,
-        };
-        for (let k = 0; k < billProductList.length; k++) {
-          await billProductList[k].update(dataDelete);
-        }
-
-        for (let l = 0; l < data.cart.listCart.length; l++) {
-          totalPrice +=
-            data.cart.listCart[l].price * data.cart.listCart[l].count;
-          let billProduct = {
-            quantity: data.cart.listCart[l].count,
-            unit_price: data.cart.listCart[l].price,
-            total_price:
-              data.cart.listCart[l].count * data.cart.listCart[l].price,
-            product_id: data.cart.listCart[l].id,
-            bill_id: data.cart.billID,
+          
+          let userBillList = await UserBill.findOne({
+            where: {
+              bill_id: billTemp.id,
+              del: 0,
+            },
+          });
+          let userBill = {
+            bill_id: billTemp.id,
+            shop_id: data.cart.shopID,
             del: 0,
           };
-          await BillProduct.create(billProduct);
+          await userBillList.update(userBill);
+          return data.cart.billID; //them moi
         }
-
-        let userBillList = await UserBill.findOne({
-          where: {
-            bill_id: billTemp.id,
+        else {
+        
+          let billUpdate = {
+            total_price: 0,
+            status: 0,
             del: 0,
-          },
-        });
-        let userBill = {
-          bill_id: billTemp.id,
-          shop_id: data.cart.shopID,
-          del: 0,
-        };
-        await userBillList.update(userBill);
-        return data.cart.billID; //them moi
+          };
+
+          await billTemp.update(billUpdate);
+          let billProductList = await BillProduct.findAll({
+            where: {
+              bill_id: billTemp.dataValues.id,
+              del: 0,
+            },
+          });
+
+          let dataDelete = {
+            del: 1,
+          };
+          for (let k = 0; k < billProductList.length; k++) {
+            await billProductList[k].update(dataDelete);
+          }
+        }
       }
     } else {
       console.log("vaoooo2");
@@ -438,7 +417,7 @@ class MidBill {
           del: 0,
         },
       });
-     
+
       if (billInprocess.dataValues.status !== 0) {
         userBill.bill = billInprocess;
         userBill.user = await Users.findOne({
@@ -488,8 +467,8 @@ class MidBill {
 
   async listSuccessForSeller(data) {
     let listBillTotal = [];
-    let totalBill ={
-        total: 0
+    let totalBill = {
+      total: 0
     };
     let condition = {
       shop_id: data.shop_id,
@@ -504,7 +483,7 @@ class MidBill {
         where: condition,
       }),
     ]);
-    
+
     for (let i = 0; i < listBill.length; i++) {
       let userBill = {
         user: {},
@@ -520,7 +499,7 @@ class MidBill {
           del: 0,
         },
       });
-      
+
 
       if (billInprocess) {
         totalBill.total += billInprocess.dataValues.total_price;
@@ -563,15 +542,15 @@ class MidBill {
 
         listBillTotal.push(userBill);
       }
-     
-      
+
+
     }
     listBillTotal.push(totalBill)
     return {
       listBillTotal,
     };
   }
-  
+
   async listCancelForSeller(data) {
     let listBillTotal = [];
     let condition = {
@@ -653,8 +632,8 @@ class MidBill {
 
   async listShipForSeller(data) {
     let listBillTotal = [];
-    let totalBill ={
-        total: 0
+    let totalBill = {
+      total: 0
     };
     let condition = {
       shop_id: data.shop_id,
@@ -669,7 +648,7 @@ class MidBill {
         where: condition,
       }),
     ]);
-    
+
     for (let i = 0; i < listBill.length; i++) {
       let userBill = {
         user: {},
@@ -685,7 +664,7 @@ class MidBill {
           del: 0,
         },
       });
-      
+
 
       if (billInprocess) {
         totalBill.total += billInprocess.dataValues.total_price;
@@ -728,15 +707,15 @@ class MidBill {
 
         listBillTotal.push(userBill);
       }
-     
-      
+
+
     }
     listBillTotal.push(totalBill)
     return {
       listBillTotal,
     };
   }
-  
+
 
   async acceptBill(data) {
     let objDelete = await Bill.findOne({
@@ -755,29 +734,29 @@ class MidBill {
         del: 0,
       },
     })
-    for(let i = 0 ; i <billProduct.length ; i++){
+    for (let i = 0; i < billProduct.length; i++) {
       let productTemp = await Product.findOne({
         where: {
           id: billProduct[i].dataValues.product_id,
           del: 0,
         },
       });
-      
+
       let productUpdate = {
-        quantity : productTemp.dataValues.quantity - billProduct[i].dataValues.quantity
+        quantity: productTemp.dataValues.quantity - billProduct[i].dataValues.quantity
       };
       productTemp.update(productUpdate);
     }
   }
   async cancelBill(data) {
-    
+
     let objDelete = await Bill.findOne({
       where: {
         id: data.id,
         del: 0,
       },
     });
-   
+
     let dataDelete = {
       status: 3,
     };
