@@ -277,35 +277,36 @@
         // }
 
         $('#signUp').click(function() {
-            register();
-            $.ajax({
-                url: '/api/user/create',
-                method: 'POST',
-                data: {
-                    name: $('#userName').val().trim(),
-                    password: $('#inputPassword').val().trim(),
-                    email: $('#inputEmail').val().trim(),
-                    address: $('#inputAddress').val().trim(),
-                    dob: $('#date').val().trim(),
-                    phone: $('#inputPhone').val().trim(),
-                },
-            }).then(function(data) {
-                if (data.message == 'SUCCESS') {
+            if (!register()) {
+                $.ajax({
+                    url: '/api/user/create',
+                    method: 'POST',
+                    data: {
+                        name: $('#userName').val().trim(),
+                        password: $('#inputPassword').val().trim(),
+                        email: $('#inputEmail').val().trim(),
+                        address: $('#inputAddress').val().trim(),
+                        dob: $('#date').val().trim(),
+                        phone: $('#inputPhone').val().trim(),
+                    },
+                }).then(function(data) {
+                    if (data.message == 'SUCCESS') {
 
-                    Swal.fire({
-                        type: 'success',
-                        title: 'Đăng ký thành công 🎊',
-                        // text: 'Your offer is safe 🙂',
-                        showConfirmButton: false,
-                        timer: 2000
-                    })
-                    window.setTimeout(function() {
-                        window.location.href = '/LoginUser';
-                    }, 2000);
-                } else {
+                        Swal.fire({
+                            type: 'success',
+                            title: 'Đăng ký thành công 🎊',
+                            // text: 'Your offer is safe 🙂',
+                            showConfirmButton: false,
+                            timer: 2000
+                        })
+                        window.setTimeout(function() {
+                            window.location.href = '/LoginUser';
+                        }, 2000);
+                    } else {
 
-                }
-            })
+                    }
+                })
+            }
         })
     </script>
 </body>

@@ -148,7 +148,40 @@
                             </form>
                         </div>
                     </div>
+                </div>
 
+                <div class="modal fade modal" id="deleteComment" tabindex="-1" role="dialog" aria-labelledby="edit_bookingLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content" style="margin-top: 300px; margin-left: 260px; width: 50%;">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="edit_bookingLabel">Xóa bình luận</h5>
+                            </div>
+                            <div class="modal-body">
+                                <div class="row">
+                                    <div class="col-xl-12">
+                                        <div class="card-body">
+                                            <h5 style="text-align: center;">Bạn có chắc chắn muốn xóa bình luận này không?</h5>
+                                            <div class="card-body">
+                                                <div class="ml-5" style="margin-left: 338px !important; display: flex;">
+                                                    <div>
+                                                        <div>
+                                                            <input type="button" class="btn btn-outline-danger" id="deletePro" value="Xóa" data-dismiss="modal" onclick="deletepro()"></input>
+                                                        </div>
+                                                    </div>
+                                                    <div class="ml-2">
+                                                        <div>
+                                                            <input type="button" class="btn btn-outline-secondary" id="cancelDelete" value="Hủy" data-dismiss="modal"></input>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
 
@@ -219,7 +252,7 @@
 
                                 </div>
                                 <div class="dropdown-cart-top-footer border-top p-2">
-                                    <a class="btn btn-success btn-block btn-lg" href="/CheckOut"> Checkout</a>
+                                    <a class="btn btn-success btn-block btn-lg" onclick="checkCart()"> Thanh Toán</a>
                                 </div>
                             </div>
                         </li>
@@ -256,8 +289,6 @@
                                         <div class="filters-card-body card-shop-filters" id="searchCategory">
                                             <form class="filters-search mb-3">
                                                 <div class="form-group">
-                                                    <i class="icofont-search"></i>
-                                                    <input type="text" class="form-control" placeholder="Bắt đầu nhập để tìm kiếm ...">
                                                 </div>
                                             </form>
                                             <!-- <div class="custom-control">
@@ -391,7 +422,23 @@
             renderPage();
         });
 
-
+        function checkCart() {
+            var text = localStorage.getItem('userId').replaceAll('"', '');
+            if (text == '') {
+                Swal.fire({
+                    type: 'warning',
+                    title: 'Bạn hãy đăng nhập để thanh toán',
+                    // text: 'Your offer is safe 🙂',
+                    showConfirmButton: false,
+                    timer: 2500
+                })
+                window.setTimeout(function() {
+                    window.location.href = '/LoginUser';
+                }, 2500);
+            } else {
+                window.location.href = '/CheckOut';
+            }
+        }
 
 
         function loadcategory() {
@@ -437,7 +484,6 @@
                     var listdata = data.data.listProduct;
                     var totalProduct = data.data.total;
                     let length = Math.ceil(listdata.length / perPage);
-                    console.log(listdata);
                     getLength(length);
                     renderPage(length);
 
@@ -499,8 +545,6 @@
                 },
                 url: "/api/product/getById",
                 success: function(data) {
-
-                    console.log(data)
 
                     var listdata = data.data.product;
                     var listdataUser = data.data.user;
@@ -622,39 +666,7 @@
                         let image = (data.data.avatar ? data.data.avatar : 'image/list/1.png');
                         if (user_id == text) {
 
-                            document.getElementById('listComment').innerHTML += `<div class="reviews-members pt-2" style="display: flex;"><div class="media" style="width: 100%"> <a href="#"><img alt="Generic placeholder image" src="` + image + `" class="mr-3 rounded-pill" style="width: 40px; height: 40px;"></a> <div class="media-body" style="border: 1px solid #f0f2f5; border-radius: 10px; background-color: #f0f2f5; padding: 10px"> <div class="reviews-members-header" style="display: flex; justify-content: space-between;"> <h6 class="mb-1"><a class="text-black" href="#">` + data.data.name + `</a></h6> <p class="text-gray" style="margin-bottom: 5px;">` + dob + `</p> </div> <div class="reviews-members-body"> <p id="text-content` + i + `">` + content + `</p> </div> </div> </div> <div class="nav-item dropdown no-arrow mx-1 osahan-list-dropdown"> <a class="nav-link dropdown-toggle rounded-pill" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="padding: 0 !important; width: 40px;height: 40px;margin-top: 18px; margin-left: 0px;"> <i class="fa fa-ellipsis-h" style="font-size: large;margin-left: 13px; margin-top: 12px; color: #606770 !important;"></i> </a> <div class="dropdown-menu dropdown-menu-right shadow-sm border-0"> <button class="dropdown-item" onclick="editReply(` + "'" + i + "','" + id + "','" + content + "'" + `)"> Sửa </button> <button class="dropdown-item" data-toggle="modal" data-target="#deleteComment` + i + `"> Xóa </button> </div> </div> </div> </div> <div style="margin-left: 67px"> <label class="reply" style="border-radius: 6px" onclick="Reply(` + "'" + i + "','" + data.data.name + "','" + id + "'" + `)"> Phản hồi </label> . <label style="border-radius: 6px;" onclick="showReply(` + "'" + i + "'" + `)"> Hiển thị phản hồi </label> <div id="showReply` + i + `"> </div> <div class="reply-section" id="replytoreply` + i + `"> </div></div> </div> </div> <div class="modal fade modal" id="deleteComment` + i + `" tabindex="-1" role="dialog" aria-labelledby="edit_bookingLabel" aria-hidden="true" style="z-index: 10000;">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content" style="margin-top: 300px; margin-left: 260px; width: 50%;">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="edit_bookingLabel">Xóa bình luận</h5>
-                            </div>
-                            <div class="modal-body">
-                                <div class="row">
-                                    <div class="col-xl-12">
-                                        <div class="card-body">
-                                            <h5 style="text-align: center;">Bạn có chắc chắn muốn xóa bình luận này không?</h5>
-                                            <div class="card-body">
-                                                <div class="ml-5" style="margin-left: 338px !important; display: flex;">
-                                                    <div>
-                                                        <div>
-                                                            <input type="button" class="btn btn-outline-danger" id="deletePro" value="Xóa" onclick="deletepro(` + "'" + id + "'" + `)"></input>
-                                                        </div>
-                                                    </div>
-                                                    <div class="ml-2">
-                                                        <div>
-                                                            <input type="button" class="btn btn-outline-secondary" id="cancelDelete" value="Hủy" onclick="closeModal()"></input>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>`;
+                            document.getElementById('listComment').innerHTML += `<div class="reviews-members pt-2" style="display: flex;"><div class="media" style="width: 100%"> <a href="#"><img alt="Generic placeholder image" src="` + image + `" class="mr-3 rounded-pill" style="width: 40px; height: 40px;"></a> <div class="media-body" style="border: 1px solid #f0f2f5; border-radius: 10px; background-color: #f0f2f5; padding: 10px"> <div class="reviews-members-header" style="display: flex; justify-content: space-between;"> <h6 class="mb-1"><a class="text-black" href="#">` + data.data.name + `</a></h6> <p class="text-gray" style="margin-bottom: 5px;">` + dob + `</p> </div> <div class="reviews-members-body"> <p id="text-content` + i + `">` + content + `</p> </div> </div> </div> <div class="nav-item dropdown no-arrow mx-1 osahan-list-dropdown"> <a class="nav-link dropdown-toggle rounded-pill" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="padding: 0 !important; width: 40px;height: 40px;margin-top: 18px; margin-left: 0px;"> <i class="fa fa-ellipsis-h" style="font-size: large;margin-left: 13px; margin-top: 12px; color: #606770 !important;"></i> </a> <div class="dropdown-menu dropdown-menu-right shadow-sm border-0"> <button class="dropdown-item" onclick="editReply(` + "'" + i + "','" + id + "','" + content + "'" + `)"> Sửa </button> <button class="dropdown-item" data-toggle="modal" data-target="#deleteComment" onclick="deleteComments(` + "'" + id + "'" + `)"> Xóa </button> </div> </div> </div> </div> <div style="margin-left: 67px"> <label class="reply" style="border-radius: 6px" onclick="Reply(` + "'" + i + "','" + data.data.name + "','" + id + "'" + `)"> Phản hồi </label> . <label style="border-radius: 6px;" onclick="showReply(` + "'" + i + "'" + `)"> Hiển thị phản hồi </label> <div id="showReply` + i + `"> </div> <div class="reply-section" id="replytoreply` + i + `"> </div></div> </div> </div> `;
 
                             ReplyToReply(i, list, id);
                         } else {
@@ -709,39 +721,7 @@
                             let image = (data.data.avatar ? data.data.avatar : 'image/list/1.png');
                             // document.getElementById("showReply" + i).innerHTML += '<div class="reviews-members pt-2"><div class="media"> <a href="#"><img alt="Generic placeholder image" src="' + data.data.avatar + '" class="mr-1 rounded-pill" style="width: 30px; height: 30px;"></a> <div class="media-body"> <div class="reviews-members-header" style="display: flex; justify-content: space-between;"> <h6 class="mb-1"><a class="text-black" href="#">' + data.data.name + '</a></h6> <p class="text-gray" style="margin-bottom: 5px;">' + dob_reply + '</p> </div> <div class="reviews-members-body"> <p>' + content_reply + '</p> </div> </div> </div> </div> <div> <button class="btn-danger" style="border-radius: 6px"> Reply </button> <button class=" btn-danger" style="border-radius: 6px;" onclick="viewReply()"> View Reply </button> </div> </div>';
                             if (user_id_reply == text) {
-                                document.getElementById("showReply" + i).innerHTML += `<div class="reviews-members pt-2" style="display: flex;"><div class="media" style="width: 100%"> <a href="#"><img alt="Generic placeholder image" src="` + image + `" class="mr-3 rounded-pill" style="width: 40px; height: 40px;"></a> <div class="media-body" style="border: 1px solid #f0f2f5; border-radius: 10px; background-color: #f0f2f5; padding: 10px"> <div class="reviews-members-header" style="display: flex; justify-content: space-between;"> <h6 class="mb-1"><a class="text-black" href="#">` + data.data.name + `</a></h6> <p class="text-gray" style="margin-bottom: 5px;">` + dob_reply + `</p> </div> <div class="reviews-members-body"> <p id="textEditReplyToReply` + j + `">` + content_reply + `</p>  </div> </div> </div> <div class="nav-item dropdown no-arrow mx-1 osahan-list-dropdown"> <a class="nav-link dropdown-toggle rounded-pill" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="padding: 0 !important; width: 40px;height: 40px;margin-top: 18px; margin-left: 0px;"> <i class="fa fa-ellipsis-h" style="font-size: large;margin-left: 13px; margin-top: 12px; color: #606770 !important;"></i> </a> <div class="dropdown-menu dropdown-menu-right shadow-sm border-0"> <button class="dropdown-item" onclick="editReplyToReply(` + "'" + j + "','" + id_reply + "'" + `)"> Sửa </button> <button class="dropdown-item" data-toggle="modal" data-target="#deleteProduct` + j + `"> Xóa </button> </div> </div> </div> </div> <div style="margin-left: 67px"> <label class="reply" style="border-radius: 6px" onclick="Reply(` + "'" + i + "','" + data.data.name + "','" + id + "'" + `)"> Phản hồi </label> <div id="showReply` + j + `"> </div> <div class="reply-section" id="replytoreply` + j + `"> </div></div> </div> </div> <div class="modal fade" id="deleteProduct` + j + `" tabindex="-1" role="dialog" aria-labelledby="edit_bookingLabel" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content" style="margin-top: 300px; margin-left: 260px; width: 50%;">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="edit_bookingLabel">Xóa bình luận</h5>
-                            </div>
-                            <div class="modal-body">
-                                <div class="row">
-                                    <div class="col-xl-12">
-                                        <div class="card-body">
-                                            <h5 style="text-align: center;">Bạn có chắc chắn muốn xóa bình luận này không?</h5>
-                                            <div class="card-body">
-                                                <div class="ml-5" style="margin-left: 338px !important; display: flex;">
-                                                    <div>
-                                                        <div>
-                                                            <input type="button" class="btn btn-outline-danger" id="deletePro" value="Xóa" onclick="deletepro(` + "'" + id_reply + "'" + `)"></input>
-                                                        </div>
-                                                    </div>
-                                                    <div class="ml-2">
-                                                        <div>
-                                                            <input type="button" class="btn btn-outline-secondary" id="cancelDelete" value="Hủy" data-dismiss="modal"></input>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>`;
+                                document.getElementById("showReply" + i).innerHTML += `<div class="reviews-members pt-2" style="display: flex;"><div class="media" style="width: 100%"> <a href="#"><img alt="Generic placeholder image" src="` + image + `" class="mr-3 rounded-pill" style="width: 40px; height: 40px;"></a> <div class="media-body" style="border: 1px solid #f0f2f5; border-radius: 10px; background-color: #f0f2f5; padding: 10px"> <div class="reviews-members-header" style="display: flex; justify-content: space-between;"> <h6 class="mb-1"><a class="text-black" href="#">` + data.data.name + `</a></h6> <p class="text-gray" style="margin-bottom: 5px;">` + dob_reply + `</p> </div> <div class="reviews-members-body"> <p id="textEditReplyToReply` + j + `">` + content_reply + `</p>  </div> </div> </div> <div class="nav-item dropdown no-arrow mx-1 osahan-list-dropdown"> <a class="nav-link dropdown-toggle rounded-pill" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="padding: 0 !important; width: 40px;height: 40px;margin-top: 18px; margin-left: 0px;"> <i class="fa fa-ellipsis-h" style="font-size: large;margin-left: 13px; margin-top: 12px; color: #606770 !important;"></i> </a> <div class="dropdown-menu dropdown-menu-right shadow-sm border-0"> <button class="dropdown-item" onclick="editReplyToReply(` + "'" + j + "','" + id_reply + "'" + `)"> Sửa </button> <button class="dropdown-item" data-toggle="modal" data-target="#deleteComment" onclick="deleteComments(` + "'" + id_reply + "'" + `)"> Xóa </button> </div> </div> </div> </div> <div style="margin-left: 67px"> <label class="reply" style="border-radius: 6px" onclick="Reply(` + "'" + i + "','" + data.data.name + "','" + id + "'" + `)"> Phản hồi </label> <div id="showReply` + j + `"> </div> <div class="reply-section" id="replytoreply` + j + `"> </div></div> </div> </div> `;
                             } else {
                                 document.getElementById("showReply" + i).innerHTML += `<div class="reviews-members pt-2" style="display: flex;"><div class="media" style="width: 100%"> <a href="#"><img alt="Generic placeholder image" src="` + image + `" class="mr-3 rounded-pill" style="width: 40px; height: 40px;"></a> <div class="media-body" style="border: 1px solid #f0f2f5; border-radius: 10px; background-color: #f0f2f5; padding: 10px"> <div class="reviews-members-header" style="display: flex; justify-content: space-between;"> <h6 class="mb-1"><a class="text-black" href="#">` + data.data.name + `</a></h6> <p class="text-gray" style="margin-bottom: 5px;">` + dob_reply + `</p> </div> <div class="reviews-members-body"> <p>` + content_reply + `</p>  </div> </div> </div> </div> <div style="margin-left: 67px"> <label class="reply" style="border-radius: 6px" onclick="Reply(` + "'" + i + "','" + data.data.name + "','" + id + "'" + `)"> Phản hồi </label>  <div id="showReply` + i + `"> </div> <div class="reply-section" id="replytoreply` + j + `"> </div></div> </div> </div>`;
                             }
@@ -754,17 +734,20 @@
         }
 
         // Close modal on button click
-        function closeModal() {
-            $("#deleteComment").style.display = 'none';
+        // function closeModal() {
+        //     $("#deleteComment").style.display = 'none';
+        // }
+
+        function deleteComments(id) {
+            localStorage.setItem('deleteComments', JSON.stringify(id));
         }
 
-
-        function deletepro(idReply) { //Xoa reply
-            console.log(idReply);
+        function deletepro() { //Xoa reply
+            var idUser = localStorage.getItem('deleteComments').replaceAll('"', '');
             $.ajax({
                 type: "GET",
                 data: {
-                    id: idReply
+                    id: idUser
                 },
                 url: "/api/comment/delete",
                 success: function(data) {

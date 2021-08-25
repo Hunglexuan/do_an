@@ -53,7 +53,7 @@ class MidComment {
     }
 
     async notifyCommentUser(data) {
-       
+
         let condition = {
             cmt_id: data.user_id,
             del: 0
@@ -73,7 +73,7 @@ class MidComment {
                 where: condition
             })
         ])
-        for(let i = 0 ; i < listComment.length ; i++ ){
+        for (let i = 0; i < listComment.length; i++) {
             let product = await Product.findOne({
                 where: {
                     id: listComment[i].dataValues.product_id,
@@ -83,7 +83,7 @@ class MidComment {
             let temp = {
                 image: product.dataValues.image,
                 name: product.dataValues.name,
-              };
+            };
             Object.assign(listComment[i].dataValues, temp);
         }
         return {

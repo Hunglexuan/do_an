@@ -115,17 +115,17 @@
 
                                 <div class="dropdown-cart-top-body border-top p-4">
                                     <div class="name-Store"> </div>
-                                    
+
                                     <table class=" table" id="show-cart">
 
                                     </table>
                                 </div>
                                 <div class="dropdown-cart-top-footer border-top p-4">
-                                    <p class="mb-0 font-weight-bold text-secondary">Tổng Tiền  <span class="total-cart float-right text-dark"></span></p>
-                                    
+                                    <p class="mb-0 font-weight-bold text-secondary">Tổng Tiền <span class="total-cart float-right text-dark"></span></p>
+
                                 </div>
                                 <div class="dropdown-cart-top-footer border-top p-2">
-                                    <a class="btn btn-success btn-block btn-lg" href="/CheckOut"> Checkout</a>
+                                    <a class="btn btn-success btn-block btn-lg" onclick="checkCart()"> Thanh Toán</a>
                                 </div>
                             </div>
                         </li>
@@ -161,6 +161,27 @@
                      </button>
                         </div> -->
                     </div>
+                    <div class="col-md-12 text-center load-more" id="pagingWeb">
+                        <nav aria-label="Page navigation example">
+                            <ul class="pagination" style="justify-content: center;">
+                                <li class="page-item" id="btn_privious">
+                                    <a class="page-link" href="#" aria-label="Previous">
+                                        <span aria-hidden="true">&laquo;</span>
+                                        <span class="sr-only">Previous</span>
+                                    </a>
+                                </li>
+                                <div class="number_page" id="number_page" style="display: flex;">
+                                </div>
+
+                                <li class="page-item" id="btn_next">
+                                    <a class="page-link" href="#" aria-label="Next">
+                                        <span aria-hidden="true">&raquo;</span>
+                                        <span class="sr-only">Next</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
                     <div id="findShop"></div>
                 </div>
             </div>
@@ -190,6 +211,24 @@
             loaddata()
         });
 
+        function checkCart() {
+            var text = localStorage.getItem('userId').replaceAll('"', '');
+            if (text == '') {
+                Swal.fire({
+                    type: 'warning',
+                    title: 'Bạn hãy đăng nhập để thanh toán',
+                    // text: 'Your offer is safe 🙂',
+                    showConfirmButton: false,
+                    timer: 2500
+                })
+                window.setTimeout(function() {
+                    window.location.href = '/LoginUser';
+                }, 2500);
+            } else {
+                window.location.href = '/CheckOut';
+            }
+        }
+
         $('#productSearch').keyup(function(event) {
             event.preventDefault();
             localStorage.setItem('searchListSeller', JSON.stringify(document.getElementById('productSearch').value));
@@ -209,23 +248,29 @@
                 success: function(data) {
                     var listdata = data.data.listUsers;
 
+                    let length = Math.ceil(listdata.length / perPage);
+                    console.log(length);
+                    getLength(length);
+                    renderPage(length);
                     document.getElementById('productSearch').value = text;
-
+                    (listdata.length > 8) ? document.getElementById("pagingWeb").hidden = false: document.getElementById("pagingWeb").hidden = true;
                     if (listdata != '') {
                         document.getElementById('findShop').innerHTML = '';
                         document.getElementById('allseller').innerHTML = '';
                         for (var i = 0; i < listdata.length; i++) {
-                            document.getElementById('allseller').innerHTML += '<div class="col-md-3 col-sm-6 mb-4 pb-2" onclick="goTo(' + "'" + listdata[i].id + "'" + ')">' +
-                                '<div class="list-card bg-white overflow-hidden h-100 position-relative item-content" style="border: 1px solid #d7d7d7; border-radius: 6px;">' +
-                                '<div class="list-card-image">' +
-                                '<div class="member-plan position-absolute"></div>' +
-                                '<a> <img src="image/list/1.png" class="img-fluid item-img"> </a>' +
-                                '</div>' +
-                                '<div class="p-3 position-relative">' +
-                                '<div class="list-card-body">' +
-                                '<h6 class="mb-1"><a class="text-black">' + listdata[i].name + '</a></h6>' +
-                                '<p class="text-gray mb-3">' + listdata[i].address + '</p>' +
-                                '</div></div> </div> </div>';
+                            if (i >= start && i < end) {
+                                document.getElementById('allseller').innerHTML += '<div class="col-md-3 col-sm-6 mb-4 pb-2" onclick="goTo(' + "'" + listdata[i].id + "'" + ')">' +
+                                    '<div class="list-card bg-white overflow-hidden h-100 position-relative item-content" style="border: 1px solid #d7d7d7; border-radius: 6px;">' +
+                                    '<div class="list-card-image">' +
+                                    '<div class="member-plan position-absolute"></div>' +
+                                    '<a> <img src="image/list/1.png" class="img-fluid item-img"> </a>' +
+                                    '</div>' +
+                                    '<div class="p-3 position-relative">' +
+                                    '<div class="list-card-body">' +
+                                    '<h6 class="mb-1"><a class="text-black">' + listdata[i].name + '</a></h6>' +
+                                    '<p class="text-gray mb-3">' + listdata[i].address + '</p>' +
+                                    '</div></div> </div> </div>';
+                            }
                         }
                     } else {
                         document.getElementById('allseller').innerHTML = '';
@@ -239,6 +284,59 @@
         function goTo(shopIdClick) {
             let id = "?id=" + shopIdClick;
             window.location.href = '/ShopDetail' + id;
+        }
+
+        let perPage = 8;
+        let currentPage = 1;
+        let start = 0;
+        let end = perPage;
+        const btnnext = document.querySelector('#btn_next');
+        const btnprivious = document.querySelector('#btn_privious');
+        let totalPage;
+
+        function renderPage(lengths) {
+            let html = '';
+            for (let i = 1; i <= lengths; i++) {
+                html += `<li class="page-item pagess"><a class="page-link" href="#">${i}</a></li>`;
+            }
+            document.getElementById('number_page').innerHTML = html;
+
+            const currentPages = document.querySelectorAll('.number_page li');
+            for (let i = 0; i < currentPages.length; i++) {
+                currentPages[i].addEventListener('click', () => {
+                    let value = i + 1;
+                    currentPage = value;
+                    currentPagess(currentPage);
+                    loaddata();
+                })
+            }
+        }
+
+        function currentPagess(currentPage) {
+            start = (currentPage - 1) * perPage;
+            end = currentPage * perPage;
+        }
+
+        function getLength(length) {
+            totalPage = length;
+
+            btnnext.addEventListener('click', () => {
+                currentPage++;
+                if (currentPage > totalPage) {
+                    currentPage = totalPage;
+                }
+                currentPagess(currentPage);
+                loaddata();
+            })
+
+            btnprivious.addEventListener('click', () => {
+                currentPage--;
+                if (currentPage <= 1) {
+                    currentPage = 1;
+                }
+                currentPagess(currentPage);
+                loaddata();
+            })
         }
     </script>
 
