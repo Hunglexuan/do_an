@@ -253,7 +253,7 @@
                     getLength(length);
                     renderPage(length);
                     document.getElementById('productSearch').value = text;
-                    (listdata.length > 2) ? document.getElementById("pagingWeb").hidden = false: document.getElementById("pagingWeb").hidden = true;
+                    (listdata.length > 8) ? document.getElementById("pagingWeb").hidden = false: document.getElementById("pagingWeb").hidden = true;
                     if (listdata != '') {
                         document.getElementById('findShop').innerHTML = '';
                         document.getElementById('allseller').innerHTML = '';
@@ -286,7 +286,7 @@
             window.location.href = '/ShopDetail' + id;
         }
 
-        let perPage = 2;
+        let perPage = 8;
         let currentPage = 1;
         let start = 0;
         let end = perPage;
