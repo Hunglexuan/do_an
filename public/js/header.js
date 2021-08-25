@@ -1,6 +1,6 @@
 $(document).ready(function() {
     loadName();
-    loadnotify();
+    // loadnotify();
 });
 
 function getCookie(cname) {
