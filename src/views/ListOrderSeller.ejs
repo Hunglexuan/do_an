@@ -316,9 +316,9 @@
          }).then(function(data){
            
             var billTEmp = data.data.listBillTotal;
-            console.log(billTEmp);  
+            
             for(var i = 0 ; i < billTEmp.length ; i++){
-
+               
                let productTemp =``
                for(var j = 0 ; j < billTEmp[i].billList.length ; j++){
                   productTemp += `<div style="display:flex">
@@ -355,7 +355,7 @@
                                     <hr>
                                     <div class="float-right">
                                        
-                                       <a   data-toggle="modal" data-target="#acceptBill"  onClick=acceptFunc.call(this,"${billTEmp[i].bill.id}") class="btn btn-sm btn-success"><i class="feather-check-circle"></i>
+                                       <a   data-toggle="modal" data-target="#acceptBill"  onClick=acceptFunc.call(this,"${billTEmp[i].bill.id}",${billTEmp[i].billList}) class="btn btn-sm btn-success"><i class="feather-check-circle"></i>
                                           Chấp Thuận</a>
                                       
                                        <a   data-toggle="modal" data-target="#deleteBill "  onClick=delFunc.call(this,"${billTEmp[i].bill.id}") class="btn btn-sm btn-danger"><i class="feather-trash"></i> Hủy</a>
@@ -383,8 +383,9 @@
          window.location.reload()
       }
 
-      function acceptFunc(id){
+      function acceptFunc(id,billList){
          localStorage.setItem("billIdAcc",JSON.stringify(id));
+         console.log(billList);
       }
 
       function delFunc(id){
