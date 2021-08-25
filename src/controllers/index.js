@@ -7,8 +7,7 @@ export { default as RoleController }
 from './RoleController';
 export { default as BillController }
 from './BillController';
-export { default as BillProductController }
-from './BillProductController';
+
 export { default as CategoryController }
 from './CategoryController';
 export { default as CommentController }

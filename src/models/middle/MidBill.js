@@ -183,7 +183,7 @@ class MidBill {
           //
 
 
-
+          // Update lai bang UserBill id cua shop moi (neu co)
           let userBillList = await UserBill.findOne({
             where: {
               bill_id: billTemp.id,
@@ -198,8 +198,11 @@ class MidBill {
           await userBillList.update(userBill);
           return data.cart.billID; //them moi
         }
+        ////
+
+        // Neu listCart truyen ve rong hoac k co du lieu, se xoa luon tat ca thong tin bill va cac bang lien quan trong DB
         else {
-        
+
           let billUpdate = {
             total_price: 0,
             status: 0,
@@ -228,8 +231,11 @@ class MidBill {
           });
           await userBillList.update(dataDelete);
         }
+        /////
       }
-    } else {
+    }
+    // Neu truyen ve 1 bill moi hoan toan, se tao bill moi hoan toan
+    else {
       console.log("vaoooo2");
 
       for (let i = 0; i < data.cart.listCart.length; i++) {
@@ -284,43 +290,14 @@ class MidBill {
     }
   }
 
-  async deleteBill(data) {
-    let objDelete = await Bill.findOne({
-      where: {
-        id: data.id,
-        del: 0,
-      },
-    });
-    let dataDelete = {
-      del: 1,
-    };
 
-    objDelete.update(dataDelete);
-  }
-  async updateBill(data) {
-    if (!data.id) {
-      throw new Error(ERROR_MESSAGE.BILL.BILL_NOT_EXIST);
-    }
-    let objUpdate = await Bill.findOne({
-      where: {
-        id: data.id,
-        del: 0,
-      },
-    });
-
-    let dataUpdate = {
-      total_price: 1,
-      del: 0,
-    };
-
-    return await objUpdate.update(dataUpdate);
-  }
   async listOrderForSeller(data) {
     let listBillTotal = [];
     let condition = {
       shop_id: data.shop_id,
       del: 0,
     };
+    // tim ra tat ca bill co id cua shop day
     const [listBill, total] = await Promise.all([
       UserBill.findAll({
         where: condition,
@@ -331,6 +308,7 @@ class MidBill {
       }),
     ]);
 
+    
     for (let i = 0; i < listBill.length; i++) {
       let userBill = {
         user: {},
@@ -339,6 +317,7 @@ class MidBill {
         bill: {},
         createAt: listBill[i].dataValues.createdAt,
       };
+      // loc bill ra va chi lay nhung bill dang gui
       let billInprocess = await Bill.findOne({
         where: {
           id: listBill[i].bill_id,
@@ -346,6 +325,9 @@ class MidBill {
           del: 0,
         },
       });
+      //
+
+      // tim thong tin san pham, thong tin shop , thong tin ng dung tra ve cho FE
       if (billInprocess) {
         userBill.bill = billInprocess;
         userBill.user = await Users.findOne({
@@ -386,6 +368,7 @@ class MidBill {
 
         listBillTotal.push(userBill);
       }
+      //
     }
 
     return {
@@ -400,6 +383,7 @@ class MidBill {
       user_id: data.user_id,
       del: 0,
     };
+    //tim ra tat ca cac don User da dat
     const [listBill, total] = await Promise.all([
       UserBill.findAll({
         where: condition,
@@ -410,6 +394,7 @@ class MidBill {
       }),
     ]);
 
+    
     for (let i = 0; i < listBill.length; i++) {
       let userBill = {
         user: {},
@@ -425,6 +410,7 @@ class MidBill {
         },
       });
 
+      //loc bill tru nhung bill tam
       if (billInprocess.dataValues.status !== 0) {
         userBill.bill = billInprocess;
         userBill.user = await Users.findOne({
@@ -465,6 +451,7 @@ class MidBill {
 
         listBillTotal.push(userBill);
       }
+      //
     }
 
     return {
@@ -481,6 +468,7 @@ class MidBill {
       shop_id: data.shop_id,
       del: 0,
     };
+    //tim tat ca don cua shop
     const [listBill, total] = await Promise.all([
       UserBill.findAll({
         where: condition,
@@ -499,6 +487,7 @@ class MidBill {
         bill: {},
         createAt: listBill[i].dataValues.createdAt,
       };
+      // loc ra nhung bill da hoan thanh
       let billInprocess = await Bill.findOne({
         where: {
           id: listBill[i].bill_id,
@@ -506,8 +495,8 @@ class MidBill {
           del: 0,
         },
       });
-
-
+//
+      //tim thong tin nhung bill da hoan thanh 
       if (billInprocess) {
         totalBill.total += billInprocess.dataValues.total_price;
         userBill.bill = billInprocess;
@@ -550,9 +539,9 @@ class MidBill {
         listBillTotal.push(userBill);
       }
 
-
     }
     listBillTotal.push(totalBill)
+    //
     return {
       listBillTotal,
     };
@@ -564,6 +553,7 @@ class MidBill {
       shop_id: data.shop_id,
       del: 0,
     };
+    // tim tat ca ca don cua shop
     const [listBill, total] = await Promise.all([
       UserBill.findAll({
         where: condition,
@@ -573,7 +563,7 @@ class MidBill {
         where: condition,
       }),
     ]);
-
+    
     for (let i = 0; i < listBill.length; i++) {
       let userBill = {
         user: {},
@@ -582,6 +572,8 @@ class MidBill {
         bill: {},
         createAt: listBill[i].dataValues.createdAt,
       };
+
+      // tim ra nhung don da huy cua shop 
       let billInprocess = await Bill.findOne({
         where: {
           id: listBill[i].bill_id,
@@ -630,7 +622,7 @@ class MidBill {
         listBillTotal.push(userBill);
       }
     }
-
+//
     return {
       listBillTotal,
     };
@@ -646,6 +638,7 @@ class MidBill {
       shop_id: data.shop_id,
       del: 0,
     };
+    //tim tat ca don cua shop
     const [listBill, total] = await Promise.all([
       UserBill.findAll({
         where: condition,
@@ -664,6 +657,7 @@ class MidBill {
         bill: {},
         createAt: listBill[i].dataValues.createdAt,
       };
+      // loc ra nhung bill dang ship
       let billInprocess = await Bill.findOne({
         where: {
           id: listBill[i].bill_id,
@@ -718,6 +712,7 @@ class MidBill {
 
     }
     listBillTotal.push(totalBill)
+    //
     return {
       listBillTotal,
     };
@@ -725,12 +720,16 @@ class MidBill {
 
 
   async acceptBill(data) {
+    //tim bill trong Db
     let objDelete = await Bill.findOne({
       where: {
         id: data.id,
         del: 0,
       },
     });
+    //
+
+    // Update trang thai bill thanh da chap nhan ship
     let dataDelete = {
       status: 2,
     };
@@ -741,6 +740,8 @@ class MidBill {
         del: 0,
       },
     })
+    //
+    //tru so san pham nguoi dung da dat vao tong so san pham co cua shop
     for (let i = 0; i < billProduct.length; i++) {
       let productTemp = await Product.findOne({
         where: {
@@ -754,16 +755,20 @@ class MidBill {
       };
       productTemp.update(productUpdate);
     }
+    //
   }
-  async cancelBill(data) {
 
+
+
+  async cancelBill(data) {
+    //tim bill
     let objDelete = await Bill.findOne({
       where: {
         id: data.id,
         del: 0,
       },
     });
-
+// update trang thai thanh huy don hang
     let dataDelete = {
       status: 3,
     };
@@ -772,12 +777,14 @@ class MidBill {
   }
 
   async completeBill(data) {
+    //tim don
     let objDelete = await Bill.findOne({
       where: {
         id: data.id,
         del: 0,
       },
     });
+    //update trang thai thanh da hoan thanh
     let dataDelete = {
       status: 4,
     };

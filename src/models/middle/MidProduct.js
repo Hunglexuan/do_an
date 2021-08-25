@@ -179,7 +179,7 @@ class MidProduct {
         let condition = {
             del: 0
         }
-
+        //tra ra 6 san pham moi nhat
         return Product.findAll({
             where: condition,
             order: [
@@ -195,7 +195,7 @@ class MidProduct {
         let condition = {
             del: 0
         }
-
+        //tra ra 6 san pham duoc ng dung mua nhieu
         return Product.findAll({
             where: condition,
             attributes: [
@@ -212,7 +212,7 @@ class MidProduct {
         let condition = {
             del: 0
         }
-
+        //tra ra cac san pham co thoi gian ship ngan nhat
         return Product.findAll({
             where: condition,
             order: [
@@ -229,6 +229,7 @@ class MidProduct {
             del: 0
         }
 
+        //tra ra 6 san pham dang sale cao nhat
         return Product.findAll({
             where: condition,
             order: [
