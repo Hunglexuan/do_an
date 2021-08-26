@@ -112,6 +112,11 @@ app.get('/listOrderSeller', function(req, res) {
 
 });
 
+app.get('/listShipForSeller', function(req, res) {
+    return res.render('listShipForSeller');
+
+});
+
 app.get('/listfeedbackSeller', function(req, res) {
     return res.render('ListFeedbackSeller');
 });
