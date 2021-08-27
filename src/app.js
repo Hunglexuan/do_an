@@ -87,36 +87,31 @@ app.get("/listProductSeller", function(req, res) {
     return res.render("ListProductSeller");
 });
 
-<<
-<< << < HEAD
+
 app.get('/ListAcceptBill', function(req, res) {
     return res.render('ListAcceptBill')
 })
 
 
 app.get('/ListDeleteBill', function(req, res) {
-        return res.render('ListDeleteBill')
-    }) ===
-    === =
-    app.get("/ListAcceptBill", function(req, res) {
-        return res.render("ListAcceptBill");
-    }); >>>
->>> > 44 ab50e96a91392b2bef076373f08f8d5b1a7543
+    return res.render('ListDeleteBill')
+})
+
+app.get("/ListAcceptBill", function(req, res) {
+    return res.render("ListAcceptBill");
+});
 
 app.get("/ListDeleteBill", function(req, res) {
     return res.render("ListDeleteBill");
 });
 
-<<
-<< << < HEAD
+
 app.get('/ListReportBySeller', function(req, res) {
-        return res.render('ListReportBySeller')
-    }) ===
-    === =
-    app.get("/ListReportBySeller", function(req, res) {
-        return res.render("ListReportBySeller");
-    }); >>>
->>> > 44 ab50e96a91392b2bef076373f08f8d5b1a7543
+    return res.render('ListReportBySeller')
+})
+app.get("/ListReportBySeller", function(req, res) {
+    return res.render("ListReportBySeller");
+});
 
 app.get("/listOrderSeller", function(req, res) {
     return res.render("ListOrderSeller");
