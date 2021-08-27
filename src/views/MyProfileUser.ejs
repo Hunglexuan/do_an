@@ -708,10 +708,10 @@
                 type: "POST",
                 data: {
                     userId: userId,
-                    password: $("#confirmpassword").val().trim()
+                    password: $("#Confirm_new_password").val().trim()
                 }
             }).then(function(data) {
-
+                console.log("aaaaa",$("#Confirm_new_password").val().trim());
                 if (data.message == "SUCCESS") {
                     Swal.fire({
                         type: 'success',
