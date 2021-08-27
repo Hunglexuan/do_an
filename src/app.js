@@ -49,6 +49,10 @@ app.get('/404', function(req, res) {
 //     return res.render('index');
 // });
 
+app.get('/NewPassword', function(req, res) {
+    return res.render('NewPassword');
+});
+
 app.get('/Offers', function(req, res) {
     return res.render('Offers');
 });
@@ -93,17 +97,17 @@ app.get('/listProductSeller', function(req, res) {
 
 });
 
-app.get('/ListAcceptBill',function(req,res){
+app.get('/ListAcceptBill', function(req, res) {
     return res.render('ListAcceptBill')
 })
 
 
-app.get('/ListDeleteBill',function(req,res){
+app.get('/ListDeleteBill', function(req, res) {
     return res.render('ListDeleteBill')
 })
 
 
-app.get('/ListReportBySeller',function(req,res){
+app.get('/ListReportBySeller', function(req, res) {
     return res.render('ListReportBySeller')
 })
 
