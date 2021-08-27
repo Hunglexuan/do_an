@@ -1,48 +1,46 @@
-import path from 'path';
-import express from 'express';
-import bodyParser from 'body-parser';
-import cors from 'cors';
-import routes from './routes';
-import useragent from 'express-useragent';
-
-
+import path from "path";
+import express from "express";
+import bodyParser from "body-parser";
+import cors from "cors";
+import routes from "./routes";
+import useragent from "express-useragent";
 const app = express();
 
-app.use(express.urlencoded({ extended: true }))
-app.set('views', path.join(__dirname, '../src/views'));
-app.set('view engine', 'ejs');
-app.disable('x-powered-by');
-app.use(cors({
-    credentials: true,
-    origin: function(origin, callback) {
-        callback(null, true);
-    }
-}));
+app.use(express.urlencoded({ extended: true }));
+app.set("views", path.join(__dirname, "../src/views"));
+app.set("view engine", "ejs");
+app.disable("x-powered-by");
+app.use(
+    cors({
+        credentials: true,
+        origin: function(origin, callback) {
+            callback(null, true);
+        },
+    })
+);
 
-
-
-app.use(express.static(path.join(__dirname, '/../client/public')));
+app.use(express.static(path.join(__dirname, "/../client/public")));
 app.use(useragent.express());
-app.use(bodyParser.urlencoded({
-    limit: '500mb',
-    extended: true
-}));
-app.use(bodyParser.json({ limit: '500mb' }));
+app.use(
+    bodyParser.urlencoded({
+        limit: "500mb",
+        extended: true,
+    })
+);
+app.use(bodyParser.json({ limit: "500mb" }));
 
-app.use(express.static(path.join(__dirname, '../public')))
-app.use(express.static(path.join(__dirname, '../media')))
-
-
+app.use(express.static(path.join(__dirname, "../public")));
+app.use(express.static(path.join(__dirname, "../media")));
 
 // Setup other routes
-app.use('/api', routes);
+app.use("/api", routes);
 
-app.get('/', function(req, res) {
-    return res.render('home');
+app.get("/", function(req, res) {
+    return res.render("home");
 });
 
-app.get('/404', function(req, res) {
-    return res.render('404');
+app.get("/404", function(req, res) {
+    return res.render("404");
 });
 
 // app.get('/index', function(req, res) {
@@ -57,120 +55,127 @@ app.get('/Offers', function(req, res) {
     return res.render('Offers');
 });
 
-app.get('/AllProduct', function(req, res) {
-    return res.render('AllProduct');
+app.get("/AllProduct", function(req, res) {
+    return res.render("AllProduct");
 });
 
-app.get('/AllSeller', function(req, res) {
-    return res.render('AllSeller');
+app.get("/AllSeller", function(req, res) {
+    return res.render("AllSeller");
 });
 
-app.get('/resetPass', function(req, res) {
-    return res.render('password');
+app.get("/resetPass", function(req, res) {
+    return res.render("password");
 });
 
-app.get('/LoginSeller', function(req, res) {
-
-    return res.render('LoginForSeller');
-
-
+app.get("/LoginSeller", function(req, res) {
+    return res.render("LoginForSeller");
 });
 
-app.get('/LoginAdmin', function(req, res) {
-
-    return res.render('LoginForAdmin');
-
-
+app.get("/LoginAdmin", function(req, res) {
+    return res.render("LoginForAdmin");
 });
 
-app.get('/RegisterSeller', function(req, res) {
-    return res.render('register');
+app.get("/RegisterSeller", function(req, res) {
+    return res.render("register");
 });
 
-app.get('/RegisterUser', function(req, res) {
-    return res.render('RegisterUser');
-
+app.get("/RegisterUser", function(req, res) {
+    return res.render("RegisterUser");
 });
 
-app.get('/listProductSeller', function(req, res) {
-    return res.render('ListProductSeller');
-
+app.get("/listProductSeller", function(req, res) {
+    return res.render("ListProductSeller");
 });
 
+<<
+<< << < HEAD
 app.get('/ListAcceptBill', function(req, res) {
     return res.render('ListAcceptBill')
 })
 
 
 app.get('/ListDeleteBill', function(req, res) {
-    return res.render('ListDeleteBill')
-})
+        return res.render('ListDeleteBill')
+    }) ===
+    === =
+    app.get("/ListAcceptBill", function(req, res) {
+        return res.render("ListAcceptBill");
+    }); >>>
+>>> > 44 ab50e96a91392b2bef076373f08f8d5b1a7543
 
+app.get("/ListDeleteBill", function(req, res) {
+    return res.render("ListDeleteBill");
+});
 
+<<
+<< << < HEAD
 app.get('/ListReportBySeller', function(req, res) {
-    return res.render('ListReportBySeller')
-})
+        return res.render('ListReportBySeller')
+    }) ===
+    === =
+    app.get("/ListReportBySeller", function(req, res) {
+        return res.render("ListReportBySeller");
+    }); >>>
+>>> > 44 ab50e96a91392b2bef076373f08f8d5b1a7543
 
-app.get('/listOrderSeller', function(req, res) {
-    return res.render('ListOrderSeller');
-
+app.get("/listOrderSeller", function(req, res) {
+    return res.render("ListOrderSeller");
 });
 
-app.get('/listfeedbackSeller', function(req, res) {
-    return res.render('ListFeedbackSeller');
-});
-app.get('/CheckOut', function(req, res) {
-    return res.render('CheckOut');
+app.get("/listShipForSeller", function(req, res) {
+    return res.render("listShipForSeller");
 });
 
-app.get('/ShopDetail', function(req, res) {
-    return res.render('ShopDetail');
+app.get("/listfeedbackSeller", function(req, res) {
+    return res.render("ListFeedbackSeller");
+});
+app.get("/CheckOut", function(req, res) {
+    return res.render("CheckOut");
 });
 
-app.get('/LoginUser', function(req, res) {
-    return res.render('LoginUser');
+app.get("/ShopDetail", function(req, res) {
+    return res.render("ShopDetail");
 });
 
-app.get('/ForgotPasswordUser', function(req, res) {
-    return res.render('ForgotPasswordUser');
+app.get("/LoginUser", function(req, res) {
+    return res.render("LoginUser");
 });
 
-
-app.get('/MyProfileUser', function(req, res) {
-    return res.render('MyProfileUser');
+app.get("/ForgotPasswordUser", function(req, res) {
+    return res.render("ForgotPasswordUser");
 });
 
-
-
-
-app.get('/ListUsers', function(req, res) {
-    return res.render('ListUsers');
+app.get("/MyProfileUser", function(req, res) {
+    return res.render("MyProfileUser");
 });
 
-app.get('/ListSeller', function(req, res) {
-    return res.render('ListSeller');
+app.get("/ListUsers", function(req, res) {
+    return res.render("ListUsers");
 });
 
-app.get('/AddRole', function(req, res) {
-    return res.render('AddRole');
+app.get("/ListSeller", function(req, res) {
+    return res.render("ListSeller");
 });
 
-app.get('/ListReport', function(req, res) {
-    return res.render('ListReport');
+app.get("/AddRole", function(req, res) {
+    return res.render("AddRole");
 });
 
-app.get('/ListVoucher', function(req, res) {
-    return res.render('ListVoucher');
+app.get("/ListReport", function(req, res) {
+    return res.render("ListReport");
 });
 
-app.get('/SellerShopProfile', function(req, res) {
-    return res.render('SellerShopProfile');
+app.get("/ListVoucher", function(req, res) {
+    return res.render("ListVoucher");
 });
 
-app.get('/admin', function(req, res) {
-    app.use(express.static(path.join(__dirname, '../build')))
-    res.sendFile(path.join(__dirname, '../build', 'index.html'));
+app.get("/SellerShopProfile", function(req, res) {
+    return res.render("SellerShopProfile");
 });
 
+app.get("/admin", function(req, res) {
+    app.use(express.static(path.join(__dirname, "../build")));
+    res.sendFile(path.join(__dirname, "../build", "index.html"));
+});
 
 export default app;

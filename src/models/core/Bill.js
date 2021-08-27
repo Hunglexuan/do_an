@@ -38,7 +38,7 @@ const attributes = {
         allowNull:true,
         defaultValue:null
     },
-    status: { // 0 : tam ,1: gui di ,  2 : chấp nhận , 3 : hủy đơn ;
+    status: { // 0 : tam ,1: gui di ,  2 : chấp nhận , 3 : hủy đơn  ,4 : don da hoan thanh;
         type: DataTypes.TINYINT(1),
         allowNull:true,
         defaultValue:null

@@ -5,8 +5,7 @@ export { default as MidReport }
 from './MidReport';
 export { default as MidBill }
 from './MidBill';
-export { default as MidBillProduct }
-from './MidBillProduct';
+
 export { default as MidCategory }
 from './MidCategory';
 export { default as MidComment }

@@ -58,14 +58,14 @@ export const sendMailActiveOrder = async(data) => {
     if (err) {
       console.log('++++++++++', err)
     }
-    return sendMailWithTemplate(html, customerData.email, 'KickEnglish Kích hoạt key');
+    return sendMailWithTemplate(html, customerData.email, 'Kích hoạt key');
   });
 }
 
 export const sendMailForgotPassword = async(data) => {
 
   let dataEmail = {
-    productName: "KickEnglish",
+    productName: "",
     name: data.name,
     email: data.email,
     hostVerify: data.hostVerify,
@@ -78,7 +78,7 @@ export const sendMailForgotPassword = async(data) => {
     if (err) {
       console.log('++++++++++', err)
     }
-    return sendMailWithTemplate(html, dataEmail.email, 'KickEnglish lấy lại mật khẩu');
+    return sendMailWithTemplate(html, dataEmail.email, ' lấy lại mật khẩu');
   });
 }
 

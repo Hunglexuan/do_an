@@ -10,7 +10,7 @@ import Category from './Category';
 import Comment from './Comment';
 import Feedback from './Feedback';
 import Voucher from './Voucher';
-import BillProduct from './BillProduct';
+
 import Product from './Product';
 import Favorite from './Favorite';
 
@@ -30,7 +30,6 @@ routerApp.use('/category', Category);
 routerApp.use('/comment', Comment);
 routerApp.use('/feedback', Feedback);
 routerApp.use('/voucher', Voucher);
-routerApp.use('/billproduct', BillProduct);
 routerApp.use('/product', Product);
 routerApp.use('/favorite', Favorite);
 
