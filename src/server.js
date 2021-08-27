@@ -43,11 +43,10 @@ app.post("/send", (req, res) => {
 
     //2. You can configure the object however you want
     const mail = {
-      from: "andymuray98@gmail.com",
+      from: "fu.market.2021@gmail.com",
       to: "manhcb10598@gmail.com",
-      subject: "[Yêu Cầu Khách Hàng - TCOM Japan]",
-      text: `Tên công ty: ${data.name} 
-            `,
+      subject: "[Yêu Cầu Đặt Lại Mật Khẩu]",
+      text: `Tên công ty: ${data.name}  `,
     };
 
     //3.

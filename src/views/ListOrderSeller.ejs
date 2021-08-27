@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="en">
 
 <head>
@@ -142,24 +142,24 @@
          <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
             <div class="sb-sidenav-menu">
                <div class="nav">
-                  <div class="sb-sidenav-menu-heading">Danh Mục</div>
+                  <div class="sb-sidenav-menu-heading">Danh Mục</div> 
 
                   
                   <a class="nav-link" href="listOrderSeller">
-                     <div class="sb-nav-link-icon"><i class="far fa-calendar-alt"></i></div>
+                     <div class="sb-nav-link-icon"><i class="fas fa-cart-arrow-down"></i></div>
                      Danh Sách Đặt hàng <span class="badge badge-pill ml-2 badge-primary"></span>
                   </a>
                   <a class="nav-link" href="listShipForSeller">
-                     <div class="sb-nav-link-icon"><i class="far fa-calendar-alt"></i></div>
-                     Danh Sách Giao Hàng <span class="badge badge-pill ml-2 badge-primary"></span>
-                  </a>
+                    <div class="sb-nav-link-icon"><i class="fas fa-shipping-fast"></i></div>
+                    Danh Sách Giao Hàng <span class="badge badge-pill ml-2 badge-primary"></span>
+                 </a>
                   <a class="nav-link" href="ListAcceptBill">
-                     <div class="sb-nav-link-icon"><i class="fas fa-chart-line"></i></div>
+                     <div class="sb-nav-link-icon"><i class="fas fa-check-circle"></i></div>
                      Danh Sách Đơn Hoàn Thành
                   </a>
                  
                   <a class="nav-link" href="ListDeleteBill">
-                     <div class="sb-nav-link-icon"><i class="fas fa-shopping-cart"></i></div>
+                     <div class="sb-nav-link-icon"><i class="fas fa-trash-alt"></i></div>
                      Danh Sách Đơn Hủy
                   </a>
                   <a class="nav-link" href="listProductSeller">
@@ -299,6 +299,7 @@
    <script src="js/dataTables.bootstrap.min.js"></script>
    <script src="js/datatables-demo.js"></script>
    <script src="js/headerSeller.js"></script>
+   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
    <script> 
 
      
@@ -359,7 +360,7 @@
                                     <hr>
                                     <div class="float-right">
                                        
-                                       <a   data-toggle="modal" data-target="#acceptBill"  onClick=acceptFunc.call(this,"${billTEmp[i].bill.id}",${billTEmp[i].billList}) class="btn btn-sm btn-success"><i class="feather-check-circle"></i>
+                                       <a   data-toggle="modal" data-target="#acceptBill"  onClick=acceptFunc.call(this,"${billTEmp[i].bill.id}") class="btn btn-sm btn-success"><i class="feather-check-circle"></i>
                                           Chấp Thuận</a>
                                       
                                        <a   data-toggle="modal" data-target="#deleteBill "  onClick=delFunc.call(this,"${billTEmp[i].bill.id}") class="btn btn-sm btn-danger"><i class="feather-trash"></i> Hủy</a>
@@ -386,9 +387,9 @@
          window.location.reload()
       }
 
-      function acceptFunc(id,billList){
+      function acceptFunc(id){
          localStorage.setItem("billIdAcc",JSON.stringify(id));
-         console.log(billList);
+        
       }
 
       function delFunc(id){
