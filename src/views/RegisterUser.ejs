@@ -20,6 +20,11 @@
     <link href="skin/font/select2.min.css" rel="stylesheet">
     <!-- Custom styles for this template-->
     <link href="skin/font/osahan.css" rel="stylesheet">
+    <style>
+        i:hover {
+            cursor: pointer;
+        }
+    </style>
 </head>
 
 <body class="bg-white">
@@ -40,12 +45,18 @@
                                     </div>
                                     <div class="form-label-group mb-4">
                                         <input type="password" id="inputPassword" class="form-control" placeholder="Mật khẩu">
-                                        <label for="inputPassword">Mật khẩu</label>
+                                        <label for="inputPassword">Mật khẩu<span onclick="hidePassword()" style="float: right;">
+                                            <i class="icofont-eye-blocked" id="hide1" style="font-size: x-large;"></i>
+                                            <i class="icofont-eye-alt" id="hide2" style="font-size: x-large;"></i>
+                                        </span></label>
                                         <span class="form-message text-danger" id="messagePass"></span>
                                     </div>
                                     <div class="form-label-group mb-4">
                                         <input type="password" id="reInputPassword" class="form-control" placeholder="Nhập lại mật khẩu">
-                                        <label for="reInputPassword">Nhập lại mật khẩu</label>
+                                        <label for="reInputPassword">Nhập lại mật khẩu <span onclick="hiddenPassword()" style="float: right;">
+                                            <i class="icofont-eye-blocked" id="hiden1" style="font-size: x-large;"></i>
+                                            <i class="icofont-eye-alt" id="hiden2" style="font-size: x-large;"></i>
+                                        </span></label>
                                         <span class="form-message text-danger" id="messageRePass"></span>
                                     </div>
                                     <div class="form-label-group mb-4">
@@ -93,60 +104,41 @@
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
-    <script type="text/javascript" lang="javascript">
-        // function register() {
-        //     var regEmail = /^\w+@[a-zA-Z]{1,}/i;
-        //     var regPhone = /^\d{11}/i;
+    <script>
+        function hiddenPassword() {
+            var inputPassword = document.getElementById('reInputPassword');
+            var hide = document.getElementById('hiden1');
+            var show = document.getElementById('hiden2');
+
+            if (inputPassword.type === 'password') {
+                inputPassword.type = 'text';
+                hide.style.display = 'block';
+                show.style.display = 'none';
+            } else {
+                inputPassword.type = 'password';
+                hide.style.display = 'none';
+                show.style.display = 'block';
+            }
+        }
+
+        function hidePassword() {
+            var inputPassword = document.getElementById('inputPassword');
+            var hide = document.getElementById('hide1');
+            var show = document.getElementById('hide2');
+
+            if (inputPassword.type === 'password') {
+                inputPassword.type = 'text';
+                hide.style.display = 'block';
+                show.style.display = 'none';
+            } else {
+                inputPassword.type = 'password';
+                hide.style.display = 'none';
+                show.style.display = 'block';
+            }
+        }
 
 
-        //     if ($('userName').val().trim() == "") {
-        //         $('username').setAttribute('class', 'form-control border-danger');
-        //         $('messageName').innerHTML = 'User Name is empty';
-        //     } else {
-        //         $('username').setAttribute('class', 'form-control border-danger');
-        //         $('messageName').innerHTML = '';
-        //     }
 
-        //     if ($('inputPassword').val().trim() == "") {
-        //         $('inputPassword').setAttribute('class', 'form-control border-danger');
-        //         $('messagePass').innerHTML = 'Password is empty';
-        //     } else {
-        //         $('inputPassword').setAttribute('class', 'form-control border-danger');
-        //         $('messagePass').innerHTML = '';
-        //     }
-
-        //     if ($('inputEmail').val().trim().test(email) == false) {
-        //         $('inputEmail').setAttribute('class', 'form-control border-danger');
-        //         $('messagePass').innerHTML = 'Email invalid';
-        //     } else {
-        //         $('inputEmail').setAttribute('class', 'form-control border-danger');
-        //         $('messagePass').innerHTML = '';
-        //     }
-
-        //     if ($('inputAddress').val().trim() == "") {
-        //         $('inputAddress').setAttribute('class', 'form-control border-danger');
-        //         $('messageAddress').innerHTML = 'Address is empty';
-        //     } else {
-        //         $('inputAddress').setAttribute('class', 'form-control border-danger');
-        //         $('messageAddress').innerHTML = '';
-        //     }
-
-        //     if ($('date').val() == "") {
-        //         $('date').setAttribute('class', 'form-control border-danger');
-        //         $('messageDate').innerHTML = 'You have not selected date';
-        //     } else {
-        //         $('date').setAttribute('class', 'form-control border-danger');
-        //         $('messageDate').innerHTML = '';
-        //     }
-
-        //     if ($('inputPhone').val().trim().test(phone) == false) {
-        //         $('inputPhone').setAttribute('class', 'form-control border-danger');
-        //         $('messagePhone').innerHTML = 'invalid Phone';
-        //     } else {
-        //         $('inputPhone').setAttribute('class', 'form-control');
-        //         $('messagePhone').innerHTML = '';
-        //     }
-        // }
         function register() {
             var userName = document.getElementById('userName').value.trim();
             var password = document.getElementById('inputPassword').value.trim();

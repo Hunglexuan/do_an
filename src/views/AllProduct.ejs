@@ -219,12 +219,12 @@
                                     class="badge badge-danger">Mới</span></a>
                         </li>
                         <li id="checkLogin"></li>
-                        <!-- <li class="nav-item dropdown no-arrow mx-1 osahan-list-dropdown">
+                        <li class="nav-item dropdown no-arrow mx-1 osahan-list-dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fa fa-bell-o" aria-hidden="true" style="font-size: 20px;"></i>
-                                
+
                             </a>
-                            
+
                             <div class="dropdown-list dropdown-menu dropdown-menu-right shadow-sm">
                                 <h6 class="dropdown-header">
                                     Thông Báo
@@ -233,7 +233,7 @@
                                 </div>
 
                             </div>
-                        </li> -->
+                        </li>
                         <li class="nav-item dropdown dropdown-cart">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="icofont-basket"></i> Giỏ Hàng
@@ -614,6 +614,7 @@
         }
 
         function showComment() {
+            loadnotify()
             $.ajax({
                 type: "GET",
                 data: {
@@ -624,8 +625,6 @@
 
 
                     let list = data.data.listComment;
-                    console.log('start comment:    ');
-                    console.log(data.data);
                     for (var i = 0; i < list.length; i++) {
 
                         let id = list[i].id;
@@ -685,9 +684,9 @@
         }
 
         function ReplyToReply(i, listReply, id) {
-            console.log(listReply.length)
             for (var j = 0; j < listReply.length; j++) {
                 if (listReply[j].cmt_id == id) {
+                    console.log(j + ' ' + listReply[j].user_id + ' ' + listReply[j].content);
                     let id_reply = listReply[j].id;
                     let content_reply = listReply[j].content;
                     let user_id_reply = listReply[j].user_id;
@@ -718,6 +717,8 @@
                         },
                         url: "/api/user/getbyId",
                         success: function(data) {
+                            console.log('\n');
+                            console.log(j + ' ' + user_id_reply + ' ' + content_reply);
                             let image = (data.data.avatar ? data.data.avatar : 'image/list/1.png');
                             // document.getElementById("showReply" + i).innerHTML += '<div class="reviews-members pt-2"><div class="media"> <a href="#"><img alt="Generic placeholder image" src="' + data.data.avatar + '" class="mr-1 rounded-pill" style="width: 30px; height: 30px;"></a> <div class="media-body"> <div class="reviews-members-header" style="display: flex; justify-content: space-between;"> <h6 class="mb-1"><a class="text-black" href="#">' + data.data.name + '</a></h6> <p class="text-gray" style="margin-bottom: 5px;">' + dob_reply + '</p> </div> <div class="reviews-members-body"> <p>' + content_reply + '</p> </div> </div> </div> </div> <div> <button class="btn-danger" style="border-radius: 6px"> Reply </button> <button class=" btn-danger" style="border-radius: 6px;" onclick="viewReply()"> View Reply </button> </div> </div>';
                             if (user_id_reply == text) {

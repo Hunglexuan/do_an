@@ -1,6 +1,6 @@
 $(document).ready(function() {
     loadName();
-    // loadnotify();
+    loadnotify();
 });
 
 function getCookie(cname) {
@@ -98,39 +98,42 @@ function loadnotify() {
         },
         url: "/api/comment/notify",
         success: function(data) {
-
-            var listdata = data.data.listComment;
+            console.log('data.data.listCmtChild ', data.data.listCmtChild)
+            var listdata = data.data.listCmtChild;
 
             if (listdata == '') {
                 document.getElementById('notifies').innerHTML = '<div style="margin-top: 105px;"><span class="font-weight-bold ml-5">Bạn không có thông báo nào!!!</span></div> ';
             } else {
                 document.getElementById('notifies').innerHTML = '';
-
+                console.log('listdata.length ', listdata.length)
                 for (var i = 0; i < listdata.length; i++) {
-                    let avatar = (listdata[i].avatar ? listdata[i].avatar : 'image/list/1.png');
-                    let d = new Date(listdata[i].createdAt);
-                    let n;
-                    if (d.getUTCDate() < 10) {
-                        n = '0' + d.getUTCDate();
-                    } else {
-                        n = d.getUTCDate();
-                    }
-                    let m;
-                    m = d.getUTCMonth().toLocaleString('en-us', {
-                        month: 'short'
-                    });
-                    let y = d.getUTCFullYear();
-                    let dob = n + ', ' + m + ' ' + y;
+                    for (var j = 0; j < listdata[i].length; j++) {
+                        let image = (listdata[i][j].image ? listdata[i][j].image : 'image/list/1.png');
+                        let d = new Date(listdata[i][j].createdAt);
+                        let n;
+                        if (d.getUTCDate() < 10) {
+                            n = '0' + d.getUTCDate();
+                        } else {
+                            n = d.getUTCDate();
+                        }
+                        let m;
+                        m = d.getUTCMonth().toLocaleString('en-us', {
+                            month: 'short'
+                        });
+                        let y = d.getUTCFullYear();
+                        let dob = n + ', ' + m + ' ' + y;
 
-                    document.getElementById('notifies').innerHTML += `<a class="dropdown-item d-flex align-items-center" href="#">
+                        document.getElementById('notifies').innerHTML += `<a class="dropdown-item d-flex align-items-center" href="#">
                                         <div class="mr-3">
-                                            <img alt="Generic placeholder image" src="` + avatar + `" class="mr-3 rounded-pill" style="width: 40px; height: 40px;">
+                                            <img alt="Generic placeholder image" src="` + image + `" class="mr-3 rounded-pill" style="width: 40px; height: 40px;">
                                         </div>
                                         <div>
                                             <div class="small text-gray-500">` + dob + `</div>
-                                            <span class="font-weight-bold">Bạn đã bình luận vào sản phẩm mỳ: ` + listdata[i].content + `</span>
+                                            <span>Đã có người cũng bình luận về bình luận của bạn trong sản phẩm <b>` + listdata[i][j].name + `</b> là: "` + listdata[i][j].content + `"</span>
                                         </div>
                                     </a>`;
+                    }
+
                 }
             }
         }

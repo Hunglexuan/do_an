@@ -2,338 +2,328 @@
 <html lang="en">
 
 <head>
-   <meta charset="utf-8" />
-   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-   <meta name="description" content="Askbootstrap" />
-   <meta name="author" content="Askbootstrap" />
-   <title>FU Market - Online Food Ordering </title>
-   <!-- Favicon Icon -->
-   <link rel="icon" type="image/png" href="image/favicon.png">
-   <!-- Feather Icon-->
-   <link href="skin/css/feather.css" rel="stylesheet" type="text/css">
-   <!-- Fontawesome Icon-->
-   <link href="skin/font/fontawesome.min.css" rel="stylesheet" type="text/css">
-   <!-- Bootstrap Css -->
-   <link href="skin/bootstrap/bootstrap.min.css" rel="stylesheet">
-   <!-- Custom Css -->
-   <link href="skin/css/styles.css" rel="stylesheet" />
-   <!-- Datatables css -->
-   <link href="skin/bootstrap/dataTables.bootstrap4.min.css" rel="stylesheet">
-   <style>
-      .switch {
-         position: relative;
-         display: inline-block;
-         width: 60px;
-         height: 34px;
-      }
-
-      .switch input {
-         opacity: 0;
-         width: 0;
-         height: 0;
-      }
-
-      .slider {
-         position: absolute;
-         cursor: pointer;
-         top: 0;
-         left: 0;
-         right: 0;
-         bottom: 0;
-         background-color: #ccc;
-         -webkit-transition: .4s;
-         transition: .4s;
-      }
-
-      .slider:before {
-         position: absolute;
-         content: "";
-         height: 26px;
-         width: 26px;
-         left: 4px;
-         bottom: 4px;
-         background-color: white;
-         -webkit-transition: .4s;
-         transition: .4s;
-      }
-
-      input:checked+.slider {
-         background-color: #2196F3;
-      }
-
-      input:focus+.slider {
-         box-shadow: 0 0 1px #2196F3;
-      }
-
-      input:checked+.slider:before {
-         -webkit-transform: translateX(26px);
-         -ms-transform: translateX(26px);
-         transform: translateX(26px);
-      }
-
-      /* Rounded sliders */
-      .slider.round {
-         border-radius: 34px;
-      }
-
-      .slider.round:before {
-         border-radius: 50%;
-      }
-   </style>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="Askbootstrap" />
+    <meta name="author" content="Askbootstrap" />
+    <title>FU Market - Online Food Ordering </title>
+    <!-- Favicon Icon -->
+    <link rel="icon" type="image/png" href="image/favicon.png">
+    <!-- Feather Icon-->
+    <link href="skin/css/feather.css" rel="stylesheet" type="text/css">
+    <!-- Fontawesome Icon-->
+    <link href="skin/font/fontawesome.min.css" rel="stylesheet" type="text/css">
+    <!-- Bootstrap Css -->
+    <link href="skin/bootstrap/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom Css -->
+    <link href="skin/css/styles.css" rel="stylesheet" />
+    <!-- Datatables css -->
+    <link href="skin/bootstrap/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <style>
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 34px;
+        }
+        
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            -webkit-transition: .4s;
+            transition: .4s;
+        }
+        
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            -webkit-transition: .4s;
+            transition: .4s;
+        }
+        
+        input:checked+.slider {
+            background-color: #2196F3;
+        }
+        
+        input:focus+.slider {
+            box-shadow: 0 0 1px #2196F3;
+        }
+        
+        input:checked+.slider:before {
+            -webkit-transform: translateX(26px);
+            -ms-transform: translateX(26px);
+            transform: translateX(26px);
+        }
+        /* Rounded sliders */
+        
+        .slider.round {
+            border-radius: 34px;
+        }
+        
+        .slider.round:before {
+            border-radius: 50%;
+        }
+    </style>
 </head>
 
 <body class="sb-nav-fixed">
-   <nav class="sb-topnav navbar navbar-expand navbar-light bg-white shadow-sm">
-      <a class="navbar-brand" href="DashboardSeller"><img alt="logo" src="image/image0.jpg" width="100px"></a>
-      <!-- Navbar Search-->
-      <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
-         <div class="input-group">
-            <div class="input-group-append">
-               <label id="statusShop" class="mr-2"></label>
-               <label class="switch">
+    <nav class="sb-topnav navbar navbar-expand navbar-light bg-white shadow-sm">
+        <a class="navbar-brand" href="DashboardSeller"><img alt="logo" src="image/image0.jpg" width="100px"></a>
+        <!-- Navbar Search-->
+        <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
+            <div class="input-group">
+                <div class="input-group-append">
+                    <label id="statusShop" class="mr-2"></label>
+                    <label class="switch">
                   <input type="checkbox" id="switchShop" name="swiShop">
                   <span class="slider round"></span>
                </label>
+                </div>
             </div>
-         </div>
-      </form>
-      <!-- Navbar-->
-      <ul class="navbar-nav ml-auto ml-md-0">
-         <li class="nav-item dropdown no-arrow d-sm-none">
-            <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <i class="fas fa-search"></i>
-            </a>
-            <!-- Dropdown - Messages -->
-            <div class="dropdown-menu dropdown-menu-right p-3 shadow-sm animated--grow-in" aria-labelledby="searchDropdown">
-               <form class="form-inline mr-auto w-100 navbar-search">
-                  <div class="input-group">
-                     <input type="text" class="form-control border-0 shadow-none" placeholder="Search people, jobs and more..." aria-label="Search" aria-describedby="basic-addon2">
-                     <div class="input-group-append">
-                        <button class="btn" type="button">
+        </form>
+        <!-- Navbar-->
+        <ul class="navbar-nav ml-auto ml-md-0">
+            <li class="nav-item dropdown no-arrow d-sm-none">
+                <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fas fa-search"></i>
+                </a>
+                <!-- Dropdown - Messages -->
+                <div class="dropdown-menu dropdown-menu-right p-3 shadow-sm animated--grow-in" aria-labelledby="searchDropdown">
+                    <form class="form-inline mr-auto w-100 navbar-search">
+                        <div class="input-group">
+                            <input type="text" class="form-control border-0 shadow-none" placeholder="Search people, jobs and more..." aria-label="Search" aria-describedby="basic-addon2">
+                            <div class="input-group-append">
+                                <button class="btn" type="button">
                         <i class="fas fa-search"></i>
                         </button>
-                     </div>
-                  </div>
-               </form>
-            </div>
-         </li>
-     <!-- //dropdowAlert     -->
-         <!-- <li class="nav-item dropdown no-arrow mx-1 osahan-list-dropdown">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </li>
+            <!-- //dropdowAlert     -->
+            <!-- <li class="nav-item dropdown no-arrow mx-1 osahan-list-dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                <i class="far fa-bell"></i>
-             
+
             </a>
-            
+
             <div class="dropdown-list dropdown-menu dropdown-menu-right shadow-sm">
                <h6 class="dropdown-header">
                   Thông Báo
                </h6>
-               
+
                <a class="dropdown-item text-center small text-gray-500" href="#">Tất Cả Thông Báo</a>
             </div>
          </li> -->
-         <!-- Nav Item - User Information -->
-         <li class="nav-item dropdown" id="nameSeller"></li>
-      </ul>
-   </nav>
-   <div id="layoutSidenav">
-      <div id="layoutSidenav_nav">
-         <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
-            <div class="sb-sidenav-menu">
-               <div class="nav">
-                  <div class="sb-sidenav-menu-heading">Danh Mục</div> 
+            <!-- Nav Item - User Information -->
+            <li class="nav-item dropdown" id="nameSeller"></li>
+        </ul>
+    </nav>
+    <div id="layoutSidenav">
+        <div id="layoutSidenav_nav">
+            <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+                <div class="sb-sidenav-menu">
+                    <div class="nav">
+                        <div class="sb-sidenav-menu-heading">Danh Mục</div>
 
-                  
-                  <a class="nav-link" href="listOrderSeller">
-                     <div class="sb-nav-link-icon"><i class="fas fa-cart-arrow-down"></i></div>
-                     Danh Sách Đặt hàng <span class="badge badge-pill ml-2 badge-primary"></span>
-                  </a>
-                  <a class="nav-link" href="listShipForSeller">
-                    <div class="sb-nav-link-icon"><i class="fas fa-shipping-fast"></i></div>
-                    Danh Sách Giao Hàng <span class="badge badge-pill ml-2 badge-primary"></span>
-                 </a>
-                  <a class="nav-link" href="ListAcceptBill">
-                     <div class="sb-nav-link-icon"><i class="fas fa-check-circle"></i></div>
-                     Danh Sách Đơn Hoàn Thành
-                  </a>
-                 
-                  <a class="nav-link" href="ListDeleteBill">
-                     <div class="sb-nav-link-icon"><i class="fas fa-trash-alt"></i></div>
-                     Danh Sách Đơn Hủy
-                  </a>
-                  <a class="nav-link" href="listProductSeller">
-                     <div class="sb-nav-link-icon"><i class="fas fa-boxes"></i></div>
-                     Quản Lý Sản Phẩm
-                  </a>
-                  <a class="nav-link" href="ListReportBySeller">
-                     <div class="sb-nav-link-icon"><i class="fas fa-file-signature"></i></div>
-                     Dánh sách Báo Cáo
-                  </a>
-               </div>
-            </div>
-         </nav>
-      </div>
-      <div id="layoutSidenav_content">
-         <main>
-            <div class="container-fluid">
-               <h1 class="mt-4">Danh Sách Đặt Hàng</h1>
-               <ol class="breadcrumb mb-4">
-                  
-                  <li class="breadcrumb-item active">Đặt Hàng</li>
-               </ol>
-               <ol>
-                  <a class="btn btn-info" onClick=ReloadFunc.call(this) style="position: relative; "><i class="fas fa-sync-alt"></i>
+
+                        <a class="nav-link" href="listOrderSeller">
+                            <div class="sb-nav-link-icon"><i class="far fa-calendar-alt"></i></div>
+                            Danh Sách Đặt hàng <span class="badge badge-pill ml-2 badge-primary"></span>
+                        </a>
+                        <a class="nav-link" href="listShipForSeller">
+                            <div class="sb-nav-link-icon"><i class="far fa-calendar-alt"></i></div>
+                            Danh Sách Giao Hàng <span class="badge badge-pill ml-2 badge-primary"></span>
+                        </a>
+                        <a class="nav-link" href="ListAcceptBill">
+                            <div class="sb-nav-link-icon"><i class="fas fa-chart-line"></i></div>
+                            Danh Sách Đơn Hoàn Thành
+                        </a>
+
+                        <a class="nav-link" href="ListDeleteBill">
+                            <div class="sb-nav-link-icon"><i class="fas fa-shopping-cart"></i></div>
+                            Danh Sách Đơn Hủy
+                        </a>
+                        <a class="nav-link" href="listProductSeller">
+                            <div class="sb-nav-link-icon"><i class="fas fa-boxes"></i></div>
+                            Quản Lý Sản Phẩm
+                        </a>
+                        <a class="nav-link" href="ListReportBySeller">
+                            <div class="sb-nav-link-icon"><i class="fas fa-file-signature"></i></div>
+                            Dánh sách Báo Cáo
+                        </a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+        <div id="layoutSidenav_content">
+            <main>
+                <div class="container-fluid">
+                    <h1 class="mt-4">Danh Sách Đặt Hàng</h1>
+                    <ol class="breadcrumb mb-4">
+
+                        <li class="breadcrumb-item active">Đặt Hàng</li>
+                    </ol>
+                    <ol>
+                        <a class="btn btn-info" onClick=ReloadFunc.call(this) style="position: relative; "><i class="fas fa-sync-alt"></i>
                      Làm Mới</a>
-               </ol>
-               <div class="show-bill">
-                 
-               </div>
-            </div>
-         </main>
-         
-      </div>
-   </div>
-   <!--Pop up Accept-->
+                    </ol>
+                    <div class="show-bill">
 
-   <div class="modal fade" id="acceptBill" tabindex="-1" role="dialog" aria-labelledby="edit_bookingLabel"
-   aria-hidden="true">
-   <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
-         <div class="modal-header">
-            <h5 class="modal-title" id="edit_bookingLabel">Thông Báo</h5>
-            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    </div>
+                </div>
+            </main>
+
+        </div>
+    </div>
+    <!--Pop up Accept-->
+
+    <div class="modal fade" id="acceptBill" tabindex="-1" role="dialog" aria-labelledby="edit_bookingLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="edit_bookingLabel">Thông Báo</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                <span aria-hidden="true">×</span>
             </button>
-         </div>
-         <div class="modal-body">
-            <div class="row">
-               <div class="col-xl-12">
-                  <div class="card mb-4">
-                     <div class="card-body">
-                        <h5 style="text-align: center;">Bạn có chắc chấp nhận đơn này </h5>
-                        <div class="card-body">
-                           <div class="row ml-5">
-                              <div class="col-md-6">
-                                 <div class="form-group">
-                                    <input type="button" class="btn btn-primary" id="deletePro" value="Đồng Ý"
-                                       onclick="acceptBil()"></input>
-                                 </div>
-                              </div>
-                              <div class="col-md-6">
-                                 <div class="form-group">
-                                    <input type="button" class="btn btn-primary" id="cancelDelete" value="Hủy Bỏ"
-                                       data-dismiss="modal"></input>
-                                 </div>
-                              </div>
-                           </div>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-xl-12">
+                            <div class="card mb-4">
+                                <div class="card-body">
+                                    <h5 style="text-align: center;">Bạn có chắc chấp nhận đơn này </h5>
+                                    <div class="card-body">
+                                        <div class="row ml-5">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <input type="button" class="btn btn-primary" id="deletePro" value="Đồng Ý" onclick="acceptBil()"></input>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <input type="button" class="btn btn-primary" id="cancelDelete" value="Hủy Bỏ" data-dismiss="modal"></input>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                     </div>
-                  </div>
-               </div>
+                    </div>
+                </div>
             </div>
-         </div>
-      </div>
-   </div>
-</div>
+        </div>
+    </div>
 
- <!--Pop up Delete-->
+    <!--Pop up Delete-->
 
- <div class="modal fade" id="deleteBill" tabindex="-1" role="dialog" aria-labelledby="edit_bookingLabel"
- aria-hidden="true">
- <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-       <div class="modal-header">
-          <h5 class="modal-title" id="edit_bookingLabel">Thông Báo</h5>
-          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+    <div class="modal fade" id="deleteBill" tabindex="-1" role="dialog" aria-labelledby="edit_bookingLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="edit_bookingLabel">Thông Báo</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
              <span aria-hidden="true">×</span>
           </button>
-       </div>
-       <div class="modal-body">
-          <div class="row">
-             <div class="col-xl-12">
-                <div class="card mb-4">
-                   <div class="card-body">
-                      <h5 style="text-align: center;">Bạn có chắc chắn hủy đơn này </h5>
-                      <div class="card-body">
-                         <div class="row ml-5">
-                            <div class="col-md-6">
-                               <div class="form-group">
-                                  <input type="button" class="btn btn-primary" id="deletePro" value="Đồng Ý"
-                                     onclick="delBil()"></input>
-                               </div>
-                            </div>
-                            <div class="col-md-6">
-                               <div class="form-group">
-                                  <input type="button" class="btn btn-primary" id="cancelDelete" value="Hủy Bỏ"
-                                     data-dismiss="modal"></input>
-                               </div>
-                            </div>
-                         </div>
-                      </div>
-                   </div>
                 </div>
-             </div>
-          </div>
-       </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-xl-12">
+                            <div class="card mb-4">
+                                <div class="card-body">
+                                    <h5 style="text-align: center;">Bạn có chắc chắn hủy đơn này </h5>
+                                    <div class="card-body">
+                                        <div class="row ml-5">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <input type="button" class="btn btn-primary" id="deletePro" value="Đồng Ý" onclick="delBil()"></input>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <input type="button" class="btn btn-primary" id="cancelDelete" value="Hủy Bỏ" data-dismiss="modal"></input>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
- </div>
-</div>
-  
-   <!-- Jquery -->
-   <script src="js/jquery.min.js"></script>
-   <!-- Fontawesome -->
-   <script src="js/all.min.js"></script>
-   <!-- Bootstrap -->
-   <script src="js/bootstrap.bundle.min.js"></script>
-   <!-- Custom Js -->
-   <!-- <script src="js/scripts.js"></script> -->
-   <!-- Ajax Chart Js -->
-   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
-   <!-- Chart Js -->
-   <!-- <script src="js/chart-area-demo.js"></script>
+
+    <!-- Jquery -->
+    <script src="js/jquery.min.js"></script>
+    <!-- Fontawesome -->
+    <script src="js/all.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <!-- Custom Js -->
+    <!-- <script src="js/scripts.js"></script> -->
+    <!-- Ajax Chart Js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
+    <!-- Chart Js -->
+    <!-- <script src="js/chart-area-demo.js"></script>
    <script src="js/chart-bar-demo.js"></script>
    <script src="js/chart-pie-demo.js"></script> -->
-   <!-- Datatable Js -->
-   <script src="js/jquery.dataTables.min.js"></script>
-   <script src="js/dataTables.bootstrap.min.js"></script>
-   <script src="js/datatables-demo.js"></script>
-   <script src="js/headerSeller.js"></script>
-   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
-   <script> 
+    <!-- Datatable Js -->
+    <script src="js/jquery.dataTables.min.js"></script>
+    <script src="js/dataTables.bootstrap.min.js"></script>
+    <script src="js/datatables-demo.js"></script>
+    <script src="js/headerSeller.js"></script>
+    <script>
+        $(document).ready(function() {
+            loadData()
+        });
 
-     
 
-      $(document).ready(function() {
-         loadData()
-      });
+        // /load data
+        function loadData() {
+            var sellerID = localStorage.getItem("sellerId").replaceAll('"', '');
+            $.ajax({
+                url: 'http://localhost:3999/api/bill/listOrderForSeller',
+                type: "GET",
+                data: {
+                    shop_id: sellerID
+                }
+            }).then(function(data) {
 
-      
-      // /load data
-      function loadData(){
-         var sellerID = localStorage.getItem("sellerId").replaceAll('"', '');
-         $.ajax({
-            url:'http://localhost:3999/api/bill/listOrderForSeller',
-            type:"GET",
-            data:{
-               shop_id:sellerID
-            }
-         }).then(function(data){
-           
-            var billTEmp = data.data.listBillTotal;
-            
-            for(var i = 0 ; i < billTEmp.length ; i++){
-               
-               let productTemp =``
-               for(var j = 0 ; j < billTEmp[i].billList.length ; j++){
-                  productTemp += `<div style="display:flex">
-                     <p>${billTEmp[i].billList[j].name} X ${billTEmp[i].billList[j].quantity} </p>  
-                     
-                  
+                var billTEmp = data.data.listBillTotal;
+
+                for (var i = 0; i < billTEmp.length; i++) {
+
+                    let productTemp = ``
+                    for (var j = 0; j < billTEmp[i].billList.length; j++) {
+                        productTemp += `<div style="display:flex">
+                     <p>${billTEmp[i].billList[j].name} X ${billTEmp[i].billList[j].quantity} </p>
+
+
                      </div>`
-               }
+                    }
 
-                  var Template = `
+                    var Template = `
                   <div class="row">
                      <div class="col-xl-12">
                         <div class="card mb-4 order-list">
@@ -341,9 +331,9 @@
                               <a href="#">
                               </a>
                               <div class="media">
-                                
+
                                  <div class="media-body">
-                                   
+
                                     <h6 class="mb-3"><a href="#">
                                        </a><a href="detail.html" class="text-dark">Đơn ${i+1}
                                        </a>
@@ -362,7 +352,7 @@
                                        
                                        <a   data-toggle="modal" data-target="#acceptBill"  onClick=acceptFunc.call(this,"${billTEmp[i].bill.id}") class="btn btn-sm btn-success"><i class="feather-check-circle"></i>
                                           Chấp Thuận</a>
-                                      
+
                                        <a   data-toggle="modal" data-target="#deleteBill "  onClick=delFunc.call(this,"${billTEmp[i].bill.id}") class="btn btn-sm btn-danger"><i class="feather-trash"></i> Hủy</a>
                                     </div>
                                     <p class="mb-0 text-dark text-dark pt-2"><span class="text-dark font-weight-bold">
@@ -372,7 +362,7 @@
                               </div>
                            </div>
                         </div>
-   
+
                      </div>
                   </div>
                   `
@@ -413,33 +403,33 @@
                         showConfirmButton: false,
                         timer: 2000
                     })
-            }
-            window.location.reload()
-         })
-      }
+                }
+                window.location.reload()
+            })
+        }
 
-      function acceptBil() {
-         var id = localStorage.getItem("billIdAcc").replaceAll('"', '');
-         $.ajax({
-            url:"/api/bill/accept",
-            type:"GET",
-            data:{
-               id:id
-            }
-         }).then(function(data) {
-            if(data.message == "SUCCESS"){
-               Swal.fire({
+        function acceptBil() {
+            var id = localStorage.getItem("billIdAcc").replaceAll('"', '');
+            $.ajax({
+                url: "/api/bill/accept",
+                type: "GET",
+                data: {
+                    id: id
+                }
+            }).then(function(data) {
+                if (data.message == "SUCCESS") {
+                    Swal.fire({
                         type: 'success',
                         title: 'Bạn Đã Chấp Nhận Đơn Thành Công ⚙️',
                         // text: 'Your offer is safe 🙂',
                         showConfirmButton: false,
                         timer: 2000
                     })
-            }
-            window.location.reload()
-         })
-      }
-   </script>
+                }
+                window.location.reload()
+            })
+        }
+    </script>
 </body>
 
 </html>
