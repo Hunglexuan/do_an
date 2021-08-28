@@ -28,6 +28,7 @@ class MidFeedback {
             }
         })
         if (user_bill) {
+            console.log('MidFeedback-checkPermissionFeedback: success');
             let bill = await Bill.findOne({
                 where: {
                     id: user_bill.dataValues.bill_id,
