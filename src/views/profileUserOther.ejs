@@ -54,13 +54,22 @@
 </head>
 
 <body>
+    <!-- Modal -->
+    <!-- Modal -->
+    <!-- <div class="modal fade" id="add-address-modal" tabindex="-1" role="dialog" aria-labelledby="add-address" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+            </div>
+        </div>
+    </div> -->
+    <!-- Modal -->
     <header class="main-header">
         <nav class="navbar navbar-expand-lg navbar-light bg-light osahan-nav shadow-sm ">
             <div class="container">
                 <a class="navbar-brand" href="/"><img alt="logo" style="max-width: 120px;" src="image/logoShop.png"></a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-         </button>
+                    <span class="navbar-toggler-icon"></span>
+                </button>
                 <div class="collapse navbar-collapse" id="navbarNavDropdown">
                     <ul class="navbar-nav ml-auto">
                         <div class="modal fade modal-search show modalsearch" id="modal-search" tabindex="-1" role="dialog">
@@ -81,11 +90,11 @@
                         </div>
                         <li class="nav-item active">
                             <span class="sizeIcon" data-toggle="modal" data-target="#modal-search">
-                            <i class="icofont-search-property nav-link" style="padding-top: 20px !important; cursor: pointer;"></i>
-                        </span>
+                                <i class="icofont-search-property nav-link" style="padding-top: 20px !important; cursor: pointer;"></i>
+                            </span>
                         </li>
                         <li class="nav-item active">
-                            <a class="nav-link" href="/">Trang Chủ<span class="sr-only">(current)</span></a>
+                            <a class="nav-link" href="/">Trang Chủ <span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="Offers"><i class="icofont-sale-discount"></i> Ưu Đãi <span class="badge badge-danger">Mới</span></a>
@@ -115,13 +124,12 @@
 
                                 <div class="dropdown-cart-top-body border-top p-4">
                                     <div class="name-Store"> </div>
-
                                     <table class=" table" id="show-cart">
 
                                     </table>
                                 </div>
                                 <div class="dropdown-cart-top-footer border-top p-4">
-                                    <p class="mb-0 font-weight-bold text-secondary">Tổng Tiền <span class="total-cart float-right text-dark"></span></p>
+                                    <p class="mb-0 font-weight-bold text-secondary">Tổng Giá <span class=" total-cart float-right text-dark"></span></p>
 
                                 </div>
                                 <div class="dropdown-cart-top-footer border-top p-2">
@@ -138,57 +146,85 @@
             </div>
         </nav>
     </header>
+    <section class="section pt-4 pb-4 osahan-account-page" style="padding-left: 150px;">
+        <div class="row" style="padding-top: 70px;">
+            <div class="col-md-9" style="margin-left: 160px;">
+                <div class="osahan-account-page-right shadow-sm bg-white p-4 h-100">
+                    <div class="tab-content" id="myTabContent">
+                        <div class="tab-pane fade show active" id="myPro" role="tabpanel" aria-labelledby="profile-tab">
+                            <div id="nameUserOther">
 
-    <section class="section pb-5 products-listing">
-        <div class="container" style="padding-top: 90px;">
-            <div class="row d-none-m">
-                <!-- <div class="col-md-12">
+                            </div>
 
-                    <h4 class="font-weight-bold mt-0 mb-3">OFFERS <small class="h6 mb-0 ml-2">299 restaurants
-                  </small>
-                    </h4>
-                </div> -->
-            </div>
-            <div class="row">
-                <div class="col-md-12">
-                    <div>
-                        <form class="filters-search mb-3">
-                            <div class="form-group"> <i class="icofont-search"></i> <input type="text" class="form-control" placeholder="Bắt đầu nhập để tìm kiếm ..." id="productSearch"> </div>
-                        </form>
-                    </div>
-                    <div class="row" id="allseller">
-                        <!-- <div class="col-md-12 text-center load-more">
-                            <button class="btn btn-primary" type="button" disabled>
-                        <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
-                        Loading...
-                     </button>
-                        </div> -->
-                    </div>
-                    <div class="col-md-12 text-center load-more" id="pagingWeb">
-                        <nav aria-label="Page navigation example">
-                            <ul class="pagination" style="justify-content: center;">
-                                <li class="page-item" id="btn_privious">
-                                    <a class="page-link" href="#" aria-label="Previous">
-                                        <span aria-hidden="true">&laquo;</span>
-                                        <span class="sr-only">Previous</span>
-                                    </a>
-                                </li>
-                                <div class="number_page" id="number_page" style="display: flex;">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="osahan-user text-center">
+                                        <div class="osahan-user-media">
+                                            <div class="picture-container">
+                                                <div class="picture">
+                                                    <img class="picture-src" id="wizardPicturePreview">
+                                                    <input type="file" class="form-control" id="wizard-picture" name="uploadfile" accept="image/png, image/jpeg"></input>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
 
-                                <li class="page-item" id="btn_next">
-                                    <a class="page-link" href="#" aria-label="Next">
-                                        <span aria-hidden="true">&raquo;</span>
-                                        <span class="sr-only">Next</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </nav>
+                                <div class="col-md-8 add_top_30">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Tên</label>
+                                                <input type="text" class="form-control" id="name" placeholder="Tên của bạn" disabled>
+                                                <span class="form-message text-danger" id="messageName"></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Ngày-tháng-năm sinh</label>
+                                                <input type="date" id="date" class="form-control" disabled>
+                                                <span class="form-message text-danger" id="messageDate"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- /row-->
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Số điện thoại</label>
+                                                <input type="text" class="form-control" id="phone" placeholder="Số điện thoại" disabled>
+                                                <span class="form-message text-danger" id="messagePhone"></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Email</label>
+                                                <input type="email" class="form-control" id="email" placeholder="Email" disabled>
+                                                <span class="form-message text-danger" id="messageEmail"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- /row-->
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label> Địa chỉ </label>
+                                                <textarea style="height:70px;" class="form-control" id="address" placeholder="Địa chỉ" disabled></textarea>
+                                                <span class="form-message text-danger" id="messageAddress"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- /row-->
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div id="findShop"></div>
+
                 </div>
             </div>
-        </div>
+
+
+
         </div>
     </section>
     <section class="section pt-5 pb-5 text-center bg-white">
@@ -250,27 +286,74 @@
         </div>
     </footer>
 
+
+    <!--Pop up delete-->
+
+    <!-- <div class="modal fade" id="deleteBill" tabindex="-1" role="dialog" aria-labelledby="edit_bookingLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+       <div class="modal-content">
+          <div class="modal-header">
+             <h5 class="modal-title" id="edit_bookingLabel">Thông Báo</h5>
+             <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">×</span>
+             </button>
+          </div>
+          <div class="modal-body">
+             <div class="row">
+                <div class="col-xl-12">
+                   <div class="card mb-4">
+                      <div class="card-body">
+                         <h5 style="text-align: center;">Bạn có chắc chắn hủy đơn hàng này không?</h5>
+                         <div class="card-body">
+                            <div class="row ml-5">
+                               <div class="col-md-6">
+                                  <div class="form-group">
+                                     <input type="button" class="btn btn-primary" id="deletePro" value="Đồng Ý"
+                                         onclick="deleteBill()"></input>
+                                  </div>
+                               </div>
+                               <div class="col-md-6">
+                                  <div class="form-group">
+                                     <input type="button" class="btn btn-primary" id="cancelDelete" value="Hủy Bỏ"
+                                        data-dismiss="modal"></input>
+                                  </div>
+                               </div>
+                            </div>
+                         </div>
+                      </div>
+                   </div>
+                </div>
+             </div>
+          </div>
+       </div>
+    </div>
+ </div> -->
+
+
+
+    <!--Pop up success-->
+
+
+
+
     <!-- jQuery -->
-    <script src="js/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- <script src="js/jquery-3.3.1.slim.min.js"></script> -->
     <!-- Bootstrap core JavaScript-->
     <script src="js/bootstrap.bundle.min.js"></script>
     <!-- Select2 JavaScript-->
     <script src="js/select2.min.js"></script>
-    <!-- Owl Carousel -->
-    <script src="js/owl.carousel.js"></script>
     <!-- Custom scripts for all pages-->
     <script src="js/custom.js"></script>
     <script src="js/header.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="../../customJS/shopDetail.js"></script>
+    <!-- Dropzone-->
+    <script src="js/dropzone.min.js"></script>
+    <!-- Ajax -->
 
-
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
     <script>
-        $(document).ready(function() {
-            console.log("object,", sessionStorage.getItem('shoppingCart'));
-            loaddata()
-        });
-
         function checkCart() {
             var text = localStorage.getItem('userId').replaceAll('"', '');
             if (text == '') {
@@ -289,117 +372,65 @@
             }
         }
 
-        $('#productSearch').keyup(function(event) {
-            event.preventDefault();
-            localStorage.setItem('searchListSeller', JSON.stringify(document.getElementById('productSearch').value));
+        $(document).ready(function() {
 
-            loaddata();
+            if (token == '') {
+                window.location.href = "/404";
+            }
+
+            // Prepare the preview for profile picture
+            $("#wizard-picture").change(function() {
+                readURL(this);
+            });
         });
 
-        function loaddata() {
-            var text = localStorage.getItem('searchListSeller').replaceAll('"', '');
+
+        $(document).ready(function() {
+            loadDataProfile();
+        });
+
+        function loadDataProfile() {
+
+            var text = localStorage.getItem('userOther').replaceAll('"', '');
+
             $.ajax({
                 type: "GET",
                 dataType: "json",
                 data: {
-                    name: text
+                    id: text
                 },
-                url: "/api/user/searchSeller",
+                url: "/api/user/getbyId",
                 success: function(data) {
-                    var listdata = data.data.listUsers;
-
-                    let length = Math.ceil(listdata.length / perPage);
-                    console.log(length);
-                    getLength(length);
-                    renderPage(length);
-                    document.getElementById('productSearch').value = text;
-                    (listdata.length > 8) ? document.getElementById("pagingWeb").hidden = false: document.getElementById("pagingWeb").hidden = true;
-                    if (listdata != '') {
-                        document.getElementById('findShop').innerHTML = '';
-                        document.getElementById('allseller').innerHTML = '';
-                        for (var i = 0; i < listdata.length; i++) {
-                            if (i >= start && i < end) {
-                                document.getElementById('allseller').innerHTML += '<div class="col-md-3 col-sm-6 mb-4 pb-2" onclick="goTo(' + "'" + listdata[i].id + "'" + ')">' +
-                                    '<div class="list-card bg-white overflow-hidden h-100 position-relative item-content" style="border: 1px solid #d7d7d7; border-radius: 6px;">' +
-                                    '<div class="list-card-image">' +
-                                    '<div class="member-plan position-absolute"></div>' +
-                                    '<a> <img src="image/list/1.png" class="img-fluid item-img"> </a>' +
-                                    '</div>' +
-                                    '<div class="p-3 position-relative">' +
-                                    '<div class="list-card-body">' +
-                                    '<h6 class="mb-1"><a class="text-black">' + listdata[i].name + '</a></h6>' +
-                                    '<p class="text-gray mb-3">' + listdata[i].address + '</p>' +
-                                    '</div></div> </div> </div>';
-                            }
-                        }
+                    var list = data.data;
+                    document.getElementById('name').value = list.name;
+                    document.getElementById('phone').value = list.phone;
+                    document.getElementById('email').value = list.email;
+                    document.getElementById('address').value = list.address;
+                    var d = new Date(list.dob);
+                    var n;
+                    if (d.getUTCDate() < 10) {
+                        n = '0' + d.getUTCDate();
                     } else {
-                        document.getElementById('allseller').innerHTML = '';
-                        document.getElementById('findShop').innerHTML = '<section class="section pt-5 pb-5 osahan-not-found-page"> <div class="container"> <div class="row"> <div class="col-md-12 text-center pt-5 pb-5"> <img class="img-fluid" src="image/notFind.png" alt="find"> <h1 class="mt-2 mb-2">Không tìm thấy quán</h1> <p>Ồ! Có vẻ như trang bạn đang cố gắng tìm quán. <br>  Vui lòng bắt đầu lại</p> <a class="btn btn-primary btn-lg" href="/">Về trang chủ</a> </div> </div> </div> </section>'
+                        n = d.getUTCDate();
                     }
 
+                    var m;
+                    if (d.getUTCMonth() < 10) {
+                        m = '0' + d.getUTCMonth();
+                    } else {
+                        m = d.getUTCMonth();
+                    }
+
+                    var y = d.getUTCFullYear();
+
+                    var dob = y + '-' + m + '-' + n;
+                    document.getElementById('date').value = dob;
+                    document.getElementById('wizardPicturePreview').src = list.avatar;
+                    document.getElementById('nameUserOther').innerHTML = '<h4 class="font-weight-bold mt-0 mb-4">Thông tin của ' + list.name + '</h4>'
                 }
             });
         }
-
-        function goTo(shopIdClick) {
-            let id = "?id=" + shopIdClick;
-            window.location.href = '/ShopDetail' + id;
-        }
-
-        let perPage = 8;
-        let currentPage = 1;
-        let start = 0;
-        let end = perPage;
-        const btnnext = document.querySelector('#btn_next');
-        const btnprivious = document.querySelector('#btn_privious');
-        let totalPage;
-
-        function renderPage(lengths) {
-            let html = '';
-            for (let i = 1; i <= lengths; i++) {
-                html += `<li class="page-item pagess"><a class="page-link" href="#">${i}</a></li>`;
-            }
-            document.getElementById('number_page').innerHTML = html;
-
-            const currentPages = document.querySelectorAll('.number_page li');
-            for (let i = 0; i < currentPages.length; i++) {
-                currentPages[i].addEventListener('click', () => {
-                    let value = i + 1;
-                    currentPage = value;
-                    currentPagess(currentPage);
-                    loaddata();
-                })
-            }
-        }
-
-        function currentPagess(currentPage) {
-            start = (currentPage - 1) * perPage;
-            end = currentPage * perPage;
-        }
-
-        function getLength(length) {
-            totalPage = length;
-
-            btnnext.addEventListener('click', () => {
-                currentPage++;
-                if (currentPage > totalPage) {
-                    currentPage = totalPage;
-                }
-                currentPagess(currentPage);
-                loaddata();
-            })
-
-            btnprivious.addEventListener('click', () => {
-                currentPage--;
-                if (currentPage <= 1) {
-                    currentPage = 1;
-                }
-                currentPagess(currentPage);
-                loaddata();
-            })
-        }
     </script>
-
 </body>
 
 </html>
