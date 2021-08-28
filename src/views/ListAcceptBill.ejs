@@ -82,6 +82,22 @@
       .slider.round:before {
          border-radius: 50%;
       }
+      #notiForSeller::-webkit-scrollbar-track {
+            box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            background-color: #F5F5F5;
+        }
+        
+        #notiForSeller::-webkit-scrollbar {
+            width: 12px;
+            background-color: #F5F5F5;
+        }
+        
+        #notiForSeller::-webkit-scrollbar-thumb {
+            border-radius: 10px;
+            box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
+            background-color: #555;
+        }
    </style>
 </head>
 
@@ -102,22 +118,20 @@
       </form>
       <!-- Navbar-->
       <ul class="navbar-nav ml-auto ml-md-0">
-         <li class="nav-item dropdown no-arrow d-sm-none">
-            <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <i class="fas fa-search"></i>
+         <!-- //dropdowAlert     -->
+         <li class="nav-item dropdown no-arrow mx-1 osahan-list-dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+               <i class="far fa-bell"></i>
+
             </a>
-            <!-- Dropdown - Messages -->
-            <div class="dropdown-menu dropdown-menu-right p-3 shadow-sm animated--grow-in" aria-labelledby="searchDropdown">
-               <form class="form-inline mr-auto w-100 navbar-search">
-                  <div class="input-group">
-                     <input type="text" class="form-control border-0 shadow-none" placeholder="Search people, jobs and more..." aria-label="Search" aria-describedby="basic-addon2">
-                     <div class="input-group-append">
-                        <button class="btn" type="button">
-                        <i class="fas fa-search"></i>
-                        </button>
-                     </div>
-                  </div>
-               </form>
+
+            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow-sm">
+               <h6 class="dropdown-header">
+                  Thông Báo
+               </h6>
+               <div id="notiForSeller" style="height: 240px; overflow: scroll; overflow-x: hidden;">
+                </div>
+               
             </div>
          </li>
          
@@ -166,15 +180,19 @@
       <div id="layoutSidenav_content">
          <main>
             <div class="container-fluid">
-               <h1 class="mt-4">Danh Sách Đơn Chấp Nhận</h1>
+               <h1 class="mt-4">Danh Sách Đơn Hoàn Thành</h1>
                <ol class="breadcrumb mb-4">
                   
                   <li class="breadcrumb-item active" style="text-align: center;">Doanh Thu Cửa Hàng : <span class="total">  </span></li>
                </ol>
-               <ol>
-                  <a class="btn btn-info" onClick=ReloadFunc.call(this) style="position: relative; "><i class="fas fa-sync-alt"></i>
-                     Làm Mới</a>
-               </ol>
+              
+               <ol class="breadcrumb mb-4  ">
+                     
+                     <div class="justify-content-center">
+                        <label >Từ Ngày : </label> <input type="date" id="dayFrom"  >  <label>Đến Ngày :</label > <input type="date" id="dayTo"  > <input type="submit" onclick=getDate()>
+                     </div>
+                  
+               </ol>   
                <div class="show-bill">
                  
                </div>
@@ -289,22 +307,70 @@
    <script src="js/datatables-demo.js"></script>
    <script src="js/headerSeller.js"></script>
    <script> 
+      var today = new Date();
+      
+      var yesterDay =   today.getFullYear()  +'-'+ '0'+(today.getMonth()+1)+'-'+ (today.getDate()-1) ;
+      var dayNow =   today.getFullYear()  +'-'+ '0'+(today.getMonth()+1)+'-'+ (today.getDate()) ;
+      
 
-     
+      
+      document.getElementById("dayFrom").defaultValue   = yesterDay.toString() 
+      document.getElementById("dayTo").defaultValue   = dayNow.toString() 
+      var dateFrom = new Date($("#dayFrom").val()).toISOString();
+         
+      var dateTo = new Date($("#dayTo").val()).toISOString();
+        
+      var time = dateTo.slice(11,19)
+      console.log(time);
+      time = "23:59:59"
+      console.log(time);
+      var time1 = dateTo.slice(0,11)
+      console.log(time1);
+      var time2 = dateTo.slice(19,24)
+      console.log(time2);
+      dateTo = time1.concat(time.concat(time2))
+      console.log(dateTo);
+      
+      function getDate(){
+         
+        
+         
+         
+         var dateFrom = new Date($("#dayFrom").val()).toISOString();
+         
+         var dateTo = new Date($("#dayTo").val()).toISOString();
+        
+         var time = dateTo.slice(11,19)
+         console.log(time);
+         time = "23:59:59"
+         console.log(time);
+         var time1 = dateTo.slice(0,11)
+         console.log(time1);
+         var time2 = dateTo.slice(19,24)
+         console.log(time2);
+         dateTo = time1.concat(time.concat(time2))
+         console.log(dateTo);
+         
+        loadData(dateFrom,dateTo)
+      
+        
+      }
 
       $(document).ready(function() {
-         loadData()
+         loadData(dateFrom,dateTo)
       });
 
       
       // /load data
-      function loadData(){
+      function loadData(dateFrom,dateTo){
          var sellerID = localStorage.getItem("sellerId").replaceAll('"', '');
          $.ajax({
             url:'http://localhost:3999/api/bill/listSuccessForSeller',
             type:"GET",
             data:{
-               shop_id:sellerID
+               shop_id:sellerID,
+               from: dateFrom,
+               to: dateTo
             }
          }).then(function(data){
             
@@ -341,7 +407,7 @@
                                     <p class="text-black-50 mb-1"><i class="feather-map-pin"></i> ${billTEmp[i].user.address}
                                     </p>
                                     <p class="text-black-50 mb-3"><i class="feather-list"></i> ${billTEmp[i].user.phone} <i
-                                          class="feather-clock ml-2"></i> ${new Date(billTEmp[i].user.createdAt).toLocaleDateString()}</p>
+                                          class="feather-clock ml-2"></i> ${new Date(billTEmp[i].bill.createdAt).toLocaleDateString()}</p>
                                     <p class="text-dark">
                                       ${ productTemp}
                                     </p>
@@ -366,9 +432,7 @@
             }
          })
       }
-      function ReloadFunc() {
-         window.location.reload()
-      }
+     
 
      
    </script>

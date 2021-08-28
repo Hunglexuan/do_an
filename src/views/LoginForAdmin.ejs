@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <!-- Required meta tags -->
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
     <meta name="description" content="Askbootstrap" />
     <meta name="author" content="Askbootstrap" />
     <title>FUMK - Online Food Ordering</title>
@@ -13,7 +15,10 @@
     <!-- Bootstrap core CSS-->
     <link href="skin/bootstrap/bootstrap.min.css" rel="stylesheet" />
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
     <!-- Font Awesome-->
     <link href="skin/font/all.min.css" rel="stylesheet" />
     <!-- Font Awesome-->
@@ -22,31 +27,49 @@
     <link href="skin/font/select2.min.css" rel="stylesheet" />
     <!-- Custom styles for this template-->
     <link href="skin/font/osahan.css" rel="stylesheet" />
-</head>
+  </head>
 
-<body class="bg-white">
+  <body class="bg-white">
     <div class="container-fluid">
-        <div class="row no-gutter">
-            <div class="d-none d-md-flex col-md-4 col-lg-6 bg-image"></div>
-            <div class="col-md-8 col-lg-6">
-                <div class="login d-flex align-items-center py-5">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-md-9 col-lg-8 mx-auto pl-5 pr-5">
-                                <h3 class="login-heading mb-4">Chào mừng đến FUMK</h3>
-                                <form name="myForm">
-                                    <div class="form-label-group">
-                                        <input type="email" id="inputEmail" class="form-control" placeholder="Địa chỉ Email" />
-                                        <label for="inputEmail">Email</label>
-                                        <span class="form-message text-danger" id="messageEmail"></span>
-                                    </div>
-                                    <div class="form-label-group">
-                                        <input type="password" id="inputPassword" class="form-control" placeholder="Mật khẩu" />
-                                        <label for="inputPassword">Mật khẩu</label>
-                                    </div>
-                                    <div class="custom-control custom-checkbox mb-3">
-                                        <input type="checkbox" class="custom-control-input" id="customCheck1" />
-                                        <label class="custom-control-label" for="customCheck1">Nhớ mật khẩu</label
+      <div class="row no-gutter">
+        <div class="d-none d-md-flex col-md-4 col-lg-6 bg-image"></div>
+        <div class="col-md-8 col-lg-6">
+          <div class="login d-flex align-items-center py-5">
+            <div class="container">
+              <div class="row">
+                <div class="col-md-9 col-lg-8 mx-auto pl-5 pr-5">
+                  <h3 class="login-heading mb-4">Chào mừng đến FUMK</h3>
+                  <form name="myForm">
+                    <div class="form-label-group">
+                      <input
+                        type="email"
+                        id="inputEmail"
+                        class="form-control"
+                        placeholder="Địa chỉ Email"
+                      />
+                      <label for="inputEmail">Email</label>
+                      <span
+                        class="form-message text-danger"
+                        id="messageEmail"
+                      ></span>
+                    </div>
+                    <div class="form-label-group">
+                      <input
+                        type="password"
+                        id="inputPassword"
+                        class="form-control"
+                        placeholder="Mật khẩu"
+                      />
+                      <label for="inputPassword">Mật khẩu</label>
+                    </div>
+                    <div class="custom-control custom-checkbox mb-3">
+                      <input
+                        type="checkbox"
+                        class="custom-control-input"
+                        id="customCheck1"
+                      />
+                      <label class="custom-control-label" for="customCheck1"
+                        >Nhớ mật khẩu</label
                       >
                     </div>
                     <a
@@ -91,35 +114,44 @@
       }
     }
 
-    $("#btn").click(function() {
-
+    $("#btn").click(function () {
       var inputEmail = $("#inputEmail").val();
-        var inputPass = $("#inputPassword").val();
+      var inputPass = $("#inputPassword").val();
 
-        if (inputEmail == '' || inputPass == '') {
-            document.getElementById('inputEmail').setAttribute('class', 'form-control border-danger');
-            document.getElementById('messageEmail').innerHTML = 'Email hoặc mật khẩu bạn không được để trống. Hãy đăng nhập lại';
-        } else if (inputEmail != '' || inputPass != '') {
-            $.ajax({
-                url: "/api/auth/loginAdmin",
-                type: "POST",
-                data: {
-                    email: inputEmail,
-                    password: inputPass
-                }
-            }).then(function(data) {
+      if (inputEmail == "" || inputPass == "") {
+        document
+          .getElementById("inputEmail")
+          .setAttribute("class", "form-control border-danger");
+        document.getElementById("messageEmail").innerHTML =
+          "Email hoặc mật khẩu bạn không được để trống. Hãy đăng nhập lại";
+      } else if (inputEmail != "" || inputPass != "") {
+        $.ajax({
+          url: "/api/auth/loginAdmin",
+          type: "POST",
+          data: {
+            email: inputEmail,
+            password: inputPass,
+          },
+        }).then(function (data) {
+          if (data.message == "SUCCESS") {
+            var adminId = data.data.adminId;
 
-                if (data.message == "SUCCESS") {
-                    window.location.href = "/ListSeller"
-                    setCookie("token", data.data.token, 31)
-                } else {
-                    document.getElementById('inputEmail').setAttribute('class', 'form-control border-danger');
-                    document.getElementById('messageEmail').innerHTML = 'Email bạn nhập không kết nối với tài khoản nào. Hãy đăng nhập lại';
-                }
-            })
-
-        }
-    })
+            (window.location.href = "/ListSeller"),
+              setCookie("token", data.data.token, 31);
+            localStorage.setItem("userId", JSON.stringify(adminId));
+            localStorage.setItem("adminId", JSON.stringify(adminId));
+            setCookie("tokenAdmin", data.data.token, 31);
+            setCookie("token", data.data.token, 31);
+          } else {
+            document
+              .getElementById("inputEmail")
+              .setAttribute("class", "form-control border-danger");
+            document.getElementById("messageEmail").innerHTML =
+              "Email bạn nhập không kết nối với tài khoản nào. Hãy đăng nhập lại";
+          }
+        });
+      }
+    });
 
     function setCookie(cname, cvalue, exdays) {
       const d = new Date();
