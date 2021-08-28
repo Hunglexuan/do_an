@@ -485,7 +485,25 @@
     <script src="js/custom.js"></script>
     <script src="js/header.js"></script>
     <script src="../../customJS/shopDetail.js"></script>
-
+    <script>
+        function checkCart() {
+            var text = localStorage.getItem('userId').replaceAll('"', '');
+            if (text == '') {
+                Swal.fire({
+                    type: 'warning',
+                    title: 'Bạn hãy đăng nhập để thanh toán',
+                    // text: 'Your offer is safe 🙂',
+                    showConfirmButton: false,
+                    timer: 2500
+                })
+                window.setTimeout(function() {
+                    window.location.href = '/LoginUser';
+                }, 2500);
+            } else {
+                window.location.href = '/CheckOut';
+            }
+        }
+    </script>
 </body>
 
 </html>
