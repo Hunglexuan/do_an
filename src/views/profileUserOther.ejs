@@ -163,7 +163,7 @@
                                             <div class="picture-container">
                                                 <div class="picture">
                                                     <img class="picture-src" id="wizardPicturePreview">
-                                                    <input type="file" class="form-control" id="wizard-picture" name="uploadfile" accept="image/png, image/jpeg"></input>
+
                                                 </div>
                                             </div>
                                         </div>
@@ -371,18 +371,6 @@
                 window.location.href = '/CheckOut';
             }
         }
-
-        $(document).ready(function() {
-
-            if (token == '') {
-                window.location.href = "/404";
-            }
-
-            // Prepare the preview for profile picture
-            $("#wizard-picture").change(function() {
-                readURL(this);
-            });
-        });
 
 
         $(document).ready(function() {
