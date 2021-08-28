@@ -18,6 +18,7 @@ class MidCategory {
             del: 0
         }
         if (data.name) {
+            console.log('MidCategory-searchCategory: success');
             condition.name = {
                 [Op.like]: `%${data.name}%`
             }
@@ -50,6 +51,7 @@ class MidCategory {
     }
     async createCategory(data) {
         if (!data.name) {
+            console.log('MidCategory-createCategory: ErrorCode-54');
             throw new Error(ERROR_MESSAGE.ROLE.ROLE_NOT_EXIST);
         }
         let dataCreate = {
@@ -73,6 +75,7 @@ class MidCategory {
     }
     async updateCategory(data) {
         if (!data.id) {
+            console.log('MidCategory-updateCategory: ErrorCode-78');
             throw new Error(ERROR_MESSAGE.ROLE.ROLE_EXIST);
         }
         let objUpdate = await Category.findOne({
