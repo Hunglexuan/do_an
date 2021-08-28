@@ -92,6 +92,10 @@ app.get('/ListAcceptBill', function(req, res) {
     return res.render('ListAcceptBill')
 })
 
+app.get('/aboutUs', function(req, res) {
+    return res.render('aboutUs')
+})
+
 
 app.get('/ListDeleteBill', function(req, res) {
     return res.render('ListDeleteBill')
@@ -105,6 +109,9 @@ app.get("/ListDeleteBill", function(req, res) {
     return res.render("ListDeleteBill");
 });
 
+app.get("/profileUserOther", function(req, res) {
+    return res.render("profileUserOther");
+});
 
 app.get('/ListReportBySeller', function(req, res) {
     return res.render('ListReportBySeller')
