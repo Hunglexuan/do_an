@@ -14,7 +14,7 @@ import { name } from "ejs";
 class MidComment {
     async searchComment(data) {
         if(!data.id){
-            console.log('MidComment-searchComment: ErrorCode-19');
+            console.log('MidComment-searchComment: ErrorCode-17');
             throw new Error(ERROR_MESSAGE.COMMENT.COMMENT_NOT_EXIST);
         }
         let obj = await Product.findOne({
@@ -46,7 +46,7 @@ class MidComment {
         if (listComment) {
             console.log('MidComment-searchComment: SUCCESS ');
         } else {
-            console.log('MidComment-searchComment: ERROR-47 ');
+            console.log('MidComment-searchComment: ERROR-49 ');
         }
         return {
             listComment,
@@ -102,15 +102,15 @@ class MidComment {
   }
   async createComment(data) {
     if (!data.user_id) {
-      console.log("MidComment-createComment: ERROR-57 ");
+      console.log("MidComment-createComment: ERROR-105 ");
       throw new Error(ERROR_MESSAGE.COMMENT.COMMENT_USER_ID);
     }
     if (!data.product_id) {
-      console.log("MidComment-searchComment: ERROR-61 ");
+      console.log("MidComment-searchComment: ERROR-109 ");
       throw new Error(ERROR_MESSAGE.COMMENT.COMMNET_SHOP_ID);
     }
     if (!data.content) {
-      console.log("MidComment-searchComment: ERROR-65 ");
+      console.log("MidComment-searchComment: ERROR-113 ");
       throw new Error(ERROR_MESSAGE.COMMENT.COMMENT_CONTENT);
     }
     let dataCreate = {
@@ -122,7 +122,7 @@ class MidComment {
     };
     let object = await Comment.create(dataCreate);
     if (!object) {
-      console.log("MidComment-searchComment: ERROR-77 ");
+      console.log("MidComment-searchComment: ERROR-125 ");
     }
     console.log("MidComment-searchComment: SUCCESS");
 
@@ -130,7 +130,7 @@ class MidComment {
   }
   async deleteComment(data) {
     if (!data.id) {
-      console.log("MidComment-deleteComment: ERROR-84 ");
+      console.log("MidComment-deleteComment: ERROR-133 ");
       throw new Error(ERROR_MESSAGE.COMMENT.COMMENT_NOT_EXIST);
     }
     let objDelete = await Comment.findOne({
@@ -147,7 +147,7 @@ class MidComment {
   }
   async updateComment(data) {
     if (!data.id) {
-      console.log("MidComment-updateComment: ERROR-101 ");
+      console.log("MidComment-updateComment: ERROR-150 ");
       throw new Error(ERROR_MESSAGE.COMMENT.COMMENT_NOT_EXIST);
     }
     let objUpdate = await Comment.findOne({
@@ -162,7 +162,7 @@ class MidComment {
     };
     let object = await objUpdate.update(dataUpdate);
     if (!object) {
-      console.log("MidComment-updateComment: ERROR-116 ");
+      console.log("MidComment-updateComment: ERROR-165 ");
     }
     console.log("MidComment-updateComment: SUCCESS ");
     return object;

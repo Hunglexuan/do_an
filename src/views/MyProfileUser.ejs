@@ -837,9 +837,9 @@
                 $(".show-bill").html("")
                 for (var i = 0; i < billTEmp.length; i++) {
                     var checkStatus = billTEmp[i].bill.status == 1 ? '<input type="button" class="btn btn-danger" style="float:right" data-toggle="modal" data-target="#deleteBill" data-id =" ' + billTEmp[i].bill.id + ' " onclick="getIdDel.call(this)"  value="Hủy Đơn">' :
-                        billTEmp[i].bill.status == 2 ? '<input type="button" class="btn btn-success"  style="float:right" data-toggle="modal" data-target="#successBill" data-id =" ' + billTEmp[i].bill.id + ' " onclick="getIdSuccess.call(this)" value="Đã Nhận Đơn ">' :
+                        billTEmp[i].bill.status == 2 ? '<input type="button" class="btn btn-success"  style="float:right" data-toggle="modal" data-target="#successBill" data-id ="'+ billTEmp[i].bill.id +'" onclick="getIdSuccess.call(this)" value="Đã Nhận Đơn ">' :
                         billTEmp[i].bill.status == 3 ? '<label class="btn btn-secondary"  style="float:right"   > Đã Hủy </label>' :
-                        '<label class="btn btn-primary"  style="float:right"  >Hoàn Thành</label>'
+                        '<label class="btn btn-info"  style="float:right"  >Hoàn Thành</label>'
 
 
                     let productTemp = ``
@@ -913,7 +913,7 @@
 
         function successBill() {
             let successID = localStorage.getItem('successID').replaceAll('"', '');
-
+            console.log("444444444444",successID);
             $.ajax({
                 url: "/api/bill/complete",
                 type: "GET",
@@ -921,9 +921,22 @@
                     id: successID
                 }
             }).then(function(data) {
+                console.log("vao22222222",data);
                 if (data.message == 'SUCCESS') {
-                    loadDataBuyed()
+                    console.log("vaooooo11111111");
+                    Swal.fire({
+                        type: 'success',
+                        title: 'Bạn Đã Nhận Hàng Thành Công ⚙️',
+                        // text: 'Your offer is safe 🙂',
+                        showConfirmButton: false,
+                        timer: 2000
+                    })
                 }
+                window.setTimeout(function() {
+                        window.location.reload()
+                    }, 2000);
+                
+                
             })
         }
 

@@ -21,6 +21,7 @@ class MidProduct {
 
     async updateImage(data, logo) {
         if (!logo) {
+            console.log('MidProduct-updateImage: ErrorCode-24');
             throw new Error('Vui lòng chọn ảnh');
         }
         let objUpdate = await Product.findOne({
@@ -44,6 +45,7 @@ class MidProduct {
         })
         let user
         if (product) {
+            console.log('MidProduct-getProductById: Success');
             user = await Users.findOne({
                 where: {
                     id: product.user_id,
@@ -64,6 +66,7 @@ class MidProduct {
             }
         })
         if (user) {
+            console.log('MidProduct-searchSellerProduct: Success');
             let role = await Role.findOne({
                 where: {
                     id: user.role_id,
@@ -115,6 +118,7 @@ class MidProduct {
         }
 
         if (data.name) {
+            console.log('MidProduct-searchAllProduct: Success');
             condition.name = {
                 [Op.like]: `%${data.name}%`
             }
@@ -246,18 +250,23 @@ class MidProduct {
     //done
     async createProduct(data) {
         if (!data.name) {
+            console.log('MidProduct-createProduct: ErrorCode-253');
             throw new Error(ERROR_MESSAGE.PRODUCT.PRODUCT_NAME);
         }
         if (!data.quantity) {
+            console.log('MidProduct-createProduct: ErrorCode-257');
             throw new Error(ERROR_MESSAGE.PRODUCT.PRODUCT_QUANTITY);
         }
         if (!data.unit_price) {
+            console.log('MidProduct-createProduct: ErrorCode-261');
             throw new Error(ERROR_MESSAGE.PRODUCT.PRODUCT_UNIT_PRICE);
         }
         if (!data.description) {
+            console.log('MidProduct-createProduct: ErrorCode-265');
             throw new Error(ERROR_MESSAGE.PRODUCT.PRODUCT_DESCRIPTION);
         }
         if (!data.user_id) {
+            console.log('MidProduct-createProduct: ErrorCode-269');
             throw new Error(ERROR_MESSAGE.PRODUCT.PRODUCT_USER_ID);
         }
 
@@ -286,6 +295,7 @@ class MidProduct {
     }
     async updateProduct(data) {
         if (!data.id) {
+            console.log('MidProduct-updateProduct: ErrorCode-298');
             throw new Error(ERROR_MESSAGE.PRODUCT.PRODUCT_NOT_EXIST);
         }
         let objUpdate = await Product.findOne({
