@@ -9,8 +9,7 @@
     <meta name="author" content="Askbootstrap">
     <base href="/">
     <title>FUMK - Online Food Ordering</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
-    <!-- Custom Css -->
+    <!-- Favicon Icon -->
     <link href="skin/css/styles.css" rel="stylesheet" />
     <!-- Favicon Icon -->
     <link rel="icon" type="image/png" href="image/favicon.png">
@@ -24,9 +23,10 @@
     <link href="skin/font/select2.min.css" rel="stylesheet">
     <!-- Custom styles for this template-->
     <link href="skin/font/osahan.css" rel="stylesheet">
-
+    <!-- Dropzone-->
+    <link href="skin/font/dropzone.css" rel="stylesheet">
+    <!-- HungCSS -->
     <link href="skin/font/HungCSS.css" rel="stylesheet">
-
     <!-- Owl Carousel -->
     <link rel="stylesheet" href="skin/owl/owl.carousel.css">
     <link rel="stylesheet" href="skin/owl/owl.theme.css">
@@ -308,32 +308,34 @@
 
 
 
-                            <div class="modal fade" id="basicModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true" style="text-shadow: none;">
+                            <div class="modal fade" id="basicModal" role="dialog" aria-hidden="true" style="text-shadow: none;">
                                 <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h6 class="m-0"><i class="fa fa-flag text-muted mr-2"></i>Báo Cáo</h6>
-                                        </div>
-                                        <div class="modal-body">
-                                            <div class="dropdown form-group">
-                                                <select class="dropdown-menu dropdown-toggle" aria-labelledby="dropdownMenuButton" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h6 class="m-0"><i class="fa fa-flag text-muted mr-2"></i>Báo Cáo</h6>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="dropdown form-group">
+                                                    <select class="dropdown-menu dropdown-toggle" aria-labelledby="dropdownMenuButton" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                     <option value="Vận chuyển">Vận chuyển</option>
                                                     <option value="Số lượng sản phẩm">Số lượng sản phẩm</option>
                                                     <option value="Phản hồi">Phản hồi</option>
                                                     <option value="Thái độ">Thái độ</option>
                                                     <option value="Khác">Khác...</option>
                                                 </select>
-                                            </div>
+                                                </div>
 
-                                            <div class="form-group">
-                                                <label>Ghi chú:</label>
-                                                <input class="form-control" id="text_report" type="text">
-                                                <span class="form-message text-danger" id="messReport"></span>
+                                                <div class="form-group">
+                                                    <label>Ghi chú:</label>
+                                                    <textarea class="form-control" id="text_report"></textarea>
+                                                    <span class="form-message text-danger" id="messReport"></span>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <input type="button" value="Close" class="btn btn-light" data-dismiss="modal"> </input>
-                                            <input type="button" value="Send" id="change" class="btn btn-danger" onclick="sendReport()"></input>
+                                            <div class="modal-footer">
+                                                <input type="button" value="Đóng" class="btn btn-light" data-dismiss="modal"> </input>
+                                                <input type="button" value="Gửi" id="change" class="btn btn-danger" onclick="sendReport()"></input>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -343,9 +345,10 @@
 
                     </div>
                     <div class="col-md-4">
-                        <div class="restaurant-detailed-header-right text-right" id="ratetotals">
+                        <div class="restaurant-detailed-header-right text-right">
                             <!-- <button class="btn btn-success" type="button"><i class="icofont-clock-time"></i> 25–35 min </button> -->
                             <div id="btn_report"></div>
+                            <div id="ratetotals"></div>
                         </div>
                     </div>
 
@@ -740,7 +743,7 @@
                 success: function(data) {
                     console.log(data);
                     let image = (data.data.avatar ? data.data.avatar : 'image/list/1.png');
-                    let status = (data.data.shop_status ? '<span class="badge badge-success pb-1">Mở cửa</span>' : '<span class="badge badge-danger pb-1">Đóng cửa</span>');
+                    let status = (data.data.shop_status ? '<span class="badge badge-success pb-1 ml-1">Mở cửa</span>' : '<span class="badge badge-danger pb-1 ml-1">Đóng cửa</span>');
                     document.getElementById('inforShop').innerHTML = '<img class="img-fluid mr-3 float-left" alt="osahan" src=' + image + ' style="height: 88px !important"> <h2 class="text-white" style="padding-top: 25px;"> ' + data.data.name + '</h2> <p class="text-white mb-1"><i class="icofont-location-pin"></i>' + data.data.address + status + '</p>';
                 }
             });
@@ -1084,6 +1087,7 @@
                     var list = data.data.listFeedback;
                     var countStart = data.data.count;
 
+
                     document.getElementById('rateStar').innerHTML = countStart;
                     document.getElementById('rateTotal').innerHTML = '';
                     for (var j = 1; j <= 5; j++) {
@@ -1102,6 +1106,7 @@
                         document.getElementById('rateOf3').innerHTML = '0%';
                         document.getElementById('rateOf2').innerHTML = '0%';
                         document.getElementById('rateOf1').innerHTML = '0%';
+                        document.getElementById('ratetotals').innerHTML = '<h6 class="text-white mb-0 restaurant-detailed-ratings"><span class="generator-bg rounded text-white"><i class="icofont-star"></i> 0 </span> đánh giá <i class="ml-3 icofont-speech-comments"></i> 0 bình luận</h6>';
                     } else {
                         document.getElementById('rateOfStar').innerHTML = 'Đánh giá ' + (countStart / data.data.total).toFixed(2) + ' trên 5';
                         document.getElementById('rateOf5').innerHTML = Math.round((data.data.star_5 / data.data.total) * 100) + '%';
@@ -1123,8 +1128,10 @@
                         document.getElementById('rateOf1').innerHTML = Math.round((data.data.star_1 / data.data.total) * 100) + '%';
                         var color1 = data.data.star_1 / data.data.total;
                         document.getElementById('rateColor1').style.width = color1 * 100 + '%';
+
+                        document.getElementById('ratetotals').innerHTML = '<h6 class="text-white mb-0 restaurant-detailed-ratings"><span class="generator-bg rounded text-white"><i class="icofont-star"></i> ' + (countStart / data.data.total).toFixed(2) + '</span>  đánh giá <i class="ml-3 icofont-speech-comments"></i> ' + list.length + ' bình luận</h6>';
                     }
-                    document.getElementById('ratetotals').innerHTML = '<h6 class="text-white mb-0 restaurant-detailed-ratings"><span class="generator-bg rounded text-white"><i class="icofont-star"></i> ' + (countStart / data.data.total).toFixed(2) + '</span> ' + countStart + ' đánh giá <i class="ml-3 icofont-speech-comments"></i> ' + list.length + ' bình luận</h6>';
+
 
 
                     for (var i = 0; i < list.length; i++) {
