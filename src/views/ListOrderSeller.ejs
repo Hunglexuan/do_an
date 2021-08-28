@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="en">
 
 <head>
@@ -293,6 +293,7 @@
     <script src="js/dataTables.bootstrap.min.js"></script>
     <script src="js/datatables-demo.js"></script>
     <script src="js/headerSeller.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
     <script>
         $(document).ready(function() {
             loadData()
@@ -340,7 +341,7 @@
                                     </h6>
                                     <p class="text-black-50 mb-1"><i class="far fa-user"></i> ${billTEmp[i].user.name}
                                     </p>
-                                    <p class="text-black-50 mb-1"><i class="feather-map-pin"></i> ${billTEmp[i].user.address}
+                                    <p class="text-black-50 mb-1"><i class="feather-map-pin"></i> ${billTEmp[i].bill.address}  
                                     </p>
                                     <p class="text-black-50 mb-3"><i class="feather-list"></i> ${billTEmp[i].user.phone} <i
                                           class="feather-clock ml-2"></i> ${new Date(billTEmp[i].user.createdAt).toLocaleDateString()}</p>
@@ -349,8 +350,8 @@
                                     </p>
                                     <hr>
                                     <div class="float-right">
-
-                                       <a   data-toggle="modal" data-target="#acceptBill"  onClick=acceptFunc.call(this,"${billTEmp[i].bill.id}",${billTEmp[i].billList}) class="btn btn-sm btn-success"><i class="feather-check-circle"></i>
+                                       
+                                       <a   data-toggle="modal" data-target="#acceptBill"  onClick=acceptFunc.call(this,"${billTEmp[i].bill.id}") class="btn btn-sm btn-success"><i class="feather-check-circle"></i>
                                           Chấp Thuận</a>
 
                                        <a   data-toggle="modal" data-target="#deleteBill "  onClick=delFunc.call(this,"${billTEmp[i].bill.id}") class="btn btn-sm btn-danger"><i class="feather-trash"></i> Hủy</a>
@@ -366,38 +367,37 @@
                      </div>
                   </div>
                   `
-                    $(".show-bill").append(Template);
+                  $(".show-bill").append(Template);
+                  
+               
+               
+            }
+         })
+      }
+      function ReloadFunc() {
+         window.location.reload()
+      }
 
+      function acceptFunc(id){
+         localStorage.setItem("billIdAcc",JSON.stringify(id));
+        
+      }
 
+      function delFunc(id){
+         localStorage.setItem("billIdDel",JSON.stringify(id));
+      }
 
-                }
-            })
-        }
-
-        function ReloadFunc() {
-            window.location.reload()
-        }
-
-        function acceptFunc(id, billList) {
-            localStorage.setItem("billIdAcc", JSON.stringify(id));
-            console.log(billList);
-        }
-
-        function delFunc(id) {
-            localStorage.setItem("billIdDel", JSON.stringify(id));
-        }
-
-        function delBil() {
-            var id = localStorage.getItem("billIdDel").replaceAll('"', '');
-            $.ajax({
-                url: "/api/bill/cancel",
-                type: "GET",
-                data: {
-                    id: id
-                }
-            }).then(function(data) {
-                if (data.message == "SUCCESS") {
-                    Swal.fire({
+      function delBil(){
+         var id = localStorage.getItem("billIdDel").replaceAll('"', '');
+         $.ajax({
+            url:"/api/bill/cancel",
+            type:"GET",
+            data:{
+               id:id
+            }
+         }).then(function(data) {
+            if(data.message == "SUCCESS"){
+               Swal.fire({
                         type: 'success',
                         title: 'Bạn Đã Hủy Thành Công ⚙️',
                         // text: 'Your offer is safe 🙂',

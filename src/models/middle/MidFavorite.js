@@ -28,7 +28,7 @@ class MidFavorite {
         };
         let object = await Favorite.create(dataCreate);
         if (!object) {
-            console.log('MidFavorite-createFavor: ERROR-24');
+            console.log('MidFavorite-createFavor: ERROR-31');
         }
         console.log('MidFavorite-createFavor: Success');
         return

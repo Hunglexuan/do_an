@@ -705,10 +705,10 @@
                 type: "POST",
                 data: {
                     userId: userId,
-                    password: $("#confirmpassword").val().trim()
+                    password: $("#Confirm_new_password").val().trim()
                 }
             }).then(function(data) {
-
+                
                 if (data.message == "SUCCESS") {
                     Swal.fire({
                         type: 'success',

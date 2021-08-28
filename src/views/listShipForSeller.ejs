@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="en">
 
 <head>
@@ -177,10 +177,10 @@
       <div id="layoutSidenav_content">
          <main>
             <div class="container-fluid">
-               <h1 class="mt-4">Danh Sách Đặt Hàng</h1>
+               <h1 class="mt-4">Danh Sách Giao Hàng</h1>
                <ol class="breadcrumb mb-4">
                   
-                  <li class="breadcrumb-item active">Đặt Hàng</li>
+                  <li class="breadcrumb-item active">Giao Hàng</li>
                </ol>
                <ol>
                   <a class="btn btn-info" onClick=ReloadFunc.call(this) style="position: relative; "><i class="fas fa-sync-alt"></i>
@@ -299,6 +299,7 @@
    <script src="js/dataTables.bootstrap.min.js"></script>
    <script src="js/datatables-demo.js"></script>
    <script src="js/headerSeller.js"></script>
+   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
    <script> 
 
      
@@ -312,14 +313,16 @@
       function loadData(){
          var sellerID = localStorage.getItem("sellerId").replaceAll('"', '');
          $.ajax({
-            url:'http://localhost:3999/api/bill/listOrderForSeller',
+            url:'http://localhost:3999/api/bill/listShipForSeller',
             type:"GET",
             data:{
                shop_id:sellerID
             }
          }).then(function(data){
+            console.log("Danh sachs ship",data);
            
             var billTEmp = data.data.listBillTotal;
+            console.log(billTEmp);
             
             for(var i = 0 ; i < billTEmp.length ; i++){
                
@@ -351,7 +354,7 @@
                                     </p>
                                     <p class="text-black-50 mb-1"><i class="feather-map-pin"></i> ${billTEmp[i].user.address}
                                     </p>
-                                    <p class="text-black-50 mb-3"><i class="feather-list"></i> ${billTEmp[i].user.phone} <i
+                                    <p class="text-black-50 mb-3"><i class="feather-list"></i> ${billTEmp[i].user.phone}  ${billTEmp[i].bill.status} <i
                                           class="feather-clock ml-2"></i> ${new Date(billTEmp[i].user.createdAt).toLocaleDateString()}</p>
                                     <p class="text-dark">
                                       ${ productTemp}
@@ -359,10 +362,8 @@
                                     <hr>
                                     <div class="float-right">
                                        
-                                       <a   data-toggle="modal" data-target="#acceptBill"  onClick=acceptFunc.call(this,"${billTEmp[i].bill.id}",${billTEmp[i].billList}) class="btn btn-sm btn-success"><i class="feather-check-circle"></i>
-                                          Chấp Thuận</a>
-                                      
-                                       <a   data-toggle="modal" data-target="#deleteBill "  onClick=delFunc.call(this,"${billTEmp[i].bill.id}") class="btn btn-sm btn-danger"><i class="feather-trash"></i> Hủy</a>
+                                       <a   data-toggle="modal" data-target="#acceptBill"  onClick=acceptFunc.call(this,"${billTEmp[i].bill.id}") class="btn btn-sm btn-success"><i class="feather-check-circle"></i>
+                                          Đã Nhận Hàng </a>
                                     </div>
                                     <p class="mb-0 text-dark text-dark pt-2"><span class="text-dark font-weight-bold">
                                           Tổng Tiền: </span> ${billTEmp[i].bill.total_price}
@@ -386,41 +387,17 @@
          window.location.reload()
       }
 
-      function acceptFunc(id,billList){
-         localStorage.setItem("billIdAcc",JSON.stringify(id));
-         console.log(billList);
+      function acceptFunc(id){
+         localStorage.setItem("billCompleteSeller",JSON.stringify(id));
+         
       }
 
-      function delFunc(id){
-         localStorage.setItem("billIdDel",JSON.stringify(id));
-      }
-
-      function delBil(){
-         var id = localStorage.getItem("billIdDel").replaceAll('"', '');
-         $.ajax({
-            url:"/api/bill/cancel",
-            type:"GET",
-            data:{
-               id:id
-            }
-         }).then(function(data) {
-            if(data.message == "SUCCESS"){
-               Swal.fire({
-                        type: 'success',
-                        title: 'Bạn Đã Hủy Thành Công ⚙️',
-                        // text: 'Your offer is safe 🙂',
-                        showConfirmButton: false,
-                        timer: 2000
-                    })
-            }
-            window.location.reload()
-         })
-      }
+      
 
       function acceptBil() {
-         var id = localStorage.getItem("billIdAcc").replaceAll('"', '');
+         var id = localStorage.getItem("billCompleteSeller").replaceAll('"', '');
          $.ajax({
-            url:"/api/bill/accept",
+            url:"/api/bill/complete",
             type:"GET",
             data:{
                id:id

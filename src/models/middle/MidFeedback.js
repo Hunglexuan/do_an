@@ -104,7 +104,7 @@ class MidFeedback {
             }
         }
         if (!listFeedback) {
-            console.log('MidFeedback-searchFeedback: ErrorCode-142');
+            console.log('MidFeedback-searchFeedback: ErrorCode-107');
         }
         console.log('MidFeedback-searchFeedback: Success');
 
@@ -122,19 +122,19 @@ class MidFeedback {
     }
     async createFeedback(data) {
         if (!data.user_id) {
-            console.log('MidFeedback-createFeedback: ErrorCode-160');
+            console.log('MidFeedback-createFeedback: ErrorCode-125');
             throw new Error(ERROR_MESSAGE.FEEDBACK.FEEDBACK_USER_ID);
         }
         if (!data.shop_id) {
-            console.log('MidFeedback-createFeedback: ErrorCode-164');
+            console.log('MidFeedback-createFeedback: ErrorCode-129');
             throw new Error(ERROR_MESSAGE.FEEDBACK.FEEDBACK_SHOP_ID);
         }
         if (!data.content) {
-            console.log('MidFeedback-createFeedback: ErrorCode-168');
+            console.log('MidFeedback-createFeedback: ErrorCode-133');
             throw new Error(ERROR_MESSAGE.FEEDBACK.FEEDBACK_CONTENT);
         }
         if (!data.rate) {
-            console.log('MidFeedback-createFeedback: ErrorCode-172');
+            console.log('MidFeedback-createFeedback: ErrorCode-137');
             throw new Error(ERROR_MESSAGE.FEEDBACK.FEEDBACK_RATE);
         }
         let dataCreate = {
@@ -146,7 +146,7 @@ class MidFeedback {
         }
         let object = await Feedback.create(dataCreate);
         if (!object) {
-            console.log('MidFeedback-createFeedback: ErrorCode-184');
+            console.log('MidFeedback-createFeedback: ErrorCode-149');
         }
         console.log('MidFeedback-createFeedback: Success');
         return object

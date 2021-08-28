@@ -72,7 +72,7 @@ function loadName() {
         data: {
             id: text
         },
-        url: "/api/user/getbyId",
+        url: "/api/user/getbyId", 
         success: function(data) {
 
             let image = (data.data.avatar ? data.data.avatar : 'image/list/1.png');
