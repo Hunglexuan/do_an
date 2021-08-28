@@ -49,6 +49,7 @@ class MidBill {
         },
       });
       if (billTemp != null) {
+        console.log('MidBill-listCart: ErrorCode-52');
         //neu co bill tam thi tim ra thong tin cua bill tam
         let shopIDTemp = await UserBill.findOne({
           where: {
@@ -104,6 +105,7 @@ class MidBill {
     let voucherID = null;
 
     if (data.cart.billID) {
+      console.log('MidBill-createBill: success');
       //neu co bill id thi bill truyen ve la bill tam
       let billTemp = await Bill.findOne({
         where: {
@@ -324,6 +326,7 @@ class MidBill {
 
       // tim thong tin san pham, thong tin shop , thong tin ng dung tra ve cho FE
       if (billInprocess) {
+        console.log('MidBill-listOrderForSeller: Success');
         userBill.bill = billInprocess;
         userBill.user = await Users.findOne({
           where: {
@@ -405,6 +408,7 @@ class MidBill {
 
       //loc bill tru nhung bill tam
       if (billInprocess.dataValues.status !== 0) {
+        console.log('MidBill-listOrderForUser: ErrorCode-411');
         userBill.bill = billInprocess;
         userBill.user = await Users.findOne({
           where: {
@@ -491,6 +495,7 @@ class MidBill {
       //
       //tim thong tin nhung bill da hoan thanh
       if (billInprocess) {
+        console.log('MidBill-listSuccessForSeller: ErrorCode-498');
         totalBill.total += billInprocess.dataValues.total_price;
         userBill.bill = billInprocess;
         userBill.user = await Users.findOne({
@@ -574,6 +579,7 @@ class MidBill {
         },
       });
       if (billInprocess) {
+        console.log('MidBill-listCancelForSeller: Success');
         userBill.bill = billInprocess;
         userBill.user = await Users.findOne({
           where: {
@@ -658,6 +664,7 @@ class MidBill {
       });
 
       if (billInprocess) {
+        console.log('MidBill-listShipForSeller: Success');
         totalBill.total += billInprocess.dataValues.total_price;
         userBill.bill = billInprocess;
         userBill.user = await Users.findOne({
