@@ -17,6 +17,7 @@ routerApp.get('/downRole', Response(UserController.downgradeRole));
 
 routerApp.post('/create', Response(UserController.createUser));
 routerApp.post('/changePass', Response(UserController.changePass));
+routerApp.post('/forgotPass', Response(UserController.forgotPass));
 routerApp.post('/updateUser', Response(UserController.updateUser));
 routerApp.post('/updateSeller', Response(UserController.updateSeller));
 

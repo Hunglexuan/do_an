@@ -1731,6 +1731,10 @@ footer {
     display: none;
 }
 
+#hiden1 {
+    display: none;
+}
+
 .img-fluid {
     height: 180px !important;
 }

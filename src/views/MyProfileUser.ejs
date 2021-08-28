@@ -100,12 +100,12 @@
                             <a class="nav-link" href="Offers"><i class="icofont-sale-discount"></i> Ưu Đãi <span class="badge badge-danger">Mới</span></a>
                         </li>
                         <li id="checkLogin"></li>
-                        <!-- <li class="nav-item dropdown no-arrow mx-1 osahan-list-dropdown">
+                        <li class="nav-item dropdown no-arrow mx-1 osahan-list-dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fa fa-bell-o" aria-hidden="true" style="font-size: 20px;"></i>
-                               
+
                             </a>
-                            
+
                             <div class="dropdown-list dropdown-menu dropdown-menu-right shadow-sm">
                                 <h6 class="dropdown-header">
                                     Thông Báo
@@ -114,7 +114,7 @@
                                 </div>
 
                             </div>
-                        </li> -->
+                        </li>
                         <li class="nav-item dropdown dropdown-cart">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="icofont-basket"></i> Giỏ Hàng
@@ -386,7 +386,7 @@
         </div>
     </footer>
 
-    
+
     <!--Pop up delete-->
 
     <!-- <div class="modal fade" id="deleteBill" tabindex="-1" role="dialog" aria-labelledby="edit_bookingLabel"
@@ -430,89 +430,83 @@
     </div>
  </div> -->
 
- <div class="modal fade" id="deleteBill" tabindex="-1" role="dialog" aria-labelledby="edit_bookingLabel"
- aria-hidden="true">
- <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-       <div class="modal-header">
-          <h5 class="modal-title" id="edit_bookingLabel">Thông Báo</h5>
-          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+    <div class="modal fade" id="deleteBill" tabindex="-1" role="dialog" aria-labelledby="edit_bookingLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="edit_bookingLabel">Thông Báo</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
              <span aria-hidden="true">×</span>
           </button>
-       </div>
-       <div class="modal-body">
-          <div class="row">
-             <div class="col-xl-12">
-                <div class="card mb-4">
-                   <div class="card-body">
-                      <h5 style="text-align: center;">Bạn có muốn hủy đơn này không?</h5>
-                      <div class="card-body">
-                         <div class="row ml-5">
-                            <div class="col-md-6">
-                               <div class="form-group">
-                                  <input type="button" class="btn btn-primary" id="deletePro" value="Đồng Ý"
-                                     onclick="deleteBill()"></input>
-                               </div>
-                            </div>
-                            <div class="col-md-6">
-                               <div class="form-group">
-                                  <input type="button" class="btn btn-primary" id="cancelDelete" value="Hủy Bỏ"
-                                     data-dismiss="modal"></input>
-                               </div>
-                            </div>
-                         </div>
-                      </div>
-                   </div>
                 </div>
-             </div>
-          </div>
-       </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-xl-12">
+                            <div class="card mb-4">
+                                <div class="card-body">
+                                    <h5 style="text-align: center;">Bạn có muốn hủy đơn này không?</h5>
+                                    <div class="card-body">
+                                        <div class="row ml-5">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <input type="button" class="btn btn-primary" id="deletePro" value="Đồng Ý" onclick="deleteBill()"></input>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <input type="button" class="btn btn-primary" id="cancelDelete" value="Hủy Bỏ" data-dismiss="modal"></input>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
- </div>
-</div>
- 
+
     <!--Pop up success-->
 
-    <div class="modal fade" id="successBill" tabindex="-1" role="dialog" aria-labelledby="edit_bookingLabel"
-    aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-       <div class="modal-content">
-          <div class="modal-header">
-             <h5 class="modal-title" id="edit_bookingLabel">Thông Báo</h5>
-             <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+    <div class="modal fade" id="successBill" tabindex="-1" role="dialog" aria-labelledby="edit_bookingLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="edit_bookingLabel">Thông Báo</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">×</span>
              </button>
-          </div>
-          <div class="modal-body">
-             <div class="row">
-                <div class="col-xl-12">
-                   <div class="card mb-4">
-                      <div class="card-body">
-                         <h5 style="text-align: center;">Xác Nhận đã nhận hàng và hài lòng với sản nhẩm</h5>
-                         <div class="card-body">
-                            <div class="row ml-5">
-                               <div class="col-md-6">
-                                  <div class="form-group">
-                                     <input type="button" class="btn btn-primary" id="deletePro" value="Đồng Ý"
-                                        onclick="successBill()"></input>
-                                  </div>
-                               </div>
-                               <div class="col-md-6">
-                                  <div class="form-group">
-                                     <input type="button" class="btn btn-primary" id="cancelDelete" value="Hủy Bỏ"
-                                        data-dismiss="modal"></input>
-                                  </div>
-                               </div>
-                            </div>
-                         </div>
-                      </div>
-                   </div>
                 </div>
-             </div>
-          </div>
-       </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-xl-12">
+                            <div class="card mb-4">
+                                <div class="card-body">
+                                    <h5 style="text-align: center;">Xác Nhận đã nhận hàng và hài lòng với sản nhẩm</h5>
+                                    <div class="card-body">
+                                        <div class="row ml-5">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <input type="button" class="btn btn-primary" id="deletePro" value="Đồng Ý" onclick="successBill()"></input>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <input type="button" class="btn btn-primary" id="cancelDelete" value="Hủy Bỏ" data-dismiss="modal"></input>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
- </div>
 
 
     <!-- jQuery -->
@@ -714,10 +708,10 @@
                 type: "POST",
                 data: {
                     userId: userId,
-                    password: $("#confirmpassword").val().trim()
+                    password: $("#Confirm_new_password").val().trim()
                 }
             }).then(function(data) {
-
+                console.log("aaaaa",$("#Confirm_new_password").val().trim());
                 if (data.message == "SUCCESS") {
                     Swal.fire({
                         type: 'success',
@@ -733,7 +727,7 @@
         function loadDataProfile() {
 
             var text = localStorage.getItem('userId').replaceAll('"', '');
-           
+
             $.ajax({
                 type: "GET",
                 dataType: "json",
@@ -842,20 +836,20 @@
                 }
             }).then(function(data) {
                 var billTEmp = data.data.listBillTotal;
-            console.log(billTEmp); 
-            $(".show-bill").html("") 
-            for(var i = 0 ; i < billTEmp.length ; i++){
-                var checkStatus = billTEmp[i].bill.status==1 ? '<input type="button" class="btn btn-danger" style="float:right" data-toggle="modal" data-target="#deleteBill" data-id =" '+ billTEmp[i].bill.id+' " onclick="getIdDel.call(this)"  value="Hủy Đơn">' :
-                billTEmp[i].bill.status==2 ? '<input type="button" class="btn btn-success"  style="float:right" data-toggle="modal" data-target="#successBill" data-id =" '+ billTEmp[i].bill.id+' " onclick="getIdSuccess.call(this)" value="Đã Nhận Đơn ">': 
-                billTEmp[i].bill.status==3  ? '<label class="btn btn-secondary"  style="float:right"   > Đã Hủy </label>':
-                '<label class="btn btn-primary"  style="float:right"  >Hoàn Thành</label>'
+                console.log(billTEmp);
+                $(".show-bill").html("")
+                for (var i = 0; i < billTEmp.length; i++) {
+                    var checkStatus = billTEmp[i].bill.status == 1 ? '<input type="button" class="btn btn-danger" style="float:right" data-toggle="modal" data-target="#deleteBill" data-id =" ' + billTEmp[i].bill.id + ' " onclick="getIdDel.call(this)"  value="Hủy Đơn">' :
+                        billTEmp[i].bill.status == 2 ? '<input type="button" class="btn btn-success"  style="float:right" data-toggle="modal" data-target="#successBill" data-id =" ' + billTEmp[i].bill.id + ' " onclick="getIdSuccess.call(this)" value="Đã Nhận Đơn ">' :
+                        billTEmp[i].bill.status == 3 ? '<label class="btn btn-secondary"  style="float:right"   > Đã Hủy </label>' :
+                        '<label class="btn btn-primary"  style="float:right"  >Hoàn Thành</label>'
 
 
                     let productTemp = ``
                     for (var j = 0; j < billTEmp[i].billList.length; j++) {
                         productTemp += `
 
-                  
+
                      <p class="mb-1">${billTEmp[i].billList[j].name} X ${billTEmp[i].billList[j].quantity} </p>
 
 `
@@ -876,7 +870,7 @@
                                             <h4 class="mb-3" class="text-dark">
                                             Đơn ${i+1}
                                             </h4>
-                                           
+
                                             <p class="text-dark-50 mb-1"><i class="fa fa-user mr-1" aria-hidden="true"></i> ${billTEmp[i].user.name}  </p>
                                             <p class="text-dark-50 mb-1" ><i class="fa fa-map-marker mr-2" aria-hidden="true"> </i>${billTEmp[i].user.address}</p>
 
@@ -886,8 +880,8 @@
                                         </div>
                                         <div  style="width: 40%; margin-left: 50px; margin-top: 41px; text-align: right;" >
                                                <h6><i class="fa fa-cart-arrow-down" aria-hidden="true"></i> Sản Phẩm</h6>
-                                                ${ productTemp} 
-                                                
+                                                ${ productTemp}
+
                                         </div>
                                     </div>
                                     <hr>
@@ -905,61 +899,61 @@
                   </div>
                   `
 
-                  $(".show-bill").append(Template);
-                  
-               
-               
-            }
+                    $(".show-bill").append(Template);
+
+
+
+                }
             })
         }
-  
-        function getIdSuccess(){
-            let successID =$(this).data("id")
-            localStorage.setItem("successID",JSON.stringify(successID))
-           
-        }
-      
 
-        function successBill(){
+        function getIdSuccess() {
+            let successID = $(this).data("id")
+            localStorage.setItem("successID", JSON.stringify(successID))
+
+        }
+
+
+        function successBill() {
             let successID = localStorage.getItem('successID').replaceAll('"', '');
-            
+
             $.ajax({
-                url:"/api/bill/complete",
-                type:"GET",
-                data:{
-                    id:successID
+                url: "/api/bill/complete",
+                type: "GET",
+                data: {
+                    id: successID
                 }
-            }).then(function(data){
-                if(data.message == 'SUCCESS'){
+            }).then(function(data) {
+                if (data.message == 'SUCCESS') {
                     loadDataBuyed()
                 }
             })
         }
 
-        function getIdDel(){
+        function getIdDel() {
             var delBill = $(this).data("id").trim()
             console.log(delBill);
-            localStorage.setItem("deleteBillId",JSON.stringify(delBill))
-           
+            localStorage.setItem("deleteBillId", JSON.stringify(delBill))
+
         }
 
-        function deleteBill (){
+        function deleteBill() {
             let delID = localStorage.getItem('deleteBillId').replaceAll('"', '');
             console.log(delID);
             $.ajax({
-                url:"/api/bill/cancel",
-                type:"GET",
-                data:{
-                    id:delID
+                url: "/api/bill/cancel",
+                type: "GET",
+                data: {
+                    id: delID
                 }
-            }).then(function(data){
-               
-                if(data.message == 'SUCCESS'){
-                   
+            }).then(function(data) {
+
+                if (data.message == 'SUCCESS') {
+
                     window.location.reload()
                 }
             })
-        }           
+        }
     </script>
 </body>
 

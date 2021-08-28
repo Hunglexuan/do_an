@@ -160,7 +160,7 @@ class MidUser {
 
         let check = this.checkRole(userData);
 
-        if (check == "admin") { }
+        if (check == "admin") {}
         if (!userData) {
             console.log('MidUser-loginUser: ERROR-162');
             throw new Error(ERROR_MESSAGE.LOGIN.ERR_ACC);
@@ -381,7 +381,8 @@ class MidUser {
         let object = await objUpdate.update(dataUpdate);
         if (!object) {
             console.log('MidUser-updateUser: ERROR-409');
-        } console.log('MidUser-updateUser: Success');
+        }
+        console.log('MidUser-updateUser: Success');
         return
     }
 
@@ -428,7 +429,8 @@ class MidUser {
         let object = await objUpdate.update(dataUpdate);
         if (!object) {
             console.log('MidUser-updateSeller: ERROR-456');
-        } console.log('MidUser-updateSeller: Success');
+        }
+        console.log('MidUser-updateSeller: Success');
         return
     }
 
@@ -516,7 +518,7 @@ class MidUser {
             console.log('MidUser-changePass: ERROR-501');
             throw new Error('Không có người dùng');
         }
-        
+
         let objUpdate = await Users.findOne({
             where: {
                 id: data.userId,
@@ -528,7 +530,29 @@ class MidUser {
         };
         objUpdate.update(dataUpdate);
     }
+    async forgotPass(data) {
+        if (!data.email) {
+            console.log('MidUser-changePass: ERROR-501');
+            throw new Error('Không có người dùng');
+        }
 
+        let objUpdate = await Users.findOne({
+
+            where: {
+                email: data.email,
+                del: 0,
+            },
+        });
+
+        if (!objUpdate) {
+            console.log('MidUser-changePass: ERROR-501');
+            throw new Error('Không có người dùng');
+        }
+        let dataUpdate = {
+            password: hashPassword(data.password),
+        };
+        objUpdate.update(dataUpdate);
+    }
 }
 
 export default new MidUser();

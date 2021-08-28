@@ -53,9 +53,9 @@ class UserController {
         return await MidUser.downgradeRole(dataQuery);
     }
     async avatarUpdate(req, res) {
-       
+
         const dataUpload = await uploadMedia(req, res);
-        
+
 
         let logo = dataUpload ? dataUpload.filename : '';
         let data = req.body;
@@ -68,6 +68,10 @@ class UserController {
     async changePass(req, res) {
         let data = req.body;
         return MidUser.changePass(data);
+    }
+    async forgotPass(req, res) {
+        let data = req.body;
+        return MidUser.forgotPass(data);
     }
 }
 
