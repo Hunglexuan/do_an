@@ -140,6 +140,10 @@ app.get("/ForgotPasswordUser", function(req, res) {
     return res.render("ForgotPasswordUser");
 });
 
+app.get("/MyProfileForSeller", function(req, res) {
+    return res.render("MyProfileForSeller");
+});
+
 app.get("/MyProfileUser", function(req, res) {
     return res.render("MyProfileUser");
 });

@@ -370,57 +370,7 @@
          window.location.reload()
       }
 
-      function acceptFunc(id){
-         localStorage.setItem("billIdAcc",JSON.stringify(id));
-      }
-
-      function delFunc(id){
-         localStorage.setItem("billIdDel",JSON.stringify(id));
-      }
-
-      function delBil(){
-         var id = localStorage.getItem("billIdDel").replaceAll('"', '');
-         $.ajax({
-            url:"/api/bill/cancel",
-            type:"GET",
-            data:{
-               id:id
-            }
-         }).then(function(data) {
-            if(data.message == "SUCCESS"){
-               Swal.fire({
-                        type: 'success',
-                        title: 'Bạn Đã Hủy Thành Công ⚙️',
-                        // text: 'Your offer is safe 🙂',
-                        showConfirmButton: false,
-                        timer: 2000
-                    })
-            }
-            window.location.reload()
-         })
-      }
-
-      function acceptBil() {
-         var id = localStorage.getItem("billIdAcc").replaceAll('"', '');
-         $.ajax({
-            url:"/api/bill/accept",
-            type:"GET",
-            data:{
-               id:id
-            }
-         }).then(function(data) {
-            if(data.message == "SUCCESS"){
-               Swal.fire({
-                        type: 'success',
-                        title: 'Bạn Đã Chấp Nhận Đơn Thành Công ⚙️',
-                        // text: 'Your offer is safe 🙂',
-                        showConfirmButton: false,
-                        timer: 2000
-                    })
-            }
-            window.location.reload()
-         })
-      }
+     
    </script>
 </body>
 

@@ -4,8 +4,9 @@ $(document).ready(function () {
 });
 
 function logOutClick() {
+   console.log("vao");
    setCookie("token", "", 0);
-   window.location = "/"
+   window.location = "/LoginSeller"
 }
 
 var token = getCookie("token");
@@ -38,7 +39,7 @@ function getCookie(cname) {
 
 function loadName() {
 
-   var text = localStorage.getItem('userId').replaceAll('"', '');
+   var text = localStorage.getItem('sellerId').replaceAll('"', '');
    $.ajax({
        type: "GET",
        dataType: "json",
@@ -49,12 +50,17 @@ function loadName() {
        success: function(data) {
 
            let image = (data.data.avatar ? data.data.avatar : 'image/list/1.png');
-           document.getElementById('nameSeller').innerHTML = '<a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <img alt="Generic placeholder image" src="' + image + '" id="imageUser" class="nav-osahan-pic rounded-pill" style="height:32px;width:32px;margin-right:5px;" > ' + data.data.name + ' </a> <div class="dropdown-menu dropdown-menu-right shadow-sm border-0"> <button class="dropdown-item" onclick="idURL(' + "'" + data.data.id + "'" + ')"><i class="icofont-ui-user"></i> Thông tin của tôi </button> <a class="dropdown-item" href="/" onclick="logOutClick()"><i class="icofont-logout"></i> Đăng xuất </a> </div>';
+           document.getElementById('nameSeller').innerHTML = '<a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <img alt="Generic placeholder image" src="' + image + '" id="imageUser" class="nav-osahan-pic rounded-pill" style="height:32px;width:32px;margin-right:5px;" > ' + data.data.name + ' </a> <div class="dropdown-menu dropdown-menu-right shadow-sm border-0"> <button class="dropdown-item" onclick="idURL(' + "'" + data.data.id + "'" + ')"><i class="icofont-ui-user"></i> Thông tin của tôi </button> <a class="dropdown-item"  onclick="logOutClick()"><i class="icofont-logout"></i> Đăng xuất </a> </div>';
 
            // document.getElementById('imageUser').src = data.data.avatar;
            // $('#imageUser').append(data.data.avatar);
        }
    });
+}
+
+function idURL(idURL) {
+   let id = "?id=" + idURL;
+   window.location.href = '/MyProfileForSeller' + id;
 }
 
 
