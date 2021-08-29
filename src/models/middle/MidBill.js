@@ -467,8 +467,7 @@ class MidBill {
       del: 0,
     };
 
-    console.log("111111", data.from);
-    console.log("111111", data.to);
+    
     let billAll = await UserBill.findAll({
       where: {
         shop_id: data.shop_id,
