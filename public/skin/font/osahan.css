@@ -163,6 +163,12 @@ h6 {
     background-position: center;
 }
 
+.bg-image2 {
+    background-image: url('/image/IMG_8192.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
 .login-heading {
     font-weight: 300;
 }

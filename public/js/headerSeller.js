@@ -2,7 +2,7 @@ $(document).ready(function() {
     loadName();
     loadProfile();
     loadnotify();
-    if (tokenSeller == "" || token == "") {
+    if (token == "") {
         window.location.href = '/LoginSeller';
     }
 });
