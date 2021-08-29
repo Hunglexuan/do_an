@@ -458,24 +458,55 @@ class MidBill {
   async listSuccessForSeller(data) {
     let listBillTotal = [];
     let totalBill = {
-      total: 0,
+      totalBySelect: 0,
+      totalAll: 0,
     };
     let condition = {
       shop_id: data.shop_id,
-      createdAt: {
-        [Op.between]: [data.from, data.to]
-      },
+
       del: 0,
     };
+
+    console.log("111111", data.from);
+    console.log("111111", data.to);
+    let billAll = await UserBill.findAll({
+      where: {
+        shop_id: data.shop_id,
+        del: 0,
+      },
+      order: [["createdAt", "DESC"]],
+    });
+    for (let i = 0; i < billAll.length; i++) {
+      let billInprocess = await Bill.findOne({
+        where: {
+          id: billAll[i].bill_id,
+          status: 4,
+          del: 0,
+        },
+      });
+
+      if (billInprocess) {
+        totalBill.totalAll += billInprocess.dataValues.total_price;
+      }
+    }
+
     //tim tat ca don cua shop
     const [listBill, total] = await Promise.all([
       UserBill.findAll({
-        where: condition,
-       
+        where: {
+          shop_id: data.shop_id,
+
+          del: 0,
+        },
+
         order: [["createdAt", "DESC"]],
       }),
       UserBill.count({
-        where: condition,
+        where: {
+          shop_id: data.shop_id,
+
+          del: 0,
+        },
       }),
     ]);
 
@@ -491,6 +522,9 @@ class MidBill {
       let billInprocess = await Bill.findOne({
         where: {
           id: listBill[i].bill_id,
+          createdAt: {
+            [Op.between]: [data.from, data.to],
+          },
           status: 4,
           del: 0,
         },
@@ -499,7 +533,7 @@ class MidBill {
       //tim thong tin nhung bill da hoan thanh
       if (billInprocess) {
         console.log("MidBill-listSuccessForSeller: ErrorCode-498");
-        totalBill.total += billInprocess.dataValues.total_price;
+        totalBill.totalBySelect += billInprocess.dataValues.total_price;
         userBill.bill = billInprocess;
         userBill.user = await Users.findOne({
           where: {
@@ -541,6 +575,7 @@ class MidBill {
       }
     }
     listBillTotal.push(totalBill);
+
     //
     return {
       listBillTotal,

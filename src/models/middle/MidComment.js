@@ -200,7 +200,6 @@ class MidComment {
             userName: user.dataValues.name,
           };
           Object.assign(listComment[j].dataValues, temp1);
-          console.log('111111',listComment[j].dataValues);
 
           listCmt.push(listComment[j].dataValues);
         }
