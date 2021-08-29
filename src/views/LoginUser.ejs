@@ -53,7 +53,7 @@
                                             <i class="icofont-eye-blocked" id="hide1" style="font-size: x-large;"></i>
                                             <i class="icofont-eye-alt" id="hide2" style="font-size: x-large;"></i>
                                         </span> </label>
-
+                                        <span class="form-message text-danger" id="messagePass"></span>
                                     </div>
                                     <div class="custom-control custom-checkbox mb-3">
                                         <input type="checkbox" class="custom-control-input" id="remember">
@@ -180,7 +180,21 @@
                 }
             }).then(function(data) {
 
-                console.log(data);
+                if (data.message == "Tài khoản không tồn tại!") {
+                    document.getElementById('inputEmail').setAttribute('class', 'form-control border-danger');
+                    document.getElementById('messageEmail').innerHTML = 'Email bạn nhập không tồn tại. Hãy đăng nhập lại';
+                } else {
+                    document.getElementById('inputEmail').setAttribute('class', 'form-control');
+                    document.getElementById('messageEmail').innerHTML = '';
+                }
+
+                if (data.message == "Mật khẩu không đúng") {
+                    document.getElementById('inputPassword').setAttribute('class', 'form-control border-danger');
+                    document.getElementById('messagePass').innerHTML = 'Mật khẩu chưa chính xác. Hãy đăng nhập lại';
+                } else {
+                    document.getElementById('inputPassword').setAttribute('class', 'form-control');
+                    document.getElementById('messagePass').innerHTML = '';
+                }
 
                 if (data.message == "SUCCESS") {
 
@@ -220,9 +234,6 @@
                         window.location.href = '/';
                     }, 2000);
 
-                } else {
-                    document.getElementById('inputEmail').setAttribute('class', 'form-control border-danger');
-                    document.getElementById('messageEmail').innerHTML = 'Email bạn nhập không kết nối với tài khoản nào. Hãy đăng nhập lại';
                 }
             })
         }
