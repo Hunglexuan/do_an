@@ -1,12 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <!-- Required meta tags -->
     <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
-    />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="Askbootstrap" />
     <meta name="author" content="Askbootstrap" />
     <title>FUMK - Online Food Ordering</title>
@@ -15,10 +13,7 @@
     <!-- Bootstrap core CSS-->
     <link href="skin/bootstrap/bootstrap.min.css" rel="stylesheet" />
 
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
     <!-- Font Awesome-->
     <link href="skin/font/all.min.css" rel="stylesheet" />
     <!-- Font Awesome-->
@@ -27,49 +22,32 @@
     <link href="skin/font/select2.min.css" rel="stylesheet" />
     <!-- Custom styles for this template-->
     <link href="skin/font/osahan.css" rel="stylesheet" />
-  </head>
+</head>
 
-  <body class="bg-white">
+<body class="bg-white">
     <div class="container-fluid">
-      <div class="row no-gutter">
-        <div class="d-none d-md-flex col-md-4 col-lg-6 bg-image"></div>
-        <div class="col-md-8 col-lg-6">
-          <div class="login d-flex align-items-center py-5">
-            <div class="container">
-              <div class="row">
-                <div class="col-md-9 col-lg-8 mx-auto pl-5 pr-5">
-                  <h3 class="login-heading mb-4">Chào mừng đến FUMK</h3>
-                  <form name="myForm">
-                    <div class="form-label-group">
-                      <input
-                        type="email"
-                        id="inputEmail"
-                        class="form-control"
-                        placeholder="Địa chỉ Email"
-                      />
-                      <label for="inputEmail">Email</label>
-                      <span
-                        class="form-message text-danger"
-                        id="messageEmail"
-                      ></span>
-                    </div>
-                    <div class="form-label-group">
-                      <input
-                        type="password"
-                        id="inputPassword"
-                        class="form-control"
-                        placeholder="Mật khẩu"
-                      />
-                      <label for="inputPassword">Mật khẩu</label>
-                    </div>
-                    <div class="custom-control custom-checkbox mb-3">
-                      <input
-                        type="checkbox"
-                        class="custom-control-input"
-                        id="customCheck1"
-                      />
-                      <label class="custom-control-label" for="customCheck1"
-                        >Nhớ mật khẩu</label
+        <div class="row no-gutter">
+            <div class="d-none d-md-flex col-md-4 col-lg-6 bg-image"></div>
+            <div class="col-md-8 col-lg-6">
+                <div class="login d-flex align-items-center py-5">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-9 col-lg-8 mx-auto pl-5 pr-5">
+                                <h3 class="login-heading mb-4">Đăng nhập cho Quản lí</h3>
+                                <form name="myForm">
+                                    <div class="form-label-group">
+                                        <input type="email" id="inputEmail" class="form-control" placeholder="Địa chỉ Email" />
+                                        <label for="inputEmail">Email</label>
+                                        <span class="form-message text-danger" id="messageEmail"></span>
+                                    </div>
+                                    <div class="form-label-group">
+                                        <input type="password" id="inputPassword" class="form-control" placeholder="Mật khẩu" />
+                                        <label for="inputPassword">Mật khẩu</label>
+                                        <span class="form-message text-danger" id="messagePass"></span>
+                                    </div>
+                                    <div class="custom-control custom-checkbox mb-3">
+                                        <input type="checkbox" class="custom-control-input" id="customCheck1" />
+                                        <label class="custom-control-label" for="customCheck1">Nhớ mật khẩu</label
                       >
                     </div>
                     <a
@@ -103,16 +81,49 @@
     <!-- Custom scripts for all pages-->
     <script src="js/custom.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
   </body>
 
   <script>
-    function checkBlankLogin() {
-      if ($("#inputEmail").val() == "") {
-        alert("Email is Blank please Input");
-      } else if ($("#inputPassword").val() == "") {
-        alert("Password is black please input");
-      }
+
+
+    function setCookie(cname, cvalue, exdays) {
+        const d = new Date();
+        d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+        let expires = "expires=" + d.toUTCString();
+        document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
     }
+
+    function getCookie(cname) {
+        let name = cname + "=";
+        let decodedCookie = decodeURIComponent(document.cookie);
+        let ca = decodedCookie.split(';');
+        for (let i = 0; i < ca.length; i++) {
+            let c = ca[i];
+            while (c.charAt(0) == ' ') {
+                c = c.substring(1);
+            }
+            if (c.indexOf(name) == 0) {
+                return c.substring(name.length, c.length);
+            }
+        }
+        return "";
+    }
+
+    $(document).ready(function() {
+
+        var remember = getCookie('rememberAdmin');
+        if (remember == 'true') {
+            var email = getCookie('emailAdmin');
+            var password = getCookie('passwordAdmin');
+
+            // autofill the fields
+            $('#inputEmail').val(email);
+            $('#inputPassword').val(password);
+            $('#customCheck1').prop("checked", true);
+        }
+
+    });
 
     $("#btn").click(function () {
       var inputEmail = $("#inputEmail").val();
@@ -133,21 +144,62 @@
             password: inputPass,
           },
         }).then(function (data) {
-          if (data.message == "SUCCESS") {
-            var adminId = data.data.adminId;
 
-            (window.location.href = "/ListSeller"),
+           if (data.message == "Tài khoản không tồn tại!") {
+                    document.getElementById('inputEmail').setAttribute('class', 'form-control border-danger');
+                    document.getElementById('messageEmail').innerHTML = 'Email bạn nhập không tồn tại. Hãy đăng nhập lại';
+                } else {
+                    document.getElementById('inputEmail').setAttribute('class', 'form-control');
+                    document.getElementById('messageEmail').innerHTML = '';
+                }
+
+                if (data.message == "Mật khẩu không đúng") {
+                    document.getElementById('inputPassword').setAttribute('class', 'form-control border-danger');
+                    document.getElementById('messagePass').innerHTML = 'Mật khẩu chưa chính xác. Hãy đăng nhập lại';
+                } else {
+                    document.getElementById('inputPassword').setAttribute('class', 'form-control');
+                    document.getElementById('messagePass').innerHTML = '';
+                }
+
+
+          if (data.message == "SUCCESS") {
+
+            if ($('#customCheck1').is(':checked')) {
+
+                        // set cookies to expire in 14 days
+                        setCookie('emailAdmin', inputEmail, {
+                            expires: 14
+                        });
+                        setCookie('passwordAdmin', inputPass, {
+                            expires: 14
+                        });
+                        setCookie('rememberAdmin', true, {
+                            expires: 14
+                        });
+                    } else {
+                        // reset cookies
+                        setCookie('emailAdmin', null);
+                        setCookie('passwordAdmin', null);
+                        setCookie('rememberAdmin', null);
+                    }
+
+                      var adminId = data.data.adminId;
+
               setCookie("token", data.data.token, 31);
             localStorage.setItem("userId", JSON.stringify(adminId));
             localStorage.setItem("adminId", JSON.stringify(adminId));
             setCookie("tokenAdmin", data.data.token, 31);
             setCookie("token", data.data.token, 31);
-          } else {
-            document
-              .getElementById("inputEmail")
-              .setAttribute("class", "form-control border-danger");
-            document.getElementById("messageEmail").innerHTML =
-              "Email bạn nhập không kết nối với tài khoản nào. Hãy đăng nhập lại";
+            Swal.fire({
+                        type: 'success',
+                        title: 'Đăng nhập thành công 🔓',
+                        // text: 'Your offer is safe 🙂',
+                        showConfirmButton: false,
+                        timer: 2000
+                    })
+                    window.setTimeout(function() {
+                        window.location.href = '/ListSeller';
+                    }, 2000);
           }
         });
       }
@@ -160,24 +212,6 @@
       document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
     }
 
-    // $("#btn").click(function () {
-    //   checkBlankLogin();
-    //   $.ajax({
-    //     url: "/api/auth/loginAdmin",
-    //     type: "POST",
-    //     data: {
-    //       email: $("#inputEmail").val(),
-    //       password: $("#inputPassword").val(),
-    //     },
-    //   }).then(function (data) {
-    //     if (data.message == "SUCCESS") {
-    //     setCookie("token",data.data.token,30)
-    //       window.location.href = "/ListUsers";
 
-    //     } else {
-    //       alert("Login Fail");
-    //     }
-    //   });
-    // });
   </script>
 </html>
