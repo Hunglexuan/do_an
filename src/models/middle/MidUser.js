@@ -156,7 +156,7 @@ class MidUser {
             throw new Error(ERROR_MESSAGE.LOGIN.ERR_REQUIRE_PASSWORD);
         }
         if(del==1){
-            throw new Error(ERROR_MESSAGE.LOGIN.ERR_REQUIRE_PASSWORD);
+            throw new Error(ERROR_MESSAGE.LOGIN.ERR_ACC_BAN);
         }
 
         const userData = await this.getUserByEmail(email);
