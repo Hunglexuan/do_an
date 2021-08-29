@@ -514,7 +514,7 @@
                                 let favorite = (listdata[i].favorite ? 'check' : 'uncheck')
                                 if (listdata[i].sale != null) {
 
-                                    let price_sale = (listdata[i].sale / listdata[i].unit_price) * 100;
+                                    let price_sale = Math.round((listdata[i].sale / listdata[i].unit_price) * 100);
                                     let newPrice = listdata[i].unit_price - listdata[i].sale;
 
                                     document.getElementById('findProduct').innerHTML +=
