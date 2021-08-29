@@ -53,7 +53,7 @@ class MidUser {
         return await Users.findOne({
             where: {
                 email,
-                del: 0,
+               
             },
         });
     }
@@ -160,10 +160,13 @@ class MidUser {
 
         let check = this.checkRole(userData);
 
-        if (check == "admin") {}
         if (!userData) {
             console.log('MidUser-loginUser: ERROR-162');
             throw new Error(ERROR_MESSAGE.LOGIN.ERR_ACC);
+        }
+        if (userData && userData.dataValues.del==1) {
+            console.log('MidUser-loginUser: ERROR-162');
+            throw new Error(ERROR_MESSAGE.LOGIN.ERR_ACC_BAN);
         }
 
         const isCorrectPass = await checkPassword(password, userData.password);
@@ -204,6 +207,10 @@ class MidUser {
             console.log('MidUser-loginAdmin: ERROR-201');
             throw new Error("Khong phai admin");
         }
+        if (userData && userData.dataValues.del==1) {
+            console.log('MidUser-loginUser: ERROR-162');
+            throw new Error(ERROR_MESSAGE.LOGIN.ERR_ACC_BAN);
+        }
         const isCorrectPass = await checkPassword(password, userData.password);
         if (!isCorrectPass) {
             console.log('MidUser-loginAdmin: ERROR-206');
@@ -234,6 +241,10 @@ class MidUser {
         if (!userData) {
             console.log('MidUser-loginSeller: ERROR-231');
             throw new Error(ERROR_MESSAGE.LOGIN.ERR_ACC);
+        }
+        if (userData && userData.dataValues.del==1) {
+            console.log('MidUser-loginUser: ERROR-162');
+            throw new Error(ERROR_MESSAGE.LOGIN.ERR_ACC_BAN);
         }
 
         let check = this.checkRole(userData);

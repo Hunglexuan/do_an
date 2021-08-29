@@ -463,10 +463,31 @@
     function upRole() {
         let idUP = localStorage.getItem("idUpRole").replaceAll('"', '');
         $.ajax({
-                url:'/api/user/upRole?token='+token,
+                url:'/api/user/upRole',
                 method:'GET',
                 data:{
                 id:idUP
+                }
+                
+            }).then(function(data){
+                
+                if(data.message == "SUCCESS"){
+                
+                window.location.reload()
+                }else{
+                console.log("111111111111111111 listUser");
+                }
+                
+            })
+    }
+
+    function enableUser (){
+      let idEnable = localStorage.getItem("idDel").replaceAll('"', '');
+        $.ajax({
+                url:'/api/user/enable',
+                method:'GET',
+                data:{
+                id:idEnable
                 }
                 
             }).then(function(data){
@@ -485,7 +506,7 @@
     function deleteUser() {
         let idDel = localStorage.getItem("idDel").replaceAll('"', '');
         $.ajax({
-                url:'/api/user/delete?token='+token,
+                url:'/api/user/delete',
                 method:'GET',
                 data:{
                 id:idDel
@@ -553,7 +574,7 @@
                 targets: -1,
                 render: function(data, type, row, meta) {
                     console.log("123 ra van de ",row);
-                    var checkStatus = (row.del  ? '<input type="button" class="delete-user-btn btn-danger mr-3" data-toggle="modal" data-target="#enableUser" idUser="${data[i].id}" value="Kích Hoạt"/>' : '<input type="button" class="delete-user-btn btn-danger mr-3" data-toggle="modal" data-target="#deleteUser" idUser="${data[i].id}" value="Vô Hiệu"/>' ) 
+                    var checkStatus = (row.del  ? '<input type="button" class="delete-user-btn btn-danger mr-3" data-toggle="modal" data-target="#enableUser" idUser="'+row.id+'" value="Kích Hoạt"/>' : '<input type="button" class="delete-user-btn btn-danger mr-3" data-toggle="modal" data-target="#deleteUser" idUser="'+row.id+'" value="Vô Hiệu"/>' ) 
                     return '<input type="button" class="show-user-id btn-primary mr-3" data-toggle="modal" data-target="#inforUser" idUser="' + row.id + '" value="Thông Tin"/>' +
                         '<input type="button" class="up-role-btn btn-success mr-3 " data-toggle="modal" data-target="#upRole" idUser="' + row.id + '" value="Nâng quyền"/>' 
                         +checkStatus;
@@ -597,6 +618,7 @@
         });
 
         $('#dataTable tbody').on('click', '.delete-user-btn', function() {
+           
             let idUserDel = $(this).attr("idUser")
             localStorage.setItem('idDel', JSON.stringify(idUserDel));
         });

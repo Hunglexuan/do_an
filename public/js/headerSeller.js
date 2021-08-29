@@ -127,7 +127,8 @@ function loadnotify() {
         success: function(data) {
 
             var listComent = data.data.listCmt
-            if (listComent == '') {
+
+            if (listComent == null) {
                 document.getElementById('notifies').innerHTML = '<div style="margin-top: 105px;"><span class="font-weight-bold ml-5">Bạn không có thông báo nào!!!</span></div> ';
             } else {
 

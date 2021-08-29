@@ -7,7 +7,8 @@ export const ERROR_MESSAGE = {
         ERR_STATUS: 'Tài khoản không được phép đăng nhập',
         ERR_REQUIRE_EMAIL: 'Vui lòng cung cấp thông tin email',
         ERR_REQUIRE_PASSWORD: 'Vui lòng cung cấp mật khẩu',
-        ERR_REQUIRE_ID: 'Vui lòng cung cấp ID'
+        ERR_REQUIRE_ID: 'Vui lòng cung cấp ID',
+        ERR_ACC_BAN: 'Tai Khoan cua ban da bi khoa'
         
     },
     ADD_USER_DISTRIBUTOR: {

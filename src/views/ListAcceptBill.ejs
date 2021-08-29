@@ -193,7 +193,7 @@
                      </div>
                   
                </ol>   
-               <div class="show-bill">
+               <div id="show-bill">
                  
                </div>
             </div>
@@ -373,7 +373,7 @@
                to: dateTo
             }
          }).then(function(data){
-            
+            document.getElementById("show-bill").innerHTML = ""
             var billTEmp = data.data.listBillTotal;
             console.log(billTEmp);  
             for(var i = 0 ; i < billTEmp.length ; i++){
@@ -425,7 +425,7 @@
                   </div>
                   `
 
-                  $(".show-bill").append(Template);
+                  $("#show-bill").append(Template);
                   $(".total").html(billTEmp[billTEmp.length-1].total)
                
                
