@@ -2,541 +2,535 @@
 <html lang="en">
 
 <head>
-   <meta charset="utf-8" />
-   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-   <meta name="description" content="Askbootstrap" />
-   <meta name="author" content="Askbootstrap" />
-   <title>FU Market - Online Food Ordering </title>
-   <!-- Favicon Icon -->
-   <link rel="icon" type="image/png" href="img/favicon.png">
-   <!-- Feather Icon-->
-   <link href="/skin/css/feather.css" rel="stylesheet" type="text/css">
-   <!-- Fontawesome Icon-->
-   <link href="/skin/bootstrap/fontawesome.min.css" rel="stylesheet" type="text/css">
-   <!-- Bootstrap Css -->
-   <link href="/skin/bootstrap/bootstrap.min.css" rel="stylesheet">
-   <!-- Custom Css -->
-   <link href="/skin/css/listUser.css" rel="stylesheet" />
-   <link href="/skin/bootstrap/dataTables.bootstrap4.min.css" rel="stylesheet"/>
-   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/AlertifyJS/1.13.1/css/alertify.min.css">
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="Askbootstrap" />
+    <meta name="author" content="Askbootstrap" />
+    <title>FU Market - Online Food Ordering </title>
+    <!-- Favicon Icon -->
+    <link rel="icon" type="image/png" href="img/favicon.png">
+    <!-- Feather Icon-->
+    <link href="/skin/css/feather.css" rel="stylesheet" type="text/css">
+    <!-- Fontawesome Icon-->
+    <link href="/skin/bootstrap/fontawesome.min.css" rel="stylesheet" type="text/css">
+    <!-- Bootstrap Css -->
+    <link href="/skin/bootstrap/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom Css -->
+    <link href="/skin/css/listUser.css" rel="stylesheet" />
+    <link href="/skin/bootstrap/dataTables.bootstrap4.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/AlertifyJS/1.13.1/css/alertify.min.css">
 
 </head>
 
 <body class="sb-nav-fixed">
-   <nav class="sb-topnav navbar navbar-expand navbar-light bg-white shadow-sm">
-      <a class="navbar-brand" href="ListUsers"><img alt="logo" src="image/image0.jpg" width="100px"></a>
-      <button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#"><i
+    <nav class="sb-topnav navbar navbar-expand navbar-light bg-white shadow-sm">
+        <a class="navbar-brand" href="ListUsers"><img alt="logo" src="image/image0.jpg" width="100px"></a>
+        <button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#"><i
             class="fas fa-bars"></i></button>
-      <!-- Navbar Search-->
-      <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
-         
-      </form>
-      <!-- Navbar-->
-      <ul class="navbar-nav ml-auto ml-md-0">
-         <li class="nav-item dropdown no-arrow d-sm-none">
-            <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown"
-               aria-haspopup="true" aria-expanded="false">
-               <i class="feather-search mr-2"></i>
-            </a>
-            <!-- Dropdown - Messages -->
-            
-         </li>
-        
-         <li class="nav-item dropdown no-arrow mx-1 osahan-list-dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
-               aria-expanded="false">
-               <i class="feather-bell"></i>
-               <!-- Counter - Alerts -->
-               <span class="badge badge-info badge-counter">6</span>
-            </a>
-            <!-- Dropdown - Alerts -->
-            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow-sm">
-               <h6 class="dropdown-header">
-                  Alerts Center
-               </h6>
-               <a class="dropdown-item d-flex align-items-center" href="#">
-                  <div class="mr-3">
-                     <div class="icon-circle bg-primary">
-                        <i class="fas fa-download text-white"></i>
-                     </div>
-                  </div>
-                  <div>
-                     <div class="small text-gray-500">December 12, 2020</div>
-                     <span class="font-weight-bold">A new monthly report is ready to download!</span>
-                  </div>
-               </a>
-               <a class="dropdown-item d-flex align-items-center" href="#">
-                  <div class="mr-3">
-                     <div class="icon-circle bg-success">
-                        <i class="fas fa-edit text-white"></i>
-                     </div>
-                  </div>
-                  <div>
-                     <div class="small text-gray-500">December 7, 2020</div>
-                     $290.29 has been deposited into your account!
-                  </div>
-               </a>
-               <a class="dropdown-item d-flex align-items-center" href="#">
-                  <div class="mr-3">
-                     <div class="icon-circle bg-warning">
-                        <i class="fas fa-folder text-white"></i>
-                     </div>
-                  </div>
-                  <div>
-                     <div class="small text-gray-500">December 2, 2020</div>
-                     Spending Alert: We've noticed unusually high spending for your account.
-                  </div>
-               </a>
-               <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
-            </div>
-         </li>
-         <!-- Nav Item - User Information -->
-         <li class="nav-item dropdown no-arrow ml-1 osahan-profile-dropdown">
-            <a class="nav-link dropdown-toggle pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
-               aria-expanded="false">
-               <img class="img-profile rounded-circle" src="/image/user/1.png">
-            </a>
-            <!-- Dropdown - User Information -->
-            <div class="dropdown-menu dropdown-menu-right shadow-sm">
-               <div class="p-3 d-flex align-items-center">
-                  <div class="dropdown-list-image mr-3">
-                     <img class="rounded-circle" src="/image/user/1.png" alt="">
-                     <div class="status-indicator bg-success"></div>
-                  </div>
-                  <div class="font-weight-bold">
-                     <div class="text-truncate name-admin"></div>
-                     <div class="small text-gray-500"></div>
-                  </div>
-               </div>
-               
-               
-               <div class="dropdown-divider"></div>
-               <a class="dropdown-item" onclick="logOutClick()" ><i class="feather-log-out"></i> Đăng Xuất </a>
-                  
-            </div>
-         </li>
-      </ul>
-   </nav>
-   <div id="layoutSidenav">
-      <div id="layoutSidenav_nav">
-         <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
-            <div class="sb-sidenav-menu">
-               <div class="nav">
-                  <div class="sb-sidenav-menu-heading">Core</div>
-                  <a class="nav-link" onclick="listUserPage()">
-                    <div class="sb-nav-link-icon"><i class="feather-list"></i></div>
-                    Danh Sách Người Dùng
-                  </a>
-                  <a class="nav-link" onclick="listSellerPage()">
-                    <div class="sb-nav-link-icon"><i class="feather-list"></i></div>
-                    Danh Sách Người Bán
-                  </a>
-    
-                  <a class="nav-link" onclick="listVoucherPage()">
-                    <div class="sb-nav-link-icon"><i class="feather-list"></i></div>
-                    Danh Sách Giảm Giá
-                  </a>
-    
-                  <a class="nav-link"onclick="AddRolePage()">
-                    <div class="sb-nav-link-icon"><i class="feather-list"></i></div>
-                    Danh Sách Thực Đơn
-                  </a>
-                  <a class="nav-link" onclick="listReportPage()">
-                    <div class="sb-nav-link-icon"><i class="feather-list"></i></div>
-                    Danh Sách Báo Cáo
-                  </a>
-                  <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne"
-                     data-parent="#sidenavAccordion">
-                     <nav class="sb-sidenav-menu-nested nav">
-                        <a class="nav-link" href="layout-static.html">Static Navigation</a>
-                        <a class="nav-link" href="layout-sidenav-light.html">Light Sidenav</a>
-                     </nav>
-                  </div>
+        <!-- Navbar Search-->
+        <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
 
-                  <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-parent="#sidenavAccordion">
-                     <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
-                        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#pagesCollapseAuth"
-                           aria-expanded="false" aria-controls="pagesCollapseAuth">
+        </form>
+        <!-- Navbar-->
+        <ul class="navbar-nav ml-auto ml-md-0">
+            <li class="nav-item dropdown no-arrow d-sm-none">
+                <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="feather-search mr-2"></i>
+                </a>
+                <!-- Dropdown - Messages -->
+
+            </li>
+
+            <li class="nav-item dropdown no-arrow mx-1 osahan-list-dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="feather-bell"></i>
+                    <!-- Counter - Alerts -->
+                    <span class="badge badge-info badge-counter">6</span>
+                </a>
+                <!-- Dropdown - Alerts -->
+                <div class="dropdown-list dropdown-menu dropdown-menu-right shadow-sm">
+                    <h6 class="dropdown-header">
+                        Alerts Center
+                    </h6>
+                    <a class="dropdown-item d-flex align-items-center" href="#">
+                        <div class="mr-3">
+                            <div class="icon-circle bg-primary">
+                                <i class="fas fa-download text-white"></i>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="small text-gray-500">December 12, 2020</div>
+                            <span class="font-weight-bold">A new monthly report is ready to download!</span>
+                        </div>
+                    </a>
+                    <a class="dropdown-item d-flex align-items-center" href="#">
+                        <div class="mr-3">
+                            <div class="icon-circle bg-success">
+                                <i class="fas fa-edit text-white"></i>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="small text-gray-500">December 7, 2020</div>
+                            $290.29 has been deposited into your account!
+                        </div>
+                    </a>
+                    <a class="dropdown-item d-flex align-items-center" href="#">
+                        <div class="mr-3">
+                            <div class="icon-circle bg-warning">
+                                <i class="fas fa-folder text-white"></i>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="small text-gray-500">December 2, 2020</div>
+                            Spending Alert: We've noticed unusually high spending for your account.
+                        </div>
+                    </a>
+                    <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
+                </div>
+            </li>
+            <!-- Nav Item - User Information -->
+            <li class="nav-item dropdown no-arrow ml-1 osahan-profile-dropdown">
+                <a class="nav-link dropdown-toggle pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <img class="img-profile rounded-circle" src="/image/user/1.png">
+                </a>
+                <!-- Dropdown - User Information -->
+                <div class="dropdown-menu dropdown-menu-right shadow-sm">
+                    <div class="p-3 d-flex align-items-center">
+                        <div class="dropdown-list-image mr-3">
+                            <img class="rounded-circle" src="/image/user/1.png" alt="">
+                            <div class="status-indicator bg-success"></div>
+                        </div>
+                        <div class="font-weight-bold">
+                            <div class="text-truncate name-admin"></div>
+                            <div class="small text-gray-500"></div>
+                        </div>
+                    </div>
+
+
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" onclick="logOutClick()"><i class="feather-log-out"></i> Đăng Xuất </a>
+
+                </div>
+            </li>
+        </ul>
+    </nav>
+    <div id="layoutSidenav">
+        <div id="layoutSidenav_nav">
+            <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+                <div class="sb-sidenav-menu">
+                    <div class="nav">
+                        <div class="sb-sidenav-menu-heading">Core</div>
+                        <a class="nav-link" onclick="listUserPage()">
+                            <div class="sb-nav-link-icon"><i class="feather-list"></i></div>
+                            Danh Sách Người Dùng
+                        </a>
+                        <a class="nav-link" onclick="listSellerPage()">
+                            <div class="sb-nav-link-icon"><i class="feather-list"></i></div>
+                            Danh Sách Người Bán
+                        </a>
+
+                        <a class="nav-link" onclick="listVoucherPage()">
+                            <div class="sb-nav-link-icon"><i class="feather-list"></i></div>
+                            Danh Sách Giảm Giá
+                        </a>
+
+                        <a class="nav-link" onclick="AddRolePage()">
+                            <div class="sb-nav-link-icon"><i class="feather-list"></i></div>
+                            Danh Sách Thực Đơn
+                        </a>
+                        <a class="nav-link" onclick="listReportPage()">
+                            <div class="sb-nav-link-icon"><i class="feather-list"></i></div>
+                            Danh Sách Báo Cáo
+                        </a>
+                        <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
+                            <nav class="sb-sidenav-menu-nested nav">
+                                <a class="nav-link" href="layout-static.html">Static Navigation</a>
+                                <a class="nav-link" href="layout-sidenav-light.html">Light Sidenav</a>
+                            </nav>
+                        </div>
+
+                        <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-parent="#sidenavAccordion">
+                            <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
+                                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#pagesCollapseAuth" aria-expanded="false" aria-controls="pagesCollapseAuth">
                            Authentication
                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                         </a>
-                        <div class="collapse" id="pagesCollapseAuth" aria-labelledby="headingOne"
-                           data-parent="#sidenavAccordionPages">
-                           <nav class="sb-sidenav-menu-nested nav">
-                              <a class="nav-link" href="login.html">Login</a>
-                              <a class="nav-link" href="register.html">Register</a>
-                              <a class="nav-link" href="password.html">Forgot Password</a>
-                           </nav>
-                        </div>
-                        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#pagesCollapseError"
-                           aria-expanded="false" aria-controls="pagesCollapseError">
+                                <div class="collapse" id="pagesCollapseAuth" aria-labelledby="headingOne" data-parent="#sidenavAccordionPages">
+                                    <nav class="sb-sidenav-menu-nested nav">
+                                        <a class="nav-link" href="login.html">Login</a>
+                                        <a class="nav-link" href="register.html">Register</a>
+                                        <a class="nav-link" href="password.html">Forgot Password</a>
+                                    </nav>
+                                </div>
+                                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#pagesCollapseError" aria-expanded="false" aria-controls="pagesCollapseError">
                            Error
                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                         </a>
-                        <div class="collapse" id="pagesCollapseError" aria-labelledby="headingOne"
-                           data-parent="#sidenavAccordionPages">
-                           <nav class="sb-sidenav-menu-nested nav">
-                              <a class="nav-link" href="401.html">401 Page</a>
-                              <a class="nav-link" href="404.html">404 Page</a>
-                              <a class="nav-link" href="500.html">500 Page</a>
-                           </nav>
+                                <div class="collapse" id="pagesCollapseError" aria-labelledby="headingOne" data-parent="#sidenavAccordionPages">
+                                    <nav class="sb-sidenav-menu-nested nav">
+                                        <a class="nav-link" href="401.html">401 Page</a>
+                                        <a class="nav-link" href="404.html">404 Page</a>
+                                        <a class="nav-link" href="500.html">500 Page</a>
+                                    </nav>
+                                </div>
+                            </nav>
                         </div>
-                     </nav>
-                  </div>
 
 
-               </div>
-            </div>
-            <!-- <div class="sb-sidenav-footer">
+                    </div>
+                </div>
+                <!-- <div class="sb-sidenav-footer">
                <div class="small">Logged in as:</div>
                Ask Bootstrap
             </div> -->
-         </nav>
-      </div>
-      <div id="layoutSidenav_content">
-         <main>
-            <div class="container-fluid">
-               <h1 class="mt-4">Quản Lí Voucher</h1>
-               
-
-            </div>
-            
+            </nav>
+        </div>
+        <div id="layoutSidenav_content">
+            <main>
+                <div class="container-fluid">
+                    <h1 class="mt-4">Quản Lí Voucher</h1>
 
 
-            <div class="card-body">
-               <div class="table-responsive">
-                  
+                </div>
 
-                  <table class="table" id="dataTable" width="100%" cellspacing="0">
-                     <thead>
-                        <tr class="text-uppercase">
-                           <th>ID</th>
-                           <th>Tên Thực đơn</th>
-                         
-                           
-                           <th>Thao Tác</th>
-                        </tr>
-                     </thead>
-                     <tbody>
-                        <!----><!---->
-                        <!-- ajax xu ly ben duoi -->
-                      
-                     </tbody>
-                  </table>
-                  
-                  <a href="" class="btn btn-primary" data-toggle="modal" data-target="#edit_booking"><i
+
+
+                <div class="card-body">
+                    <div class="table-responsive">
+
+
+                        <table class="table" id="dataTable" width="100%" cellspacing="0">
+                            <thead>
+                                <tr class="text-uppercase">
+                                    <th>ID</th>
+                                    <th>Tên Thực đơn</th>
+
+
+                                    <th>Thao Tác</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!---->
+                                <!---->
+                                <!-- ajax xu ly ben duoi -->
+
+                            </tbody>
+                        </table>
+
+                        <a href="" class="btn btn-primary" data-toggle="modal" data-target="#edit_booking"><i
                      class="fa fa-fw fa-plus-circle"></i>Thêm sản phẩm</a>
-               </div>
-            </div>
-            
-      </div>
-   </div>
-   </main>
-   <footer class="py-4 bg-light mt-auto">
-      <div class="container-fluid">
-         <div class="d-flex align-items-center justify-content-between small">
-            <div class="text-muted">Copyright &copy; Your Website 2020</div>
-            <div>
-               <a href="#">Privacy Policy</a>
-               &middot;
-               <a href="#">Terms &amp; Conditions</a>
-            </div>
+                    </div>
+                </div>
 
-         </div>
-      </div>
-   </footer>
+        </div>
+    </div>
+    </main>
+    <footer class="py-4 bg-light mt-auto">
+        <div class="container-fluid">
+            <div class="d-flex align-items-center justify-content-between small">
+                <div class="text-muted">Copyright &copy; Your Website 2020</div>
+                <div>
+                    <a href="#">Privacy Policy</a> &middot;
+                    <a href="#">Terms &amp; Conditions</a>
+                </div>
 
-   <!-- createVOucher -->
-   <div class="modal fade" id="edit_booking" tabindex="-1" role="dialog" aria-labelledby="edit_bookingLabel"
-   aria-hidden="true">
-   <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
-         <div class="modal-header">
-            <h5 class="modal-title" id="edit_bookingLabel">Thêm Mới Thực Đơn</h5>
-            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+            </div>
+        </div>
+    </footer>
+
+    <!-- createVOucher -->
+    <div class="modal fade" id="edit_booking" tabindex="-1" role="dialog" aria-labelledby="edit_bookingLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="edit_bookingLabel">Thêm Mới Thực Đơn</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                <span aria-hidden="true">×</span>
             </button>
-         </div>
-         <div class="modal-body">
-            <div class="row">
-               <div class="col-xl-12">
-                  <div class="card mb-4">
-                     <div class="card-header">
-                        Thông tin cơ bản
-                     </div>
-                     <div class="card-body">
-                        <div class="row">
-                           <div class="col-md-12">
-                              <div class="form-group">
-                                 <label>Tên Thực Đơn</label>
-                                 <input type="text" class="form-control" placeholder="Tên Thực Đơn" id="category-name">
-                              </div>
-                           </div>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-xl-12">
+                            <div class="card mb-4">
+                                <div class="card-header">
+                                    Thông tin cơ bản
+                                </div>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label>Tên Thực Đơn</label>
+                                                <input type="text" class="form-control" placeholder="Tên Thực Đơn" id="category-name">
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                            </div>
                         </div>
-                       
-                      
-                     </div>
-                  </div>
-               </div>
+                    </div>
+                    <!-- /Row -->
+                </div>
+                <div class="modal-footer">
+                    <input type="button" class="btn btn-primary" id="add-cate-btn" value="Thêm"></input>
+                </div>
             </div>
-            <!-- /Row -->
-         </div>
-         <div class="modal-footer">
-            <input type="button" class="btn btn-primary" id="add-cate-btn" value="Thêm"></input>
-         </div>
-      </div>
-   </div>
-   </div>
+        </div>
+    </div>
 
-  
-   <!--Pop up delete-->
 
-   <div class="modal fade" id="deleteVoucher" tabindex="-1" role="dialog" aria-labelledby="edit_bookingLabel"
-      aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered" role="document">
-         <div class="modal-content">
-            <div class="modal-header">
-               <h5 class="modal-title" id="edit_bookingLabel">Thông Báo</h5>
-               <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+    <!--Pop up delete-->
+
+    <div class="modal fade" id="deleteVoucher" tabindex="-1" role="dialog" aria-labelledby="edit_bookingLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="edit_bookingLabel">Thông Báo</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">×</span>
                </button>
-            </div>
-            <div class="modal-body">
-               <div class="row">
-                  <div class="col-xl-12">
-                     <div class="card mb-4">
-                        <div class="card-body">
-                           <h5 style="text-align: center;">Bạn có muốn xóa thực đơn này không?</h5>
-                           <div class="card-body">
-                              <div class="row ml-5">
-                                 <div class="col-md-6">
-                                    <div class="form-group">
-                                       <input type="button" class="btn btn-primary" id="deletePro" value="Đồng Ý"
-                                          onclick="deleteVoucher()"></input>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-xl-12">
+                            <div class="card mb-4">
+                                <div class="card-body">
+                                    <h5 style="text-align: center;">Bạn có muốn xóa thực đơn này không?</h5>
+                                    <div class="card-body">
+                                        <div class="row ml-5">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <input type="button" class="btn btn-primary" id="deletePro" value="Đồng Ý" onclick="deleteVoucher()"></input>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <input type="button" class="btn btn-primary" id="cancelDelete" value="Hủy Bỏ" data-dismiss="modal"></input>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
-                                 </div>
-                                 <div class="col-md-6">
-                                    <div class="form-group">
-                                       <input type="button" class="btn btn-primary" id="cancelDelete" value="Hủy Bỏ"
-                                          data-dismiss="modal"></input>
-                                    </div>
-                                 </div>
-                              </div>
-                           </div>
+                                </div>
+                            </div>
                         </div>
-                     </div>
-                  </div>
-               </div>
+                    </div>
+                </div>
             </div>
-         </div>
-      </div>
-   </div>
+        </div>
+    </div>
 
 
- 
-   <!-- Jquery -->
-   <script src="/js/jquery.min.js"></script>
-   <!-- Fontawesome -->
-   <script src="/js/all.min.js"></script>
-   <!-- Bootstrap -->
-   <script src="/js/bootstrap.bundle.min.js"></script>
-   <!-- Custom Js -->
-   <script src="/js/scriptsListSeller.js"></script>
-   <!-- Ajax Chart Js -->
-   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
-   <!-- Chart Js -->
-   <!-- <script src="/js/chart-area-demo.js"></script>
+
+    <!-- Jquery -->
+    <script src="/js/jquery.min.js"></script>
+    <!-- Fontawesome -->
+    <script src="/js/all.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom Js -->
+    <script src="/js/scriptsListSeller.js"></script>
+    <!-- Ajax Chart Js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
+    <!-- Chart Js -->
+    <!-- <script src="/js/chart-area-demo.js"></script>
    <script src="/js/chart-bar-demo.js"></script>
    <script src="/js/chart-pie-demo.js"></script> -->
-   <script src="/js/jquery.dataTables.min.js"></script>
-   <script src="/js/dataTables.bootstrap.min.js"></script>
-   <script src="https://cdnjs.cloudflare.com/ajax/libs/AlertifyJS/1.13.1/alertify.min.js" ></script>
-   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
-   
-   <!-- <script src="/js/datatables-demo.js"></script> -->
+    <script src="/js/jquery.dataTables.min.js"></script>
+    <script src="/js/dataTables.bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/AlertifyJS/1.13.1/alertify.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+
+    <!-- <script src="/js/datatables-demo.js"></script> -->
 
 </body>
 
 
 
 <script>
+    $(document).ready(function() {
+        if (token == "") {
+            window.location.href = '/LoginAdmin';
+        }
+    });
 
-function getCookie(cname) {
-   let name = cname + "=";
-   let decodedCookie = decodeURIComponent(document.cookie);
-   let ca = decodedCookie.split(';');
-   for(let i = 0; i <ca.length; i++) {
-     let c = ca[i];
-     while (c.charAt(0) == ' ') {
-       c = c.substring(1);
-     }
-     if (c.indexOf(name) == 0) {
-       return c.substring(name.length, c.length);
-     }
-   }
-   return "";
-}
-function setCookie(cname, cvalue, exdays) {
-    const d = new Date();
-    d.setTime(d.getTime() + (exdays*24*60*60*1000));
-    let expires = "expires="+ d.toUTCString();
-    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+
+    function logOutClick() {
+        setCookie("token", "", 0);
+        window.location = "/LoginAdmin"
     }
 
- var token = getCookie("token");
+    function getCookie(cname) {
+        let name = cname + "=";
+        let decodedCookie = decodeURIComponent(document.cookie);
+        let ca = decodedCookie.split(';');
+        for (let i = 0; i < ca.length; i++) {
+            let c = ca[i];
+            while (c.charAt(0) == ' ') {
+                c = c.substring(1);
+            }
+            if (c.indexOf(name) == 0) {
+                return c.substring(name.length, c.length);
+            }
+        }
+        return "";
+    }
 
- function checkBlankCAte() {
-        if ($("#category-name").val() == "" ) {
+    function setCookie(cname, cvalue, exdays) {
+        const d = new Date();
+        d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+        let expires = "expires=" + d.toUTCString();
+        document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+    }
+
+    var token = getCookie("token");
+
+    function checkBlankCAte() {
+        if ($("#category-name").val() == "") {
             alert("Tên của Thực đơn  không được để trống ")
         }
     }
 
-//function chuyen trang
-function listUserPage(){
-         window.location.href='/ListUsers'
-       } 
-       function listSellerPage(){
-         window.location.href='/ListSeller'
-       } 
-       function listVoucherPage(){
-         window.location.href='/ListVoucher'
-       } 
-
-       function AddRolePage(){
-         window.location.href='/AddRole'
-       } 
-
-       function listReportPage(){
-         window.location.href='/ListReport'
-       } 
- //btn-logout function
-function logOutClick(){
-   setCookie("token","",0);
-   window.location = "/LoginAdmin"
-}
-
-//add-voucher done
-$("#add-cate-btn").click(function() {
-
-checkBlankCAte();
-$.ajax({
-    url: "/api/category/create",
-    type: "POST",
-    data: {
-        name:$("#category-name").val().trim()
+    //function chuyen trang
+    function listUserPage() {
+        window.location.href = '/ListUsers'
     }
-}).then(function(data) {
 
-    if (data.message == "SUCCESS") {
-      Swal.fire({
-                        type: 'success',
-                        title: 'Thêm mới thành công  ⚙️',
-                        // text: 'Your offer is safe 🙂',
-                        showConfirmButton: false,
-                        timer: 2000
-
-                    })
-         
-    } else {
-      Swal.fire({ 
-                        type: 'error',
-                        title: 'Thêm mới không thành công  ⚙️',
-                        // text: 'Your offer is safe 🙂',
-                        showConfirmButton: false,
-                        timer: 5000
-                    })
+    function listSellerPage() {
+        window.location.href = '/ListSeller'
     }
-   
-})
-})
+
+    function listVoucherPage() {
+        window.location.href = '/ListVoucher'
+    }
+
+    function AddRolePage() {
+        window.location.href = '/AddRole'
+    }
+
+    function listReportPage() {
+        window.location.href = '/ListReport'
+    }
+    //btn-logout function
 
 
-//delete-Voucher done
-function deleteVoucher(){
-   var id = localStorage.getItem('idCateDel').replaceAll('"', '');
-  
-   $.ajax({
-      url:"/api/category/deleteCategory",
-      type:"GET",
-      data:{
-         id:id
-      }
-   }).then(function(data){
-      if(data.message == 'SUCCESS'){
-         
-         window.location.reload()
-         alertify.success("XÓa Voucher Thành Công")
-      }else{
-         alertify.error("Xóa Voucher Thất Bại");
-      }
-   })
-}
-//datatable function 
- $(document).ready(function() {
-    
-   $('#dataTable').DataTable( {
-      'ajax': function (data, callback, settings) {
-      $.ajax({
-        url: "/api/category/searchcategory",
-        type:"GET"
-      })
-      .then ( function( response, textStatus, jqXHR ) {
-         
-         let data = response.data.listCategory
-		   data.forEach((val, idx) => {
-             val.no = idx + 1
-         });
-         callback({"data": data});
-      });
-    },
-    
-    'columns':[
-       {data : 'no'},
-       {data : 'name'},
-       
-      //  {data : 'createdAt',render : $.fn.dataTable.render.momment('D/M/YYYY')},
-      //  {data : 'updatedAt'},
-       {data : ""}
+    //add-voucher done
+    $("#add-cate-btn").click(function() {
 
-    ]
-    ,
-    'columnDefs': [
-				{
-					targets: -1,
-					render: function (data, type, row, meta) {
-						return '<input type="button"  class="delete-category btn-danger mr-3" data-toggle="modal" data-target="#deleteVoucher" idCateDel="' + row.id + '" value="Xóa Thực Đơn"/>';
-					}
+        checkBlankCAte();
+        $.ajax({
+            url: "/api/category/create",
+            type: "POST",
+            data: {
+                name: $("#category-name").val().trim()
+            }
+        }).then(function(data) {
 
-				}
-			]
-   
-   } );
+            if (data.message == "SUCCESS") {
+                Swal.fire({
+                    type: 'success',
+                    title: 'Thêm mới thành công  ⚙️',
+                    // text: 'Your offer is safe 🙂',
+                    showConfirmButton: false,
+                    timer: 2000
+
+                })
+
+            } else {
+                Swal.fire({
+                    type: 'error',
+                    title: 'Thêm mới không thành công  ⚙️',
+                    // text: 'Your offer is safe 🙂',
+                    showConfirmButton: false,
+                    timer: 5000
+                })
+            }
+
+        })
+    })
 
 
+    //delete-Voucher done
+    function deleteVoucher() {
+        var id = localStorage.getItem('idCateDel').replaceAll('"', '');
+
+        $.ajax({
+            url: "/api/category/deleteCategory",
+            type: "GET",
+            data: {
+                id: id
+            }
+        }).then(function(data) {
+            if (data.message == 'SUCCESS') {
+
+                window.location.reload()
+                alertify.success("XÓa Voucher Thành Công")
+            } else {
+                alertify.error("Xóa Voucher Thất Bại");
+            }
+        })
+    }
+    //datatable function
+    $(document).ready(function() {
+
+        $('#dataTable').DataTable({
+            'ajax': function(data, callback, settings) {
+                $.ajax({
+                        url: "/api/category/searchcategory",
+                        type: "GET"
+                    })
+                    .then(function(response, textStatus, jqXHR) {
+
+                        let data = response.data.listCategory
+                        data.forEach((val, idx) => {
+                            val.no = idx + 1
+                        });
+                        callback({
+                            "data": data
+                        });
+                    });
+            },
+
+            'columns': [{
+                    data: 'no'
+                }, {
+                    data: 'name'
+                },
+
+                //  {data : 'createdAt',render : $.fn.dataTable.render.momment('D/M/YYYY')},
+                //  {data : 'updatedAt'},
+                {
+                    data: ""
+                }
+
+            ],
+            'columnDefs': [{
+                targets: -1,
+                render: function(data, type, row, meta) {
+                    return '<input type="button"  class="delete-category btn-danger mr-3" data-toggle="modal" data-target="#deleteVoucher" idCateDel="' + row.id + '" value="Xóa Thực Đơn"/>';
+                }
+
+            }]
+
+        });
 
 
 
-		$('#dataTable tbody').on('click', '.delete-category', function () {
-			
 
-         let id = $(this).attr('idCateDel')
-         localStorage.setItem('idCateDel', JSON.stringify(id));
 
-		});
+        $('#dataTable tbody').on('click', '.delete-category', function() {
 
-		
-     
 
-} );
+            let id = $(this).attr('idCateDel')
+            localStorage.setItem('idCateDel', JSON.stringify(id));
 
-     
-   
-
- 
+        });
 
 
 
+
+    });
 </script>
 
 </html>

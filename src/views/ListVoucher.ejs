@@ -372,6 +372,18 @@
 
 
 <script>
+    $(document).ready(function() {
+        if (token == "") {
+            window.location.href = '/LoginAdmin';
+        }
+    });
+
+
+    function logOutClick() {
+        setCookie("token", "", 0);
+        window.location = "/LoginAdmin"
+    }
+
     function getCookie(cname) {
         let name = cname + "=";
         let decodedCookie = decodeURIComponent(document.cookie);
@@ -437,10 +449,7 @@
         window.location.href = '/ListReport'
     }
     //btn-logout function
-    function logOutClick() {
-        setCookie("token", "", 0);
-        window.location = "/LoginAdmin"
-    }
+
 
     //add-voucher done
     $("#add-voucher-btn").click(function() {

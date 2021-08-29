@@ -2,12 +2,12 @@
 <html lang="en">
 
 <head>
-   <meta charset="utf-8" />
-   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-   <meta name="description" content="Askbootstrap" />
-   <meta name="author" content="Askbootstrap" />
-   <title>FU Market - Online Food Ordering </title>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="Askbootstrap" />
+    <meta name="author" content="Askbootstrap" />
+    <title>FU Market - Online Food Ordering </title>
     <!-- Favicon Icon -->
     <link rel="icon" type="image/png" href="img/favicon.png">
     <!-- Feather Icon-->
@@ -19,7 +19,7 @@
     <!-- Custom Css -->
     <link href="/skin/css/listUser.css" rel="stylesheet" />
     <link href="/skin/bootstrap/dataTables.bootstrap4.min.css" rel="stylesheet" />
-   
+
 </head>
 
 
@@ -42,32 +42,31 @@
 
             </li>
 
-            
+
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow ml-1 osahan-profile-dropdown">
-                <a class="nav-link dropdown-toggle pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
-                   aria-expanded="false">
-                   <img class="img-profile rounded-circle" src="/image/user/1.png">
+                <a class="nav-link dropdown-toggle pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <img class="img-profile rounded-circle" src="/image/user/1.png">
                 </a>
                 <!-- Dropdown - User Information -->
                 <div class="dropdown-menu dropdown-menu-right shadow-sm">
-                   <div class="p-3 d-flex align-items-center">
-                      <div class="dropdown-list-image mr-3">
-                         <img class="rounded-circle" src="/image/user/1.png" alt="">
-                         <div class="status-indicator bg-success"></div>
-                      </div>
-                      <div class="font-weight-bold">
-                         <div class="text-truncate name-admin"></div>
-                         <div class="small text-gray-500"></div>
-                      </div>
-                   </div>
-                   
-                   
-                   <div class="dropdown-divider"></div>
-                   <a class="dropdown-item" onclick="logOutClick()" ><i class="feather-log-out"></i> Đăng Xuất </a>
-                      
+                    <div class="p-3 d-flex align-items-center">
+                        <div class="dropdown-list-image mr-3">
+                            <img class="rounded-circle" src="/image/user/1.png" alt="">
+                            <div class="status-indicator bg-success"></div>
+                        </div>
+                        <div class="font-weight-bold">
+                            <div class="text-truncate name-admin"></div>
+                            <div class="small text-gray-500"></div>
+                        </div>
+                    </div>
+
+
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" onclick="logOutClick()"><i class="feather-log-out"></i> Đăng Xuất </a>
+
                 </div>
-             </li>
+            </li>
         </ul>
     </nav>
     <div id="layoutSidenav">
@@ -159,12 +158,12 @@
                                 <tr class="text-uppercase">
                                     <th>ID</th>
                                     <th>Họ Và Tên</th>
-                                    
+
                                     <th>Địa CHỉ</th>
                                     <th>Điện Thoại</th>
                                     <th>Email</th>
                                     <th>Trạng Thái</th>
-                                    
+
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -180,211 +179,201 @@
         </div>
     </div>
     </main>
-   <!-- info User -->
-   <div class="modal fade" id="inforUser" tabindex="-1" role="dialog" aria-labelledby="edit_bookingLabel"
-      aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered" role="document">
-         <div class="modal-content">
-            <div class="modal-header">
-               <h5 class="modal-title" id="edit_bookingLabel">Thông Tin Người Dùng</h5>
-               <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+    <!-- info User -->
+    <div class="modal fade" id="inforUser" tabindex="-1" role="dialog" aria-labelledby="edit_bookingLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="edit_bookingLabel">Thông Tin Người Dùng</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">×</span>
                </button>
-            </div>
-            <div class="modal-body">
-               <div class="row">
-                  <div class="col-md-12 col-sm-6">
-                     <div class="card mb-4">
-                        <div class="card-header">
-                           Thông Tin Cơ Bản
-                        </div>
-                        <div class="card-body">
-                           <div class="row">
-                              <div class="col-md-12">
-                                 <div class="form-group">
-                                    <label>Họ Và Tên</label>
-                                    <input type="text" class="form-control" placeholder="" id="userName" readonly>
-                                 </div>
-                              </div>
-                           </div>
-                         
-                           
-                           <!-- /row-->
-                           <div class="row">
-                              <div class="col-md-12">
-                                 <div class="form-group">
-                                    <label>Địa Chỉ</label>
-                                    <input type="text" class="form-control" placeholder="" id="userAdd" readonly>
-                                 </div>
-                              </div>
-                           </div>
-                           <!-- /row-->
-                           <div class="row">
-                              <div class="col-md-12">
-                                 <div class="form-group">
-                                    <label>Số Điện Thoại</label>
-                                    <input type="text" class="form-control" placeholder="" id="userPhone" readonly>
-                                 </div>
-                              </div>
-                              
-                           </div>
-                           <!-- /row-->
-                           <div class="row">
-                              <div class="col-md-12">
-                                 <div class="form-group">
-                                    <label>Email</label>
-                                    <input type="text" class="form-control" placeholder="" id="userEmail" readonly>
-                                 </div>
-                              </div>
-                           </div>
-                           <!-- /row-->
-                          
-                           <div class="row">
-                              <div class="col-md-12">
-                                 <div class="form-group">
-                                    <label>Ngày Sinh</label>
-                                    <input type="text" class="form-control" placeholder="" id="userDOB" readonly>
-                                 </div>
-                              </div>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-                 
-               </div>
-            </div>
-         </div>
-      </div>
-   </div>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-12 col-sm-6">
+                            <div class="card mb-4">
+                                <div class="card-header">
+                                    Thông Tin Cơ Bản
+                                </div>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label>Họ Và Tên</label>
+                                                <input type="text" class="form-control" placeholder="" id="userName" readonly>
+                                            </div>
+                                        </div>
+                                    </div>
 
-   <!--Pop up upRole-->
 
-   <div class="modal fade" id="upRole" tabindex="-1" role="dialog" aria-labelledby="edit_bookingLabel"
-      aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered" role="document">
-         <div class="modal-content">
-            <div class="modal-header">
-               <h5 class="modal-title" id="edit_bookingLabel">Thông Báo</h5>
-               <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                    <!-- /row-->
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label>Địa Chỉ</label>
+                                                <input type="text" class="form-control" placeholder="" id="userAdd" readonly>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- /row-->
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label>Số Điện Thoại</label>
+                                                <input type="text" class="form-control" placeholder="" id="userPhone" readonly>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <!-- /row-->
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label>Email</label>
+                                                <input type="text" class="form-control" placeholder="" id="userEmail" readonly>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- /row-->
+
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label>Ngày Sinh</label>
+                                                <input type="text" class="form-control" placeholder="" id="userDOB" readonly>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Pop up upRole-->
+
+    <div class="modal fade" id="upRole" tabindex="-1" role="dialog" aria-labelledby="edit_bookingLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="edit_bookingLabel">Thông Báo</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">×</span>
                </button>
-            </div>
-            <div class="modal-body">
-               <div class="row">
-                  <div class="col-xl-12">
-                     <div class="card mb-4">
-                        <div class="card-body">
-                           <h5 style="text-align: center;">Bạn có muốn nâng quyền người dùng này không?</h5>
-                           <div class="card-body">
-                              <div class="row ml-5">
-                                 <div class="col-md-6">
-                                    <div class="form-group">
-                                       <input type="button" class="btn btn-primary" id="deletePro" value="Đồng Ý"
-                                          onclick="upRole()"></input>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-xl-12">
+                            <div class="card mb-4">
+                                <div class="card-body">
+                                    <h5 style="text-align: center;">Bạn có muốn nâng quyền người dùng này không?</h5>
+                                    <div class="card-body">
+                                        <div class="row ml-5">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <input type="button" class="btn btn-primary" id="deletePro" value="Đồng Ý" onclick="upRole()"></input>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <input type="button" class="btn btn-primary" id="cancelDelete" value="Hủy Bỏ" data-dismiss="modal"></input>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
-                                 </div>
-                                 <div class="col-md-6">
-                                    <div class="form-group">
-                                       <input type="button" class="btn btn-primary" id="cancelDelete" value="Hủy Bỏ"
-                                          data-dismiss="modal"></input>
-                                    </div>
-                                 </div>
-                              </div>
-                           </div>
+                                </div>
+                            </div>
                         </div>
-                     </div>
-                  </div>
-               </div>
+                    </div>
+                </div>
             </div>
-         </div>
-      </div>
-   </div>
- <!--Pop up Enable-->
+        </div>
+    </div>
+    <!--Pop up Enable-->
 
- <div class="modal fade" id="enableUser" tabindex="-1" role="dialog" aria-labelledby="edit_bookingLabel"
- aria-hidden="true">
- <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-       <div class="modal-header">
-          <h5 class="modal-title" id="edit_bookingLabel">Thông Báo</h5>
-          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+    <div class="modal fade" id="enableUser" tabindex="-1" role="dialog" aria-labelledby="edit_bookingLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="edit_bookingLabel">Thông Báo</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
              <span aria-hidden="true">×</span>
           </button>
-       </div>
-       <div class="modal-body">
-          <div class="row">
-             <div class="col-xl-12">
-                <div class="card mb-4">
-                   <div class="card-body">
-                      <h5 style="text-align: center;">Bạn có muốn kích hoạt lại người dùng này không?</h5>
-                      <div class="card-body">
-                         <div class="row ml-5">
-                            <div class="col-md-6">
-                               <div class="form-group">
-                                  <input type="button" class="btn btn-primary" id="deletePro" value="Đồng Ý"
-                                     onclick="enableUser()"></input>
-                               </div>
-                            </div>
-                            <div class="col-md-6">
-                               <div class="form-group">
-                                  <input type="button" class="btn btn-primary" id="cancelDelete" value="Hủy Bỏ"
-                                     data-dismiss="modal"></input>
-                               </div>
-                            </div>
-                         </div>
-                      </div>
-                   </div>
                 </div>
-             </div>
-          </div>
-       </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-xl-12">
+                            <div class="card mb-4">
+                                <div class="card-body">
+                                    <h5 style="text-align: center;">Bạn có muốn kích hoạt lại người dùng này không?</h5>
+                                    <div class="card-body">
+                                        <div class="row ml-5">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <input type="button" class="btn btn-primary" id="deletePro" value="Đồng Ý" onclick="enableUser()"></input>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <input type="button" class="btn btn-primary" id="cancelDelete" value="Hủy Bỏ" data-dismiss="modal"></input>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
- </div>
-</div>
 
 
     <!--Pop up delete-->
 
-    <div class="modal fade" id="deleteUser" tabindex="-1" role="dialog" aria-labelledby="edit_bookingLabel"
-    aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-       <div class="modal-content">
-          <div class="modal-header">
-             <h5 class="modal-title" id="edit_bookingLabel">Thông Báo</h5>
-             <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+    <div class="modal fade" id="deleteUser" tabindex="-1" role="dialog" aria-labelledby="edit_bookingLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="edit_bookingLabel">Thông Báo</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">×</span>
              </button>
-          </div>
-          <div class="modal-body">
-             <div class="row">
-                <div class="col-xl-12">
-                   <div class="card mb-4">
-                      <div class="card-body">
-                         <h5 style="text-align: center;">Bạn có muốn xóa người dùng này không?</h5>
-                         <div class="card-body">
-                            <div class="row ml-5">
-                               <div class="col-md-6">
-                                  <div class="form-group">
-                                     <input type="button" class="btn btn-primary" id="deletePro" value="Đồng Ý"
-                                        onclick="deleteUser()"></input>
-                                  </div>
-                               </div>
-                               <div class="col-md-6">
-                                  <div class="form-group">
-                                     <input type="button" class="btn btn-primary" id="cancelDelete" value="Hủy Bỏ"
-                                        data-dismiss="modal"></input>
-                                  </div>
-                               </div>
-                            </div>
-                         </div>
-                      </div>
-                   </div>
                 </div>
-             </div>
-          </div>
-       </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-xl-12">
+                            <div class="card mb-4">
+                                <div class="card-body">
+                                    <h5 style="text-align: center;">Bạn có muốn xóa người dùng này không?</h5>
+                                    <div class="card-body">
+                                        <div class="row ml-5">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <input type="button" class="btn btn-primary" id="deletePro" value="Đồng Ý" onclick="deleteUser()"></input>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <input type="button" class="btn btn-primary" id="cancelDelete" value="Hủy Bỏ" data-dismiss="modal"></input>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
- </div>
 
     <!-- Jquery -->
     <script src="/js/jquery.min.js"></script>
@@ -409,7 +398,19 @@
 
 
 <script>
-    function getCookie(cname) { 
+    $(document).ready(function() {
+        if (token == "") {
+            window.location.href = '/LoginAdmin';
+        }
+    });
+
+
+    function logOutClick() {
+        setCookie("token", "", 0);
+        window.location = "/LoginAdmin"
+    }
+
+    function getCookie(cname) {
         let name = cname + "=";
         let decodedCookie = decodeURIComponent(document.cookie);
         let ca = decodedCookie.split(';');
@@ -455,95 +456,92 @@
         window.location.href = '/ListReport'
     }
     //btn-logout function
-    function logOutClick() {
-        setCookie("token", "", 0);
-        window.location = "/LoginAdmin"
-    }
+
     //upRole Function done
     function upRole() {
         let idUP = localStorage.getItem("idUpRole").replaceAll('"', '');
         $.ajax({
-                url:'/api/user/upRole',
-                method:'GET',
-                data:{
-                id:idUP
-                }
-                
-            }).then(function(data){
-                
-                if(data.message == "SUCCESS"){
-                
+            url: '/api/user/upRole',
+            method: 'GET',
+            data: {
+                id: idUP
+            }
+
+        }).then(function(data) {
+
+            if (data.message == "SUCCESS") {
+
                 window.location.reload()
-                }else{
+            } else {
                 console.log("111111111111111111 listUser");
-                }
-                
-            })
+            }
+
+        })
     }
 
-    function enableUser (){
-      let idEnable = localStorage.getItem("idDel").replaceAll('"', '');
+    function enableUser() {
+        let idEnable = localStorage.getItem("idDel").replaceAll('"', '');
         $.ajax({
-                url:'/api/user/enable',
-                method:'GET',
-                data:{
-                id:idEnable
-                }
-                
-            }).then(function(data){
-                
-                if(data.message == "SUCCESS"){
-                
+            url: '/api/user/enable',
+            method: 'GET',
+            data: {
+                id: idEnable
+            }
+
+        }).then(function(data) {
+
+            if (data.message == "SUCCESS") {
+
                 window.location.reload()
-                }else{
+            } else {
                 console.log("111111111111111111 listUser");
-                }
-                
-            })
+            }
+
+        })
     }
 
     //deleteUser function done
     function deleteUser() {
         let idDel = localStorage.getItem("idDel").replaceAll('"', '');
         $.ajax({
-                url:'/api/user/delete',
-                method:'GET',
-                data:{
-                id:idDel
-                }
-                
-            }).then(function(data){
-                
-                if(data.message == "SUCCESS"){
-                
+            url: '/api/user/delete',
+            method: 'GET',
+            data: {
+                id: idDel
+            }
+
+        }).then(function(data) {
+
+            if (data.message == "SUCCESS") {
+
                 window.location.reload()
-                }else{
+            } else {
                 console.log("111111111111111111 listUser");
-                }
-                
-            })
+            }
+
+        })
     }
 
     //datatable function
     $(document).ready(function() {
-        
+
         $('#dataTable').DataTable({
-            
+
             'ajax': function(data, callback, settings) {
                 $.ajax({
-                        url: "http://localhost:3999/api/user/searchUser" ,
+                        url: "http://localhost:3999/api/user/searchUser",
                     })
                     .then(function(response, textStatus, jqXHR) {
 
                         let data = response.data.listUsers
-                        
+
                         console.log(data);
-                        
+
 
                         data.forEach((val, idx) => {
-                            
-                            
-                            
+
+
+
                             val.no = idx + 1
                         });
                         callback({
@@ -573,40 +571,40 @@
             'columnDefs': [{
                 targets: -1,
                 render: function(data, type, row, meta) {
-                    console.log("123 ra van de ",row);
-                    var checkStatus = (row.del  ? '<input type="button" class="delete-user-btn btn-danger mr-3" data-toggle="modal" data-target="#enableUser" idUser="'+row.id+'" value="Kích Hoạt"/>' : '<input type="button" class="delete-user-btn btn-danger mr-3" data-toggle="modal" data-target="#deleteUser" idUser="'+row.id+'" value="Vô Hiệu"/>' ) 
+                    console.log("123 ra van de ", row);
+                    var checkStatus = (row.del ? '<input type="button" class="delete-user-btn btn-danger mr-3" data-toggle="modal" data-target="#enableUser" idUser="' + row.id + '" value="Kích Hoạt"/>' : '<input type="button" class="delete-user-btn btn-danger mr-3" data-toggle="modal" data-target="#deleteUser" idUser="' + row.id + '" value="Vô Hiệu"/>')
                     return '<input type="button" class="show-user-id btn-primary mr-3" data-toggle="modal" data-target="#inforUser" idUser="' + row.id + '" value="Thông Tin"/>' +
-                        '<input type="button" class="up-role-btn btn-success mr-3 " data-toggle="modal" data-target="#upRole" idUser="' + row.id + '" value="Nâng quyền"/>' 
-                        +checkStatus;
+                        '<input type="button" class="up-role-btn btn-success mr-3 " data-toggle="modal" data-target="#upRole" idUser="' + row.id + '" value="Nâng quyền"/>' +
+                        checkStatus;
                 }
 
             }]
 
         });
-      
-        
+
+
 
 
 
         $('#dataTable tbody').on('click', '.show-user-id', function() {
             let idUserTemp = $(this).attr("idUser");
             $.ajax({
-                url:'http://localhost:3999/api/user/getById',
-                method:'GET',
-                data:{
-                id:idUserTemp
+                url: 'http://localhost:3999/api/user/getById',
+                method: 'GET',
+                data: {
+                    id: idUserTemp
                 }
-                
-            }).then(function(data){
-                
-                if(data.message == "SUCCESS"){
+
+            }).then(function(data) {
+
+                if (data.message == "SUCCESS") {
                     document.getElementById("userName").value = data.data.name
                     document.getElementById("userAdd").value = data.data.address
                     document.getElementById("userPhone").value = data.data.phone
                     document.getElementById("userEmail").value = data.data.email
                     document.getElementById("userDOB").value = new Date(data.data.dob).toLocaleDateString();
                 }
-                
+
             })
         });
 
@@ -618,7 +616,7 @@
         });
 
         $('#dataTable tbody').on('click', '.delete-user-btn', function() {
-           
+
             let idUserDel = $(this).attr("idUser")
             localStorage.setItem('idDel', JSON.stringify(idUserDel));
         });
@@ -626,8 +624,6 @@
 
 
     });
-   
-    
 </script>
 
 </html>

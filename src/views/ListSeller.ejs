@@ -372,6 +372,13 @@
 
 
 <script>
+    $(document).ready(function() {
+        if (token == "") {
+            window.location.href = '/LoginAdmin';
+        }
+    });
+
+
     function logOutClick() {
         setCookie("token", "", 0);
         window.location = "/LoginAdmin"

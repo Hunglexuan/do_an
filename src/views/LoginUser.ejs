@@ -196,6 +196,14 @@
                     document.getElementById('messagePass').innerHTML = '';
                 }
 
+                if (data.message == "Tai Khoan cua ban da bi khoa") {
+                    document.getElementById('inputEmail').setAttribute('class', 'form-control border-danger');
+                    document.getElementById('messageEmail').innerHTML = 'Email bạn đang bị khóa. Hãy đăng nhập lại sau!!!';
+                } else {
+                    document.getElementById('inputEmail').setAttribute('class', 'form-control');
+                    document.getElementById('messageEmail').innerHTML = '';
+                }
+
                 if (data.message == "SUCCESS") {
 
                     var userId = data.data.userid;
