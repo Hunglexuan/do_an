@@ -1,6 +1,7 @@
 $(document).ready(function () {
    loadName();
    loadProfile();
+   loadnotify();
 });
 
 function logOutClick() {
@@ -110,3 +111,43 @@ function loadProfile() {
       }
    })
 }
+
+function loadnotify() {
+   var text = localStorage.getItem('sellerId').replaceAll('"', '');
+   $.ajax({
+       type: "GET",
+       data: {
+           user_id: text
+       },
+       url: "/api/comment/notifySeller",
+       success: function(data) {
+         
+          var listComent = data.data.listCmt
+          if (listComent == '') {
+                  document.getElementById('notifies').innerHTML = '<div style="margin-top: 105px;"><span class="font-weight-bold ml-5">Bạn không có thông báo nào!!!</span></div> ';
+            }else{
+               
+               for(var i = 0 ; i < listComent.length ; i++){
+
+                  var template = `<a class="dropdown-item d-flex align-items-center" onclick=GotoComment(`+text+`)>
+                                    <div class="mr-3">
+                                          <img alt="Generic placeholder image" src="` + listComent[i].image + `" class="mr-3 rounded-pill" style="width: 40px; height: 40px;">
+                                    </div>
+                                    <div>
+                                          <div class="small text-gray-500">` + new Date(listComent[i].createdAt).toLocaleDateString('en-GB') + `</div>
+                                          <span>`+listComent[i].userName+ `bình luận về sản phẩm của bạn  <b>` + listComent[i].name + `</b> là: "` + listComent[i].content + `"</span>
+                                    </div>
+                                 </a>`
+                  $("#notiForSeller").append(template);           
+               }
+                   
+            }
+         
+       }
+   });
+
+}
+
+// function GotoComment(id){
+//    window.location.href =`/ShopDetail`
+// }

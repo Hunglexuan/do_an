@@ -27,21 +27,31 @@ function setCookie(cname, cvalue, exdays) {
 }
 
 var token = getCookie("token");
+var tokenSeller = getCookie("tokenSeller")
 
 function logOutClick() {
     setCookie("token", "", 0);
+    setCookie("tokenSeller", "", 0);
     localStorage.setItem('userId', JSON.stringify(''));
     window.location = "/"
 }
 
 var checkLogin = document.getElementById('checkLogin');
-
+var checkSeller = document.getElementById('CheckSeller')
 if (token == "") {
     checkLogin.innerHTML += `<li class="nav-link" style="padding-top: 20px !important;">
                         <a href="/LoginUser" class="btn btn-outline-danger" style="border-radius: 6px;"> Đăng nhập </a>
                     </li>`
 } else {
     checkLogin.innerHTML += `<li class="nav-item dropdown" id="nameUsers"> </li>`
+}
+
+if (tokenSeller == "") {
+    checkSeller.innerHTML += ``
+} else {
+    checkSeller.innerHTML += `<li class="nav-link" style="padding-top: 20px !important;">
+    <a href="/listOrderSeller" class="btn btn-outline-info" style="border-radius: 6px;"> Quản Lý Cửa Hàng </a>
+</li>`
 }
 
 function checkSearchSeller() {

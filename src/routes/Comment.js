@@ -11,5 +11,6 @@ routerApp.get('/delete', Response(CommentController.deleteComment));
 routerApp.post('/update', Response(CommentController.updateComment));
 routerApp.get('/searchcomment', Response(CommentController.searchComment));
 routerApp.get('/notify', Response(CommentController.notifyUser));
+routerApp.get('/notifySeller', Response(CommentController.notifySeller));
 
 export default routerApp;

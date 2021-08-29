@@ -136,6 +136,8 @@
                     var sellerID = data.data.sellerid;
                     window.location.href = "/listProductSeller"
                     localStorage.setItem('sellerId', JSON.stringify(sellerID));
+                    localStorage.setItem('userId', JSON.stringify(sellerID));
+                    setCookie("tokenSeller", data.data.token, 31)
                     setCookie("token", data.data.token, 31)
                 } else {
                     document.getElementById('inputEmail').setAttribute('class', 'form-control border-danger');

@@ -80,6 +80,22 @@
       .slider.round:before {
          border-radius: 50%;
       }
+      #notiForSeller::-webkit-scrollbar-track {
+            box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            background-color: #F5F5F5;
+        }
+        
+        #notiForSeller::-webkit-scrollbar {
+            width: 12px;
+            background-color: #F5F5F5;
+        }
+        
+        #notiForSeller::-webkit-scrollbar-thumb {
+            border-radius: 10px;
+            box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
+            background-color: #555;
+        }
    </style>
 </head>
 
@@ -100,39 +116,23 @@
       </form>
       <!-- Navbar-->
       <ul class="navbar-nav ml-auto ml-md-0">
-         <li class="nav-item dropdown no-arrow d-sm-none">
-            <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <i class="fas fa-search"></i>
-            </a>
-            <!-- Dropdown - Messages -->
-            <div class="dropdown-menu dropdown-menu-right p-3 shadow-sm animated--grow-in" aria-labelledby="searchDropdown">
-               <form class="form-inline mr-auto w-100 navbar-search">
-                  <div class="input-group">
-                     <input type="text" class="form-control border-0 shadow-none" placeholder="Search people, jobs and more..." aria-label="Search" aria-describedby="basic-addon2">
-                     <div class="input-group-append">
-                        <button class="btn" type="button">
-                        <i class="fas fa-search"></i>
-                        </button>
-                     </div>
-                  </div>
-               </form>
-            </div>
-         </li>
+         
      <!-- //dropdowAlert     -->
-         <!-- <li class="nav-item dropdown no-arrow mx-1 osahan-list-dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-               <i class="far fa-bell"></i>
-             
-            </a>
-            
-            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow-sm">
-               <h6 class="dropdown-header">
-                  Thông Báo
-               </h6>
-               
-               <a class="dropdown-item text-center small text-gray-500" href="#">Tất Cả Thông Báo</a>
-            </div>
-         </li> -->
+     <li class="nav-item dropdown no-arrow mx-1 osahan-list-dropdown">
+      <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+         <i class="far fa-bell"></i>
+
+      </a>
+
+      <div class="dropdown-list dropdown-menu dropdown-menu-right shadow-sm">
+         <h6 class="dropdown-header">
+            Thông Báo
+         </h6>
+         <div id="notiForSeller" style="height: 240px; overflow: scroll; overflow-x: hidden;">
+          </div>
+         
+      </div>
+   </li>
          <!-- Nav Item - User Information -->
          <li class="nav-item dropdown" id="nameSeller"></li>
       </ul>
