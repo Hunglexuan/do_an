@@ -148,17 +148,18 @@
                         <div class="pt-2"></div>
                         <div class="bg-white rounded shadow-sm p-4 mb-4">
                             <h4 class="mb-1">Lựa Chọn Địa Chỉ Giao Hàng</h4>
-                            
+
                             <div class="row">
                                 <div class="col-md-12">
-                                    <div class="bg-white card addresses-item mb-4 border border-success">
+                                    <div class="bg-white card addresses-item mb-4 border border-success mt-3">
                                         <div class="gold-members p-4">
                                             <div class="media">
                                                 <div class="mr-3"><i class="icofont-ui-home icofont-3x"></i>
                                                 </div>
                                                 <div class="media-body">
                                                     <h6 class="mb-1 text-black">Địa Chỉ</h6>
-                                                    <textarea style="height:70px;" class="form-control" id="address" placeholder="Address "></textarea>
+                                                    <textarea style="height:70px;" class="form-control" id="address" placeholder="Địa chỉ của bạn "></textarea>
+                                                    <span class="form-message text-danger" id="messageAddress"></span>
                                                     <!-- <p class="mt-3 text-black font-weight-bold" style="float: right;"><a class="btn btn-sm btn-success mr-2" href="#"> Save</a>
                                                         </p> -->
                                                 </div>
@@ -212,13 +213,15 @@
                                 </div>
                                 <div class="mb-2 bg-white rounded p-2 clearfix">
                                     <div class="input-group input-group-sm mb-2">
-                                        <input type="text" class="voucher-price form-control" placeholder="Nhập Mã Giảm Giá ">
+                                        <input type="text" class="voucher-price form-control" id="saleCode" placeholder="Nhập Mã Giảm Giá ">
+
                                         <div class="input-group-append">
                                             <button class="btn-voucher btn btn-primary" type="button" id="button-addon2"><i class="icofont-sale-discount"></i>
                                                         Áp Dụng</button>
                                         </div>
-                                    </div>
 
+                                    </div>
+                                    <span class="form-message text-danger" id="messageSale"></span>
                                     </span>
 
                                 </div>
@@ -330,30 +333,56 @@
                 console.log(cart);
             })
             //function ap ma voucher
+
+
+        function checkErrorCode() {
+            $.ajax({
+                type: "GET",
+                dataType: "json",
+                url: "/api/voucher/search",
+                success: function(data) {
+                    var listdata = data.data.listVoucher;
+                    for (var i = 0; i < listdata.length; i++) {
+                        if ($(".voucher-price").val() != listdata[i].code) {
+                            document.getElementById('messageSale').innerHTML = 'Mã chưa chính xác';
+                            document.getElementById('saleCode').setAttribute('class', 'form-control border-danger');
+                        }
+                    }
+                }
+            });
+        }
+
+
         $(".btn-voucher").click(function() {
-                $.ajax({
-                    url: "/api/voucher/getCode",
-                    type: "GET",
-                    data: {
-                        "code": $(".voucher-price").val()
-                    }
-                }).then(function(data) {
-                    console.log(data);
-                    if (data.message == "SUCCESS") {
-
-                        $("#sub-total-cart").html(data.data.discount_number)
-                        cart.voucherCode = data.data.code;
-                        sessionStorage.setItem('shoppingCart', JSON.stringify(cart));
-                        let total_Price = $(".total-cart").html();
-                        let voucher_Price = data.data.discount_number;
-                        let afterVoucher = total_Price - voucher_Price;
-                        $(".after-Voucher").html(afterVoucher);
 
 
-                    } else {
-                        alert("ngu")
-                    }
-                })
+                if ($(".voucher-price").val() == '') {
+                    document.getElementById('messageSale').innerHTML = 'Mã chưa chính xác';
+                    document.getElementById('saleCode').setAttribute('class', 'form-control border-danger');
+                } else if (!checkErrorCode()) {
+                    $.ajax({
+                        url: "/api/voucher/getCode",
+                        type: "GET",
+                        data: {
+                            "code": document.getElementById('saleCode').value,
+                        }
+                    }).then(function(data) {
+                        console.log(data);
+                        if (data.message == "SUCCESS") {
+
+                            $("#sub-total-cart").html(data.data.discount_number)
+                            cart.voucherCode = data.data.code;
+                            sessionStorage.setItem('shoppingCart', JSON.stringify(cart));
+                            let total_Price = $(".total-cart").html();
+                            let voucher_Price = data.data.discount_number;
+                            let afterVoucher = total_Price - voucher_Price;
+                            $(".after-Voucher").html(afterVoucher);
+
+                            document.getElementById('messageSale').innerHTML = '';
+                            document.getElementById('saleCode').setAttribute('class', 'form-control');
+                        }
+                    })
+                }
             })
             //function lay dia chi nguoi dung
 
@@ -376,39 +405,49 @@
             var cart_tmp = cart;
             cart_tmp.status = 1;
             console.log(cart_tmp);
-            $.ajax({
-                url: "/api/bill/create",
-                type: "POST",
-                data: {
-                    "cart": cart_tmp
-                }
-            }).then(function(data) {
-                console.log(data);
-                console.log(cart_tmp);
+            if ($('#address').val() == '') {
+                document.getElementById('messageAddress').innerHTML = 'Vui lòng nhập địa chỉ...';
+                document.getElementById('address').setAttribute('class', 'form-control border-danger');
+            } else {
+                $.ajax({
+                    url: "/api/bill/create",
+                    type: "POST",
+                    data: {
+                        "cart": cart_tmp
+                    }
+                }).then(function(data) {
+                    console.log(data);
+                    console.log(cart_tmp);
 
 
-                if (data.message == "SUCCESS") {
-                    Swal.fire({
-                        type: 'success',
-                        title: 'Đặt Hàng Thành Công. Xin vui lòng theo dõi ở lịch sử đơn hàng 🛒',
-                        // text: 'Your offer is safe 🙂',
-                        showConfirmButton: false,
-                        timer: 2500
-                    })
-                    window.setTimeout(function() {
-                        window.location.href = '/';
-                    }, 2500);
-                } else {
-                    Swal.fire({
-                        type: 'error',
-                        title: 'Bạn chưa thêm sản phẩm vào giỏ hàng. Vui lòng thực hiện lại',
-                        // text: 'Your offer is safe 🙂',
-                        showConfirmButton: false,
-                        timer: 2500
-                    })
-                    window.setTimeout(2500);
-                }
-            })
+                    if (data.message == "SUCCESS") {
+                        Swal.fire({
+                            type: 'success',
+                            title: 'Đặt Hàng Thành Công. Xin vui lòng theo dõi ở lịch sử đơn hàng 🛒',
+                            // text: 'Your offer is safe 🙂',
+                            showConfirmButton: false,
+                            timer: 2500
+                        })
+                        window.setTimeout(function() {
+                            window.location.href = '/';
+                        }, 2500);
+                        document.getElementById('messageAddress').innerHTML = '';
+                        document.getElementById('address').setAttribute('class', 'form-control');
+                    } else {
+                        Swal.fire({
+                            type: 'error',
+                            title: 'Bạn chưa thêm sản phẩm vào giỏ hàng. Vui lòng thực hiện lại',
+                            // text: 'Your offer is safe 🙂',
+                            showConfirmButton: false,
+                            timer: 2500
+                        })
+                        window.setTimeout(2500);
+                        document.getElementById('messageAddress').innerHTML = '';
+                        document.getElementById('address').setAttribute('class', 'form-control');
+                    }
+                })
+            }
+
 
         })
     </script>

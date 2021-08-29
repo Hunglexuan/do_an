@@ -295,7 +295,13 @@
                             window.location.href = '/LoginUser';
                         }, 2000);
                     } else {
-
+                        Swal.fire({
+                            type: 'error',
+                            title: 'Email bạn đăng kí đã tồn tại',
+                            // text: 'Your offer is safe 🙂',
+                            showConfirmButton: false,
+                            timer: 2000
+                        })
                     }
                 })
             }

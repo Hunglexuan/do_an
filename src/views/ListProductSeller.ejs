@@ -1,119 +1,119 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
-   <meta charset="utf-8" />
-   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-   <meta name="description" content="Askbootstrap" />
-   <meta name="author" content="Askbootstrap" />
-   <title>FU Market - Online Food Ordering </title>
-   <!-- Favicon Icon -->
-   <link rel="icon" type="image/png" href="image/favicon.png">
-   <!-- Feather Icon-->
-   <link href="skin/css/feather.css" rel="stylesheet" type="text/css">
-   <!-- Fontawesome Icon-->
-   <link href="skin/font/fontawesome.min.css" rel="stylesheet" type="text/css">
-   <!-- Bootstrap Css -->
-   <link href="skin/bootstrap/bootstrap.min.css" rel="stylesheet">
-   <!-- Custom Css -->
-   <link href="skin/css/styles.css" rel="stylesheet" />
-   <!-- Dropzone -->
-   <link href="skin/font/dropzone.css" rel="stylesheet">
-   <!-- Date Picker -->
-   <link href="http://www.ansonika.com/foogra/admin_section/css/date_picker.css" rel="stylesheet">
-   <!-- Summernote Editor -->
-   <link href="skin/font/summernote-bs4.min.css" rel="stylesheet">
-   <!-- Datatables css -->
-   <link href="skin/bootstrap/dataTables.bootstrap4.min.css" rel="stylesheet">
-   <link href="skin/font/HungCSS.css" rel="stylesheet">
-   <style>
-      .switch {
-         position: relative;
-         display: inline-block;
-         width: 60px;
-         height: 34px;
-      }
-
-      .switch input {
-         opacity: 0;
-         width: 0;
-         height: 0;
-      }
-
-      .slider {
-         position: absolute;
-         cursor: pointer;
-         top: 0;
-         left: 0;
-         right: 0;
-         bottom: 0;
-         background-color: #ccc;
-         -webkit-transition: .4s;
-         transition: .4s;
-      }
-
-      .slider:before {
-         position: absolute;
-         content: "";
-         height: 26px;
-         width: 26px;
-         left: 4px;
-         bottom: 4px;
-         background-color: white;
-         -webkit-transition: .4s;
-         transition: .4s;
-      }
-
-      input:checked+.slider {
-         background-color: #2196F3;
-      }
-
-      input:focus+.slider {
-         box-shadow: 0 0 1px #2196F3;
-      }
-
-      input:checked+.slider:before {
-         -webkit-transform: translateX(26px);
-         -ms-transform: translateX(26px);
-         transform: translateX(26px);
-      }
-
-      /* Rounded sliders */
-      .slider.round {
-         border-radius: 34px;
-      }
-
-      .slider.round:before {
-         border-radius: 50%;
-      }
-   </style>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="Askbootstrap" />
+    <meta name="author" content="Askbootstrap" />
+    <title>FU Market - Online Food Ordering </title>
+    <!-- Favicon Icon -->
+    <link rel="icon" type="image/png" href="image/favicon.png">
+    <!-- Feather Icon-->
+    <link href="skin/css/feather.css" rel="stylesheet" type="text/css">
+    <!-- Fontawesome Icon-->
+    <link href="skin/font/fontawesome.min.css" rel="stylesheet" type="text/css">
+    <!-- Bootstrap Css -->
+    <link href="skin/bootstrap/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom Css -->
+    <link href="skin/css/styles.css" rel="stylesheet" />
+    <!-- Dropzone -->
+    <link href="skin/font/dropzone.css" rel="stylesheet">
+    <!-- Date Picker -->
+    <link href="http://www.ansonika.com/foogra/admin_section/css/date_picker.css" rel="stylesheet">
+    <!-- Summernote Editor -->
+    <link href="skin/font/summernote-bs4.min.css" rel="stylesheet">
+    <!-- Datatables css -->
+    <link href="skin/bootstrap/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <link href="skin/font/HungCSS.css" rel="stylesheet">
+    <style>
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 34px;
+        }
+        
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            -webkit-transition: .4s;
+            transition: .4s;
+        }
+        
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            -webkit-transition: .4s;
+            transition: .4s;
+        }
+        
+        input:checked+.slider {
+            background-color: #2196F3;
+        }
+        
+        input:focus+.slider {
+            box-shadow: 0 0 1px #2196F3;
+        }
+        
+        input:checked+.slider:before {
+            -webkit-transform: translateX(26px);
+            -ms-transform: translateX(26px);
+            transform: translateX(26px);
+        }
+        /* Rounded sliders */
+        
+        .slider.round {
+            border-radius: 34px;
+        }
+        
+        .slider.round:before {
+            border-radius: 50%;
+        }
+    </style>
 </head>
 
 <body class="sb-nav-fixed">
-   <nav class="sb-topnav navbar navbar-expand navbar-light bg-white shadow-sm">
-      <a class="navbar-brand" href="DashboardSeller"><img alt="logo" src="image/image0.jpg" width="100px"></a>
-      <!-- Navbar Search-->
-      <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
-         <div class="input-group">
-            <div class="input-group-append">
-               <label id="statusShop" class="mr-2"></label>
-               <label class="switch">
+    <nav class="sb-topnav navbar navbar-expand navbar-light bg-white shadow-sm">
+        <a class="navbar-brand" href="DashboardSeller"><img alt="logo" src="image/image0.jpg" width="100px"></a>
+        <!-- Navbar Search-->
+        <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
+            <div class="input-group">
+                <div class="input-group-append">
+                    <label id="statusShop" class="mr-2"></label>
+                    <label class="switch">
                   <input type="checkbox" id="switchShop" name="swiShop">
                   <span class="slider round"></span>
                </label>
+                </div>
             </div>
-         </div>
-      </form> 
-      <!-- Navbar-->
-      <ul class="navbar-nav ml-auto ml-md-0">
-         <!-- <li class="nav-item dropdown no-arrow d-sm-none">
+        </form>
+        <!-- Navbar-->
+        <ul class="navbar-nav ml-auto ml-md-0">
+            <!-- <li class="nav-item dropdown no-arrow d-sm-none">
             <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown"
                aria-haspopup="true" aria-expanded="false">
                <i class="fas fa-search"></i>
             </a> -->
-         <!-- Dropdown - Messages -->
-         <!-- <div class="dropdown-menu dropdown-menu-right p-3 shadow-sm animated--grow-in"
+            <!-- Dropdown - Messages -->
+            <!-- <div class="dropdown-menu dropdown-menu-right p-3 shadow-sm animated--grow-in"
                aria-labelledby="searchDropdown">
                <form class="form-inline mr-auto w-100 navbar-search">
                   <div class="input-group">
@@ -130,877 +130,979 @@
             </div>
          </li> -->
 
-         <li class="nav-item dropdown no-arrow mx-1 osahan-list-dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-               <i class="far fa-bell"></i>
-               <!-- Counter - Alerts -->
-            </a>
-            <!-- Dropdown - Alerts -->
-            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow-sm">
-               <h6 class="dropdown-header">
-                  Thông Báo
-               </h6>
-               
-               <a class="dropdown-item text-center small text-gray-500" href="#">Tất Cả Thông Báo</a>
-            </div>
-         </li>
-         <li class="nav-item dropdown" id="nameSeller"></li>
-      </ul>
-   </nav>
-   <div id="layoutSidenav">
-      <div id="layoutSidenav_nav">
-         <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
-            <div class="sb-sidenav-menu">
-               <div class="nav">
-                  <div class="sb-sidenav-menu-heading">Danh Mục </div>
-               
-                  
-                  <a class="nav-link" href="listOrderSeller">
-                     <div class="sb-nav-link-icon"><i class="fas fa-cart-arrow-down"></i></div>
-                     Danh Sách Đặt hàng <span class="badge badge-pill ml-2 badge-primary"></span>
-                  </a>
-                  <a class="nav-link" href="listShipForSeller">
-                    <div class="sb-nav-link-icon"><i class="fas fa-shipping-fast"></i></div>
-                    Danh Sách Giao Hàng <span class="badge badge-pill ml-2 badge-primary"></span>
-                 </a>
-                  <a class="nav-link" href="ListAcceptBill">
-                     <div class="sb-nav-link-icon"><i class="fas fa-check-circle"></i></div>
-                     Danh Sách Đơn Hoàn Thành
-                  </a>
-                 
-                  <a class="nav-link" href="ListDeleteBill">
-                     <div class="sb-nav-link-icon"><i class="fas fa-trash-alt"></i></div>
-                     Danh Sách Đơn Hủy
-                  </a>
-                  <a class="nav-link" href="listProductSeller">
-                     <div class="sb-nav-link-icon"><i class="fas fa-boxes"></i></div>
-                     Quản Lý Sản Phẩm
-                  </a>
-                  <a class="nav-link" href="ListReportBySeller">
-                     <div class="sb-nav-link-icon"><i class="fas fa-file-signature"></i></div>
-                     Dánh sách Báo Cáo
-                  </a>
-               </div>
-            </div>
-         </nav>
-      </div>
-      <div id="layoutSidenav_content">
-         <main>
-            <div class="container-fluid">
-               <h1 class="mt-4">Danh Sách Sản Phẩm</h1>
-               <ol class="breadcrumb mb-4">
-                  <li class="breadcrumb-item"><a href="DashboardSeller">Dashboard</a></li>
-                  <li class="breadcrumb-item active">Danh Sách Sản Phẩm</li>
-               </ol>
-               <div class="row">
-                  <div class="col-xl-12">
-                     <div class="card mb-4">
-                        <div class="card-header">
-                           Danh Sách Sản Phẩm
-                        </div>
-                        <div class="card-body">
-                           <div class="row">
-                              <div class="col-md-12">
-                                 <div class="card-body">
-                                    <div class="table-responsive">
-                                       <table class="table" id="dataProduct" width="100%" cellspacing="0"> 
-                                          <thead>
-                                             <tr class="text-uppercase">
-                                                <th>Tên Sản Phẩm</th>
-                                                <th>Miêu Tả Sản Phẩm</th>
-                                                <th>Số Lượng</th>
-                                                <th>Đơn Giá</th>
-                                                <th>Hành Động</th>
-                                             </tr>
-                                          </thead>
-                                          <tbody>
-                                             <!---->
-                                             <!---->
-                                             <!-- ajax xu ly ben duoi -->
+            <li class="nav-item dropdown no-arrow mx-1 osahan-list-dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="far fa-bell"></i>
+                    <!-- Counter - Alerts -->
+                </a>
+                <!-- Dropdown - Alerts -->
+                <div class="dropdown-list dropdown-menu dropdown-menu-right shadow-sm">
+                    <h6 class="dropdown-header">
+                        Thông Báo
+                    </h6>
 
-                                          </tbody>
-                                       </table>
-                                    </div>
-                                 </div>
-                                 <!-- </div> -->
-                                 <a href="" class="btn btn-primary" data-toggle="modal" data-target="#edit_booking"><i
+                    <a class="dropdown-item text-center small text-gray-500" href="#">Tất Cả Thông Báo</a>
+                </div>
+            </li>
+            <li class="nav-item dropdown" id="nameSeller"></li>
+        </ul>
+    </nav>
+    <div id="layoutSidenav">
+        <div id="layoutSidenav_nav">
+            <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+                <div class="sb-sidenav-menu">
+                    <div class="nav">
+                        <div class="sb-sidenav-menu-heading">Danh Mục </div>
+
+
+                        <a class="nav-link" href="listOrderSeller">
+                            <div class="sb-nav-link-icon"><i class="fas fa-cart-arrow-down"></i></div>
+                            Danh Sách Đặt hàng <span class="badge badge-pill ml-2 badge-primary"></span>
+                        </a>
+                        <a class="nav-link" href="listShipForSeller">
+                            <div class="sb-nav-link-icon"><i class="fas fa-shipping-fast"></i></div>
+                            Danh Sách Giao Hàng <span class="badge badge-pill ml-2 badge-primary"></span>
+                        </a>
+                        <a class="nav-link" href="ListAcceptBill">
+                            <div class="sb-nav-link-icon"><i class="fas fa-check-circle"></i></div>
+                            Danh Sách Đơn Hoàn Thành
+                        </a>
+
+                        <a class="nav-link" href="ListDeleteBill">
+                            <div class="sb-nav-link-icon"><i class="fas fa-trash-alt"></i></div>
+                            Danh Sách Đơn Hủy
+                        </a>
+                        <a class="nav-link" href="listProductSeller">
+                            <div class="sb-nav-link-icon"><i class="fas fa-boxes"></i></div>
+                            Quản Lý Sản Phẩm
+                        </a>
+                        <a class="nav-link" href="ListReportBySeller">
+                            <div class="sb-nav-link-icon"><i class="fas fa-file-signature"></i></div>
+                            Dánh sách Báo Cáo
+                        </a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+        <div id="layoutSidenav_content">
+            <main>
+                <div class="container-fluid">
+                    <h1 class="mt-4">Danh Sách Sản Phẩm</h1>
+                    <ol class="breadcrumb mb-4">
+                        <li class="breadcrumb-item"><a href="DashboardSeller">Dashboard</a></li>
+                        <li class="breadcrumb-item active">Danh Sách Sản Phẩm</li>
+                    </ol>
+                    <div class="row">
+                        <div class="col-xl-12">
+                            <div class="card mb-4">
+                                <div class="card-header">
+                                    Danh Sách Sản Phẩm
+                                </div>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="card-body">
+                                                <div class="table-responsive">
+                                                    <table class="table" id="dataProduct" width="100%" cellspacing="0">
+                                                        <thead>
+                                                            <tr class="text-uppercase">
+                                                                <th>Tên Sản Phẩm</th>
+                                                                <th>Miêu Tả Sản Phẩm</th>
+                                                                <th>Số Lượng</th>
+                                                                <th>Đơn Giá</th>
+                                                                <th>Hành Động</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <!---->
+                                                            <!---->
+                                                            <!-- ajax xu ly ben duoi -->
+
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                            <!-- </div> -->
+                                            <a href="" class="btn btn-primary" data-toggle="modal" data-target="#edit_booking"><i
                                        class="fa fa-fw fa-plus-circle"></i>Thêm sản phẩm</a>
-                              </div>
-                           </div>
-                           <!-- /row-->
+                                        </div>
+                                    </div>
+                                    <!-- /row-->
+                                </div>
+                            </div>
                         </div>
-                     </div>
-                  </div>
-               </div>
-            </div>
-         </main>
-         <footer class="py-4 bg-light mt-auto">
-            <div class="container-fluid">
-               <div class="d-flex align-items-center justify-content-between small">
-                  <div class="text-muted">Copyright &copy; Your Website 2020</div>
-                  <div>
-                     <a href="#">Privacy Policy</a>
-                     &middot;
-                     <a href="#">Terms &amp; Conditions</a>
-                  </div>
-               </div>
-            </div>
-         </footer>
-      </div>
-   </div>
-   <!-- create product -->
-   <div class="modal fade" id="edit_booking" tabindex="-1" role="dialog" aria-labelledby="edit_bookingLabel"
-      aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered" role="document">
-         <div class="modal-content">
-            <div class="modal-header">
-               <h5 class="modal-title" id="edit_bookingLabel">Thêm Mới Sản Phẩm</h5>
-               <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    </div>
+                </div>
+            </main>
+            <footer class="py-4 bg-light mt-auto">
+                <div class="container-fluid">
+                    <div class="d-flex align-items-center justify-content-between small">
+                        <div class="text-muted">Copyright &copy; Your Website 2020</div>
+                        <div>
+                            <a href="#">Privacy Policy</a> &middot;
+                            <a href="#">Terms &amp; Conditions</a>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+    <!-- create product -->
+    <div class="modal fade" id="edit_booking" tabindex="-1" role="dialog" aria-labelledby="edit_bookingLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="edit_bookingLabel">Thêm Mới Sản Phẩm</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">×</span>
                </button>
-            </div>
-            <div class="modal-body">
-               <div class="row">
-                  <div class="col-xl-12">
-                     <div class="card mb-4">
-                        <div class="card-header">
-                           Thông tin cơ bản
-                        </div>
-                        <div class="card-body">
-                           <div class="row">
-                              <div class="col-md-12">
-                                 <div class="form-group">
-                                    <label>Tên Sản Phẩm</label>
-                                    <input type="text" class="form-control" placeholder="Tên Sản Phẩm" id="nameProduct">
-                                 </div>
-                              </div>
-                           </div>
-                           <!-- /row-->
-                           <div class="row">
-                              <div class="col-md-6">
-                                 <div class="form-group">
-                                    <label>Số Lượng</label>
-                                    <input type="text" class="form-control" placeholder="Số Lượng Sản Phẩm"
-                                       id="quantityProduct">
-                                 </div>
-                              </div>
-                              <div class="col-md-6">
-                                 <div class="form-group">
-                                    <label>Đơn Giá</label>
-                                    <input type="text" class="form-control" placeholder="Đơn Giá Sản Phẩm"
-                                       id="unitPrice">
-                                 </div>
-                              </div>
-                           </div>
-                           <!-- /row-->
-                           <div class="row">
-                              <div class="col-md-12">
-                                 <div class="form-group">
-                                    <label>Miêu Tả</label>
-                                    <input type="text" class="form-control" placeholder="Miêu Tả Sản Phẩm"
-                                       id="Description">
-                                 </div>
-                              </div>
-                           </div>
-                           <!-- /row-->
-                        </div>
-                     </div>
-                  </div>
-               </div>
-               <!-- /Row -->
-            </div>
-            <div class="modal-footer">
-               <input type="button" class="btn btn-primary" id="CreateProduct" value="Thêm"></input>
-            </div>
-         </div>
-      </div>
-   </div>
-   <!-- info Product -->
-   <div class="modal fade" id="inforProduct" tabindex="-1" role="dialog" aria-labelledby="edit_bookingLabel"
-      aria-hidden="true">
-      <div class="modal-dialog modal-xl" role="document">
-         <div class="modal-content">
-            <div class="modal-header">
-               <h5 class="modal-title" id="edit_bookingLabel">Thông Tin Sản Phẩm</h5>
-               <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">×</span>
-               </button>
-            </div>
-            <div class="modal-body">
-               <div class="row">
-                  <div class="col-8 col-sm-6">
-                     <div class="card mb-4">
-                        <div class="card-header">
-                           Thông Tin Cơ Bản
-                        </div>
-                        <div class="card-body">
-                           <div class="row">
-                              <div class="col-md-12">
-                                 <div class="form-group">
-                                    <label>Tên Sản Phẩm</label>
-                                    <input type="text" class="form-control" placeholder="" id="namePro" readonly>
-                                 </div>
-                              </div>
-                           </div>
-                           <!-- /row-->
-                           <div class="row">
-                              <div class="col-md-6">
-                                 <div class="form-group">
-                                    <label>Số Lượng</label>
-                                    <input type="text" class="form-control" placeholder="" id="quantityPro" readonly>
-                                 </div>
-                              </div>
-                              <div class="col-md-6">
-                                 <div class="form-group">
-                                    <label>Đơn Giá</label>
-                                    <input type="text" class="form-control" placeholder="" id="Price" readonly>
-                                 </div>
-                              </div>
-                           </div>
-                           <!-- /row-->
-                           <div class="row">
-                              <div class="col-md-12">
-                                 <div class="form-group">
-                                    <label>Miêu Tả</label>
-                                    <input type="text" class="form-control" placeholder="" id="Des" readonly>
-                                 </div>
-                              </div>
-                           </div>
-                           <!-- /row-->
-                           <div class="row">
-                              <div class="col-md-6">
-                                 <div class="form-group">
-                                    <label>Thời gian Ship từ(phút)</label>
-                                    <input type="text" class="form-control" placeholder="" id="itimefrom" readonly>
-                                 </div>
-                              </div>
-                              <div class="col-md-6">
-                                 <div class="form-group">
-                                    <label>Đến(phút)</label>
-                                    <input type="text" class="form-control" placeholder="" id="itimeto" readonly>
-                                 </div>
-                              </div>
-                           </div>
-                           <!-- /row-->
-                           <div class="row">
-                              <div class="col-md-12">
-                                 <div class="form-group">
-                                    <label>Giảm Giá</label>
-                                    <input type="text" class="form-control" placeholder="" id="iSale" readonly>
-                                 </div>
-                              </div>
-                           </div>
-                           <!-- /row-->
-                           <div class="row">
-                              <div class="col-md-6">
-                                 <div class="form-group">
-                                    <label>Ngày giảm giá từ</label>
-                                    <input type="text" class="form-control" placeholder="" id="isalefrom" readonly>
-                                 </div>
-                              </div>
-                              <div class="col-md-6">
-                                 <div class="form-group">
-                                    <label>Đến</label>
-                                    <input type="text" class="form-control" placeholder="" id="isaleto" readonly>
-                                 </div>
-                              </div>
-                           </div>
-                           <div class="row">
-                              <div class="col-md-12">
-                                 <div class="form-group">
-                                    <label>Ngày Tạo Sản Phẩm</label>
-                                    <input type="text" class="form-control" placeholder="" id="CreateAt" readonly>
-                                 </div>
-                              </div>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-                  <div class="col-4 col-sm-6">
-                     <div class="row">
+                </div>
+                <div class="modal-body">
+                    <div class="row">
                         <div class="col-xl-12">
-                           <div class="card mb-4">
-                              <div class="card-header">
-                                 Ảnh Sản Phẩm
-                              </div>
-                              <div class="card-body">
-                                 <div class="row">
-                                    <div class="col-md-12">
-                                       <div class="form-group">
-                                          <div style="border-radius: 5% !important; width: 100%; height: 350px;"
-                                             class="picture">
-                                             <img class="picture-src" id="wizardPicturePreviews"
-                                                style="width: 100% !important; height: 100% !important;">
-                                             <input type="file" class="form-control" id="wizard-pictures"
-                                                style="width: 100% !important; height: 89% !important;"
-                                                name="uploadfile"></input>
-                                          </div>
-                                       </div>
+                            <div class="card mb-4">
+                                <div class="card-header">
+                                    Thông tin cơ bản
+                                </div>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label>Tên Sản Phẩm</label>
+                                                <input type="text" class="form-control" placeholder="Tên Sản Phẩm" id="nameProduct">
+                                                <span class="form-message text-danger" id="messageNameProduct"></span>
+                                            </div>
+                                        </div>
                                     </div>
-                                 </div>
-                              </div>
-                           </div>
+                                    <!-- /row-->
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Số Lượng</label>
+                                                <input type="text" class="form-control" placeholder="Số Lượng Sản Phẩm" id="quantityProduct">
+                                                <span class="form-message text-danger" id="messageQuantityProduct"></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Đơn Giá</label>
+                                                <input type="text" class="form-control" placeholder="Đơn Giá Sản Phẩm" id="unitPrice">
+                                                <span class="form-message text-danger" id="messageunitPrice"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- /row-->
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label>Miêu Tả</label>
+                                                <input type="text" class="form-control" placeholder="Miêu Tả Sản Phẩm" id="Description">
+                                                <span class="form-message text-danger" id="messageDescription"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- /row-->
+                                </div>
+                            </div>
                         </div>
-                     </div>
-                  </div>
-               </div>
+                    </div>
+                    <!-- /Row -->
+                </div>
+                <div class="modal-footer">
+                    <input type="button" class="btn btn-primary" id="CreateProduct" value="Thêm"></input>
+                </div>
             </div>
-         </div>
-      </div>
-   </div>
-
-   <!--Edit product-->
-   <div class="modal fade" id="EditProduct" tabindex="-1" role="dialog" aria-labelledby="edit_bookingLabel"
-      aria-hidden="true">
-      <div class="modal-dialog modal-xl">
-         <div class="modal-content">
-            <div class="modal-header">
-               <h5 class="modal-title" id="edit_bookingLabel">Sửa Thông tin Sản Phẩm</h5>
-               <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+        </div>
+    </div>
+    <!-- info Product -->
+    <div class="modal fade" id="inforProduct" tabindex="-1" role="dialog" aria-labelledby="edit_bookingLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="edit_bookingLabel">Thông Tin Sản Phẩm</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">×</span>
                </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-8 col-sm-6">
+                            <div class="card mb-4">
+                                <div class="card-header">
+                                    Thông Tin Cơ Bản
+                                </div>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label>Tên Sản Phẩm</label>
+                                                <input type="text" class="form-control" placeholder="" id="namePro" readonly>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- /row-->
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Số Lượng</label>
+                                                <input type="text" class="form-control" placeholder="" id="quantityPro" readonly>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Đơn Giá</label>
+                                                <input type="text" class="form-control" placeholder="" id="Price" readonly>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- /row-->
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label>Miêu Tả</label>
+                                                <input type="text" class="form-control" placeholder="" id="Des" readonly>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- /row-->
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Thời gian Ship từ(phút)</label>
+                                                <input type="text" class="form-control" placeholder="" id="itimefrom" readonly>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Đến(phút)</label>
+                                                <input type="text" class="form-control" placeholder="" id="itimeto" readonly>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- /row-->
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label>Giảm Giá</label>
+                                                <input type="text" class="form-control" placeholder="" id="iSale" readonly>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- /row-->
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Ngày giảm giá từ</label>
+                                                <input type="text" class="form-control" placeholder="" id="isalefrom" readonly>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Đến</label>
+                                                <input type="text" class="form-control" placeholder="" id="isaleto" readonly>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label>Ngày Tạo Sản Phẩm</label>
+                                                <input type="text" class="form-control" placeholder="" id="CreateAt" readonly>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-4 col-sm-6">
+                            <div class="row">
+                                <div class="col-xl-12">
+                                    <div class="card mb-4">
+                                        <div class="card-header">
+                                            Ảnh Sản Phẩm
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <div style="border-radius: 5% !important; width: 100%; height: 350px;" class="picture">
+                                                            <img class="picture-src" id="wizardPicturePreviews" style="width: 100% !important; height: 100% !important;">
+                                                            <input type="file" class="form-control" id="wizard-pictures" style="width: 100% !important; height: 89% !important;" name="uploadfile"></input>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="modal-body">
-               <div class="row">
-                  <div class="col-8 col-sm-6">
-                     <div class="card mb-4">
-                        <div class="card-header">
-                           Thông Tin Cơ Bản
+        </div>
+    </div>
+
+    <!--Edit product-->
+    <div class="modal fade" id="EditProduct" tabindex="-1" role="dialog" aria-labelledby="edit_bookingLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="edit_bookingLabel">Sửa Thông tin Sản Phẩm</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">×</span>
+               </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-8 col-sm-6">
+                            <div class="card mb-4">
+                                <div class="card-header">
+                                    Thông Tin Cơ Bản
+                                </div>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label>Tên Sản Phẩm</label>
+                                                <input type="text" class="form-control" placeholder="Tên Sản Phẩm mới" id="enamePro">
+                                                <span class="form-message text-danger" id="messageNameEditName"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- /row-->
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Số Lượng</label>
+                                                <input type="text" class="form-control" placeholder="Số lượng" id="equantityPro">
+                                                <span class="form-message text-danger" id="messageNameEditquantity"></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Đơn Giá</label>
+                                                <input type="text" class="form-control" placeholder="Đơn giá mới" id="ePrice">
+                                                <span class="form-message text-danger" id="messageEditPrice"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- /row-->
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label>Miêu Tả</label>
+                                                <input type="text" class="form-control" placeholder="Miêu tả" id="eDes">
+                                                <span class="form-message text-danger" id="messageEditDescription"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- /row-->
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Thời gian Ship từ(phút)</label>
+                                                <input type="text" class="form-control" placeholder="thời gian ship từ(phút)" id="eitimefrom">
+                                                <span class="form-message text-danger" id="messageEditTimeFrom"></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Đến(phút)</label>
+                                                <input type="text" class="form-control" placeholder="đến(phút)" id="eitimeto">
+                                                <span class="form-message text-danger" id="messageEditTimeTo"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- /row-->
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label>Giảm Giá</label>
+                                                <input type="text" class="form-control" placeholder="mã giảm giá" id="eiSale">
+                                                <span class="form-message text-danger" id="messageEditSale"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- /row-->
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Ngày giảm giá từ</label>
+                                                <input type="date" class="form-control" placeholder="ngày giảm giá từ" id="eisalefrom">
+                                                <span class="form-message text-danger" id="messageEditSaleFrom"></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Đến</label>
+                                                <input type="date" class="form-control" placeholder="đến" id="eisaleto">
+                                                <span class="form-message text-danger" id="messageEditSaleTo"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <input type="button" class="btn btn-primary" id="EditProduct" value="Lưu" onclick="editProduct()" style="float: right;"></input>
+                                </div>
+                            </div>
                         </div>
-                        <div class="card-body">
-                           <div class="row">
-                              <div class="col-md-12">
-                                 <div class="form-group">
-                                    <label>Tên Sản Phẩm</label>
-                                    <input type="text" class="form-control" placeholder="Tên Sản Phẩm mới"
-                                       id="enamePro">
-                                 </div>
-                              </div>
-                           </div>
-                           <!-- /row-->
-                           <div class="row">
-                              <div class="col-md-6">
-                                 <div class="form-group">
-                                    <label>Số Lượng</label>
-                                    <input type="text" class="form-control" placeholder="Số lượng" id="equantityPro">
-                                 </div>
-                              </div>
-                              <div class="col-md-6">
-                                 <div class="form-group">
-                                    <label>Đơn Giá</label>
-                                    <input type="text" class="form-control" placeholder="Đơn giá mới" id="ePrice">
-                                 </div>
-                              </div>
-                           </div>
-                           <!-- /row-->
-                           <div class="row">
-                              <div class="col-md-12">
-                                 <div class="form-group">
-                                    <label>Miêu Tả</label>
-                                    <input type="text" class="form-control" placeholder="Miêu tả" id="eDes">
-                                 </div>
-                              </div>
-                           </div>
-                           <!-- /row-->
-                           <div class="row">
-                              <div class="col-md-6">
-                                 <div class="form-group">
-                                    <label>Thời gian Ship từ(phút)</label>
-                                    <input type="text" class="form-control" placeholder="thời gian ship từ(phút)"
-                                       id="eitimefrom">
-                                 </div>
-                              </div>
-                              <div class="col-md-6">
-                                 <div class="form-group">
-                                    <label>Đến(phút)</label>
-                                    <input type="text" class="form-control" placeholder="đến(phút)" id="eitimeto">
-                                 </div>
-                              </div>
-                           </div>
-                           <!-- /row-->
-                           <div class="row">
-                              <div class="col-md-12">
-                                 <div class="form-group">
-                                    <label>Giảm Giá</label>
-                                    <input type="text" class="form-control" placeholder="mã giảm giá" id="eiSale">
-                                 </div>
-                              </div>
-                           </div>
-                           <!-- /row-->
-                           <div class="row">
-                              <div class="col-md-6">
-                                 <div class="form-group">
-                                    <label>Ngày giảm giá từ</label>
-                                    <input type="date" class="form-control" placeholder="ngày giảm giá từ"
-                                       id="eisalefrom">
-                                 </div>
-                              </div>
-                              <div class="col-md-6">
-                                 <div class="form-group">
-                                    <label>Đến</label>
-                                    <input type="date" class="form-control" placeholder="đến" id="eisaleto">
-                                 </div>
-                              </div>
-                           </div>
-                           <input type="button" class="btn btn-primary" id="EditProduct" value="Lưu"
-                              onclick="editProduct()" style="float: right;"></input>
+                        <div class="col-4 col-sm-6">
+                            <div class="row">
+                                <div class="col-xl-12">
+                                    <div class="card mb-4">
+                                        <div class="card-header">
+                                            Tải ảnh mới
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <div style="border-radius: 5% !important; width: 100%; height: 350px;" class="picture">
+                                                            <img class="picture-src" id="wizardPicturePreview" style="width: 100% !important; height: 100% !important;">
+                                                            <input type="file" class="form-control" id="wizard-picture" style="width: 100% !important; height: 89% !important;" name="uploadfile"></input>
+                                                        </div>
+                                                    </div>
+                                                    <input type="button" class="btn btn-primary" id="updateAnh" value="Lưu Ảnh" style="float: right;"></input>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                     </div>
-                  </div>
-                  <div class="col-4 col-sm-6">
-                     <div class="row">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!--Pop up delete-->
+
+    <div class="modal fade" id="deleteProduct" tabindex="-1" role="dialog" aria-labelledby="edit_bookingLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="edit_bookingLabel">Thông Báo</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">×</span>
+               </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
                         <div class="col-xl-12">
-                           <div class="card mb-4">
-                              <div class="card-header">
-                                 Tải ảnh mới
-                              </div>
-                              <div class="card-body">
-                                 <div class="row">
-                                    <div class="col-md-12">
-                                       <div class="form-group">
-                                          <div style="border-radius: 5% !important; width: 100%; height: 350px;"
-                                             class="picture">
-                                             <img class="picture-src" id="wizardPicturePreview"
-                                                style="width: 100% !important; height: 100% !important;">
-                                             <input type="file" class="form-control" id="wizard-picture"
-                                                style="width: 100% !important; height: 89% !important;"
-                                                name="uploadfile"></input>
-                                          </div>
-                                       </div>
-                                       <input type="button" class="btn btn-primary" id="updateAnh" value="Lưu Ảnh"
-                                          style="float: right;"></input>
+                            <div class="card mb-4">
+                                <div class="card-body">
+                                    <h5 style="text-align: center;">Bạn có muốn xóa sản phẩm này không?</h5>
+                                    <div class="card-body">
+                                        <div class="row ml-5">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <input type="button" class="btn btn-primary" id="deletePro" value="Đồng Ý" onclick="deletepro()"></input>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <input type="button" class="btn btn-primary" id="cancelDelete" value="Hủy Bỏ" data-dismiss="modal"></input>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
-                                 </div>
-                              </div>
-                           </div>
+                                </div>
+                            </div>
                         </div>
-                     </div>
-                  </div>
-               </div>
+                    </div>
+                </div>
             </div>
-         </div>
-      </div>
-   </div>
-
-
-   <!--Pop up delete-->
-
-   <div class="modal fade" id="deleteProduct" tabindex="-1" role="dialog" aria-labelledby="edit_bookingLabel"
-      aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered" role="document">
-         <div class="modal-content">
-            <div class="modal-header">
-               <h5 class="modal-title" id="edit_bookingLabel">Thông Báo</h5>
-               <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">×</span>
-               </button>
-            </div>
-            <div class="modal-body">
-               <div class="row">
-                  <div class="col-xl-12">
-                     <div class="card mb-4">
-                        <div class="card-body">
-                           <h5 style="text-align: center;">Bạn có muốn xóa sản phẩm này không?</h5>
-                           <div class="card-body">
-                              <div class="row ml-5">
-                                 <div class="col-md-6">
-                                    <div class="form-group">
-                                       <input type="button" class="btn btn-primary" id="deletePro" value="Đồng Ý"
-                                          onclick="deletepro()"></input>
-                                    </div>
-                                 </div>
-                                 <div class="col-md-6">
-                                    <div class="form-group">
-                                       <input type="button" class="btn btn-primary" id="cancelDelete" value="Hủy Bỏ"
-                                          data-dismiss="modal"></input>
-                                    </div>
-                                 </div>
-                              </div>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-            </div>
-         </div>
-      </div>
-   </div>
-   <!-- Jquery -->
-   <script src="js/jquery.min.js"></script>
-   <!-- Fontawesome -->
-   <script src="js/all.min.js"></script>
-   <!-- Bootstrap -->
-   <script src="js/bootstrap.bundle.min.js"></script>
-   <!-- Custom Js -->
-   <!-- <script src="js/scripts.js"></script> -->
-   <!-- Ajax Chart Js -->
-   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
-   <!-- Chart Js -->
-   <!-- <script src="js/chart-area-demo.js"></script>
+        </div>
+    </div>
+    <!-- Jquery -->
+    <script src="js/jquery.min.js"></script>
+    <!-- Fontawesome -->
+    <script src="js/all.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <!-- Custom Js -->
+    <!-- <script src="js/scripts.js"></script> -->
+    <!-- Ajax Chart Js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
+    <!-- Chart Js -->
+    <!-- <script src="js/chart-area-demo.js"></script>
    <script src="js/chart-bar-demo.js"></script>
    <script src="js/chart-pie-demo.js"></script> -->
-   <!-- Datatable Js -->
-   <script src="js/jquery.dataTables.min.js"></script>
-   <script src="js/dataTables.bootstrap.min.js"></script>
-   <script src="js/datatables-demo.js"></script>
-   <script src="js/headerSeller.js"></script>
-   <!-- Dropzone-->
-   <script src="js/dropzone.min.js"></script>
-   <script src="http://www.ansonika.com/foogra/admin_section/vendor/bootstrap-datepicker.js"></script>
+    <!-- Datatable Js -->
+    <script src="js/jquery.dataTables.min.js"></script>
+    <script src="js/dataTables.bootstrap.min.js"></script>
+    <script src="js/datatables-demo.js"></script>
+    <script src="js/headerSeller.js"></script>
+    <!-- Dropzone-->
+    <script src="js/dropzone.min.js"></script>
+    <script src="http://www.ansonika.com/foogra/admin_section/vendor/bootstrap-datepicker.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+    <script>
+        $('input.date-pick').datepicker();
+    </script>
+    <!-- Summernote Editor -->
+    <!-- <script src="vendor/summernote/summernote-bs4.min.js"></script> -->
 
-   <script>
-      $('input.date-pick').datepicker();
-   </script>
-   <!-- Summernote Editor -->
-   <!-- <script src="vendor/summernote/summernote-bs4.min.js"></script> -->
 
+    <script>
+        $(document).ready(function() {
+            var text = localStorage.getItem('sellerId').replaceAll('"', '');
+            $('#dataProduct').DataTable({
+                'ajax': function(data, callback, settings) {
+                    $.ajax({
+                        url: "/api/product/searchSellerproduct",
+                        data: {
+                            id: text,
+                        }
+                    }).then(function(response, textStatus, jqXHR) {
+                        let data = response.data.listProduct
+                        data.forEach((val, idx) => {
+                            val.no = idx + 1
+                        });
+                        callback({
+                            "data": data
+                        });
+                    });
+                },
 
-   <script>
-      $(document).ready(function () {
-         var text = localStorage.getItem('sellerId').replaceAll('"', '');
-         $('#dataProduct').DataTable({
-            'ajax': function (data, callback, settings) {
-               $.ajax({
-                  url: "/api/product/searchSellerproduct",
-                  data: {
-                     id: text,
-                  }
-               }).then(function (response, textStatus, jqXHR) {
-                  let data = response.data.listProduct
-                  data.forEach((val, idx) => {
-                     val.no = idx + 1
-                  });
-                  callback({
-                     "data": data
-                  });
-               });
-            },
+                'columns': [{
+                    data: 'name'
+                }, {
+                    data: 'description'
+                }, {
+                    data: 'quantity'
+                }, {
+                    data: 'unit_price'
+                }, {
+                    data: ""
+                }],
+                'columnDefs': [{
+                    targets: -1,
+                    render: function(data, type, row, meta) {
+                        return '<input type="button" class="btn btn-info ml-2" data-toggle="modal" data-target="#inforProduct" idproduct="' + row.id + '"  value="Thông tin"/>' +
+                            '<input type="button" class="btn btn-primary ml-2" data-toggle="modal" data-target="#EditProduct"  idInforEdit="' + row.id + '" onclick="editproducts(' + "'" + row.id + "'" + ')" value="Sửa sản phẩm"/>' +
+                            '<input type="button" class="btn btn-danger ml-2" data-toggle="modal" data-target="#deleteProduct" onclick="deleteproduct(' + "'" + row.id + "'" + ')" value="Xóa sản Phẩm"/>';
+                    }
+                }]
+            });
+        });
 
-            'columns': [{
-               data: 'name'
-            }, {
-               data: 'description'
-            }, {
-               data: 'quantity'
-            }, {
-               data: 'unit_price'
-            }, {
-               data: ""
-            }
-            ],
-            'columnDefs': [{
-               targets: -1,
-               render: function (data, type, row, meta) {
-                  return '<input type="button" class="btn btn-info ml-2" data-toggle="modal" data-target="#inforProduct" idproduct="' + row.id + '"  value="Thông tin"/>' +
-                     '<input type="button" class="btn btn-primary ml-2" data-toggle="modal" data-target="#EditProduct"  idInforEdit="' + row.id + '" onclick="editproduct(' + "'" + row.id + "'" + ')" value="Sửa sản phẩm"/>' +
-                     '<input type="button" class="btn btn-danger ml-2" data-toggle="modal" data-target="#deleteProduct" onclick="deleteproduct(' + "'" + row.id + "'" + ')" value="Xóa sản Phẩm"/>';
-               }
-            }]
-         });
-      });
+        function checkCreateProduct() {
 
-      $('#CreateProduct').click(function () {
-         var text = localStorage.getItem('sellerId').replaceAll('"', '');
-         $.ajax({
-            url: '/api/product/create',
-            method: 'POST',
-            data: {
-               user_id: text,
-               id: $('#IdProduct').val(),
-               name: $('#nameProduct').val(),
-               quantity: $('#quantityProduct').val(),
-               unit_price: $('#unitPrice').val(),
-               description: $('#Description').val(),
-            },
-         }).then(function (data) {
-            if (data.message == 'SUCCESS') {
-               alert("Thêm mới Sản Phẩm Thành Công");
-               window.location.href = '/listProductSeller'
+            if ($('#nameProduct').val() == '') {
+                document.getElementById('nameProduct').setAttribute('class', 'form-control border-danger');
+                document.getElementById('messageNameProduct').innerHTML = 'Tên không được để trống';
             } else {
-               alert("Thêm mới Sản Phẩm Thất Bại");
+                document.getElementById('nameProduct').setAttribute('class', 'form-control');
+                document.getElementById('messageNameProduct').innerHTML = '';
             }
-         })
-      })
 
-      $('#dataProduct tbody').on('click', '.btn-info', function () {
-         let idpro = $(this).attr('idproduct');
-         console.log(idpro);
-         $.ajax({
-            url: "/api/product/getById",
-            type: "GET",
-            dataType: "json",
-            data: {
-               id: idpro,
-            },
-            success: function (data) {
-               var list = data.data.product;
-               console.log(data)
-               document.getElementById('namePro').value = list.name;
-               document.getElementById('quantityPro').value = list.quantity;
-               document.getElementById('Price').value = list.unit_price;
-               document.getElementById('Des').value = list.description;
-               document.getElementById('itimefrom').value = list.time_from;
-               document.getElementById('itimeto').value = list.time_to;
-               document.getElementById('iSale').value = list.sale;
-               if (list.sale_from == null) {
-                  document.getElementById('isalefrom').defaulValue = "";
-               }
-               if (list.sale_to == null) {
-                  document.getElementById('isaleto').defaulValue = "";
-               } else {
-                  var d1 = new Date(list.sale_from);
-                  var n1;
-                  if (d1.getUTCDate() < 10) {
-                     n1 = '0' + d1.getUTCDate();
-                  } else {
-                     n1 = d1.getUTCDate();
-                  }
-                  var m1;
-                  if (d1.getUTCMonth() < 10) {
-                     m1 = '0' + d1.getUTCMonth();
-                  } else {
-                     m1 = d1.getUTCMonth();
-                  }
-                  var y1 = d1.getUTCFullYear();
-                  var dob1 = y1 + '-' + m1 + '-' + n1;
-                  document.getElementById('isalefrom').value = dob1;
-
-                  var d2 = new Date(list.sale_to);
-                  var n2;
-                  if (d2.getUTCDate() < 10) {
-                     n2 = '0' + d2.getUTCDate();
-                  } else {
-                     n2 = d2.getUTCDate();
-                  }
-                  var m2;
-                  if (d2.getUTCMonth() < 10) {
-                     m2 = '0' + d2.getUTCMonth();
-                  } else {
-                     m2 = d2.getUTCMonth();
-                  }
-                  var y2 = d2.getUTCFullYear();
-                  var dob2 = y2 + '-' + m2 + '-' + n2;
-                  document.getElementById('isaleto').value = dob2;
-               }
-
-               var d = new Date(list.createdAt);
-               var n;
-               if (d.getUTCDate() < 10) {
-                  n = '0' + d.getUTCDate();
-               } else {
-                  n = d.getUTCDate();
-               }
-               var m;
-               if (d.getUTCMonth() < 10) {
-                  m = '0' + d.getUTCMonth();
-               } else {
-                  m = d.getUTCMonth();
-               }
-               var y = d.getUTCFullYear();
-               var dob = y + '-' + m + '-' + n;
-               document.getElementById('CreateAt').value = dob;
-               document.getElementById('wizardPicturePreviews').src = list.image;
-            }
-         });
-      })
-
-      $('#dataProduct tbody').on('click', '.btn-primary', function () {
-         let idEditinfo = $(this).attr('idInforEdit');
-         $.ajax({
-            url: "/api/product/getById",
-            type: "GET",
-            dataType: "json",
-            data: {
-               id: idEditinfo,
-            },
-            success: function (data) {
-               var list = data.data.product;
-               console.log(data)
-               document.getElementById('enamePro').value = list.name;
-               document.getElementById('equantityPro').value = list.quantity;
-               document.getElementById('ePrice').value = list.unit_price;
-               document.getElementById('eDes').value = list.description;
-               document.getElementById('eitimefrom').value = list.time_from;
-               document.getElementById('eitimeto').value = list.time_to;
-               document.getElementById('eiSale').value = list.sale;
-
-               var d1 = new Date(list.sale_from);
-               var n1;
-               if (d1.getUTCDate() < 10) {
-                  n1 = '0' + d1.getUTCDate();
-               } else {
-                  n1 = d1.getUTCDate();
-               }
-               var m1;
-               if (d1.getUTCMonth() < 10) {
-                  m1 = '0' + d1.getUTCMonth();
-               } else {
-                  m1 = d1.getUTCMonth();
-               }
-               var y1 = d1.getUTCFullYear();
-               var dob1 = y1 + '-' + m1 + '-' + n1;
-               document.getElementById('eisalefrom').value = dob1;
-
-               var d2 = new Date(list.sale_to);
-               var n2;
-               if (d2.getUTCDate() < 10) {
-                  n2 = '0' + d2.getUTCDate();
-               } else {
-                  n2 = d2.getUTCDate();
-               }
-               var m2;
-               if (d2.getUTCMonth() < 10) {
-                  m2 = '0' + d2.getUTCMonth();
-               } else {
-                  m2 = d2.getUTCMonth();
-               }
-               var y2 = d2.getUTCFullYear();
-               var dob2 = y2 + '-' + m2 + '-' + n2;
-               document.getElementById('eisaleto').value = dob2;
-               document.getElementById('wizardPicturePreview').src = list.image;
-            }
-         });
-      })
-
-      function deleteproduct(id) {
-         localStorage.setItem('deleteId', JSON.stringify(id));
-      }
-
-      function editproduct(id) {
-         localStorage.setItem('deleteId', JSON.stringify(id));
-      }
-
-      function deletepro() {
-         var text = localStorage.getItem('deleteId').replaceAll('"', '');
-         console.log(text)
-         $.ajax({
-            url: '/api/product/delete',
-            method: 'GET',
-            data: {
-               id: text,
-            },
-         }).then(function () {
-            window.location.reload();
-         })
-      };
-
-      function editProduct() {
-         var text = localStorage.getItem('deleteId').replaceAll('"', '');
-         console.log(text)
-         $.ajax({
-            url: '/api/product/update',
-            method: 'POST',
-            data: {
-               id: text,
-               name: $("#enamePro").val(),
-               quantity: $("#equantityPro").val(),
-               unit_price: $("#ePrice").val(),
-               description: $("#eDes").val(),
-               time_from: $("#eitimefrom").val(),
-               time_to: $("#eitimeto").val(),
-               sale: $("#eiSale").val(),
-               sale_from: $("#eisalefrom").val(),
-               sale_to: $("#eisaleto").val(),
-            },
-         }).then(function (data) {
-            if (data.message == 'SUCCESS') {
-               alert("Sửa thông tin Sản Phẩm Hoàn Tất");
+            if ($('#quantityProduct').val() == '') {
+                document.getElementById('quantityProduct').setAttribute('class', 'form-control border-danger');
+                document.getElementById('messageQuantityProduct').innerHTML = 'Số lượng không được để trống';
             } else {
-               alert("Sửa Thông tin Sản Phẩm Thất Bại");
+                document.getElementById('quantityProduct').setAttribute('class', 'form-control');
+                document.getElementById('messageQuantityProduct').innerHTML = '';
             }
-         })
-      };
 
-      $(document).ready(function () {
-         // Prepare the preview for profile picture
-         $("#wizard-picture").change(function () {
-            readURL(this);
-         });
-      });
-
-      function readURL(input) {
-         if (input.files && input.files[0]) {
-            var reader = new FileReader();
-
-            reader.onload = function (e) {
-               $('#wizardPicturePreview').attr('src', e.target.result).fadeIn('slow');
-            }
-            reader.readAsDataURL(input.files[0]);
-         }
-      }
-
-      $('#updateAnh').click(function (e) {
-         var data = document.getElementById("wizard-picture").files;
-         var formdData = new FormData();
-         formdData.append("file", data[0])
-         var text = localStorage.getItem('deleteId').replaceAll('"', '');
-         formdData.append("id", text)
-         $.ajax({
-            url: '/api/product/image',
-            method: 'POST',
-            // dataType : 'json',
-            data: formdData,
-            processData: false,
-            contentType: false
-         }).then(function (data) {
-            console.log(data)
-            if (data.message == 'SUCCESS') {
-               alert("Tải ảnh Thành Công");
+            if ($('#unitPrice').val() == '') {
+                document.getElementById('unitPrice').setAttribute('class', 'form-control border-danger');
+                document.getElementById('messageunitPrice').innerHTML = 'Giá tiền không được để trống';
             } else {
-               alert("Tải ảnh Thất Bại");
+                document.getElementById('unitPrice').setAttribute('class', 'form-control');
+                document.getElementById('messageunitPrice').innerHTML = '';
             }
-         })
-      });
 
-      // $(document).ready(function () {
-      //    loadProfile();
-      // })
+            if ($('#Description').val() == '') {
+                document.getElementById('Description').setAttribute('class', 'form-control border-danger');
+                document.getElementById('messageDescription').innerHTML = 'Bạn chưa có mô tả sản phẩm';
+            } else {
+                document.getElementById('Description').setAttribute('class', 'form-control');
+                document.getElementById('messageDescription').innerHTML = '';
+            }
+        }
 
-      // $('#switchShop').click(function () {
-      //    var text = localStorage.getItem('sellerId').replaceAll('"', '');
-      //    let switchShop = $('#switchShop').is(":checked")
-      //    $.ajax({
-      //       url: '/api/user/status',
-      //       method: 'GET',
-      //       data: {
-      //          id: text,
-      //          shop_status: switchShop,
-      //       },
-      //    }).then(function (data) {
-      //       console.log(data)
-      //       if (switchShop == true) {
-      //          document.getElementById('statusShop').innerHTML = 'Shop đang mở cửa'
-      //          document.getElementById('statusShop').style.color = "Green"
-      //       } else {
+        $('#CreateProduct').click(function() {
 
-      //          document.getElementById('statusShop').innerHTML = 'Shop đang đóng cửa'
-      //          document.getElementById('statusShop').style.color = "red"
-      //       }
-      //    })
-      // })
+            let text = localStorage.getItem('sellerId').replaceAll('"', '');
 
-      // function loadProfile() {
-      //    var text = localStorage.getItem('sellerId').replaceAll('"', '');
-      //    $.ajax({
-      //       url: '/api/user/getbyId',
-      //       method: 'GET',
-      //       data: {
-      //          id: text,
-      //       },
-      //    }).then(function (data) {
-      //       console.log(data.data.shop_status)
-      //       if (data.data.shop_status == true) {
-      //          document.getElementById('switchShop').checked = true
-      //          document.getElementById('statusShop').innerHTML = 'Shop đang mở cửa'
-      //          document.getElementById('statusShop').style.color = "Green"
-      //       } else {
-      //          document.getElementById('switchShop').checked = false
-      //          document.getElementById('statusShop').innerHTML = 'Shop đang đóng cửa'
-      //          document.getElementById('statusShop').style.color = "red"
-      //       }
-      //    })
-      // }
-   </script>
+            if (!checkCreateProduct()) {
+                $.ajax({
+                    url: '/api/product/create',
+                    method: 'POST',
+                    data: {
+                        user_id: text,
+                        id: $('#IdProduct').val(),
+                        name: $('#nameProduct').val(),
+                        quantity: $('#quantityProduct').val(),
+                        unit_price: $('#unitPrice').val(),
+                        description: $('#Description').val(),
+                    },
+                }).then(function(data) {
+                    if (data.message == 'SUCCESS') {
+                        Swal.fire({
+                            type: 'success',
+                            title: 'Thêm mới Sản Phẩm Thành Công',
+                            // text: 'Your offer is safe 🙂',
+                            showConfirmButton: false,
+                            timer: 2000
+                        })
+                        window.setTimeout(function() {
+                            window.location.href = '/listProductSeller';
+                        }, 2000);
+                    }
+                })
+            }
+
+        })
+
+        $('#dataProduct tbody').on('click', '.btn-info', function() {
+            let idpro = $(this).attr('idproduct');
+            console.log(idpro);
+            $.ajax({
+                url: "/api/product/getById",
+                type: "GET",
+                dataType: "json",
+                data: {
+                    id: idpro,
+                },
+                success: function(data) {
+                    var list = data.data.product;
+                    console.log(data)
+                    document.getElementById('namePro').value = list.name;
+                    document.getElementById('quantityPro').value = list.quantity;
+                    document.getElementById('Price').value = list.unit_price;
+                    document.getElementById('Des').value = list.description;
+                    document.getElementById('itimefrom').value = list.time_from;
+                    document.getElementById('itimeto').value = list.time_to;
+                    document.getElementById('iSale').value = list.sale;
+                    if (list.sale_from == null) {
+                        document.getElementById('isalefrom').defaulValue = "";
+                    }
+                    if (list.sale_to == null) {
+                        document.getElementById('isaleto').defaulValue = "";
+                    } else {
+                        var d1 = new Date(list.sale_from);
+                        var n1;
+                        if (d1.getUTCDate() < 10) {
+                            n1 = '0' + d1.getUTCDate();
+                        } else {
+                            n1 = d1.getUTCDate();
+                        }
+                        var m1;
+                        if (d1.getUTCMonth() < 10) {
+                            m1 = '0' + d1.getUTCMonth();
+                        } else {
+                            m1 = d1.getUTCMonth();
+                        }
+                        var y1 = d1.getUTCFullYear();
+                        var dob1 = y1 + '-' + m1 + '-' + n1;
+                        document.getElementById('isalefrom').value = dob1;
+
+                        var d2 = new Date(list.sale_to);
+                        var n2;
+                        if (d2.getUTCDate() < 10) {
+                            n2 = '0' + d2.getUTCDate();
+                        } else {
+                            n2 = d2.getUTCDate();
+                        }
+                        var m2;
+                        if (d2.getUTCMonth() < 10) {
+                            m2 = '0' + d2.getUTCMonth();
+                        } else {
+                            m2 = d2.getUTCMonth();
+                        }
+                        var y2 = d2.getUTCFullYear();
+                        var dob2 = y2 + '-' + m2 + '-' + n2;
+                        document.getElementById('isaleto').value = dob2;
+                    }
+
+                    var d = new Date(list.createdAt);
+                    var n;
+                    if (d.getUTCDate() < 10) {
+                        n = '0' + d.getUTCDate();
+                    } else {
+                        n = d.getUTCDate();
+                    }
+                    var m;
+                    if (d.getUTCMonth() < 10) {
+                        m = '0' + d.getUTCMonth();
+                    } else {
+                        m = d.getUTCMonth();
+                    }
+                    var y = d.getUTCFullYear();
+                    var dob = y + '-' + m + '-' + n;
+                    document.getElementById('CreateAt').value = dob;
+                    document.getElementById('wizardPicturePreviews').src = list.image;
+                }
+            });
+        })
+
+        function checkEditProduct() {
+
+            if ($('#equantityPro').val() == '') {
+                document.getElementById('equantityPro').setAttribute('class', 'form-control border-danger');
+                document.getElementById('messageNameEditquantity').innerHTML = 'Số lượng không được để trống';
+            } else {
+                document.getElementById('equantityPro').setAttribute('class', 'form-control');
+                document.getElementById('messageNameEditquantity').innerHTML = '';
+            }
+
+            if ($('#ePrice').val() == '') {
+                document.getElementById('ePrice').setAttribute('class', 'form-control border-danger');
+                document.getElementById('messageEditPrice').innerHTML = 'Giá tiền không được để trống';
+            } else {
+                document.getElementById('ePrice').setAttribute('class', 'form-control');
+                document.getElementById('messageEditPrice').innerHTML = '';
+            }
+
+            if ($('#eDes').val() == '') {
+                document.getElementById('eDes').setAttribute('class', 'form-control border-danger');
+                document.getElementById('messageEditDescription').innerHTML = 'Giá tiền không được để trống';
+            } else {
+                document.getElementById('eDes').setAttribute('class', 'form-control');
+                document.getElementById('messageEditDescription').innerHTML = '';
+            }
+
+            if ($('#eitimefrom').val() == '') {
+                document.getElementById('eitimefrom').setAttribute('class', 'form-control border-danger');
+                document.getElementById('messageEditTimeFrom').innerHTML = 'Bạn chưa nhập thời gian ship';
+            } else {
+                document.getElementById('eitimefrom').setAttribute('class', 'form-control');
+                document.getElementById('messageEditTimeFrom').innerHTML = '';
+            }
+
+            if ($('#eitimeto').val() == '') {
+                document.getElementById('eitimeto').setAttribute('class', 'form-control border-danger');
+                document.getElementById('messageEditTimeTo').innerHTML = 'Bạn chưa nhập thời gian ship';
+            } else {
+                document.getElementById('eitimeto').setAttribute('class', 'form-control');
+                document.getElementById('messageEditTimeTo').innerHTML = '';
+            }
+
+        }
+
+
+        $('#dataProduct tbody').on('click', '.btn-primary', function() {
+            let idEditinfo = $(this).attr('idInforEdit');
+
+            $.ajax({
+                url: "/api/product/getById",
+                type: "GET",
+                dataType: "json",
+                data: {
+                    id: idEditinfo,
+                },
+                success: function(data) {
+                    var list = data.data.product;
+                    console.log(data)
+                    document.getElementById('enamePro').value = list.name;
+                    document.getElementById('equantityPro').value = list.quantity;
+                    document.getElementById('ePrice').value = list.unit_price;
+                    document.getElementById('eDes').value = list.description;
+                    document.getElementById('eitimefrom').value = list.time_from;
+                    document.getElementById('eitimeto').value = list.time_to;
+                    document.getElementById('eiSale').value = list.sale;
+
+                    var d1 = new Date(list.sale_from);
+                    var n1;
+                    if (d1.getUTCDate() < 10) {
+                        n1 = '0' + d1.getUTCDate();
+                    } else {
+                        n1 = d1.getUTCDate();
+                    }
+                    var m1;
+                    if (d1.getUTCMonth() < 10) {
+                        m1 = '0' + d1.getUTCMonth();
+                    } else {
+                        m1 = d1.getUTCMonth();
+                    }
+                    var y1 = d1.getUTCFullYear();
+                    var dob1 = y1 + '-' + m1 + '-' + n1;
+                    document.getElementById('eisalefrom').value = dob1;
+
+                    var d2 = new Date(list.sale_to);
+                    var n2;
+                    if (d2.getUTCDate() < 10) {
+                        n2 = '0' + d2.getUTCDate();
+                    } else {
+                        n2 = d2.getUTCDate();
+                    }
+                    var m2;
+                    if (d2.getUTCMonth() < 10) {
+                        m2 = '0' + d2.getUTCMonth();
+                    } else {
+                        m2 = d2.getUTCMonth();
+                    }
+                    var y2 = d2.getUTCFullYear();
+                    var dob2 = y2 + '-' + m2 + '-' + n2;
+                    document.getElementById('eisaleto').value = dob2;
+                    document.getElementById('wizardPicturePreview').src = list.image;
+                }
+            });
+        })
+
+        function deleteproduct(id) {
+            localStorage.setItem('deleteId', JSON.stringify(id));
+        }
+
+        function editproducts(id) {
+            localStorage.setItem('deleteId', JSON.stringify(id));
+        }
+
+        function deletepro() {
+            var text = localStorage.getItem('deleteId').replaceAll('"', '');
+            console.log(text)
+            $.ajax({
+                url: '/api/product/delete',
+                method: 'GET',
+                data: {
+                    id: text,
+                },
+            }).then(function() {
+                window.location.reload();
+            })
+        };
+
+
+        function editProduct() {
+            var text = localStorage.getItem('deleteId').replaceAll('"', '');
+
+            if ($('#enamePro').val() == '') {
+                document.getElementById('enamePro').setAttribute('class', 'form-control border-danger');
+                document.getElementById('messageNameEditName').innerHTML = 'Tên không được để trống';
+            } else if (!checkEditProduct()) {
+                $.ajax({
+                    url: '/api/product/update',
+                    method: 'POST',
+                    data: {
+                        id: text,
+                        name: $("#enamePro").val(),
+                        quantity: $("#equantityPro").val(),
+                        unit_price: $("#ePrice").val(),
+                        description: $("#eDes").val(),
+                        time_from: $("#eitimefrom").val(),
+                        time_to: $("#eitimeto").val(),
+                        sale: $("#eiSale").val(),
+                        sale_from: $("#eisalefrom").val(),
+                        sale_to: $("#eisaleto").val(),
+                    },
+                }).then(function(data) {
+                    if (data.message == 'SUCCESS') {
+                        document.getElementById('enamePro').setAttribute('class', 'form-control');
+                        document.getElementById('messageNameEditName').innerHTML = '';
+                        Swal.fire({
+                            type: 'success',
+                            title: 'Sửa thông tin Sản Phẩm Hoàn Tất',
+                            // text: 'Your offer is safe 🙂',
+                            showConfirmButton: false,
+                            timer: 2000
+                        })
+                        window.setTimeout(function() {
+                            window.location.href = '/listProductSeller';
+                        }, 2000);
+
+                    }
+                })
+            }
+
+
+
+
+
+        };
+
+        $(document).ready(function() {
+            // Prepare the preview for profile picture
+            $("#wizard-picture").change(function() {
+                readURL(this);
+            });
+        });
+
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function(e) {
+                    $('#wizardPicturePreview').attr('src', e.target.result).fadeIn('slow');
+                }
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        $('#updateAnh').click(function(e) {
+            var data = document.getElementById("wizard-picture").files;
+            var formdData = new FormData();
+            formdData.append("file", data[0])
+            var text = localStorage.getItem('deleteId').replaceAll('"', '');
+            formdData.append("id", text)
+            $.ajax({
+                url: '/api/product/image',
+                method: 'POST',
+                // dataType : 'json',
+                data: formdData,
+                processData: false,
+                contentType: false
+            }).then(function(data) {
+                console.log(data)
+                if (data.message == 'SUCCESS') {
+                    alert("Tải ảnh Thành Công");
+                } else {
+                    alert("Tải ảnh Thất Bại");
+                }
+            })
+        });
+
+        // $(document).ready(function () {
+        //    loadProfile();
+        // })
+
+        // $('#switchShop').click(function () {
+        //    var text = localStorage.getItem('sellerId').replaceAll('"', '');
+        //    let switchShop = $('#switchShop').is(":checked")
+        //    $.ajax({
+        //       url: '/api/user/status',
+        //       method: 'GET',
+        //       data: {
+        //          id: text,
+        //          shop_status: switchShop,
+        //       },
+        //    }).then(function (data) {
+        //       console.log(data)
+        //       if (switchShop == true) {
+        //          document.getElementById('statusShop').innerHTML = 'Shop đang mở cửa'
+        //          document.getElementById('statusShop').style.color = "Green"
+        //       } else {
+
+        //          document.getElementById('statusShop').innerHTML = 'Shop đang đóng cửa'
+        //          document.getElementById('statusShop').style.color = "red"
+        //       }
+        //    })
+        // })
+
+        // function loadProfile() {
+        //    var text = localStorage.getItem('sellerId').replaceAll('"', '');
+        //    $.ajax({
+        //       url: '/api/user/getbyId',
+        //       method: 'GET',
+        //       data: {
+        //          id: text,
+        //       },
+        //    }).then(function (data) {
+        //       console.log(data.data.shop_status)
+        //       if (data.data.shop_status == true) {
+        //          document.getElementById('switchShop').checked = true
+        //          document.getElementById('statusShop').innerHTML = 'Shop đang mở cửa'
+        //          document.getElementById('statusShop').style.color = "Green"
+        //       } else {
+        //          document.getElementById('switchShop').checked = false
+        //          document.getElementById('statusShop').innerHTML = 'Shop đang đóng cửa'
+        //          document.getElementById('statusShop').style.color = "red"
+        //       }
+        //    })
+        // }
+    </script>
 </body>
 
 </html>
