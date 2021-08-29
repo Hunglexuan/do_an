@@ -155,9 +155,7 @@ class MidUser {
             console.log('MidUser-loginUser: ERROR-154');
             throw new Error(ERROR_MESSAGE.LOGIN.ERR_REQUIRE_PASSWORD);
         }
-        if(del==1){
-            throw new Error(ERROR_MESSAGE.LOGIN.ERR_ACC_BAN);
-        }
+
 
         const userData = await this.getUserByEmail(email);
 
@@ -167,6 +165,9 @@ class MidUser {
         if (!userData) {
             console.log('MidUser-loginUser: ERROR-162');
             throw new Error(ERROR_MESSAGE.LOGIN.ERR_ACC);
+        }
+        if(userData.del==1){
+            throw new Error(ERROR_MESSAGE.LOGIN.ERR_ACC_BAN);
         }
 
         const isCorrectPass = await checkPassword(password, userData.password);
