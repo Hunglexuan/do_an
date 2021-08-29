@@ -155,7 +155,7 @@ class MidUser {
             console.log('MidUser-loginUser: ERROR-154');
             throw new Error(ERROR_MESSAGE.LOGIN.ERR_REQUIRE_PASSWORD);
         }
-        if(userData.del==1){
+        if(del==1){
             throw new Error(ERROR_MESSAGE.LOGIN.ERR_ACC_BAN);
         }
 
