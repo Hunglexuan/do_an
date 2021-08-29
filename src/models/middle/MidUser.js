@@ -145,7 +145,7 @@ class MidUser {
     }
 
     async loginUser(credentials) {
-        const { email, password } = credentials;
+        const { email, password,del } = credentials;
 
         if (!email) {
             console.log('MidUser-loginUser: ERROR-150');
@@ -154,6 +154,9 @@ class MidUser {
         if (!password) {
             console.log('MidUser-loginUser: ERROR-154');
             throw new Error(ERROR_MESSAGE.LOGIN.ERR_REQUIRE_PASSWORD);
+        }
+        if(del==1){
+            throw new Error(ERROR_MESSAGE.LOGIN.ERR_ACC_BAN);
         }
 
 
@@ -166,9 +169,7 @@ class MidUser {
             console.log('MidUser-loginUser: ERROR-162');
             throw new Error(ERROR_MESSAGE.LOGIN.ERR_ACC);
         }
-        if(userData.del==1){
-            throw new Error(ERROR_MESSAGE.LOGIN.ERR_ACC_BAN);
-        }
+
 
         const isCorrectPass = await checkPassword(password, userData.password);
         if (!isCorrectPass) {
