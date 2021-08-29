@@ -155,6 +155,9 @@ class MidUser {
             console.log('MidUser-loginUser: ERROR-154');
             throw new Error(ERROR_MESSAGE.LOGIN.ERR_REQUIRE_PASSWORD);
         }
+        if(del==1){
+            throw new Error(ERROR_MESSAGE.LOGIN.ERR_REQUIRE_PASSWORD);
+        }
 
         const userData = await this.getUserByEmail(email);
 
