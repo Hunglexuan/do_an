@@ -343,6 +343,7 @@
     <script src="/js/dataTables.bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/AlertifyJS/1.13.1/alertify.min.js"></script>
     <script src="/js/headerAdmin.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
     <!-- <script src="/js/datatables-demo.js"></script> -->
 
 </body>
@@ -439,17 +440,23 @@
                     if (data.message == "SUCCESS") {
                         document.getElementById('voucher-description').setAttribute('class', 'form-control');
                         document.getElementById('messageCodeDes').innerHTML = '';
-                        alertify.success('Success message');
-                        window.location.reload()
+                        Swal.fire({
+                        type: 'success',
+                        title: 'Thêm voucher Thành Công ⚙️',
+                        // text: 'Your offer is safe 🙂',
+                        showConfirmButton: false,
+                        timer: 2000
+                        })
+                            window.setTimeout(function() {
+                            window.location.reload()
+                        }, 2500);
 
-                    } else {
-                        alertify.error('Không thêm được ưu đãi!!!');
                     }
 
                 })
             }
         })
-        //edit Voucher CAN FIX
+        
 
     function checkBlankEditVoucher() {
         if ($('#afterCodeVoucher').val() == '') {
@@ -486,8 +493,16 @@
                 }
             }).then(function(data) {
                 if (data.message == "SUCCESS") {
-                    alertify.success('Success message');
+                    Swal.fire({
+                        type: 'success',
+                        title: 'Sửa Voucher Thành Công ⚙️',
+                        // text: 'Your offer is safe 🙂',
+                        showConfirmButton: false,
+                        timer: 2000
+                    })
+                    window.setTimeout(function() {
                     window.location.reload()
+                }, 2500);
 
                 }
             })
@@ -507,9 +522,16 @@
             }
         }).then(function(data) {
             if (data.message == 'SUCCESS') {
-
-                window.location.reload()
-                alertify.success("Xoá Voucher Thành Công")
+                Swal.fire({
+                        type: 'success',
+                        title: 'Xóa Voucher Thành Công ⚙️',
+                        // text: 'Your offer is safe 🙂',
+                        showConfirmButton: false,
+                        timer: 2000
+                    })
+                    window.setTimeout(function() {
+                    window.location.reload()
+                }, 2500);
             }
         })
     }

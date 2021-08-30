@@ -494,7 +494,7 @@
                 },
                 url: "/api/user/getbyId",
                 success: function(data) {
-                    console.log("object",data);
+                    
                     var list = data.data;
                     document.getElementById('name').value = list.name;
                     document.getElementById('phone').value = list.phone;
@@ -557,7 +557,7 @@
 
         $("#change").click(function() {
             var userId = localStorage.getItem('userId').replaceAll('"', '');
-            console.log(userId);
+            
             $.ajax({
                 url: "/api/user/changePass",
                 type: "POST",

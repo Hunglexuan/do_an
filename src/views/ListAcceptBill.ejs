@@ -322,15 +322,14 @@
       var dateTo = new Date($("#dayTo").val()).toISOString();
         
       var time = dateTo.slice(11,19)
-      console.log(time);
+      
       time = "23:59:59"
-      console.log(time);
+      
       var time1 = dateTo.slice(0,11)
-      console.log(time1);
+     
       var time2 = dateTo.slice(19,24)
-      console.log(time2);
       dateTo = time1.concat(time.concat(time2))
-      console.log(dateTo);
+      
       
       function getDate(){
          
@@ -376,7 +375,7 @@
          }).then(function(data){
             document.getElementById("show-bill").innerHTML = ""
             var billTEmp = data.data.listBillTotal;
-            console.log(billTEmp);  
+             
             for(var i = 0 ; i < billTEmp.length ; i++){
 
                let productTemp =``

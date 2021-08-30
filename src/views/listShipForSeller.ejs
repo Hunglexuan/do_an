@@ -319,10 +319,10 @@
                shop_id:sellerID
             }
          }).then(function(data){
-            console.log("Danh sachs ship",data);
+           
            
             var billTEmp = data.data.listBillTotal;
-            console.log(billTEmp);
+            
             
             for(var i = 0 ; i < billTEmp.length ; i++){
                
@@ -411,8 +411,9 @@
                         showConfirmButton: false,
                         timer: 2000
                     })
-            }
-            window.location.reload()
+            }window.setTimeout(function() {
+                    window.location.reload()
+                }, 2500);
          })
       }
    </script>

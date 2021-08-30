@@ -216,6 +216,7 @@
    <script src="js/dataTables.bootstrap.min.js"></script>
    <script src="js/datatables-demo.js"></script>
    <script src="js/headerSeller.js"></script>
+   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
    <script> 
 
      
@@ -237,7 +238,7 @@
          }).then(function(data){
          
             var billTEmp = data.data.listBillTotal;
-            console.log(billTEmp);  
+            
             for(var i = 0 ; i < billTEmp.length ; i++){
 
                let productTemp =``

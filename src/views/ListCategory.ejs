@@ -264,6 +264,7 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
     <script src="/js/headerAdmin.js"></script>
     
+    
 
     <!-- <script src="/js/datatables-demo.js"></script> -->
 
@@ -345,22 +346,27 @@
 
             if (data.message == "SUCCESS") {
                 Swal.fire({
-                    type: 'success',
-                    title: 'Thêm mới thành công  ⚙️',
-                    // text: 'Your offer is safe 🙂',
-                    showConfirmButton: false,
-                    timer: 2000
-
-                })
+                        type: 'success',
+                        title: 'Thêm mới Thành Công ⚙️',
+                        // text: 'Your offer is safe 🙂',
+                        showConfirmButton: false,
+                        timer: 2000
+                    })
+                    window.setTimeout(function() {
+                    window.location.reload()
+                }, 2500);
 
             } else {
                 Swal.fire({
-                    type: 'error',
-                    title: 'Thêm mới không thành công  ⚙️',
-                    // text: 'Your offer is safe 🙂',
-                    showConfirmButton: false,
-                    timer: 5000
-                })
+                        type: 'error',
+                        title: 'Thêm mới không Thành Công ⚙️',
+                        // text: 'Your offer is safe 🙂',
+                        showConfirmButton: false,
+                        timer: 2000
+                    })
+                    window.setTimeout(function() {
+                    window.location.reload()
+                }, 2500);
             }
 
         })
@@ -379,12 +385,17 @@
             }
         }).then(function(data) {
             if (data.message == 'SUCCESS') {
-
-                window.location.reload()
-                alertify.success("XÓa Voucher Thành Công")
-            } else {
-                alertify.error("Xóa Voucher Thất Bại");
-            }
+                Swal.fire({
+                        type: 'success',
+                        title: 'Xóa Voucher Thành Công ⚙️',
+                        // text: 'Your offer is safe 🙂',
+                        showConfirmButton: false,
+                        timer: 2000
+                    })
+                    window.setTimeout(function() {
+                    window.location.reload()
+                }, 2500);
+            } 
         })
     }
     //datatable function

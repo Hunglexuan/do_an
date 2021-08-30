@@ -371,6 +371,7 @@
     <script src="/js/dataTables.bootstrap.min.js"></script>
     <!-- <script src="/js/datatables-demo.js"></script> -->
     <script src="/js/headerAdmin.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
 </body>
 
 
@@ -441,10 +442,17 @@
 
             if (data.message == "SUCCESS") {
 
-                window.location.reload()
-            } else {
-                console.log("111111111111111111 listUser");
-            }
+                Swal.fire({
+                        type: 'success',
+                        title: 'Nâng Quyền Người Dùng Thành Công ⚙️',
+                        // text: 'Your offer is safe 🙂',
+                        showConfirmButton: false,
+                        timer: 2000
+                    })
+                    window.setTimeout(function() {
+                    window.location.reload()
+                }, 2500);
+            } 
 
         })
     }
@@ -461,10 +469,16 @@
         }).then(function(data) {
 
             if (data.message == "SUCCESS") {
-
-                window.location.reload()
-            } else {
-                console.log("111111111111111111 listUser");
+                Swal.fire({
+                        type: 'success',
+                        title: 'Kích Hoạt Người Dùng Thành Công ⚙️',
+                        // text: 'Your offer is safe 🙂',
+                        showConfirmButton: false,
+                        timer: 2000
+                    })
+                    window.setTimeout(function() {
+                    window.location.reload()
+                }, 2500);
             }
 
         })
@@ -483,12 +497,17 @@
         }).then(function(data) {
 
             if (data.message == "SUCCESS") {
-
-                window.location.reload()
-            } else {
-                console.log("111111111111111111 listUser");
-            }
-
+                Swal.fire({
+                        type: 'success',
+                        title: 'Vô Hiệu Người Dùng Thành Công ⚙️',
+                        // text: 'Your offer is safe 🙂',
+                        showConfirmButton: false,
+                        timer: 2000
+                    })
+                    window.setTimeout(function() {
+                    window.location.reload()
+                }, 2500);
+            } 
         })
     }
 
@@ -505,7 +524,7 @@
 
                         let data = response.data.listUsers
 
-                        console.log(data);
+                       
 
 
                         data.forEach((val, idx) => {
@@ -541,7 +560,7 @@
             'columnDefs': [{
                 targets: -1,
                 render: function(data, type, row, meta) {
-                    console.log("123 ra van de ", row);
+                    
                     var checkStatus = (row.del ? '<input type="button" class="delete-user-btn btn-danger mr-3" data-toggle="modal" data-target="#enableUser" idUser="' + row.id + '" value="Kích Hoạt"/>' : '<input type="button" class="delete-user-btn btn-danger mr-3" data-toggle="modal" data-target="#deleteUser" idUser="' + row.id + '" value="Vô Hiệu"/>')
                     return '<input type="button" class="show-user-id btn-primary mr-3" data-toggle="modal" data-target="#inforUser" idUser="' + row.id + '" value="Thông Tin"/>' +
                         '<input type="button" class="up-role-btn btn-success mr-3 " data-toggle="modal" data-target="#upRole" idUser="' + row.id + '" value="Nâng quyền"/>' +
