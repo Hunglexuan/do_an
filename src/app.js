@@ -163,8 +163,8 @@ app.get("/ListSeller", function(req, res) {
     return res.render("ListSeller");
 });
 
-app.get("/AddRole", function(req, res) {
-    return res.render("AddRole");
+app.get("/ListCategory", function(req, res) {
+    return res.render("ListCategory");
 });
 
 app.get("/ListReport", function(req, res) {

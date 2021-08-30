@@ -42,77 +42,9 @@
 
             </li>
 
-            <li class="nav-item dropdown no-arrow mx-1 osahan-list-dropdown">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <i class="feather-bell"></i>
-                    <!-- Counter - Alerts -->
-                    <span class="badge badge-info badge-counter">6</span>
-                </a>
-                <!-- Dropdown - Alerts -->
-                <div class="dropdown-list dropdown-menu dropdown-menu-right shadow-sm">
-                    <h6 class="dropdown-header">
-                        Alerts Center
-                    </h6>
-                    <a class="dropdown-item d-flex align-items-center" href="#">
-                        <div class="mr-3">
-                            <div class="icon-circle bg-primary">
-                                <i class="fas fa-download text-white"></i>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="small text-gray-500">December 12, 2020</div>
-                            <span class="font-weight-bold">A new monthly report is ready to download!</span>
-                        </div>
-                    </a>
-                    <a class="dropdown-item d-flex align-items-center" href="#">
-                        <div class="mr-3">
-                            <div class="icon-circle bg-success">
-                                <i class="fas fa-edit text-white"></i>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="small text-gray-500">December 7, 2020</div>
-                            $290.29 has been deposited into your account!
-                        </div>
-                    </a>
-                    <a class="dropdown-item d-flex align-items-center" href="#">
-                        <div class="mr-3">
-                            <div class="icon-circle bg-warning">
-                                <i class="fas fa-folder text-white"></i>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="small text-gray-500">December 2, 2020</div>
-                            Spending Alert: We've noticed unusually high spending for your account.
-                        </div>
-                    </a>
-                    <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
-                </div>
-            </li>
+           
             <!-- Nav Item - User Information -->
-            <li class="nav-item dropdown no-arrow ml-1 osahan-profile-dropdown">
-                <a class="nav-link dropdown-toggle pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <img class="img-profile rounded-circle" src="/image/user/1.png">
-                </a>
-                <!-- Dropdown - User Information -->
-                <div class="dropdown-menu dropdown-menu-right shadow-sm">
-                    <div class="p-3 d-flex align-items-center">
-                        <div class="dropdown-list-image mr-3">
-                            <img class="rounded-circle" src="/image/user/1.png" alt="">
-                            <div class="status-indicator bg-success"></div>
-                        </div>
-                        <div class="font-weight-bold">
-                            <div class="text-truncate name-admin"></div>
-                            <div class="small text-gray-500"></div>
-                        </div>
-                    </div>
-
-
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" onclick="logOutClick()"><i class="feather-log-out"></i> Đăng Xuất </a>
-
-                </div>
-            </li>
+            <li id="checkLoginAdmin"></li>
         </ul>
     </nav>
     <div id="layoutSidenav">
@@ -135,7 +67,7 @@
                             Danh Sách Giảm Giá
                         </a>
 
-                        <a class="nav-link" onclick="AddRolePage()">
+                        <a class="nav-link" onclick="ListCategoryPage()">
                             <div class="sb-nav-link-icon"><i class="feather-list"></i></div>
                             Danh Sách Thực Đơn
                         </a>
@@ -189,7 +121,7 @@
         <div id="layoutSidenav_content">
             <main>
                 <div class="container-fluid">
-                    <h1 class="mt-4">Quản Lí Voucher</h1>
+                    <h1 class="mt-4">Quản Lí Thực Đơn</h1>
 
 
                 </div>
@@ -219,25 +151,14 @@
                         </table>
 
                         <a href="" class="btn btn-primary" data-toggle="modal" data-target="#edit_booking"><i
-                     class="fa fa-fw fa-plus-circle"></i>Thêm sản phẩm</a>
+                     class="fa fa-fw fa-plus-circle"></i>Thêm thực đơn</a>
                     </div>
                 </div>
 
         </div>
     </div>
     </main>
-    <footer class="py-4 bg-light mt-auto">
-        <div class="container-fluid">
-            <div class="d-flex align-items-center justify-content-between small">
-                <div class="text-muted">Copyright &copy; Your Website 2020</div>
-                <div>
-                    <a href="#">Privacy Policy</a> &middot;
-                    <a href="#">Terms &amp; Conditions</a>
-                </div>
-
-            </div>
-        </div>
-    </footer>
+    
 
     <!-- createVOucher -->
     <div class="modal fade" id="edit_booking" tabindex="-1" role="dialog" aria-labelledby="edit_bookingLabel" aria-hidden="true">
@@ -341,6 +262,8 @@
     <script src="/js/dataTables.bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/AlertifyJS/1.13.1/alertify.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+    <script src="/js/headerAdmin.js"></script>
+    
 
     <!-- <script src="/js/datatables-demo.js"></script> -->
 
@@ -349,17 +272,10 @@
 
 
 <script>
-    $(document).ready(function() {
-        if (token == "") {
-            window.location.href = '/LoginAdmin';
-        }
-    });
+   
 
 
-    function logOutClick() {
-        setCookie("token", "", 0);
-        window.location = "/LoginAdmin"
-    }
+    
 
     function getCookie(cname) {
         let name = cname + "=";
@@ -384,7 +300,7 @@
         document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
     }
 
-    var token = getCookie("token");
+    var tokenAdmin = getCookie("tokenAdmin");
 
     function checkBlankCAte() {
         if ($("#category-name").val() == "") {
@@ -405,14 +321,14 @@
         window.location.href = '/ListVoucher'
     }
 
-    function AddRolePage() {
-        window.location.href = '/AddRole'
+    function ListCategoryPage() {
+        window.location.href = '/ListCategory'
     }
 
     function listReportPage() {
         window.location.href = '/ListReport'
     }
-    //btn-logout function
+  
 
 
     //add-voucher done

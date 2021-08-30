@@ -44,29 +44,7 @@
 
 
             <!-- Nav Item - User Information -->
-            <li class="nav-item dropdown no-arrow ml-1 osahan-profile-dropdown">
-                <a class="nav-link dropdown-toggle pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <img class="img-profile rounded-circle" src="/image/user/1.png">
-                </a>
-                <!-- Dropdown - User Information -->
-                <div class="dropdown-menu dropdown-menu-right shadow-sm">
-                    <div class="p-3 d-flex align-items-center">
-                        <div class="dropdown-list-image mr-3">
-                            <img class="rounded-circle" src="/image/user/1.png" alt="">
-                            <div class="status-indicator bg-success"></div>
-                        </div>
-                        <div class="font-weight-bold">
-                            <div class="text-truncate name-admin"></div>
-                            <div class="small text-gray-500"></div>
-                        </div>
-                    </div>
-
-
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" onclick="logOutClick()"><i class="feather-log-out"></i> Đăng Xuất </a>
-
-                </div>
-            </li>
+            <li id="checkLoginAdmin"></li>
         </ul>
     </nav>
     <div id="layoutSidenav">
@@ -89,7 +67,7 @@
                             Danh Sách Giảm Giá
                         </a>
 
-                        <a class="nav-link" onclick="AddRolePage()">
+                        <a class="nav-link" onclick="ListCategoryPage()">
                             <div class="sb-nav-link-icon"><i class="feather-list"></i></div>
                             Danh Sách Thực Đơn
                         </a>
@@ -392,23 +370,15 @@
     <script src="/js/jquery.dataTables.min.js"></script>
     <script src="/js/dataTables.bootstrap.min.js"></script>
     <!-- <script src="/js/datatables-demo.js"></script> -->
-
+    <script src="/js/headerAdmin.js"></script>
 </body>
 
 
 
 <script>
-    $(document).ready(function() {
-        if (token == "") {
-            window.location.href = '/LoginAdmin';
-        }
-    });
+    
 
 
-    function logOutClick() {
-        setCookie("token", "", 0);
-        window.location = "/LoginAdmin"
-    }
 
     function getCookie(cname) {
         let name = cname + "=";
@@ -448,8 +418,8 @@
         window.location.href = '/ListVoucher'
     }
 
-    function AddRolePage() {
-        window.location.href = '/AddRole'
+    function ListCategoryPage() {
+        window.location.href = '/ListCategory'
     }
 
     function listReportPage() {

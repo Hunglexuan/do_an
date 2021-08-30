@@ -309,7 +309,7 @@
                 url: "/api/user/searchSeller",
                 success: function(data) {
                     var listdata = data.data.listUsers;
-
+                    console.log(listdata);
                     let length = Math.ceil(listdata.length / perPage);
                     console.log(length);
                     getLength(length);
@@ -325,7 +325,7 @@
                                     '<div class="list-card bg-white overflow-hidden h-100 position-relative item-content" style="border: 1px solid #d7d7d7; border-radius: 6px;">' +
                                     '<div class="list-card-image">' +
                                     '<div class="member-plan position-absolute"></div>' +
-                                    '<a> <img src="image/list/1.png" class="img-fluid item-img"> </a>' +
+                                    '<a> <img src="'+listdata[i].avatar+'" class="img-fluid item-img" style="width:100%"> </a>' +
                                     '</div>' +
                                     '<div class="p-3 position-relative">' +
                                     '<div class="list-card-body">' +

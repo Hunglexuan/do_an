@@ -252,9 +252,10 @@
                 url: "/api/voucher/search",
                 success: function(data) {
                     var listdata = data.data.listVoucher;
+                   
                     for (var i = 0; i < listdata.length; i++) {
                         document.getElementById('list_voucher').innerHTML +=
-                            '<div class="col-md-4 mt-3"> <div class="card offer-card border-0 shadow-sm"> <div class="card-body"> <h5 class="card-title" id="code' + i + '">' + listdata[i].code + '</h5> <p class="card-text">Use code OSAHANEAT50 & get 50% off on your first osahan order on Website and Mobile site. Maximum discount: ' + listdata[i].discount_number + ' VNĐ</p> <a href="#" class="card-link" id="buttonCopy' + i + '" onclick="textCopy(' + "'" + i + "'" + ')">COPY CODE</a> </div> </div> </div>'
+                            '<div class="col-md-4 mt-3"> <div class="card offer-card border-0 shadow-sm"> <div class="card-body"> <h5 class="card-title" id="code' + i + '">' + listdata[i].code + '</h5> <p class="card-text"> '+listdata[i].description+'</p> <a href="#" class="card-link" id="buttonCopy' + i + '" onclick="textCopy(' + "'" + i + "'" + ')">COPY CODE</a> </div> </div> </div>'
                     }
                 }
             });
@@ -282,76 +283,7 @@
 
 
 
-        // function copyCode(id) {
-        //     // var copyText = document.getElementById('code').textContent;
-        //     // copyText.select;
-        //     // copyText.setSelectionRange;
-        //     // document.execCommand("copy");
-
-        //     // document.getElementById('buttonCopy').innerHTML = 'COPY CODED';
-
-        //     // var copyText = document.getElementById('code');
-        //     // copyText[0].select();
-        //     // copyText.setSelectionRange(0, 9999);
-        //     // document.execCommand("copy");
-
-
-
-        // }
-
-        // document.getElementById("buttonCopy").addEventListener("click", function() {
-        //     copyToClipboard(document.getElementById("code"));
-        // });
-
-        // function copyToClipboard(elem) {
-        //     // create hidden text element, if it doesn't already exist
-        //     var targetId = "_hiddenCopyText_";
-        //     var isInput = elem.tagName === "INPUT" || elem.tagName === "TEXTAREA";
-        //     var origSelectionStart, origSelectionEnd;
-        //     if (isInput) {
-        //         // can just use the original source element for the selection and copy
-        //         target = elem;
-        //         origSelectionStart = elem.selectionStart;
-        //         origSelectionEnd = elem.selectionEnd;
-        //     } else {
-        //         // must use a temporary form element for the selection and copy
-        //         target = document.getElementById(targetId);
-        //         if (!target) {
-        //             var target = document.createElement("textarea");
-        //             target.style.position = "absolute";
-        //             target.style.left = "-9999px";
-        //             target.style.top = "0";
-        //             target.id = targetId;
-        //             document.body.appendChild(target);
-        //         }
-        //         target.textContent = elem.textContent;
-        //     }
-        //     // select the content
-        //     var currentFocus = document.activeElement;
-        //     target.focus();
-        //     target.setSelectionRange(0, target.value.length);
-
-        //     // copy the selection
-        //     var succeed;
-        //     try {
-        //         succeed = document.execCommand("copy");
-        //     } catch (e) {
-        //         succeed = false;
-        //     }
-        //     // restore original focus
-        //     if (currentFocus && typeof currentFocus.focus === "function") {
-        //         currentFocus.focus();
-        //     }
-
-        //     if (isInput) {
-        //         // restore prior selection
-        //         elem.setSelectionRange(origSelectionStart, origSelectionEnd);
-        //     } else {
-        //         // clear temporary content
-        //         target.textContent = "";
-        //     }
-        //     return succeed;
-        // }
+        
     </script>
 </body>
 
