@@ -129,6 +129,19 @@ class MidReport {
                 where: condition
             })
         ])
+        for (let i = 0; i < listReport.length; i++) {
+            let user = await MidUser.getUserById(listReport[i].dataValues.user_id)
+            let shop = await MidUser.getUserById(listReport[i].dataValues.shop_id)
+      
+            if (name && shop) {
+                let temp = {
+                    user : user.name,
+                    shop : shop.name,
+
+                }
+                Object.assign(listReport[i].dataValues, temp);
+            }
+        }
         if(!listReport){
             console.log('MidReport-searchReportbyShop: ErrorCode-44');
         }console.log('MidReport-searchReportbyShop: Success');

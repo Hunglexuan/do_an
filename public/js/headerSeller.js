@@ -8,7 +8,7 @@ $(document).ready(function() {
 });
 
 function logOutClick() {
-    console.log("vao");
+    
     setCookie("tokenSeller", "", 0);
     setCookie("token", "", 0);
     window.location = "/LoginSeller"
@@ -82,7 +82,7 @@ $('#switchShop').click(function() {
             shop_status: switchShop,
         },
     }).then(function(data) {
-        console.log(data)
+        
         if (switchShop == true) {
             document.getElementById('statusShop').innerHTML = 'Shop đang mở cửa'
             document.getElementById('statusShop').style.color = "Green"
@@ -103,7 +103,7 @@ function loadProfile() {
             id: text,
         },
     }).then(function(data) {
-        console.log(data.data.shop_status)
+        
         if (data.data.shop_status == true) {
             document.getElementById('switchShop').checked = true
             document.getElementById('statusShop').innerHTML = 'Shop đang mở cửa'

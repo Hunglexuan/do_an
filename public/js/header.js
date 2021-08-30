@@ -103,14 +103,14 @@ function loadnotify() {
         },
         url: "/api/comment/notify",
         success: function(data) {
-            console.log('data.data.listCmtChild ', data.data.listCmtChild)
+            
             var listdata = data.data.listCmtChild;
 
             if (listdata == '') {
                 document.getElementById('notifies').innerHTML = '<div style="margin-top: 105px;"><span class="font-weight-bold ml-5">Bạn không có thông báo nào!!!</span></div> ';
             } else {
                 document.getElementById('notifies').innerHTML = '';
-                console.log('listdata.length ', listdata.length)
+                
                 for (var i = 0; i < listdata.length; i++) {
                     for (var j = 0; j < listdata[i].length; j++) {
                         let image = (listdata[i][j].image ? listdata[i][j].image : 'image/list/1.png');

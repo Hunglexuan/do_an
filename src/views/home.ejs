@@ -394,7 +394,7 @@
                 $.ajax({
                     type: "GET",
                     dataType: "json",
-                    url: "/api/product/listFastDeli",
+                    url: "/api/product/listSale",
                     success: function(data) {
                         var listdata = data.data;
                         for (var i = 0; i < listdata.length; i++) {
@@ -461,9 +461,10 @@
                 $.ajax({
                     type: "GET",
                     dataType: "json",
-                    url: "/api/product/listDefault",
+                    url: "/api/product/listFastDeli",
                     success: function(data) {
                         var listdata = data.data;
+                        console.log(listdata);
                         for (var i = 0; i < listdata.length; i++) {
                             let image = listdata[i].image ?
                                 listdata[i].image :

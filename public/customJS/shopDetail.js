@@ -53,11 +53,11 @@ var shoppingCart = (function() {
 
             if (data.message == "SUCCESS") {
 
-                console.log("111111", data);
+                
                 cart.billID = data.data
                 sessionStorage.setItem("shoppingCart", JSON.stringify(cart));
             } else {
-                console.log("22222222", cart);
+                
 
             }
         })
@@ -216,9 +216,7 @@ function addToCartFunc() {
 
     var currentShopID = cartTemp.shopID;
     var shopID = $(this).data('seller');
-    console.log("id shop cua san pham", shopID);
-    console.log("id shop hien tai ", currentShopID);
-    console.log("trang thai", currentShopID == shopID);
+  
 
     if (currentShopID == shopID) {
         var id = $(this).data('id');
@@ -242,7 +240,7 @@ function addToCartFunc() {
         var name = $(this).data('name');
 
         var price = Number($(this).data('price'));
-        console.log(price);
+       
 
         shoppingCart.addItemToCart(id, name, price, 1);
         displayCart();
@@ -264,7 +262,7 @@ $('.clear-cart').click(function() {
 function displayCart() {
 
     var cartArray = shoppingCart.getCart();
-    console.log("display", cartArray);
+   
     var output = "";
 
     for (var i = 0; i < cartArray.listCart.length; i++) {
@@ -281,7 +279,7 @@ function displayCart() {
             "<td style='padding:1'>" + cartArray.listCart[i].price * cartArray.listCart[i].count + "</td>" +
             "</tr>";
     }
-    console.log(shoppingCart.totalCount());
+    
     // $(".name-Store").html()
     $('#show-cart').html(output);
     $('.total-cart').html(shoppingCart.totalCart());

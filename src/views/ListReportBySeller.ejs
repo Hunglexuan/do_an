@@ -177,7 +177,7 @@
       <div id="layoutSidenav_content">
          <main>
             <div class="container-fluid">
-               <h1 class="mt-4">Report List</h1>
+               <h1 class="mt-4">Danh sách báo cáo </h1>
      
      
             </div>
@@ -331,7 +331,7 @@
         .then ( function( response, textStatus, jqXHR ) {
         
          let data = response.data.listReport
-         console.log(data);
+         
            data.forEach((val, idx) => {
              val.no = idx + 1
          });
@@ -342,8 +342,8 @@
         
         'columns':[
         {data : 'no'},
-        {data : 'user_id'},
-        {data : 'shop_id'},
+        {data : 'user'},
+        {data : 'shop'},
         {data : 'type_report'},
         {data : 'content'},
         
@@ -354,6 +354,7 @@
                 {
                     targets: -1,
                     render: function (data, type, row, meta) {
+                       console.log(row);
                         return '<input type="button" class="show-report-detail btn-primary mr-3" data-toggle="modal" data-target="#infoReport" onclick="getInfo('+"'"+row.user+"'"+','+"'"+row.shop+"'"+','+"'"+row.type_report+"'"+','+"'"+row.content+"'"+')" idReport="' + row.id + '" value="Chi Tiết"/>' 
                             ;
                     }
