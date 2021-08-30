@@ -181,15 +181,16 @@
          <main>
             <div class="container-fluid">
                <h1 class="mt-4">Danh Sách Đơn Hoàn Thành</h1>
-               <ol class="breadcrumb mb-4">
+               <ol class="breadcrumb mb-4 ">
                   
-                  <li class="breadcrumb-item active" style="text-align: center;">Doanh Thu Cửa Hàng : <span class="total">  </span></li>
+                  <li class="breadcrumb-item active " style="text-align: center;"><h6>Tổng Doanh Thu  : </h6><span class="total text-danger"></span>  <span class="text-danger">VNĐ</span></li>
                </ol>
               
                <ol class="breadcrumb mb-4  ">
                      
                      <div class="justify-content-center">
-                        <label >Từ Ngày : </label> <input type="date" id="dayFrom"  >  <label>Đến Ngày :</label > <input type="date" id="dayTo"  > <input type="submit" onclick=getDate()>
+                        <label >Từ Ngày : </label> <input type="date" id="dayFrom"  >  <label>Đến Ngày :</label > <input type="date" id="dayTo"  > <input class="btn btn-success" type="submit" onclick=getDate()>
+                           <label >Doanh Thu Cửa Hàng : <span class="totalFill mb-0 text-dark pt-2 text-danger"></span> <span class="">VNĐ</span> </label>
                      </div>
                   
                </ol>   
@@ -380,11 +381,11 @@
 
                let productTemp =``
                for(var j = 0 ; j < billTEmp[i].billList.length ; j++){
-                  productTemp += `<div style="display:flex">
+                  productTemp += `
                      <p>${billTEmp[i].billList[j].name} X ${billTEmp[i].billList[j].quantity} </p> 
                      
                   
-                     </div>`
+                    `
                }
 
                   var Template = `
@@ -398,24 +399,33 @@
                                 
                                  <div class="media-body">
                                    
-                                    <h6 class="mb-3"><a href="#">
-                                       </a><a href="detail.html" class="text-dark">Đơn ${i+1}
-                                       </a>
-                                    </h6>
-                                    <p class="text-black-50 mb-1"><i class="far fa-user"></i> ${billTEmp[i].user.name}
-                                    </p>
-                                    <p class="text-black-50 mb-1"><i class="feather-map-pin"></i> ${billTEmp[i].user.address}
-                                    </p>
-                                    <p class="text-black-50 mb-3"><i class="feather-list"></i> ${billTEmp[i].user.phone} <i
-                                          class="feather-clock ml-2"></i> ${new Date(billTEmp[i].bill.createdAt).toLocaleDateString()}</p>
-                                    <p class="text-dark">
-                                      ${ productTemp}
-                                    </p>
+                                    <div class=" d-flex" >
+                                        <div class="row header-body d-flex flex-column" style="width:60%">
+                                            <h6  class="text-dark">
+                                             <p class="text-dark"><i class="fa fa-user mr-1" aria-hidden="true"></i> ${billTEmp[i].user.name}  </p>
+                                            </h6>
+
+                                            
+                                            <p class="text-dark-50 mb-1" ><i class="fa fa-map-marker mr-2" aria-hidden="true"> </i>${billTEmp[i].user.address}</p>
+
+                                            <p class="text-dark-50 mb-1"><i class="fa fa-phone mr-1" aria-hidden="true"></i> ${billTEmp[i].user.phone}
+                                            </p>
+                                            <p class="text-dark-50 mb-3"><i class="fa fa-calendar-check-o mr-1" aria-hidden="true"></i> ${new Date(billTEmp[i].createAt).toLocaleDateString('en-GB')}</p>
+                                        </div>
+                                        <div  style="width: 40%; margin-left: 50px; margin-top: 41px; text-align: right;" >
+                                               <h6><i class="fa fa-cart-arrow-down" aria-hidden="true"></i> Sản Phẩm</h6>
+                                                ${ productTemp}
+
+                                        </div>
+                                    </div>
+                                    
                                     <hr>
                                     
-                                    <p class="mb-0 text-dark text-dark pt-2"><span class="text-dark font-weight-bold">
-                                          Tổng Tiền: </span> ${billTEmp[i].bill.total_price}
+                                    <div >
+                                    <p class="checkStatus mb-0 text-dark text-dark pt-2"><span class="text-dark font-weight-bold">
+                                          Tổng Tiền: <span class="text-danger"> ${billTEmp[i].bill.total_price}  VND </span> </span>   
                                     </p>
+                                    </div>
                                  </div>
                               </div>
                            </div>
@@ -426,7 +436,9 @@
                   `
 
                   $("#show-bill").append(Template);
-                  $(".total").html(billTEmp[billTEmp.length-1].total)
+                  $(".total").html(billTEmp[billTEmp.length-1].totalAll)
+                  
+                  $(".totalFill").html(billTEmp[billTEmp.length-1].totalBySelect)
                
                
             }
