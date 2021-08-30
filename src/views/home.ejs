@@ -117,7 +117,7 @@
                                 </div>
 
                             </div>
-                        </li> 
+                        </li>
                         <li class="nav-item dropdown dropdown-cart">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="icofont-basket"></i> Giỏ Hàng
@@ -289,8 +289,9 @@
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
 
         <script>
+            var text = localStorage.getItem("userId").replaceAll('"', "");
+
             function checkCart() {
-                var text = localStorage.getItem("userId").replaceAll('"', "");
                 if (text == "") {
                     Swal.fire({
                         type: "warning",
