@@ -234,15 +234,7 @@
                 </div>
             </main>
             <footer class="py-4 bg-light mt-auto">
-                <div class="container-fluid">
-                    <div class="d-flex align-items-center justify-content-between small">
-                        <div class="text-muted">Copyright &copy; Your Website 2020</div>
-                        <div>
-                            <a href="#">Privacy Policy</a> &middot;
-                            <a href="#">Terms &amp; Conditions</a>
-                        </div>
-                    </div>
-                </div>
+                
             </footer>
         </div>
     </div>
@@ -501,14 +493,14 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>Thời gian Ship từ(phút)</label>
-                                                <input type="text" class="form-control" placeholder="thời gian ship từ(phút)" id="eitimefrom">
+                                                <input type="number" class="form-control" placeholder="thời gian ship từ(phút)" id="eitimefrom">
                                                 <span class="form-message text-danger" id="messageEditTimeFrom"></span>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>Đến(phút)</label>
-                                                <input type="text" class="form-control" placeholder="đến(phút)" id="eitimeto">
+                                                <input type="number" class="form-control" placeholder="đến(phút)" id="eitimeto">
                                                 <span class="form-message text-danger" id="messageEditTimeTo"></span>
                                             </div>
                                         </div>
@@ -725,6 +717,7 @@
         $('#CreateProduct').click(function() {
 
             let text = localStorage.getItem('sellerId').replaceAll('"', '');
+   
 
             if (!checkCreateProduct()) {
                 $.ajax({
@@ -752,6 +745,9 @@
                         }, 2000);
                     }
                 })
+            }
+            else {
+
             }
 
         })
@@ -843,43 +839,104 @@
             if ($('#equantityPro').val() == '') {
                 document.getElementById('equantityPro').setAttribute('class', 'form-control border-danger');
                 document.getElementById('messageNameEditquantity').innerHTML = 'Số lượng không được để trống';
+                return false;
             } else {
                 document.getElementById('equantityPro').setAttribute('class', 'form-control');
                 document.getElementById('messageNameEditquantity').innerHTML = '';
+               
             }
 
             if ($('#ePrice').val() == '') {
                 document.getElementById('ePrice').setAttribute('class', 'form-control border-danger');
                 document.getElementById('messageEditPrice').innerHTML = 'Giá tiền không được để trống';
+                return false;
+
             } else {
                 document.getElementById('ePrice').setAttribute('class', 'form-control');
                 document.getElementById('messageEditPrice').innerHTML = '';
+           
             }
 
             if ($('#eDes').val() == '') {
                 document.getElementById('eDes').setAttribute('class', 'form-control border-danger');
                 document.getElementById('messageEditDescription').innerHTML = 'Giá tiền không được để trống';
+                return false;
             } else {
                 document.getElementById('eDes').setAttribute('class', 'form-control');
                 document.getElementById('messageEditDescription').innerHTML = '';
+              
             }
 
             if ($('#eitimefrom').val() == '') {
                 document.getElementById('eitimefrom').setAttribute('class', 'form-control border-danger');
                 document.getElementById('messageEditTimeFrom').innerHTML = 'Bạn chưa nhập thời gian ship';
+                return false;
             } else {
                 document.getElementById('eitimefrom').setAttribute('class', 'form-control');
                 document.getElementById('messageEditTimeFrom').innerHTML = '';
+            
             }
-
-            if ($('#eitimeto').val() == '') {
+            if ($('#eitimeto').val() == '' ) {
                 document.getElementById('eitimeto').setAttribute('class', 'form-control border-danger');
                 document.getElementById('messageEditTimeTo').innerHTML = 'Bạn chưa nhập thời gian ship';
+                return false;
             } else {
                 document.getElementById('eitimeto').setAttribute('class', 'form-control');
                 document.getElementById('messageEditTimeTo').innerHTML = '';
+            
             }
+            if(parseInt($('#eitimefrom').val()) > 60 || parseInt($('#eitimeto').val()) > 60 ){
+                document.getElementById('eitimefrom').setAttribute('class', 'form-control border-danger');
+                document.getElementById('messageEditTimeFrom').innerHTML = 'Không được quá 60 phút';
+                document.getElementById('eitimeto').setAttribute('class', 'form-control border-danger');
+                document.getElementById('messageEditTimeTo').innerHTML = 'Không được quá 60 phút';
+                return false;
+            } else {
+                document.getElementById('eitimeto').setAttribute('class', 'form-control');
+                document.getElementById('messageEditTimeTo').innerHTML = '';
+            
+            }
+ 
+            if((parseInt($('#eitimefrom').val()) > parseInt($('#eitimeto').val())) == true){
+           
+                document.getElementById('eitimefrom').setAttribute('class', 'form-control border-danger');
+                document.getElementById('messageEditTimeFrom').innerHTML = 'Thời Gian trước không được lớn hơn thời gian sau';
+                document.getElementById('eitimeto').setAttribute('class', 'form-control border-danger');
+                document.getElementById('messageEditTimeTo').innerHTML = 'Thời Gian trước không được lớn hơn thời gian sau ';
+                return false;
 
+            }else{
+               
+                document.getElementById('eitimeto').setAttribute('class', 'form-control');
+                document.getElementById('messageEditTimeTo').innerHTML = '';
+            }
+            //     let timeFrom = $('#eitimefrom').val();
+            //     console.log(timeFrom);
+            //     let timTo =  $('#eitimeto').val() ;
+            // if (timeFrom == '' && timTo == '' ) {
+            //     document.getElementById('eitimefrom').setAttribute('class', 'form-control border-danger');
+            //     document.getElementById('eitimeto').setAttribute('class', 'form-control border-danger');
+            //     document.getElementById('messageEditTimeFrom').innerHTML = 'Bạn chưa nhập thời gian ship';
+            //     document.getElementById('messageEditTimeTo').innerHTML = 'Bạn chưa nhập thời gian ship';
+            // } else if(timeFrom && timTo == ''){
+                
+            //     document.getElementById('eitimefrom').setAttribute('class', 'form-control');
+            //     document.getElementById('messageEditTimeFrom').innerHTML = 'Bạn chưa nhập thời gian ship';
+            //     document.getElementById('eitimeto').setAttribute('class', 'form-control');
+            //     document.getElementById('messageEditTimeTo').innerHTML = '';
+            // }else if(timeFrom && timTo && timeFrom >timTo  ){
+            //     document.getElementById('eitimefrom').setAttribute('class', 'form-control border-danger');
+            //     document.getElementById('eitimeto').setAttribute('class', 'form-control border-danger');
+            //     document.getElementById('messageEditTimeFrom').innerHTML = 'Thời Gian trước không được lớn hơn thời gian sau ';
+            //     document.getElementById('messageEditTimeTo').innerHTML = 'Thời Gian trước không được lớn hơn thời gian sau ';
+            // }else{
+            //     document.getElementById('eitimefrom').setAttribute('class', 'form-control');
+            //     document.getElementById('messageEditTimeFrom').innerHTML = '';
+            //     document.getElementById('eitimeto').setAttribute('class', 'form-control');
+            //     document.getElementById('messageEditTimeTo').innerHTML = '';
+            // }
+             
+            return true;
         }
 
 
@@ -892,54 +949,57 @@
                 dataType: "json",
                 data: {
                     id: idEditinfo,
-                },
-                success: function(data) {
-                    var list = data.data.product;
-                    console.log(data)
-                    document.getElementById('enamePro').value = list.name;
-                    document.getElementById('equantityPro').value = list.quantity;
-                    document.getElementById('ePrice').value = list.unit_price;
-                    document.getElementById('eDes').value = list.description;
-                    document.getElementById('eitimefrom').value = list.time_from;
-                    document.getElementById('eitimeto').value = list.time_to;
-                    document.getElementById('eiSale').value = list.sale;
-
-                    var d1 = new Date(list.sale_from);
-                    var n1;
-                    if (d1.getUTCDate() < 10) {
-                        n1 = '0' + d1.getUTCDate();
-                    } else {
-                        n1 = d1.getUTCDate();
-                    }
-                    var m1;
-                    if (d1.getUTCMonth() < 10) {
-                        m1 = '0' + d1.getUTCMonth();
-                    } else {
-                        m1 = d1.getUTCMonth();
-                    }
-                    var y1 = d1.getUTCFullYear();
-                    var dob1 = y1 + '-' + m1 + '-' + n1;
-                    document.getElementById('eisalefrom').value = dob1;
-
-                    var d2 = new Date(list.sale_to);
-                    var n2;
-                    if (d2.getUTCDate() < 10) {
-                        n2 = '0' + d2.getUTCDate();
-                    } else {
-                        n2 = d2.getUTCDate();
-                    }
-                    var m2;
-                    if (d2.getUTCMonth() < 10) {
-                        m2 = '0' + d2.getUTCMonth();
-                    } else {
-                        m2 = d2.getUTCMonth();
-                    }
-                    var y2 = d2.getUTCFullYear();
-                    var dob2 = y2 + '-' + m2 + '-' + n2;
-                    document.getElementById('eisaleto').value = dob2;
-                    document.getElementById('wizardPicturePreview').src = list.image;
                 }
-            });
+            
+        }).then(function(data){
+           
+            if(data.message == "SUCCESS"){
+                var list = data.data.product;
+                console.log(data)
+                document.getElementById('enamePro').value = list.name;
+                document.getElementById('equantityPro').value = list.quantity;
+                document.getElementById('ePrice').value = list.unit_price;
+                document.getElementById('eDes').value = list.description;
+                document.getElementById('eitimefrom').value = list.time_from;
+                document.getElementById('eitimeto').value = list.time_to;
+                document.getElementById('eiSale').value = list.sale;
+
+                var d1 = new Date(list.sale_from);
+                var n1;
+                if (d1.getUTCDate() < 10) {
+                    n1 = '0' + d1.getUTCDate();
+                } else {
+                    n1 = d1.getUTCDate();
+                }
+                var m1;
+                if (d1.getUTCMonth() < 10) {
+                    m1 = '0' + d1.getUTCMonth();
+                } else {
+                    m1 = d1.getUTCMonth();
+                }
+                var y1 = d1.getUTCFullYear();
+                var dob1 = y1 + '-' + m1 + '-' + n1;
+                document.getElementById('eisalefrom').value = dob1;
+
+                var d2 = new Date(list.sale_to);
+                var n2;
+                if (d2.getUTCDate() < 10) {
+                    n2 = '0' + d2.getUTCDate();
+                } else {
+                    n2 = d2.getUTCDate();
+                }
+                var m2;
+                if (d2.getUTCMonth() < 10) {
+                    m2 = '0' + d2.getUTCMonth();
+                } else {
+                    m2 = d2.getUTCMonth();
+                }
+                var y2 = d2.getUTCFullYear();
+                var dob2 = y2 + '-' + m2 + '-' + n2;
+                document.getElementById('eisaleto').value = dob2;
+                document.getElementById('wizardPicturePreview').src = list.image;
+            }
+            })
         })
 
         function deleteproduct(id) {
@@ -971,7 +1031,11 @@
             if ($('#enamePro').val() == '') {
                 document.getElementById('enamePro').setAttribute('class', 'form-control border-danger');
                 document.getElementById('messageNameEditName').innerHTML = 'Tên không được để trống';
-            } else if (!checkEditProduct()) {
+            }
+          
+           let check = checkEditProduct()
+            if (check == true) {
+
                 $.ajax({
                     url: '/api/product/update',
                     method: 'POST',
