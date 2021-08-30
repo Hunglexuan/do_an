@@ -8,6 +8,10 @@ class UserController {
         let { id } = req.query;
         return await MidUser.getUserById(id);
     }
+    async getUserEmail(req, res) {
+        let { email } = req.query;
+        return await MidUser.getUserByEmail(email);
+    }
 
     async searchUser(req, res) {
         let dataQuery = req.query;

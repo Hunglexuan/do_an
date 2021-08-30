@@ -7,6 +7,7 @@ let routerApp = new Router();
 
 routerApp.post('/avatar', Response(UserController.avatarUpdate));
 routerApp.get('/getbyId', Response(UserController.getUserId));
+routerApp.get('/getEmail', Response(UserController.getUserEmail));
 routerApp.get('/searchUser', Response(UserController.searchUser));
 routerApp.get('/searchSeller', Response(UserController.searchSeller));
 routerApp.get('/delete', Response(UserController.deleteUser));

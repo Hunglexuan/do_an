@@ -327,8 +327,10 @@
                     url: "/api/product/list6MostBuy",
                     success: function(data) {
                         var listdata = data.data;
-                        console.log(listdata);
+
                         for (var i = 0; i < listdata.length; i++) {
+
+
                             let image = listdata[i].image ?
                                 listdata[i].image :
                                 "image/list/1.png";
@@ -354,8 +356,8 @@
                                     image +
                                     ' class="img-fluid item-img img-restaurant" style="width: 100%;"> </a> </div> <div class="p-3 position-relative item-restaurant"> <div class="list-card-body"> <h6 class="mb-1"><a class="text-black">' +
                                     listdata[i].name +
-                                    '</a></h6> <p class="text-gray mb-3">' +
-                                    listdata[i].description +
+                                    '</a></h6> <p class="text-gray mb-3">Quán: ' +
+                                    listdata[i].nameShop +
                                     '</p> <p class="text-gray mb-3 time"><span class="bg-light text-dark rounded-sm pl-2 pb-1 pt-1 pr-2"><i class="icofont-wall-clock"></i> ' +
                                     listdata[i].time_from +
                                     "–" +
@@ -373,8 +375,8 @@
                                     image +
                                     ' class="img-fluid item-img img-restaurant" style="width: 100%;"> </a> </div> <div class="p-3 position-relative item-restaurant"> <div class="list-card-body"> <h6 class="mb-1"><a class="text-black">' +
                                     listdata[i].name +
-                                    '</a></h6> <p class="text-gray mb-3">' +
-                                    listdata[i].description +
+                                    '</a></h6> <p class="text-gray mb-3">Quán: ' +
+                                    listdata[i].nameShop +
                                     '</p> <p class="text-gray mb-3 time"><span class="bg-light text-dark rounded-sm pl-2 pb-1 pt-1 pr-2"><i class="icofont-wall-clock"></i> ' +
                                     listdata[i].time_from +
                                     "–" +
@@ -421,8 +423,8 @@
                                     image +
                                     ' class="img-fluid item-img img-restaurant" style="width: 100%;"> </a> </div> <div class="p-3 position-relative item-restaurant"> <div class="list-card-body"> <h6 class="mb-1"><a class="text-black">' +
                                     listdata[i].name +
-                                    '</a></h6> <p class="text-gray mb-3">' +
-                                    listdata[i].description +
+                                    '</a></h6> <p class="text-gray mb-3">Quán: ' +
+                                    listdata[i].nameShop +
                                     '</p> <p class="text-gray mb-3 time"><span class="bg-light text-dark rounded-sm pl-2 pb-1 pt-1 pr-2"><i class="icofont-wall-clock"></i> ' +
                                     listdata[i].time_from +
                                     "–" +
@@ -440,8 +442,8 @@
                                     image +
                                     ' class="img-fluid item-img img-restaurant" style="width: 100%;"> </a> </div> <div class="p-3 position-relative item-restaurant"> <div class="list-card-body"> <h6 class="mb-1"><a class="text-black">' +
                                     listdata[i].name +
-                                    '</a></h6> <p class="text-gray mb-3">' +
-                                    listdata[i].description +
+                                    '</a></h6> <p class="text-gray mb-3">Quán: ' +
+                                    listdata[i].nameShop +
                                     '</p> <p class="text-gray mb-3 time"><span class="bg-light text-dark rounded-sm pl-2 pb-1 pt-1 pr-2"><i class="icofont-wall-clock"></i> ' +
                                     listdata[i].time_from +
                                     "–" +
@@ -488,8 +490,8 @@
                                     image +
                                     ' class="img-fluid item-img img-restaurant" style="width: 100%;"> </a> </div> <div class="p-3 position-relative item-restaurant"> <div class="list-card-body"> <h6 class="mb-1"><a class="text-black">' +
                                     listdata[i].name +
-                                    '</a></h6> <p class="text-gray mb-3">' +
-                                    listdata[i].description +
+                                    '</a></h6> <p class="text-gray mb-3">Quán: ' +
+                                    listdata[i].nameShop +
                                     '</p> <p class="text-gray mb-3 time"><span class="bg-light text-dark rounded-sm pl-2 pb-1 pt-1 pr-2"><i class="icofont-wall-clock"></i> ' +
                                     listdata[i].time_from +
                                     "–" +
@@ -507,8 +509,8 @@
                                     image +
                                     ' class="img-fluid item-img img-restaurant" style="width: 100%;"> </a> </div> <div class="p-3 position-relative item-restaurant"> <div class="list-card-body"> <h6 class="mb-1"><a class="text-black">' +
                                     listdata[i].name +
-                                    '</a></h6> <p class="text-gray mb-3">' +
-                                    listdata[i].description +
+                                    '</a></h6> <p class="text-gray mb-3">Quán: ' +
+                                    listdata[i].nameShop +
                                     '</p> <p class="text-gray mb-3 time"><span class="bg-light text-dark rounded-sm pl-2 pb-1 pt-1 pr-2"><i class="icofont-wall-clock"></i> ' +
                                     listdata[i].time_from +
                                     "–" +

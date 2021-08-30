@@ -180,9 +180,9 @@ class MidProduct {
 
     async listDefault(data) {
         let condition = {
-            del: 0
-        }
-        //tra ra 6 san pham moi nhat
+                del: 0
+            }
+            //tra ra 6 san pham moi nhat
         return Product.findAll({
             where: condition,
             order: [
@@ -196,10 +196,10 @@ class MidProduct {
     }
     async listMostBuy(data) {
         let condition = {
-            del: 0
-        }
-        //tra ra 6 san pham duoc ng dung mua nhieu
-        return Product.findAll({
+                del: 0
+            }
+            //tra ra 6 san pham duoc ng dung mua nhieu
+        let listMostBuy = await Product.findAll({
             where: condition,
             attributes: [
                 'id', 'quantity', 'unit_price', 'name', 'image', 'description', 'time_from', 'time_to', 'user_id', 'sale', 'sale_to', 'sale_from', [sequelize.literal('(SELECT COUNT(*) FROM doan.billproduct WHERE doan.billproduct.product_id = product.id)'), 'BoughtCount']
@@ -210,13 +210,29 @@ class MidProduct {
             limit: 6
         })
 
+        for (let i = 0; i < listMostBuy.length; i++) {
+            let object = await Users.findOne({
+                where: {
+                    id: listMostBuy[i].dataValues.user_id,
+                    del: 0
+                }
+            })
+            let obj = {
+                nameShop: object.dataValues.name
+            }
+            Object.assign(listMostBuy[i].dataValues, obj);
+
+
+        }
+        return listMostBuy;
+
     }
     async listFastDelivery(data) {
         let condition = {
-            del: 0
-        }
-        //tra ra cac san pham co thoi gian ship ngan nhat
-        return Product.findAll({
+                del: 0
+            }
+            //tra ra cac san pham co thoi gian ship ngan nhat
+        let listFastDeli = await Product.findAll({
             where: condition,
             order: [
                 [
@@ -225,6 +241,22 @@ class MidProduct {
             ],
             limit: 6
         })
+        for (let i = 0; i < listFastDeli.length; i++) {
+            let object = await Users.findOne({
+                where: {
+                    id: listFastDeli[i].dataValues.user_id,
+                    del: 0
+                }
+            })
+
+            let obj = {
+                nameShop: object.dataValues.name
+            }
+            Object.assign(listFastDeli[i].dataValues, obj);
+
+
+        }
+        return listFastDeli
 
     }
     async listSale(data) {
@@ -233,7 +265,7 @@ class MidProduct {
         }
 
         //tra ra 6 san pham dang sale cao nhat
-        return Product.findAll({
+        let listSale = await Product.findAll({
             where: condition,
             order: [
                 [
@@ -242,6 +274,22 @@ class MidProduct {
             ],
             limit: 6
         })
+        for (let i = 0; i < listSale.length; i++) {
+            let object = await Users.findOne({
+                where: {
+                    id: listSale[i].dataValues.user_id,
+                    del: 0
+                }
+            })
+
+            let obj = {
+                nameShop: object.dataValues.name
+            }
+            Object.assign(listSale[i].dataValues, obj);
+
+
+        }
+        return listSale
 
     }
 

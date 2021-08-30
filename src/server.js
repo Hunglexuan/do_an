@@ -1,6 +1,7 @@
 require("dotenv").config();
 import http from "http";
 import app from "./app";
+import { MidUser } from "./models/middle";
 const nodemailer = require("nodemailer");
 const multiparty = require("multiparty");
 const HTTP_PORT = normalizePort(process.env.PORT || 8000);
@@ -31,18 +32,20 @@ transporter.verify(function(error, success) {
     }
 });
 
+
+
 app.post("/send", (req, res) => {
     //1.
     let form = new multiparty.Form();
     let data = {};
-    form.parse(req, function(err, fields) {
-        console.log(fields);
+    form.parse(req, async(err, fields) => {
         Object.keys(fields).forEach(function(property) {
             data[property] = fields[property].toString();
         });
 
+        let mail;
         //2. You can configure the object however you want
-        const mail = {
+        mail = {
             from: "fu.market.2021@gmail.com",
             to: `${data.email}`,
             subject: "[Yêu Cầu Đổi Mật Khẩu Thành công]",

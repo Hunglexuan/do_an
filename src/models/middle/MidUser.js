@@ -53,7 +53,6 @@ class MidUser {
         return await Users.findOne({
             where: {
                 email,
-               
             },
         });
     }
@@ -164,7 +163,7 @@ class MidUser {
             console.log('MidUser-loginUser: ERROR-162');
             throw new Error(ERROR_MESSAGE.LOGIN.ERR_ACC);
         }
-        if (userData && userData.dataValues.del==1) {
+        if (userData && userData.dataValues.del == 1) {
             console.log('MidUser-loginUser: ERROR-162');
             throw new Error(ERROR_MESSAGE.LOGIN.ERR_ACC_BAN);
         }
@@ -207,7 +206,7 @@ class MidUser {
             console.log('MidUser-loginAdmin: ERROR-201');
             throw new Error("Khong phai admin");
         }
-        if (userData && userData.dataValues.del==1) {
+        if (userData && userData.dataValues.del == 1) {
             console.log('MidUser-loginUser: ERROR-162');
             throw new Error(ERROR_MESSAGE.LOGIN.ERR_ACC_BAN);
         }
@@ -220,7 +219,7 @@ class MidUser {
         const token = await generateToken({ userid: userData.id, email: email });
         return {
             token,
-            adminId : userData.id
+            adminId: userData.id
         };
     }
 
@@ -242,7 +241,7 @@ class MidUser {
             console.log('MidUser-loginSeller: ERROR-231');
             throw new Error(ERROR_MESSAGE.LOGIN.ERR_ACC);
         }
-        if (userData && userData.dataValues.del==1) {
+        if (userData && userData.dataValues.del == 1) {
             console.log('MidUser-loginUser: ERROR-162');
             throw new Error(ERROR_MESSAGE.LOGIN.ERR_ACC_BAN);
         }
